@@ -2,100 +2,82 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { ArrowUpRight, Users, TrendingUp, Zap, Target } from 'lucide-react'
+import { ArrowUpRight, Users, TrendingUp, Zap, MessageSquare, Heart, Globe } from 'lucide-react'
 import { useState } from 'react'
 
 const workCategories = [
   { value: 'all', label: 'All Work' },
+  { value: 'human-centered', label: 'Human-Centered' },
   { value: 'systems', label: 'Systems Design' },
-  { value: 'growth', label: 'Growth Strategy' },
-  { value: 'operations', label: 'Operations' },
-  { value: 'creator', label: 'Creator Economy' },
+  { value: 'community', label: 'Community Building' },
+  { value: 'strategy', label: 'Strategy' },
 ]
 
 const caseStudies = [
   {
-    id: '1',
-    title: 'Creator Monetization Platform',
-    client: 'Tech Startup',
-    description: 'Designed and implemented a comprehensive monetization system for 10,000+ creators',
-    impact: '300% increase in creator revenue',
-    category: 'creator',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80',
+    id: 'super-debate',
+    title: 'Super Debate',
+    client: 'Founder & Creator',
+    description: 'A platform for in-person intellectual discourse and community growth',
+    philosophy: 'Technology should bring us together, not apart. Super Debate creates spaces for people to challenge themselves, be vulnerable, and grow through real human connection.',
+    impact: 'Building stronger communities through discourse',
+    category: 'human-centered',
+    featured: true,
+    image: 'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800&q=80',
     metrics: [
-      { label: 'Revenue Growth', value: '300%' },
-      { label: 'Active Creators', value: '10K+' },
-      { label: 'Time to Market', value: '3 months' },
+      { label: 'Communities', value: '15+', icon: Users },
+      { label: 'Participants', value: '500+', icon: MessageSquare },
+      { label: 'Growth Rate', value: '200%', icon: TrendingUp },
     ],
-    technologies: ['System Architecture', 'Payment Processing', 'Analytics', 'API Design'],
+    values: ['In-Person Connection', 'Intellectual Growth', 'Community Building', 'Challenging Comfort Zones'],
   },
   {
-    id: '2',
-    title: 'Operational Excellence Framework',
-    client: 'E-commerce Company',
-    description: 'Restructured operations to reduce costs and improve efficiency across 5 departments',
-    impact: '40% reduction in operational costs',
-    category: 'operations',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80',
+    id: 'creator-systems',
+    title: 'Creator Value Systems',
+    client: 'Multiple Platforms',
+    description: 'Building economic systems that empower creators while preserving their humanity',
+    philosophy: 'Creators are humans first. Systems should amplify their humanity, not commodify it.',
+    impact: 'Empowering 10,000+ creators globally',
+    category: 'systems',
+    image: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&q=80',
     metrics: [
-      { label: 'Cost Reduction', value: '40%' },
-      { label: 'Efficiency Gain', value: '60%' },
-      { label: 'ROI', value: '250%' },
+      { label: 'Revenue Generated', value: '$100M+', icon: TrendingUp },
+      { label: 'Creators Served', value: '10K+', icon: Users },
+      { label: 'Retention', value: '95%', icon: Heart },
     ],
-    technologies: ['Process Optimization', 'Automation', 'Data Analytics', 'Team Training'],
+    values: ['Creator Autonomy', 'Sustainable Economics', 'Human-Centered Design', 'Long-term Thinking'],
   },
   {
-    id: '3',
-    title: 'Growth System Implementation',
-    client: 'SaaS Platform',
-    description: 'Built a data-driven growth system that scaled user acquisition and retention',
-    impact: '500% user growth in 6 months',
-    category: 'growth',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80',
+    id: 'community-platforms',
+    title: 'Community Infrastructure',
+    client: 'Social Enterprise',
+    description: 'Designing digital tools that foster real-world community connections',
+    philosophy: 'Technology should be a bridge to human connection, not a replacement for it.',
+    impact: 'Strengthening local communities',
+    category: 'community',
+    image: 'https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=800&q=80',
     metrics: [
-      { label: 'User Growth', value: '500%' },
-      { label: 'CAC Reduction', value: '65%' },
-      { label: 'LTV Increase', value: '120%' },
+      { label: 'Communities', value: '50+', icon: Globe },
+      { label: 'Engagement', value: '85%', icon: Heart },
+      { label: 'Local Impact', value: '100K+', icon: Users },
     ],
-    technologies: ['Growth Strategy', 'A/B Testing', 'Analytics', 'Marketing Automation'],
+    values: ['Locality', 'Human Connection', 'Digital Minimalism', 'Community Ownership'],
   },
   {
-    id: '4',
-    title: 'Creator Tools Suite',
-    client: 'Media Company',
-    description: 'Developed comprehensive toolset enabling creators to manage, analyze, and scale their content',
-    impact: 'Empowered 5,000+ creators',
-    category: 'creator',
-    image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&q=80',
+    id: 'strategic-transformation',
+    title: 'Organizational Transformation',
+    client: 'Fortune 500',
+    description: 'Guiding large organizations through human-centered digital transformation',
+    philosophy: 'Change should enhance human capability, not replace human judgment.',
+    impact: 'Transforming work for 50,000+ employees',
+    category: 'strategy',
+    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80',
     metrics: [
-      { label: 'Creator Adoption', value: '5K+' },
-      { label: 'Engagement Rate', value: '85%' },
-      { label: 'Revenue per Creator', value: '+200%' },
+      { label: 'Efficiency Gain', value: '40%', icon: Zap },
+      { label: 'Employee Satisfaction', value: '90%', icon: Heart },
+      { label: 'ROI', value: '300%', icon: TrendingUp },
     ],
-    technologies: ['Product Strategy', 'UX Design', 'API Integration', 'Analytics'],
-  },
-]
-
-const services = [
-  {
-    icon: Zap,
-    title: 'Systems Architecture',
-    description: 'Design scalable systems that grow with your business',
-  },
-  {
-    icon: TrendingUp,
-    title: 'Growth Strategy',
-    description: 'Data-driven approaches to accelerate business growth',
-  },
-  {
-    icon: Users,
-    title: 'Creator Economy',
-    description: 'Build and optimize creator monetization platforms',
-  },
-  {
-    icon: Target,
-    title: 'Operations Excellence',
-    description: 'Streamline operations for maximum efficiency',
+    values: ['Human-Centered Change', 'Sustainable Growth', 'Employee Empowerment', 'Ethical Technology'],
   },
 ]
 
@@ -109,67 +91,38 @@ export default function WorkPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        <div className="absolute inset-0 -z-10">
-          <div className="absolute inset-0 bg-gradient-to-br from-purple-900/10 via-blue-900/10 to-indigo-900/10" />
-        </div>
-
+      <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-12"
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
           >
-            <h1 className="text-4xl sm:text-5xl font-bold mb-4">
-              Work & <span className="text-gradient">Impact</span>
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Helping businesses and creators build systems that scale, optimize operations, and drive measurable growth.
+            <h1 className="text-5xl sm:text-6xl font-bold mb-6">Work</h1>
+            <p className="text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto">
+              Every project is guided by a simple principle: 
+              <span className="block mt-2 font-semibold text-foreground">
+                Does this make us more human?
+              </span>
             </p>
-          </motion.div>
-
-          {/* Services Grid */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16"
-          >
-            {services.map((service, index) => {
-              const Icon = service.icon
-              return (
-                <motion.div
-                  key={service.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.1 + index * 0.05 }}
-                  whileHover={{ y: -5 }}
-                  className="glass rounded-xl p-6 hover:bg-primary/5 transition-all"
-                >
-                  <Icon className="w-10 h-10 text-primary mb-4" />
-                  <h3 className="font-semibold mb-2">{service.title}</h3>
-                  <p className="text-sm text-muted-foreground">{service.description}</p>
-                </motion.div>
-              )
-            })}
           </motion.div>
 
           {/* Category Filter */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="flex flex-wrap gap-2 justify-center mb-12"
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="flex flex-wrap gap-3 justify-center mb-16"
           >
             {workCategories.map((category) => (
               <button
                 key={category.value}
                 onClick={() => setSelectedCategory(category.value)}
-                className={`px-4 py-2 rounded-lg transition-all ${
+                className={`px-6 py-2 border transition-all duration-300 ${
                   selectedCategory === category.value
-                    ? 'bg-primary text-primary-foreground'
-                    : 'glass hover:bg-primary/10'
+                    ? 'bg-foreground text-background border-foreground'
+                    : 'border-foreground/20 hover:border-foreground'
                 }`}
               >
                 {category.label}
@@ -177,61 +130,81 @@ export default function WorkPage() {
             ))}
           </motion.div>
 
-          {/* Case Studies Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* Case Studies */}
+          <div className="space-y-24">
             {filteredWork.map((work, index) => (
               <motion.div
                 key={work.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ y: -5 }}
-                className="group glass rounded-xl overflow-hidden"
+                id={work.id}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, delay: index * 0.1 }}
+                className={`${work.featured ? 'lg:col-span-2' : ''}`}
               >
-                <div className="relative h-48 overflow-hidden">
-                  <Image
-                    src={work.image}
-                    alt={work.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent" />
-                  <div className="absolute bottom-4 left-6">
-                    <p className="text-sm text-primary font-medium">{work.client}</p>
+                <div className="grid lg:grid-cols-2 gap-12 items-center">
+                  {/* Image */}
+                  <div className={`relative h-96 overflow-hidden ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
+                    <Image
+                      src={work.image}
+                      alt={work.title}
+                      fill
+                      className="object-cover"
+                    />
+                    {work.featured && (
+                      <div className="absolute top-4 left-4 px-3 py-1 bg-background/90 backdrop-blur-sm text-xs font-semibold uppercase tracking-wider">
+                        Featured
+                      </div>
+                    )}
                   </div>
-                </div>
-                
-                <div className="p-6">
-                  <h3 className="text-2xl font-bold mb-2">{work.title}</h3>
-                  <p className="text-muted-foreground mb-4">{work.description}</p>
                   
-                  <div className="mb-6">
-                    <p className="text-lg font-semibold text-primary mb-3">{work.impact}</p>
-                    <div className="grid grid-cols-3 gap-4">
-                      {work.metrics.map((metric) => (
-                        <div key={metric.label}>
-                          <p className="text-2xl font-bold">{metric.value}</p>
-                          <p className="text-xs text-muted-foreground">{metric.label}</p>
-                        </div>
+                  {/* Content */}
+                  <div className={index % 2 === 1 ? 'lg:order-1' : ''}>
+                    <p className="text-sm uppercase tracking-wider text-muted-foreground mb-2">
+                      {work.client}
+                    </p>
+                    <h2 className="text-3xl sm:text-4xl font-bold mb-4">{work.title}</h2>
+                    <p className="text-lg text-muted-foreground mb-6">{work.description}</p>
+                    
+                    {/* Philosophy */}
+                    <blockquote className="mb-8 pl-6 border-l-2 border-foreground/20 italic text-muted-foreground">
+                      {work.philosophy}
+                    </blockquote>
+                    
+                    {/* Metrics */}
+                    <div className="grid grid-cols-3 gap-6 mb-8">
+                      {work.metrics.map((metric) => {
+                        const Icon = metric.icon
+                        return (
+                          <div key={metric.label}>
+                            <Icon className="w-5 h-5 text-muted-foreground mb-2" />
+                            <p className="text-2xl font-bold">{metric.value}</p>
+                            <p className="text-xs text-muted-foreground">{metric.label}</p>
+                          </div>
+                        )
+                      })}
+                    </div>
+                    
+                    {/* Values */}
+                    <div className="flex flex-wrap gap-2 mb-8">
+                      {work.values.map((value) => (
+                        <span
+                          key={value}
+                          className="px-3 py-1 text-xs border border-foreground/20"
+                        >
+                          {value}
+                        </span>
                       ))}
                     </div>
+                    
+                    {/* Impact Statement */}
+                    <p className="text-lg font-semibold mb-6">{work.impact}</p>
+                    
+                    <button className="flex items-center gap-2 text-sm font-medium hover:gap-3 transition-all">
+                      View Full Case Study
+                      <ArrowUpRight className="w-4 h-4" />
+                    </button>
                   </div>
-                  
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {work.technologies.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-3 py-1 text-xs rounded-full bg-primary/10 text-primary"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                  
-                  <button className="flex items-center gap-2 text-primary font-medium hover:gap-3 transition-all">
-                    View Case Study
-                    <ArrowUpRight className="w-4 h-4" />
-                  </button>
                 </div>
               </motion.div>
             ))}
@@ -240,28 +213,28 @@ export default function WorkPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-primary/5">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 border-t border-foreground/10">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.8 }}
           >
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-              Ready to Build Something Great?
+            <h2 className="text-3xl sm:text-4xl font-bold mb-6">
+              Let&apos;s Build Something Human
             </h2>
-            <p className="text-xl text-muted-foreground mb-8">
-              Let&apos;s discuss how I can help transform your business with systems that scale.
+            <p className="text-xl text-muted-foreground mb-12 max-w-2xl mx-auto">
+              I work with organizations that understand technology is a tool, 
+              not a replacement for human wisdom.
             </p>
             <motion.a
               href="/contact"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground rounded-lg font-semibold text-lg hover:shadow-xl hover:shadow-primary/25 transition-all"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="inline-block px-10 py-4 bg-foreground text-background border-2 border-foreground hover:bg-transparent hover:text-foreground transition-all duration-300 font-medium"
             >
               Start a Conversation
-              <ArrowUpRight className="w-5 h-5" />
             </motion.a>
           </motion.div>
         </div>

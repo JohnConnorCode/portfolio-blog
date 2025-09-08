@@ -11,8 +11,8 @@ import { cn } from '@/lib/utils'
 const navItems = [
   { href: '/', label: 'Home', icon: Home },
   { href: '/work', label: 'Work', icon: Code2 },
+  { href: '/philosophy', label: 'Philosophy', icon: BookOpen },
   { href: '/about', label: 'About', icon: User },
-  { href: '/blog', label: 'Writing', icon: BookOpen },
   { href: '/contact', label: 'Contact', icon: User },
 ]
 
@@ -44,15 +44,15 @@ export function Navbar() {
       )}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-20">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
             <Link href="/" className="group">
-              <span className="font-bold text-xl tracking-tight hover:text-primary transition-colors">
-                John Connor
+              <span className="text-2xl font-light tracking-tight">
+                JC
               </span>
             </Link>
           </motion.div>
