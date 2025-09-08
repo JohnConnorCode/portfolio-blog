@@ -7,8 +7,22 @@ export function CustomCursor() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [isPointer, setIsPointer] = useState(false)
   const [isHidden, setIsHidden] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
+    // Check if mobile device
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768 || 'ontouchstart' in window)
+    }
+    
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
+  useEffect(() => {
+    if (isMobile) return
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY })
       
@@ -35,17 +49,19 @@ export function CustomCursor() {
       document.removeEventListener('mouseleave', handleMouseLeave)
       document.removeEventListener('mouseenter', handleMouseEnter)
     }
-  }, [])
+  }, [isMobile])
 
-  if (typeof window !== 'undefined' && 'ontouchstart' in window) {
+  if (isMobile) {
     return null
   }
 
   return (
     <>
       <style jsx global>{`
-        * {
-          cursor: none !important;
+        @media (hover: hover) and (pointer: fine) {
+          * {
+            cursor: none !important;
+          }
         }
       `}</style>
       

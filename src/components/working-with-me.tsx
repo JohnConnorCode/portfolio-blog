@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { CheckCircle, ArrowRight, Calendar, MessageSquare, Rocket, Target, Users, Brain } from 'lucide-react'
+import { CheckCircle, ArrowRight, Calendar, MessageSquare, Rocket, Target, Users, Brain, Eye, Zap, Unlock } from 'lucide-react'
 import { AnimatedText, FadeInText } from '@/components/animated-text'
 import Link from 'next/link'
 
@@ -56,22 +56,22 @@ const principles = [
   {
     title: 'Radical Transparency',
     description: 'No black boxes. You understand every system we build and own the IP.',
-    icon: '🔍'
+    icon: Eye
   },
   {
     title: 'Speed to Value',
     description: 'First measurable impact within 2 weeks, not months.',
-    icon: '⚡'
+    icon: Zap
   },
   {
     title: 'Human-Centered',
     description: 'Technology serves your team, not the other way around.',
-    icon: '❤️'
+    icon: Users
   },
   {
     title: 'No Vendor Lock-in',
     description: 'Open systems you can maintain and evolve without me.',
-    icon: '🔓'
+    icon: Unlock
   }
 ]
 
@@ -154,7 +154,7 @@ export function WorkingWithMe() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="flex gap-4 p-6 border border-foreground/10 hover:border-foreground/30 transition-all rounded-lg"
               >
-                <span className="text-3xl">{principle.icon}</span>
+                <principle.icon className="w-8 h-8 text-primary" />
                 <div>
                   <h4 className="font-bold mb-2">{principle.title}</h4>
                   <p className="text-muted-foreground">{principle.description}</p>

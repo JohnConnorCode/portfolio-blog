@@ -5,7 +5,6 @@ import { ConsultingPackages } from '@/components/consulting-packages'
 import { WorkingWithMe } from '@/components/working-with-me'
 import { Ventures } from '@/components/ventures'
 import { Experience } from '@/components/experience'
-import { TestimonialsEnhanced } from '@/components/testimonials-enhanced'
 import { Writings } from '@/components/writings'
 import { Services } from '@/components/services'
 import { RecentWork } from '@/components/recent-work'
@@ -26,8 +25,6 @@ export default function Home() {
       <Ventures />
       <SectionDivider variant="dots" />
       <Experience />
-      <SectionDivider variant="geometric" />
-      <TestimonialsEnhanced />
       <SectionDivider variant="organic" />
       <Writings />
       <SectionDivider variant="wave" />
