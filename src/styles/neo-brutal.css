@@ -1,41 +1,26 @@
-/* Neo-Brutalist Design System 2025 */
+/* Neo-Brutalist Specific Effects - Extends Design System */
 
-:root {
-  --neon-cyan: #00ffff;
-  --neon-pink: #ff00ff;
-  --neon-yellow: #ffff00;
-  --electric-blue: #0099ff;
-  --brutal-black: #000000;
-  --brutal-white: #ffffff;
-  --glitch-red: #ff0040;
-}
-
-/* Sophisticated brutal shadows */
+/* Refined Brutal Shadows using CSS variables */
 .brutal-shadow {
-  box-shadow: 
-    4px 4px 0px 0px rgba(0, 255, 255, 0.3),
-    8px 8px 0px 0px rgba(0, 0, 0, 1);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-brutal);
+  transition: all var(--duration-base) var(--ease-smooth);
 }
 
 .brutal-shadow:hover {
-  box-shadow: 
-    6px 6px 0px 0px rgba(0, 255, 255, 0.5),
-    12px 12px 0px 0px rgba(0, 0, 0, 1);
+  box-shadow: var(--shadow-brutal-hover);
   transform: translate(-2px, -2px);
 }
 
-/* Refined neon glow effects */
+/* Refined Neon Glow */
 .neon-glow {
-  text-shadow: 
-    0 0 5px rgba(0, 255, 255, 0.5),
-    0 0 10px rgba(0, 255, 255, 0.3),
-    0 0 20px rgba(0, 255, 255, 0.2);
+  text-shadow: 0 0 5px rgba(0, 212, 255, 0.5),
+               0 0 10px rgba(0, 212, 255, 0.3);
   letter-spacing: 0.02em;
 }
 
+/* Neon Border with Animation */
 .neon-border {
-  border: 2px solid rgba(0, 255, 255, 0.2);
+  border: var(--border-base) solid rgba(0, 212, 255, 0.2);
   position: relative;
   overflow: hidden;
   background: linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.85) 100%);
@@ -44,10 +29,11 @@
 .neon-border::before {
   content: '';
   position: absolute;
-  inset: -3px;
-  background: linear-gradient(45deg, var(--neon-cyan), var(--neon-pink), var(--electric-blue));
+  inset: -2px;
+  background: linear-gradient(45deg, var(--cyan-400), var(--pink-500), var(--cyan-500));
   animation: rotate-border 3s linear infinite;
   z-index: -1;
+  opacity: 0.3;
 }
 
 @keyframes rotate-border {
@@ -55,10 +41,10 @@
   100% { transform: rotate(360deg); }
 }
 
-/* Glitch effect */
+/* Subtle Glitch Effect */
 .glitch {
   position: relative;
-  animation: glitch-shift 2s infinite;
+  animation: glitch-shift 4s infinite;
 }
 
 .glitch::before,
@@ -69,54 +55,70 @@
   left: 0;
   width: 100%;
   height: 100%;
+  opacity: 0.8;
 }
 
 .glitch::before {
-  animation: glitch-1 0.5s infinite;
-  color: var(--neon-cyan);
+  animation: glitch-1 0.3s infinite;
+  color: var(--cyan-400);
   z-index: -1;
+  mix-blend-mode: screen;
 }
 
 .glitch::after {
-  animation: glitch-2 0.5s infinite;
-  color: var(--glitch-red);
+  animation: glitch-2 0.3s infinite;
+  color: var(--pink-500);
   z-index: -2;
+  mix-blend-mode: screen;
 }
 
 @keyframes glitch-shift {
   0%, 100% { transform: translate(0); }
-  20% { transform: translate(-1px, 1px); }
-  40% { transform: translate(1px, -1px); }
-  60% { transform: translate(-1px, -1px); }
-  80% { transform: translate(1px, 1px); }
+  20% { transform: translate(-0.5px, 0.5px); }
+  40% { transform: translate(0.5px, -0.5px); }
+  60% { transform: translate(-0.5px, -0.5px); }
+  80% { transform: translate(0.5px, 0.5px); }
 }
 
 @keyframes glitch-1 {
-  0%, 100% { clip-path: inset(0 0 0 0); transform: translate(0); }
-  20% { clip-path: inset(20% 0 30% 0); transform: translate(-2px, 2px); }
-  40% { clip-path: inset(50% 0 20% 0); transform: translate(2px, -2px); }
-  60% { clip-path: inset(10% 0 60% 0); transform: translate(-2px, 0); }
-  80% { clip-path: inset(80% 0 5% 0); transform: translate(2px, 0); }
+  0%, 100% { 
+    clip-path: inset(0 0 0 0); 
+    transform: translate(0); 
+  }
+  20% { 
+    clip-path: inset(20% 0 30% 0); 
+    transform: translate(-1px, 1px); 
+  }
 }
 
 @keyframes glitch-2 {
-  0%, 100% { clip-path: inset(0 0 0 0); transform: translate(0); }
-  20% { clip-path: inset(60% 0 10% 0); transform: translate(2px, -2px); }
-  40% { clip-path: inset(20% 0 50% 0); transform: translate(-2px, 2px); }
-  60% { clip-path: inset(30% 0 40% 0); transform: translate(2px, 0); }
-  80% { clip-path: inset(5% 0 80% 0); transform: translate(-2px, 0); }
+  0%, 100% { 
+    clip-path: inset(0 0 0 0); 
+    transform: translate(0); 
+  }
+  20% { 
+    clip-path: inset(60% 0 10% 0); 
+    transform: translate(1px, -1px); 
+  }
 }
 
-/* Cyberpunk grid */
+/* Cyberpunk Grid Background */
 .cyber-grid {
   background-image: 
-    linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+    linear-gradient(rgba(0, 212, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.05) 1px, transparent 1px);
   background-size: 50px 50px;
-  animation: grid-move 10s linear infinite;
+  animation: grid-move 20s linear infinite;
 }
 
 @keyframes grid-move {
   0% { background-position: 0 0; }
   100% { background-position: 50px 50px; }
+}
+
+/* Matrix Rain Canvas Styles */
+.matrix-canvas {
+  filter: blur(0.5px);
+  opacity: 0.15;
+  mix-blend-mode: screen;
 }

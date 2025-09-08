@@ -56,7 +56,7 @@ export function Navbar() {
                   John Connor
                 </span>
                 <span className="text-xs text-muted-foreground uppercase tracking-widest">
-                  System Builder
+                  Strategy & Growth
                 </span>
               </div>
             </Link>

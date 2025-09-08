@@ -6,22 +6,22 @@ import { Zap, Users, Code, Trophy } from 'lucide-react'
 const impacts = [
   {
     number: "$50M+",
-    label: "Capital Raised",
-    context: "For portfolio companies",
+    label: "Capital Facilitated",
+    context: "Through strategic consulting",
     icon: Trophy,
     color: "text-yellow-400"
   },
   {
     number: "10,000+",
-    label: "Developers Enabled",
-    context: "Through ecosystem programs",
+    label: "Products Launched",
+    context: "From concept to scale",
     icon: Code,
     color: "text-cyan-400"
   },
   {
     number: "15 Years",
-    label: "Building Systems",
-    context: "From startups to Fortune 500",
+    label: "Strategic Leadership",
+    context: "Consulting & product strategy",
     icon: Zap,
     color: "text-pink-500"
   },
@@ -36,9 +36,9 @@ const impacts = [
 
 export function ImpactBrutal() {
   return (
-    <section className="py-24 px-4 bg-black relative overflow-hidden">
+    <section className="py-24 px-4 bg-gradient-to-b from-gray-900 to-black relative overflow-hidden">
       {/* Cyberpunk grid background */}
-      <div className="absolute inset-0 cyber-grid opacity-20" />
+      <div className="absolute inset-0 cyber-grid" />
       
       {/* Glowing accent lines */}
       <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent" />
@@ -57,7 +57,7 @@ export function ImpactBrutal() {
             <span className="text-cyan-400 font-black neon-glow"> IMPACT</span>
           </h2>
           <p className="text-lg text-gray-400 font-light tracking-wide">
-            Metrics that demonstrate real-world transformation
+            Strategic outcomes from product consulting and growth initiatives
           </p>
         </motion.div>
         
@@ -79,7 +79,7 @@ export function ImpactBrutal() {
                 className="relative group"
               >
                 {/* Card with brutal shadow */}
-                <div className="bg-gradient-to-br from-black to-gray-900 border-2 border-gray-800 p-8 shadow-2xl hover:border-cyan-400/50 hover:shadow-cyan-400/20 transition-all duration-300">
+                <div className="card-glass hover:border-cyan-400/50 transition-all">
                   {/* Icon with neon glow */}
                   <div className={`mb-4 ${impact.color}`}>
                     <Icon className="w-12 h-12" />

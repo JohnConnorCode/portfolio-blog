@@ -139,7 +139,7 @@ export function HeroCyberpunk() {
             <div className="inline-block relative">
               <div className="absolute inset-0 bg-cyan-400 blur-xl opacity-50 animate-pulse" />
               <p className="relative text-xl md:text-2xl font-mono uppercase tracking-wider text-cyan-400 px-8 py-4 bg-black/90 backdrop-blur border border-cyan-400/30">
-                System Architect · Future Builder
+                Product Strategist · Growth Catalyst
               </p>
             </div>
           </motion.div>
@@ -151,9 +151,9 @@ export function HeroCyberpunk() {
             transition={{ delay: 0.6, duration: 0.8 }}
             className="text-lg md:text-xl text-gray-300 mb-12 max-w-3xl mx-auto font-mono"
           >
-            Building sophisticated systems that redefine what's possible.
+            Transforming ideas into scalable products through strategic iteration.
             <br />
-            <span className="text-cyan-400">Precision engineering. Strategic vision. Real impact.</span>
+            <span className="text-cyan-400">AI-powered building. Strategic consulting. Rapid growth.</span>
           </motion.p>
           
           {/* CTA Buttons with brutal design */}
@@ -203,9 +203,9 @@ export function HeroCyberpunk() {
         </div>
       </motion.div>
       
-      {/* Corner accents */}
-      <div className="absolute top-0 left-0 w-32 h-32 border-l-4 border-t-4 border-cyan-400" />
-      <div className="absolute top-0 right-0 w-32 h-32 border-r-4 border-t-4 border-cyan-400" />
+      {/* Corner accents - moved down to avoid nav */}
+      <div className="absolute top-20 left-0 w-24 h-24 border-l-2 border-t-2 border-cyan-400/50" />
+      <div className="absolute top-20 right-0 w-24 h-24 border-r-2 border-t-2 border-cyan-400/50" />
       <div className="absolute bottom-0 left-0 w-32 h-32 border-l-4 border-b-4 border-cyan-400" />
       <div className="absolute bottom-0 right-0 w-32 h-32 border-r-4 border-b-4 border-cyan-400" />
     </section>
