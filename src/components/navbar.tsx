@@ -10,9 +10,10 @@ import { cn } from '@/lib/utils'
 
 const navItems = [
   { href: '/', label: 'Home', icon: Home },
-  { href: '/blog', label: 'Blog', icon: BookOpen },
-  { href: '/projects', label: 'Projects', icon: Code2 },
+  { href: '/work', label: 'Work', icon: Code2 },
   { href: '/about', label: 'About', icon: User },
+  { href: '/blog', label: 'Writing', icon: BookOpen },
+  { href: '/contact', label: 'Contact', icon: User },
 ]
 
 export function Navbar() {
@@ -49,16 +50,9 @@ export function Navbar() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <Link href="/" className="flex items-center space-x-2">
-              <motion.div
-                whileHover={{ rotate: 360 }}
-                transition={{ duration: 0.5 }}
-                className="w-8 h-8 bg-gradient-to-br from-purple-600 to-blue-600 rounded-lg flex items-center justify-center"
-              >
-                <Code2 className="w-5 h-5 text-white" />
-              </motion.div>
-              <span className="font-bold text-xl bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-                Portfolio
+            <Link href="/" className="group">
+              <span className="font-bold text-xl tracking-tight hover:text-primary transition-colors">
+                John Connor
               </span>
             </Link>
           </motion.div>

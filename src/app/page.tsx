@@ -1,15 +1,17 @@
 import { Hero } from '@/components/hero'
-import { FeaturedPosts } from '@/components/featured-posts'
-import { FeaturedProjects } from '@/components/featured-projects'
-import { Stats } from '@/components/stats'
+import { Services } from '@/components/services'
+import { RecentWork } from '@/components/recent-work'
+import { Testimonials } from '@/components/testimonials'
+import { CallToAction } from '@/components/call-to-action'
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <Stats />
-      <FeaturedProjects />
-      <FeaturedPosts />
+      <Services />
+      <RecentWork />
+      <Testimonials />
+      <CallToAction />
     </>
   )
 }
