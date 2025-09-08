@@ -83,7 +83,7 @@ export function HeroCyberpunk() {
   }, [])
   
   return (
-    <section ref={containerRef} className="relative min-h-screen overflow-hidden bg-black">
+    <section ref={containerRef} className="relative min-h-screen overflow-hidden" style={{ background: 'var(--black)' }}>
       {/* Matrix rain background */}
       <canvas
         ref={canvasRef}
@@ -138,7 +138,7 @@ export function HeroCyberpunk() {
           >
             <div className="inline-block relative">
               <div className="absolute inset-0 bg-cyan-400 blur-xl opacity-50 animate-pulse" />
-              <p className="relative text-xl md:text-2xl font-mono uppercase tracking-wider text-cyan-400 px-8 py-4 bg-black/90 backdrop-blur border border-cyan-400/30">
+              <p className="relative text-xl md:text-2xl font-mono uppercase tracking-wider backdrop-blur" style={{ color: 'var(--cyan-400)', padding: 'var(--space-2) var(--space-4)', background: 'rgba(0,0,0,0.9)', border: '1px solid rgba(0, 212, 255, 0.3)' }}>
                 Product Strategist · Growth Catalyst
               </p>
             </div>
@@ -167,7 +167,7 @@ export function HeroCyberpunk() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-10 py-4 bg-gradient-to-r from-cyan-400 to-cyan-500 text-black font-bold text-lg tracking-wide shadow-2xl hover:shadow-cyan-400/50 transition-all relative overflow-hidden group"
+                className="btn-primary"
               >
                 <span className="relative z-10">View My Work</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -178,7 +178,7 @@ export function HeroCyberpunk() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-10 py-4 bg-black/50 backdrop-blur border-2 border-cyan-400/50 text-cyan-400 font-bold text-lg tracking-wide hover:bg-cyan-400/10 hover:border-cyan-400 transition-all"
+                className="btn-secondary"
               >
                 My Philosophy
               </motion.button>
@@ -204,8 +204,8 @@ export function HeroCyberpunk() {
       </motion.div>
       
       {/* Corner accents - moved down to avoid nav */}
-      <div className="absolute top-20 left-0 w-24 h-24 border-l-2 border-t-2 border-cyan-400/50" />
-      <div className="absolute top-20 right-0 w-24 h-24 border-r-2 border-t-2 border-cyan-400/50" />
+      <div className="absolute top-20 left-0 w-24 h-24" style={{ borderLeft: 'var(--border-thin) solid rgba(0, 212, 255, 0.3)', borderTop: 'var(--border-thin) solid rgba(0, 212, 255, 0.3)' }} />
+      <div className="absolute top-20 right-0 w-24 h-24" style={{ borderRight: 'var(--border-thin) solid rgba(0, 212, 255, 0.3)', borderTop: 'var(--border-thin) solid rgba(0, 212, 255, 0.3)' }} />
       <div className="absolute bottom-0 left-0 w-32 h-32 border-l-4 border-b-4 border-cyan-400" />
       <div className="absolute bottom-0 right-0 w-32 h-32 border-r-4 border-b-4 border-cyan-400" />
     </section>

@@ -80,11 +80,11 @@ export function WorkingWithMe() {
     <section className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-black mb-6">
-            <span className="text-white">WORKING</span>
-            <span className="text-cyan-400 neon-glow"> WITH ME</span>
+          <h2 className="heading-section mb-6">
+            <span style={{ color: 'var(--white)', fontWeight: 300 }}>WORKING</span>
+            <span className="text-gradient" style={{ fontWeight: 700 }}> WITH ME</span>
           </h2>
-          <p className="text-xl text-gray-400 font-mono uppercase tracking-widest max-w-3xl mx-auto">
+          <p className="text-lg font-light tracking-wide max-w-3xl mx-auto" style={{ color: 'var(--gray-400)' }}>
             Structured transformation. Quick wins. Long-term impact.
           </p>
         </div>
@@ -93,8 +93,7 @@ export function WorkingWithMe() {
         <div className="mb-20">
           <h3 className="text-2xl font-bold mb-8 text-center">The Process</h3>
           <div className="grid md:grid-cols-4 gap-8 relative">
-            {/* Connection line */}
-            <div className="hidden md:block absolute top-12 left-0 right-0 h-0.5 bg-gradient-to-r from-primary/20 via-primary to-primary/20" />
+            {/* Removed confusing connection line */}
             
             {process.map((phase, index) => {
               const Icon = phase.icon
@@ -139,7 +138,7 @@ export function WorkingWithMe() {
             {principles.map((principle) => (
               <div
                 key={principle.title}
-                className="flex gap-4 p-6 bg-black border-3 border-white brutal-shadow hover:border-cyan-400 transition-all group"
+                className="card-brutal group flex gap-4"
               >
                 <principle.icon className="w-8 h-8 text-cyan-400 group-hover:animate-pulse" />
                 <div>

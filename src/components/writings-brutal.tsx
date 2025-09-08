@@ -39,7 +39,7 @@ const writings = [
 
 export function WritingsBrutal() {
   return (
-    <section className="py-24 px-4 bg-black relative overflow-hidden">
+    <section className="relative overflow-hidden" style={{ padding: 'var(--space-12) var(--space-2)', background: 'linear-gradient(to bottom, var(--gray-900), var(--black))' }}>
       {/* Cyberpunk grid background */}
       <div className="absolute inset-0 cyber-grid opacity-20" />
       
@@ -51,11 +51,11 @@ export function WritingsBrutal() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-5xl md:text-6xl font-light mb-4">
-            <span className="text-white">THOUGHT</span>
-            <span className="text-cyan-400 font-black neon-glow"> LEADERSHIP</span>
+          <h2 className="heading-section mb-4">
+            <span style={{ color: 'var(--white)', fontWeight: 300 }}>THOUGHT</span>
+            <span className="text-gradient" style={{ fontWeight: 700 }}> LEADERSHIP</span>
           </h2>
-          <p className="text-lg text-gray-400 font-light tracking-wide">
+          <p className="text-lg font-light tracking-wide" style={{ color: 'var(--gray-400)' }}>
             Strategic insights on technology, community, and human potential
           </p>
         </motion.div>
@@ -74,7 +74,7 @@ export function WritingsBrutal() {
                 className={`group ${writing.featured ? 'md:col-span-2' : ''}`}
               >
                 <Link href="/blog">
-                  <div className="relative bg-gradient-to-br from-gray-900 to-black border border-gray-800 shadow-xl hover:border-cyan-400/50 hover:shadow-cyan-400/20 transition-all duration-300 p-8">
+                  <div className="card-glass hover-glow">
                     {/* Featured badge */}
                     {writing.featured && (
                       <div className="absolute -top-2 -right-2 bg-gradient-to-r from-cyan-400 to-cyan-500 text-black px-4 py-1 font-bold text-xs uppercase tracking-wide">
@@ -125,7 +125,7 @@ export function WritingsBrutal() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-12 py-4 bg-gradient-to-r from-cyan-400 to-cyan-500 text-black font-bold text-lg tracking-wide shadow-2xl hover:shadow-cyan-400/50 transition-all relative overflow-hidden group"
+              className="btn-primary"
             >
               <span className="relative z-10">EXPLORE ALL WRITINGS</span>
               <div className="absolute inset-0 bg-gradient-to-r from-pink-500 to-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity" />

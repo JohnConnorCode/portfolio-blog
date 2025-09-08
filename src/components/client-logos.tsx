@@ -76,19 +76,19 @@ export function ClientLogos() {
         >
           <div>
             <p className="text-3xl font-bold text-primary">30+</p>
-            <p className="text-sm text-muted-foreground">Projects Delivered</p>
+            <p className="text-sm text-muted-foreground">Products Shipped</p>
           </div>
           <div>
             <p className="text-3xl font-bold text-primary">15+</p>
             <p className="text-sm text-muted-foreground">Years Experience</p>
           </div>
           <div>
-            <p className="text-3xl font-bold text-primary">3</p>
-            <p className="text-sm text-muted-foreground">Cities Active</p>
+            <p className="text-3xl font-bold text-primary">$50M+</p>
+            <p className="text-sm text-muted-foreground">Value Created</p>
           </div>
           <div>
-            <p className="text-3xl font-bold text-primary">20+</p>
-            <p className="text-sm text-muted-foreground">Debates Hosted</p>
+            <p className="text-3xl font-bold text-primary">10K+</p>
+            <p className="text-sm text-muted-foreground">Users Impacted</p>
           </div>
         </motion.div>
       </div>
