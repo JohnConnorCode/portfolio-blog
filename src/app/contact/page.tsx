@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Mail, Linkedin, Twitter, Github, Calendar, MessageSquare, Video } from 'lucide-react'
+import { Mail, Linkedin, Twitter, Github, Calendar } from 'lucide-react'
 import { useState } from 'react'
 
 const contactMethods = [

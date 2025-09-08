@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Users, Heart, Brain, Zap, Mountain, Book } from 'lucide-react'
+import { Users, Heart, Brain, Mountain, Book } from 'lucide-react'
 import Link from 'next/link'
 
 const principles = [
@@ -69,9 +69,9 @@ export default function PhilosophyPage() {
           className="mb-20 py-12 border-y border-foreground/10"
         >
           <blockquote className="text-2xl sm:text-3xl font-light text-center leading-relaxed">
-            "We must be humans <em>with</em> technology,<br />
+            &ldquo;We must be humans <em>with</em> technology,<br />
             not humans <em>against</em> technology,<br />
-            and never humans <em>replaced by</em> technology."
+            and never humans <em>replaced by</em> technology.&rdquo;
           </blockquote>
         </motion.div>
 

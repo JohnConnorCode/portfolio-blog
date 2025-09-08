@@ -68,8 +68,8 @@ export function Hero() {
             className="mb-12 py-8 border-y border-border/30"
           >
             <blockquote className="text-lg sm:text-xl italic text-muted-foreground max-w-2xl mx-auto">
-              "The human journey is transformative—individually and collectively. 
-              We must conserve our humanity while building the future."
+              &ldquo;The human journey is transformative—individually and collectively. 
+              We must conserve our humanity while building the future.&rdquo;
             </blockquote>
           </motion.div>
 

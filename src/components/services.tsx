@@ -81,7 +81,7 @@ export function Services() {
                   <p className="text-muted-foreground mb-4">{service.description}</p>
                   
                   <p className="text-sm italic text-muted-foreground/80 pt-4 border-t border-foreground/5">
-                    "{service.philosophy}"
+                    &ldquo;{service.philosophy}&rdquo;
                   </p>
                 </div>
               </motion.div>
