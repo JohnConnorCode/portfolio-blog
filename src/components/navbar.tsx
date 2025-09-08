@@ -11,8 +11,8 @@ import { cn } from '@/lib/utils'
 const navItems = [
   { href: '/', label: 'Home', icon: Home },
   { href: '/work', label: 'Work', icon: Code2 },
+  { href: '/blog', label: 'Blog', icon: BookOpen },
   { href: '/philosophy', label: 'Philosophy', icon: BookOpen },
-  { href: '/about', label: 'About', icon: User },
   { href: '/contact', label: 'Contact', icon: User },
 ]
 
@@ -71,18 +71,28 @@ export function Navbar() {
                   <Link
                     href={item.href}
                     className={cn(
-                      'relative px-4 py-2 rounded-lg flex items-center space-x-2 transition-colors',
+                      'relative px-4 py-2 group overflow-hidden',
                       isActive
                         ? 'text-primary'
-                        : 'text-muted-foreground hover:text-foreground'
+                        : 'text-muted-foreground'
                     )}
                   >
-                    <Icon className="w-4 h-4" />
-                    <span>{item.label}</span>
+                    <span className="relative z-10 flex items-center space-x-2">
+                      <Icon className="w-4 h-4" />
+                      <span className="relative">
+                        {item.label}
+                        {/* Underline effect */}
+                        <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-primary group-hover:w-full transition-all duration-300" />
+                      </span>
+                    </span>
+                    {/* Background sweep effect */}
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"
+                    />
                     {isActive && (
                       <motion.div
                         layoutId="navbar-indicator"
-                        className="absolute inset-0 bg-primary/10 rounded-lg -z-10"
+                        className="absolute bottom-0 left-0 right-0 h-[2px] bg-primary"
                         transition={{
                           type: 'spring',
                           stiffness: 380,

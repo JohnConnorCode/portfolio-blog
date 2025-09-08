@@ -4,6 +4,8 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { ArrowUpRight, Users, TrendingUp, Zap, MessageSquare, Heart, Globe } from 'lucide-react'
 import { useState } from 'react'
+import { AnimatedText, AnimatedLetters } from '@/components/animated-text'
+import { SectionDivider } from '@/components/section-divider'
 
 const workCategories = [
   { value: 'all', label: 'All Work' },
@@ -25,59 +27,59 @@ const caseStudies = [
     featured: true,
     image: 'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800&q=80',
     metrics: [
-      { label: 'Communities', value: '15+', icon: Users },
-      { label: 'Participants', value: '500+', icon: MessageSquare },
-      { label: 'Growth Rate', value: '200%', icon: TrendingUp },
+      { label: 'Active Cities', value: '3', icon: Users },
+      { label: 'Events Hosted', value: '20+', icon: MessageSquare },
+      { label: 'Community Growth', value: 'Expanding', icon: TrendingUp },
     ],
     values: ['In-Person Connection', 'Intellectual Growth', 'Community Building', 'Challenging Comfort Zones'],
   },
   {
-    id: 'creator-systems',
-    title: 'Creator Value Systems',
-    client: 'Multiple Platforms',
-    description: 'Building economic systems that empower creators while preserving their humanity',
-    philosophy: 'Creators are humans first. Systems should amplify their humanity, not commodify it.',
-    impact: 'Empowering 10,000+ creators globally',
+    id: 'thrive-protocol',
+    title: 'Thrive Protocol',
+    client: 'Ecosystem Specialist',
+    description: 'Managing grant allocations and automating evaluation processes with AI',
+    philosophy: 'Efficiency in grant distribution means more resources reach builders who need them.',
+    impact: 'Streamlining ecosystem funding',
     category: 'systems',
     image: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&q=80',
     metrics: [
-      { label: 'Revenue Generated', value: '$100M+', icon: TrendingUp },
-      { label: 'Creators Served', value: '10K+', icon: Users },
-      { label: 'Retention', value: '95%', icon: Heart },
+      { label: 'Grants Managed', value: '$2M+', icon: TrendingUp },
+      { label: 'Time Saved', value: '90%', icon: Zap },
+      { label: 'Projects Evaluated', value: '100+', icon: Users },
     ],
-    values: ['Creator Autonomy', 'Sustainable Economics', 'Human-Centered Design', 'Long-term Thinking'],
+    values: ['Transparency', 'Efficiency', 'AI-Powered Evaluation', 'Fair Distribution'],
   },
   {
-    id: 'community-platforms',
-    title: 'Community Infrastructure',
-    client: 'Social Enterprise',
-    description: 'Designing digital tools that foster real-world community connections',
-    philosophy: 'Technology should be a bridge to human connection, not a replacement for it.',
-    impact: 'Strengthening local communities',
-    category: 'community',
+    id: 'sparkblox',
+    title: 'Sparkblox',
+    client: 'Founder & Product Lead',
+    description: 'NFT 2.0 infrastructure with partnerships from Chainlink and Algorand',
+    philosophy: 'Digital ownership should be accessible and meaningful, not just speculative.',
+    impact: 'Building next-generation NFT infrastructure',
+    category: 'web3',
     image: 'https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=800&q=80',
     metrics: [
-      { label: 'Communities', value: '50+', icon: Globe },
-      { label: 'Engagement', value: '85%', icon: Heart },
-      { label: 'Local Impact', value: '100K+', icon: Users },
+      { label: 'Capital Raised', value: '$1M+', icon: TrendingUp },
+      { label: 'Team Size', value: '18', icon: Users },
+      { label: 'Partnerships', value: '2 Major', icon: Globe },
     ],
-    values: ['Locality', 'Human Connection', 'Digital Minimalism', 'Community Ownership'],
+    values: ['Innovation', 'Web3 Infrastructure', 'Partnership Building', 'Team Leadership'],
   },
   {
-    id: 'strategic-transformation',
-    title: 'Organizational Transformation',
-    client: 'Fortune 500',
-    description: 'Guiding large organizations through human-centered digital transformation',
-    philosophy: 'Change should enhance human capability, not replace human judgment.',
-    impact: 'Transforming work for 50,000+ employees',
-    category: 'strategy',
+    id: 'upland',
+    title: 'Upland',
+    client: 'Product & Ops Manager',
+    description: 'Scaled virtual property game to 200K monthly active users',
+    philosophy: 'Gaming economies should reward players, not exploit them.',
+    impact: 'Transforming virtual economies',
+    category: 'gaming',
     image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80',
     metrics: [
-      { label: 'Efficiency Gain', value: '40%', icon: Zap },
-      { label: 'Employee Satisfaction', value: '90%', icon: Heart },
-      { label: 'ROI', value: '300%', icon: TrendingUp },
+      { label: 'MAU Growth', value: '15x', icon: TrendingUp },
+      { label: 'Users', value: '200K', icon: Users },
+      { label: 'Token Launch', value: 'SPARK', icon: Zap },
     ],
-    values: ['Human-Centered Change', 'Sustainable Growth', 'Employee Empowerment', 'Ethical Technology'],
+    values: ['Player-First Economics', 'Sustainable Growth', 'Token Design', 'Community Building'],
   },
 ]
 
@@ -99,13 +101,20 @@ export default function WorkPage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h1 className="text-5xl sm:text-6xl font-bold mb-6">Work</h1>
-            <p className="text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto">
-              Every project is guided by a simple principle: 
-              <span className="block mt-2 font-semibold text-foreground">
-                Does this make us more human?
-              </span>
-            </p>
+            <AnimatedLetters 
+              text="Work" 
+              className="text-5xl sm:text-6xl font-bold mb-6 block"
+              as="h1"
+            />
+            <AnimatedText className="text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto">
+              Every project is guided by a simple principle:
+            </AnimatedText>
+            <AnimatedText 
+              className="block mt-2 text-xl sm:text-2xl font-semibold text-foreground"
+              delay={0.3}
+            >
+              Does this make us more human?
+            </AnimatedText>
           </motion.div>
 
           {/* Category Filter */}
@@ -131,20 +140,26 @@ export default function WorkPage() {
           </motion.div>
 
           {/* Case Studies */}
-          <div className="space-y-24">
+          <div>
             {filteredWork.map((work, index) => (
-              <motion.div
-                key={work.id}
-                id={work.id}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
-                className={`${work.featured ? 'lg:col-span-2' : ''}`}
-              >
+              <div key={work.id}>
+                {index > 0 && (
+                  <SectionDivider 
+                    variant={index % 3 === 1 ? 'geometric' : index % 3 === 2 ? 'organic' : 'wave'} 
+                    className="my-16"
+                  />
+                )}
+                <motion.div
+                  id={work.id}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.8, delay: index * 0.1 }}
+                  className={`${work.featured ? 'lg:col-span-2' : ''}`}
+                >
                 <div className="grid lg:grid-cols-2 gap-12 items-center">
                   {/* Image */}
-                  <div className={`relative h-96 overflow-hidden ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
+                  <div className={`relative h-96 overflow-hidden duotone ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
                     <Image
                       src={work.image}
                       alt={work.title}
@@ -152,7 +167,7 @@ export default function WorkPage() {
                       className="object-cover"
                     />
                     {work.featured && (
-                      <div className="absolute top-4 left-4 px-3 py-1 bg-background/90 backdrop-blur-sm text-xs font-semibold uppercase tracking-wider">
+                      <div className="absolute top-4 left-4 px-3 py-1 bg-background/90 backdrop-blur-sm text-xs font-semibold uppercase tracking-wider z-10">
                         Featured
                       </div>
                     )}
@@ -198,15 +213,11 @@ export default function WorkPage() {
                     </div>
                     
                     {/* Impact Statement */}
-                    <p className="text-lg font-semibold mb-6">{work.impact}</p>
-                    
-                    <button className="flex items-center gap-2 text-sm font-medium hover:gap-3 transition-all">
-                      View Full Case Study
-                      <ArrowUpRight className="w-4 h-4" />
-                    </button>
+                    <p className="text-lg font-semibold">{work.impact}</p>
                   </div>
                 </div>
               </motion.div>
+              </div>
             ))}
           </div>
         </div>

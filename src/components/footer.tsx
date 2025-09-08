@@ -2,10 +2,9 @@ import Link from 'next/link'
 import { Github, Linkedin, Twitter, Mail, Heart } from 'lucide-react'
 
 const socialLinks = [
-  { href: 'https://github.com', icon: Github, label: 'GitHub' },
-  { href: 'https://linkedin.com', icon: Linkedin, label: 'LinkedIn' },
-  { href: 'https://twitter.com', icon: Twitter, label: 'Twitter' },
-  { href: 'mailto:hello@example.com', icon: Mail, label: 'Email' },
+  { href: 'https://twitter.com/ablockunchained', icon: Twitter, label: 'Twitter' },
+  { href: 'https://linkedin.com/in/johnconnor', icon: Linkedin, label: 'LinkedIn' },
+  { href: 'mailto:john@johnconnor.xyz', icon: Mail, label: 'Email' },
 ]
 
 export function Footer() {
@@ -16,7 +15,7 @@ export function Footer() {
           <div>
             <h3 className="font-bold text-lg mb-4">About</h3>
             <p className="text-muted-foreground">
-              A beautiful blog and portfolio to showcase your work and share your thoughts with the world.
+              Building systems that serve humanity. Technology should empower human judgment, not replace it.
             </p>
           </div>
 
@@ -24,18 +23,18 @@ export function Footer() {
             <h3 className="font-bold text-lg mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/blog" className="text-muted-foreground hover:text-foreground transition-colors">
-                  Blog
+                <Link href="/work" className="text-muted-foreground hover:text-foreground transition-colors">
+                  Work
                 </Link>
               </li>
               <li>
-                <Link href="/projects" className="text-muted-foreground hover:text-foreground transition-colors">
-                  Projects
+                <Link href="/philosophy" className="text-muted-foreground hover:text-foreground transition-colors">
+                  Philosophy
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="text-muted-foreground hover:text-foreground transition-colors">
-                  About
+                <Link href="/contact" className="text-muted-foreground hover:text-foreground transition-colors">
+                  Contact
                 </Link>
               </li>
             </ul>
@@ -65,7 +64,7 @@ export function Footer() {
 
         <div className="mt-8 pt-8 border-t border-border/50">
           <p className="text-center text-muted-foreground flex items-center justify-center gap-1">
-            Made with <Heart className="w-4 h-4 text-red-500 fill-red-500" /> by Your Name
+            © 2025 John Thomas Connor
           </p>
         </div>
       </div>

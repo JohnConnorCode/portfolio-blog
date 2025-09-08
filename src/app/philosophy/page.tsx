@@ -3,6 +3,8 @@
 import { motion } from 'framer-motion'
 import { Users, Heart, Brain, Mountain, Book } from 'lucide-react'
 import Link from 'next/link'
+import { AnimatedText, AnimatedLetters, FadeInText } from '@/components/animated-text'
+import { SectionDivider } from '@/components/section-divider'
 
 const principles = [
   {
@@ -45,7 +47,11 @@ export default function PhilosophyPage() {
           transition={{ duration: 0.8 }}
           className="mb-16"
         >
-          <h1 className="text-5xl sm:text-6xl font-bold mb-8 text-center">Philosophy</h1>
+          <AnimatedLetters 
+            text="Philosophy" 
+            className="text-5xl sm:text-6xl font-bold mb-8 text-center block"
+            as="h1"
+          />
           
           <div className="prose prose-lg mx-auto text-muted-foreground">
             <p className="text-xl leading-relaxed mb-6">
@@ -61,11 +67,93 @@ export default function PhilosophyPage() {
           </div>
         </motion.div>
 
-        {/* Core Belief */}
+        {/* About / Philosophy Section */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
+          className="mb-20"
+        >
+          <AnimatedText 
+            as="h2" 
+            className="text-3xl sm:text-4xl font-bold mb-8 text-center"
+          >
+            Human-first futurism
+          </AnimatedText>
+          
+          <FadeInText delay={0.3}>
+            <div className="prose prose-lg mx-auto text-muted-foreground space-y-6">
+              <p className="text-lg leading-relaxed">
+                I grew up debating ideas and reading philosophers like Nietzsche while studying futurists like Ray Kurzweil. 
+                That blend of rigorous argument and expansive vision shapes my work today. I&apos;ve launched startups, 
+                raised millions, led high-growth teams and advised dozens of tech companies. Every project—whether 
+                launching an NFT 2.0 platform or running grant programs—has reinforced a simple principle: automation 
+                should free humans for high-context work, and open systems compound faster than walled gardens.
+              </p>
+            </div>
+          </FadeInText>
+          
+          <AnimatedText 
+            as="h3" 
+            className="text-2xl sm:text-3xl font-bold mb-6 text-center mt-12"
+            delay={0.4}
+          >
+            Why I created Super Debate
+          </AnimatedText>
+          
+          <FadeInText delay={0.5}>
+            <div className="prose prose-lg mx-auto text-muted-foreground space-y-6">
+              <p className="text-lg leading-relaxed">
+                Super Debate is a live, in-person debate platform built on the belief that growth comes from challenges. 
+                It&apos;s about choosing courage over perfection, learning through mistakes and embarrassment, and 
+                strengthening communities by talking face-to-face. This ethos guides all my work: technology must 
+                empower human judgment, not replace it.
+              </p>
+            </div>
+          </FadeInText>
+          
+          <AnimatedText 
+            as="h3" 
+            className="text-2xl sm:text-3xl font-bold mb-6 text-center mt-12"
+            delay={0.6}
+          >
+            My approach
+          </AnimatedText>
+          
+          <FadeInText delay={0.7}>
+            <div className="grid md:grid-cols-2 gap-6 mb-8">
+              <div className="p-6 border border-foreground/10 hover:border-foreground/30 transition-all">
+                <p className="text-lg leading-relaxed">
+                  Build systems that reward delivered value.
+                </p>
+              </div>
+              <div className="p-6 border border-foreground/10 hover:border-foreground/30 transition-all">
+                <p className="text-lg leading-relaxed">
+                  Design processes that eliminate busywork so people can focus on creative, high-impact work.
+                </p>
+              </div>
+              <div className="p-6 border border-foreground/10 hover:border-foreground/30 transition-all">
+                <p className="text-lg leading-relaxed">
+                  Create open frameworks where communities own and govern their infrastructure.
+                </p>
+              </div>
+              <div className="p-6 border border-foreground/10 hover:border-foreground/30 transition-all">
+                <p className="text-lg leading-relaxed">
+                  Make complexity simple—AI models that reduce weeks of grant evaluation to hours, or token 
+                  economies that bring transparency and fairness to games and marketplaces.
+                </p>
+              </div>
+            </div>
+          </FadeInText>
+        </motion.div>
+
+        <SectionDivider variant="organic" />
+
+        {/* Core Belief */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
           className="mb-20 py-12 border-y border-foreground/10"
         >
           <blockquote className="text-2xl sm:text-3xl font-light text-center leading-relaxed">

@@ -4,6 +4,8 @@ import "./globals.css";
 import { Providers } from "@/components/providers";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
+import { CustomCursor } from "@/components/custom-cursor";
+import { NoiseTexture } from "@/components/noise-texture";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -16,23 +18,23 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio & Blog",
-  description: "A beautiful blog and portfolio to showcase your work",
-  keywords: ["portfolio", "blog", "developer", "projects"],
-  authors: [{ name: "Your Name" }],
+  title: "John Thomas Connor - Building Systems That Serve Humanity",
+  description: "Product strategist, builder, and father creating systems at the intersection of technology and community. Technology should empower human judgment, not replace it.",
+  keywords: ["product strategy", "human-first technology", "community building", "web3", "AI ethics", "Super Debate"],
+  authors: [{ name: "John Thomas Connor" }],
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://your-domain.com",
-    title: "Portfolio & Blog",
-    description: "A beautiful blog and portfolio to showcase your work",
-    siteName: "Portfolio & Blog",
+    url: "https://portfolio-blog-five-iota.vercel.app",
+    title: "John Thomas Connor - Building Systems That Serve Humanity",
+    description: "Product strategist, builder, and father creating systems at the intersection of technology and community.",
+    siteName: "John Thomas Connor",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Portfolio & Blog",
-    description: "A beautiful blog and portfolio to showcase your work",
-    creator: "@yourusername",
+    title: "John Thomas Connor - Building Systems That Serve Humanity",
+    description: "Product strategist, builder, and father creating systems at the intersection of technology and community.",
+    creator: "@ablockunchained",
   },
 };
 
@@ -47,6 +49,8 @@ export default function RootLayout({
         className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased min-h-screen flex flex-col`}
       >
         <Providers>
+          <CustomCursor />
+          <NoiseTexture />
           <Navbar />
           <main className="flex-1 pt-16">{children}</main>
           <Footer />

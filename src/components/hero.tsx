@@ -31,32 +31,28 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
         >
-          {/* Name with elegant typography */}
+          {/* Main headline */}
           <motion.h1 
-            className="text-6xl sm:text-7xl md:text-8xl font-bold mb-8 leading-display"
+            className="text-5xl sm:text-6xl md:text-7xl font-bold mb-8 leading-tight"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.2 }}
           >
-            <span className="block">John Connor</span>
+            Build systems that
+            <span className="block text-gradient mt-2">serve humanity</span>
           </motion.h1>
 
-          {/* Philosophy statement */}
+          {/* Subheadline with manifesto */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.4 }}
             className="mb-12"
           >
-            <p className="text-2xl sm:text-3xl md:text-4xl font-light mb-6 leading-relaxed">
-              Building bridges between 
-              <span className="font-semibold"> humanity</span> and 
-              <span className="font-semibold"> technology</span>
-            </p>
-            
-            <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Strategist. Builder. Father. Creating systems that honor human values 
-              while embracing transformation. Championing in-person connection in a digital age.
+            <p className="text-lg sm:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
+              John Thomas Connor is a product strategist, builder, and father who creates systems at the 
+              intersection of technology and community. For over 15 years he&apos;s been reading, writing, 
+              and building the future—focused on making technology work for people rather than replacing them.
             </p>
           </motion.div>
 
@@ -80,23 +76,23 @@ export function Hero() {
             transition={{ duration: 1, delay: 0.8 }}
             className="flex flex-col sm:flex-row gap-6 justify-center"
           >
-            <Link href="/work">
+            <Link href="/contact">
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className="px-10 py-4 bg-foreground text-background font-medium text-lg border-2 border-foreground hover:bg-transparent hover:text-foreground transition-all duration-300"
               >
-                View My Work
+                Start a Project
               </motion.button>
             </Link>
             
-            <Link href="/philosophy">
+            <Link href="/work">
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className="px-10 py-4 border-2 border-foreground/20 text-foreground font-medium text-lg hover:border-foreground hover:bg-foreground hover:text-background transition-all duration-300"
               >
-                My Philosophy
+                Explore My Work
               </motion.button>
             </Link>
           </motion.div>

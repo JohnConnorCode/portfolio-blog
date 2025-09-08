@@ -6,26 +6,26 @@
 
 @layer base {
   :root {
-    /* Stark, elegant color system */
+    /* Stark, elegant color system with signature indigo */
     --background: 0 0% 100%;
     --foreground: 0 0% 5%;
     --card: 0 0% 100%;
     --card-foreground: 0 0% 5%;
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 5%;
-    --primary: 0 0% 5%;
+    --primary: 234 89% 30%;
     --primary-foreground: 0 0% 100%;
     --secondary: 0 0% 96%;
     --secondary-foreground: 0 0% 5%;
     --muted: 0 0% 96%;
     --muted-foreground: 0 0% 40%;
-    --accent: 0 0% 96%;
-    --accent-foreground: 0 0% 5%;
+    --accent: 234 89% 30%;
+    --accent-foreground: 0 0% 100%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
     --border: 0 0% 90%;
     --input: 0 0% 90%;
-    --ring: 0 0% 5%;
+    --ring: 234 89% 30%;
     --radius: 0.5rem;
   }
 
@@ -36,19 +36,19 @@
     --card-foreground: 0 0% 98%;
     --popover: 0 0% 3%;
     --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
+    --primary: 234 89% 60%;
     --primary-foreground: 0 0% 3%;
     --secondary: 0 0% 8%;
     --secondary-foreground: 0 0% 98%;
     --muted: 0 0% 8%;
     --muted-foreground: 0 0% 60%;
-    --accent: 0 0% 8%;
-    --accent-foreground: 0 0% 98%;
+    --accent: 234 89% 60%;
+    --accent-foreground: 0 0% 3%;
     --destructive: 0 62% 30%;
     --destructive-foreground: 0 0% 98%;
     --border: 0 0% 12%;
     --input: 0 0% 12%;
-    --ring: 0 0% 98%;
+    --ring: 234 89% 60%;
   }
 }
 
@@ -173,5 +173,48 @@ h1, h2, h3, h4, h5, h6 {
   .quote-elegant::before {
     content: '';
     @apply absolute left-0 top-0 w-1 h-full bg-foreground/20;
+  }
+
+  /* Duotone image effect */
+  .duotone {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .duotone::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: hsl(var(--primary));
+    mix-blend-mode: multiply;
+    opacity: 0.8;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .duotone::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: hsl(var(--background));
+    mix-blend-mode: screen;
+    opacity: 0.3;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .duotone img {
+    filter: grayscale(100%) contrast(1.2);
+  }
+
+  .duotone:hover::before,
+  .duotone:hover::after {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  .duotone:hover img {
+    filter: none;
+    transition: filter 0.5s ease;
   }
 }

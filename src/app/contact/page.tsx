@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Mail, Linkedin, Twitter, Github, Calendar } from 'lucide-react'
+import { Mail, Linkedin, Twitter, Github } from 'lucide-react'
 import { useState } from 'react'
 
 const contactMethods = [
@@ -11,13 +11,6 @@ const contactMethods = [
     description: 'For detailed inquiries and proposals',
     action: 'john@johnconnor.xyz',
     href: 'mailto:john@johnconnor.xyz',
-  },
-  {
-    icon: Calendar,
-    title: 'Schedule a Call',
-    description: '30-minute discovery call',
-    action: 'Book a time',
-    href: '#', // Add Calendly or similar link
   },
   {
     icon: Linkedin,
@@ -38,10 +31,41 @@ export default function ContactPage() {
     message: '',
   })
 
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission
-    console.log('Form submitted:', formData)
+    setIsSubmitting(true)
+    setSubmitStatus('idle')
+    
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+      
+      if (response.ok) {
+        setSubmitStatus('success')
+        setFormData({
+          name: '',
+          email: '',
+          company: '',
+          projectType: '',
+          budget: '',
+          message: '',
+        })
+      } else {
+        setSubmitStatus('error')
+      }
+    } catch (error) {
+      setSubmitStatus('error')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -66,10 +90,10 @@ export default function ContactPage() {
             className="text-center mb-12"
           >
             <h1 className="text-4xl sm:text-5xl font-bold mb-4">
-              Let&apos;s <span className="text-gradient">Connect</span>
+              Let&apos;s build futures that <span className="text-gradient">serve humanity</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Ready to build something extraordinary? I&apos;m here to help transform your vision into reality.
+              I work with organizations that understand technology is a tool, not a replacement for human wisdom.
             </p>
           </motion.div>
 
@@ -84,7 +108,7 @@ export default function ContactPage() {
               <div>
                 <h2 className="text-2xl font-bold mb-6">Get in Touch</h2>
                 <p className="text-muted-foreground mb-8">
-                  Choose the best way to reach out. I typically respond within 24 hours.
+                  Whether you&apos;re building a startup, transforming an ecosystem, or creating community-driven systems, let&apos;s talk.
                 </p>
               </div>
 
@@ -116,25 +140,36 @@ export default function ContactPage() {
 
               {/* Social Links */}
               <div className="pt-6 border-t border-border/50">
-                <p className="text-sm text-muted-foreground mb-4">Or connect on social</p>
-                <div className="flex gap-3">
+                <p className="text-sm text-muted-foreground mb-4">Connect on social</p>
+                <div className="space-y-3">
                   <a
-                    href="https://twitter.com/johnconnor"
-                    className="p-2 rounded-lg bg-primary/10 hover:bg-primary/20 transition-colors"
+                    href="https://twitter.com/ablockunchained"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 p-3 rounded-lg bg-primary/10 hover:bg-primary/20 transition-colors"
                   >
                     <Twitter className="w-5 h-5" />
+                    <span className="text-sm">@ablockunchained</span>
                   </a>
                   <a
-                    href="https://github.com/johnconnor"
-                    className="p-2 rounded-lg bg-primary/10 hover:bg-primary/20 transition-colors"
+                    href="https://t.me/blockunchained"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 p-3 rounded-lg bg-primary/10 hover:bg-primary/20 transition-colors"
                   >
-                    <Github className="w-5 h-5" />
+                    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z"/>
+                    </svg>
+                    <span className="text-sm">@blockunchained</span>
                   </a>
                   <a
                     href="https://linkedin.com/in/johnconnor"
-                    className="p-2 rounded-lg bg-primary/10 hover:bg-primary/20 transition-colors"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 p-3 rounded-lg bg-primary/10 hover:bg-primary/20 transition-colors"
                   >
                     <Linkedin className="w-5 h-5" />
+                    <span className="text-sm">LinkedIn</span>
                   </a>
                 </div>
               </div>
@@ -148,7 +183,7 @@ export default function ContactPage() {
               className="lg:col-span-2"
             >
               <div className="glass rounded-xl p-8">
-                <h2 className="text-2xl font-bold mb-6">Project Inquiry</h2>
+                <h2 className="text-2xl font-bold mb-6">Start a Conversation</h2>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
@@ -204,11 +239,11 @@ export default function ContactPage() {
                         className="w-full px-4 py-3 rounded-lg bg-background/50 border border-border/50 focus:border-primary focus:outline-none transition-colors"
                       >
                         <option value="">Select a type</option>
-                        <option value="systems">Systems Architecture</option>
-                        <option value="growth">Growth Strategy</option>
-                        <option value="operations">Operations Optimization</option>
-                        <option value="creator">Creator Platform</option>
-                        <option value="consulting">Consulting</option>
+                        <option value="ecosystem">Ecosystem Development</option>
+                        <option value="product">Product Strategy</option>
+                        <option value="community">Community Building</option>
+                        <option value="transformation">Digital Transformation</option>
+                        <option value="consulting">Strategic Consulting</option>
                         <option value="other">Other</option>
                       </select>
                     </div>
@@ -249,12 +284,33 @@ export default function ContactPage() {
 
                   <motion.button
                     type="submit"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="w-full px-8 py-4 bg-primary text-primary-foreground rounded-lg font-semibold text-lg hover:shadow-xl hover:shadow-primary/25 transition-all"
+                    disabled={isSubmitting}
+                    whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
+                    whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
+                    className="w-full px-8 py-4 bg-primary text-primary-foreground rounded-lg font-semibold text-lg hover:shadow-xl hover:shadow-primary/25 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    Send Message
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
                   </motion.button>
+                  
+                  {submitStatus === 'success' && (
+                    <motion.p
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="text-green-500 text-center mt-4"
+                    >
+                      Message sent successfully! I&apos;ll get back to you within 24 hours.
+                    </motion.p>
+                  )}
+                  
+                  {submitStatus === 'error' && (
+                    <motion.p
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="text-red-500 text-center mt-4"
+                    >
+                      Something went wrong. Please try again or email directly.
+                    </motion.p>
+                  )}
                 </form>
               </div>
             </motion.div>

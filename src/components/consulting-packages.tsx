@@ -1,0 +1,127 @@
+'use client'
+
+import { motion } from 'framer-motion'
+import { Zap, Globe, Users, Rocket, ArrowRight } from 'lucide-react'
+import { AnimatedText, FadeInText } from '@/components/animated-text'
+import Link from 'next/link'
+
+const packages = [
+  {
+    name: 'AI & Automation Sprints',
+    description: 'Identify bottlenecks and design intelligent systems that replace busywork with automation.',
+    icon: Zap,
+    highlights: ['Bottleneck Analysis', 'Intelligent System Design', 'Automation Implementation'],
+    color: 'from-blue-500/10 to-cyan-500/10'
+  },
+  {
+    name: 'Web3 & Tokenomics Advisory',
+    description: 'Create sustainable token economies and grant frameworks rooted in transparency and real value.',
+    icon: Globe,
+    highlights: ['Token Economy Design', 'Grant Frameworks', 'Transparency Systems'],
+    color: 'from-purple-500/10 to-pink-500/10'
+  },
+  {
+    name: 'Ecosystem & Community Design',
+    description: 'Build infrastructures that empower communities and align incentives across stakeholders.',
+    icon: Users,
+    highlights: ['Community Infrastructure', 'Incentive Alignment', 'Stakeholder Mapping'],
+    color: 'from-green-500/10 to-emerald-500/10'
+  },
+  {
+    name: 'Product & Growth Accelerators',
+    description: 'Rapid-fire workshops to refine product strategy, validate ideas, and accelerate go-to-market plans.',
+    icon: Rocket,
+    highlights: ['Product Strategy', 'Idea Validation', 'Go-to-Market Planning'],
+    color: 'from-orange-500/10 to-red-500/10'
+  }
+]
+
+export function ConsultingPackages() {
+  return (
+    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/20">
+      <div className="max-w-6xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
+          <AnimatedText
+            as="h2"
+            className="text-4xl sm:text-5xl font-bold mb-6"
+          >
+            Consulting & Strategy Packages
+          </AnimatedText>
+          <FadeInText delay={0.2}>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Ready to achieve more in less time? I offer bespoke strategy packages tailored for companies, 
+              startups and individuals. Each engagement is structured for quick wins and long-term 
+              resilience—drawing on a decade of experience turning emerging technologies into real-world solutions.
+            </p>
+          </FadeInText>
+        </motion.div>
+
+        <div className="grid md:grid-cols-2 gap-8">
+          {packages.map((pkg, index) => {
+            const Icon = pkg.icon
+            return (
+              <motion.div
+                key={pkg.name}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="group relative"
+              >
+                <div className={`absolute inset-0 bg-gradient-to-br ${pkg.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg`} />
+                <div className="relative p-8 border border-foreground/10 hover:border-primary/50 transition-all duration-300 rounded-lg h-full backdrop-blur-sm">
+                  <div className="flex items-start gap-4 mb-6">
+                    <div className="p-3 border border-foreground/20 group-hover:border-primary/50 transition-colors rounded-lg">
+                      <Icon className="w-6 h-6" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-2xl font-bold mb-3">{pkg.name}</h3>
+                      <p className="text-muted-foreground mb-4">
+                        {pkg.description}
+                      </p>
+                      <div className="space-y-2">
+                        {pkg.highlights.map((highlight) => (
+                          <div key={highlight} className="flex items-center gap-2 text-sm">
+                            <span className="w-1 h-1 bg-primary rounded-full" />
+                            <span className="text-muted-foreground">{highlight}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                  <Link href="/contact" className="inline-flex items-center gap-2 text-sm font-medium text-primary group-hover:gap-3 transition-all">
+                    Learn More
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
+              </motion.div>
+            )
+          })}
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="text-center mt-12"
+        >
+          <Link href="/contact">
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="px-10 py-4 bg-foreground text-background border-2 border-foreground hover:bg-transparent hover:text-foreground transition-all duration-300 font-medium text-lg"
+            >
+              Start Your Transformation
+            </motion.button>
+          </Link>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
