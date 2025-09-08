@@ -9,6 +9,8 @@ interface UseViewportAnimationOptions {
   margin?: string // rootMargin for IntersectionObserver
 }
 
+type MarginString = `${string}` | `${string} ${string}` | `${string} ${string} ${string}` | `${string} ${string} ${string} ${string}`
+
 export function useViewportAnimation({
   threshold = 0.5,
   once = false,
@@ -19,7 +21,8 @@ export function useViewportAnimation({
   const [hasTriggered, setHasTriggered] = useState(false)
   
   // Use framer-motion's useInView for better performance
-  const isInView = useInView(ref as any, {
+  // @ts-ignore - Framer Motion types issue
+  const isInView = useInView(ref, {
     margin: margin as any,
     amount: threshold,
     once: false
