@@ -19,8 +19,8 @@ export function useViewportAnimation({
   const [hasTriggered, setHasTriggered] = useState(false)
   
   // Use framer-motion's useInView for better performance
-  const isInView = useInView(ref, {
-    margin,
+  const isInView = useInView(ref as any, {
+    margin: margin as any,
     amount: threshold,
     once: false
   })

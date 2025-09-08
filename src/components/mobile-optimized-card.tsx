@@ -35,14 +35,14 @@ export function MobileOptimizedCard({
       transition: {
         duration: 0.6,
         delay,
-        ease: 'easeOut'
+        ease: [0.4, 0, 0.2, 1] as [number, number, number, number]
       }
     },
     hover: {
       scale: hoverScale,
       transition: {
         duration: 0.3,
-        ease: 'easeInOut'
+        ease: [0.4, 0, 0.2, 1] as [number, number, number, number]
       }
     }
   }
