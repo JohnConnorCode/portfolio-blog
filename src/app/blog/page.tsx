@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Calendar, Clock, Search, Filter } from 'lucide-react'
+import { Calendar, Clock, Search } from 'lucide-react'
 import { formatDate } from '@/lib/utils'
 import { useState } from 'react'
 

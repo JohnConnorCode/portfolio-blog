@@ -51,7 +51,7 @@ export function Stats() {
             Numbers That <span className="text-gradient">Matter</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            A glimpse into my journey and the impact I've made
+            A glimpse into my journey and the impact I&apos;ve made
           </p>
         </motion.div>
 

@@ -91,9 +91,9 @@ export default function AboutPage() {
                   </span>
                 </div>
                 <p className="text-muted-foreground mb-6">
-                  I'm a passionate full-stack developer with over 6 years of experience building 
+                  I&apos;m a passionate full-stack developer with over 6 years of experience building 
                   web applications. I love creating beautiful, functional, and user-friendly 
-                  digital experiences. When I'm not coding, you'll find me exploring new 
+                  digital experiences. When I&apos;m not coding, you&apos;ll find me exploring new 
                   technologies, contributing to open source, or sharing knowledge through my blog.
                 </p>
                 <div className="flex gap-4 justify-center md:justify-start">
@@ -204,9 +204,9 @@ export default function AboutPage() {
             transition={{ duration: 0.5, delay: 0.6 }}
             className="text-center"
           >
-            <h2 className="text-2xl font-bold mb-4">Let's Work Together</h2>
+            <h2 className="text-2xl font-bold mb-4">Let&apos;s Work Together</h2>
             <p className="text-muted-foreground mb-6">
-              I'm always open to discussing new opportunities and interesting projects.
+              I&apos;m always open to discussing new opportunities and interesting projects.
             </p>
             <div className="flex gap-4 justify-center">
               <motion.a

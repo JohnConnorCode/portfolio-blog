@@ -3,7 +3,7 @@ export interface BlogPost {
   title: string
   slug: { current: string }
   excerpt: string
-  content: any[]
+  content: unknown[]
   publishedAt: string
   mainImage: {
     asset: {
@@ -38,7 +38,7 @@ export interface Project {
   title: string
   slug: { current: string }
   description: string
-  longDescription?: any[]
+  longDescription?: unknown[]
   featured: boolean
   demoUrl?: string
   githubUrl?: string

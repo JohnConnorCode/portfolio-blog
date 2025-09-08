@@ -74,7 +74,7 @@ export function Hero() {
             transition={{ delay: 0.3, duration: 0.5 }}
             className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6"
           >
-            <span className="block">Hi, I'm a</span>
+            <span className="block">Hi, I&apos;m a</span>
             <span className="block text-gradient h-20">
               <motion.span
                 key={roleIndex}
