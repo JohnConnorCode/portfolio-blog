@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "setup-db": "node scripts/setup-database.js",
-    "seed-db": "node scripts/setup-database.js --seed-only"
+    "seed-db": "node scripts/populate-db-branded.mjs"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.15",

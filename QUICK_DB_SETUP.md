@@ -67,12 +67,17 @@ CREATE POLICY "Projects are viewable by everyone" ON projects
 
 Click "Run" ✅
 
-## Step 2: Populate with Content
+## Step 2: Populate with Branded Content
 
 After tables are created, run this command in your terminal:
 
 ```bash
-node scripts/populate-db.mjs
+npm run seed-db
+```
+
+Or directly:
+```bash
+node scripts/populate-db-branded.mjs
 ```
 
 This will add:
