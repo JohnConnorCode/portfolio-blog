@@ -1,6 +1,14 @@
+import { createClient } from '@/lib/supabase/server'
 import BlogList from './blog-list'
 
-export default function BlogPage() {
-  // Pass empty array, component will show sample posts if database is empty
-  return <BlogList initialPosts={[]} />
+export default async function BlogPage() {
+  const supabase = await createClient()
+  
+  const { data: posts } = await supabase
+    .from('posts')
+    .select('*')
+    .eq('published', true)
+    .order('created_at', { ascending: false })
+  
+  return <BlogList initialPosts={posts || []} />
 }

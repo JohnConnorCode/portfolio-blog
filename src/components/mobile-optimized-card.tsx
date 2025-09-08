@@ -49,7 +49,7 @@ export function MobileOptimizedCard({
   
   return (
     <motion.div
-      ref={ref as any}
+      ref={ref as React.RefObject<HTMLDivElement>}
       variants={cardVariants}
       initial="initial"
       animate="inView"

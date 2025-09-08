@@ -86,7 +86,13 @@ export default function RichTextEditor({
     disabled = false,
     children,
     title
-  }: any) => (
+  }: {
+    onClick: () => void
+    isActive?: boolean
+    disabled?: boolean
+    children: React.ReactNode
+    title: string
+  }) => (
     <button
       type="button"
       onClick={onClick}
