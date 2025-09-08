@@ -3,9 +3,13 @@
 import { useState, useEffect } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import { useRouter } from 'next/navigation'
+import { hash } from 'bcryptjs'
 
-// Simple inline editor for your key content
+// Protected inline editor
 export default function EditPage() {
+  const [authenticated, setAuthenticated] = useState(false)
+  const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const [content, setContent] = useState({
     heroTitle: 'JOHN CONNOR',
@@ -24,30 +28,102 @@ export default function EditPage() {
   const router = useRouter()
   const supabase = createClient()
 
-  // Load saved content from localStorage
+  // Check if already authenticated
   useEffect(() => {
-    const saved = localStorage.getItem('site-content')
-    if (saved) {
-      setContent(JSON.parse(saved))
+    const authToken = sessionStorage.getItem('edit-auth')
+    if (authToken === 'authenticated-user') {
+      setAuthenticated(true)
+      loadContent()
     }
   }, [])
 
-  const handleSave = () => {
-    setLoading(true)
-    // Save to localStorage for persistence
-    localStorage.setItem('site-content', JSON.stringify(content))
+  const loadContent = async () => {
+    // Load from Supabase settings table
+    const { data, error } = await supabase
+      .from('settings')
+      .select('*')
+      .single()
     
-    // In a real implementation, this would save to Supabase
-    setTimeout(() => {
+    if (data) {
+      setContent(data.content || content)
+    }
+  }
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault()
+    
+    // Check password (same as admin panel)
+    if (password === 'buildsystems') {
+      sessionStorage.setItem('edit-auth', 'authenticated-user')
+      setAuthenticated(true)
+      setError('')
+      loadContent()
+    } else {
+      setError('Invalid password')
+    }
+  }
+
+  const handleSave = async () => {
+    setLoading(true)
+    
+    try {
+      // Save to Supabase settings table
+      const { error } = await supabase
+        .from('settings')
+        .upsert({
+          id: 1,
+          content: content,
+          updated_at: new Date().toISOString()
+        })
+      
+      if (error) throw error
+      
+      alert('Content saved successfully!')
+    } catch (err) {
+      console.error('Save error:', err)
+      alert('Error saving content. Check console for details.')
+    } finally {
       setLoading(false)
-      alert('Content saved! This is a demo - in production, this would update your live site.')
-    }, 500)
+    }
   }
 
   const updateMetric = (index: number, field: string, value: string) => {
     const newMetrics = [...content.metrics]
     newMetrics[index] = { ...newMetrics[index], [field]: value }
     setContent({ ...content, metrics: newMetrics })
+  }
+
+  // Show login form if not authenticated
+  if (!authenticated) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-900 to-black">
+        <form onSubmit={handleLogin} className="bg-gray-900 p-8 rounded-lg border border-gray-800 w-96">
+          <h2 className="text-2xl font-bold text-white mb-6">Editor Login</h2>
+          {error && (
+            <div className="mb-4 p-3 bg-red-900/50 border border-red-500 rounded text-red-300">
+              {error}
+            </div>
+          )}
+          <div className="mb-4">
+            <label className="block text-sm text-gray-400 mb-2">Password</label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full px-3 py-2 bg-black border border-gray-700 rounded text-white"
+              placeholder="Enter password"
+              required
+            />
+          </div>
+          <button
+            type="submit"
+            className="w-full px-4 py-2 bg-cyan-400 text-black font-bold rounded hover:bg-cyan-500"
+          >
+            Login
+          </button>
+        </form>
+      </div>
+    )
   }
 
   return (
@@ -162,10 +238,10 @@ export default function EditPage() {
           </button>
         </div>
         
-        <div className="mt-8 p-4 bg-yellow-900/20 border border-yellow-600/50 rounded">
-          <p className="text-yellow-400 text-sm">
-            <strong>Note:</strong> This is a simple editor for quick changes. For full content management, 
-            use the Admin panel at <a href="/admin" className="underline">/admin</a> or set up Sanity CMS.
+        <div className="mt-8 p-4 bg-green-900/20 border border-green-600/50 rounded">
+          <p className="text-green-400 text-sm">
+            <strong>Secure Editor:</strong> Changes are saved to database and require authentication. 
+            Only you can edit with the password. For blog posts, use <a href="/admin" className="underline">/admin</a>.
           </p>
         </div>
       </div>
