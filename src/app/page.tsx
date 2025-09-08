@@ -1,11 +1,11 @@
-import { Hero } from '@/components/hero'
+import { HeroCyberpunk } from '@/components/hero-cyberpunk'
 import { ClientLogos } from '@/components/client-logos'
-import { ImpactMetrics } from '@/components/impact-metrics'
+import { ImpactBrutal } from '@/components/impact-brutal'
 import { ConsultingPackages } from '@/components/consulting-packages'
 import { WorkingWithMe } from '@/components/working-with-me'
 import { Ventures } from '@/components/ventures'
 import { Experience } from '@/components/experience'
-import { Writings } from '@/components/writings'
+import { WritingsBrutal } from '@/components/writings-brutal'
 import { Services } from '@/components/services'
 import { RecentWork } from '@/components/recent-work'
 import { CallToAction } from '@/components/call-to-action'
@@ -14,9 +14,9 @@ import { SectionDivider } from '@/components/section-divider'
 export default function Home() {
   return (
     <>
-      <Hero />
+      <HeroCyberpunk />
       <ClientLogos />
-      <ImpactMetrics />
+      <ImpactBrutal />
       <SectionDivider variant="geometric" />
       <ConsultingPackages />
       <SectionDivider variant="organic" />
@@ -26,7 +26,7 @@ export default function Home() {
       <SectionDivider variant="dots" />
       <Experience />
       <SectionDivider variant="organic" />
-      <Writings />
+      <WritingsBrutal />
       <SectionDivider variant="wave" />
       <Services />
       <SectionDivider variant="dots" />

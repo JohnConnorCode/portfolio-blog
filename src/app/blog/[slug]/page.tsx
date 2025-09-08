@@ -1,13 +1,23 @@
 import { notFound } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
+import { createStaticClient } from '@/lib/supabase/static'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { Calendar, Clock, ArrowLeft, User } from 'lucide-react'
 import { formatDate } from '@/lib/utils'
 
+export const dynamic = 'force-dynamic'
+
 export async function generateStaticParams() {
-  // Return empty array for now, posts will be fetched dynamically
-  return []
+  const supabase = createStaticClient()
+  const { data: posts } = await supabase
+    .from('posts')
+    .select('slug')
+    .eq('published', true)
+  
+  return posts?.map((post) => ({
+    slug: post.slug,
+  })) || []
 }
 
 async function getPost(slug: string) {

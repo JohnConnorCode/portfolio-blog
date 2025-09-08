@@ -79,24 +79,15 @@ export function WorkingWithMe() {
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
-          <AnimatedText
-            as="h2"
-            className="text-4xl sm:text-5xl font-bold mb-6"
-          >
-            Working With Me
-          </AnimatedText>
-          <FadeInText delay={0.2}>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              A structured approach to transformation that delivers quick wins while building for the long term
-            </p>
-          </FadeInText>
-        </motion.div>
+        <div className="text-center mb-16">
+          <h2 className="text-4xl sm:text-5xl font-black mb-6">
+            <span className="text-white">WORKING</span>
+            <span className="text-cyan-400 neon-glow"> WITH ME</span>
+          </h2>
+          <p className="text-xl text-gray-400 font-mono uppercase tracking-widest max-w-3xl mx-auto">
+            Structured transformation. Quick wins. Long-term impact.
+          </p>
+        </div>
 
         {/* Process Timeline */}
         <div className="mb-20">
@@ -145,21 +136,17 @@ export function WorkingWithMe() {
         <div className="mb-20">
           <h3 className="text-2xl font-bold mb-8 text-center">My Principles</h3>
           <div className="grid md:grid-cols-2 gap-6">
-            {principles.map((principle, index) => (
-              <motion.div
+            {principles.map((principle) => (
+              <div
                 key={principle.title}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="flex gap-4 p-6 border border-foreground/10 hover:border-foreground/30 transition-all rounded-lg"
+                className="flex gap-4 p-6 bg-black border-3 border-white brutal-shadow hover:border-cyan-400 transition-all group"
               >
-                <principle.icon className="w-8 h-8 text-primary" />
+                <principle.icon className="w-8 h-8 text-cyan-400 group-hover:animate-pulse" />
                 <div>
-                  <h4 className="font-bold mb-2">{principle.title}</h4>
-                  <p className="text-muted-foreground">{principle.description}</p>
+                  <h4 className="font-black mb-2 text-white group-hover:text-cyan-400 transition-colors">{principle.title}</h4>
+                  <p className="text-gray-400 font-mono text-sm">{principle.description}</p>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>

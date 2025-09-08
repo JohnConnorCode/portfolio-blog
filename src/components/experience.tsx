@@ -61,37 +61,24 @@ export function Experience() {
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
-          <AnimatedText
-            as="h2"
-            className="text-4xl sm:text-5xl font-bold mb-6"
-          >
-            Experience Highlights
-          </AnimatedText>
-          <FadeInText delay={0.2}>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              15 years building at the intersection of technology and humanity
-            </p>
-          </FadeInText>
-        </motion.div>
+        <div className="text-center mb-16">
+          <h2 className="text-4xl sm:text-5xl font-black mb-6">
+            <span className="text-white">BATTLE-TESTED</span>
+            <span className="text-cyan-400 neon-glow"> EXPERIENCE</span>
+          </h2>
+          <p className="text-xl text-gray-400 font-mono uppercase tracking-widest max-w-3xl mx-auto">
+            15 years. Real impact. No bullshit.
+          </p>
+        </div>
 
         <div className="grid gap-8 md:grid-cols-2">
           {experiences.map((exp, index) => {
             const Icon = exp.icon
             return (
-              <motion.div
+              <div
                 key={`${exp.company}-${exp.role}`}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className={`relative p-8 border border-foreground/10 hover:border-foreground/30 transition-all duration-300 ${
-                  exp.current ? 'bg-primary/5' : ''
+                className={`relative p-8 bg-black border-3 border-white brutal-shadow hover:border-cyan-400 transition-all group ${
+                  exp.current ? 'border-cyan-400' : ''
                 }`}
               >
                 {exp.current && (
@@ -128,7 +115,7 @@ export function Experience() {
                     </span>
                   ))}
                 </div>
-              </motion.div>
+              </div>
             )
           })}
         </div>
