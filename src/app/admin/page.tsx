@@ -162,7 +162,7 @@ export default function AdminPage() {
             </Link>
             <h1 className="text-4xl font-bold">Blog Admin</h1>
           </div>
-          <Link href="/admin/new">
+          <Link href="/admin/posts/new">
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
@@ -253,7 +253,7 @@ export default function AdminPage() {
         {posts.length === 0 && (
           <div className="text-center py-20">
             <p className="text-muted-foreground mb-4">No posts yet</p>
-            <Link href="/admin/new">
+            <Link href="/admin/posts/new">
               <button className="px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium">
                 Create Your First Post
               </button>

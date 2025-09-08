@@ -1,10 +1,10 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, use } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { ArrowLeft, Save, Eye, Hash, Clock, Star } from 'lucide-react'
+import { ArrowLeft, Save, Eye, Hash, Clock, Star, Trash2 } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import ImageUpload from '@/components/ImageUpload'
 import dynamic from 'next/dynamic'
@@ -14,7 +14,12 @@ const RichTextEditor = dynamic(() => import('@/components/RichTextEditor'), {
   loading: () => <div className="h-96 bg-foreground/5 animate-pulse rounded-lg" />
 })
 
-export default function NewPostPage() {
+export default function EditPostPage({ 
+  params 
+}: { 
+  params: Promise<{ id: string }> 
+}) {
+  const resolvedParams = use(params)
   const router = useRouter()
   const supabase = createClient()
   
@@ -31,9 +36,46 @@ export default function NewPostPage() {
     featured_image: ''
   })
   
+  const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
   const [preview, setPreview] = useState(false)
-  const [selectedText, setSelectedText] = useState('')
+  const [deleting, setDeleting] = useState(false)
+
+  useEffect(() => {
+    fetchPost()
+  }, [resolvedParams.id])
+
+  const fetchPost = async () => {
+    const { data, error } = await supabase
+      .from('posts')
+      .select('*')
+      .eq('id', resolvedParams.id)
+      .single()
+
+    if (error) {
+      console.error('Error fetching post:', error)
+      alert('Post not found')
+      router.push('/admin')
+      return
+    }
+
+    if (data) {
+      setFormData({
+        title: data.title || '',
+        slug: data.slug || '',
+        excerpt: data.excerpt || '',
+        content: data.content || '',
+        category: data.category || 'Philosophy',
+        tags: Array.isArray(data.tags) ? data.tags.join(', ') : '',
+        featured: data.featured || false,
+        published: data.published || false,
+        read_time: data.read_time || 5,
+        featured_image: data.featured_image || ''
+      })
+    }
+    
+    setLoading(false)
+  }
 
   const generateSlug = (title: string) => {
     return title
@@ -53,7 +95,6 @@ export default function NewPostPage() {
     }))
   }
 
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setSaving(true)
@@ -61,17 +102,17 @@ export default function NewPostPage() {
     const postData = {
       ...formData,
       tags: formData.tags.split(',').map(tag => tag.trim()).filter(Boolean),
-      created_at: new Date().toISOString(),
       updated_at: new Date().toISOString()
     }
 
     const { error } = await supabase
       .from('posts')
-      .insert([postData])
+      .update(postData)
+      .eq('id', resolvedParams.id)
 
     if (error) {
-      console.error('Error creating post:', error)
-      alert('Error creating post. Check console.')
+      console.error('Error updating post:', error)
+      alert('Error updating post. Check console.')
     } else {
       router.push('/admin')
     }
@@ -79,9 +120,30 @@ export default function NewPostPage() {
     setSaving(false)
   }
 
+  const handleDelete = async () => {
+    if (!confirm('Are you sure you want to delete this post? This cannot be undone.')) {
+      return
+    }
+
+    setDeleting(true)
+
+    const { error } = await supabase
+      .from('posts')
+      .delete()
+      .eq('id', resolvedParams.id)
+
+    if (error) {
+      console.error('Error deleting post:', error)
+      alert('Error deleting post. Check console.')
+      setDeleting(false)
+    } else {
+      router.push('/admin')
+    }
+  }
+
   const categories = [
     'Philosophy',
-    'Leadership', 
+    'Leadership',
     'AI & Ethics',
     'Systems Thinking',
     'Ecosystem Design',
@@ -90,6 +152,16 @@ export default function NewPostPage() {
     'Product Strategy'
   ]
 
+  if (loading) {
+    return (
+      <div className="min-h-screen py-20 px-4 flex items-center justify-center">
+        <div className="text-center space-y-4">
+          <div className="w-12 h-12 mx-auto border-4 border-primary border-t-transparent rounded-full animate-spin" />
+          <p className="text-muted-foreground">Loading post...</p>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className="min-h-screen py-20 px-4 sm:px-6 lg:px-8">
@@ -106,16 +178,26 @@ export default function NewPostPage() {
                 <ArrowLeft className="w-5 h-5" />
               </Link>
               <h1 className="text-4xl font-bold bg-gradient-to-r from-primary to-primary/50 bg-clip-text text-transparent">
-                New Blog Post
+                Edit Post
               </h1>
             </div>
-            <button
-              onClick={() => setPreview(!preview)}
-              className="flex items-center gap-2 px-4 py-2 border border-foreground/20 rounded-lg hover:bg-foreground/5 transition-all hover:scale-105"
-            >
-              <Eye className="w-4 h-4" />
-              {preview ? 'Edit' : 'Preview'}
-            </button>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={handleDelete}
+                disabled={deleting}
+                className="flex items-center gap-2 px-4 py-2 border border-red-500/20 text-red-500 rounded-lg hover:bg-red-500/10 transition-all hover:scale-105 disabled:opacity-50"
+              >
+                <Trash2 className="w-4 h-4" />
+                {deleting ? 'Deleting...' : 'Delete'}
+              </button>
+              <button
+                onClick={() => setPreview(!preview)}
+                className="flex items-center gap-2 px-4 py-2 border border-foreground/20 rounded-lg hover:bg-foreground/5 transition-all hover:scale-105"
+              >
+                <Eye className="w-4 h-4" />
+                {preview ? 'Edit' : 'Preview'}
+              </button>
+            </div>
           </div>
 
           <AnimatePresence mode="wait">
@@ -255,7 +337,7 @@ export default function NewPostPage() {
                       className="w-5 h-5 rounded border-foreground/20 text-primary focus:ring-primary/50"
                     />
                     <span className="group-hover:text-primary transition-colors">
-                      Publish Immediately
+                      Published
                     </span>
                   </label>
                 </div>
@@ -268,7 +350,7 @@ export default function NewPostPage() {
                     className="flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 disabled:opacity-50 transition-all hover:scale-105"
                   >
                     <Save className="w-4 h-4" />
-                    {saving ? 'Saving...' : 'Save Post'}
+                    {saving ? 'Saving...' : 'Save Changes'}
                   </button>
                 </div>
               </motion.form>
