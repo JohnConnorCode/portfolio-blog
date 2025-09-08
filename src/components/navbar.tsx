@@ -44,20 +44,25 @@ export function Navbar() {
       )}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-24">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
             <Link href="/" className="group">
-              <span className="text-2xl font-light tracking-tight">
-                JC
-              </span>
+              <div className="flex flex-col">
+                <span className="text-2xl font-bold tracking-tight">
+                  John Connor
+                </span>
+                <span className="text-xs text-muted-foreground uppercase tracking-widest">
+                  System Builder
+                </span>
+              </div>
             </Link>
           </motion.div>
 
-          <div className="hidden md:flex items-center space-x-1">
+          <div className="hidden md:flex items-center space-x-4">
             {navItems.map((item, index) => {
               const Icon = item.icon
               const isActive = pathname === item.href
@@ -71,7 +76,7 @@ export function Navbar() {
                   <Link
                     href={item.href}
                     className={cn(
-                      'relative px-4 py-2 group overflow-hidden',
+                      'relative px-5 py-3 group overflow-hidden rounded-lg transition-all hover:bg-foreground/5',
                       isActive
                         ? 'text-primary'
                         : 'text-muted-foreground'
