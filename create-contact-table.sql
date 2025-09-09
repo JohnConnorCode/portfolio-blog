@@ -1,5 +1,11 @@
 
--- Run this in Supabase SQL editor
+-- ========================================
+-- Contact Submissions Table Setup for Supabase
+-- ========================================
+-- Run this in Supabase SQL Editor
+-- Project URL: https://jtzckyoeixizzoqmxwkp.supabase.co
+
+-- Create the contact_submissions table
 CREATE TABLE IF NOT EXISTS public.contact_submissions (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
   name TEXT NOT NULL,
@@ -9,19 +15,22 @@ CREATE TABLE IF NOT EXISTS public.contact_submissions (
   budget TEXT,
   message TEXT NOT NULL,
   status TEXT DEFAULT 'new',
-  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc', NOW()),
   responded_at TIMESTAMP WITH TIME ZONE
 );
 
--- Enable RLS but allow public inserts
+-- Enable Row Level Security (RLS)
 ALTER TABLE public.contact_submissions ENABLE ROW LEVEL SECURITY;
 
--- Allow anyone to insert (for contact form submissions)
-CREATE POLICY "Anyone can insert contact submissions" ON public.contact_submissions
+-- Create policy to allow anyone to insert (for public contact form submissions)
+CREATE POLICY "Anyone can submit contact form" ON public.contact_submissions
   FOR INSERT WITH CHECK (true);
 
--- Create indexes
+-- Create indexes for performance optimization
 CREATE INDEX IF NOT EXISTS contact_submissions_email_idx ON public.contact_submissions(email);
 CREATE INDEX IF NOT EXISTS contact_submissions_status_idx ON public.contact_submissions(status);
-CREATE INDEX IF NOT EXISTS contact_submissions_created_idx ON public.contact_submissions(created_at DESC);
+CREATE INDEX IF NOT EXISTS contact_submissions_created_at_idx ON public.contact_submissions(created_at DESC);
+
+-- Display success message
+SELECT 'Contact submissions table created successfully!' AS result;
 

@@ -63,6 +63,11 @@ CREATE TABLE IF NOT EXISTS contact_submissions (
   responded_at TIMESTAMP WITH TIME ZONE
 );
 
+-- Create indexes for contact submissions
+CREATE INDEX IF NOT EXISTS contact_submissions_email_idx ON contact_submissions(email);
+CREATE INDEX IF NOT EXISTS contact_submissions_status_idx ON contact_submissions(status);
+CREATE INDEX IF NOT EXISTS contact_submissions_created_at_idx ON contact_submissions(created_at DESC);
+
 -- Newsletter Subscribers Table
 CREATE TABLE IF NOT EXISTS newsletter_subscribers (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
