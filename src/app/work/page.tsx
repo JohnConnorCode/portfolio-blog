@@ -7,6 +7,7 @@ import { useState } from 'react'
 import { AnimatedText, AnimatedLetters } from '@/components/animated-text'
 import { SectionDivider } from '@/components/section-divider'
 import { Experience } from '@/components/experience'
+import { CaseStudies } from '@/components/case-studies'
 
 const workCategories = [
   { value: 'all', label: 'All Work' },
@@ -224,8 +225,12 @@ export default function WorkPage() {
         </div>
       </section>
 
-      {/* Experience Section */}
+      {/* Detailed Case Studies */}
       <SectionDivider variant="geometric" />
+      <CaseStudies />
+      
+      {/* Experience Section */}
+      <SectionDivider variant="organic" />
       <Experience />
       
       {/* CTA Section */}

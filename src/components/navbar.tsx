@@ -144,34 +144,92 @@ export function Navbar() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-background/95 backdrop-blur-xl border-b border-border/50"
+            initial={{ opacity: 0, x: '100%' }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: '100%' }}
+            transition={{ type: 'spring', damping: 20, stiffness: 300 }}
+            className="md:hidden fixed inset-y-0 right-0 w-full sm:w-80 bg-background/95 backdrop-blur-xl border-l border-border/50 z-50"
           >
-            <div className="px-4 py-4 space-y-2">
-              {navItems.map((item) => {
+            {/* Close button */}
+            <div className="flex justify-between items-center p-6 border-b border-border/20">
+              <span className="text-lg font-semibold">Menu</span>
+              <button
+                onClick={() => setIsOpen(false)}
+                className="p-2 rounded-lg hover:bg-primary/10 transition-colors"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+            
+            <div className="p-6 space-y-2">
+              {navItems.map((item, index) => {
                 const Icon = item.icon
                 const isActive = pathname === item.href
                 return (
-                  <Link
+                  <motion.div
                     key={item.href}
-                    href={item.href}
-                    onClick={() => setIsOpen(false)}
-                    className={cn(
-                      'flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors',
-                      isActive
-                        ? 'bg-primary/10 text-primary'
-                        : 'hover:bg-primary/5 text-muted-foreground hover:text-foreground'
-                    )}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.05 }}
                   >
-                    <Icon className="w-5 h-5" />
-                    <span>{item.label}</span>
-                  </Link>
+                    <Link
+                      href={item.href}
+                      onClick={() => setIsOpen(false)}
+                      className={cn(
+                        'flex items-center space-x-3 px-4 py-3 rounded-lg transition-all group',
+                        isActive
+                          ? 'bg-primary/10 text-primary'
+                          : 'hover:bg-primary/5 text-muted-foreground hover:text-foreground'
+                      )}
+                    >
+                      <Icon className="w-5 h-5" />
+                      <span className="flex-1">{item.label}</span>
+                      {isActive && (
+                        <motion.div
+                          layoutId="mobile-active-indicator"
+                          className="w-1 h-6 bg-primary rounded-full"
+                        />
+                      )}
+                    </Link>
+                  </motion.div>
                 )
               })}
             </div>
+            
+            {/* Theme toggle in mobile menu */}
+            <div className="absolute bottom-6 left-6 right-6">
+              <div className="p-4 bg-foreground/5 rounded-lg">
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-muted-foreground">Theme</span>
+                  {mounted && (
+                    <button
+                      onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                      className="p-2 rounded-lg bg-primary/10 hover:bg-primary/20 transition-colors"
+                    >
+                      {theme === 'dark' ? (
+                        <Sun className="w-5 h-5" />
+                      ) : (
+                        <Moon className="w-5 h-5" />
+                      )}
+                    </button>
+                  )}
+                </div>
+              </div>
+            </div>
           </motion.div>
+        )}
+      </AnimatePresence>
+      
+      {/* Overlay */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setIsOpen(false)}
+            className="md:hidden fixed inset-0 bg-black/50 z-40"
+          />
         )}
       </AnimatePresence>
     </motion.nav>

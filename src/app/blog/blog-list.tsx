@@ -124,33 +124,72 @@ export default function BlogList({ initialPosts }: { initialPosts: Post[] }) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="mb-12"
+          className="mb-12 p-6 glass rounded-xl"
         >
-          <div className="flex flex-col lg:flex-row gap-6 mb-8">
-            {/* Search */}
-            <div className="flex-1 relative">
+          <div className="flex flex-col gap-6">
+            {/* Search Bar */}
+            <div className="relative">
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
               <input
                 type="text"
-                placeholder="Search articles..."
+                placeholder="Search by title, content, or tags..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-12 pr-4 py-3 bg-background/50 border border-foreground/10 rounded-lg focus:border-primary focus:outline-none transition-colors"
+                className="w-full pl-12 pr-12 py-4 bg-background/50 border-2 border-foreground/10 rounded-lg focus:border-primary focus:outline-none transition-all placeholder:text-muted-foreground"
               />
+              {searchTerm && (
+                <button
+                  onClick={() => setSearchTerm('')}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  ✕
+                </button>
+              )}
             </div>
 
-            {/* Category Filter */}
-            <div className="flex items-center gap-2">
-              <Filter className="w-5 h-5 text-muted-foreground" />
-              <select
-                value={selectedCategory}
-                onChange={(e) => setSelectedCategory(e.target.value)}
-                className="px-4 py-3 bg-background/50 border border-foreground/10 rounded-lg focus:border-primary focus:outline-none transition-colors"
-              >
-                {categories.map(category => (
-                  <option key={category} value={category}>{category}</option>
+            {/* Category Pills */}
+            <div>
+              <div className="flex items-center gap-2 mb-3">
+                <Filter className="w-4 h-4 text-muted-foreground" />
+                <span className="text-sm font-medium text-muted-foreground">Filter by category:</span>
+              </div>
+              <div className="flex gap-2 flex-wrap">
+                {categories.map((category) => (
+                  <motion.button
+                    key={category}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => setSelectedCategory(category)}
+                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                      selectedCategory === category
+                        ? 'bg-primary text-primary-foreground shadow-lg'
+                        : 'bg-background/50 border border-foreground/10 hover:border-primary hover:bg-primary/10'
+                    }`}
+                  >
+                    {category}
+                  </motion.button>
                 ))}
-              </select>
+              </div>
+            </div>
+            
+            {/* Results Count */}
+            <div className="text-sm text-muted-foreground flex items-center justify-between">
+              <span>
+                Showing <strong>{filteredPosts.length}</strong> {filteredPosts.length === 1 ? 'post' : 'posts'}
+                {searchTerm && ` matching "${searchTerm}"`}
+                {selectedCategory !== 'All' && ` in ${selectedCategory}`}
+              </span>
+              {(searchTerm || selectedCategory !== 'All') && (
+                <button
+                  onClick={() => {
+                    setSearchTerm('')
+                    setSelectedCategory('All')
+                  }}
+                  className="text-primary hover:underline"
+                >
+                  Clear filters
+                </button>
+              )}
             </div>
           </div>
         </motion.div>

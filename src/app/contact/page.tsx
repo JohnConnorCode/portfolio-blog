@@ -34,6 +34,8 @@ export default function ContactPage() {
 
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [errors, setErrors] = useState<Record<string, string>>({})
+  const [touched, setTouched] = useState<Record<string, boolean>>({})
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -69,11 +71,53 @@ export default function ContactPage() {
     }
   }
 
+  const validateField = (name: string, value: string) => {
+    let error = ''
+    
+    switch (name) {
+      case 'name':
+        if (!value.trim()) error = 'Name is required'
+        else if (value.length < 2) error = 'Name must be at least 2 characters'
+        break
+      case 'email':
+        if (!value.trim()) error = 'Email is required'
+        else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) error = 'Invalid email format'
+        break
+      case 'message':
+        if (!value.trim()) error = 'Message is required'
+        else if (value.length < 10) error = 'Message must be at least 10 characters'
+        break
+    }
+    
+    return error
+  }
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [name]: value,
     })
+    
+    // Validate on change if field was touched
+    if (touched[name]) {
+      const error = validateField(name, value)
+      setErrors(prev => ({
+        ...prev,
+        [name]: error
+      }))
+    }
+  }
+
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target
+    setTouched(prev => ({ ...prev, [name]: true }))
+    
+    const error = validateField(name, value)
+    setErrors(prev => ({
+      ...prev,
+      [name]: error
+    }))
   }
 
   return (
@@ -217,9 +261,19 @@ export default function ContactPage() {
                         required
                         value={formData.name}
                         onChange={handleChange}
-                        className="w-full px-4 py-4 bg-black border-2 border-white text-white font-mono placeholder-gray-500 focus:border-cyan-400 focus:outline-none transition-colors"
+                        onBlur={handleBlur}
+                        className={`w-full px-4 py-4 bg-black border-2 ${errors.name && touched.name ? 'border-red-500' : 'border-white'} text-white font-mono placeholder-gray-500 focus:border-cyan-400 focus:outline-none transition-colors`}
                         placeholder="Enter your full name"
                       />
+                      {errors.name && touched.name && (
+                        <motion.p 
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          className="text-red-500 text-xs mt-2 font-mono"
+                        >
+                          {errors.name}
+                        </motion.p>
+                      )}
                     </div>
                     <div>
                       <label className="flex items-center gap-2 text-sm font-black text-white mb-3 text-brutal">
@@ -232,9 +286,19 @@ export default function ContactPage() {
                         required
                         value={formData.email}
                         onChange={handleChange}
-                        className="w-full px-4 py-4 bg-black border-2 border-white text-white font-mono placeholder-gray-500 focus:border-cyan-400 focus:outline-none transition-colors"
+                        onBlur={handleBlur}
+                        className={`w-full px-4 py-4 bg-black border-2 ${errors.email && touched.email ? 'border-red-500' : 'border-white'} text-white font-mono placeholder-gray-500 focus:border-cyan-400 focus:outline-none transition-colors`}
                         placeholder="your.email@company.com"
                       />
+                      {errors.email && touched.email && (
+                        <motion.p 
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          className="text-red-500 text-xs mt-2 font-mono"
+                        >
+                          {errors.email}
+                        </motion.p>
+                      )}
                     </div>
                   </div>
 
@@ -306,9 +370,19 @@ export default function ContactPage() {
                       rows={6}
                       value={formData.message}
                       onChange={handleChange}
+                      onBlur={handleBlur}
                       placeholder="Tell me about your project, goals, timeline, and any specific challenges you're facing..."
-                      className="w-full px-4 py-4 bg-black border-2 border-white text-white font-mono placeholder-gray-500 focus:border-cyan-400 focus:outline-none transition-colors resize-none"
+                      className={`w-full px-4 py-4 bg-black border-2 ${errors.message && touched.message ? 'border-red-500' : 'border-white'} text-white font-mono placeholder-gray-500 focus:border-cyan-400 focus:outline-none transition-colors resize-none`}
                     />
+                    {errors.message && touched.message && (
+                      <motion.p 
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="text-red-500 text-xs mt-2 font-mono"
+                      >
+                        {errors.message}
+                      </motion.p>
+                    )}
                   </div>
 
                   <motion.button

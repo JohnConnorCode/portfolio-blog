@@ -1,12 +1,25 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { useRef } from 'react'
 import Link from 'next/link'
 import { ArrowRight, Calendar, MessageSquare } from 'lucide-react'
 
 export function CallToAction() {
+  const sectionRef = useRef<HTMLElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  })
+
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0])
+  const scale = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.95, 1, 1, 0.95])
+
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8">
+    <motion.section 
+      ref={sectionRef}
+      style={{ opacity, scale }}
+      className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -47,6 +60,6 @@ export function CallToAction() {
           </p>
         </motion.div>
       </div>
-    </section>
+    </motion.section>
   )
 }
