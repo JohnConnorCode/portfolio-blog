@@ -20,6 +20,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
   }
   const containerRef = useRef<HTMLDivElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"]
@@ -28,7 +29,16 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
   const scale = useTransform(scrollYProgress, [0, 0.5], [1, 1.1])
   
-  // Simplified matrix rain effect
+  // Track mouse for interactive effects
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePos({ x: e.clientX, y: e.clientY })
+    }
+    window.addEventListener('mousemove', handleMouseMove)
+    return () => window.removeEventListener('mousemove', handleMouseMove)
+  }, [])
+  
+  // Interactive particle system
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
@@ -39,35 +49,84 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
     canvas.width = window.innerWidth
     canvas.height = window.innerHeight
     
-    // Use only numbers and limited characters for cleaner look
-    const chars = '01'
-    const charArray = chars.split('')
-    const fontSize = 16
-    const columns = canvas.width / fontSize
-    const drops: number[] = []
+    const particles: Array<{
+      x: number
+      y: number
+      vx: number
+      vy: number
+      size: number
+      color: string
+      life: number
+    }> = []
     
-    for (let i = 0; i < columns; i++) {
-      drops[i] = Math.random() * -100
+    const colors = ['#00ffff', '#ff00ff', '#ffff00', '#00ff00']
+    
+    // Create particles
+    for (let i = 0; i < 100; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5,
+        size: Math.random() * 2 + 1,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        life: 1
+      })
     }
     
     let animationId: number
     const draw = () => {
-      // More transparent overlay for subtlety
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)'
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.02)'
       ctx.fillRect(0, 0, canvas.width, canvas.height)
       
-      ctx.fillStyle = '#00ffff30' // More transparent cyan
-      ctx.font = fontSize + 'px monospace'
-      
-      for (let i = 0; i < drops.length; i++) {
-        const text = charArray[Math.floor(Math.random() * charArray.length)]
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize)
+      particles.forEach((particle, index) => {
+        // Move particles
+        particle.x += particle.vx
+        particle.y += particle.vy
         
-        if (drops[i] * fontSize > canvas.height && Math.random() > 0.98) {
-          drops[i] = 0
+        // Mouse interaction - particles move away from cursor
+        const dx = mousePos.x - particle.x
+        const dy = mousePos.y - particle.y
+        const distance = Math.sqrt(dx * dx + dy * dy)
+        
+        if (distance < 100) {
+          const force = (100 - distance) / 100
+          particle.vx -= (dx / distance) * force * 0.2
+          particle.vy -= (dy / distance) * force * 0.2
         }
-        drops[i] += 0.5 // Slower fall
-      }
+        
+        // Apply friction
+        particle.vx *= 0.99
+        particle.vy *= 0.99
+        
+        // Bounce off edges
+        if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1
+        if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1
+        
+        // Draw particle
+        ctx.fillStyle = particle.color + '40'
+        ctx.beginPath()
+        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2)
+        ctx.fill()
+        
+        // Draw connections
+        particles.forEach((otherParticle, otherIndex) => {
+          if (index !== otherIndex) {
+            const dx = otherParticle.x - particle.x
+            const dy = otherParticle.y - particle.y
+            const distance = Math.sqrt(dx * dx + dy * dy)
+            
+            if (distance < 150) {
+              ctx.strokeStyle = particle.color + Math.floor((1 - distance / 150) * 20).toString(16)
+              ctx.lineWidth = 0.5
+              ctx.beginPath()
+              ctx.moveTo(particle.x, particle.y)
+              ctx.lineTo(otherParticle.x, otherParticle.y)
+              ctx.stroke()
+            }
+          }
+        })
+      })
       
       animationId = requestAnimationFrame(draw)
     }
@@ -85,30 +144,33 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
       cancelAnimationFrame(animationId)
       window.removeEventListener('resize', handleResize)
     }
-  }, [])
+  }, [mousePos])
   
   return (
     <section ref={containerRef} className="relative min-h-screen overflow-hidden -mt-24 pt-24 bg-background">
-      {/* Subtle matrix rain background */}
+      {/* Interactive particle canvas */}
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 opacity-10"
+        className="absolute inset-0"
+        style={{ opacity: 0.6 }}
       />
       
-      {/* Animated gradient mesh */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob" />
-        <div className="absolute top-0 right-1/4 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000" />
-        <div className="absolute bottom-0 left-1/3 w-96 h-96 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000" />
-      </div>
-      
-      {/* Grid pattern overlay */}
+      {/* Dynamic gradient that follows mouse */}
       <div 
-        className="absolute inset-0 opacity-[0.02]"
+        className="absolute inset-0 opacity-30 pointer-events-none"
         style={{
-          backgroundImage: `linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
-                           linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px)`,
-          backgroundSize: '50px 50px'
+          background: `radial-gradient(circle 600px at ${mousePos.x}px ${mousePos.y}px, rgba(0,255,255,0.2), transparent 70%)`,
+        }}
+      />
+      
+      {/* Animated grid that responds to scroll */}
+      <div 
+        className="absolute inset-0 opacity-[0.03]"
+        style={{
+          backgroundImage: `linear-gradient(rgba(0, 255, 255, 0.3) 1px, transparent 1px),
+                           linear-gradient(90deg, rgba(0, 255, 255, 0.3) 1px, transparent 1px)`,
+          backgroundSize: '100px 100px',
+          transform: `translate(${mousePos.x * 0.02}px, ${mousePos.y * 0.02}px)`
         }}
       />
       
@@ -117,43 +179,40 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
         className="relative z-10 min-h-screen flex items-center justify-center px-4"
       >
         <div className="max-w-6xl mx-auto text-center">
-          {/* Glitch-style title */}
-          <motion.div
+          {/* Title with subtle glitch */}
+          <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="relative mb-6"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tight mb-6 relative"
           >
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tight">
-              {/* Glitch effect layers */}
-              <span className="absolute inset-0 text-cyan-400 opacity-50 animate-glitch-1">
+            <span className="relative">
+              {/* Subtle glitch layers */}
+              <span className="absolute inset-0 text-cyan-400 opacity-0 animate-glitch-1">
                 {heroContent.heroTitle}
               </span>
-              <span className="absolute inset-0 text-pink-400 opacity-50 animate-glitch-2">
+              <span className="absolute inset-0 text-pink-400 opacity-0 animate-glitch-2">
                 {heroContent.heroTitle}
               </span>
-              <span className="relative text-foreground">
+              <span className="relative text-foreground hover:animate-none">
                 {heroContent.heroTitle}
               </span>
-            </h1>
-          </motion.div>
+            </span>
+          </motion.h1>
           
-          {/* Animated tagline with border */}
+          {/* Simple tagline without glow */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.6 }}
-            className="mb-8 inline-block"
+            className="mb-8"
           >
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-purple-400 blur-lg opacity-30 animate-pulse" />
-              <p className="relative text-lg sm:text-xl md:text-2xl font-mono uppercase tracking-wider px-6 py-3 border border-foreground/20 bg-background/50 backdrop-blur">
-                {heroContent.heroTagline}
-              </p>
-            </div>
+            <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground uppercase tracking-wider">
+              {heroContent.heroTagline}
+            </p>
           </motion.div>
           
-          {/* Description with typewriter effect */}
+          {/* Description */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -174,7 +233,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
             </span>
           </motion.p>
           
-          {/* Futuristic CTA Buttons */}
+          {/* Interactive CTA Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -185,11 +244,22 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="group relative px-8 py-3 overflow-hidden"
+                className="group relative px-8 py-3 overflow-hidden border-2 border-cyan-400"
+                onMouseEnter={(e) => {
+                  const rect = e.currentTarget.getBoundingClientRect()
+                  const x = e.clientX - rect.left
+                  const y = e.clientY - rect.top
+                  e.currentTarget.style.setProperty('--mouse-x', `${x}px`)
+                  e.currentTarget.style.setProperty('--mouse-y', `${y}px`)
+                }}
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-purple-400 animate-gradient" />
-                <div className="absolute inset-[2px] bg-background" />
-                <span className="relative font-semibold text-foreground group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-cyan-400 group-hover:to-purple-400 transition-all">
+                <div 
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity"
+                  style={{
+                    background: 'radial-gradient(circle 100px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0,255,255,0.3), transparent)'
+                  }}
+                />
+                <span className="relative font-semibold text-cyan-400 group-hover:text-foreground transition-colors">
                   View My Work
                 </span>
               </motion.button>
@@ -199,20 +269,33 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="relative px-8 py-3 border border-foreground/20 hover:border-cyan-400/50 transition-all group overflow-hidden"
+                className="group relative px-8 py-3 border border-foreground/20 hover:border-purple-400/50 transition-all overflow-hidden"
+                onMouseEnter={(e) => {
+                  const rect = e.currentTarget.getBoundingClientRect()
+                  const x = e.clientX - rect.left
+                  const y = e.clientY - rect.top
+                  e.currentTarget.style.setProperty('--mouse-x', `${x}px`)
+                  e.currentTarget.style.setProperty('--mouse-y', `${y}px`)
+                }}
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/10 to-purple-400/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div 
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity"
+                  style={{
+                    background: 'radial-gradient(circle 100px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(168,85,247,0.2), transparent)'
+                  }}
+                />
                 <span className="relative font-semibold">My Philosophy</span>
               </motion.button>
             </Link>
           </motion.div>
           
-          {/* Animated scroll indicator */}
+          {/* Interactive scroll indicator */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.2, duration: 0.6 }}
-            className="absolute bottom-8 left-1/2 -translate-x-1/2"
+            className="absolute bottom-8 left-1/2 -translate-x-1/2 cursor-pointer"
+            onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
           >
             <motion.div
               animate={{ 
@@ -223,9 +306,9 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                 repeat: Infinity,
                 ease: "easeInOut"
               }}
-              className="relative"
+              className="relative group"
             >
-              <div className="w-6 h-10 border-2 border-foreground/20 rounded-full flex justify-center">
+              <div className="w-6 h-10 border-2 border-foreground/20 rounded-full flex justify-center group-hover:border-cyan-400 transition-colors">
                 <motion.div
                   animate={{ y: [0, 16, 0] }}
                   transition={{ duration: 2, repeat: Infinity }}
@@ -241,55 +324,34 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
 }
 
 <style jsx>{`
-  @keyframes blob {
-    0% { transform: translate(0px, 0px) scale(1); }
-    33% { transform: translate(30px, -50px) scale(1.1); }
-    66% { transform: translate(-20px, 20px) scale(0.9); }
-    100% { transform: translate(0px, 0px) scale(1); }
-  }
-  
   @keyframes glitch-1 {
-    0%, 100% { clip-path: inset(0 0 0 0); transform: translate(0); }
-    20% { clip-path: inset(20% 0 30% 0); transform: translate(-2px, 2px); }
-    40% { clip-path: inset(50% 0 20% 0); transform: translate(2px, -2px); }
-    60% { clip-path: inset(10% 0 60% 0); transform: translate(-1px, 1px); }
-    80% { clip-path: inset(80% 0 5% 0); transform: translate(1px, -1px); }
+    0%, 100% { 
+      opacity: 0;
+      transform: translate(0);
+    }
+    20% { 
+      opacity: 0.8;
+      transform: translate(-2px, 2px);
+    }
   }
   
   @keyframes glitch-2 {
-    0%, 100% { clip-path: inset(0 0 0 0); transform: translate(0); }
-    20% { clip-path: inset(60% 0 10% 0); transform: translate(2px, -1px); }
-    40% { clip-path: inset(20% 0 40% 0); transform: translate(-2px, 1px); }
-    60% { clip-path: inset(30% 0 50% 0); transform: translate(1px, -2px); }
-    80% { clip-path: inset(10% 0 70% 0); transform: translate(-1px, 2px); }
-  }
-  
-  @keyframes gradient {
-    0%, 100% { transform: translateX(-100%); }
-    50% { transform: translateX(100%); }
-  }
-  
-  .animate-blob {
-    animation: blob 7s infinite;
-  }
-  
-  .animation-delay-2000 {
-    animation-delay: 2s;
-  }
-  
-  .animation-delay-4000 {
-    animation-delay: 4s;
+    0%, 100% { 
+      opacity: 0;
+      transform: translate(0);
+    }
+    25% { 
+      opacity: 0.8;
+      transform: translate(2px, -2px);
+    }
   }
   
   .animate-glitch-1 {
-    animation: glitch-1 3s infinite;
+    animation: glitch-1 2s infinite;
   }
   
   .animate-glitch-2 {
-    animation: glitch-2 3s infinite reverse;
-  }
-  
-  .animate-gradient {
-    animation: gradient 3s ease infinite;
+    animation: glitch-2 2s infinite;
+    animation-delay: 0.1s;
   }
 `}</style>

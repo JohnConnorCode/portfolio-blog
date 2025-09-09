@@ -97,11 +97,14 @@ export function Experience() {
                   duration: 0.5,
                   delay: index * 0.1
                 }}
-                whileHover={{ scale: 1.02 }}
-                className={`card-brutal group ${
-                  exp.current ? 'border-cyan-400' : ''
-                }`}
               >
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  className={`card-brutal group ${
+                    exp.current ? 'border-cyan-400' : ''
+                  }`}
+                >
                 {exp.current && (
                   <div className="absolute -top-3 -right-3 px-3 py-1 bg-primary text-primary-foreground text-xs font-semibold uppercase tracking-wider">
                     Current
@@ -136,6 +139,7 @@ export function Experience() {
                     </span>
                   ))}
                 </div>
+                </motion.div>
               </motion.div>
             )
           })}

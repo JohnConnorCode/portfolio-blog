@@ -70,26 +70,34 @@ export function ClientLogos() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.5 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ delay: 0.5, duration: 0.6 }}
           className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6 text-center"
         >
-          <motion.div whileHover={{ scale: 1.05, y: -2 }} transition={{ duration: 0.3 }}>
-            <p className="text-3xl font-bold text-primary">50+</p>
-            <p className="text-sm text-muted-foreground">Products Built</p>
-          </motion.div>
-          <motion.div whileHover={{ scale: 1.05, y: -2 }} transition={{ duration: 0.3 }}>
-            <p className="text-3xl font-bold text-primary">10+</p>
-            <p className="text-sm text-muted-foreground">Years Experience</p>
-          </motion.div>
-          <motion.div whileHover={{ scale: 1.05, y: -2 }} transition={{ duration: 0.3 }}>
-            <p className="text-3xl font-bold text-primary">$50M+</p>
-            <p className="text-sm text-muted-foreground">Capital Facilitated</p>
-          </motion.div>
-          <motion.div whileHover={{ scale: 1.05, y: -2 }} transition={{ duration: 0.3 }}>
-            <p className="text-3xl font-bold text-primary">100+</p>
-            <p className="text-sm text-muted-foreground">Founders Advised</p>
-          </motion.div>
+          <div className="group">
+            <motion.div whileHover={{ scale: 1.05, y: -2 }} transition={{ type: "spring", stiffness: 300, damping: 20 }}>
+              <p className="text-3xl font-bold text-primary">50+</p>
+              <p className="text-sm text-muted-foreground">Products Built</p>
+            </motion.div>
+          </div>
+          <div className="group">
+            <motion.div whileHover={{ scale: 1.05, y: -2 }} transition={{ type: "spring", stiffness: 300, damping: 20 }}>
+              <p className="text-3xl font-bold text-primary">10+</p>
+              <p className="text-sm text-muted-foreground">Years Experience</p>
+            </motion.div>
+          </div>
+          <div className="group">
+            <motion.div whileHover={{ scale: 1.05, y: -2 }} transition={{ type: "spring", stiffness: 300, damping: 20 }}>
+              <p className="text-3xl font-bold text-primary">$50M+</p>
+              <p className="text-sm text-muted-foreground">Capital Facilitated</p>
+            </motion.div>
+          </div>
+          <div className="group">
+            <motion.div whileHover={{ scale: 1.05, y: -2 }} transition={{ type: "spring", stiffness: 300, damping: 20 }}>
+              <p className="text-3xl font-bold text-primary">100+</p>
+              <p className="text-sm text-muted-foreground">Founders Advised</p>
+            </motion.div>
+          </div>
         </motion.div>
       </div>
     </section>

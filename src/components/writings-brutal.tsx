@@ -70,13 +70,15 @@ export function WritingsBrutal() {
                 key={writing.title}
                 initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                whileHover={{ scale: 1.02, y: -5 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className={`group ${writing.featured ? 'md:col-span-2' : ''}`}
               >
                 <Link href="/blog">
-                  <div className="card-glass hover-glow">
+                  <motion.div 
+                    whileHover={{ scale: 1.02, y: -5 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    className="card-glass hover-glow">
                     {/* Featured badge */}
                     {writing.featured && (
                       <div className="absolute -top-2 -right-2 bg-gradient-to-r from-cyan-400 to-cyan-500 text-black px-4 py-1 font-bold text-xs uppercase tracking-wide">
@@ -108,7 +110,7 @@ export function WritingsBrutal() {
                     
                     {/* Hover effect */}
                     <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
-                  </div>
+                  </motion.div>
                 </Link>
               </motion.article>
             )

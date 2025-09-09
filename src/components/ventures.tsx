@@ -81,7 +81,6 @@ export function Ventures() {
                 key={venture.name}
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                whileHover={{ scale: 1.02, y: -5 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className={`relative group ${
@@ -89,7 +88,10 @@ export function Ventures() {
                 }`}
               >
                 <Link href={venture.link}>
-                  <div className={`p-8 border border-foreground/10 hover:border-primary/50 transition-all duration-300 h-full ${
+                  <motion.div 
+                    whileHover={{ scale: 1.02, y: -5 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    className={`p-8 border border-foreground/10 hover:border-primary/50 transition-all duration-300 h-full ${
                     venture.featured ? 'bg-gradient-to-br from-primary/5 to-transparent' : 'hover:bg-muted/50'
                   }`}>
                     {venture.featured && (
@@ -122,7 +124,7 @@ export function Ventures() {
                     <p className="text-xs sm:text-sm font-semibold text-primary">
                       {venture.impact}
                     </p>
-                  </div>
+                  </motion.div>
                 </Link>
               </motion.div>
             )
