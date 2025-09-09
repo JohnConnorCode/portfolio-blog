@@ -61,7 +61,7 @@ export function ImpactBrutal() {
         {/* Section title with glitch effect */}
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light mb-4">
-            <span className="text-white">PROVEN</span>
+            <span className="text-foreground">PROVEN</span>
             <span className="text-cyan-400 font-black neon-glow"> IMPACT</span>
           </h2>
           <p className="text-base sm:text-lg text-gray-400 font-light tracking-wide">
@@ -97,7 +97,7 @@ export function ImpactBrutal() {
                   </div>
                   
                   {/* Label */}
-                  <p className="text-white font-bold text-base sm:text-lg mb-1">
+                  <p className="text-foreground font-bold text-base sm:text-lg mb-1">
                     {impact.label}
                   </p>
                   

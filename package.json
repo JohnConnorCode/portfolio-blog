@@ -8,7 +8,17 @@
     "start": "next start",
     "lint": "eslint",
     "setup-db": "node scripts/setup-database.js",
-    "seed-db": "node scripts/populate-db-branded.mjs"
+    "seed-db": "node scripts/populate-db-branded.mjs",
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "test:ui": "playwright test --ui",
+    "test:smoke": "playwright test quick-smoke",
+    "test:a11y": "playwright test accessibility",
+    "test:perf": "playwright test performance-seo",
+    "test:api": "playwright test api-endpoints",
+    "test:full": "playwright test --workers=4",
+    "test:report": "playwright show-report"
   },
   "dependencies": {
     "@portabletext/react": "^4.0.3",
@@ -41,7 +51,9 @@
     "tailwind-merge": "^3.3.1"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.10.2",
     "@eslint/eslintrc": "^3",
+    "@playwright/test": "^1.55.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

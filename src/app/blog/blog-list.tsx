@@ -51,57 +51,7 @@ export default function BlogList({ initialPosts }: { initialPosts: Post[] }) {
     })
   }, [initialPosts, searchTerm, selectedCategory])
 
-  // Sample posts if database is empty
-  const samplePosts: Post[] = [
-    {
-      id: '1',
-      title: 'Why Technology Must Serve Humanity',
-      slug: 'technology-serves-humanity',
-      excerpt: 'Exploring the philosophy behind human-centered technology and why we must resist the temptation to let machines replace human judgment.',
-      category: 'Philosophy',
-      tags: ['technology', 'humanity', 'philosophy'],
-      featured: true,
-      published: true,
-      author_name: 'John Thomas Connor',
-      read_time: 8,
-      featured_image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80',
-      created_at: new Date().toISOString(),
-      updated_at: new Date().toISOString(),
-      published_at: new Date().toISOString()
-    },
-    {
-      id: '2',
-      title: 'Building Communities Through Debate',
-      slug: 'building-communities-debate',
-      excerpt: 'How Super Debate creates spaces for growth through intellectual challenge and why in-person interaction matters more than ever.',
-      category: 'Community Building',
-      tags: ['community', 'debate', 'growth'],
-      published: true,
-      author_name: 'John Thomas Connor',
-      read_time: 6,
-      featured_image: 'https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=800&q=80',
-      created_at: new Date().toISOString(),
-      updated_at: new Date().toISOString(),
-      published_at: new Date().toISOString()
-    },
-    {
-      id: '3',
-      title: 'The Future of Work: AI as Assistant, Not Replacement',
-      slug: 'future-work-ai-assistant',
-      excerpt: 'Why automation should free humans for high-context creative work rather than replacing them entirely.',
-      category: 'AI Ethics',
-      tags: ['AI', 'future', 'work', 'automation'],
-      published: true,
-      author_name: 'John Thomas Connor',
-      read_time: 10,
-      featured_image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80',
-      created_at: new Date().toISOString(),
-      updated_at: new Date().toISOString(),
-      published_at: new Date().toISOString()
-    }
-  ]
-
-  const postsToShow = initialPosts.length > 0 ? filteredPosts : samplePosts
+  const postsToShow = filteredPosts
 
   return (
     <section className="min-h-screen py-20 px-4 sm:px-6 lg:px-8">

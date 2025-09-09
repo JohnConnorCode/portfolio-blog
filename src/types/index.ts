@@ -6,7 +6,7 @@ export interface BlogPost {
   title: string
   slug: { current: string }
   excerpt: string
-  content: unknown[]
+  body: unknown[] // Changed from content to body to match Sanity schema
   publishedAt: string
   mainImage: {
     asset: {
@@ -26,7 +26,7 @@ export interface BlogPost {
   }
   categories?: Category[]
   tags?: string[]
-  readingTime?: number
+  readTime?: number
 }
 
 export interface Category {

@@ -142,7 +142,7 @@ export function WorkingWithMe() {
               >
                 <principle.icon className="w-8 h-8 text-cyan-400 group-hover:animate-pulse" />
                 <div>
-                  <h4 className="font-black mb-2 text-white group-hover:text-cyan-400 transition-colors">{principle.title}</h4>
+                  <h4 className="font-black mb-2 text-foreground group-hover:text-cyan-400 transition-colors">{principle.title}</h4>
                   <p className="text-gray-400 font-mono text-sm">{principle.description}</p>
                 </div>
               </div>

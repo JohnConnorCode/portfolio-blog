@@ -1,0 +1,166 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e4]:
+      - link "JC John Connor Technology Strategist" [ref=e6]:
+        - /url: /
+        - generic [ref=e7]:
+          - generic [ref=e12]: JC
+          - generic [ref=e13]:
+            - generic [ref=e14]: John Connor
+            - generic [ref=e15]: Technology Strategist
+      - generic [ref=e16]:
+        - link "Home" [ref=e18]:
+          - /url: /
+          - generic [ref=e19]:
+            - img [ref=e20]
+            - generic [ref=e23]: Home
+        - link "Work" [ref=e26]:
+          - /url: /work
+          - generic [ref=e27]:
+            - img [ref=e28]
+            - generic [ref=e31]: Work
+        - link "Blog" [ref=e34]:
+          - /url: /blog
+          - generic [ref=e35]:
+            - img [ref=e36]
+            - generic [ref=e38]: Blog
+        - link "Philosophy" [ref=e42]:
+          - /url: /philosophy
+          - generic [ref=e43]:
+            - img [ref=e44]
+            - generic [ref=e52]: Philosophy
+        - link "Contact" [ref=e55]:
+          - /url: /contact
+          - generic [ref=e56]:
+            - img [ref=e57]
+            - generic [ref=e60]: Contact
+      - button [ref=e63]:
+        - img [ref=e64]
+  - main [ref=e70]:
+    - generic [ref=e72]:
+      - generic [ref=e73]:
+        - heading "Blog" [level=1] [ref=e74]
+        - paragraph [ref=e75]: Essays and insights on human-first futurism, community building, and technology that empowers
+      - generic [ref=e77]:
+        - generic [ref=e78]:
+          - img [ref=e79]
+          - textbox "Search by title, content, or tags..." [ref=e82]
+        - generic [ref=e83]:
+          - generic [ref=e84]:
+            - img [ref=e85]
+            - generic [ref=e87]: "Filter by category:"
+          - generic [ref=e88]:
+            - button "All" [ref=e89]
+            - button "Human-First Futurism" [ref=e90]
+            - button "Community Building" [ref=e91]
+            - button "Technology" [ref=e92]
+            - button "Philosophy" [ref=e93]
+            - button "Web3" [ref=e94]
+            - button "AI Ethics" [ref=e95]
+        - generic [ref=e97]:
+          - text: Showing
+          - strong [ref=e98]: "5"
+          - text: posts
+      - generic [ref=e99]:
+        - article [ref=e100]:
+          - link "Philosophy September 8, 2025 Why Ecosystem Funding Is Broken Traditional grants create dependency. Here's how we fixed it." [active] [ref=e101]:
+            - /url: /blog/why-ecosystem-funding-is-broken
+            - generic [ref=e103]:
+              - generic [ref=e104]:
+                - generic [ref=e105]: Philosophy
+                - generic [ref=e106]:
+                  - img [ref=e107]
+                  - time [ref=e109]: September 8, 2025
+              - heading "Why Ecosystem Funding Is Broken" [level=2] [ref=e110]
+              - paragraph [ref=e111]: Traditional grants create dependency. Here's how we fixed it.
+        - article [ref=e112]:
+          - link "Leadership September 8, 2025 Debate as a Leadership Practice If you can't remember the last time you lost an argument at your own company, you're not debating. You're dictating." [ref=e113]:
+            - /url: /blog/debate-as-leadership-practice
+            - generic [ref=e115]:
+              - generic [ref=e116]:
+                - generic [ref=e117]: Leadership
+                - generic [ref=e118]:
+                  - img [ref=e119]
+                  - time [ref=e121]: September 8, 2025
+              - heading "Debate as a Leadership Practice" [level=2] [ref=e122]
+              - paragraph [ref=e123]: If you can't remember the last time you lost an argument at your own company, you're not debating. You're dictating.
+        - article [ref=e124]:
+          - link "AI & Ethics September 8, 2025 Automation as a Human Right Automation isn't coming for your job. It's coming for the parts of your job that shouldn't exist." [ref=e125]:
+            - /url: /blog/automation-as-human-right
+            - generic [ref=e127]:
+              - generic [ref=e128]:
+                - generic [ref=e129]: AI & Ethics
+                - generic [ref=e130]:
+                  - img [ref=e131]
+                  - time [ref=e133]: September 8, 2025
+              - heading "Automation as a Human Right" [level=2] [ref=e134]
+              - paragraph [ref=e135]: Automation isn't coming for your job. It's coming for the parts of your job that shouldn't exist.
+        - article [ref=e136]:
+          - link "Systems Thinking September 8, 2025 Building Systems That Compound If your growth is linear, your system is broken." [ref=e137]:
+            - /url: /blog/building-systems-that-compound
+            - generic [ref=e139]:
+              - generic [ref=e140]:
+                - generic [ref=e141]: Systems Thinking
+                - generic [ref=e142]:
+                  - img [ref=e143]
+                  - time [ref=e145]: September 8, 2025
+              - heading "Building Systems That Compound" [level=2] [ref=e146]
+              - paragraph [ref=e147]: If your growth is linear, your system is broken.
+        - article [ref=e148]:
+          - link "Leadership September 8, 2025 Why Founders Should Debate Their Roadmaps Your roadmap is a hypothesis. Test it before you build it." [ref=e149]:
+            - /url: /blog/founders-debate-roadmaps
+            - generic [ref=e151]:
+              - generic [ref=e152]:
+                - generic [ref=e153]: Leadership
+                - generic [ref=e154]:
+                  - img [ref=e155]
+                  - time [ref=e157]: September 8, 2025
+              - heading "Why Founders Should Debate Their Roadmaps" [level=2] [ref=e158]
+              - paragraph [ref=e159]: Your roadmap is a hypothesis. Test it before you build it.
+      - generic [ref=e160]:
+        - heading "Stay Updated" [level=2] [ref=e161]
+        - paragraph [ref=e162]: Get insights on building systems that serve humanity delivered to your inbox
+        - link "Subscribe to Updates" [ref=e163]:
+          - /url: /contact
+          - button "Subscribe to Updates" [ref=e164]
+  - contentinfo [ref=e165]:
+    - generic [ref=e166]:
+      - generic [ref=e167]:
+        - generic [ref=e168]:
+          - heading "About" [level=3] [ref=e169]
+          - paragraph [ref=e170]: Building systems that serve humanity. Technology should empower human judgment, not replace it.
+        - generic [ref=e171]:
+          - heading "Quick Links" [level=3] [ref=e172]
+          - list [ref=e173]:
+            - listitem [ref=e174]:
+              - link "Work" [ref=e175]:
+                - /url: /work
+            - listitem [ref=e176]:
+              - link "Philosophy" [ref=e177]:
+                - /url: /philosophy
+            - listitem [ref=e178]:
+              - link "Contact" [ref=e179]:
+                - /url: /contact
+            - listitem [ref=e180]:
+              - link "Features" [ref=e181]:
+                - /url: /features
+        - generic [ref=e182]:
+          - heading "Connect" [level=3] [ref=e183]
+          - generic [ref=e184]:
+            - link "Twitter" [ref=e185]:
+              - /url: https://twitter.com/ablockunchained
+              - img [ref=e186]
+            - link "LinkedIn" [ref=e188]:
+              - /url: https://linkedin.com/in/johnconnor
+              - img [ref=e189]
+            - link "Email" [ref=e193]:
+              - /url: mailto:john@johnconnor.xyz
+              - img [ref=e194]
+      - paragraph [ref=e198]: © 2025 John Thomas Connor
+  - button "Open Next.js Dev Tools" [ref=e204] [cursor=pointer]:
+    - img [ref=e205] [cursor=pointer]
+  - alert [ref=e208]
+```

@@ -7,10 +7,11 @@ export const settingsQuery = groq`
     heroTagline,
     heroDescription,
     heroHighlight,
-    metrics[] {
+    impactMetrics[] {
       number,
       label,
-      context
+      context,
+      icon
     }
   }
 `
@@ -92,5 +93,82 @@ export const thoughtByIdQuery = groq`
     mood,
     publishedAt,
     pinned
+  }
+`
+
+// Get all services
+export const servicesQuery = groq`
+  *[_type == "service"] | order(order asc) {
+    _id,
+    title,
+    description,
+    philosophy,
+    icon,
+    order
+  }
+`
+
+// Get all experience entries
+export const experienceQuery = groq`
+  *[_type == "experience"] | order(order asc) {
+    _id,
+    role,
+    company,
+    period,
+    description,
+    metrics,
+    current,
+    order
+  }
+`
+
+// Get all ventures
+export const venturesQuery = groq`
+  *[_type == "venture"] | order(order asc) {
+    _id,
+    title,
+    tagline,
+    description,
+    philosophy,
+    link,
+    status,
+    featured
+  }
+`
+
+// Get all testimonials
+export const testimonialsQuery = groq`
+  *[_type == "testimonial"] | order(order asc) {
+    _id,
+    quote,
+    author,
+    role,
+    company,
+    image,
+    featured
+  }
+`
+
+// Get all consulting packages
+export const packagesQuery = groq`
+  *[_type == "consultingPackage"] | order(order asc) {
+    _id,
+    name,
+    price,
+    description,
+    duration,
+    features,
+    ideal,
+    highlighted
+  }
+`
+
+// Get all principles
+export const principlesQuery = groq`
+  *[_type == "principle"] | order(order asc) {
+    _id,
+    title,
+    description,
+    icon
   }
 `

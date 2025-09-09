@@ -93,7 +93,7 @@ export function WritingsBrutal() {
                         <div className={`${writing.color} font-mono text-xs mb-2`}>
                           [{writing.category}]
                         </div>
-                        <h3 className="text-xl sm:text-2xl font-black text-white group-hover:text-cyan-400 transition-colors mb-2">
+                        <h3 className="text-xl sm:text-2xl font-black text-foreground group-hover:text-cyan-400 transition-colors mb-2">
                           {writing.title}
                         </h3>
                         <p className="text-gray-400 font-mono text-xs sm:text-sm mb-4">

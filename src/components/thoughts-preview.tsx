@@ -74,7 +74,7 @@ export function ThoughtsPreview() {
         >
           <div className="flex items-center justify-between mb-8">
             <h2 className="text-4xl md:text-5xl font-light">
-              <span className="text-white">LATEST</span>
+              <span className="text-foreground">LATEST</span>
               <span className="text-cyan-400 font-black neon-glow"> THOUGHTS</span>
             </h2>
             

@@ -136,7 +136,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
             transition={{ duration: 0.8 }}
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-6"
           >
-            <span className="tracking-tight text-white">
+            <span className="tracking-tight text-foreground">
               {heroContent.heroTitle}
             </span>
           </motion.h1>

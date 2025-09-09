@@ -1,0 +1,698 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e4]:
+      - link "JC John Connor Technology Strategist" [ref=e6]:
+        - /url: /
+        - generic [ref=e7]:
+          - generic [ref=e12]: JC
+          - generic [ref=e13]:
+            - generic [ref=e14]: John Connor
+            - generic [ref=e15]: Technology Strategist
+      - generic [ref=e16]:
+        - link "Home" [ref=e18]:
+          - /url: /
+          - generic [ref=e19]:
+            - img [ref=e20]
+            - generic [ref=e23]: Home
+        - link "Work" [ref=e27]:
+          - /url: /work
+          - generic [ref=e28]:
+            - img [ref=e29]
+            - generic [ref=e32]: Work
+        - link "Blog" [ref=e35]:
+          - /url: /blog
+          - generic [ref=e36]:
+            - img [ref=e37]
+            - generic [ref=e39]: Blog
+        - link "Philosophy" [ref=e42]:
+          - /url: /philosophy
+          - generic [ref=e43]:
+            - img [ref=e44]
+            - generic [ref=e52]: Philosophy
+        - link "Contact" [ref=e55]:
+          - /url: /contact
+          - generic [ref=e56]:
+            - img [ref=e57]
+            - generic [ref=e60]: Contact
+      - button [ref=e63]:
+        - img [ref=e64]
+  - main [ref=e70]:
+    - generic [ref=e76]:
+      - heading "JOHN CONNOR" [level=1] [ref=e77]:
+        - generic [ref=e78]: JOHN CONNOR
+      - paragraph [ref=e82]: Technology Strategist · Human-Centered Builder
+      - paragraph [ref=e83]:
+        - text: Bridging philosophy, economics, and technology to solve real product problems.
+        - generic [ref=e84]: AI & Web3 expertise. User research. Product-market fit.
+      - generic [ref=e85]:
+        - link "View My Work" [ref=e86]:
+          - /url: /work
+          - button "View My Work" [ref=e87]:
+            - generic [ref=e88]: View My Work
+        - link "My Philosophy" [ref=e90]:
+          - /url: /philosophy
+          - button "My Philosophy" [ref=e91]
+      - generic [ref=e94]: "[ SCROLL ] [ SCROLL ] [ SCROLL ]"
+    - generic [ref=e100]:
+      - paragraph [ref=e102]: Trusted by innovators across Web3, AI, and community platforms
+      - generic [ref=e107]:
+        - generic [ref=e109]:
+          - paragraph [ref=e110]: Chainlink
+          - paragraph [ref=e111]: Web3
+        - generic [ref=e113]:
+          - paragraph [ref=e114]: Algorand
+          - paragraph [ref=e115]: Blockchain
+        - generic [ref=e117]:
+          - paragraph [ref=e118]: Thrive Protocol
+          - paragraph [ref=e119]: DeFi
+        - generic [ref=e121]:
+          - paragraph [ref=e122]: Upland
+          - paragraph [ref=e123]: Gaming
+        - generic [ref=e125]:
+          - paragraph [ref=e126]: Mode Mobile
+          - paragraph [ref=e127]: FinTech
+        - generic [ref=e129]:
+          - paragraph [ref=e130]: Karma Circle
+          - paragraph [ref=e131]: Social
+        - generic [ref=e133]:
+          - paragraph [ref=e134]: Work+Shelter
+          - paragraph [ref=e135]: Impact
+        - generic [ref=e137]:
+          - paragraph [ref=e138]: 30+ Startups
+          - paragraph [ref=e139]: Various
+        - generic [ref=e141]:
+          - paragraph [ref=e142]: Chainlink
+          - paragraph [ref=e143]: Web3
+        - generic [ref=e145]:
+          - paragraph [ref=e146]: Algorand
+          - paragraph [ref=e147]: Blockchain
+        - generic [ref=e149]:
+          - paragraph [ref=e150]: Thrive Protocol
+          - paragraph [ref=e151]: DeFi
+        - generic [ref=e153]:
+          - paragraph [ref=e154]: Upland
+          - paragraph [ref=e155]: Gaming
+        - generic [ref=e157]:
+          - paragraph [ref=e158]: Mode Mobile
+          - paragraph [ref=e159]: FinTech
+        - generic [ref=e161]:
+          - paragraph [ref=e162]: Karma Circle
+          - paragraph [ref=e163]: Social
+        - generic [ref=e165]:
+          - paragraph [ref=e166]: Work+Shelter
+          - paragraph [ref=e167]: Impact
+        - generic [ref=e169]:
+          - paragraph [ref=e170]: 30+ Startups
+          - paragraph [ref=e171]: Various
+        - generic [ref=e173]:
+          - paragraph [ref=e174]: Chainlink
+          - paragraph [ref=e175]: Web3
+        - generic [ref=e177]:
+          - paragraph [ref=e178]: Algorand
+          - paragraph [ref=e179]: Blockchain
+        - generic [ref=e181]:
+          - paragraph [ref=e182]: Thrive Protocol
+          - paragraph [ref=e183]: DeFi
+        - generic [ref=e185]:
+          - paragraph [ref=e186]: Upland
+          - paragraph [ref=e187]: Gaming
+        - generic [ref=e189]:
+          - paragraph [ref=e190]: Mode Mobile
+          - paragraph [ref=e191]: FinTech
+        - generic [ref=e193]:
+          - paragraph [ref=e194]: Karma Circle
+          - paragraph [ref=e195]: Social
+        - generic [ref=e197]:
+          - paragraph [ref=e198]: Work+Shelter
+          - paragraph [ref=e199]: Impact
+        - generic [ref=e201]:
+          - paragraph [ref=e202]: 30+ Startups
+          - paragraph [ref=e203]: Various
+      - generic [ref=e204]:
+        - generic [ref=e205]:
+          - paragraph [ref=e206]: 50+
+          - paragraph [ref=e207]: Products Built
+        - generic [ref=e208]:
+          - paragraph [ref=e209]: 10+
+          - paragraph [ref=e210]: Years Experience
+        - generic [ref=e211]:
+          - paragraph [ref=e212]: $50M+
+          - paragraph [ref=e213]: Capital Facilitated
+        - generic [ref=e214]:
+          - paragraph [ref=e215]: 100+
+          - paragraph [ref=e216]: Founders Advised
+    - generic [ref=e221]:
+      - generic [ref=e222]:
+        - heading "PROVEN IMPACT" [level=2] [ref=e223]:
+          - generic [ref=e224]: PROVEN
+          - generic [ref=e225]: IMPACT
+        - paragraph [ref=e226]: Real outcomes from solving actual product problems
+      - generic [ref=e227]:
+        - generic [ref=e229]:
+          - img [ref=e231]
+          - paragraph [ref=e238]: $50M+
+          - paragraph [ref=e239]: Funding Enabled
+          - paragraph [ref=e240]: Through product-market fit
+        - generic [ref=e242]:
+          - img [ref=e244]
+          - paragraph [ref=e248]: 50+
+          - paragraph [ref=e249]: Product Problems Solved
+          - paragraph [ref=e250]: Usability & market fit issues
+        - generic [ref=e252]:
+          - img [ref=e254]
+          - paragraph [ref=e257]: 10+ Years
+          - paragraph [ref=e258]: Technology Strategy
+          - paragraph [ref=e259]: AI/Web3 & human-centered design
+        - generic [ref=e261]:
+          - img [ref=e263]
+          - paragraph [ref=e269]: 200+
+          - paragraph [ref=e270]: User Research Sessions
+          - paragraph [ref=e271]: Finding real product-market fit
+      - paragraph [ref=e273]:
+        - text: Not growth theater.
+        - generic [ref=e274]: Product solutions.
+    - img [ref=e276]
+    - generic [ref=e279]:
+      - generic [ref=e280]:
+        - heading "Consulting & Strategy Packages" [level=2] [ref=e281]:
+          - generic [ref=e282]:
+            - generic: Consulting
+            - generic: "&"
+            - generic: Strategy
+            - generic: Packages
+        - paragraph [ref=e284]: Ready to achieve more in less time? I offer bespoke strategy packages tailored for companies, startups and individuals. Each engagement is structured for quick wins and long-term resilience—drawing on a decade of experience turning emerging technologies into real-world solutions.
+      - generic [ref=e285]:
+        - generic [ref=e288]:
+          - generic [ref=e289]:
+            - img [ref=e291]
+            - generic [ref=e293]:
+              - heading "AI & Automation Sprints" [level=3] [ref=e294]
+              - paragraph [ref=e295]: Identify bottlenecks and design intelligent systems that replace busywork with automation.
+              - generic [ref=e296]:
+                - generic [ref=e299]: Bottleneck Analysis
+                - generic [ref=e302]: Intelligent System Design
+                - generic [ref=e305]: Automation Implementation
+          - link "Learn More" [ref=e306]:
+            - /url: /contact
+            - text: Learn More
+            - img [ref=e307]
+        - generic [ref=e311]:
+          - generic [ref=e312]:
+            - img [ref=e314]
+            - generic [ref=e317]:
+              - heading "Web3 & Tokenomics Advisory" [level=3] [ref=e318]
+              - paragraph [ref=e319]: Create sustainable token economies and grant frameworks rooted in transparency and real value.
+              - generic [ref=e320]:
+                - generic [ref=e323]: Token Economy Design
+                - generic [ref=e326]: Grant Frameworks
+                - generic [ref=e329]: Transparency Systems
+          - link "Learn More" [ref=e330]:
+            - /url: /contact
+            - text: Learn More
+            - img [ref=e331]
+        - generic [ref=e335]:
+          - generic [ref=e336]:
+            - img [ref=e338]
+            - generic [ref=e343]:
+              - heading "Ecosystem & Community Design" [level=3] [ref=e344]
+              - paragraph [ref=e345]: Build infrastructures that empower communities and align incentives across stakeholders.
+              - generic [ref=e346]:
+                - generic [ref=e349]: Community Infrastructure
+                - generic [ref=e352]: Incentive Alignment
+                - generic [ref=e355]: Stakeholder Mapping
+          - link "Learn More" [ref=e356]:
+            - /url: /contact
+            - text: Learn More
+            - img [ref=e357]
+        - generic [ref=e361]:
+          - generic [ref=e362]:
+            - img [ref=e364]
+            - generic [ref=e369]:
+              - heading "Product & Growth Accelerators" [level=3] [ref=e370]
+              - paragraph [ref=e371]: Rapid-fire workshops to refine product strategy, validate ideas, and accelerate go-to-market plans.
+              - generic [ref=e372]:
+                - generic [ref=e375]: Product Strategy
+                - generic [ref=e378]: Idea Validation
+                - generic [ref=e381]: Go-to-Market Planning
+          - link "Learn More" [ref=e382]:
+            - /url: /contact
+            - text: Learn More
+            - img [ref=e383]
+      - link "Solve Your Product Problems" [ref=e386]:
+        - /url: /contact
+        - button "Solve Your Product Problems" [ref=e387]
+    - img [ref=e389]
+    - generic [ref=e392]:
+      - generic [ref=e393]:
+        - heading "WORKING WITH ME" [level=2] [ref=e394]:
+          - generic [ref=e395]: WORKING
+          - generic [ref=e396]: WITH ME
+        - paragraph [ref=e397]: Structured transformation. Quick wins. Long-term impact.
+      - generic [ref=e398]:
+        - heading "The Process" [level=3] [ref=e399]
+        - generic [ref=e400]:
+          - generic [ref=e402]:
+            - generic [ref=e403]:
+              - img [ref=e405]
+              - generic [ref=e407]:
+                - heading "Discovery" [level=4] [ref=e408]
+                - paragraph [ref=e409]: Week 1
+            - list [ref=e410]:
+              - listitem [ref=e411]:
+                - img [ref=e412]
+                - generic [ref=e415]: Initial strategy call
+              - listitem [ref=e416]:
+                - img [ref=e417]
+                - generic [ref=e420]: Deep dive into your challenges
+              - listitem [ref=e421]:
+                - img [ref=e422]
+                - generic [ref=e425]: Audit existing systems
+              - listitem [ref=e426]:
+                - img [ref=e427]
+                - generic [ref=e430]: Define success metrics
+          - generic [ref=e432]:
+            - generic [ref=e433]:
+              - img [ref=e435]
+              - generic [ref=e443]:
+                - heading "Design" [level=4] [ref=e444]
+                - paragraph [ref=e445]: Week 2-3
+            - list [ref=e446]:
+              - listitem [ref=e447]:
+                - img [ref=e448]
+                - generic [ref=e451]: Solution architecture
+              - listitem [ref=e452]:
+                - img [ref=e453]
+                - generic [ref=e456]: Technology stack selection
+              - listitem [ref=e457]:
+                - img [ref=e458]
+                - generic [ref=e461]: Team alignment sessions
+              - listitem [ref=e462]:
+                - img [ref=e463]
+                - generic [ref=e466]: Roadmap creation
+          - generic [ref=e468]:
+            - generic [ref=e469]:
+              - img [ref=e471]
+              - generic [ref=e476]:
+                - heading "Build" [level=4] [ref=e477]
+                - paragraph [ref=e478]: Week 4-8
+            - list [ref=e479]:
+              - listitem [ref=e480]:
+                - img [ref=e481]
+                - generic [ref=e484]: Rapid prototyping
+              - listitem [ref=e485]:
+                - img [ref=e486]
+                - generic [ref=e489]: Weekly progress reviews
+              - listitem [ref=e490]:
+                - img [ref=e491]
+                - generic [ref=e494]: Continuous iteration
+              - listitem [ref=e495]:
+                - img [ref=e496]
+                - generic [ref=e499]: Team training
+          - generic [ref=e501]:
+            - generic [ref=e502]:
+              - img [ref=e504]
+              - generic [ref=e508]:
+                - heading "Scale" [level=4] [ref=e509]
+                - paragraph [ref=e510]: Ongoing
+            - list [ref=e511]:
+              - listitem [ref=e512]:
+                - img [ref=e513]
+                - generic [ref=e516]: Performance optimization
+              - listitem [ref=e517]:
+                - img [ref=e518]
+                - generic [ref=e521]: Growth strategy execution
+              - listitem [ref=e522]:
+                - img [ref=e523]
+                - generic [ref=e526]: Knowledge transfer
+              - listitem [ref=e527]:
+                - img [ref=e528]
+                - generic [ref=e531]: Long-term support
+      - generic [ref=e532]:
+        - heading "My Principles" [level=3] [ref=e533]
+        - generic [ref=e534]:
+          - generic [ref=e535]:
+            - img [ref=e536]
+            - generic [ref=e539]:
+              - heading "Radical Transparency" [level=4] [ref=e540]
+              - paragraph [ref=e541]: No black boxes. You understand every system we build and own the IP.
+          - generic [ref=e542]:
+            - img [ref=e543]
+            - generic [ref=e545]:
+              - heading "Speed to Value" [level=4] [ref=e546]
+              - paragraph [ref=e547]: First measurable impact within 2 weeks, not months.
+          - generic [ref=e548]:
+            - img [ref=e549]
+            - generic [ref=e554]:
+              - heading "Human-Centered" [level=4] [ref=e555]
+              - paragraph [ref=e556]: Technology serves your team, not the other way around.
+          - generic [ref=e557]:
+            - img [ref=e558]
+            - generic [ref=e561]:
+              - heading "No Vendor Lock-in" [level=4] [ref=e562]
+              - paragraph [ref=e563]: Open systems you can maintain and evolve without me.
+      - generic [ref=e564]:
+        - heading "What You Get" [level=3] [ref=e565]
+        - generic [ref=e566]:
+          - generic [ref=e567]:
+            - heading "Direct Access" [level=4] [ref=e568]:
+              - img [ref=e569]
+              - text: Direct Access
+            - paragraph [ref=e574]: Weekly calls, async communication, and rapid response times. I'm embedded in your team.
+          - generic [ref=e575]:
+            - heading "Strategic Thinking" [level=4] [ref=e576]:
+              - img [ref=e577]
+              - text: Strategic Thinking
+            - paragraph [ref=e585]: 15+ years of pattern recognition across industries, applied to your specific challenges.
+          - generic [ref=e586]:
+            - heading "Execution Power" [level=4] [ref=e587]:
+              - img [ref=e588]
+              - text: Execution Power
+            - paragraph [ref=e593]: I don't just advise—I build, ship, and iterate alongside your team.
+      - generic [ref=e594]:
+        - paragraph [ref=e595]: Ready to transform your organization?
+        - generic [ref=e596]:
+          - link "Schedule Discovery Call" [ref=e597]:
+            - /url: /contact
+            - button "Schedule Discovery Call" [ref=e598]:
+              - text: Schedule Discovery Call
+              - img [ref=e599]
+          - link "View Case Studies" [ref=e601]:
+            - /url: "#case-studies"
+            - button "View Case Studies" [ref=e602]:
+              - text: View Case Studies
+              - img [ref=e603]
+    - img [ref=e608]
+    - generic [ref=e611]:
+      - generic [ref=e612]:
+        - heading "Focus & Recent Apps" [level=2] [ref=e613]:
+          - generic [ref=e614]:
+            - generic: Focus
+            - generic: "&"
+            - generic: Recent
+            - generic: Apps
+        - paragraph [ref=e616]: I build and launch experimental apps to explore how technology can serve humanity—tools for collective decision-making, AI-driven matching, and community governance
+      - generic [ref=e617]:
+        - link "Featured Project Super Debate Community Platform An in-person debate platform for courage, growth and community. Strengthening communities through face-to-face intellectual discourse" [ref=e619]:
+          - /url: "#super-debate"
+          - generic [ref=e620]:
+            - generic [ref=e621]: Featured Project
+            - generic [ref=e623]:
+              - img [ref=e625]
+              - generic [ref=e630]:
+                - heading "Super Debate" [level=3] [ref=e631]:
+                  - text: Super Debate
+                  - img [ref=e632]
+                - paragraph [ref=e635]: Community Platform
+            - paragraph [ref=e636]: An in-person debate platform for courage, growth and community.
+            - paragraph [ref=e637]: Strengthening communities through face-to-face intellectual discourse
+        - link "Accelerate Web3 Infrastructure An ecosystem builder connecting Web3 founders, investors, and communities. Bridging builders with strategic resources and capital" [ref=e639]:
+          - /url: "#accelerate"
+          - generic [ref=e640]:
+            - generic [ref=e642]:
+              - img [ref=e644]
+              - generic [ref=e647]:
+                - heading "Accelerate" [level=3] [ref=e648]:
+                  - text: Accelerate
+                  - img [ref=e649]
+                - paragraph [ref=e652]: Web3 Infrastructure
+            - paragraph [ref=e653]: An ecosystem builder connecting Web3 founders, investors, and communities.
+            - paragraph [ref=e654]: Bridging builders with strategic resources and capital
+        - link "ImpactCrew Growth Programs Ecosystem growth programs focused on community building and strategic partnerships. Scaling communities through strategic partnerships" [ref=e656]:
+          - /url: "#impactcrew"
+          - generic [ref=e657]:
+            - generic [ref=e659]:
+              - img [ref=e661]
+              - generic [ref=e666]:
+                - heading "ImpactCrew" [level=3] [ref=e667]:
+                  - text: ImpactCrew
+                  - img [ref=e668]
+                - paragraph [ref=e671]: Growth Programs
+            - paragraph [ref=e672]: Ecosystem growth programs focused on community building and strategic partnerships.
+            - paragraph [ref=e673]: Scaling communities through strategic partnerships
+        - link "AlphaTask AI Automation AI automation consulting to eliminate busywork through intelligent systems. Freeing humans for high-context creative work" [ref=e675]:
+          - /url: "#alphatask"
+          - generic [ref=e676]:
+            - generic [ref=e678]:
+              - img [ref=e680]
+              - generic [ref=e682]:
+                - heading "AlphaTask" [level=3] [ref=e683]:
+                  - text: AlphaTask
+                  - img [ref=e684]
+                - paragraph [ref=e687]: AI Automation
+            - paragraph [ref=e688]: AI automation consulting to eliminate busywork through intelligent systems.
+            - paragraph [ref=e689]: Freeing humans for high-context creative work
+        - link "Polyval AI Tools A modular, AI-powered grant-scoring engine that compresses weeks of review into minutes. Transforming grant evaluation from weeks to minutes" [ref=e691]:
+          - /url: "#polyval"
+          - generic [ref=e692]:
+            - generic [ref=e694]:
+              - img [ref=e696]
+              - generic [ref=e698]:
+                - heading "Polyval" [level=3] [ref=e699]:
+                  - text: Polyval
+                  - img [ref=e700]
+                - paragraph [ref=e703]: AI Tools
+            - paragraph [ref=e704]: A modular, AI-powered grant-scoring engine that compresses weeks of review into minutes.
+            - paragraph [ref=e705]: Transforming grant evaluation from weeks to minutes
+    - generic [ref=e709]:
+      - generic [ref=e710]:
+        - heading "BATTLE-TESTED EXPERIENCE" [level=2] [ref=e711]:
+          - generic [ref=e712]: BATTLE-TESTED
+          - generic [ref=e713]: EXPERIENCE
+        - paragraph [ref=e714]: 15 years. Real impact. No bullshit.
+      - generic [ref=e715]:
+        - generic [ref=e716]:
+          - generic [ref=e717]: Current
+          - generic [ref=e718]:
+            - img [ref=e720]
+            - generic [ref=e725]:
+              - heading "Ecosystem Specialist" [level=3] [ref=e726]
+              - paragraph [ref=e727]: Thrive Protocol
+              - paragraph [ref=e728]:
+                - img [ref=e729]
+                - text: 2025–Present
+          - paragraph [ref=e731]: Managed $2M+ grant allocations across multiple chains, trained AI models to evaluate grants, and became head of ecosystem management in under two months.
+          - generic [ref=e732]:
+            - generic [ref=e733]: $2M+ Managed
+            - generic [ref=e734]: AI Grant Scoring
+            - generic [ref=e735]: Head of Ecosystem
+        - generic [ref=e736]:
+          - generic [ref=e737]:
+            - img [ref=e739]
+            - generic [ref=e742]:
+              - heading "Founder & Product Lead" [level=3] [ref=e743]
+              - paragraph [ref=e744]: Sparkblox
+              - paragraph [ref=e745]:
+                - img [ref=e746]
+                - text: 2021–2024
+          - paragraph [ref=e748]: Raised over $1M for NFT 2.0 infrastructure, forged partnerships with Chainlink and Algorand, and built a cross-functional team of 18.
+          - generic [ref=e749]:
+            - generic [ref=e750]: $1M+ Raised
+            - generic [ref=e751]: 18 Team Members
+            - generic [ref=e752]: Chainlink & Algorand
+        - generic [ref=e753]:
+          - generic [ref=e754]:
+            - img [ref=e756]
+            - generic [ref=e759]:
+              - heading "Product & Ops Manager" [level=3] [ref=e760]
+              - paragraph [ref=e761]: Upland
+              - paragraph [ref=e762]:
+                - img [ref=e763]
+                - text: 2020–2021
+          - paragraph [ref=e765]: Redesigned the game economy, launched the SPARK token, and scaled to 200K monthly active users with 15x revenue growth.
+          - generic [ref=e766]:
+            - generic [ref=e767]: 15x Revenue
+            - generic [ref=e768]: 200K MAU
+            - generic [ref=e769]: SPARK Token Launch
+        - generic [ref=e770]:
+          - generic [ref=e771]:
+            - img [ref=e773]
+            - generic [ref=e776]:
+              - heading "Technical Product Manager" [level=3] [ref=e777]
+              - paragraph [ref=e778]: Mode Mobile
+              - paragraph [ref=e779]:
+                - img [ref=e780]
+                - text: 2019–2020
+          - paragraph [ref=e782]: Built an earn-to-own device program that distributed 1M+ devices and returned $50M+ in value to users through tokenized rewards.
+          - generic [ref=e783]:
+            - generic [ref=e784]: 1M+ Devices
+            - generic [ref=e785]: $50M+ User Value
+            - generic [ref=e786]: Tokenized Rewards
+        - generic [ref=e787]:
+          - generic [ref=e788]:
+            - img [ref=e790]
+            - generic [ref=e795]:
+              - heading "Founder" [level=3] [ref=e796]
+              - paragraph [ref=e797]: HelpWith.co
+              - paragraph [ref=e798]:
+                - img [ref=e799]
+                - text: 2013–2018
+          - paragraph [ref=e801]: Created a peer-to-peer skills economy that onboarded 3,000+ providers, facilitated $500K+ in transactions with zero platform fees, and pioneered community-governed dispute resolution.
+          - generic [ref=e802]:
+            - generic [ref=e803]: $500K+ Transactions
+            - generic [ref=e804]: 0% Platform Fees
+            - generic [ref=e805]: Community Governance
+        - generic [ref=e806]:
+          - generic [ref=e807]: Current
+          - generic [ref=e808]:
+            - img [ref=e810]
+            - generic [ref=e813]:
+              - heading "Strategy Consultant" [level=3] [ref=e814]
+              - paragraph [ref=e815]: Independent
+              - paragraph [ref=e816]:
+                - img [ref=e817]
+                - text: 2018–Present
+          - paragraph [ref=e819]: Advised 30+ startups as a strategy consultant on product, growth, and ecosystem design.
+          - generic [ref=e820]:
+            - generic [ref=e821]: 30+ Startups
+            - generic [ref=e822]: Strategy & Growth
+            - generic [ref=e823]: Ecosystem Design
+    - img [ref=e825]
+    - generic [ref=e829]:
+      - generic [ref=e830]:
+        - heading "THOUGHT LEADERSHIP" [level=2] [ref=e831]:
+          - generic [ref=e832]: THOUGHT
+          - generic [ref=e833]: LEADERSHIP
+        - paragraph [ref=e834]: Strategic insights on technology, community, and human potential
+      - generic [ref=e835]:
+        - article [ref=e836]:
+          - link "Featured [PHILOSOPHY] Human-first Futurism Automation should free humans for high-context work. READ MORE" [ref=e837]:
+            - /url: /blog
+            - generic [ref=e838]:
+              - generic [ref=e839]: Featured
+              - generic [ref=e840]:
+                - img [ref=e842]
+                - generic [ref=e850]:
+                  - generic [ref=e851]: "[PHILOSOPHY]"
+                  - heading "Human-first Futurism" [level=3] [ref=e852]
+                  - paragraph [ref=e853]: Automation should free humans for high-context work.
+                  - generic [ref=e854]:
+                    - text: READ MORE
+                    - img [ref=e855]
+        - article [ref=e858]:
+          - link "[COMMUNITY] Debate as Growth Tool Intellectual sparring builds resilience and community. READ MORE" [ref=e859]:
+            - /url: /blog
+            - generic [ref=e861]:
+              - img [ref=e863]
+              - generic [ref=e868]:
+                - generic [ref=e869]: "[COMMUNITY]"
+                - heading "Debate as Growth Tool" [level=3] [ref=e870]
+                - paragraph [ref=e871]: Intellectual sparring builds resilience and community.
+                - generic [ref=e872]:
+                  - text: READ MORE
+                  - img [ref=e873]
+        - article [ref=e876]:
+          - link "Featured [ECONOMICS] Designing Abundance Open systems compound faster than walled gardens. READ MORE" [ref=e877]:
+            - /url: /blog
+            - generic [ref=e878]:
+              - generic [ref=e879]: Featured
+              - generic [ref=e880]:
+                - img [ref=e882]
+                - generic [ref=e884]:
+                  - generic [ref=e885]: "[ECONOMICS]"
+                  - heading "Designing Abundance" [level=3] [ref=e886]
+                  - paragraph [ref=e887]: Open systems compound faster than walled gardens.
+                  - generic [ref=e888]:
+                    - text: READ MORE
+                    - img [ref=e889]
+        - article [ref=e892]:
+          - link "[WEB3] Community-Owned Economies Communities should own their infrastructure. READ MORE" [ref=e893]:
+            - /url: /blog
+            - generic [ref=e895]:
+              - img [ref=e897]
+              - generic [ref=e900]:
+                - generic [ref=e901]: "[WEB3]"
+                - heading "Community-Owned Economies" [level=3] [ref=e902]
+                - paragraph [ref=e903]: Communities should own their infrastructure.
+                - generic [ref=e904]:
+                  - text: READ MORE
+                  - img [ref=e905]
+      - link "EXPLORE ALL WRITINGS" [ref=e909]:
+        - /url: /blog
+        - button "EXPLORE ALL WRITINGS" [ref=e910]:
+          - generic [ref=e911]: EXPLORE ALL WRITINGS
+    - img [ref=e916]
+    - generic [ref=e928]:
+      - generic [ref=e929]:
+        - heading "Product Expertise" [level=2] [ref=e930]
+        - paragraph [ref=e931]: Technical product leadership grounded in philosophy, economics, and behavioral theory— from local businesses to $50M+ startups.
+      - generic [ref=e932]:
+        - generic [ref=e934]:
+          - img [ref=e935]
+          - heading "Product Strategy & PMF" [level=3] [ref=e943]
+          - paragraph [ref=e944]: Finding product-market fit through deep user research and behavioral analysis.
+          - paragraph [ref=e945]: “Great products solve real problems, not hypothetical ones.”
+        - generic [ref=e947]:
+          - img [ref=e948]
+          - heading "User Research & Insights" [level=3] [ref=e953]
+          - paragraph [ref=e954]: Uncovering what users actually need through systematic research and testing.
+          - paragraph [ref=e955]: “Users tell you everything, if you know how to listen.”
+        - generic [ref=e957]:
+          - img [ref=e958]
+          - heading "Product Gap Analysis" [level=3] [ref=e962]
+          - paragraph [ref=e963]: Identifying and fixing usability issues that prevent product success.
+          - paragraph [ref=e964]: “The gap between what users need and what products deliver is opportunity.”
+        - generic [ref=e966]:
+          - img [ref=e967]
+          - heading "AI & Web3 Product Development" [level=3] [ref=e969]
+          - paragraph [ref=e970]: Leveraging cutting-edge technologies to solve complex product challenges.
+          - paragraph [ref=e971]: “New technology should enhance human capability, not replace judgment.”
+        - generic [ref=e973]:
+          - img [ref=e974]
+          - heading "Technology Strategy & Leadership" [level=3] [ref=e978]
+          - paragraph [ref=e979]: Bridging technical complexity with business value for scalable solutions.
+          - paragraph [ref=e980]: “Technical depth enables better product decisions.”
+        - generic [ref=e982]:
+          - img [ref=e983]
+          - heading "Behavioral Product Design" [level=3] [ref=e986]
+          - paragraph [ref=e987]: Applying economics and behavioral theory to create products that work with human nature.
+          - paragraph [ref=e988]: “Understanding humans is the key to building products they actually use.”
+    - img [ref=e990]
+    - generic [ref=e994]:
+      - heading "Ready to Solve Your Product Problems?" [level=2] [ref=e998]
+      - paragraph [ref=e999]: Let's find what's preventing your users from adopting your product and fix it.
+      - link "Book a Discovery Call" [ref=e1001]:
+        - /url: /contact
+        - button "Book a Discovery Call" [ref=e1002]:
+          - img [ref=e1003]
+          - text: Book a Discovery Call
+          - img [ref=e1005]
+      - paragraph [ref=e1007]: "Typical response time: Within 24 hours"
+  - contentinfo [ref=e1008]:
+    - generic [ref=e1009]:
+      - generic [ref=e1010]:
+        - generic [ref=e1011]:
+          - heading "About" [level=3] [ref=e1012]
+          - paragraph [ref=e1013]: Building systems that serve humanity. Technology should empower human judgment, not replace it.
+        - generic [ref=e1014]:
+          - heading "Quick Links" [level=3] [ref=e1015]
+          - list [ref=e1016]:
+            - listitem [ref=e1017]:
+              - link "Work" [ref=e1018]:
+                - /url: /work
+            - listitem [ref=e1019]:
+              - link "Philosophy" [ref=e1020]:
+                - /url: /philosophy
+            - listitem [ref=e1021]:
+              - link "Contact" [ref=e1022]:
+                - /url: /contact
+            - listitem [ref=e1023]:
+              - link "Features" [ref=e1024]:
+                - /url: /features
+        - generic [ref=e1025]:
+          - heading "Connect" [level=3] [ref=e1026]
+          - generic [ref=e1027]:
+            - link "Twitter" [ref=e1028]:
+              - /url: https://twitter.com/ablockunchained
+              - img [ref=e1029]
+            - link "LinkedIn" [ref=e1031]:
+              - /url: https://linkedin.com/in/johnconnor
+              - img [ref=e1032]
+            - link "Email" [ref=e1036]:
+              - /url: mailto:john@johnconnor.xyz
+              - img [ref=e1037]
+      - paragraph [ref=e1041]: © 2025 John Thomas Connor
+  - alert [ref=e1042]
+```
