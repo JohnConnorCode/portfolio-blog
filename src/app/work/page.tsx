@@ -8,6 +8,7 @@ import { AnimatedText, AnimatedLetters } from '@/components/animated-text'
 import { SectionDivider } from '@/components/section-divider'
 import { Experience } from '@/components/experience'
 import { CaseStudies } from '@/components/case-studies'
+import { PageWrapper } from '@/components/page-wrapper'
 
 const workCategories = [
   { value: 'all', label: 'All Work' },
