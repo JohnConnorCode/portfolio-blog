@@ -110,7 +110,7 @@ export function Navbar() {
                     className={cn(
                       'relative px-6 py-3 group overflow-hidden rounded-lg transition-all',
                       isActive
-                        ? 'text-primary bg-primary/10'
+                        ? 'text-foreground'
                         : 'text-muted-foreground hover:text-foreground hover:bg-foreground/5'
                     )}
                   >

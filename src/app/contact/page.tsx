@@ -220,15 +220,6 @@ export default function ContactPage() {
                     </svg>
                     <span className="text-sm font-mono text-white group-hover:text-cyan-400 transition-colors">@blockunchained</span>
                   </a>
-                  <a
-                    href="https://linkedin.com/in/johnconnor"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 p-3 border-2 border-gray-700 hover:border-cyan-400 bg-black/50 transition-all group"
-                  >
-                    <Linkedin className="w-5 h-5 text-cyan-400" />
-                    <span className="text-sm font-mono text-white group-hover:text-cyan-400 transition-colors">LinkedIn</span>
-                  </a>
                 </div>
               </div>
             </motion.div>
