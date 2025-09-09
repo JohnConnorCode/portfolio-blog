@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { sendEmailNotification } from '@/lib/notifications'
 
 // Rate limiting map
 interface RateLimit {
@@ -28,8 +29,8 @@ export async function POST(request: NextRequest) {
       )
     }
     
-    // Log the submission (in production, save to database)
-    console.log('Contact form submission:', {
+    // Send email notification
+    await sendEmailNotification({
       name,
       email,
       company,
