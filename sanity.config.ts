@@ -13,6 +13,7 @@ export default defineConfig({
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'production',
   
   basePath: '/studio',
+  apiVersion: '2024-01-01',
   
   plugins: [
     structureTool(), 
