@@ -135,9 +135,17 @@ export function WorkingWithMe() {
         <div className="mb-20">
           <h3 className="text-2xl font-bold mb-8 text-center">My Principles</h3>
           <div className="grid md:grid-cols-2 gap-6">
-            {principles.map((principle) => (
-              <div
+            {principles.map((principle, index) => (
+              <motion.div
                 key={principle.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ 
+                  duration: 0.5,
+                  delay: index * 0.1
+                }}
+                whileHover={{ scale: 1.02 }}
                 className="card-brutal group flex gap-4"
               >
                 <principle.icon className="w-8 h-8 text-cyan-400 group-hover:animate-pulse" />
@@ -145,7 +153,7 @@ export function WorkingWithMe() {
                   <h4 className="font-black mb-2 text-foreground group-hover:text-cyan-400 transition-colors">{principle.title}</h4>
                   <p className="text-gray-400 font-mono text-sm">{principle.description}</p>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>

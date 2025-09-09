@@ -90,10 +90,14 @@ export function Experience() {
             return (
               <motion.div
                 key={`${exp.company}-${exp.role}`}
-                whileHover={{ scale: 1.02 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
                 transition={{ 
-                  duration: 0.3
+                  duration: 0.5,
+                  delay: index * 0.1
                 }}
+                whileHover={{ scale: 1.02 }}
                 className={`card-brutal group ${
                   exp.current ? 'border-cyan-400' : ''
                 }`}
