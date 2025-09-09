@@ -9,21 +9,16 @@ interface UseViewportAnimationOptions {
   margin?: string // rootMargin for IntersectionObserver
 }
 
-type MarginString = `${string}` | `${string} ${string}` | `${string} ${string} ${string}` | `${string} ${string} ${string} ${string}`
-
 export function useViewportAnimation({
   threshold = 0.5,
   once = false,
-  margin = '-20% 0px -20% 0px' // Trigger when element is near middle
 }: UseViewportAnimationOptions = {}) {
   const ref = useRef<HTMLElement>(null)
   const [isInViewport, setIsInViewport] = useState(false)
   const [hasTriggered, setHasTriggered] = useState(false)
   
   // Use framer-motion's useInView for better performance
-  // @ts-ignore - Framer Motion types issue
   const isInView = useInView(ref, {
-    margin: margin as any,
     amount: threshold,
     once: false
   })

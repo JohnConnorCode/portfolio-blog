@@ -7,7 +7,7 @@ export const category = {
       name: 'title',
       title: 'Title',
       type: 'string',
-      validation: (Rule: {required: () => unknown}) => Rule.required(),
+      validation: (Rule: {required: () => unknown}) => Rule.required()
     },
     {
       name: 'slug',
@@ -17,7 +17,7 @@ export const category = {
         source: 'title',
         maxLength: 96,
       },
-      validation: (Rule: {required: () => unknown}) => Rule.required(),
+      validation: (Rule: {required: () => unknown}) => Rule.required()
     },
     {
       name: 'description',

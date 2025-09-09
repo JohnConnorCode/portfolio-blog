@@ -21,43 +21,28 @@ export function CallToAction() {
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl" />
           </div>
 
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-            Ready to Transform Your Business?
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
+            Ready to Solve Your Product Problems?
           </h2>
-          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Let&apos;s discuss how I can help you build systems that scale, optimize operations, and drive sustainable growth.
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+            Let&apos;s find what&apos;s preventing your users from adopting your product and fix it.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex justify-center">
             <Link href="/contact">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="group px-8 py-4 bg-primary text-primary-foreground rounded-lg font-semibold text-lg flex items-center gap-2 hover:shadow-xl hover:shadow-primary/25 transition-all"
+                className="group px-8 sm:px-10 py-4 sm:py-5 bg-foreground text-background font-bold text-base sm:text-lg flex items-center gap-3 hover:bg-primary transition-all"
               >
-                <MessageSquare className="w-5 h-5" />
-                Start a Project
+                <Calendar className="w-5 h-5" />
+                Book a Discovery Call
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </motion.button>
             </Link>
-            
-            <a
-              href="#" // Add your calendar link
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="group px-8 py-4 glass rounded-lg font-semibold text-lg flex items-center gap-2 hover:bg-primary/10 transition-all"
-              >
-                <Calendar className="w-5 h-5" />
-                Schedule a Call
-              </motion.button>
-            </a>
           </div>
 
-          <p className="text-sm text-muted-foreground mt-8">
+          <p className="text-xs sm:text-sm text-muted-foreground mt-8">
             Typical response time: Within 24 hours
           </p>
         </motion.div>

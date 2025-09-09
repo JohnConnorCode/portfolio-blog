@@ -30,10 +30,10 @@ const principles = [
 ]
 
 const influences = [
+  { author: 'Daniel Kahneman', work: 'Behavioral economics and decision-making' },
+  { author: 'Clayton Christensen', work: 'Jobs-to-be-done theory' },
   { author: 'Friedrich Nietzsche', work: 'On becoming who you are' },
-  { author: 'Ray Kurzweil', work: 'The acceleration of technology' },
-  { author: 'Marshall McLuhan', work: 'Understanding media as extensions of man' },
-  { author: 'Viktor Frankl', work: 'The search for meaning' },
+  { author: 'Richard Thaler', work: 'Nudge theory and behavioral insights' },
 ]
 
 export default function PhilosophyPage() {
@@ -55,14 +55,14 @@ export default function PhilosophyPage() {
           
           <div className="prose prose-lg mx-auto text-muted-foreground">
             <p className="text-xl leading-relaxed mb-6">
-              I&apos;ve spent twenty years thinking about the future—since I was sixteen, 
-              standing at a debate podium, arguing about worlds that didn&apos;t yet exist.
+              I&apos;ve spent twenty years thinking about how humans and technology intersect—since I was sixteen, 
+              standing at debate podiums, arguing about product decisions and market forces that didn&apos;t yet exist.
             </p>
             
             <p className="text-xl leading-relaxed">
-              What I&apos;ve learned is this: the current moment is just a moment. Culture, 
-              meaning, values—they&apos;re all in flux. We are becoming something different, 
-              always. The question is: what do we choose to conserve?
+              What I&apos;ve learned is this: great products aren&apos;t just built, they&apos;re discovered. 
+              Through deep user research, behavioral economics, and philosophical inquiry into what humans 
+              actually need versus what they think they want.
             </p>
           </div>
         </motion.div>
@@ -78,17 +78,17 @@ export default function PhilosophyPage() {
             as="h2" 
             className="text-3xl sm:text-4xl font-bold mb-8 text-center"
           >
-            Human-first futurism
+            Technical Product Philosophy
           </AnimatedText>
           
           <FadeInText delay={0.3}>
             <div className="prose prose-lg mx-auto text-muted-foreground space-y-6">
               <p className="text-lg leading-relaxed">
-                I grew up debating ideas and reading philosophers like Nietzsche while studying futurists like Ray Kurzweil. 
-                That blend of rigorous argument and expansive vision shapes my work today. I&apos;ve launched startups, 
-                raised millions, led high-growth teams and advised dozens of tech companies. Every project—whether 
-                launching an NFT 2.0 platform or running grant programs—has reinforced a simple principle: automation 
-                should free humans for high-context work, and open systems compound faster than walled gardens.
+                I grew up debating ideas, reading philosophers like Nietzsche, and studying behavioral economists 
+                like Daniel Kahneman. That blend of rigorous argument, philosophical depth, and behavioral insight 
+                shapes my product work today. I&apos;ve worked with everyone from local hummus companies to startups 
+                with $50M+ funding, solving real product problems through user research and market analysis. 
+                Every project reinforces a core principle: understand the human first, then build the solution.
               </p>
             </div>
           </FadeInText>
@@ -98,16 +98,16 @@ export default function PhilosophyPage() {
             className="text-2xl sm:text-3xl font-bold mb-6 text-center mt-12"
             delay={0.4}
           >
-            Why I created Super Debate
+            My Product Approach
           </AnimatedText>
           
           <FadeInText delay={0.5}>
             <div className="prose prose-lg mx-auto text-muted-foreground space-y-6">
               <p className="text-lg leading-relaxed">
-                Super Debate is a live, in-person debate platform built on the belief that growth comes from challenges. 
-                It&apos;s about choosing courage over perfection, learning through mistakes and embarrassment, and 
-                strengthening communities by talking face-to-face. This ethos guides all my work: technology must 
-                empower human judgment, not replace it.
+                Great products emerge from understanding both technical constraints and human behavior. I combine 
+                deep technical knowledge (AI, Web3, systems architecture) with behavioral economics and user 
+                research to find what users actually need. This isn&apos;t about building features—it&apos;s about 
+                solving real problems that create genuine value.
               </p>
             </div>
           </FadeInText>
@@ -124,23 +124,22 @@ export default function PhilosophyPage() {
             <div className="grid md:grid-cols-2 gap-6 mb-8">
               <div className="p-6 border border-foreground/10 hover:border-foreground/30 transition-all">
                 <p className="text-lg leading-relaxed">
-                  Build systems that reward delivered value.
+                  Talk to users extensively—behavioral insights beat assumptions every time.
                 </p>
               </div>
               <div className="p-6 border border-foreground/10 hover:border-foreground/30 transition-all">
                 <p className="text-lg leading-relaxed">
-                  Design processes that eliminate busywork so people can focus on creative, high-impact work.
+                  Find the product gaps—identify what&apos;s preventing user adoption and business growth.
                 </p>
               </div>
               <div className="p-6 border border-foreground/10 hover:border-foreground/30 transition-all">
                 <p className="text-lg leading-relaxed">
-                  Create open frameworks where communities own and govern their infrastructure.
+                  Apply technical depth—use AI and Web3 thoughtfully, not because they&apos;re trendy.
                 </p>
               </div>
               <div className="p-6 border border-foreground/10 hover:border-foreground/30 transition-all">
                 <p className="text-lg leading-relaxed">
-                  Make complexity simple—AI models that reduce weeks of grant evaluation to hours, or token 
-                  economies that bring transparency and fairness to games and marketplaces.
+                  Solve real problems—focus on what users actually need, not what we think they should want.
                 </p>
               </div>
             </div>
@@ -205,18 +204,18 @@ export default function PhilosophyPage() {
           transition={{ duration: 0.8, delay: 0.5 }}
           className="mb-20 p-8 border border-foreground/10"
         >
-          <h2 className="text-3xl font-bold mb-6">Super Debate: A Manifestation</h2>
+          <h2 className="text-3xl font-bold mb-6">Product Philosophy in Practice</h2>
           
           <p className="text-lg text-muted-foreground mb-6">
-            Super Debate isn&apos;t just a project—it&apos;s a philosophy made real. 
-            In a world increasingly mediated by screens, it brings people together 
-            in person to engage with ideas that matter.
+            Every product decision I make is grounded in understanding human behavior. 
+            This means extensive user interviews, behavioral analysis, and testing 
+            assumptions against real-world usage patterns.
           </p>
           
           <p className="text-lg text-muted-foreground mb-6">
-            It&apos;s about challenging yourself, being vulnerable in community, 
-            and growing stronger through the discomfort of public discourse. 
-            It&apos;s about preserving the ancient art of rhetoric in a digital age.
+            Whether it&apos;s a local business trying to understand their customers or a 
+            high-growth startup building AI products, the fundamentals are the same: 
+            solve real problems for real people, guided by data and human insight.
           </p>
           
           <Link href="/work#super-debate">
@@ -225,7 +224,7 @@ export default function PhilosophyPage() {
               whileTap={{ scale: 0.98 }}
               className="px-8 py-3 border-2 border-foreground/20 hover:border-foreground hover:bg-foreground hover:text-background transition-all duration-300"
             >
-              Learn About Super Debate
+              See My Product Work
             </motion.button>
           </Link>
         </motion.div>

@@ -1,39 +1,97 @@
 import { notFound } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
 import { createStaticClient } from '@/lib/supabase/static'
-import { motion } from 'framer-motion'
+import { sanityClient } from '@/lib/sanity/client'
+import { postBySlugQuery } from '@/lib/sanity/queries'
+import { PortableText } from '@portabletext/react'
 import Link from 'next/link'
 import { Calendar, Clock, ArrowLeft, User } from 'lucide-react'
 import { formatDate } from '@/lib/utils'
-
-export const dynamic = 'force-dynamic'
+import { getAllBlogPosts, getBlogPost } from '@/lib/blog-posts'
 
 export async function generateStaticParams() {
-  const supabase = createStaticClient()
-  const { data: posts } = await supabase
-    .from('posts')
-    .select('slug')
-    .eq('published', true)
+  // Get static blog posts
+  const staticPosts = getAllBlogPosts()
   
-  return posts?.map((post) => ({
-    slug: post.slug,
-  })) || []
+  // Try to get posts from Supabase
+  let supabasePosts: any[] = []
+  try {
+    const supabase = createStaticClient()
+    const { data } = await supabase
+      .from('posts')
+      .select('slug')
+      .eq('published', true)
+    supabasePosts = data || []
+  } catch (error) {
+    console.log('Using static posts only')
+  }
+  
+  // Combine both sources
+  const allSlugs = [
+    ...staticPosts.map(post => ({ slug: post.slug })),
+    ...supabasePosts.map(post => ({ slug: post.slug }))
+  ]
+  
+  return allSlugs
 }
 
 async function getPost(slug: string) {
-  const supabase = await createClient()
-  const { data, error } = await supabase
-    .from('posts')
-    .select('*')
-    .eq('slug', slug)
-    .eq('published', true)
-    .single()
+  // Try static posts first
+  const staticPost = getBlogPost(slug)
+  if (staticPost) {
+    return {
+      title: staticPost.title,
+      slug: staticPost.slug,
+      excerpt: staticPost.excerpt,
+      content: staticPost.content,
+      category: staticPost.category,
+      published_at: staticPost.publishedAt,
+      read_time: staticPost.readTime,
+      author_name: staticPost.author,
+      is_static: true
+    }
+  }
+  
+  // Try Sanity
+  try {
+    const sanityPost = await sanityClient.fetch(postBySlugQuery, { slug })
+    if (sanityPost) {
+      return {
+        ...sanityPost,
+        title: sanityPost.title,
+        slug: sanityPost.slug?.current || slug,
+        excerpt: sanityPost.excerpt,
+        content: sanityPost.body, // Portable Text
+        category: sanityPost.categories?.[0]?.title,
+        created_at: sanityPost.publishedAt,
+        published_at: sanityPost.publishedAt,
+        author_name: sanityPost.author?.name || 'John Connor',
+        featured_image: sanityPost.mainImage,
+        is_sanity: true // Flag to know it's from Sanity
+      }
+    }
+  } catch (error) {
+    console.log('Trying Supabase for post:', slug)
+  }
+  
+  // Fallback to Supabase
+  try {
+    const supabase = await createClient()
+    const { data, error } = await supabase
+      .from('posts')
+      .select('*')
+      .eq('slug', slug)
+      .eq('published', true)
+      .single()
 
-  if (error || !data) {
-    return null
+    if (!error && data) {
+      return data
+    }
+  } catch (error) {
+    console.log('Post not found in Supabase')
   }
 
-  return data
+  return null
 }
 
 export default async function BlogPostPage({ 
@@ -114,7 +172,13 @@ export default async function BlogPostPage({
 
         {/* Content */}
         <div className="prose prose-lg prose-neutral dark:prose-invert max-w-none">
-          <div dangerouslySetInnerHTML={{ __html: post.content || '' }} />
+          {post.is_sanity ? (
+            <PortableText value={post.content} />
+          ) : post.is_static ? (
+            <div dangerouslySetInnerHTML={{ __html: post.content || '' }} />
+          ) : (
+            <div dangerouslySetInnerHTML={{ __html: post.content || '' }} />
+          )}
         </div>
 
         {/* Tags */}

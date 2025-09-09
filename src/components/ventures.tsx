@@ -56,17 +56,17 @@ export function Ventures() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
           <AnimatedText
             as="h2"
-            className="text-4xl sm:text-5xl font-bold mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6"
           >
-            Current Focus & Recent Apps
+            Focus & Recent Apps
           </AnimatedText>
           <FadeInText delay={0.2}>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
               I build and launch experimental apps to explore how technology can serve humanity—tools for 
               collective decision-making, AI-driven matching, and community governance
             </p>
@@ -81,6 +81,7 @@ export function Ventures() {
                 key={venture.name}
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
+                whileHover={{ scale: 1.02, y: -5 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className={`relative group ${
@@ -103,22 +104,22 @@ export function Ventures() {
                           <Icon className="w-6 h-6" />
                         </div>
                         <div>
-                          <h3 className="text-2xl font-bold mb-1 flex items-center gap-2">
+                          <h3 className="text-xl sm:text-2xl font-bold mb-1 flex items-center gap-2">
                             {venture.name}
                             <ArrowUpRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
                           </h3>
-                          <p className="text-sm text-muted-foreground uppercase tracking-wider">
+                          <p className="text-xs sm:text-sm text-muted-foreground uppercase tracking-wider">
                             {venture.category}
                           </p>
                         </div>
                       </div>
                     </div>
                     
-                    <p className="text-lg text-muted-foreground mb-4">
+                    <p className="text-sm sm:text-base md:text-lg text-muted-foreground mb-4">
                       {venture.description}
                     </p>
                     
-                    <p className="text-sm font-semibold text-primary">
+                    <p className="text-xs sm:text-sm font-semibold text-primary">
                       {venture.impact}
                     </p>
                   </div>

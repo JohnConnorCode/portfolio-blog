@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import { useRouter } from 'next/navigation'
-import { hash } from 'bcryptjs'
 
 // Protected inline editor
 export default function EditPage() {
@@ -19,9 +18,9 @@ export default function EditPage() {
     
     metrics: [
       { number: '$50M+', label: 'Capital Facilitated', context: 'Through strategic consulting' },
-      { number: '10,000+', label: 'Products Launched', context: 'From concept to scale' },
-      { number: '15 Years', label: 'Strategic Leadership', context: 'Consulting & product strategy' },
-      { number: '3 Cities', label: 'Community Networks', context: 'SF, Austin, NYC debate clubs' }
+      { number: '50+', label: 'Products Shipped', context: 'From concept to scale' },
+      { number: '10+ Years', label: 'Strategic Leadership', context: 'Consulting & product strategy' },
+      { number: '100+', label: 'Founders Advised', context: 'Strategic consulting & mentorship' }
     ]
   })
   

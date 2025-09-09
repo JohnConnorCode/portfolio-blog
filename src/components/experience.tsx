@@ -1,6 +1,7 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { useRef } from 'react'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import { Calendar, Users, TrendingUp, Code, Briefcase } from 'lucide-react'
 import { AnimatedText, FadeInText } from '@/components/animated-text'
 
@@ -58,15 +59,27 @@ const experiences = [
 ]
 
 export function Experience() {
+  const containerRef = useRef<HTMLDivElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  })
+  
+  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0])
+  const y = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [50, 0, 0, -50])
+
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto">
+    <section ref={containerRef} className="py-20 px-4 sm:px-6 lg:px-8 relative">
+      <motion.div 
+        style={{ opacity, y }}
+        className="max-w-6xl mx-auto"
+      >
         <div className="text-center mb-16">
           <h2 className="heading-section mb-6">
             <span style={{ color: 'var(--white)', fontWeight: 300 }}>BATTLE-TESTED</span>
             <span className="text-gradient" style={{ fontWeight: 700 }}> EXPERIENCE</span>
           </h2>
-          <p className="text-lg font-light tracking-wide max-w-3xl mx-auto" style={{ color: 'var(--gray-400)' }}>
+          <p className="text-base sm:text-lg font-light tracking-wide max-w-3xl mx-auto" style={{ color: 'var(--gray-400)' }}>
             15 years. Real impact. No bullshit.
           </p>
         </div>
@@ -75,8 +88,17 @@ export function Experience() {
           {experiences.map((exp, index) => {
             const Icon = exp.icon
             return (
-              <div
+              <motion.div
                 key={`${exp.company}-${exp.role}`}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ scale: 1.02 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ 
+                  duration: 0.5, 
+                  delay: index * 0.1,
+                  ease: "easeOut"
+                }}
                 className={`card-brutal group ${
                   exp.current ? 'border-cyan-400' : ''
                 }`}
@@ -92,16 +114,16 @@ export function Experience() {
                     <Icon className="w-5 h-5" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-bold">{exp.role}</h3>
-                    <p className="text-lg text-foreground/80">{exp.company}</p>
-                    <p className="text-sm text-muted-foreground flex items-center gap-2 mt-1">
+                    <h3 className="text-lg sm:text-xl font-bold">{exp.role}</h3>
+                    <p className="text-base sm:text-lg text-foreground/80">{exp.company}</p>
+                    <p className="text-xs sm:text-sm text-muted-foreground flex items-center gap-2 mt-1">
                       <Calendar className="w-3 h-3" />
                       {exp.period}
                     </p>
                   </div>
                 </div>
                 
-                <p className="text-muted-foreground mb-4">
+                <p className="text-sm sm:text-base text-muted-foreground mb-4">
                   {exp.description}
                 </p>
                 
@@ -109,17 +131,17 @@ export function Experience() {
                   {exp.metrics.map((metric) => (
                     <span
                       key={metric}
-                      className="px-3 py-1 text-xs border border-foreground/20 font-medium"
+                      className="px-2 sm:px-3 py-1 text-xs sm:text-xs border border-foreground/20 font-medium"
                     >
                       {metric}
                     </span>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             )
           })}
         </div>
-      </div>
+      </motion.div>
     </section>
   )
 }

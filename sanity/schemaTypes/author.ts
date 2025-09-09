@@ -7,7 +7,7 @@ export const author = {
       name: 'name',
       title: 'Name',
       type: 'string',
-      validation: (Rule: {required: () => unknown}) => Rule.required(),
+      validation: (Rule: {required: () => unknown}) => Rule.required()
     },
     {
       name: 'slug',
@@ -17,6 +17,7 @@ export const author = {
         source: 'name',
         maxLength: 96,
       },
+      validation: (Rule: {required: () => unknown}) => Rule.required()
     },
     {
       name: 'image',
@@ -29,15 +30,7 @@ export const author = {
     {
       name: 'bio',
       title: 'Bio',
-      type: 'array',
-      of: [
-        {
-          title: 'Block',
-          type: 'block',
-          styles: [{ title: 'Normal', value: 'normal' }],
-          lists: [],
-        },
-      ],
+      type: 'text',
     },
   ],
   preview: {

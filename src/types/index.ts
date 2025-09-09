@@ -1,3 +1,6 @@
+import { ReactNode } from 'react'
+import { TypedObject } from '@portabletext/types'
+
 export interface BlogPost {
   _id: string
   title: string
@@ -53,6 +56,39 @@ export interface Project {
   category: string
   completedAt: string
   status: "completed" | "in-progress" | "planned"
+}
+
+export interface Thought {
+  _id: string
+  content: TypedObject[] // Portable Text content
+  tags?: string[]
+  mood?: 'fired-up' | 'contemplative' | 'building' | 'learning' | 'insight' | 'focused' | 'questioning'
+  publishedAt: string
+  pinned?: boolean
+}
+
+// PortableText types for component props
+export interface PortableTextImageValue {
+  asset?: {
+    url?: string
+  }
+  alt?: string
+  caption?: string
+}
+
+export interface PortableTextCodeValue {
+  filename?: string
+  language?: string
+  code: string
+}
+
+export interface PortableTextLinkValue {
+  href: string
+}
+
+export interface PortableTextComponentProps {
+  value: PortableTextImageValue | PortableTextCodeValue | PortableTextLinkValue
+  children?: ReactNode
 }
 
 export interface SiteConfig {

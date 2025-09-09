@@ -6,6 +6,7 @@ import { ArrowUpRight, Users, TrendingUp, Zap, MessageSquare, Heart, Globe } fro
 import { useState } from 'react'
 import { AnimatedText, AnimatedLetters } from '@/components/animated-text'
 import { SectionDivider } from '@/components/section-divider'
+import { Experience } from '@/components/experience'
 
 const workCategories = [
   { value: 'all', label: 'All Work' },
@@ -223,6 +224,10 @@ export default function WorkPage() {
         </div>
       </section>
 
+      {/* Experience Section */}
+      <SectionDivider variant="geometric" />
+      <Experience />
+      
       {/* CTA Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 border-t border-foreground/10">
         <div className="max-w-4xl mx-auto text-center">

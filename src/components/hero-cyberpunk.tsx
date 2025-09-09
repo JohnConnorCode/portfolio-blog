@@ -4,7 +4,20 @@ import { useEffect, useRef, useState } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import Link from 'next/link'
 
-export function HeroCyberpunk() {
+interface HeroContent {
+  heroTitle?: string
+  heroTagline?: string
+  heroDescription?: string
+  heroHighlight?: string
+}
+
+export function HeroCyberpunk({ content }: { content?: HeroContent }) {
+  const heroContent = {
+    heroTitle: content?.heroTitle || 'JOHN CONNOR',
+    heroTagline: content?.heroTagline || 'Product Strategist · Growth Catalyst',
+    heroDescription: content?.heroDescription || 'Transforming ideas into scalable products through strategic iteration.',
+    heroHighlight: content?.heroHighlight || 'AI-powered building. Strategic consulting. Rapid growth.'
+  }
   const containerRef = useRef<HTMLDivElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
@@ -83,7 +96,7 @@ export function HeroCyberpunk() {
   }, [])
   
   return (
-    <section ref={containerRef} className="relative min-h-screen overflow-hidden" style={{ background: 'var(--black)' }}>
+    <section ref={containerRef} className="relative min-h-screen overflow-hidden -mt-24 pt-24" style={{ background: 'var(--black)' }}>
       {/* Matrix rain background */}
       <canvas
         ref={canvasRef}
@@ -121,11 +134,10 @@ export function HeroCyberpunk() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-6xl md:text-8xl font-black mb-6"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-6"
           >
-            <span className="tracking-tight">
-              <span className="text-white font-light">JOHN</span>
-              <span className="text-cyan-400 neon-glow font-black"> CONNOR</span>
+            <span className="tracking-tight text-white">
+              {heroContent.heroTitle}
             </span>
           </motion.h1>
           
@@ -138,8 +150,8 @@ export function HeroCyberpunk() {
           >
             <div className="inline-block relative">
               <div className="absolute inset-0 bg-cyan-400 blur-xl opacity-50 animate-pulse" />
-              <p className="relative text-xl md:text-2xl font-mono uppercase tracking-wider backdrop-blur" style={{ color: 'var(--cyan-400)', padding: 'var(--space-2) var(--space-4)', background: 'rgba(0,0,0,0.9)', border: '1px solid rgba(0, 212, 255, 0.3)' }}>
-                Product Strategist · Growth Catalyst
+              <p className="relative text-lg sm:text-xl md:text-2xl font-mono uppercase tracking-wider backdrop-blur" style={{ color: 'var(--cyan-400)', padding: 'var(--space-2) var(--space-4)', background: 'rgba(0,0,0,0.9)', border: '1px solid rgba(0, 212, 255, 0.3)' }}>
+                {heroContent.heroTagline}
               </p>
             </div>
           </motion.div>
@@ -149,11 +161,11 @@ export function HeroCyberpunk() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.8 }}
-            className="text-lg md:text-xl text-gray-300 mb-12 max-w-3xl mx-auto font-mono"
+            className="text-base sm:text-lg md:text-xl text-gray-300 mb-12 max-w-3xl mx-auto font-mono"
           >
-            Transforming ideas into scalable products through strategic iteration.
+            {heroContent.heroDescription}
             <br />
-            <span className="text-cyan-400">AI-powered building. Strategic consulting. Rapid growth.</span>
+            <span className="text-cyan-400">{heroContent.heroHighlight}</span>
           </motion.p>
           
           {/* CTA Buttons with brutal design */}
@@ -203,9 +215,9 @@ export function HeroCyberpunk() {
         </div>
       </motion.div>
       
-      {/* Corner accents - moved down to avoid nav */}
-      <div className="absolute top-20 left-0 w-24 h-24" style={{ borderLeft: 'var(--border-thin) solid rgba(0, 212, 255, 0.3)', borderTop: 'var(--border-thin) solid rgba(0, 212, 255, 0.3)' }} />
-      <div className="absolute top-20 right-0 w-24 h-24" style={{ borderRight: 'var(--border-thin) solid rgba(0, 212, 255, 0.3)', borderTop: 'var(--border-thin) solid rgba(0, 212, 255, 0.3)' }} />
+      {/* Corner accents */}
+      <div className="absolute top-24 left-0 w-24 h-24" style={{ borderLeft: 'var(--border-thin) solid rgba(0, 212, 255, 0.3)', borderTop: 'var(--border-thin) solid rgba(0, 212, 255, 0.3)' }} />
+      <div className="absolute top-24 right-0 w-24 h-24" style={{ borderRight: 'var(--border-thin) solid rgba(0, 212, 255, 0.3)', borderTop: 'var(--border-thin) solid rgba(0, 212, 255, 0.3)' }} />
       <div className="absolute bottom-0 left-0 w-32 h-32 border-l-4 border-b-4 border-cyan-400" />
       <div className="absolute bottom-0 right-0 w-32 h-32 border-r-4 border-b-4 border-cyan-400" />
     </section>

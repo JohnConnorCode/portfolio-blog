@@ -65,7 +65,7 @@ export function Stats() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ y: -5 }}
+                whileHover={{ scale: 1.02, y: -5 }}
                 className="glass rounded-xl p-6 text-center group hover:bg-primary/5 transition-colors"
               >
                 <motion.div

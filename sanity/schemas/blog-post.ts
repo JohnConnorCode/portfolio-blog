@@ -7,7 +7,7 @@ export const blogPost = {
       name: 'title',
       title: 'Title',
       type: 'string',
-      validation: (Rule: any) => Rule.required(),
+      validation: (Rule: {required: () => unknown}) => Rule.required(),
     },
     {
       name: 'slug',
@@ -17,7 +17,7 @@ export const blogPost = {
         source: 'title',
         maxLength: 96,
       },
-      validation: (Rule: any) => Rule.required(),
+      validation: (Rule: {required: () => unknown}) => Rule.required(),
     },
     {
       name: 'author',
@@ -124,9 +124,9 @@ export const blogPost = {
       author: 'author.name',
       media: 'mainImage',
     },
-    prepare(selection: any) {
+    prepare(selection: Record<string, unknown>) {
       const { author } = selection
-      return { ...selection, subtitle: author && `by ${author}` }
+      return { ...selection, subtitle: author ? `by ${String(author)}` : undefined }
     },
   },
 }

@@ -74,22 +74,22 @@ export function ClientLogos() {
           transition={{ delay: 0.5 }}
           className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6 text-center"
         >
-          <div>
-            <p className="text-3xl font-bold text-primary">30+</p>
-            <p className="text-sm text-muted-foreground">Products Shipped</p>
-          </div>
-          <div>
-            <p className="text-3xl font-bold text-primary">15+</p>
+          <motion.div whileHover={{ scale: 1.05, y: -2 }} transition={{ duration: 0.3 }}>
+            <p className="text-3xl font-bold text-primary">50+</p>
+            <p className="text-sm text-muted-foreground">Products Built</p>
+          </motion.div>
+          <motion.div whileHover={{ scale: 1.05, y: -2 }} transition={{ duration: 0.3 }}>
+            <p className="text-3xl font-bold text-primary">10+</p>
             <p className="text-sm text-muted-foreground">Years Experience</p>
-          </div>
-          <div>
+          </motion.div>
+          <motion.div whileHover={{ scale: 1.05, y: -2 }} transition={{ duration: 0.3 }}>
             <p className="text-3xl font-bold text-primary">$50M+</p>
-            <p className="text-sm text-muted-foreground">Value Created</p>
-          </div>
-          <div>
-            <p className="text-3xl font-bold text-primary">10K+</p>
-            <p className="text-sm text-muted-foreground">Users Impacted</p>
-          </div>
+            <p className="text-sm text-muted-foreground">Capital Facilitated</p>
+          </motion.div>
+          <motion.div whileHover={{ scale: 1.05, y: -2 }} transition={{ duration: 0.3 }}>
+            <p className="text-3xl font-bold text-primary">100+</p>
+            <p className="text-sm text-muted-foreground">Founders Advised</p>
+          </motion.div>
         </motion.div>
       </div>
     </section>

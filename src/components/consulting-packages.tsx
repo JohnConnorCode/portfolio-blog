@@ -43,17 +43,17 @@ export function ConsultingPackages() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
           <AnimatedText
             as="h2"
-            className="text-4xl sm:text-5xl font-bold mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6"
           >
             Consulting & Strategy Packages
           </AnimatedText>
           <FadeInText delay={0.2}>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
               Ready to achieve more in less time? I offer bespoke strategy packages tailored for companies, 
               startups and individuals. Each engagement is structured for quick wins and long-term 
               resilience—drawing on a decade of experience turning emerging technologies into real-world solutions.
@@ -80,15 +80,15 @@ export function ConsultingPackages() {
                       <Icon className="w-6 h-6" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-2xl font-bold mb-3">{pkg.name}</h3>
-                      <p className="text-muted-foreground mb-4">
+                      <h3 className="text-xl sm:text-2xl font-bold mb-3">{pkg.name}</h3>
+                      <p className="text-sm sm:text-base text-muted-foreground mb-4">
                         {pkg.description}
                       </p>
                       <div className="space-y-2">
                         {pkg.highlights.map((highlight) => (
                           <div key={highlight} className="flex items-center gap-2 text-sm">
                             <span className="w-1 h-1 bg-primary rounded-full" />
-                            <span className="text-muted-foreground">{highlight}</span>
+                            <span className="text-xs sm:text-sm text-muted-foreground">{highlight}</span>
                           </div>
                         ))}
                       </div>
@@ -108,16 +108,16 @@ export function ConsultingPackages() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
           className="text-center mt-12"
         >
           <Link href="/contact">
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="px-10 py-4 bg-foreground text-background border-2 border-foreground hover:bg-transparent hover:text-foreground transition-all duration-300 font-medium text-lg"
+              className="px-8 sm:px-10 py-3 sm:py-4 bg-foreground text-background border-2 border-foreground hover:bg-transparent hover:text-foreground transition-all duration-300 font-medium text-base sm:text-lg"
             >
-              Start Your Transformation
+              Solve Your Product Problems
             </motion.button>
           </Link>
         </motion.div>

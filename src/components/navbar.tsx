@@ -51,18 +51,28 @@ export function Navbar() {
             transition={{ duration: 0.5 }}
           >
             <Link href="/" className="group">
-              <div className="flex flex-col">
-                <span className="text-2xl font-bold tracking-tight">
-                  John Connor
-                </span>
-                <span className="text-xs text-muted-foreground uppercase tracking-widest">
-                  Strategy & Growth
-                </span>
+              <div className="flex items-center gap-3">
+                {/* Cool geometric logo */}
+                <div className="relative w-10 h-10">
+                  <div className="absolute inset-0 bg-gradient-to-br from-cyan-500 to-purple-600 rounded-lg rotate-45 group-hover:rotate-90 transition-transform duration-500" />
+                  <div className="absolute inset-[3px] bg-background rounded-lg rotate-45" />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <span className="text-lg font-black text-foreground">JC</span>
+                  </div>
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-2xl font-bold tracking-tight">
+                    John Connor
+                  </span>
+                  <span className="text-xs text-muted-foreground uppercase tracking-widest">
+                    Technical Product Lead
+                  </span>
+                </div>
               </div>
             </Link>
           </motion.div>
 
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden md:flex items-center space-x-1">
             {navItems.map((item, index) => {
               const Icon = item.icon
               const isActive = pathname === item.href
@@ -76,35 +86,27 @@ export function Navbar() {
                   <Link
                     href={item.href}
                     className={cn(
-                      'relative px-5 py-3 group overflow-hidden rounded-lg transition-all hover:bg-foreground/5',
+                      'relative px-4 py-2.5 group overflow-hidden rounded-lg transition-all',
                       isActive
-                        ? 'text-primary'
-                        : 'text-muted-foreground'
+                        ? 'text-primary bg-primary/10'
+                        : 'text-muted-foreground hover:text-foreground hover:bg-foreground/5'
                     )}
                   >
                     <span className="relative z-10 flex items-center space-x-2">
                       <Icon className="w-4 h-4" />
                       <span className="relative">
                         {item.label}
-                        {/* Underline effect */}
-                        <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-primary group-hover:w-full transition-all duration-300" />
+                        {/* Underline effect for active and hover */}
+                        <span className={cn(
+                          "absolute -bottom-1 left-0 h-[2px] bg-primary transition-all duration-300",
+                          isActive ? "w-full" : "w-0 group-hover:w-full"
+                        )} />
                       </span>
                     </span>
-                    {/* Background sweep effect */}
+                    {/* Background sweep effect on hover */}
                     <motion.div
                       className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"
                     />
-                    {isActive && (
-                      <motion.div
-                        layoutId="navbar-indicator"
-                        className="absolute bottom-0 left-0 right-0 h-[2px] bg-primary"
-                        transition={{
-                          type: 'spring',
-                          stiffness: 380,
-                          damping: 30,
-                        }}
-                      />
-                    )}
                   </Link>
                 </motion.div>
               )

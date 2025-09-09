@@ -50,12 +50,13 @@ export function WritingsBrutal() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center mb-16"
+          transition={{ duration: 0.5 }}
         >
           <h2 className="heading-section mb-4">
             <span style={{ color: 'var(--white)', fontWeight: 300 }}>THOUGHT</span>
             <span className="text-gradient" style={{ fontWeight: 700 }}> LEADERSHIP</span>
           </h2>
-          <p className="text-lg font-light tracking-wide" style={{ color: 'var(--gray-400)' }}>
+          <p className="text-base sm:text-lg font-light tracking-wide" style={{ color: 'var(--gray-400)' }}>
             Strategic insights on technology, community, and human potential
           </p>
         </motion.div>
@@ -69,8 +70,9 @@ export function WritingsBrutal() {
                 key={writing.title}
                 initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
+                whileHover={{ scale: 1.02, y: -5 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
                 className={`group ${writing.featured ? 'md:col-span-2' : ''}`}
               >
                 <Link href="/blog">
@@ -91,13 +93,13 @@ export function WritingsBrutal() {
                         <div className={`${writing.color} font-mono text-xs mb-2`}>
                           [{writing.category}]
                         </div>
-                        <h3 className="text-2xl font-black text-white group-hover:text-cyan-400 transition-colors mb-2">
+                        <h3 className="text-xl sm:text-2xl font-black text-white group-hover:text-cyan-400 transition-colors mb-2">
                           {writing.title}
                         </h3>
-                        <p className="text-gray-400 font-mono text-sm mb-4">
+                        <p className="text-gray-400 font-mono text-xs sm:text-sm mb-4">
                           {writing.excerpt}
                         </p>
-                        <div className="flex items-center gap-2 text-cyan-400 font-black uppercase text-sm opacity-0 group-hover:opacity-100 transition-opacity">
+                        <div className="flex items-center gap-2 text-cyan-400 font-black uppercase text-xs sm:text-sm opacity-0 group-hover:opacity-100 transition-opacity">
                           READ MORE
                           <ArrowUpRight className="w-4 h-4" />
                         </div>
@@ -118,7 +120,7 @@ export function WritingsBrutal() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.5 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
           className="text-center mt-16"
         >
           <Link href="/blog">

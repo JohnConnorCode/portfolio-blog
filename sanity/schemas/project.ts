@@ -7,7 +7,7 @@ export const project = {
       name: 'title',
       title: 'Title',
       type: 'string',
-      validation: (Rule: any) => Rule.required(),
+      validation: (Rule: {required: () => unknown}) => Rule.required(),
     },
     {
       name: 'slug',
@@ -17,14 +17,14 @@ export const project = {
         source: 'title',
         maxLength: 96,
       },
-      validation: (Rule: any) => Rule.required(),
+      validation: (Rule: {required: () => unknown}) => Rule.required(),
     },
     {
       name: 'description',
       title: 'Short Description',
       type: 'text',
       rows: 3,
-      validation: (Rule: any) => Rule.required(),
+      validation: (Rule: {required: () => unknown}) => Rule.required(),
     },
     {
       name: 'longDescription',
@@ -54,7 +54,7 @@ export const project = {
           title: 'Alternative Text',
         }
       ],
-      validation: (Rule: any) => Rule.required(),
+      validation: (Rule: {required: () => unknown}) => Rule.required(),
     },
     {
       name: 'featured',

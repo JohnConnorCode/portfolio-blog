@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Alata, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import "@/styles/design-system.css";
 import "@/styles/neo-brutal.css";
@@ -9,7 +9,8 @@ import { Footer } from "@/components/footer";
 import { CustomCursor } from "@/components/custom-cursor";
 import { NoiseTexture } from "@/components/noise-texture";
 
-const inter = Inter({
+const alata = Alata({
+  weight: '400',
   subsets: ["latin"],
   variable: "--font-sans",
 });
@@ -48,13 +49,13 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased min-h-screen flex flex-col`}
+        className={`${alata.variable} ${jetbrainsMono.variable} font-sans antialiased min-h-screen flex flex-col`}
       >
         <Providers>
           <CustomCursor />
           <NoiseTexture />
           <Navbar />
-          <main className="flex-1 pt-16">{children}</main>
+          <main className="flex-1 pt-24">{children}</main>
           <Footer />
         </Providers>
       </body>
