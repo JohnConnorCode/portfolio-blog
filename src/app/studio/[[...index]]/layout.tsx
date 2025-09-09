@@ -1,3 +1,8 @@
+export const metadata = {
+  title: 'Sanity Studio',
+  description: 'Content Management Studio',
+}
+
 export default function StudioLayout({
   children,
 }: {
