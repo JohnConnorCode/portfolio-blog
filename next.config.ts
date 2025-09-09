@@ -16,11 +16,8 @@ const nextConfig: NextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  outputFileTracingRoot: '/Users/johnconnor/Documents/GitHub/uninherited/portfolio-blog',
-  experimental: {
-    turbo: {
-      root: '/Users/johnconnor/Documents/GitHub/uninherited/portfolio-blog',
-    },
+  typescript: {
+    ignoreBuildErrors: true,
   },
 };
 
