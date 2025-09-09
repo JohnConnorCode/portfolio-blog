@@ -60,7 +60,13 @@ export function Services() {
       className="py-20 px-4 sm:px-6 lg:px-8"
     >
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
             Product Expertise
           </h2>
@@ -68,7 +74,7 @@ export function Services() {
             Technical product leadership grounded in philosophy, economics, and behavioral theory—
             from local businesses to $50M+ startups.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => {
@@ -76,8 +82,11 @@ export function Services() {
             return (
               <motion.div
                 key={service.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
                 whileHover={{ scale: 1.02, y: -5 }}
-                transition={{ duration: 0.3 }}
                 className="group"
               >
                 <div className="h-full p-10 border border-foreground/10 hover:border-foreground/30 transition-all duration-300 rounded-xl">
