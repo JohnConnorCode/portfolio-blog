@@ -1,6 +1,7 @@
 import { defineConfig } from 'sanity'
 import { structureTool } from 'sanity/structure'
 import { visionTool } from '@sanity/vision'
+import { codeInput } from '@sanity/code-input'
 import { presentationTool } from 'sanity/presentation'
 import { schemaTypes } from './sanity/schemas'
 
@@ -16,6 +17,7 @@ export default defineConfig({
   plugins: [
     structureTool(), 
     visionTool(),
+    codeInput(),
     presentationTool({
       previewUrl: {
         draftMode: {
