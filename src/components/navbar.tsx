@@ -52,9 +52,31 @@ export function Navbar() {
           >
             <Link href="/" className="group">
               <div className="flex items-center gap-3">
-                {/* Cool geometric logo */}
+                {/* Cool geometric logo with animated gradient */}
                 <div className="relative w-10 h-10">
-                  <div className="absolute inset-0 bg-gradient-to-br from-cyan-500 to-purple-600 rounded-lg rotate-45 group-hover:rotate-90 transition-transform duration-500" />
+                  <motion.div 
+                    className="absolute inset-0 rounded-lg rotate-45"
+                    animate={{
+                      background: [
+                        "linear-gradient(135deg, #06b6d4 0%, #a855f7 100%)",
+                        "linear-gradient(135deg, #a855f7 0%, #ec4899 100%)",
+                        "linear-gradient(135deg, #ec4899 0%, #06b6d4 100%)",
+                        "linear-gradient(135deg, #06b6d4 0%, #a855f7 100%)",
+                      ],
+                      rotate: [45, 45, 45, 45],
+                    }}
+                    transition={{
+                      background: {
+                        duration: 5,
+                        repeat: Infinity,
+                        ease: "linear"
+                      },
+                      rotate: {
+                        duration: 0.5,
+                      }
+                    }}
+                    whileHover={{ rotate: 90 }}
+                  />
                   <div className="absolute inset-[3px] bg-background rounded-lg rotate-45" />
                   <div className="absolute inset-0 flex items-center justify-center">
                     <span className="text-lg font-black text-foreground">JC</span>
@@ -72,7 +94,7 @@ export function Navbar() {
             </Link>
           </motion.div>
 
-          <div className="hidden md:flex items-center space-x-3">
+          <div className="hidden md:flex items-center space-x-6">
             {navItems.map((item, index) => {
               const Icon = item.icon
               const isActive = pathname === item.href
@@ -86,7 +108,7 @@ export function Navbar() {
                   <Link
                     href={item.href}
                     className={cn(
-                      'relative px-5 py-3 group overflow-hidden rounded-lg transition-all',
+                      'relative px-6 py-3 group overflow-hidden rounded-lg transition-all',
                       isActive
                         ? 'text-primary bg-primary/10'
                         : 'text-muted-foreground hover:text-foreground hover:bg-foreground/5'

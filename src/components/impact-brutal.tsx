@@ -59,13 +59,7 @@ export function ImpactBrutal() {
       
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section title with glitch effect */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-          transition={{ duration: 0.5 }}
-        >
+        <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light mb-4">
             <span className="text-white">PROVEN</span>
             <span className="text-cyan-400 font-black neon-glow"> IMPACT</span>
@@ -73,7 +67,7 @@ export function ImpactBrutal() {
           <p className="text-base sm:text-lg text-gray-400 font-light tracking-wide">
             Real outcomes from solving actual product problems
           </p>
-        </motion.div>
+        </div>
         
         {/* Impact cards with brutal design */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -82,11 +76,8 @@ export function ImpactBrutal() {
             return (
               <motion.div
                 key={impact.label}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
                 whileHover={{ scale: 1.02, y: -5 }}
+                transition={{ duration: 0.3 }}
                 className="relative group"
               >
                 {/* Card with brutal shadow */}
@@ -124,17 +115,11 @@ export function ImpactBrutal() {
         </div>
         
         {/* Bottom accent text */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.5 }}
-          className="text-center mt-16"
-        >
+        <div className="text-center mt-16">
           <p className="text-gray-500 font-mono text-sm uppercase tracking-widest">
             Not growth theater. <span className="text-cyan-400">Product solutions.</span>
           </p>
-        </motion.div>
+        </div>
       </div>
     </motion.section>
   )

@@ -21,13 +21,7 @@ export function CallToAction() {
       style={{ opacity, scale }}
       className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="glass rounded-2xl p-8 sm:p-12 text-center relative overflow-hidden"
-        >
+        <div className="glass rounded-2xl p-8 sm:p-12 text-center relative overflow-hidden">
           {/* Background decoration */}
           <div className="absolute inset-0 -z-10">
             <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl" />
@@ -58,7 +52,7 @@ export function CallToAction() {
           <p className="text-xs sm:text-sm text-muted-foreground mt-8">
             Typical response time: Within 24 hours
           </p>
-        </motion.div>
+        </div>
       </div>
     </motion.section>
   )
