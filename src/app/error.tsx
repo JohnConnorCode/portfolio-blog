@@ -3,6 +3,7 @@
 import { useEffect } from 'react'
 import { AlertTriangle } from 'lucide-react'
 import Link from 'next/link'
+import { monitoring } from '@/lib/monitoring'
 
 export default function Error({
   error,
@@ -12,8 +13,8 @@ export default function Error({
   reset: () => void
 }) {
   useEffect(() => {
-    // Log the error to an error reporting service
-    console.error('Application error:', error)
+    // Log the error to monitoring service
+    monitoring.logError(error, 'Application')
   }, [error])
 
   return (
