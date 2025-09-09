@@ -4,16 +4,16 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Moon, Sun, Code2, BookOpen, Home, User } from 'lucide-react'
+import { Menu, X, Moon, Sun, Briefcase, BookOpen, Home, Mail, Brain } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import { cn } from '@/lib/utils'
 
 const navItems = [
   { href: '/', label: 'Home', icon: Home },
-  { href: '/work', label: 'Work', icon: Code2 },
+  { href: '/work', label: 'Work', icon: Briefcase },
   { href: '/blog', label: 'Blog', icon: BookOpen },
-  { href: '/philosophy', label: 'Philosophy', icon: BookOpen },
-  { href: '/contact', label: 'Contact', icon: User },
+  { href: '/philosophy', label: 'Philosophy', icon: Brain },
+  { href: '/contact', label: 'Contact', icon: Mail },
 ]
 
 export function Navbar() {
@@ -65,14 +65,14 @@ export function Navbar() {
                     John Connor
                   </span>
                   <span className="text-xs text-muted-foreground uppercase tracking-widest">
-                    Technical Product Lead
+                    Technology Strategist
                   </span>
                 </div>
               </div>
             </Link>
           </motion.div>
 
-          <div className="hidden md:flex items-center space-x-1">
+          <div className="hidden md:flex items-center space-x-3">
             {navItems.map((item, index) => {
               const Icon = item.icon
               const isActive = pathname === item.href
@@ -86,7 +86,7 @@ export function Navbar() {
                   <Link
                     href={item.href}
                     className={cn(
-                      'relative px-4 py-2.5 group overflow-hidden rounded-lg transition-all',
+                      'relative px-5 py-3 group overflow-hidden rounded-lg transition-all',
                       isActive
                         ? 'text-primary bg-primary/10'
                         : 'text-muted-foreground hover:text-foreground hover:bg-foreground/5'

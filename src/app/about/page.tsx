@@ -32,7 +32,7 @@ const achievements = [
   { metric: '50+', label: 'Product Problems Solved' },
   { metric: '$50M+', label: 'Funding Enabled' },
   { metric: '200+', label: 'User Research Sessions' },
-  { metric: '10+', label: 'Years Technical Product Leadership' },
+  { metric: '10+', label: 'Years Technology Strategy' },
 ]
 
 export default function AboutPage() {
@@ -52,7 +52,7 @@ export default function AboutPage() {
             className="text-center mb-16"
           >
             <h1 className="text-4xl sm:text-5xl font-bold mb-4">
-              Technical Product Leader with <span className="text-gradient">Human Insight</span>
+              Technology Strategist with <span className="text-gradient">Human Insight</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               I&apos;m John Connor - a technical product leader who solves real problems through 
@@ -155,7 +155,7 @@ export default function AboutPage() {
               <div>
                 <h3 className="font-semibold mb-3 flex items-center gap-2">
                   <Award className="w-5 h-5 text-primary" />
-                  Technical Product Leadership
+                  Technology Strategy & Leadership
                 </h3>
                 <ul className="space-y-2 text-sm text-muted-foreground">
                   <li>• AI & Web3 Product Development</li>

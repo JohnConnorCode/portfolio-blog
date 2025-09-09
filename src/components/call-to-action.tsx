@@ -46,11 +46,11 @@ export function CallToAction() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="group px-8 sm:px-10 py-4 sm:py-5 bg-foreground text-background font-bold text-base sm:text-lg flex items-center gap-3 hover:bg-primary transition-all"
+                className="group px-10 sm:px-12 py-5 sm:py-6 bg-foreground text-background font-bold text-lg sm:text-xl flex items-center gap-4 hover:bg-primary transition-all rounded-lg"
               >
-                <Calendar className="w-5 h-5" />
+                <Calendar className="w-6 h-6" />
                 Book a Discovery Call
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </motion.button>
             </Link>
           </div>

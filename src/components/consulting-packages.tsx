@@ -74,29 +74,29 @@ export function ConsultingPackages() {
                 className="group relative"
               >
                 <div className={`absolute inset-0 bg-gradient-to-br ${pkg.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg`} />
-                <div className="relative p-8 border border-foreground/10 hover:border-primary/50 transition-all duration-300 rounded-lg h-full backdrop-blur-sm">
-                  <div className="flex items-start gap-4 mb-6">
-                    <div className="p-3 border border-foreground/20 group-hover:border-primary/50 transition-colors rounded-lg">
-                      <Icon className="w-6 h-6" />
+                <div className="relative p-10 border border-foreground/10 hover:border-primary/50 transition-all duration-300 rounded-xl h-full backdrop-blur-sm">
+                  <div className="flex items-start gap-6 mb-8">
+                    <div className="p-4 border border-foreground/20 group-hover:border-primary/50 transition-colors rounded-xl">
+                      <Icon className="w-8 h-8" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-xl sm:text-2xl font-bold mb-3">{pkg.name}</h3>
-                      <p className="text-sm sm:text-base text-muted-foreground mb-4">
+                      <h3 className="text-2xl sm:text-3xl font-bold mb-4">{pkg.name}</h3>
+                      <p className="text-base sm:text-lg text-muted-foreground mb-6 leading-relaxed">
                         {pkg.description}
                       </p>
-                      <div className="space-y-2">
+                      <div className="space-y-3">
                         {pkg.highlights.map((highlight) => (
-                          <div key={highlight} className="flex items-center gap-2 text-sm">
-                            <span className="w-1 h-1 bg-primary rounded-full" />
-                            <span className="text-xs sm:text-sm text-muted-foreground">{highlight}</span>
+                          <div key={highlight} className="flex items-center gap-3">
+                            <span className="w-2 h-2 bg-primary rounded-full flex-shrink-0" />
+                            <span className="text-sm sm:text-base text-muted-foreground">{highlight}</span>
                           </div>
                         ))}
                       </div>
                     </div>
                   </div>
-                  <Link href="/contact" className="inline-flex items-center gap-2 text-sm font-medium text-primary group-hover:gap-3 transition-all">
+                  <Link href="/contact" className="inline-flex items-center gap-3 text-base font-medium text-primary group-hover:gap-4 transition-all">
                     Learn More
-                    <ArrowRight className="w-4 h-4" />
+                    <ArrowRight className="w-5 h-5" />
                   </Link>
                 </div>
               </motion.div>

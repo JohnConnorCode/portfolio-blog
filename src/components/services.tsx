@@ -31,7 +31,7 @@ const services = [
   },
   {
     icon: Layers,
-    title: 'Technical Product Leadership',
+    title: 'Technology Strategy & Leadership',
     description: 'Bridging technical complexity with business value for scalable solutions.',
     philosophy: 'Technical depth enables better product decisions.',
   },
@@ -89,13 +89,13 @@ export function Services() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="group"
               >
-                <div className="h-full p-8 border border-foreground/10 hover:border-foreground/30 transition-all duration-300">
-                  <Icon className="w-10 h-10 mb-6 stroke-1" />
+                <div className="h-full p-10 border border-foreground/10 hover:border-foreground/30 transition-all duration-300 rounded-xl">
+                  <Icon className="w-12 h-12 mb-8 stroke-1" />
                   
-                  <h3 className="text-lg sm:text-xl font-semibold mb-3">{service.title}</h3>
-                  <p className="text-sm sm:text-base text-muted-foreground mb-4">{service.description}</p>
+                  <h3 className="text-xl sm:text-2xl font-semibold mb-4">{service.title}</h3>
+                  <p className="text-base sm:text-lg text-muted-foreground mb-6 leading-relaxed">{service.description}</p>
                   
-                  <p className="text-xs sm:text-sm italic text-muted-foreground/80 pt-4 border-t border-foreground/5">
+                  <p className="text-sm sm:text-base italic text-muted-foreground/80 pt-6 border-t border-foreground/5">
                     &ldquo;{service.philosophy}&rdquo;
                   </p>
                 </div>

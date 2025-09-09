@@ -34,7 +34,7 @@ export function ClientLogos() {
           {/* Scrolling logos container */}
           <div className="overflow-hidden">
             <motion.div
-              className="flex gap-12 items-center"
+              className="flex gap-20 items-center"
               animate={{
                 x: [0, -1920],
               }}
@@ -54,10 +54,10 @@ export function ClientLogos() {
                   className="flex-shrink-0 group"
                 >
                   <div className="text-center">
-                    <p className="text-2xl font-bold text-foreground/60 group-hover:text-foreground transition-colors whitespace-nowrap">
+                    <p className="text-3xl font-bold text-foreground/60 group-hover:text-foreground transition-colors whitespace-nowrap">
                       {client.name}
                     </p>
-                    <p className="text-xs text-muted-foreground mt-1">
+                    <p className="text-sm text-muted-foreground mt-2">
                       {client.category}
                     </p>
                   </div>

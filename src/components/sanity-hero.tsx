@@ -5,7 +5,7 @@ import { HeroCyberpunk } from './hero-cyberpunk'
 // Default content fallback
 const defaultContent = {
   heroTitle: 'JOHN CONNOR',
-  heroTagline: 'Technical Product Lead · Human-Centered Builder',
+  heroTagline: 'Technology Strategist · Human-Centered Builder',
   heroDescription: 'Bridging philosophy, economics, and technology to solve real product problems.',
   heroHighlight: 'AI & Web3 expertise. User research. Product-market fit.',
   metrics: [

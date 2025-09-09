@@ -21,7 +21,7 @@ const impacts = [
   },
   {
     number: "10+ Years",
-    label: "Technical Product Leadership",
+    label: "Technology Strategy",
     context: "AI/Web3 & human-centered design",
     icon: Zap,
     color: "text-pink-500"
