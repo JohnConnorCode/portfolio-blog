@@ -21,24 +21,53 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "John Thomas Connor - Building Systems That Serve Humanity",
-  description: "Product strategist, builder, and father creating systems at the intersection of technology and community. Technology should empower human judgment, not replace it.",
-  keywords: ["product strategy", "human-first technology", "community building", "web3", "AI ethics", "Super Debate"],
-  authors: [{ name: "John Thomas Connor" }],
+  metadataBase: new URL('https://johnconnor.xyz'),
+  title: {
+    default: "John Connor - Technology Strategist",
+    template: "%s | John Connor"
+  },
+  description: "Technology strategist specializing in product-market fit, user research, and human-centered technology. Building products that solve real problems.",
+  keywords: ["product strategy", "user research", "technology consulting", "product-market fit", "AI strategy", "Web3", "behavioral economics", "human-first technology"],
+  authors: [{ name: "John Connor" }],
+  creator: "John Connor",
+  publisher: "John Connor",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://portfolio-blog-five-iota.vercel.app",
-    title: "John Thomas Connor - Building Systems That Serve Humanity",
-    description: "Product strategist, builder, and father creating systems at the intersection of technology and community.",
-    siteName: "John Thomas Connor",
+    url: "https://johnconnor.xyz",
+    siteName: "John Connor",
+    title: "John Connor - Technology Strategist",
+    description: "Building products that solve real problems through user research and behavioral insights.",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "John Connor - Technology Strategist"
+      }
+    ]
   },
   twitter: {
     card: "summary_large_image",
-    title: "John Thomas Connor - Building Systems That Serve Humanity",
-    description: "Product strategist, builder, and father creating systems at the intersection of technology and community.",
-    creator: "@ablockunchained",
+    title: "John Connor - Technology Strategist",
+    description: "Building products that solve real problems through user research and behavioral insights.",
+    images: ["/og-image.jpg"],
+    creator: "@johnconnor"
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  alternates: {
+    canonical: "https://johnconnor.xyz"
+  }
 };
 
 export default function RootLayout({
