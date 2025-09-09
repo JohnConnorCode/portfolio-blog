@@ -160,13 +160,15 @@ export default function BlogList({ initialPosts }: { initialPosts: Post[] }) {
                     {/* Image */}
                     {post.featured_image && (
                       <div className="relative h-48 overflow-hidden bg-muted">
-                        <img
+                        <Image
                           src={post.featured_image}
                           alt={post.title}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-500"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
                         />
                         {post.featured && (
-                          <div className="absolute top-4 left-4 px-3 py-1 bg-primary text-primary-foreground text-xs font-semibold rounded-full">
+                          <div className="absolute top-4 left-4 px-3 py-1 bg-primary text-primary-foreground text-xs font-semibold rounded-full z-10">
                             Featured
                           </div>
                         )}

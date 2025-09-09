@@ -2,6 +2,7 @@
 
 import { PortableText } from '@portabletext/react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Calendar, Clock, ArrowLeft, User } from 'lucide-react'
 import { formatDate } from '@/lib/utils'
 import { motion } from 'framer-motion'
@@ -82,12 +83,15 @@ export default function BlogPostClient({ post }: { post: any }) {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="mb-12 -mx-4 sm:-mx-6 lg:-mx-8"
+            className="mb-12 -mx-4 sm:-mx-6 lg:-mx-8 relative aspect-video"
           >
-            <img 
-              src={post.mainImage} 
+            <Image
+              src={post.mainImage}
               alt={post.title}
-              className="w-full h-auto rounded-lg"
+              fill
+              className="object-cover rounded-lg"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+              priority
             />
           </motion.div>
         )}
