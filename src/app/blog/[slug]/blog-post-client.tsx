@@ -7,7 +7,20 @@ import { Calendar, Clock, ArrowLeft, User } from 'lucide-react'
 import { formatDate } from '@/lib/utils'
 import { motion } from 'framer-motion'
 
-export default function BlogPostClient({ post }: { post: any }) {
+interface BlogPost {
+  title: string
+  slug?: { current: string }
+  excerpt?: string
+  body?: any
+  publishedAt?: string
+  author?: { name: string }
+  categories?: Array<{ title: string }>
+  tags?: string[]
+  mainImage?: string
+  readTime?: number
+}
+
+export default function BlogPostClient({ post }: { post: BlogPost }) {
   return (
     <motion.article 
       initial={{ opacity: 0 }}

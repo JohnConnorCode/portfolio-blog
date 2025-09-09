@@ -3,10 +3,14 @@ import { sanityClient } from '@/lib/sanity/client'
 import { postBySlugQuery, postsQuery } from '@/lib/sanity/queries'
 import BlogPostClient from './blog-post-client'
 
+interface Post {
+  slug?: { current: string }
+}
+
 export async function generateStaticParams() {
   try {
     const posts = await sanityClient.fetch(postsQuery)
-    return posts?.map((post: any) => ({
+    return posts?.map((post: Post) => ({
       slug: post.slug?.current
     })) || []
   } catch (error) {
