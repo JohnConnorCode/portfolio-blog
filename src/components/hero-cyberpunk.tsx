@@ -19,7 +19,6 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
     heroHighlight: content?.heroHighlight || 'Product strategy. Human-first technology. Real impact.'
   }
   const containerRef = useRef<HTMLDivElement>(null)
-  const canvasRef = useRef<HTMLCanvasElement>(null)
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -38,213 +37,125 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
     return () => window.removeEventListener('mousemove', handleMouseMove)
   }, [])
   
-  // Balanced sacred geometry animation - visible but refined
-  useEffect(() => {
-    const canvas = canvasRef.current
-    if (!canvas) return
-    
-    const ctx = canvas.getContext('2d')
-    if (!ctx) return
-    
-    canvas.width = window.innerWidth
-    canvas.height = window.innerHeight
-    
-    let animationId: number
-    let time = 0
-    
-    // Golden ratio for natural proportions
-    const PHI = 1.618033988749
-    
-    // Smooth mouse tracking
-    let smoothMouseX = canvas.width / 2
-    let smoothMouseY = canvas.height / 2
-    
-    const draw = () => {
-      // Semi-transparent clear for subtle trails
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.08)'
-      ctx.fillRect(0, 0, canvas.width, canvas.height)
-      
-      time += 0.002 // Balanced speed
-      
-      // Smooth mouse easing with slight momentum
-      smoothMouseX += (mousePos.x - smoothMouseX) * 0.1
-      smoothMouseY += (mousePos.y - smoothMouseY) * 0.1
-      
-      const centerX = canvas.width / 2
-      const centerY = canvas.height / 2
-      
-      // Sacred geometry - Seed of Life pattern (visible but elegant)
-      ctx.save()
-      ctx.globalCompositeOperation = 'lighter'
-      
-      // Central flower of life pattern
-      const baseRadius = 120
-      const numCircles = 7 // Seed of Life has 7 circles
-      
-      for (let i = 0; i < numCircles; i++) {
-        const angle = i === 0 ? 0 : (i - 1) * Math.PI / 3
-        const radius = i === 0 ? 0 : baseRadius
-        
-        const circleX = centerX + Math.cos(angle + time * 0.3) * radius
-        const circleY = centerY + Math.sin(angle + time * 0.3) * radius
-        
-        // Mouse influence on position
-        const mouseInfluence = 0.2
-        const finalX = circleX + (smoothMouseX - centerX) * mouseInfluence * (i === 0 ? 1 : 0.5)
-        const finalY = circleY + (smoothMouseY - centerY) * mouseInfluence * (i === 0 ? 1 : 0.5)
-        
-        // Draw circle outline
-        ctx.strokeStyle = `rgba(0, 200, 255, ${0.15 + Math.sin(time * 2 + i) * 0.05})`
-        ctx.lineWidth = 2
-        ctx.beginPath()
-        ctx.arc(finalX, finalY, baseRadius, 0, Math.PI * 2)
-        ctx.stroke()
-        
-        // Add gradient fill
-        const gradient = ctx.createRadialGradient(
-          finalX, finalY, 0,
-          finalX, finalY, baseRadius
-        )
-        gradient.addColorStop(0, `rgba(0, 150, 255, ${0.02})`)
-        gradient.addColorStop(0.7, `rgba(100, 50, 255, ${0.01})`)
-        gradient.addColorStop(1, 'transparent')
-        
-        ctx.fillStyle = gradient
-        ctx.fill()
-      }
-      
-      ctx.restore()
-      
-      // Hexagonal grid based on sacred geometry
-      const hexRadius = 60
-      const hexHeight = hexRadius * Math.sqrt(3)
-      
-      for (let row = -2; row < canvas.height / hexHeight + 2; row++) {
-        for (let col = -2; col < canvas.width / (hexRadius * 1.5) + 2; col++) {
-          const x = col * hexRadius * 1.5
-          const y = row * hexHeight + (col % 2) * hexHeight / 2
-          
-          const dist = Math.hypot(x - smoothMouseX, y - smoothMouseY)
-          if (dist < 400) {
-            const opacity = Math.max(0, 1 - dist / 400) * 0.15
-            
-            // Draw hexagon vertices as dots
-            for (let i = 0; i < 6; i++) {
-              const angle = (Math.PI / 3) * i
-              const vx = x + Math.cos(angle) * hexRadius
-              const vy = y + Math.sin(angle) * hexRadius
-              
-              ctx.fillStyle = `rgba(100, 200, 255, ${opacity})`
-              ctx.beginPath()
-              ctx.arc(vx, vy, 2, 0, Math.PI * 2)
-              ctx.fill()
-            }
-          }
-        }
-      }
-      
-      // Dynamic glow with visible presence
-      const glowGradient = ctx.createRadialGradient(
-        smoothMouseX, smoothMouseY, 0,
-        smoothMouseX, smoothMouseY, 350
-      )
-      
-      const glowIntensity = 0.15 + Math.sin(time * 2) * 0.05
-      glowGradient.addColorStop(0, `rgba(0, 200, 255, ${glowIntensity})`)
-      glowGradient.addColorStop(0.3, `rgba(100, 150, 255, ${glowIntensity * 0.6})`)
-      glowGradient.addColorStop(0.6, `rgba(200, 100, 255, ${glowIntensity * 0.3})`)
-      glowGradient.addColorStop(1, 'transparent')
-      
-      ctx.fillStyle = glowGradient
-      ctx.fillRect(0, 0, canvas.width, canvas.height)
-      
-      // Geometric lines connecting to mouse (Metatron's cube inspired)
-      const connectionPoints = []
-      const pointRadius = 200
-      
-      for (let i = 0; i < 6; i++) {
-        const angle = (i / 6) * Math.PI * 2 + time * 0.2
-        connectionPoints.push({
-          x: smoothMouseX + Math.cos(angle) * pointRadius,
-          y: smoothMouseY + Math.sin(angle) * pointRadius
-        })
-      }
-      
-      // Draw connections
-      ctx.strokeStyle = `rgba(150, 100, 255, 0.08)`
-      ctx.lineWidth = 1
-      
-      connectionPoints.forEach((point, i) => {
-        connectionPoints.forEach((otherPoint, j) => {
-          if (j > i) {
-            ctx.beginPath()
-            ctx.moveTo(point.x, point.y)
-            ctx.lineTo(otherPoint.x, otherPoint.y)
-            ctx.stroke()
-          }
-        })
-      }
-      
-      // Vesica Piscis at mouse (two overlapping circles)
-      const vesicaRadius = 80 + Math.sin(time * 2) * 10
-      ctx.strokeStyle = `rgba(0, 255, 255, ${0.2})`
-      ctx.lineWidth = 2
-      
-      ctx.beginPath()
-      ctx.arc(smoothMouseX - vesicaRadius/2, smoothMouseY, vesicaRadius, 0, Math.PI * 2)
-      ctx.stroke()
-      
-      ctx.beginPath()
-      ctx.arc(smoothMouseX + vesicaRadius/2, smoothMouseY, vesicaRadius, 0, Math.PI * 2)
-      ctx.stroke()
-      
-      animationId = requestAnimationFrame(draw)
-    }
-    
-    draw()
-    
-    const handleResize = () => {
-      canvas.width = window.innerWidth
-      canvas.height = window.innerHeight
-    }
-    
-    window.addEventListener('resize', handleResize)
-    
-    return () => {
-      cancelAnimationFrame(animationId)
-      window.removeEventListener('resize', handleResize)
-    }
-  }, [mousePos])
-  
   return (
     <section ref={containerRef} className="relative min-h-screen overflow-hidden -mt-24 pt-24 bg-background">
-      {/* Balanced sacred geometry canvas */}
-      <canvas
-        ref={canvasRef}
-        className="absolute inset-0"
-        style={{ opacity: 0.85 }}
+      {/* Animated cyber grid background */}
+      <div 
+        className="absolute inset-0 opacity-40"
+        style={{
+          backgroundImage: `
+            linear-gradient(rgba(0, 200, 255, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0, 200, 255, 0.03) 1px, transparent 1px)
+          `,
+          backgroundSize: '60px 60px',
+          animation: 'grid-drift 30s linear infinite',
+        }}
       />
       
-      {/* Very subtle ambient gradient */}
+      {/* Diagonal grid for depth */}
       <div 
-        className="absolute inset-0 opacity-30 pointer-events-none"
+        className="absolute inset-0 opacity-20"
+        style={{
+          backgroundImage: `
+            linear-gradient(45deg, rgba(100, 200, 255, 0.02) 1px, transparent 1px),
+            linear-gradient(-45deg, rgba(200, 100, 255, 0.02) 1px, transparent 1px)
+          `,
+          backgroundSize: '80px 80px',
+          animation: 'grid-drift-reverse 40s linear infinite',
+        }}
+      />
+      
+      {/* Floating orbs with fade in/out animation */}
+      <div className="absolute inset-0 overflow-hidden">
+        {/* Top left orb */}
+        <motion.div
+          className="absolute w-96 h-96 -top-48 -left-48"
+          animate={{
+            opacity: [0.1, 0.3, 0.1],
+            scale: [1, 1.2, 1],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        >
+          <div className="w-full h-full rounded-full bg-gradient-to-br from-cyan-400/20 to-transparent blur-3xl" />
+        </motion.div>
+        
+        {/* Bottom right orb */}
+        <motion.div
+          className="absolute w-96 h-96 -bottom-48 -right-48"
+          animate={{
+            opacity: [0.1, 0.25, 0.1],
+            scale: [1, 1.1, 1],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2
+          }}
+        >
+          <div className="w-full h-full rounded-full bg-gradient-to-tl from-purple-400/20 to-transparent blur-3xl" />
+        </motion.div>
+        
+        {/* Center floating orb */}
+        <motion.div
+          className="absolute w-64 h-64 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+          animate={{
+            opacity: [0.05, 0.15, 0.05],
+            scale: [0.8, 1.3, 0.8],
+            rotate: [0, 180, 360],
+          }}
+          transition={{
+            duration: 15,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 1
+          }}
+        >
+          <div className="w-full h-full rounded-full bg-gradient-to-br from-blue-400/10 via-cyan-400/10 to-transparent blur-2xl" />
+        </motion.div>
+      </div>
+      
+      {/* Interactive gradient that follows mouse */}
+      <div 
+        className="absolute inset-0 opacity-30 pointer-events-none transition-opacity duration-1000"
         style={{
           background: `
-            radial-gradient(circle 600px at ${mousePos.x}px ${mousePos.y}px, rgba(0,100,200,0.05), transparent 70%),
-            linear-gradient(135deg, rgba(0,50,100,0.1) 0%, transparent 60%, rgba(100,0,50,0.05) 100%)
+            radial-gradient(circle 800px at ${mousePos.x}px ${mousePos.y}px, 
+              rgba(0, 150, 255, 0.08), 
+              rgba(100, 50, 255, 0.04) 40%, 
+              transparent 70%
+            )
           `,
         }}
       />
       
-      {/* Minimal grid for texture */}
+      {/* Hover-activated accent lines */}
+      <motion.div 
+        className="absolute inset-0 pointer-events-none"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: mousePos.y < 200 ? 0.6 : 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent" />
+        <div className="absolute top-1 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent" />
+      </motion.div>
+      
+      {/* Subtle scanline effect */}
       <div 
-        className="absolute inset-0 opacity-[0.01]"
+        className="absolute inset-0 pointer-events-none opacity-[0.02]"
         style={{
-          backgroundImage: `
-            linear-gradient(rgba(100, 150, 200, 0.2) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(100, 150, 200, 0.2) 1px, transparent 1px)
-          `,
-          backgroundSize: '50px 50px',
+          backgroundImage: `repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 2px,
+            rgba(0, 255, 255, 0.3) 2px,
+            rgba(0, 255, 255, 0.3) 4px
+          )`,
+          animation: 'scanline 8s linear infinite'
         }}
       />
       
@@ -277,7 +188,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
             </span>
           </motion.h1>
           
-          {/* Simple tagline without glow */}
+          {/* Simple tagline */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -347,7 +258,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                 }}
               >
                 <div 
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity"
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   style={{
                     background: 'radial-gradient(circle 100px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0,255,255,0.3), transparent)'
                   }}
@@ -372,7 +283,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                 }}
               >
                 <div 
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity"
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   style={{
                     background: 'radial-gradient(circle 100px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(168,85,247,0.2), transparent)'
                   }}
@@ -416,39 +327,66 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
           </motion.div>
         </div>
       </motion.div>
+      
+      <style jsx>{`
+        @keyframes grid-drift {
+          0% { 
+            transform: translate(0, 0);
+          }
+          100% { 
+            transform: translate(60px, 60px);
+          }
+        }
+        
+        @keyframes grid-drift-reverse {
+          0% { 
+            transform: translate(0, 0);
+          }
+          100% { 
+            transform: translate(-80px, -80px);
+          }
+        }
+        
+        @keyframes scanline {
+          0% {
+            transform: translateY(-100%);
+          }
+          100% {
+            transform: translateY(100%);
+          }
+        }
+        
+        @keyframes glitch-1 {
+          0%, 100% { 
+            opacity: 0;
+            transform: translate(0);
+          }
+          20% { 
+            opacity: 0.8;
+            transform: translate(-2px, 2px);
+          }
+        }
+        
+        @keyframes glitch-2 {
+          0%, 100% { 
+            opacity: 0;
+            transform: translate(0);
+          }
+          25% { 
+            opacity: 0.8;
+            transform: translate(2px, -2px);
+          }
+        }
+        
+        .animate-glitch-1 {
+          animation: glitch-1 2s infinite;
+        }
+        
+        .animate-glitch-2 {
+          animation: glitch-2 2s infinite;
+          animation-delay: 0.1s;
+        }
+      `}</style>
     </section>
   )
 }
-
-<style jsx>{`
-  @keyframes glitch-1 {
-    0%, 100% { 
-      opacity: 0;
-      transform: translate(0);
-    }
-    20% { 
-      opacity: 0.8;
-      transform: translate(-2px, 2px);
-    }
-  }
-  
-  @keyframes glitch-2 {
-    0%, 100% { 
-      opacity: 0;
-      transform: translate(0);
-    }
-    25% { 
-      opacity: 0.8;
-      transform: translate(2px, -2px);
-    }
-  }
-  
-  .animate-glitch-1 {
-    animation: glitch-1 2s infinite;
-  }
-  
-  .animate-glitch-2 {
-    animation: glitch-2 2s infinite;
-    animation-delay: 0.1s;
-  }
-`}</style>
