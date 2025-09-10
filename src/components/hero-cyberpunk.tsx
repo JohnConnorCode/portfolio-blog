@@ -19,7 +19,6 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
     heroHighlight: content?.heroHighlight || 'Product strategy. Human-first technology. Real impact.'
   }
   const containerRef = useRef<HTMLDivElement>(null)
-  const canvasRef = useRef<HTMLCanvasElement>(null)
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -38,205 +37,84 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
     return () => window.removeEventListener('mousemove', handleMouseMove)
   }, [])
   
-  // Subtle particle network animation
-  useEffect(() => {
-    const canvas = canvasRef.current
-    if (!canvas) return
-    
-    const ctx = canvas.getContext('2d')
-    if (!ctx) return
-    
-    canvas.width = window.innerWidth
-    canvas.height = window.innerHeight
-    
-    // Fewer, subtler particles
-    const particles: Array<{
-      x: number
-      y: number
-      vx: number
-      vy: number
-      radius: number
-      opacity: number
-      targetOpacity: number
-    }> = []
-    
-    const particleCount = 30 // Reduced for less intensity
-    const connectionDistance = 120
-    
-    // Initialize particles randomly across screen
-    for (let i = 0; i < particleCount; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.2, // Slower movement
-        vy: (Math.random() - 0.5) * 0.2,
-        radius: 1 + Math.random() * 1.5, // Smaller particles
-        opacity: 0,
-        targetOpacity: 0.15 + Math.random() * 0.15 // Much lower opacity
-      })
-    }
-    
-    let animationId: number
-    let smoothMouseX = canvas.width / 2
-    let smoothMouseY = canvas.height / 2
-    
-    const animate = () => {
-      // Clear canvas
-      ctx.clearRect(0, 0, canvas.width, canvas.height)
-      
-      // Very smooth mouse tracking
-      smoothMouseX += (mousePos.x - smoothMouseX) * 0.02 // Much slower tracking
-      smoothMouseY += (mousePos.y - smoothMouseY) * 0.02
-      
-      // Update and draw particles
-      particles.forEach((particle) => {
-        // Simple drift motion
-        particle.x += particle.vx
-        particle.y += particle.vy
-        
-        // Wrap around edges smoothly
-        if (particle.x < -50) particle.x = canvas.width + 50
-        if (particle.x > canvas.width + 50) particle.x = -50
-        if (particle.y < -50) particle.y = canvas.height + 50
-        if (particle.y > canvas.height + 50) particle.y = -50
-        
-        // Smooth opacity transitions
-        particle.opacity += (particle.targetOpacity - particle.opacity) * 0.02
-        
-        // Very subtle mouse influence
-        const dx = smoothMouseX - particle.x
-        const dy = smoothMouseY - particle.y
-        const distance = Math.sqrt(dx * dx + dy * dy)
-        
-        if (distance < 300 && distance > 50) {
-          const force = (1 - distance / 300) * 0.005 // Very gentle force
-          particle.x += dx * force
-          particle.y += dy * force
-        }
-        
-        // Draw particle (simple dot)
-        ctx.fillStyle = `rgba(100, 180, 255, ${particle.opacity})`
-        ctx.beginPath()
-        ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2)
-        ctx.fill()
-      })
-      
-      // Draw very subtle connections
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x
-          const dy = particles[i].y - particles[j].y
-          const distance = Math.sqrt(dx * dx + dy * dy)
-          
-          if (distance < connectionDistance) {
-            const opacity = (1 - distance / connectionDistance) * 0.08 // Very faint lines
-            ctx.strokeStyle = `rgba(100, 180, 255, ${opacity})`
-            ctx.lineWidth = 0.5
-            ctx.beginPath()
-            ctx.moveTo(particles[i].x, particles[i].y)
-            ctx.lineTo(particles[j].x, particles[j].y)
-            ctx.stroke()
-          }
-        }
-      }
-      
-      animationId = requestAnimationFrame(animate)
-    }
-    
-    // Fade in particles gradually
-    setTimeout(() => {
-      particles.forEach(p => {
-        p.targetOpacity = 0.15 + Math.random() * 0.15
-      })
-    }, 500)
-    
-    animate()
-    
-    const handleResize = () => {
-      canvas.width = window.innerWidth
-      canvas.height = window.innerHeight
-    }
-    
-    window.addEventListener('resize', handleResize)
-    
-    return () => {
-      cancelAnimationFrame(animationId)
-      window.removeEventListener('resize', handleResize)
-    }
-  }, [mousePos])
-  
   // Split title into letters for animation
   const titleLetters = heroContent.heroTitle.split('')
   
   return (
-    <section ref={containerRef} className="relative min-h-screen overflow-hidden -mt-24 pt-24 bg-background">
-      {/* Perspective grid moving toward horizon */}
-      <div className="absolute inset-0" style={{ perspective: '800px' }}>
+    <section ref={containerRef} className="relative min-h-screen overflow-hidden -mt-24 pt-24 bg-black">
+      {/* Clean animated perspective grid */}
+      <div 
+        className="absolute inset-0" 
+        style={{ 
+          perspective: '1000px',
+          transform: `translateX(${(mousePos.x - window.innerWidth / 2) * 0.01}px)` // Subtle mouse parallax
+        }}
+      >
+        {/* Main grid plane */}
         <div 
           className="absolute inset-0"
           style={{
-            transform: 'rotateX(75deg) translateZ(-100px)',
-            transformOrigin: 'center bottom',
-            backgroundImage: `
-              linear-gradient(rgba(0, 200, 255, 0.08) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(0, 200, 255, 0.08) 1px, transparent 1px)
+            transform: 'rotateX(70deg) translateZ(0)',
+            transformOrigin: 'center 100%',
+            background: `
+              linear-gradient(to top, 
+                rgba(0, 200, 255, 0.2) 0%, 
+                rgba(0, 200, 255, 0.05) 50%, 
+                transparent 100%
+              )
             `,
-            backgroundSize: '80px 80px',
-            animation: 'gridMove 10s linear infinite',
-            maskImage: 'linear-gradient(to top, black 0%, transparent 100%)',
-            WebkitMaskImage: 'linear-gradient(to top, black 0%, transparent 100%)',
           }}
-        />
+        >
+          {/* Animated grid lines */}
+          <div 
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `
+                linear-gradient(rgba(0, 200, 255, 0.3) 1.5px, transparent 1.5px),
+                linear-gradient(90deg, rgba(0, 200, 255, 0.3) 1.5px, transparent 1.5px)
+              `,
+              backgroundSize: '60px 60px',
+              animation: 'gridScroll 8s linear infinite',
+              maskImage: 'linear-gradient(to top, black 0%, transparent 90%)',
+              WebkitMaskImage: 'linear-gradient(to top, black 0%, transparent 90%)',
+            }}
+          />
+        </div>
         
-        {/* Secondary grid layer for depth */}
+        {/* Horizon line glow */}
         <div 
-          className="absolute inset-0"
+          className="absolute left-0 right-0 h-px"
           style={{
-            transform: 'rotateX(75deg) translateZ(-200px)',
-            transformOrigin: 'center bottom',
-            backgroundImage: `
-              linear-gradient(rgba(100, 150, 255, 0.04) 2px, transparent 2px),
-              linear-gradient(90deg, rgba(100, 150, 255, 0.04) 2px, transparent 2px)
-            `,
-            backgroundSize: '160px 160px',
-            animation: 'gridMove 20s linear infinite',
-            maskImage: 'linear-gradient(to top, black 0%, transparent 80%)',
-            WebkitMaskImage: 'linear-gradient(to top, black 0%, transparent 80%)',
+            bottom: '42%',
+            background: 'linear-gradient(90deg, transparent, rgba(0, 200, 255, 0.5), transparent)',
+            boxShadow: '0 0 20px rgba(0, 200, 255, 0.3)',
           }}
         />
       </div>
       
-      {/* Pulse wave overlay */}
+      {/* Interactive glow that follows mouse */}
       <div 
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: `
-            radial-gradient(ellipse at 50% 100%, 
-              rgba(0, 200, 255, 0.1) 0%, 
-              transparent 50%
-            )
-          `,
-          animation: 'pulse 4s ease-in-out infinite',
+          background: `radial-gradient(
+            circle 600px at ${mousePos.x}px ${mousePos.y}px,
+            rgba(0, 150, 255, 0.06),
+            transparent 40%
+          )`,
+          transition: 'background 0.3s ease-out',
         }}
       />
       
-      {/* Subtle particle network canvas */}
-      <canvas
-        ref={canvasRef}
-        className="absolute inset-0"
-        style={{ opacity: 0.3 }} // Further reduced opacity
-      />
-      
-      {/* Very subtle gradient overlay */}
-      <div 
-        className="absolute inset-0 opacity-20"
-        style={{
-          background: `
-            radial-gradient(ellipse at 20% 30%, rgba(0, 100, 200, 0.03) 0%, transparent 40%),
-            radial-gradient(ellipse at 80% 70%, rgba(100, 0, 200, 0.03) 0%, transparent 40%)
-          `
-        }}
-      />
+      {/* Clean pulse effect from bottom */}
+      <div className="absolute inset-0">
+        <div 
+          className="absolute bottom-0 left-0 right-0 h-96"
+          style={{
+            background: 'linear-gradient(to top, rgba(0, 200, 255, 0.1), transparent)',
+            animation: 'pulseUp 3s ease-in-out infinite',
+          }}
+        />
+      </div>
       
       <motion.div
         style={{ opacity, scale }}
@@ -268,8 +146,8 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                   }}
                   transition={{
                     duration: 0.5,
-                    delay: index * 0.03, // Sequential reveal
-                    ease: [0.215, 0.61, 0.355, 1], // Smooth cubic bezier
+                    delay: index * 0.03,
+                    ease: [0.215, 0.61, 0.355, 1],
                   }}
                   whileHover={{
                     y: -5,
@@ -473,23 +351,23 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
       </motion.div>
       
       <style jsx>{`
-        @keyframes gridMove {
+        @keyframes gridScroll {
           0% {
-            background-position: 0 0;
+            transform: translateY(0);
           }
           100% {
-            background-position: 0 80px;
+            transform: translateY(60px);
           }
         }
         
-        @keyframes pulse {
+        @keyframes pulseUp {
           0%, 100% {
             opacity: 0.3;
-            transform: scale(1);
+            transform: translateY(0) scaleY(1);
           }
           50% {
             opacity: 0.6;
-            transform: scale(1.05);
+            transform: translateY(-20px) scaleY(1.1);
           }
         }
       `}</style>
