@@ -145,8 +145,9 @@ export default function PhilosophyPage() {
         >
           <motion.h2 
             initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             className="text-3xl font-bold mb-12 text-center"
           >
             Guiding Principles
@@ -158,10 +159,14 @@ export default function PhilosophyPage() {
               return (
                 <motion.div
                   key={principle.title}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ 
+                    duration: 0.6, 
+                    delay: index * 0.15,
+                    ease: [0.25, 0.1, 0.25, 1]
+                  }}
                   className="flex gap-4"
                 >
                   <div className="flex-shrink-0">
@@ -191,8 +196,9 @@ export default function PhilosophyPage() {
         >
           <motion.h2 
             initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             className="text-3xl font-bold mb-12 text-center"
           >
             Intellectual Foundations
