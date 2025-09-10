@@ -116,7 +116,41 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="prose prose-lg prose-neutral dark:prose-invert max-w-none"
         >
-          {post.body && <PortableText value={post.body} />}
+          {post.body && (
+            <PortableText 
+              value={post.body}
+              components={{
+                types: {
+                  block: ({children}: any) => <p className="mb-4 leading-relaxed">{children}</p>,
+                },
+                marks: {
+                  strong: ({children}: any) => <strong className="font-bold text-foreground">{children}</strong>,
+                  em: ({children}: any) => <em className="italic">{children}</em>,
+                  code: ({children}: any) => <code className="px-1 py-0.5 bg-foreground/10 rounded text-sm font-mono">{children}</code>,
+                },
+                block: {
+                  h1: ({children}: any) => <h1 className="text-4xl font-bold mt-8 mb-4">{children}</h1>,
+                  h2: ({children}: any) => <h2 className="text-3xl font-bold mt-8 mb-4">{children}</h2>,
+                  h3: ({children}: any) => <h3 className="text-2xl font-bold mt-6 mb-3">{children}</h3>,
+                  h4: ({children}: any) => <h4 className="text-xl font-bold mt-6 mb-3">{children}</h4>,
+                  normal: ({children}: any) => <p className="mb-4 leading-relaxed">{children}</p>,
+                  blockquote: ({children}: any) => (
+                    <blockquote className="border-l-4 border-cyan-400 pl-6 my-6 italic text-muted-foreground">
+                      {children}
+                    </blockquote>
+                  ),
+                },
+                list: {
+                  bullet: ({children}: any) => <ul className="list-disc list-inside mb-4 space-y-2">{children}</ul>,
+                  number: ({children}: any) => <ol className="list-decimal list-inside mb-4 space-y-2">{children}</ol>,
+                },
+                listItem: {
+                  bullet: ({children}: any) => <li className="ml-4">{children}</li>,
+                  number: ({children}: any) => <li className="ml-4">{children}</li>,
+                },
+              }}
+            />
+          )}
         </motion.div>
 
         {/* Tags */}

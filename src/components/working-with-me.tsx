@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { CheckCircle, ArrowRight, Calendar, MessageSquare, Rocket, Target, Users, Brain, Eye, Zap, Unlock } from 'lucide-react'
 import { AnimatedText, FadeInText } from '@/components/animated-text'
+import { AnimatedBorderBox } from '@/components/animated-border-box'
 import Link from 'next/link'
 
 const process = [
@@ -135,26 +136,29 @@ export function WorkingWithMe() {
         <div className="mb-20">
           <h3 className="text-2xl font-bold mb-8 text-center">My Principles</h3>
           <div className="grid md:grid-cols-2 gap-6">
-            {principles.map((principle, index) => (
-              <motion.div
-                key={principle.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ 
-                  duration: 0.5,
-                  delay: index * 0.1
-                }}
-                whileHover={{ scale: 1.02 }}
-                className="card-brutal group flex gap-4"
-              >
-                <principle.icon className="w-8 h-8 text-cyan-400 group-hover:animate-pulse" />
-                <div>
-                  <h4 className="font-black mb-2 text-foreground group-hover:text-cyan-400 transition-colors">{principle.title}</h4>
-                  <p className="text-gray-400 font-mono text-sm">{principle.description}</p>
-                </div>
-              </motion.div>
-            ))}
+            {principles.map((principle, index) => {
+              const Icon = principle.icon
+              return (
+                <AnimatedBorderBox
+                  key={principle.title}
+                  delay={index * 0.15}
+                  className="p-6 rounded-xl hover:bg-foreground/5 transition-colors"
+                  borderColor="rgba(0, 200, 255, 0.3)"
+                >
+                  <div className="flex gap-4">
+                    <div className="flex-shrink-0">
+                      <div className="w-12 h-12 bg-gradient-to-br from-cyan-400/10 to-purple-400/10 rounded-full flex items-center justify-center">
+                        <Icon className="w-6 h-6 text-cyan-400" />
+                      </div>
+                    </div>
+                    <div>
+                      <h4 className="text-xl font-bold mb-2">{principle.title}</h4>
+                      <p className="text-muted-foreground">{principle.description}</p>
+                    </div>
+                  </div>
+                </AnimatedBorderBox>
+              )
+            })}
           </div>
         </div>
 
