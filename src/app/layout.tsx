@@ -24,58 +24,108 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL('https://johnconnor.xyz'),
   title: {
-    default: "John Connor - Technology Strategist",
+    default: "John Connor - Technology Strategist | Building Systems That Serve Humanity",
     template: "%s | John Connor"
   },
-  description: "Technology strategist specializing in product-market fit, user research, and human-centered technology. Building products that solve real problems.",
-  keywords: ["product strategy", "user research", "technology consulting", "product-market fit", "AI strategy", "Web3", "behavioral economics", "human-first technology"],
-  authors: [{ name: "John Connor" }],
+  description: "Technology strategist with 15 years experience. Founder of Accelerate & Super Debate. Expert in product-market fit, AI strategy, and human-centered technology. $50M+ funding enabled.",
+  keywords: [
+    "John Connor", 
+    "technology strategist", 
+    "product strategy", 
+    "product-market fit", 
+    "AI strategy", 
+    "Web3 ecosystems",
+    "grant management",
+    "Accelerate platform",
+    "Super Debate",
+    "ThriveProtocol", 
+    "Sparkblox",
+    "Upland",
+    "behavioral economics", 
+    "human-first technology",
+    "ecosystem funding",
+    "startup advisor"
+  ],
+  authors: [{ name: "John Connor", url: "https://johnconnor.xyz" }],
   creator: "John Connor",
   publisher: "John Connor",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   icons: {
     icon: [
       { url: '/favicon.svg', type: 'image/svg+xml' },
-      { url: '/favicon.ico', sizes: '32x32' }
+      { url: '/favicon.ico', sizes: '32x32' },
+      { url: '/favicon-16x16.png', sizes: '16x16' },
+      { url: '/favicon-32x32.png', sizes: '32x32' }
     ],
     apple: '/apple-touch-icon.png',
+    shortcut: '/favicon.ico'
   },
+  manifest: '/site.webmanifest',
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://johnconnor.xyz",
-    siteName: "John Connor",
-    title: "John Connor - Technology Strategist",
-    description: "Building products that solve real problems through user research and behavioral insights.",
+    siteName: "John Connor - Technology Strategist",
+    title: "John Connor - Technology Strategist | Building Systems That Serve Humanity",
+    description: "15 years building products that solve real problems. Founder of Accelerate (500+ funding programs) & Super Debate. Expert in AI strategy, Web3 ecosystems, and human-centered technology.",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/opengraph-image.png",
         width: 1200,
         height: 630,
-        alt: "John Connor - Technology Strategist"
+        alt: "John Connor - Technology Strategist",
+        type: "image/png"
       }
     ]
   },
   twitter: {
     card: "summary_large_image",
+    site: "@johnconnor",
+    creator: "@johnconnor",
     title: "John Connor - Technology Strategist",
-    description: "Building products that solve real problems through user research and behavioral insights.",
-    images: ["/og-image.jpg"],
-    creator: "@johnconnor"
+    description: "15 years building products that solve real problems. Founder of Accelerate & Super Debate. Expert in AI strategy and human-centered technology.",
+    images: {
+      url: "/twitter-image.png",
+      alt: "John Connor - Technology Strategist"
+    }
   },
   robots: {
     index: true,
     follow: true,
+    nocache: false,
     googleBot: {
       index: true,
       follow: true,
+      noimageindex: false,
       'max-video-preview': -1,
       'max-image-preview': 'large',
       'max-snippet': -1,
     },
   },
   alternates: {
-    canonical: "https://johnconnor.xyz"
+    canonical: "https://johnconnor.xyz",
+    languages: {
+      'en-US': 'https://johnconnor.xyz',
+    }
+  },
+  category: 'technology',
+  classification: 'Technology Consulting',
+  referrer: 'origin-when-cross-origin',
+  verification: {
+    google: 'google-site-verification-code',
+    yandex: 'yandex-verification-code',
   }
+};
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  colorScheme: 'dark light',
 };
 
 export default function RootLayout({
