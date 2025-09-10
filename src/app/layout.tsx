@@ -8,6 +8,7 @@ import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { CustomCursor } from "@/components/custom-cursor";
 import { NoiseTexture } from "@/components/noise-texture";
+import { Analytics } from "@vercel/analytics/react";
 
 const alata = Alata({
   weight: '400',
@@ -93,6 +94,7 @@ export default function RootLayout({
           <Navbar />
           <main className="flex-1 pt-24">{children}</main>
           <Footer />
+          <Analytics />
         </Providers>
       </body>
     </html>
