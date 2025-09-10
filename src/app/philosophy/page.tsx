@@ -53,39 +53,62 @@ export default function PhilosophyPage() {
             as="h1"
           />
           
-          <div className="prose prose-lg mx-auto text-muted-foreground">
-            <p className="text-xl leading-relaxed mb-6">
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="prose prose-lg mx-auto text-muted-foreground"
+          >
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="text-xl leading-relaxed mb-6"
+            >
               Twenty years of thinking about how humans and technology intersect—from debate podiums 
               at sixteen to building products that actually work at scale.
-            </p>
+            </motion.p>
             
-            <p className="text-xl leading-relaxed">
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="text-xl leading-relaxed"
+            >
               What I&apos;ve learned: great products aren&apos;t built, they&apos;re discovered. 
               Through user research, behavioral economics, and understanding what humans 
               actually need versus what they think they want.
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
         </motion.div>
 
         {/* Core Belief */}
         <motion.div
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8 }}
           className="mb-20 py-12 border-y border-foreground/10"
         >
-          <blockquote className="text-2xl sm:text-3xl font-light text-center leading-relaxed">
+          <motion.blockquote 
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.2 }}
+            className="text-2xl sm:text-3xl font-light text-center leading-relaxed"
+          >
             &ldquo;We must be humans <em>with</em> technology,<br />
             not humans <em>against</em> technology,<br />
             and never humans <em>replaced by</em> technology.&rdquo;
-          </blockquote>
+          </motion.blockquote>
         </motion.div>
 
         {/* My Approach */}
         <motion.div
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8 }}
           className="mb-20"
         >
           <AnimatedText 
@@ -115,11 +138,19 @@ export default function PhilosophyPage() {
         {/* Principles */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8 }}
           className="mb-20"
         >
-          <h2 className="text-3xl font-bold mb-12 text-center">Guiding Principles</h2>
+          <motion.h2 
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="text-3xl font-bold mb-12 text-center"
+          >
+            Guiding Principles
+          </motion.h2>
           
           <div className="grid md:grid-cols-2 gap-8">
             {principles.map((principle, index) => {
@@ -128,8 +159,9 @@ export default function PhilosophyPage() {
                 <motion.div
                   key={principle.title}
                   initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="flex gap-4"
                 >
                   <div className="flex-shrink-0">
@@ -152,19 +184,28 @@ export default function PhilosophyPage() {
         {/* Intellectual Foundations */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8 }}
           className="mb-20"
         >
-          <h2 className="text-3xl font-bold mb-12 text-center">Intellectual Foundations</h2>
+          <motion.h2 
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="text-3xl font-bold mb-12 text-center"
+          >
+            Intellectual Foundations
+          </motion.h2>
           
           <div className="grid sm:grid-cols-2 gap-6">
             {influences.map((influence, index) => (
               <motion.div
                 key={influence.author}
                 initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.7 + index * 0.1 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="flex items-start gap-3 p-4 border-l-2 border-foreground/10"
               >
                 <Book className="w-5 h-5 mt-1 flex-shrink-0 text-muted-foreground" />
@@ -176,30 +217,53 @@ export default function PhilosophyPage() {
             ))}
           </div>
           
-          <p className="text-lg text-muted-foreground mt-8 text-center">
+          <motion.p 
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.9 }}
+            className="text-lg text-muted-foreground mt-8 text-center"
+          >
             These thinkers shaped how I approach product problems—always grounded in human behavior, 
             economic reality, and philosophical depth.
-          </p>
+          </motion.p>
         </motion.div>
 
         {/* Philosophy in Practice */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8 }}
           className="mb-20 p-8 border border-foreground/10"
         >
-          <h2 className="text-3xl font-bold mb-6">Philosophy in Practice</h2>
+          <motion.h2 
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-3xl font-bold mb-6"
+          >
+            Philosophy in Practice
+          </motion.h2>
           
-          <p className="text-lg text-muted-foreground mb-6">
+          <motion.p 
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="text-lg text-muted-foreground mb-6"
+          >
             My work with Super Debate exemplifies this philosophy: creating spaces where people grow 
             through intellectual challenge, vulnerability, and genuine human connection—not digital metrics.
-          </p>
+          </motion.p>
           
-          <p className="text-lg text-muted-foreground mb-6">
+          <motion.p 
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="text-lg text-muted-foreground mb-6"
+          >
             Whether advising on AI strategy or fixing product-market fit, I apply the same principle: 
             technology should make us more human, not less.
-          </p>
+          </motion.p>
           
           <Link href="/work">
             <motion.button
@@ -215,16 +279,29 @@ export default function PhilosophyPage() {
         {/* Call to Action */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.9 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8 }}
           className="text-center"
         >
-          <h2 className="text-3xl font-bold mb-8">Ready to Build Something Real?</h2>
+          <motion.h2 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-3xl font-bold mb-8"
+          >
+            Ready to Build Something Real?
+          </motion.h2>
           
-          <p className="text-xl text-muted-foreground mb-12 max-w-2xl mx-auto">
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="text-xl text-muted-foreground mb-12 max-w-2xl mx-auto"
+          >
             If you&apos;re solving real problems for real people—and want someone who thinks deeply 
             about both technology and humanity—let&apos;s talk.
-          </p>
+          </motion.p>
           
           <Link href="/contact">
             <motion.button
