@@ -5,6 +5,7 @@ import { Users, Heart, Brain, Mountain, Book, Lightbulb } from 'lucide-react'
 import Link from 'next/link'
 import { AnimatedText, AnimatedLetters, FadeInText } from '@/components/animated-text'
 import { SectionDivider } from '@/components/section-divider'
+import { AnimatedBorderBox, BorderFadeBox } from '@/components/animated-border-box'
 
 const principles = [
   {
@@ -157,28 +158,34 @@ export default function PhilosophyPage() {
             {principles.map((principle, index) => {
               const Icon = principle.icon
               return (
-                <motion.div
+                <AnimatedBorderBox
                   key={principle.title}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ 
-                    duration: 0.6, 
-                    delay: index * 0.15,
-                    ease: [0.25, 0.1, 0.25, 1]
-                  }}
-                  className="flex gap-4"
+                  delay={index * 0.15}
+                  className="p-6 rounded-xl"
+                  borderColor="rgba(0, 200, 255, 0.3)"
                 >
-                  <div className="flex-shrink-0">
-                    <div className="w-12 h-12 border-2 border-foreground/20 rounded-full flex items-center justify-center">
-                      <Icon className="w-6 h-6" />
+                  <div className="flex gap-4">
+                    <motion.div 
+                      className="flex-shrink-0"
+                      initial={{ scale: 0, rotate: -180 }}
+                      whileInView={{ scale: 1, rotate: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ 
+                        delay: index * 0.15 + 0.4,
+                        duration: 0.6,
+                        ease: [0.25, 0.1, 0.25, 1]
+                      }}
+                    >
+                      <div className="w-12 h-12 bg-gradient-to-br from-cyan-400/10 to-purple-400/10 rounded-full flex items-center justify-center">
+                        <Icon className="w-6 h-6 text-cyan-400" />
+                      </div>
+                    </motion.div>
+                    <div>
+                      <h3 className="text-xl font-semibold mb-2">{principle.title}</h3>
+                      <p className="text-muted-foreground">{principle.description}</p>
                     </div>
                   </div>
-                  <div>
-                    <h3 className="text-xl font-semibold mb-2">{principle.title}</h3>
-                    <p className="text-muted-foreground">{principle.description}</p>
-                  </div>
-                </motion.div>
+                </AnimatedBorderBox>
               )
             })}
           </div>
@@ -206,20 +213,29 @@ export default function PhilosophyPage() {
           
           <div className="grid sm:grid-cols-2 gap-6">
             {influences.map((influence, index) => (
-              <motion.div
+              <BorderFadeBox
                 key={influence.author}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="flex items-start gap-3 p-4 border-l-2 border-foreground/10"
+                delay={index * 0.1}
+                direction="left"
+                className="flex items-start gap-3 p-4"
               >
-                <Book className="w-5 h-5 mt-1 flex-shrink-0 text-muted-foreground" />
+                <motion.div
+                  initial={{ opacity: 0, scale: 0 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ 
+                    delay: index * 0.1 + 0.3,
+                    duration: 0.4,
+                    ease: "easeOut"
+                  }}
+                >
+                  <Book className="w-5 h-5 mt-1 flex-shrink-0 text-cyan-400" />
+                </motion.div>
                 <div>
                   <p className="font-semibold">{influence.author}</p>
                   <p className="text-sm text-muted-foreground italic">{influence.work}</p>
                 </div>
-              </motion.div>
+              </BorderFadeBox>
             ))}
           </div>
           

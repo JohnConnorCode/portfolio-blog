@@ -29,6 +29,10 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
   const scale = useTransform(scrollYProgress, [0, 0.5], [1, 1.1])
   
+  // Grid becomes more focused as you scroll
+  const gridOpacity = useTransform(scrollYProgress, [0, 0.3], [0.4, 0.7])
+  const gridBlur = useTransform(scrollYProgress, [0, 0.3], [1, 0])
+  
   // Track mouse for interactive effects
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -152,13 +156,14 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
       />
       
       {/* Animated perspective grid with distance blur */}
-      <div 
+      <motion.div 
         className="absolute inset-0" 
         style={{ 
           perspective: '1000px',
           transform: typeof window !== 'undefined' 
             ? `translateX(${(mousePos.x - window.innerWidth / 2) * 0.01}px)` 
-            : 'translateX(0)'
+            : 'translateX(0)',
+          opacity: gridOpacity,
         }}
       >
         {/* Main grid plane */}
@@ -170,15 +175,15 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
           }}
         >
           {/* Animated grid lines with distance fade */}
-          <div 
+          <motion.div 
             className="absolute inset-0"
             style={{
               backgroundImage: `
-                linear-gradient(rgba(0, 150, 255, 0.25) 1.5px, transparent 1.5px),
-                linear-gradient(90deg, rgba(0, 150, 255, 0.25) 1.5px, transparent 1.5px)
+                linear-gradient(rgba(0, 150, 255, 0.8) 1.5px, transparent 1.5px),
+                linear-gradient(90deg, rgba(0, 150, 255, 0.8) 1.5px, transparent 1.5px)
               `,
               backgroundSize: '60px 60px',
-              animation: 'gridScroll 8s linear infinite',
+              animation: 'gridScroll 5s linear infinite',
               maskImage: `linear-gradient(to top, 
                 black 0%, 
                 rgba(0,0,0,0.8) 30%, 
@@ -191,12 +196,12 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                 rgba(0,0,0,0.3) 60%, 
                 transparent 85%
               )`,
-              filter: 'blur(0px)',
+              filter: gridBlur,
             }}
           />
           
           {/* Distance blur overlay */}
-          <div 
+          <motion.div 
             className="absolute inset-0"
             style={{
               background: `linear-gradient(to top, 
@@ -205,12 +210,12 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                 rgba(0, 0, 0, 0.4) 80%, 
                 rgba(0, 0, 0, 0.8) 100%
               )`,
-              backdropFilter: 'blur(2px)',
-              WebkitBackdropFilter: 'blur(2px)',
+              backdropFilter: gridBlur,
+              WebkitBackdropFilter: gridBlur,
             }}
           />
         </div>
-      </div>
+      </motion.div>
       
       {/* Nebula-like color accents */}
       <div 

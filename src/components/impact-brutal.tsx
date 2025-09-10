@@ -19,7 +19,7 @@ const impacts = [
     color: "text-cyan-400"
   },
   {
-    number: "10+ Years",
+    number: "15 Years",
     label: "Technology Strategy",
     context: "AI/Web3 & human-centered design",
     icon: Zap,
