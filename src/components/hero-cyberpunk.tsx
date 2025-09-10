@@ -175,19 +175,20 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
       {/* Perspective grid */}
       <motion.div className="absolute inset-0">
         <div 
-          className="absolute inset-0"
+          className="absolute -inset-x-[50%] sm:-inset-x-[25%] md:inset-x-0 -top-[50%] sm:-top-[25%] md:inset-0"
           style={{
             backgroundImage: `
               linear-gradient(${isDark ? 'rgba(0, 200, 255, 0.15)' : 'rgba(255, 255, 255, 0.15)'} 1px, transparent 1px),
               linear-gradient(90deg, ${isDark ? 'rgba(0, 200, 255, 0.15)' : 'rgba(255, 255, 255, 0.15)'} 1px, transparent 1px)
             `,
-            backgroundSize: '100px 100px',
+            backgroundSize: '50px 50px',
             backgroundPosition: 'center center',
             transform: 'perspective(1000px) rotateX(60deg) translateZ(-100px)',
             transformOrigin: 'center 100%',
             opacity: gridOpacity,
             filter: `blur(${gridBlur}px)`,
           }}
+          className="sm:bg-[length:75px_75px] md:bg-[length:100px_100px]"
         />
         
         {/* Distance blur overlay */}
