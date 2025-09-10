@@ -118,7 +118,7 @@ export function ImpactBrutal() {
         {/* Bottom accent text */}
         <div className="text-center mt-16">
           <p className="text-gray-500 font-mono text-sm uppercase tracking-widest">
-            Not growth theater. <span className="text-cyan-400">Product solutions.</span>
+            Building what <span className="text-cyan-400">actually works</span>
           </p>
         </div>
       </div>

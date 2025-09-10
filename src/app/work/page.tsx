@@ -104,10 +104,10 @@ const currentProjects = [
   },
   {
     name: 'Accelerate',
-    role: 'Advisor',
-    description: 'Redesigning how ecosystems fund builders. Pay-for-delivery model with transparent milestones.',
-    status: 'In development',
-    link: null
+    role: 'Founder',
+    description: 'AI-powered funding platform with 500+ programs. Matching builders with the right funding opportunities using intelligent algorithms.',
+    status: 'Live with 500+ programs',
+    link: 'https://www.acceleratewith.us'
   }
 ]
 
@@ -197,81 +197,82 @@ export default function WorkPage() {
           className="mb-20"
         >
           <motion.h2 
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-3xl font-bold mb-12 text-purple-400"
+            className="text-3xl font-bold mb-12 text-center bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent"
           >
-            Experience
+            Experience Timeline
           </motion.h2>
           
-          <div className="space-y-12">
+          <div className="space-y-8">
             {experiences.map((exp, index) => (
-              <motion.div
+              <AnimatedBorderBox
                 key={exp.company}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ 
-                  duration: 0.6,
-                  delay: index * 0.1,
-                  ease: [0.25, 0.1, 0.25, 1]
-                }}
-                className="relative"
+                delay={index * 0.15}
+                className="p-8 rounded-xl hover:bg-foreground/5 transition-all duration-300"
+                borderColor={index % 2 === 0 ? "rgba(0, 200, 255, 0.3)" : "rgba(147, 51, 234, 0.3)"}
               >
-                {/* Timeline line */}
-                {index < experiences.length - 1 && (
-                  <div className="absolute left-6 top-12 bottom-0 w-0.5 bg-foreground/10" />
-                )}
-                
-                {/* Timeline dot */}
-                <div className="absolute left-5 top-3 w-3 h-3 bg-cyan-400 rounded-full" />
-                
-                {/* Content */}
-                <div className="pl-12">
-                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 mb-3">
-                    <h3 className="text-2xl font-bold">{exp.company}</h3>
-                    <span className="text-muted-foreground">•</span>
-                    <span className="text-muted-foreground">{exp.role}</span>
-                    <span className="text-muted-foreground">•</span>
-                    <span className="text-sm text-muted-foreground font-mono">{exp.period}</span>
+                {/* Header */}
+                <div className="flex flex-col lg:flex-row lg:items-center justify-between mb-6 pb-4 border-b border-foreground/10">
+                  <div className="flex flex-col lg:flex-row lg:items-center gap-3">
+                    <h3 className="text-2xl font-black bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+                      {exp.company}
+                    </h3>
+                    <span className="text-lg text-foreground">{exp.role}</span>
                   </div>
-                  
-                  <p className="text-lg text-muted-foreground mb-4">{exp.description}</p>
-                  
-                  <ul className="space-y-2 mb-4">
-                    {exp.achievements.map((achievement, i) => (
-                      <motion.li
-                        key={i}
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: index * 0.1 + i * 0.05 }}
-                        className="flex items-start gap-2"
-                      >
-                        <Zap className="w-4 h-4 text-cyan-400 mt-1 flex-shrink-0" />
-                        <span className="text-muted-foreground">{achievement}</span>
-                      </motion.li>
-                    ))}
-                  </ul>
-                  
-                  <p className="text-lg font-semibold text-purple-400 mb-4 italic">
-                    {exp.impact}
-                  </p>
-                  
-                  <div className="flex flex-wrap gap-2">
-                    {exp.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-3 py-1 text-xs border border-foreground/20 rounded-full"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+                  <span className="text-sm font-mono text-cyan-400 mt-2 lg:mt-0">{exp.period}</span>
                 </div>
-              </motion.div>
+                
+                {/* Description */}
+                <p className="text-lg text-muted-foreground mb-6">
+                  {exp.description}
+                </p>
+                
+                {/* Achievements Grid */}
+                <div className="grid md:grid-cols-2 gap-3 mb-6">
+                  {exp.achievements.map((achievement, i) => (
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.1 + i * 0.05 }}
+                      className="flex items-start gap-3 p-3 rounded-lg bg-gradient-to-r from-cyan-400/5 to-purple-400/5 border border-foreground/5 hover:border-foreground/20 transition-colors"
+                    >
+                      <Zap className="w-4 h-4 text-cyan-400 mt-1 flex-shrink-0" />
+                      <span className="text-sm text-muted-foreground">{achievement}</span>
+                    </motion.div>
+                  ))}
+                </div>
+                
+                {/* Impact Statement */}
+                <motion.div 
+                  className="p-4 bg-gradient-to-r from-cyan-400/10 to-purple-400/10 rounded-lg border border-cyan-400/20 mb-6"
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 + 0.3 }}
+                >
+                  <p className="text-lg font-bold italic bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+                    → {exp.impact}
+                  </p>
+                </motion.div>
+                
+                {/* Tags */}
+                <div className="flex flex-wrap gap-2">
+                  {exp.tags.map((tag) => (
+                    <motion.span
+                      key={tag}
+                      whileHover={{ scale: 1.05 }}
+                      className="px-3 py-1 text-xs font-mono border border-foreground/20 rounded-full hover:border-cyan-400/50 hover:text-cyan-400 transition-all cursor-default"
+                    >
+                      {tag}
+                    </motion.span>
+                  ))}
+                </div>
+              </AnimatedBorderBox>
             ))}
           </div>
         </motion.section>
