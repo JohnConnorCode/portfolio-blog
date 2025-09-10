@@ -38,7 +38,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
     return () => window.removeEventListener('mousemove', handleMouseMove)
   }, [])
   
-  // Sacred geometry animation with golden ratio and dynamic interactions
+  // Subtle, refined animation with sacred geometry influences
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
@@ -52,145 +52,124 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
     let animationId: number
     let time = 0
     
-    // Golden ratio
+    // Golden ratio for natural proportions
     const PHI = 1.618033988749
-    const goldenAngle = Math.PI * 2 / (PHI * PHI)
     
-    // Smooth mouse tracking with momentum
+    // Smooth mouse tracking
     let smoothMouseX = canvas.width / 2
     let smoothMouseY = canvas.height / 2
-    let mouseVelocityX = 0
-    let mouseVelocityY = 0
     
     const draw = () => {
-      // Semi-transparent clear for trails
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.03)'
-      ctx.fillRect(0, 0, canvas.width, canvas.height)
+      // Clear canvas completely for clean look
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
       
-      time += 0.003
+      time += 0.001 // Slower, more subtle
       
-      // Mouse physics with momentum
-      const targetX = mousePos.x
-      const targetY = mousePos.y
-      mouseVelocityX += (targetX - smoothMouseX) * 0.03
-      mouseVelocityY += (targetY - smoothMouseY) * 0.03
-      mouseVelocityX *= 0.92 // Damping
-      mouseVelocityY *= 0.92
-      smoothMouseX += mouseVelocityX
-      smoothMouseY += mouseVelocityY
+      // Very smooth mouse easing
+      smoothMouseX += (mousePos.x - smoothMouseX) * 0.08
+      smoothMouseY += (mousePos.y - smoothMouseY) * 0.08
       
-      // Sacred geometry center point
       const centerX = canvas.width / 2
       const centerY = canvas.height / 2
       
-      // Draw Fibonacci spiral with mouse interaction
-      ctx.save()
-      ctx.globalCompositeOperation = 'screen'
+      // Subtle floating orbs at golden ratio positions
+      const orbPositions = [
+        { x: centerX - canvas.width * 0.309, y: centerY - canvas.height * 0.191 }, // Golden ratio positions
+        { x: centerX + canvas.width * 0.191, y: centerY - canvas.height * 0.118 },
+        { x: centerX + canvas.width * 0.118, y: centerY + canvas.height * 0.191 },
+        { x: centerX - canvas.width * 0.191, y: centerY + canvas.height * 0.118 },
+      ]
       
-      for (let i = 0; i < 100; i++) {
-        const angle = i * goldenAngle
-        const radius = Math.sqrt(i) * 15
+      // Draw subtle floating orbs
+      orbPositions.forEach((pos, i) => {
+        const floatX = pos.x + Math.sin(time + i * PHI) * 30
+        const floatY = pos.y + Math.cos(time * 0.7 + i * PHI) * 20
         
-        // Mouse influence on spiral
-        const mouseDistance = Math.hypot(smoothMouseX - centerX, smoothMouseY - centerY)
-        const mouseAngle = Math.atan2(smoothMouseY - centerY, smoothMouseX - centerX)
-        const influence = Math.max(0, 1 - mouseDistance / 500)
+        // Distance-based opacity
+        const distToMouse = Math.hypot(floatX - smoothMouseX, floatY - smoothMouseY)
+        const proximity = Math.max(0, 1 - distToMouse / 400)
         
-        const x = centerX + Math.cos(angle + time + mouseAngle * influence) * radius
-        const y = centerY + Math.sin(angle + time + mouseAngle * influence) * radius
+        // Orb gradient
+        const orbGradient = ctx.createRadialGradient(
+          floatX, floatY, 0,
+          floatX, floatY, 150
+        )
         
-        // Dynamic size based on position in spiral and mouse proximity
-        const distToMouse = Math.hypot(x - smoothMouseX, y - smoothMouseY)
-        const sizeMult = 1 + (1 - Math.min(distToMouse / 200, 1)) * 2
-        const size = (3 + Math.sin(time * 3 + i * 0.1) * 2) * sizeMult
+        const baseOpacity = 0.03 + proximity * 0.05
+        orbGradient.addColorStop(0, `rgba(100, 150, 255, ${baseOpacity})`)
+        orbGradient.addColorStop(0.5, `rgba(150, 100, 255, ${baseOpacity * 0.5})`)
+        orbGradient.addColorStop(1, 'transparent')
         
-        // Color based on golden ratio position
-        const hue = (i * PHI * 10 + time * 30) % 360
-        const lightness = 50 + Math.sin(time * 2 + i * 0.05) * 20
-        
-        // Draw particle with glow
-        const gradient = ctx.createRadialGradient(x, y, 0, x, y, size * 3)
-        gradient.addColorStop(0, `hsla(${hue}, 100%, ${lightness}%, 0.8)`)
-        gradient.addColorStop(0.5, `hsla(${hue}, 100%, ${lightness}%, 0.3)`)
-        gradient.addColorStop(1, 'transparent')
-        
-        ctx.fillStyle = gradient
-        ctx.beginPath()
-        ctx.arc(x, y, size * 3, 0, Math.PI * 2)
-        ctx.fill()
-      }
+        ctx.fillStyle = orbGradient
+        ctx.fillRect(0, 0, canvas.width, canvas.height)
+      })
       
-      // Metatron's Cube / Sacred geometry grid
-      ctx.strokeStyle = 'rgba(0, 255, 255, 0.1)'
+      // Subtle grid lines that appear near mouse
+      ctx.strokeStyle = 'rgba(100, 150, 255, 0.03)'
       ctx.lineWidth = 1
       
-      const gridPoints = []
-      const hexagonRadius = 150 + Math.sin(time) * 20
+      const gridSize = 100
+      const mouseInfluenceRadius = 300
       
-      // Create hexagonal grid points
-      for (let ring = 0; ring < 3; ring++) {
-        const numPoints = ring === 0 ? 1 : 6 * ring
-        for (let i = 0; i < numPoints; i++) {
-          const angle = ring === 0 ? 0 : (i / numPoints) * Math.PI * 2
-          const r = ring * hexagonRadius / 2
-          const x = centerX + Math.cos(angle + time * 0.5) * r + 
-                   (smoothMouseX - centerX) * 0.1
-          const y = centerY + Math.sin(angle + time * 0.5) * r + 
-                   (smoothMouseY - centerY) * 0.1
-          gridPoints.push({ x, y })
+      for (let x = 0; x < canvas.width; x += gridSize) {
+        for (let y = 0; y < canvas.height; y += gridSize) {
+          const dist = Math.hypot(x - smoothMouseX, y - smoothMouseY)
+          if (dist < mouseInfluenceRadius) {
+            const opacity = (1 - dist / mouseInfluenceRadius) * 0.1
+            ctx.strokeStyle = `rgba(100, 200, 255, ${opacity})`
+            
+            // Draw subtle cross
+            ctx.beginPath()
+            ctx.moveTo(x - 20, y)
+            ctx.lineTo(x + 20, y)
+            ctx.moveTo(x, y - 20)
+            ctx.lineTo(x, y + 20)
+            ctx.stroke()
+          }
         }
       }
       
-      // Connect points with sacred geometry patterns
-      gridPoints.forEach((point1, i) => {
-        gridPoints.forEach((point2, j) => {
-          if (j > i) {
-            const dist = Math.hypot(point2.x - point1.x, point2.y - point1.y)
-            if (dist < hexagonRadius * 1.2) {
-              const opacity = (1 - dist / (hexagonRadius * 1.2)) * 0.3
-              ctx.strokeStyle = `rgba(100, 200, 255, ${opacity})`
-              ctx.beginPath()
-              ctx.moveTo(point1.x, point1.y)
-              ctx.lineTo(point2.x, point2.y)
-              ctx.stroke()
-            }
-          }
-        })
-      })
+      // Elegant glow that follows mouse
+      const glowGradient = ctx.createRadialGradient(
+        smoothMouseX, smoothMouseY, 0,
+        smoothMouseX, smoothMouseY, 250
+      )
       
-      // Flower of Life pattern around mouse
-      const flowerRadius = 80 + Math.sin(time * 2) * 20
-      for (let i = 0; i < 6; i++) {
-        const angle = (i / 6) * Math.PI * 2
-        const x = smoothMouseX + Math.cos(angle) * flowerRadius
-        const y = smoothMouseY + Math.sin(angle) * flowerRadius
+      glowGradient.addColorStop(0, 'rgba(0, 200, 255, 0.08)')
+      glowGradient.addColorStop(0.3, 'rgba(100, 150, 255, 0.04)')
+      glowGradient.addColorStop(0.6, 'rgba(150, 100, 255, 0.02)')
+      glowGradient.addColorStop(1, 'transparent')
+      
+      ctx.fillStyle = glowGradient
+      ctx.fillRect(0, 0, canvas.width, canvas.height)
+      
+      // Subtle rotating rays from mouse (very faint)
+      const rayCount = 3
+      for (let i = 0; i < rayCount; i++) {
+        const angle = (i / rayCount) * Math.PI * 2 + time * 0.5
+        const rayLength = 1000
         
-        ctx.strokeStyle = `rgba(255, 100, 200, 0.2)`
-        ctx.beginPath()
-        ctx.arc(x, y, flowerRadius, 0, Math.PI * 2)
-        ctx.stroke()
+        const rayGradient = ctx.createLinearGradient(
+          smoothMouseX, smoothMouseY,
+          smoothMouseX + Math.cos(angle) * rayLength,
+          smoothMouseY + Math.sin(angle) * rayLength
+        )
+        
+        rayGradient.addColorStop(0, 'rgba(255, 255, 255, 0.015)')
+        rayGradient.addColorStop(0.2, 'rgba(100, 200, 255, 0.008)')
+        rayGradient.addColorStop(1, 'transparent')
+        
+        ctx.fillStyle = rayGradient
+        ctx.fillRect(0, 0, canvas.width, canvas.height)
       }
       
-      // Central mandala at mouse position
-      ctx.strokeStyle = `rgba(255, 255, 255, 0.15)`
+      // Single elegant circle that pulses at mouse position
+      const pulseRadius = 100 + Math.sin(time * 3) * 10
+      ctx.strokeStyle = `rgba(0, 255, 255, ${0.1 + Math.sin(time * 3) * 0.05})`
+      ctx.lineWidth = 1
       ctx.beginPath()
-      ctx.arc(smoothMouseX, smoothMouseY, flowerRadius, 0, Math.PI * 2)
+      ctx.arc(smoothMouseX, smoothMouseY, pulseRadius, 0, Math.PI * 2)
       ctx.stroke()
-      
-      ctx.restore()
-      
-      // Energy field visualization
-      const fieldStrength = Math.sin(time * 2) * 0.5 + 0.5
-      const fieldGradient = ctx.createRadialGradient(
-        smoothMouseX, smoothMouseY, 0,
-        smoothMouseX, smoothMouseY, 300 + fieldStrength * 100
-      )
-      fieldGradient.addColorStop(0, `rgba(0, 255, 255, ${0.1 * fieldStrength})`)
-      fieldGradient.addColorStop(0.5, `rgba(100, 100, 255, ${0.05 * fieldStrength})`)
-      fieldGradient.addColorStop(1, 'transparent')
-      
-      ctx.fillStyle = fieldGradient
-      ctx.fillRect(0, 0, canvas.width, canvas.height)
       
       animationId = requestAnimationFrame(draw)
     }
@@ -212,32 +191,33 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
   
   return (
     <section ref={containerRef} className="relative min-h-screen overflow-hidden -mt-24 pt-24 bg-background">
-      {/* Sacred geometry canvas */}
+      {/* Subtle animated canvas */}
       <canvas
         ref={canvasRef}
         className="absolute inset-0"
-        style={{ opacity: 0.9 }}
+        style={{ opacity: 0.6 }}
       />
       
-      {/* Dynamic gradient overlay that responds to mouse */}
+      {/* Very subtle ambient gradient */}
       <div 
-        className="absolute inset-0 opacity-50 pointer-events-none mix-blend-color-dodge"
+        className="absolute inset-0 opacity-30 pointer-events-none"
         style={{
           background: `
-            radial-gradient(circle 400px at ${mousePos.x}px ${mousePos.y}px, rgba(100,50,255,0.2), transparent 60%),
-            linear-gradient(135deg, rgba(0,100,200,0.2) 0%, transparent 50%, rgba(200,0,100,0.1) 100%)
+            radial-gradient(circle 600px at ${mousePos.x}px ${mousePos.y}px, rgba(0,100,200,0.05), transparent 70%),
+            linear-gradient(135deg, rgba(0,50,100,0.1) 0%, transparent 60%, rgba(100,0,50,0.05) 100%)
           `,
         }}
       />
       
-      {/* Sacred geometry grid overlay */}
+      {/* Minimal grid for texture */}
       <div 
-        className="absolute inset-0 opacity-[0.03]"
+        className="absolute inset-0 opacity-[0.01]"
         style={{
           backgroundImage: `
-            repeating-linear-gradient(60deg, transparent, transparent 100px, rgba(255, 200, 100, 0.1) 100px, rgba(255, 200, 100, 0.1) 101px),
-            repeating-linear-gradient(-60deg, transparent, transparent 100px, rgba(100, 200, 255, 0.1) 100px, rgba(100, 200, 255, 0.1) 101px)
+            linear-gradient(rgba(100, 150, 200, 0.2) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(100, 150, 200, 0.2) 1px, transparent 1px)
           `,
+          backgroundSize: '50px 50px',
         }}
       />
       
