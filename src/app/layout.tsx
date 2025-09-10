@@ -31,6 +31,13 @@ export const metadata: Metadata = {
   authors: [{ name: "John Connor" }],
   creator: "John Connor",
   publisher: "John Connor",
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico', sizes: '32x32' }
+    ],
+    apple: '/apple-touch-icon.png',
+  },
   openGraph: {
     type: "website",
     locale: "en_US",

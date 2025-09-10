@@ -38,7 +38,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
     return () => window.removeEventListener('mousemove', handleMouseMove)
   }, [])
   
-  // Dynamic flowing particle field animation
+  // Smooth gradient mesh animation with aurora effect
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
@@ -49,139 +49,116 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
     canvas.width = window.innerWidth
     canvas.height = window.innerHeight
     
-    // Particles for dynamic movement
-    const particles: Array<{
-      x: number
-      y: number
-      vx: number
-      vy: number
-      size: number
-      opacity: number
-      hue: number
-      speed: number
-    }> = []
-    
-    // Create flowing particles
-    const particleCount = 80
-    for (let i = 0; i < particleCount; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.3,
-        vy: (Math.random() - 0.5) * 0.3,
-        size: Math.random() * 3 + 1,
-        opacity: Math.random() * 0.5 + 0.2,
-        hue: Math.random() * 60 + 170, // Blue to purple range
-        speed: Math.random() * 0.5 + 0.5
-      })
-    }
-    
-    // Smooth mouse tracking with easing
-    let smoothMouseX = canvas.width / 2
-    let smoothMouseY = canvas.height / 2
-    
     let animationId: number
     let time = 0
     
+    // Smooth mouse tracking
+    let smoothMouseX = canvas.width / 2
+    let smoothMouseY = canvas.height / 2
+    
     const draw = () => {
-      // Clear with fade trail effect
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)'
-      ctx.fillRect(0, 0, canvas.width, canvas.height)
+      // Clear canvas
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
       
-      time += 0.01
+      time += 0.002
       
-      // Smooth mouse position with easing
-      smoothMouseX += (mousePos.x - smoothMouseX) * 0.05
-      smoothMouseY += (mousePos.y - smoothMouseY) * 0.05
+      // Smooth mouse position with gentle easing
+      smoothMouseX += (mousePos.x - smoothMouseX) * 0.02
+      smoothMouseY += (mousePos.y - smoothMouseY) * 0.02
       
-      // Draw energy waves from mouse
-      const waveRadius = 150 + Math.sin(time * 2) * 30
-      const waveGradient = ctx.createRadialGradient(
-        smoothMouseX, smoothMouseY, 0,
-        smoothMouseX, smoothMouseY, waveRadius
-      )
-      waveGradient.addColorStop(0, 'rgba(0, 200, 255, 0.1)')
-      waveGradient.addColorStop(0.5, 'rgba(100, 0, 255, 0.05)')
-      waveGradient.addColorStop(1, 'rgba(255, 0, 200, 0)')
-      
-      ctx.fillStyle = waveGradient
-      ctx.fillRect(0, 0, canvas.width, canvas.height)
-      
-      // Update and draw particles
-      particles.forEach((particle, i) => {
-        // Organic flow movement
-        particle.vx += Math.sin(time + i) * 0.01
-        particle.vy += Math.cos(time + i * 0.5) * 0.01
-        
-        // Smooth mouse interaction
-        const dx = smoothMouseX - particle.x
-        const dy = smoothMouseY - particle.y
-        const distance = Math.hypot(dx, dy)
-        
-        if (distance < 250) {
-          const force = Math.pow((250 - distance) / 250, 2) // Smooth quadratic falloff
-          particle.vx += (dx / distance) * force * 0.02 * particle.speed
-          particle.vy += (dy / distance) * force * 0.02 * particle.speed
+      // Create multiple gradient layers for depth
+      const gradients = [
+        {
+          x: canvas.width * 0.3 + Math.sin(time * 0.5) * 100,
+          y: canvas.height * 0.3 + Math.cos(time * 0.3) * 100,
+          radius: 400 + Math.sin(time) * 50,
+          colors: ['rgba(0, 100, 255, 0.15)', 'rgba(0, 200, 255, 0.05)', 'transparent']
+        },
+        {
+          x: canvas.width * 0.7 + Math.cos(time * 0.4) * 150,
+          y: canvas.height * 0.6 + Math.sin(time * 0.6) * 100,
+          radius: 350 + Math.cos(time * 1.2) * 40,
+          colors: ['rgba(255, 0, 150, 0.1)', 'rgba(150, 0, 255, 0.05)', 'transparent']
+        },
+        {
+          x: smoothMouseX,
+          y: smoothMouseY,
+          radius: 300,
+          colors: ['rgba(0, 255, 255, 0.08)', 'rgba(0, 150, 255, 0.03)', 'transparent']
         }
+      ]
+      
+      // Draw gradient meshes
+      gradients.forEach((grad, index) => {
+        const gradient = ctx.createRadialGradient(
+          grad.x, grad.y, 0,
+          grad.x, grad.y, grad.radius
+        )
         
-        // Apply velocity with damping
-        particle.x += particle.vx
-        particle.y += particle.vy
-        particle.vx *= 0.98
-        particle.vy *= 0.98
-        
-        // Wrap around edges smoothly
-        if (particle.x < -50) particle.x = canvas.width + 50
-        if (particle.x > canvas.width + 50) particle.x = -50
-        if (particle.y < -50) particle.y = canvas.height + 50
-        if (particle.y > canvas.height + 50) particle.y = -50
-        
-        // Draw connections to nearby particles
-        particles.forEach((other, j) => {
-          if (j > i) {
-            const dist = Math.hypot(other.x - particle.x, other.y - particle.y)
-            if (dist < 120) {
-              const lineOpacity = (1 - dist / 120) * 0.3
-              const gradient = ctx.createLinearGradient(
-                particle.x, particle.y,
-                other.x, other.y
-              )
-              gradient.addColorStop(0, `hsla(${particle.hue}, 100%, 60%, ${lineOpacity})`)
-              gradient.addColorStop(1, `hsla(${other.hue}, 100%, 60%, ${lineOpacity})`)
-              
-              ctx.strokeStyle = gradient
-              ctx.lineWidth = 1
-              ctx.beginPath()
-              ctx.moveTo(particle.x, particle.y)
-              ctx.lineTo(other.x, other.y)
-              ctx.stroke()
-            }
-          }
+        grad.colors.forEach((color, i) => {
+          gradient.addColorStop(i / (grad.colors.length - 1), color)
         })
         
-        // Draw particle with glow
-        const pulse = Math.sin(time * 3 + i) * 0.3 + 0.7
-        
-        // Glow effect
-        const glowGradient = ctx.createRadialGradient(
-          particle.x, particle.y, 0,
-          particle.x, particle.y, particle.size * 6
-        )
-        glowGradient.addColorStop(0, `hsla(${particle.hue}, 100%, 70%, ${particle.opacity * pulse})`)
-        glowGradient.addColorStop(0.5, `hsla(${particle.hue}, 100%, 50%, ${particle.opacity * 0.5 * pulse})`)
-        glowGradient.addColorStop(1, 'transparent')
-        
-        ctx.fillStyle = glowGradient
-        ctx.beginPath()
-        ctx.arc(particle.x, particle.y, particle.size * 6, 0, Math.PI * 2)
-        ctx.fill()
-        
-        // Core particle
-        ctx.fillStyle = `hsla(${particle.hue}, 100%, 80%, ${particle.opacity + pulse * 0.2})`
-        ctx.beginPath()
-        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2)
-        ctx.fill()
+        ctx.fillStyle = gradient
+        ctx.fillRect(0, 0, canvas.width, canvas.height)
       })
+      
+      // Aurora borealis wave effect
+      ctx.save()
+      ctx.globalCompositeOperation = 'screen'
+      
+      for (let i = 0; i < 3; i++) {
+        const waveGradient = ctx.createLinearGradient(
+          0, canvas.height * 0.3,
+          canvas.width, canvas.height * 0.7
+        )
+        
+        const hue1 = 180 + Math.sin(time + i) * 30
+        const hue2 = 280 + Math.cos(time + i * 0.5) * 30
+        
+        waveGradient.addColorStop(0, `hsla(${hue1}, 100%, 50%, 0)`)
+        waveGradient.addColorStop(0.5, `hsla(${(hue1 + hue2) / 2}, 100%, 60%, ${0.1 + Math.sin(time * 2 + i) * 0.05})`)
+        waveGradient.addColorStop(1, `hsla(${hue2}, 100%, 50%, 0)`)
+        
+        ctx.fillStyle = waveGradient
+        
+        // Create wave path
+        ctx.beginPath()
+        ctx.moveTo(0, canvas.height)
+        
+        for (let x = 0; x <= canvas.width; x += 20) {
+          const y = canvas.height * 0.5 + 
+                   Math.sin((x / canvas.width) * Math.PI * 2 + time * 2 + i) * 100 +
+                   Math.sin((x / canvas.width) * Math.PI * 4 + time * 3) * 50
+          ctx.lineTo(x, y)
+        }
+        
+        ctx.lineTo(canvas.width, canvas.height)
+        ctx.closePath()
+        ctx.fill()
+      }
+      
+      ctx.restore()
+      
+      // Subtle light rays from mouse
+      const rayCount = 5
+      for (let i = 0; i < rayCount; i++) {
+        const angle = (Math.PI * 2 / rayCount) * i + time
+        const length = 800
+        
+        const rayGradient = ctx.createLinearGradient(
+          smoothMouseX, smoothMouseY,
+          smoothMouseX + Math.cos(angle) * length,
+          smoothMouseY + Math.sin(angle) * length
+        )
+        
+        rayGradient.addColorStop(0, 'rgba(255, 255, 255, 0.02)')
+        rayGradient.addColorStop(0.5, 'rgba(0, 200, 255, 0.01)')
+        rayGradient.addColorStop(1, 'transparent')
+        
+        ctx.fillStyle = rayGradient
+        ctx.fillRect(0, 0, canvas.width, canvas.height)
+      }
       
       animationId = requestAnimationFrame(draw)
     }
@@ -203,36 +180,32 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
   
   return (
     <section ref={containerRef} className="relative min-h-screen overflow-hidden -mt-24 pt-24 bg-background">
-      {/* Dynamic particle canvas */}
+      {/* Smooth gradient mesh canvas */}
       <canvas
         ref={canvasRef}
         className="absolute inset-0"
-        style={{ opacity: 0.7 }}
+        style={{ opacity: 0.8 }}
       />
       
-      {/* Vibrant gradient overlay */}
+      {/* Subtle ambient gradient */}
       <div 
-        className="absolute inset-0 opacity-30 pointer-events-none mix-blend-screen"
+        className="absolute inset-0 opacity-40 pointer-events-none"
         style={{
           background: `
-            radial-gradient(circle 600px at ${mousePos.x}px ${mousePos.y}px, rgba(0,255,255,0.15), transparent 50%),
-            radial-gradient(circle 800px at ${mousePos.x * 0.8}px ${mousePos.y * 1.2}px, rgba(255,0,255,0.1), transparent 60%),
-            radial-gradient(circle 1000px at 50% 50%, rgba(0,100,255,0.05), transparent 70%)
+            linear-gradient(135deg, rgba(0,50,100,0.3) 0%, transparent 50%, rgba(100,0,100,0.2) 100%)
           `,
         }}
       />
       
-      {/* Animated grid with perspective */}
+      {/* Minimal grid for depth */}
       <div 
-        className="absolute inset-0 opacity-[0.03]"
+        className="absolute inset-0 opacity-[0.02]"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(0, 255, 255, 0.4) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255, 0, 255, 0.4) 1px, transparent 1px)
+            linear-gradient(rgba(100, 150, 255, 0.3) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(100, 150, 255, 0.3) 1px, transparent 1px)
           `,
-          backgroundSize: '80px 80px',
-          transform: `perspective(1000px) rotateX(60deg) translateZ(-100px) translateY(${mousePos.y * 0.01}px)`,
-          transformOrigin: 'center center',
+          backgroundSize: '100px 100px',
         }}
       />
       
