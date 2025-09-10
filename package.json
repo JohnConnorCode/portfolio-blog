@@ -10,6 +10,8 @@
     "type-check": "tsc --noEmit",
     "verify": "npm run type-check && npm run build",
     "verify:quick": "npm run build",
+    "prebuild": "echo '🔍 Checking for issues before build...'",
+    "prepush": "npm run verify:quick",
     "setup-db": "node scripts/setup-database.js",
     "seed-db": "node scripts/populate-db-branded.mjs",
     "test": "playwright test",

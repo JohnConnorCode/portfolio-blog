@@ -6,40 +6,44 @@ import Link from 'next/link'
 
 const writings = [
   {
-    title: 'Human-first Futurism',
-    excerpt: 'Automation should free humans for high-context work.',
-    category: 'PHILOSOPHY',
-    icon: Brain,
-    color: 'text-cyan-400',
-    featured: true
-  },
-  {
-    title: 'Debate as Growth Tool',
-    excerpt: 'Intellectual sparring builds resilience and community.',
-    category: 'COMMUNITY',
-    icon: Users,
-    color: 'text-pink-500'
-  },
-  {
-    title: 'Designing Abundance',
-    excerpt: 'Open systems compound faster than walled gardens.',
-    category: 'ECONOMICS',
-    icon: Zap,
-    color: 'text-yellow-400',
-    featured: true
-  },
-  {
-    title: 'Community-Owned Economies',
-    excerpt: 'Communities should own their infrastructure.',
+    title: 'Why Ecosystem Funding is Broken',
+    excerpt: 'Traditional grant systems reward promises over delivery. Here\'s how to fix it.',
     category: 'WEB3',
     icon: Globe,
-    color: 'text-purple-500'
+    color: 'text-cyan-400',
+    slug: 'why-ecosystem-funding-is-broken',
+    featured: true
+  },
+  {
+    title: 'Debate as Leadership Practice',
+    excerpt: 'The best leaders embrace intellectual conflict and use it to sharpen thinking.',
+    category: 'LEADERSHIP',
+    icon: Users,
+    color: 'text-purple-500',
+    slug: 'debate-as-leadership-practice'
+  },
+  {
+    title: 'Automation as Human Right',
+    excerpt: 'AI should free humans for creativity, not replace them entirely.',
+    category: 'AI',
+    icon: Brain,
+    color: 'text-pink-500',
+    slug: 'automation-as-human-right'
+  },
+  {
+    title: 'Death of Growth Theater',
+    excerpt: 'Why vanity metrics are killing startups and what to measure instead.',
+    category: 'PRODUCT',
+    icon: Zap,
+    color: 'text-yellow-400',
+    slug: 'death-of-growth-theater',
+    featured: true
   }
 ]
 
 export function WritingsBrutal() {
   return (
-    <section className="relative overflow-hidden" style={{ padding: 'var(--space-12) var(--space-2)', background: 'linear-gradient(to bottom, var(--gray-900), var(--black))' }}>
+    <section className="py-24 px-4 bg-gradient-to-b from-gray-900 to-black relative overflow-hidden">
       {/* Cyberpunk grid background */}
       <div className="absolute inset-0 cyber-grid opacity-20" />
       
@@ -52,11 +56,11 @@ export function WritingsBrutal() {
           className="text-center mb-16"
           transition={{ duration: 0.5 }}
         >
-          <h2 className="heading-section mb-4">
-            <span style={{ color: 'var(--white)', fontWeight: 300 }}>THOUGHT</span>
-            <span className="text-gradient" style={{ fontWeight: 700 }}> LEADERSHIP</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light mb-4">
+            <span className="text-foreground">THOUGHT</span>
+            <span className="text-cyan-400 font-black neon-glow"> LEADERSHIP</span>
           </h2>
-          <p className="text-base sm:text-lg font-light tracking-wide" style={{ color: 'var(--gray-400)' }}>
+          <p className="text-base sm:text-lg text-gray-400 font-light tracking-wide">
             Strategic insights on technology, community, and human potential
           </p>
         </motion.div>
@@ -74,11 +78,12 @@ export function WritingsBrutal() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className={`group ${writing.featured ? 'md:col-span-2' : ''}`}
               >
-                <Link href="/blog">
+                <Link href={`/blog/${writing.slug}`}>
                   <motion.div 
                     whileHover={{ scale: 1.02, y: -5 }}
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                    className="card-glass hover-glow">
+                    className="card-glass hover:border-cyan-400/50 transition-all"
+                  >
                     {/* Featured badge */}
                     {writing.featured && (
                       <div className="absolute -top-2 -right-2 bg-gradient-to-r from-cyan-400 to-cyan-500 text-black px-4 py-1 font-bold text-xs uppercase tracking-wide">
@@ -129,10 +134,9 @@ export function WritingsBrutal() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="btn-primary"
+              className="px-8 py-3 bg-foreground text-background hover:bg-foreground/90 transition-all duration-300 font-semibold uppercase tracking-wider"
             >
               <span className="relative z-10">EXPLORE ALL WRITINGS</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-pink-500 to-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity" />
             </motion.button>
           </Link>
         </motion.div>

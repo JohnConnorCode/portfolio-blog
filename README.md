@@ -1,5 +1,8 @@
 # Portfolio & Blog
 
+[![Deploy Status](https://img.shields.io/github/deployments/JohnConnorCode/portfolio-blog/production?label=vercel&logo=vercel)](https://github.com/JohnConnorCode/portfolio-blog/deployments)
+[![Build Status](https://github.com/JohnConnorCode/portfolio-blog/actions/workflows/vercel-monitor.yml/badge.svg)](https://github.com/JohnConnorCode/portfolio-blog/actions)
+
 A beautiful, dynamic, and customizable portfolio and blog built with Next.js, Sanity CMS, and Supabase.
 
 ## Features

@@ -1,0 +1,76 @@
+name: Vercel Build Monitor
+on:
+  deployment_status:
+  push:
+    branches: [main, master]
+
+jobs:
+  notify-on-failure:
+    if: github.event.deployment_status.state == 'failure'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Comment on Commit
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.repos.createCommitComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              commit_sha: context.sha,
+              body: `⚠️ Vercel deployment failed! [View logs](${context.payload.deployment_status.target_url})`
+            })
+      
+      - name: Create Issue for Failed Build
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const title = `Build Failed: ${new Date().toISOString()}`;
+            const body = `
+            ## Vercel Build Failed
+            
+            **Commit:** ${context.sha}
+            **Time:** ${new Date().toISOString()}
+            **Logs:** ${context.payload.deployment_status.target_url}
+            
+            Please check the build logs and fix the issue.
+            `;
+            
+            github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: title,
+              body: body,
+              labels: ['build-failure', 'urgent']
+            })
+
+  check-build-status:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Run build check
+        run: npm run build
+        continue-on-error: true
+        id: build
+      
+      - name: Comment on failure
+        if: steps.build.outcome == 'failure'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.repos.createCommitComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              commit_sha: context.sha,
+              body: '❌ Build failed locally. This will likely fail on Vercel too. Please fix before pushing.'
+            })
