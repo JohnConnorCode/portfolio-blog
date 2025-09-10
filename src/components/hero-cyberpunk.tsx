@@ -145,13 +145,15 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
   const titleLetters = heroContent.heroTitle.split('')
   
   return (
-    <section ref={containerRef} className={`relative min-h-screen overflow-hidden -mt-24 pt-24 ${isDark ? 'bg-black' : 'bg-gray-50'}`}>
-      {/* Twinkling stars canvas */}
-      <canvas
-        ref={canvasRef}
-        className="absolute inset-0"
-        style={{ opacity: isDark ? 0.8 : 0.4 }}
-      />
+    <section ref={containerRef} className="relative min-h-screen overflow-hidden -mt-24 pt-24 bg-black">
+      {/* Twinkling stars canvas - only in dark mode */}
+      {isDark && (
+        <canvas
+          ref={canvasRef}
+          className="absolute inset-0"
+          style={{ opacity: 0.8 }}
+        />
+      )}
       
       {/* Deep space gradient background */}
       <div 
@@ -163,9 +165,9 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
               rgba(0, 0, 0, 0.9) 100%
             )
           ` : `
-            radial-gradient(ellipse at top, 
-              rgba(240, 245, 250, 0.8) 0%, 
-              rgba(200, 210, 220, 0.9) 100%
+            linear-gradient(135deg, 
+              #667eea 0%, 
+              #764ba2 100%
             )
           `
         }}
@@ -177,8 +179,8 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
           className="absolute inset-0"
           style={{
             backgroundImage: `
-              linear-gradient(${isDark ? 'rgba(0, 200, 255, 0.15)' : 'rgba(0, 150, 200, 0.2)'} 1px, transparent 1px),
-              linear-gradient(90deg, ${isDark ? 'rgba(0, 200, 255, 0.15)' : 'rgba(0, 150, 200, 0.2)'} 1px, transparent 1px)
+              linear-gradient(${isDark ? 'rgba(0, 200, 255, 0.15)' : 'rgba(255, 255, 255, 0.15)'} 1px, transparent 1px),
+              linear-gradient(90deg, ${isDark ? 'rgba(0, 200, 255, 0.15)' : 'rgba(255, 255, 255, 0.15)'} 1px, transparent 1px)
             `,
             backgroundSize: '100px 100px',
             backgroundPosition: 'center center',
@@ -201,8 +203,8 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
             )` : `linear-gradient(to top, 
               transparent 0%, 
               transparent 60%, 
-              rgba(255, 255, 255, 0.4) 80%, 
-              rgba(255, 255, 255, 0.8) 100%
+              rgba(102, 126, 234, 0.1) 80%, 
+              rgba(118, 75, 162, 0.1) 100%
             )`,
             backdropFilter: gridBlur,
             WebkitBackdropFilter: gridBlur,
@@ -214,16 +216,16 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
       <div 
         className="absolute inset-0 opacity-30"
         style={{
-          background: `
+          background: isDark ? `
             radial-gradient(ellipse at 30% 40%, 
-              ${isDark ? 'rgba(50, 100, 200, 0.2)' : 'rgba(100, 150, 255, 0.15)'} 0%, 
+              rgba(50, 100, 200, 0.2) 0%, 
               transparent 40%
             ),
             radial-gradient(ellipse at 70% 60%, 
-              ${isDark ? 'rgba(150, 50, 200, 0.15)' : 'rgba(200, 100, 255, 0.1)'} 0%, 
+              rgba(150, 50, 200, 0.15) 0%, 
               transparent 40%
             )
-          `,
+          ` : 'transparent',
           animation: 'nebulaPulse 10s ease-in-out infinite',
         }}
       />
@@ -234,7 +236,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
         style={{
           background: `radial-gradient(
             circle 600px at ${mousePos.x}px ${mousePos.y}px,
-            ${isDark ? 'rgba(0, 150, 255, 0.08)' : 'rgba(0, 100, 200, 0.05)'},
+            ${isDark ? 'rgba(0, 150, 255, 0.08)' : 'rgba(255, 255, 255, 0.1)'},
             transparent 40%
           )`,
           transition: 'background 0.3s ease-out',
@@ -248,7 +250,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
           style={{
             background: isDark 
               ? 'linear-gradient(to top, rgba(0, 150, 255, 0.15), transparent)'
-              : 'linear-gradient(to top, rgba(0, 100, 200, 0.1), transparent)',
+              : 'transparent',
             animation: 'pulseUp 4s ease-in-out infinite',
           }}
         />
@@ -267,7 +269,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
             whileHover={{
               textShadow: isDark 
                 ? '0 0 30px rgba(0, 200, 255, 0.8), 0 0 60px rgba(0, 200, 255, 0.5)'
-                : '0 0 20px rgba(0, 150, 255, 0.6), 0 0 40px rgba(0, 150, 255, 0.3)',
+                : '0 2px 20px rgba(0, 0, 0, 0.2)',
               transition: { duration: 0.3 }
             }}
             style={{ 
@@ -280,15 +282,13 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                 0 0 60px rgba(0, 100, 255, 0.2),
                 0 10px 20px rgba(0, 0, 0, 0.8)
               ` : `
-                0 0 15px rgba(0, 150, 255, 0.4),
-                0 0 30px rgba(0, 100, 200, 0.2),
-                0 5px 15px rgba(0, 0, 0, 0.3)
+                0 2px 10px rgba(0, 0, 0, 0.1)
               `,
               filter: isDark 
                 ? 'drop-shadow(0 15px 25px rgba(0, 0, 0, 0.5))'
-                : 'drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2))',
+                : 'none',
               transform: 'translateZ(50px)',
-              color: isDark ? 'white' : '#111827'
+              color: 'white'
             }}
           >
             <span className="relative inline-block">
@@ -315,7 +315,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                   }}
                   whileHover={{
                     y: -5,
-                    color: isDark ? 'rgb(0, 255, 255)' : 'rgb(0, 150, 255)',
+                    color: isDark ? 'rgb(0, 255, 255)' : 'white',
                     transition: { duration: 0.2 }
                   }}
                   style={{ transformStyle: 'preserve-3d' }}
@@ -431,14 +431,14 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                   className={`px-8 py-4 font-semibold rounded-lg transition-all w-full sm:w-auto ${
                     isDark 
                       ? 'bg-white text-black hover:bg-gray-200' 
-                      : 'bg-gray-900 text-white hover:bg-gray-800'
+                      : 'bg-white/90 text-purple-900 hover:bg-white backdrop-blur-sm'
                   }`}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   style={{
                     boxShadow: isDark 
                       ? '0 0 30px rgba(255, 255, 255, 0.3)' 
-                      : '0 0 20px rgba(0, 0, 0, 0.2)'
+                      : '0 4px 20px rgba(0, 0, 0, 0.1)'
                   }}
                 >
                   View My Work
@@ -461,7 +461,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                   className={`px-8 py-4 font-semibold rounded-lg border-2 transition-all w-full sm:w-auto ${
                     isDark 
                       ? 'border-white/30 text-white hover:bg-white/10' 
-                      : 'border-gray-900/30 text-gray-900 hover:bg-gray-900/10'
+                      : 'border-white/50 text-white hover:bg-white/20 backdrop-blur-sm'
                   }`}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -485,14 +485,14 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 1.5, repeat: Infinity }}
           className={`w-6 h-10 border-2 rounded-full flex justify-center ${
-            isDark ? 'border-white/30' : 'border-gray-900/30'
+            isDark ? 'border-white/30' : 'border-white/40'
           }`}
         >
           <motion.div
             animate={{ y: [0, 12, 0] }}
             transition={{ duration: 1.5, repeat: Infinity }}
             className={`w-1 h-3 rounded-full mt-2 ${
-              isDark ? 'bg-white/50' : 'bg-gray-900/50'
+              isDark ? 'bg-white/50' : 'bg-white/60'
             }`}
           />
         </motion.div>
