@@ -38,7 +38,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
     return () => window.removeEventListener('mousemove', handleMouseMove)
   }, [])
   
-  // Interactive particle system
+  // Clean futuristic geometric animation
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
@@ -49,83 +49,117 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
     canvas.width = window.innerWidth
     canvas.height = window.innerHeight
     
-    const particles: Array<{
+    // Geometric nodes for a cleaner look
+    const nodes: Array<{
       x: number
       y: number
-      vx: number
-      vy: number
+      baseX: number
+      baseY: number
       size: number
-      color: string
-      life: number
+      pulse: number
+      connections: number[]
     }> = []
     
-    const colors = ['#00ffff', '#ff00ff', '#ffff00', '#00ff00']
+    // Create a grid of nodes
+    const gridSize = 150
+    const rows = Math.ceil(canvas.height / gridSize) + 1
+    const cols = Math.ceil(canvas.width / gridSize) + 1
     
-    // Create particles
-    for (let i = 0; i < 100; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.5,
-        vy: (Math.random() - 0.5) * 0.5,
-        size: Math.random() * 2 + 1,
-        color: colors[Math.floor(Math.random() * colors.length)],
-        life: 1
-      })
+    for (let row = 0; row < rows; row++) {
+      for (let col = 0; col < cols; col++) {
+        const x = col * gridSize - gridSize/2
+        const y = row * gridSize - gridSize/2
+        nodes.push({
+          x,
+          y,
+          baseX: x,
+          baseY: y,
+          size: 2,
+          pulse: Math.random() * Math.PI * 2,
+          connections: []
+        })
+      }
     }
     
+    // Define connections between nearby nodes
+    nodes.forEach((node, i) => {
+      nodes.forEach((other, j) => {
+        if (i !== j) {
+          const dist = Math.hypot(other.baseX - node.baseX, other.baseY - node.baseY)
+          if (dist < gridSize * 1.5) {
+            node.connections.push(j)
+          }
+        }
+      })
+    })
+    
     let animationId: number
+    let time = 0
+    
     const draw = () => {
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.02)'
+      // Clear with subtle fade
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.1)'
       ctx.fillRect(0, 0, canvas.width, canvas.height)
       
-      particles.forEach((particle, index) => {
-        // Move particles
-        particle.x += particle.vx
-        particle.y += particle.vy
+      time += 0.005
+      
+      nodes.forEach((node, i) => {
+        // Subtle floating motion
+        node.x = node.baseX + Math.sin(time + node.pulse) * 10
+        node.y = node.baseY + Math.cos(time + node.pulse * 0.5) * 10
         
-        // Mouse interaction - particles move away from cursor
-        const dx = mousePos.x - particle.x
-        const dy = mousePos.y - particle.y
-        const distance = Math.sqrt(dx * dx + dy * dy)
+        // Mouse influence - subtle attraction
+        const dx = mousePos.x - node.x
+        const dy = mousePos.y - node.y
+        const distance = Math.hypot(dx, dy)
         
-        if (distance < 100) {
-          const force = (100 - distance) / 100
-          particle.vx -= (dx / distance) * force * 0.2
-          particle.vy -= (dy / distance) * force * 0.2
+        if (distance < 200) {
+          const influence = (200 - distance) / 200
+          node.x += (dx * influence * 0.05)
+          node.y += (dy * influence * 0.05)
         }
         
-        // Apply friction
-        particle.vx *= 0.99
-        particle.vy *= 0.99
-        
-        // Bounce off edges
-        if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1
-        if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1
-        
-        // Draw particle
-        ctx.fillStyle = particle.color + '40'
-        ctx.beginPath()
-        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2)
-        ctx.fill()
-        
-        // Draw connections
-        particles.forEach((otherParticle, otherIndex) => {
-          if (index !== otherIndex) {
-            const dx = otherParticle.x - particle.x
-            const dy = otherParticle.y - particle.y
-            const distance = Math.sqrt(dx * dx + dy * dy)
+        // Draw connections with gradient
+        node.connections.forEach(connectionIndex => {
+          const other = nodes[connectionIndex]
+          const connectionDist = Math.hypot(other.x - node.x, other.y - node.y)
+          
+          if (connectionDist < gridSize * 2) {
+            const gradient = ctx.createLinearGradient(node.x, node.y, other.x, other.y)
+            const opacity = Math.max(0, 1 - connectionDist / (gridSize * 2))
             
-            if (distance < 150) {
-              ctx.strokeStyle = particle.color + Math.floor((1 - distance / 150) * 20).toString(16)
-              ctx.lineWidth = 0.5
-              ctx.beginPath()
-              ctx.moveTo(particle.x, particle.y)
-              ctx.lineTo(otherParticle.x, otherParticle.y)
-              ctx.stroke()
-            }
+            gradient.addColorStop(0, `rgba(0, 255, 255, ${opacity * 0.1})`)
+            gradient.addColorStop(0.5, `rgba(0, 150, 255, ${opacity * 0.05})`)
+            gradient.addColorStop(1, `rgba(255, 0, 255, ${opacity * 0.1})`)
+            
+            ctx.strokeStyle = gradient
+            ctx.lineWidth = 0.5
+            ctx.beginPath()
+            ctx.moveTo(node.x, node.y)
+            ctx.lineTo(other.x, other.y)
+            ctx.stroke()
           }
         })
+        
+        // Draw node
+        const nodePulse = Math.sin(time * 2 + node.pulse) * 0.5 + 0.5
+        const nodeSize = node.size + nodePulse
+        
+        // Outer glow
+        const glowGradient = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, nodeSize * 4)
+        glowGradient.addColorStop(0, 'rgba(0, 255, 255, 0.3)')
+        glowGradient.addColorStop(1, 'rgba(0, 255, 255, 0)')
+        
+        ctx.fillStyle = glowGradient
+        ctx.beginPath()
+        ctx.arc(node.x, node.y, nodeSize * 4, 0, Math.PI * 2)
+        ctx.fill()
+        
+        // Core node
+        ctx.fillStyle = `rgba(0, 255, 255, ${0.6 + nodePulse * 0.4})`
+        ctx.beginPath()
+        ctx.arc(node.x, node.y, nodeSize, 0, Math.PI * 2)
+        ctx.fill()
       })
       
       animationId = requestAnimationFrame(draw)
@@ -148,29 +182,28 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
   
   return (
     <section ref={containerRef} className="relative min-h-screen overflow-hidden -mt-24 pt-24 bg-background">
-      {/* Interactive particle canvas */}
+      {/* Clean geometric canvas */}
       <canvas
         ref={canvasRef}
         className="absolute inset-0"
-        style={{ opacity: 0.6 }}
+        style={{ opacity: 0.4 }}
       />
       
-      {/* Dynamic gradient that follows mouse */}
+      {/* Subtle mouse-following gradient */}
       <div 
-        className="absolute inset-0 opacity-30 pointer-events-none"
+        className="absolute inset-0 opacity-20 pointer-events-none"
         style={{
-          background: `radial-gradient(circle 600px at ${mousePos.x}px ${mousePos.y}px, rgba(0,255,255,0.2), transparent 70%)`,
+          background: `radial-gradient(circle 800px at ${mousePos.x}px ${mousePos.y}px, rgba(0,200,255,0.1), transparent 60%)`,
         }}
       />
       
-      {/* Animated grid that responds to scroll */}
+      {/* Static grid overlay for depth */}
       <div 
-        className="absolute inset-0 opacity-[0.03]"
+        className="absolute inset-0 opacity-[0.02]"
         style={{
-          backgroundImage: `linear-gradient(rgba(0, 255, 255, 0.3) 1px, transparent 1px),
-                           linear-gradient(90deg, rgba(0, 255, 255, 0.3) 1px, transparent 1px)`,
-          backgroundSize: '100px 100px',
-          transform: `translate(${mousePos.x * 0.02}px, ${mousePos.y * 0.02}px)`
+          backgroundImage: `linear-gradient(rgba(0, 200, 255, 0.5) 1px, transparent 1px),
+                           linear-gradient(90deg, rgba(0, 200, 255, 0.5) 1px, transparent 1px)`,
+          backgroundSize: '50px 50px',
         }}
       />
       
