@@ -15,7 +15,6 @@ interface HeroContent {
 export function HeroCyberpunk({ content }: { content?: HeroContent }) {
   const heroContent = {
     heroTitle: content?.heroTitle || 'JOHN CONNOR',
-    heroTagline: content?.heroTagline || 'Technology Strategist',
     heroDescription: content?.heroDescription || 'Building systems that serve humanity.',
     heroHighlight: content?.heroHighlight || 'Product strategy. Human-first technology. Real impact.'
   }
@@ -265,7 +264,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
           <motion.h1
             initial="hidden"
             animate="visible"
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight mb-6 relative"
+            className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tight mb-12 relative"
             whileHover={{
               textShadow: isDark 
                 ? '0 0 30px rgba(0, 200, 255, 0.8), 0 0 60px rgba(0, 200, 255, 0.5)'
@@ -309,8 +308,8 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                     }
                   }}
                   transition={{
-                    duration: 0.7,
-                    delay: index * 0.03,
+                    duration: 1,
+                    delay: index * 0.06 + 0.5,
                     ease: [0.215, 0.61, 0.355, 1],
                   }}
                   whileHover={{
@@ -326,81 +325,47 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
             </span>
           </motion.h1>
           
-          {/* Tagline with smooth fade and slide - better mobile sizing */}
+          {/* Description - more prominent and elegant */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ 
+              delay: titleLetters.length * 0.06 + 1.5,
+              duration: 1.2,
+              ease: [0.25, 0.1, 0.25, 1]
+            }}
+            className="mb-12"
+          >
+            <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white/90 font-light leading-relaxed max-w-4xl mx-auto">
+              {heroContent.heroDescription}
+            </p>
+          </motion.div>
+          
+          {/* Highlight text with gradient reveal - refined */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ 
-              delay: titleLetters.length * 0.03 + 0.2,
-              duration: 0.8,
+              delay: titleLetters.length * 0.06 + 2.5,
+              duration: 1.2,
               ease: [0.25, 0.1, 0.25, 1]
             }}
-            className="mb-8"
+            className="mb-16 max-w-5xl mx-auto px-4"
           >
             <motion.p 
-              className="text-xl sm:text-2xl md:text-3xl text-muted-foreground uppercase tracking-wider font-medium"
-              initial={{ letterSpacing: '0.5em', opacity: 0 }}
-              animate={{ letterSpacing: '0.1em', opacity: 1 }}
+              className="text-xl sm:text-2xl md:text-3xl"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               transition={{ 
-                delay: titleLetters.length * 0.03 + 0.4,
-                duration: 1,
-                ease: "easeOut"
-              }}
-              style={{
-                letterSpacing: '0.1em'
+                delay: titleLetters.length * 0.06 + 2.8,
+                duration: 1.5
               }}
             >
-              {heroContent.heroTagline}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 font-medium inline-block leading-relaxed">
+                {heroContent.heroHighlight}
+              </span>
             </motion.p>
           </motion.div>
-          
-          {/* Description with word-by-word fade - prevent awkward breaks */}
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            transition={{ delay: titleLetters.length * 0.03 + 0.6 }}
-            className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-6 max-w-2xl mx-auto leading-relaxed"
-          >
-            <motion.span
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.6,
-                ease: "easeOut"
-              }}
-              className="block"
-            >
-              {heroContent.heroDescription}
-            </motion.span>
-          </motion.div>
-          
-          {/* Highlight text with gradient reveal - better mobile layout */}
-          <motion.p
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ 
-              delay: titleLetters.length * 0.03 + 1,
-              duration: 0.8,
-              ease: [0.25, 0.1, 0.25, 1]
-            }}
-            className="text-lg sm:text-xl md:text-2xl mb-12 max-w-3xl mx-auto px-4"
-          >
-            <motion.span 
-              className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400 font-semibold inline-block leading-relaxed"
-              initial={{ backgroundPosition: '200% center' }}
-              animate={{ backgroundPosition: '0% center' }}
-              transition={{ 
-                delay: titleLetters.length * 0.03 + 1.2,
-                duration: 1.5,
-                ease: "easeInOut"
-              }}
-              style={{ 
-                backgroundSize: '200% auto',
-              }}
-            >
-              {heroContent.heroHighlight}
-            </motion.span>
-          </motion.p>
           
           {/* CTA Buttons with stagger animation - stack on mobile */}
           <motion.div
@@ -409,8 +374,8 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
             variants={{
               visible: {
                 transition: {
-                  staggerChildren: 0.1,
-                  delayChildren: titleLetters.length * 0.03 + 1.5
+                  staggerChildren: 0.2,
+                  delayChildren: titleLetters.length * 0.06 + 3.5
                 }
               }
             }}
@@ -422,7 +387,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                 visible: { opacity: 1, y: 0 }
               }}
               transition={{ 
-                duration: 0.5,
+                duration: 0.8,
                 ease: [0.25, 0.1, 0.25, 1]
               }}
             >
@@ -452,7 +417,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                 visible: { opacity: 1, y: 0 }
               }}
               transition={{ 
-                duration: 0.5,
+                duration: 0.8,
                 ease: [0.25, 0.1, 0.25, 1]
               }}
             >
@@ -478,7 +443,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: titleLetters.length * 0.03 + 2, duration: 1 }}
+        transition={{ delay: titleLetters.length * 0.06 + 4.5, duration: 2 }}
         className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
       >
         <motion.div
