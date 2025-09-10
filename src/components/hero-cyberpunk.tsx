@@ -38,7 +38,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
     return () => window.removeEventListener('mousemove', handleMouseMove)
   }, [])
   
-  // Clean futuristic geometric animation
+  // Dynamic flowing particle field animation
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
@@ -49,116 +49,137 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
     canvas.width = window.innerWidth
     canvas.height = window.innerHeight
     
-    // Geometric nodes for a cleaner look
-    const nodes: Array<{
+    // Particles for dynamic movement
+    const particles: Array<{
       x: number
       y: number
-      baseX: number
-      baseY: number
+      vx: number
+      vy: number
       size: number
-      pulse: number
-      connections: number[]
+      opacity: number
+      hue: number
+      speed: number
     }> = []
     
-    // Create a grid of nodes
-    const gridSize = 150
-    const rows = Math.ceil(canvas.height / gridSize) + 1
-    const cols = Math.ceil(canvas.width / gridSize) + 1
-    
-    for (let row = 0; row < rows; row++) {
-      for (let col = 0; col < cols; col++) {
-        const x = col * gridSize - gridSize/2
-        const y = row * gridSize - gridSize/2
-        nodes.push({
-          x,
-          y,
-          baseX: x,
-          baseY: y,
-          size: 2,
-          pulse: Math.random() * Math.PI * 2,
-          connections: []
-        })
-      }
+    // Create flowing particles
+    const particleCount = 80
+    for (let i = 0; i < particleCount; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: (Math.random() - 0.5) * 0.3,
+        size: Math.random() * 3 + 1,
+        opacity: Math.random() * 0.5 + 0.2,
+        hue: Math.random() * 60 + 170, // Blue to purple range
+        speed: Math.random() * 0.5 + 0.5
+      })
     }
     
-    // Define connections between nearby nodes
-    nodes.forEach((node, i) => {
-      nodes.forEach((other, j) => {
-        if (i !== j) {
-          const dist = Math.hypot(other.baseX - node.baseX, other.baseY - node.baseY)
-          if (dist < gridSize * 1.5) {
-            node.connections.push(j)
-          }
-        }
-      })
-    })
+    // Smooth mouse tracking with easing
+    let smoothMouseX = canvas.width / 2
+    let smoothMouseY = canvas.height / 2
     
     let animationId: number
     let time = 0
     
     const draw = () => {
-      // Clear with subtle fade
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.1)'
+      // Clear with fade trail effect
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)'
       ctx.fillRect(0, 0, canvas.width, canvas.height)
       
-      time += 0.005
+      time += 0.01
       
-      nodes.forEach((node, i) => {
-        // Subtle floating motion
-        node.x = node.baseX + Math.sin(time + node.pulse) * 10
-        node.y = node.baseY + Math.cos(time + node.pulse * 0.5) * 10
+      // Smooth mouse position with easing
+      smoothMouseX += (mousePos.x - smoothMouseX) * 0.05
+      smoothMouseY += (mousePos.y - smoothMouseY) * 0.05
+      
+      // Draw energy waves from mouse
+      const waveRadius = 150 + Math.sin(time * 2) * 30
+      const waveGradient = ctx.createRadialGradient(
+        smoothMouseX, smoothMouseY, 0,
+        smoothMouseX, smoothMouseY, waveRadius
+      )
+      waveGradient.addColorStop(0, 'rgba(0, 200, 255, 0.1)')
+      waveGradient.addColorStop(0.5, 'rgba(100, 0, 255, 0.05)')
+      waveGradient.addColorStop(1, 'rgba(255, 0, 200, 0)')
+      
+      ctx.fillStyle = waveGradient
+      ctx.fillRect(0, 0, canvas.width, canvas.height)
+      
+      // Update and draw particles
+      particles.forEach((particle, i) => {
+        // Organic flow movement
+        particle.vx += Math.sin(time + i) * 0.01
+        particle.vy += Math.cos(time + i * 0.5) * 0.01
         
-        // Mouse influence - subtle attraction
-        const dx = mousePos.x - node.x
-        const dy = mousePos.y - node.y
+        // Smooth mouse interaction
+        const dx = smoothMouseX - particle.x
+        const dy = smoothMouseY - particle.y
         const distance = Math.hypot(dx, dy)
         
-        if (distance < 200) {
-          const influence = (200 - distance) / 200
-          node.x += (dx * influence * 0.05)
-          node.y += (dy * influence * 0.05)
+        if (distance < 250) {
+          const force = Math.pow((250 - distance) / 250, 2) // Smooth quadratic falloff
+          particle.vx += (dx / distance) * force * 0.02 * particle.speed
+          particle.vy += (dy / distance) * force * 0.02 * particle.speed
         }
         
-        // Draw connections with gradient
-        node.connections.forEach(connectionIndex => {
-          const other = nodes[connectionIndex]
-          const connectionDist = Math.hypot(other.x - node.x, other.y - node.y)
-          
-          if (connectionDist < gridSize * 2) {
-            const gradient = ctx.createLinearGradient(node.x, node.y, other.x, other.y)
-            const opacity = Math.max(0, 1 - connectionDist / (gridSize * 2))
-            
-            gradient.addColorStop(0, `rgba(0, 255, 255, ${opacity * 0.1})`)
-            gradient.addColorStop(0.5, `rgba(0, 150, 255, ${opacity * 0.05})`)
-            gradient.addColorStop(1, `rgba(255, 0, 255, ${opacity * 0.1})`)
-            
-            ctx.strokeStyle = gradient
-            ctx.lineWidth = 0.5
-            ctx.beginPath()
-            ctx.moveTo(node.x, node.y)
-            ctx.lineTo(other.x, other.y)
-            ctx.stroke()
+        // Apply velocity with damping
+        particle.x += particle.vx
+        particle.y += particle.vy
+        particle.vx *= 0.98
+        particle.vy *= 0.98
+        
+        // Wrap around edges smoothly
+        if (particle.x < -50) particle.x = canvas.width + 50
+        if (particle.x > canvas.width + 50) particle.x = -50
+        if (particle.y < -50) particle.y = canvas.height + 50
+        if (particle.y > canvas.height + 50) particle.y = -50
+        
+        // Draw connections to nearby particles
+        particles.forEach((other, j) => {
+          if (j > i) {
+            const dist = Math.hypot(other.x - particle.x, other.y - particle.y)
+            if (dist < 120) {
+              const lineOpacity = (1 - dist / 120) * 0.3
+              const gradient = ctx.createLinearGradient(
+                particle.x, particle.y,
+                other.x, other.y
+              )
+              gradient.addColorStop(0, `hsla(${particle.hue}, 100%, 60%, ${lineOpacity})`)
+              gradient.addColorStop(1, `hsla(${other.hue}, 100%, 60%, ${lineOpacity})`)
+              
+              ctx.strokeStyle = gradient
+              ctx.lineWidth = 1
+              ctx.beginPath()
+              ctx.moveTo(particle.x, particle.y)
+              ctx.lineTo(other.x, other.y)
+              ctx.stroke()
+            }
           }
         })
         
-        // Draw node
-        const nodePulse = Math.sin(time * 2 + node.pulse) * 0.5 + 0.5
-        const nodeSize = node.size + nodePulse
+        // Draw particle with glow
+        const pulse = Math.sin(time * 3 + i) * 0.3 + 0.7
         
-        // Outer glow
-        const glowGradient = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, nodeSize * 4)
-        glowGradient.addColorStop(0, 'rgba(0, 255, 255, 0.3)')
-        glowGradient.addColorStop(1, 'rgba(0, 255, 255, 0)')
+        // Glow effect
+        const glowGradient = ctx.createRadialGradient(
+          particle.x, particle.y, 0,
+          particle.x, particle.y, particle.size * 6
+        )
+        glowGradient.addColorStop(0, `hsla(${particle.hue}, 100%, 70%, ${particle.opacity * pulse})`)
+        glowGradient.addColorStop(0.5, `hsla(${particle.hue}, 100%, 50%, ${particle.opacity * 0.5 * pulse})`)
+        glowGradient.addColorStop(1, 'transparent')
         
         ctx.fillStyle = glowGradient
         ctx.beginPath()
-        ctx.arc(node.x, node.y, nodeSize * 4, 0, Math.PI * 2)
+        ctx.arc(particle.x, particle.y, particle.size * 6, 0, Math.PI * 2)
         ctx.fill()
         
-        // Core node
-        ctx.fillStyle = `rgba(0, 255, 255, ${0.6 + nodePulse * 0.4})`
+        // Core particle
+        ctx.fillStyle = `hsla(${particle.hue}, 100%, 80%, ${particle.opacity + pulse * 0.2})`
         ctx.beginPath()
-        ctx.arc(node.x, node.y, nodeSize, 0, Math.PI * 2)
+        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2)
         ctx.fill()
       })
       
@@ -182,28 +203,36 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
   
   return (
     <section ref={containerRef} className="relative min-h-screen overflow-hidden -mt-24 pt-24 bg-background">
-      {/* Clean geometric canvas */}
+      {/* Dynamic particle canvas */}
       <canvas
         ref={canvasRef}
         className="absolute inset-0"
-        style={{ opacity: 0.4 }}
+        style={{ opacity: 0.7 }}
       />
       
-      {/* Subtle mouse-following gradient */}
+      {/* Vibrant gradient overlay */}
       <div 
-        className="absolute inset-0 opacity-20 pointer-events-none"
+        className="absolute inset-0 opacity-30 pointer-events-none mix-blend-screen"
         style={{
-          background: `radial-gradient(circle 800px at ${mousePos.x}px ${mousePos.y}px, rgba(0,200,255,0.1), transparent 60%)`,
+          background: `
+            radial-gradient(circle 600px at ${mousePos.x}px ${mousePos.y}px, rgba(0,255,255,0.15), transparent 50%),
+            radial-gradient(circle 800px at ${mousePos.x * 0.8}px ${mousePos.y * 1.2}px, rgba(255,0,255,0.1), transparent 60%),
+            radial-gradient(circle 1000px at 50% 50%, rgba(0,100,255,0.05), transparent 70%)
+          `,
         }}
       />
       
-      {/* Static grid overlay for depth */}
+      {/* Animated grid with perspective */}
       <div 
-        className="absolute inset-0 opacity-[0.02]"
+        className="absolute inset-0 opacity-[0.03]"
         style={{
-          backgroundImage: `linear-gradient(rgba(0, 200, 255, 0.5) 1px, transparent 1px),
-                           linear-gradient(90deg, rgba(0, 200, 255, 0.5) 1px, transparent 1px)`,
-          backgroundSize: '50px 50px',
+          backgroundImage: `
+            linear-gradient(rgba(0, 255, 255, 0.4) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 0, 255, 0.4) 1px, transparent 1px)
+          `,
+          backgroundSize: '80px 80px',
+          transform: `perspective(1000px) rotateX(60deg) translateZ(-100px) translateY(${mousePos.y * 0.01}px)`,
+          transformOrigin: 'center center',
         }}
       />
       
