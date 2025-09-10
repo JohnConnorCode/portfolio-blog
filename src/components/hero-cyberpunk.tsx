@@ -19,6 +19,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
     heroHighlight: content?.heroHighlight || 'Product strategy. Human-first technology. Real impact.'
   }
   const containerRef = useRef<HTMLDivElement>(null)
+  const canvasRef = useRef<HTMLCanvasElement>(null)
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -37,19 +38,127 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
     return () => window.removeEventListener('mousemove', handleMouseMove)
   }, [])
   
+  // Twinkling stars effect
+  useEffect(() => {
+    const canvas = canvasRef.current
+    if (!canvas) return
+    
+    const ctx = canvas.getContext('2d')
+    if (!ctx) return
+    
+    canvas.width = window.innerWidth
+    canvas.height = window.innerHeight
+    
+    // Create stars
+    const stars: Array<{
+      x: number
+      y: number
+      size: number
+      brightness: number
+      twinkleSpeed: number
+      twinklePhase: number
+    }> = []
+    
+    const starCount = 150
+    
+    for (let i = 0; i < starCount; i++) {
+      stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 1.5 + 0.5,
+        brightness: Math.random() * 0.5 + 0.5,
+        twinkleSpeed: Math.random() * 0.02 + 0.005,
+        twinklePhase: Math.random() * Math.PI * 2
+      })
+    }
+    
+    let animationId: number
+    
+    const animate = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
+      
+      // Draw stars
+      stars.forEach(star => {
+        star.twinklePhase += star.twinkleSpeed
+        const twinkle = Math.sin(star.twinklePhase) * 0.5 + 0.5
+        const currentBrightness = star.brightness * twinkle
+        
+        ctx.fillStyle = `rgba(200, 220, 255, ${currentBrightness})`
+        ctx.beginPath()
+        ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2)
+        ctx.fill()
+        
+        // Add subtle glow to brighter stars
+        if (currentBrightness > 0.7) {
+          const gradient = ctx.createRadialGradient(
+            star.x, star.y, 0,
+            star.x, star.y, star.size * 3
+          )
+          gradient.addColorStop(0, `rgba(150, 200, 255, ${currentBrightness * 0.3})`)
+          gradient.addColorStop(1, 'transparent')
+          ctx.fillStyle = gradient
+          ctx.fillRect(star.x - star.size * 3, star.y - star.size * 3, star.size * 6, star.size * 6)
+        }
+      })
+      
+      animationId = requestAnimationFrame(animate)
+    }
+    
+    animate()
+    
+    const handleResize = () => {
+      canvas.width = window.innerWidth
+      canvas.height = window.innerHeight
+      
+      // Reposition stars
+      stars.forEach(star => {
+        star.x = Math.random() * canvas.width
+        star.y = Math.random() * canvas.height
+      })
+    }
+    
+    window.addEventListener('resize', handleResize)
+    
+    return () => {
+      cancelAnimationFrame(animationId)
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
+  
   // Split title into letters for animation
   const titleLetters = heroContent.heroTitle.split('')
   
   return (
     <section ref={containerRef} className="relative min-h-screen overflow-hidden -mt-24 pt-24 bg-black">
-      {/* Clean animated perspective grid */}
+      {/* Twinkling stars canvas */}
+      <canvas
+        ref={canvasRef}
+        className="absolute inset-0"
+        style={{ opacity: 0.8 }}
+      />
+      
+      {/* Deep space gradient background */}
+      <div 
+        className="absolute inset-0"
+        style={{
+          background: `
+            radial-gradient(ellipse at top, 
+              rgba(10, 20, 40, 0.5) 0%, 
+              rgba(0, 0, 0, 0.8) 50%,
+              rgba(0, 0, 0, 1) 100%
+            )
+          `
+        }}
+      />
+      
+      {/* Animated perspective grid with distance blur */}
       <div 
         className="absolute inset-0" 
         style={{ 
           perspective: '1000px',
           transform: typeof window !== 'undefined' 
             ? `translateX(${(mousePos.x - window.innerWidth / 2) * 0.01}px)` 
-            : 'translateX(0)' // Subtle mouse parallax
+            : 'translateX(0)'
         }}
       >
         {/* Main grid plane */}
@@ -58,41 +167,68 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
           style={{
             transform: 'rotateX(70deg) translateZ(0)',
             transformOrigin: 'center 100%',
-            background: `
-              linear-gradient(to top, 
-                rgba(0, 200, 255, 0.2) 0%, 
-                rgba(0, 200, 255, 0.05) 50%, 
-                transparent 100%
-              )
-            `,
           }}
         >
-          {/* Animated grid lines */}
+          {/* Animated grid lines with distance fade */}
           <div 
             className="absolute inset-0"
             style={{
               backgroundImage: `
-                linear-gradient(rgba(0, 200, 255, 0.3) 1.5px, transparent 1.5px),
-                linear-gradient(90deg, rgba(0, 200, 255, 0.3) 1.5px, transparent 1.5px)
+                linear-gradient(rgba(0, 150, 255, 0.25) 1.5px, transparent 1.5px),
+                linear-gradient(90deg, rgba(0, 150, 255, 0.25) 1.5px, transparent 1.5px)
               `,
               backgroundSize: '60px 60px',
               animation: 'gridScroll 8s linear infinite',
-              maskImage: 'linear-gradient(to top, black 0%, transparent 90%)',
-              WebkitMaskImage: 'linear-gradient(to top, black 0%, transparent 90%)',
+              maskImage: `linear-gradient(to top, 
+                black 0%, 
+                rgba(0,0,0,0.8) 30%, 
+                rgba(0,0,0,0.3) 60%, 
+                transparent 85%
+              )`,
+              WebkitMaskImage: `linear-gradient(to top, 
+                black 0%, 
+                rgba(0,0,0,0.8) 30%, 
+                rgba(0,0,0,0.3) 60%, 
+                transparent 85%
+              )`,
+              filter: 'blur(0px)',
+            }}
+          />
+          
+          {/* Distance blur overlay */}
+          <div 
+            className="absolute inset-0"
+            style={{
+              background: `linear-gradient(to top, 
+                transparent 0%, 
+                transparent 60%, 
+                rgba(0, 0, 0, 0.4) 80%, 
+                rgba(0, 0, 0, 0.8) 100%
+              )`,
+              backdropFilter: 'blur(2px)',
+              WebkitBackdropFilter: 'blur(2px)',
             }}
           />
         </div>
-        
-        {/* Horizon line glow */}
-        <div 
-          className="absolute left-0 right-0 h-px"
-          style={{
-            bottom: '42%',
-            background: 'linear-gradient(90deg, transparent, rgba(0, 200, 255, 0.5), transparent)',
-            boxShadow: '0 0 20px rgba(0, 200, 255, 0.3)',
-          }}
-        />
       </div>
+      
+      {/* Nebula-like color accents */}
+      <div 
+        className="absolute inset-0 opacity-30"
+        style={{
+          background: `
+            radial-gradient(ellipse at 30% 40%, 
+              rgba(50, 100, 200, 0.2) 0%, 
+              transparent 40%
+            ),
+            radial-gradient(ellipse at 70% 60%, 
+              rgba(150, 50, 200, 0.15) 0%, 
+              transparent 40%
+            )
+          `,
+          animation: 'nebulaPulse 10s ease-in-out infinite',
+        }}
+      />
       
       {/* Interactive glow that follows mouse */}
       <div 
@@ -100,7 +236,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
         style={{
           background: `radial-gradient(
             circle 600px at ${mousePos.x}px ${mousePos.y}px,
-            rgba(0, 150, 255, 0.06),
+            rgba(0, 150, 255, 0.08),
             transparent 40%
           )`,
           transition: 'background 0.3s ease-out',
@@ -112,8 +248,8 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
         <div 
           className="absolute bottom-0 left-0 right-0 h-96"
           style={{
-            background: 'linear-gradient(to top, rgba(0, 200, 255, 0.1), transparent)',
-            animation: 'pulseUp 3s ease-in-out infinite',
+            background: 'linear-gradient(to top, rgba(0, 150, 255, 0.15), transparent)',
+            animation: 'pulseUp 4s ease-in-out infinite',
           }}
         />
       </div>
@@ -123,18 +259,27 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
         className="relative z-10 min-h-screen flex items-center justify-center px-4"
       >
         <div className="max-w-6xl mx-auto text-center">
-          {/* Animated title with letter-by-letter reveal */}
+          {/* Animated title with permanent glow and floating effect */}
           <motion.h1
             initial="hidden"
             animate="visible"
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tight mb-6 relative"
             whileHover={{
-              textShadow: '0 0 20px rgba(0, 200, 255, 0.5), 0 0 40px rgba(0, 200, 255, 0.3)',
+              textShadow: '0 0 30px rgba(0, 200, 255, 0.8), 0 0 60px rgba(0, 200, 255, 0.5)',
               transition: { duration: 0.3 }
             }}
             style={{ 
-              lineHeight: 1.2,  // Add line-height to prevent cutoff
-              paddingBottom: '0.1em' // Small padding to prevent descender cutoff
+              lineHeight: 1.2,
+              paddingBottom: '0.1em',
+              // Permanent glow and floating shadow
+              textShadow: `
+                0 0 20px rgba(0, 200, 255, 0.5),
+                0 0 40px rgba(0, 150, 255, 0.3),
+                0 0 60px rgba(0, 100, 255, 0.2),
+                0 10px 20px rgba(0, 0, 0, 0.8)
+              `,
+              filter: 'drop-shadow(0 15px 25px rgba(0, 0, 0, 0.5))',
+              transform: 'translateZ(50px)',
             }}
           >
             <span className="relative inline-block">
@@ -161,7 +306,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                   }}
                   whileHover={{
                     y: -5,
-                    color: 'rgb(0, 200, 255)',
+                    color: 'rgb(0, 255, 255)',
                     transition: { duration: 0.2 }
                   }}
                   style={{ transformStyle: 'preserve-3d' }}
@@ -376,8 +521,17 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
             transform: translateY(0) scaleY(1);
           }
           50% {
-            opacity: 0.6;
+            opacity: 0.5;
             transform: translateY(-20px) scaleY(1.1);
+          }
+        }
+        
+        @keyframes nebulaPulse {
+          0%, 100% {
+            opacity: 0.3;
+          }
+          50% {
+            opacity: 0.5;
           }
         }
       `}</style>
