@@ -19,6 +19,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
     heroHighlight: content?.heroHighlight || 'Product strategy. Human-first technology. Real impact.'
   }
   const containerRef = useRef<HTMLDivElement>(null)
+  const canvasRef = useRef<HTMLCanvasElement>(null)
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -37,125 +38,236 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
     return () => window.removeEventListener('mousemove', handleMouseMove)
   }, [])
   
+  // Elegant particle network animation inspired by modern implementations
+  useEffect(() => {
+    const canvas = canvasRef.current
+    if (!canvas) return
+    
+    const ctx = canvas.getContext('2d')
+    if (!ctx) return
+    
+    canvas.width = window.innerWidth
+    canvas.height = window.innerHeight
+    
+    // Particle system with sacred geometry influence
+    const particles: Array<{
+      x: number
+      y: number
+      vx: number
+      vy: number
+      radius: number
+      angle: number
+      angleSpeed: number
+      orbitRadius: number
+      centerX: number
+      centerY: number
+      opacity: number
+      fadeDirection: number
+    }> = []
+    
+    const PHI = 1.618033988749 // Golden ratio
+    const particleCount = 50 // Balanced count for performance and visual impact
+    const connectionDistance = 150
+    
+    // Initialize particles in sacred geometry patterns
+    for (let i = 0; i < particleCount; i++) {
+      const angle = (i / particleCount) * Math.PI * 2
+      const orbitRadius = 100 + (i % 3) * 100 // Multiple orbit rings
+      
+      particles.push({
+        x: canvas.width / 2 + Math.cos(angle) * orbitRadius,
+        y: canvas.height / 2 + Math.sin(angle) * orbitRadius,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: (Math.random() - 0.5) * 0.3,
+        radius: 2 + Math.random() * 2,
+        angle: angle,
+        angleSpeed: 0.001 + Math.random() * 0.002,
+        orbitRadius: orbitRadius,
+        centerX: canvas.width / 2,
+        centerY: canvas.height / 2,
+        opacity: 0.3 + Math.random() * 0.4,
+        fadeDirection: Math.random() > 0.5 ? 1 : -1
+      })
+    }
+    
+    let animationId: number
+    let mouseX = canvas.width / 2
+    let mouseY = canvas.height / 2
+    
+    const animate = () => {
+      // Clear canvas with fade effect
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)'
+      ctx.fillRect(0, 0, canvas.width, canvas.height)
+      
+      // Smooth mouse tracking
+      mouseX += (mousePos.x - mouseX) * 0.05
+      mouseY += (mousePos.y - mouseY) * 0.05
+      
+      // Update and draw particles
+      particles.forEach((particle, i) => {
+        // Orbital motion with drift
+        particle.angle += particle.angleSpeed
+        particle.centerX += particle.vx
+        particle.centerY += particle.vy
+        
+        // Keep centers within bounds
+        if (particle.centerX < 0 || particle.centerX > canvas.width) particle.vx *= -1
+        if (particle.centerY < 0 || particle.centerY > canvas.height) particle.vy *= -1
+        
+        // Calculate position based on orbit
+        particle.x = particle.centerX + Math.cos(particle.angle) * particle.orbitRadius
+        particle.y = particle.centerY + Math.sin(particle.angle) * particle.orbitRadius
+        
+        // Gentle fade in/out effect
+        particle.opacity += particle.fadeDirection * 0.003
+        if (particle.opacity > 0.7 || particle.opacity < 0.1) {
+          particle.fadeDirection *= -1
+        }
+        
+        // Mouse influence - subtle attraction
+        const dx = mouseX - particle.x
+        const dy = mouseY - particle.y
+        const distance = Math.sqrt(dx * dx + dy * dy)
+        
+        if (distance < 200) {
+          const force = (1 - distance / 200) * 0.02
+          particle.centerX += dx * force
+          particle.centerY += dy * force
+        }
+        
+        // Draw particle with glow
+        const gradient = ctx.createRadialGradient(
+          particle.x, particle.y, 0,
+          particle.x, particle.y, particle.radius * 3
+        )
+        gradient.addColorStop(0, `rgba(0, 200, 255, ${particle.opacity})`)
+        gradient.addColorStop(0.5, `rgba(0, 150, 255, ${particle.opacity * 0.5})`)
+        gradient.addColorStop(1, 'transparent')
+        
+        ctx.fillStyle = gradient
+        ctx.beginPath()
+        ctx.arc(particle.x, particle.y, particle.radius * 3, 0, Math.PI * 2)
+        ctx.fill()
+        
+        // Draw particle core
+        ctx.fillStyle = `rgba(255, 255, 255, ${particle.opacity * 0.8})`
+        ctx.beginPath()
+        ctx.arc(particle.x, particle.y, particle.radius * 0.5, 0, Math.PI * 2)
+        ctx.fill()
+      })
+      
+      // Draw connections between nearby particles
+      ctx.strokeStyle = 'rgba(0, 150, 255, 0.15)'
+      ctx.lineWidth = 1
+      
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x
+          const dy = particles[i].y - particles[j].y
+          const distance = Math.sqrt(dx * dx + dy * dy)
+          
+          if (distance < connectionDistance) {
+            const opacity = (1 - distance / connectionDistance) * 0.3
+            ctx.strokeStyle = `rgba(0, 150, 255, ${opacity})`
+            ctx.beginPath()
+            ctx.moveTo(particles[i].x, particles[i].y)
+            ctx.lineTo(particles[j].x, particles[j].y)
+            ctx.stroke()
+          }
+        }
+      }
+      
+      // Draw sacred geometry overlay - Flower of Life pattern (subtle)
+      const time = Date.now() * 0.0001
+      const centerX = canvas.width / 2
+      const centerY = canvas.height / 2
+      const baseRadius = 150
+      
+      ctx.strokeStyle = `rgba(100, 200, 255, 0.05)`
+      ctx.lineWidth = 1
+      
+      // Central circle
+      ctx.beginPath()
+      ctx.arc(centerX, centerY, baseRadius, 0, Math.PI * 2)
+      ctx.stroke()
+      
+      // Six surrounding circles (Seed of Life)
+      for (let i = 0; i < 6; i++) {
+        const angle = (i / 6) * Math.PI * 2 + time
+        const x = centerX + Math.cos(angle) * baseRadius
+        const y = centerY + Math.sin(angle) * baseRadius
+        
+        ctx.beginPath()
+        ctx.arc(x, y, baseRadius, 0, Math.PI * 2)
+        ctx.stroke()
+      }
+      
+      // Mouse position indicator - subtle sacred geometry symbol
+      const mouseGradient = ctx.createRadialGradient(
+        mouseX, mouseY, 0,
+        mouseX, mouseY, 100
+      )
+      mouseGradient.addColorStop(0, 'rgba(255, 255, 255, 0.02)')
+      mouseGradient.addColorStop(0.5, 'rgba(0, 200, 255, 0.01)')
+      mouseGradient.addColorStop(1, 'transparent')
+      
+      ctx.fillStyle = mouseGradient
+      ctx.fillRect(0, 0, canvas.width, canvas.height)
+      
+      animationId = requestAnimationFrame(animate)
+    }
+    
+    animate()
+    
+    const handleResize = () => {
+      canvas.width = window.innerWidth
+      canvas.height = window.innerHeight
+      
+      // Recalculate particle positions
+      particles.forEach(particle => {
+        particle.centerX = canvas.width / 2
+        particle.centerY = canvas.height / 2
+      })
+    }
+    
+    window.addEventListener('resize', handleResize)
+    
+    return () => {
+      cancelAnimationFrame(animationId)
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [mousePos])
+  
   return (
     <section ref={containerRef} className="relative min-h-screen overflow-hidden -mt-24 pt-24 bg-background">
-      {/* Animated cyber grid background */}
+      {/* Elegant particle network canvas */}
+      <canvas
+        ref={canvasRef}
+        className="absolute inset-0"
+        style={{ opacity: 0.7 }}
+      />
+      
+      {/* Subtle CSS grid overlay for depth */}
       <div 
-        className="absolute inset-0 opacity-40"
+        className="absolute inset-0 opacity-[0.03]"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(0, 200, 255, 0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(0, 200, 255, 0.03) 1px, transparent 1px)
+            linear-gradient(rgba(0, 200, 255, 0.5) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0, 200, 255, 0.5) 1px, transparent 1px)
           `,
-          backgroundSize: '60px 60px',
-          animation: 'grid-drift 30s linear infinite',
+          backgroundSize: '100px 100px',
         }}
       />
       
-      {/* Diagonal grid for depth */}
+      {/* Gradient overlay for atmosphere */}
       <div 
-        className="absolute inset-0 opacity-20"
-        style={{
-          backgroundImage: `
-            linear-gradient(45deg, rgba(100, 200, 255, 0.02) 1px, transparent 1px),
-            linear-gradient(-45deg, rgba(200, 100, 255, 0.02) 1px, transparent 1px)
-          `,
-          backgroundSize: '80px 80px',
-          animation: 'grid-drift-reverse 40s linear infinite',
-        }}
-      />
-      
-      {/* Floating orbs with fade in/out animation */}
-      <div className="absolute inset-0 overflow-hidden">
-        {/* Top left orb */}
-        <motion.div
-          className="absolute w-96 h-96 -top-48 -left-48"
-          animate={{
-            opacity: [0.1, 0.3, 0.1],
-            scale: [1, 1.2, 1],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        >
-          <div className="w-full h-full rounded-full bg-gradient-to-br from-cyan-400/20 to-transparent blur-3xl" />
-        </motion.div>
-        
-        {/* Bottom right orb */}
-        <motion.div
-          className="absolute w-96 h-96 -bottom-48 -right-48"
-          animate={{
-            opacity: [0.1, 0.25, 0.1],
-            scale: [1, 1.1, 1],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 2
-          }}
-        >
-          <div className="w-full h-full rounded-full bg-gradient-to-tl from-purple-400/20 to-transparent blur-3xl" />
-        </motion.div>
-        
-        {/* Center floating orb */}
-        <motion.div
-          className="absolute w-64 h-64 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-          animate={{
-            opacity: [0.05, 0.15, 0.05],
-            scale: [0.8, 1.3, 0.8],
-            rotate: [0, 180, 360],
-          }}
-          transition={{
-            duration: 15,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 1
-          }}
-        >
-          <div className="w-full h-full rounded-full bg-gradient-to-br from-blue-400/10 via-cyan-400/10 to-transparent blur-2xl" />
-        </motion.div>
-      </div>
-      
-      {/* Interactive gradient that follows mouse */}
-      <div 
-        className="absolute inset-0 opacity-30 pointer-events-none transition-opacity duration-1000"
+        className="absolute inset-0 opacity-50"
         style={{
           background: `
-            radial-gradient(circle 800px at ${mousePos.x}px ${mousePos.y}px, 
-              rgba(0, 150, 255, 0.08), 
-              rgba(100, 50, 255, 0.04) 40%, 
-              transparent 70%
-            )
-          `,
-        }}
-      />
-      
-      {/* Hover-activated accent lines */}
-      <motion.div 
-        className="absolute inset-0 pointer-events-none"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: mousePos.y < 200 ? 0.6 : 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent" />
-        <div className="absolute top-1 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent" />
-      </motion.div>
-      
-      {/* Subtle scanline effect */}
-      <div 
-        className="absolute inset-0 pointer-events-none opacity-[0.02]"
-        style={{
-          backgroundImage: `repeating-linear-gradient(
-            0deg,
-            transparent,
-            transparent 2px,
-            rgba(0, 255, 255, 0.3) 2px,
-            rgba(0, 255, 255, 0.3) 4px
-          )`,
-          animation: 'scanline 8s linear infinite'
+            radial-gradient(circle at 20% 50%, rgba(0, 100, 200, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 80% 50%, rgba(100, 0, 200, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 50% 50%, rgba(0, 50, 150, 0.05) 0%, transparent 70%)
+          `
         }}
       />
       
@@ -329,33 +441,6 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
       </motion.div>
       
       <style jsx>{`
-        @keyframes grid-drift {
-          0% { 
-            transform: translate(0, 0);
-          }
-          100% { 
-            transform: translate(60px, 60px);
-          }
-        }
-        
-        @keyframes grid-drift-reverse {
-          0% { 
-            transform: translate(0, 0);
-          }
-          100% { 
-            transform: translate(-80px, -80px);
-          }
-        }
-        
-        @keyframes scanline {
-          0% {
-            transform: translateY(-100%);
-          }
-          100% {
-            transform: translateY(100%);
-          }
-        }
-        
         @keyframes glitch-1 {
           0%, 100% { 
             opacity: 0;
