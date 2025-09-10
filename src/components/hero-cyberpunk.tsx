@@ -47,7 +47,9 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
         className="absolute inset-0" 
         style={{ 
           perspective: '1000px',
-          transform: `translateX(${(mousePos.x - window.innerWidth / 2) * 0.01}px)` // Subtle mouse parallax
+          transform: typeof window !== 'undefined' 
+            ? `translateX(${(mousePos.x - window.innerWidth / 2) * 0.01}px)` 
+            : 'translateX(0)' // Subtle mouse parallax
         }}
       >
         {/* Main grid plane */}
@@ -125,7 +127,15 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
           <motion.h1
             initial="hidden"
             animate="visible"
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tight mb-6 relative overflow-hidden"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tight mb-6 relative"
+            whileHover={{
+              textShadow: '0 0 20px rgba(0, 200, 255, 0.5), 0 0 40px rgba(0, 200, 255, 0.3)',
+              transition: { duration: 0.3 }
+            }}
+            style={{ 
+              lineHeight: 1.2,  // Add line-height to prevent cutoff
+              paddingBottom: '0.1em' // Small padding to prevent descender cutoff
+            }}
           >
             <span className="relative inline-block">
               {titleLetters.map((letter, index) => (
