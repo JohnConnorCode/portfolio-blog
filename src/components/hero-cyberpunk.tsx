@@ -170,20 +170,70 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
   
   return (
     <section ref={containerRef} className="relative min-h-screen overflow-hidden -mt-24 pt-24 bg-background">
+      {/* Perspective grid moving toward horizon */}
+      <div className="absolute inset-0" style={{ perspective: '800px' }}>
+        <div 
+          className="absolute inset-0"
+          style={{
+            transform: 'rotateX(75deg) translateZ(-100px)',
+            transformOrigin: 'center bottom',
+            backgroundImage: `
+              linear-gradient(rgba(0, 200, 255, 0.08) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(0, 200, 255, 0.08) 1px, transparent 1px)
+            `,
+            backgroundSize: '80px 80px',
+            animation: 'gridMove 10s linear infinite',
+            maskImage: 'linear-gradient(to top, black 0%, transparent 100%)',
+            WebkitMaskImage: 'linear-gradient(to top, black 0%, transparent 100%)',
+          }}
+        />
+        
+        {/* Secondary grid layer for depth */}
+        <div 
+          className="absolute inset-0"
+          style={{
+            transform: 'rotateX(75deg) translateZ(-200px)',
+            transformOrigin: 'center bottom',
+            backgroundImage: `
+              linear-gradient(rgba(100, 150, 255, 0.04) 2px, transparent 2px),
+              linear-gradient(90deg, rgba(100, 150, 255, 0.04) 2px, transparent 2px)
+            `,
+            backgroundSize: '160px 160px',
+            animation: 'gridMove 20s linear infinite',
+            maskImage: 'linear-gradient(to top, black 0%, transparent 80%)',
+            WebkitMaskImage: 'linear-gradient(to top, black 0%, transparent 80%)',
+          }}
+        />
+      </div>
+      
+      {/* Pulse wave overlay */}
+      <div 
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: `
+            radial-gradient(ellipse at 50% 100%, 
+              rgba(0, 200, 255, 0.1) 0%, 
+              transparent 50%
+            )
+          `,
+          animation: 'pulse 4s ease-in-out infinite',
+        }}
+      />
+      
       {/* Subtle particle network canvas */}
       <canvas
         ref={canvasRef}
         className="absolute inset-0"
-        style={{ opacity: 0.4 }} // Reduced overall opacity
+        style={{ opacity: 0.3 }} // Further reduced opacity
       />
       
       {/* Very subtle gradient overlay */}
       <div 
-        className="absolute inset-0 opacity-30"
+        className="absolute inset-0 opacity-20"
         style={{
           background: `
-            radial-gradient(ellipse at 20% 30%, rgba(0, 100, 200, 0.05) 0%, transparent 40%),
-            radial-gradient(ellipse at 80% 70%, rgba(100, 0, 200, 0.05) 0%, transparent 40%)
+            radial-gradient(ellipse at 20% 30%, rgba(0, 100, 200, 0.03) 0%, transparent 40%),
+            radial-gradient(ellipse at 80% 70%, rgba(100, 0, 200, 0.03) 0%, transparent 40%)
           `
         }}
       />
@@ -421,6 +471,28 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
           </motion.div>
         </div>
       </motion.div>
+      
+      <style jsx>{`
+        @keyframes gridMove {
+          0% {
+            background-position: 0 0;
+          }
+          100% {
+            background-position: 0 80px;
+          }
+        }
+        
+        @keyframes pulse {
+          0%, 100% {
+            opacity: 0.3;
+            transform: scale(1);
+          }
+          50% {
+            opacity: 0.6;
+            transform: scale(1.05);
+          }
+        }
+      `}</style>
     </section>
   )
 }
