@@ -173,7 +173,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
       />
       
       {/* Perspective grid */}
-      <motion.div className="absolute inset-0">
+      <motion.div className="absolute inset-0 overflow-hidden">
         <div 
           className="absolute inset-0"
           style={{
@@ -183,30 +183,32 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
             `,
             backgroundSize: '100px 100px',
             backgroundPosition: 'center center',
-            transform: 'perspective(800px) rotateX(50deg) translateZ(-50px) translateY(-20%)',
-            transformOrigin: 'center 120%',
+            transform: 'perspective(800px) rotateX(50deg) translateZ(-50px) translateY(-30%)',
+            transformOrigin: 'center 150%',
             opacity: gridOpacity,
             filter: `blur(${gridBlur}px)`,
-            height: '150%',
-            width: '150%',
-            left: '-25%',
+            height: '200%',
+            width: '200%',
+            left: '-50%',
           }}
         />
         
-        {/* Distance blur overlay */}
+        {/* Distance blur overlay - fade starts higher */}
         <motion.div 
           className="absolute inset-0"
           style={{
             background: isDark ? `linear-gradient(to top, 
               transparent 0%, 
-              transparent 60%, 
-              rgba(0, 0, 0, 0.4) 80%, 
-              rgba(0, 0, 0, 0.8) 100%
+              transparent 40%, 
+              rgba(0, 0, 0, 0.3) 60%, 
+              rgba(0, 0, 0, 0.6) 80%, 
+              rgba(0, 0, 0, 0.9) 100%
             )` : `linear-gradient(to top, 
               transparent 0%, 
-              transparent 60%, 
-              rgba(102, 126, 234, 0.1) 80%, 
-              rgba(118, 75, 162, 0.1) 100%
+              transparent 40%, 
+              rgba(102, 126, 234, 0.05) 60%, 
+              rgba(118, 75, 162, 0.1) 80%, 
+              rgba(118, 75, 162, 0.15) 100%
             )`,
             backdropFilter: gridBlur,
             WebkitBackdropFilter: gridBlur,
