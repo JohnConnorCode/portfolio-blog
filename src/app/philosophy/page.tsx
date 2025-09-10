@@ -1,40 +1,48 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Users, Heart, Brain, Mountain, Book, Lightbulb } from 'lucide-react'
+import { Zap, Target, Shield, Compass, Code, Users, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
-import { AnimatedText, AnimatedLetters, FadeInText } from '@/components/animated-text'
+import { AnimatedLetters } from '@/components/animated-text'
 import { SectionDivider } from '@/components/section-divider'
-import { AnimatedBorderBox, BorderFadeBox } from '@/components/animated-border-box'
+import { AnimatedBorderBox } from '@/components/animated-border-box'
 
-const principles = [
+const methods = [
   {
-    icon: Users,
-    title: 'Humans First, Always',
-    description: 'Technology should amplify human capability, not replace human judgment. Every system must honor human values.',
+    icon: Target,
+    title: 'Surface reality',
+    description: 'Name assumptions clearly. Stress test them. Expose every idea to conditions that can break it.'
   },
   {
-    icon: Brain,
-    title: 'Behavioral Understanding',
-    description: 'Great products emerge from understanding how humans actually behave, not how we think they should.',
+    icon: Zap,
+    title: 'Design alignment',
+    description: 'Incentives matter more than intentions. Architectures shape behavior whether we admit it or not. Build so that valuable actions compound and noise collapses.'
   },
   {
-    icon: Lightbulb,
-    title: 'Solve Real Problems',
-    description: 'Focus on what users actually need through research and testing, not assumptions and wishful thinking.',
+    icon: Shield,
+    title: 'Embrace difficulty',
+    description: 'Risk, conflict, and error in public are not threats. They are conditions for growth. Create environments where people must face them.'
   },
   {
-    icon: Mountain,
-    title: 'Embrace Hard Truths',
-    description: 'Growth requires facing uncomfortable realities about products, markets, and human nature.',
-  },
+    icon: Compass,
+    title: 'Judge by outcomes',
+    description: 'Do not mistake appearance for achievement. The test is whether something produces durable, compounding value in the world.'
+  }
 ]
 
-const influences = [
-  { author: 'Daniel Kahneman', work: 'Behavioral economics and decision-making' },
-  { author: 'Clayton Christensen', work: 'Jobs-to-be-done theory' },
-  { author: 'Friedrich Nietzsche', work: 'On becoming who you are' },
-  { author: 'Richard Thaler', work: 'Nudge theory and behavioral insights' },
+const ventures = [
+  {
+    name: 'Super Debate',
+    description: 'Built on the conviction that growth requires confrontation. Creates rooms where people risk themselves in public, test their ideas, and leave sharper for it.'
+  },
+  {
+    name: 'Accelerate',
+    description: 'Redesigning how ecosystems fund builders. Funds only when milestones are delivered. Transparent, accountable, aligned with integrity.'
+  },
+  {
+    name: 'Earlier Ventures',
+    description: 'Sparkblox, Upland, Mode Mobile, HelpWith — experiments in alignment at different scales. Each revealed truths that only reality can teach.'
+  }
 ]
 
 export default function PhilosophyPage() {
@@ -50,96 +58,127 @@ export default function PhilosophyPage() {
         >
           <AnimatedLetters 
             text="Philosophy" 
-            className="text-5xl sm:text-6xl font-bold mb-8 text-center block"
+            className="text-5xl sm:text-6xl font-black mb-8 text-center block"
             as="h1"
           />
-          
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="prose prose-lg mx-auto text-muted-foreground"
-          >
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-xl leading-relaxed mb-6"
-            >
-              Twenty years of thinking about how humans and technology intersect—from debate podiums 
-              at sixteen to building products that actually work at scale.
-            </motion.p>
-            
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-xl leading-relaxed"
-            >
-              What I&apos;ve learned: great products aren&apos;t built, they&apos;re discovered. 
-              Through user research, behavioral economics, and understanding what humans 
-              actually need versus what they think they want.
-            </motion.p>
-          </motion.div>
         </motion.div>
 
-        {/* Core Belief */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8 }}
-          className="mb-20 py-12 border-y border-foreground/10"
-        >
-          <motion.blockquote 
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, delay: 0.2 }}
-            className="text-2xl sm:text-3xl font-light text-center leading-relaxed"
-          >
-            &ldquo;We must be humans <em>with</em> technology,<br />
-            not humans <em>against</em> technology,<br />
-            and never humans <em>replaced by</em> technology.&rdquo;
-          </motion.blockquote>
-        </motion.div>
-
-        {/* My Approach */}
-        <motion.div
+        {/* Formation */}
+        <motion.section
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8 }}
           className="mb-20"
         >
-          <AnimatedText 
-            as="h2" 
-            className="text-3xl sm:text-4xl font-bold mb-8 text-center"
+          <motion.h2 
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl font-bold mb-6 text-cyan-400"
           >
-            How I Work
-          </AnimatedText>
+            Formation
+          </motion.h2>
           
-          <FadeInText delay={0.4}>
-            <div className="prose prose-lg mx-auto text-muted-foreground space-y-6">
-              <p className="text-lg leading-relaxed">
-                I combine deep technical knowledge (AI, Web3, systems architecture) with behavioral economics 
-                and philosophy. This isn&apos;t about building features—it&apos;s about solving real problems 
-                that create genuine value.
-              </p>
-              
-              <p className="text-lg leading-relaxed">
-                From local businesses to $50M+ startups, the process is always the same: extensive user research, 
-                behavioral analysis, and testing assumptions against reality. Because understanding the human 
-                comes before building the solution.
-              </p>
-            </div>
-          </FadeInText>
-        </motion.div>
+          <motion.div 
+            className="prose prose-lg mx-auto text-muted-foreground space-y-4"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <p>
+              I began as a debater in high school. Debate was my first laboratory for truth. You stood in public and risked humiliation for the chance to sharpen your thinking. Losing was painful but it revealed what was real.
+            </p>
+            <p>
+              I moved from competing to teaching. I organized programs where younger students learned to test themselves through conflict. I also worked with decentralized community groups in education and food distribution. These grassroots projects were chaotic but they showed me how fragile trust can be, how easily cooperation unravels, and how much stronger people become when they take responsibility together.
+            </p>
+          </motion.div>
+        </motion.section>
 
-        {/* Principles */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+        <SectionDivider variant="organic" />
+
+        {/* Orientation */}
+        <motion.section
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8 }}
+          className="mb-20"
+        >
+          <motion.h2 
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl font-bold mb-6 text-purple-400"
+          >
+            Orientation
+          </motion.h2>
+          
+          <motion.div 
+            className="prose prose-lg mx-auto text-muted-foreground space-y-4"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <p>
+              Those experiences shaped my orientation. I am drawn to work that cannot hide behind appearances. I want environments where illusions collapse, where outcomes are visible, and where participation makes people stronger.
+            </p>
+            <p>
+              I am not motivated by novelty. I am motivated by leverage. By designs that compound value over time, not by avoiding reality but by exposing it. By tools and institutions that make people more capable of perceiving clearly, deciding wisely, and acting with conviction.
+            </p>
+          </motion.div>
+        </motion.section>
+
+        {/* Commitments */}
+        <motion.section
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8 }}
+          className="mb-20"
+        >
+          <motion.h2 
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl font-bold mb-6 text-cyan-400"
+          >
+            Commitments
+          </motion.h2>
+          
+          <motion.div 
+            className="prose prose-lg mx-auto text-muted-foreground space-y-4"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <p>
+              I do not accept claims that cannot be tested. I do not trust metrics that exist to flatter. The only measure that matters is whether something holds up under pressure and creates durable value when exposed to the world.
+            </p>
+            <motion.p 
+              className="text-lg font-semibold text-foreground border-l-4 border-cyan-400 pl-4"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              Confrontation clarifies. Comfort dulls. Ideas matter only when embodied. Nothing is ever finished. Everything is in the process of becoming.
+            </motion.p>
+          </motion.div>
+        </motion.section>
+
+        <SectionDivider variant="organic" />
+
+        {/* Method */}
+        <motion.section
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8 }}
           className="mb-20"
@@ -148,20 +187,30 @@ export default function PhilosophyPage() {
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="text-3xl font-bold mb-12 text-center"
+            transition={{ duration: 0.6 }}
+            className="text-3xl font-bold mb-8 text-center"
           >
-            Guiding Principles
+            Method
           </motion.h2>
           
+          <motion.p 
+            className="text-lg text-muted-foreground mb-12 text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            Over the years I have refined a way of working that applies across debate, community organizing, startups, and ecosystems.
+          </motion.p>
+          
           <div className="grid md:grid-cols-2 gap-8">
-            {principles.map((principle, index) => {
-              const Icon = principle.icon
+            {methods.map((method, index) => {
+              const Icon = method.icon
               return (
                 <AnimatedBorderBox
-                  key={principle.title}
+                  key={method.title}
                   delay={index * 0.15}
-                  className="p-6 rounded-xl"
+                  className="p-6 rounded-xl hover:bg-foreground/5 transition-colors"
                   borderColor="rgba(0, 200, 255, 0.3)"
                 >
                   <div className="flex gap-4">
@@ -181,160 +230,153 @@ export default function PhilosophyPage() {
                       </div>
                     </motion.div>
                     <div>
-                      <h3 className="text-xl font-semibold mb-2">{principle.title}</h3>
-                      <p className="text-muted-foreground">{principle.description}</p>
+                      <h3 className="text-xl font-bold mb-2">{method.title}</h3>
+                      <p className="text-muted-foreground">{method.description}</p>
                     </div>
                   </div>
                 </AnimatedBorderBox>
               )
             })}
           </div>
-        </motion.div>
+        </motion.section>
 
-        <SectionDivider variant="organic" />
-
-        {/* Intellectual Foundations */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+        {/* In Practice */}
+        <motion.section
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8 }}
           className="mb-20"
         >
           <motion.h2 
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="text-3xl font-bold mb-12 text-center"
+            transition={{ duration: 0.6 }}
+            className="text-3xl font-bold mb-8 text-purple-400"
           >
-            Intellectual Foundations
+            In Practice
           </motion.h2>
           
-          <div className="grid sm:grid-cols-2 gap-6">
-            {influences.map((influence, index) => (
-              <BorderFadeBox
-                key={influence.author}
-                delay={index * 0.1}
-                direction="left"
-                className="flex items-start gap-3 p-4"
+          <div className="space-y-6">
+            {ventures.map((venture, index) => (
+              <motion.div
+                key={venture.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ 
+                  duration: 0.6,
+                  delay: index * 0.1,
+                  ease: [0.25, 0.1, 0.25, 1]
+                }}
+                className="border-l-2 border-cyan-400/30 pl-6 hover:border-cyan-400 transition-colors"
               >
-                <motion.div
-                  initial={{ opacity: 0, scale: 0 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ 
-                    delay: index * 0.1 + 0.3,
-                    duration: 0.4,
-                    ease: "easeOut"
-                  }}
-                >
-                  <Book className="w-5 h-5 mt-1 flex-shrink-0 text-cyan-400" />
-                </motion.div>
-                <div>
-                  <p className="font-semibold">{influence.author}</p>
-                  <p className="text-sm text-muted-foreground italic">{influence.work}</p>
-                </div>
-              </BorderFadeBox>
+                <h3 className="text-xl font-bold mb-2 text-cyan-400">{venture.name}</h3>
+                <p className="text-muted-foreground">{venture.description}</p>
+              </motion.div>
             ))}
           </div>
-          
-          <motion.p 
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.9 }}
-            className="text-lg text-muted-foreground mt-8 text-center"
-          >
-            These thinkers shaped how I approach product problems—always grounded in human behavior, 
-            economic reality, and philosophical depth.
-          </motion.p>
-        </motion.div>
+        </motion.section>
 
-        {/* Philosophy in Practice */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+        <SectionDivider variant="organic" />
+
+        {/* Today */}
+        <motion.section
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8 }}
-          className="mb-20 p-8 border border-foreground/10"
+          className="mb-20"
         >
           <motion.h2 
             initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-3xl font-bold mb-6"
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl font-bold mb-6 text-cyan-400"
           >
-            Philosophy in Practice
+            Today
           </motion.h2>
           
-          <motion.p 
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-lg text-muted-foreground mb-6"
+          <motion.div 
+            className="prose prose-lg mx-auto text-muted-foreground space-y-4"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
-            My work with Super Debate exemplifies this philosophy: creating spaces where people grow 
-            through intellectual challenge, vulnerability, and genuine human connection—not digital metrics.
-          </motion.p>
-          
-          <motion.p 
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-lg text-muted-foreground mb-6"
-          >
-            Whether advising on AI strategy or fixing product-market fit, I apply the same principle: 
-            technology should make us more human, not less.
-          </motion.p>
-          
-          <Link href="/work">
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="px-8 py-3 border-2 border-foreground/20 hover:border-foreground hover:bg-foreground hover:text-background transition-all duration-300"
-            >
-              See My Work
-            </motion.button>
-          </Link>
-        </motion.div>
+            <p>
+              I am a technologist and a product strategist. My work is to imagine better futures and to build the scaffolding that makes them real. Sometimes that means designing platforms that reward integrity. Sometimes it means creating communities where people confront each other directly. Sometimes it means helping founders or ecosystems articulate and execute their own visions.
+            </p>
+            <p className="font-semibold text-foreground">
+              The common thread is this: I build with an eye on what compounds, what holds up under pressure, and what makes people stronger.
+            </p>
+          </motion.div>
+        </motion.section>
 
-        {/* Call to Action */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+        {/* Closing */}
+        <motion.section
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8 }}
-          className="text-center"
+          className="mb-20 p-8 border border-foreground/10 rounded-lg bg-gradient-to-br from-cyan-400/5 to-purple-400/5"
         >
           <motion.h2 
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-3xl font-bold mb-8"
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl font-bold mb-6"
           >
-            Ready to Build Something Real?
+            Closing
           </motion.h2>
           
-          <motion.p 
+          <motion.div 
+            className="prose prose-lg mx-auto text-muted-foreground space-y-4"
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-xl text-muted-foreground mb-12 max-w-2xl mx-auto"
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
-            If you&apos;re solving real problems for real people—and want someone who thinks deeply 
-            about both technology and humanity—let&apos;s talk.
-          </motion.p>
+            <p>
+              I do not build for polish or for spectacle. I build to expose what is real, to create structures that reward courage, and to shape futures that are worth inhabiting.
+            </p>
+            <p>
+              That throughline runs from debate podiums to grassroots organizing to venture building and ecosystem design. It is the principle that connects my past and the role I play now — helping turn vision into reality.
+            </p>
+          </motion.div>
           
-          <Link href="/contact">
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="px-8 py-3 bg-foreground text-background border-2 border-foreground hover:bg-transparent hover:text-foreground transition-all duration-300"
-            >
-              Start a Conversation
-            </motion.button>
-          </Link>
-        </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="mt-8 flex flex-col sm:flex-row gap-4 justify-center"
+          >
+            <Link href="/work">
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="group px-8 py-3 border-2 border-cyan-400 hover:bg-cyan-400/10 transition-all duration-300 flex items-center gap-2"
+              >
+                <span className="font-semibold">View My Work</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </motion.button>
+            </Link>
+            
+            <Link href="/contact">
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="px-8 py-3 bg-foreground text-background hover:bg-foreground/90 transition-all duration-300 font-semibold"
+              >
+                Start a Conversation
+              </motion.button>
+            </Link>
+          </motion.div>
+        </motion.section>
       </div>
     </section>
   )
