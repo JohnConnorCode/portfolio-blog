@@ -38,7 +38,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
     return () => window.removeEventListener('mousemove', handleMouseMove)
   }, [])
   
-  // Elegant particle network animation inspired by modern implementations
+  // Subtle particle network animation
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
@@ -49,117 +49,79 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
     canvas.width = window.innerWidth
     canvas.height = window.innerHeight
     
-    // Particle system with sacred geometry influence
+    // Fewer, subtler particles
     const particles: Array<{
       x: number
       y: number
       vx: number
       vy: number
       radius: number
-      angle: number
-      angleSpeed: number
-      orbitRadius: number
-      centerX: number
-      centerY: number
       opacity: number
-      fadeDirection: number
+      targetOpacity: number
     }> = []
     
-    const PHI = 1.618033988749 // Golden ratio
-    const particleCount = 50 // Balanced count for performance and visual impact
-    const connectionDistance = 150
+    const particleCount = 30 // Reduced for less intensity
+    const connectionDistance = 120
     
-    // Initialize particles in sacred geometry patterns
+    // Initialize particles randomly across screen
     for (let i = 0; i < particleCount; i++) {
-      const angle = (i / particleCount) * Math.PI * 2
-      const orbitRadius = 100 + (i % 3) * 100 // Multiple orbit rings
-      
       particles.push({
-        x: canvas.width / 2 + Math.cos(angle) * orbitRadius,
-        y: canvas.height / 2 + Math.sin(angle) * orbitRadius,
-        vx: (Math.random() - 0.5) * 0.3,
-        vy: (Math.random() - 0.5) * 0.3,
-        radius: 2 + Math.random() * 2,
-        angle: angle,
-        angleSpeed: 0.001 + Math.random() * 0.002,
-        orbitRadius: orbitRadius,
-        centerX: canvas.width / 2,
-        centerY: canvas.height / 2,
-        opacity: 0.3 + Math.random() * 0.4,
-        fadeDirection: Math.random() > 0.5 ? 1 : -1
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.2, // Slower movement
+        vy: (Math.random() - 0.5) * 0.2,
+        radius: 1 + Math.random() * 1.5, // Smaller particles
+        opacity: 0,
+        targetOpacity: 0.15 + Math.random() * 0.15 // Much lower opacity
       })
     }
     
     let animationId: number
-    let mouseX = canvas.width / 2
-    let mouseY = canvas.height / 2
+    let smoothMouseX = canvas.width / 2
+    let smoothMouseY = canvas.height / 2
     
     const animate = () => {
-      // Clear canvas with fade effect
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)'
-      ctx.fillRect(0, 0, canvas.width, canvas.height)
+      // Clear canvas
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
       
-      // Smooth mouse tracking
-      mouseX += (mousePos.x - mouseX) * 0.05
-      mouseY += (mousePos.y - mouseY) * 0.05
+      // Very smooth mouse tracking
+      smoothMouseX += (mousePos.x - smoothMouseX) * 0.02 // Much slower tracking
+      smoothMouseY += (mousePos.y - smoothMouseY) * 0.02
       
       // Update and draw particles
-      particles.forEach((particle, i) => {
-        // Orbital motion with drift
-        particle.angle += particle.angleSpeed
-        particle.centerX += particle.vx
-        particle.centerY += particle.vy
+      particles.forEach((particle) => {
+        // Simple drift motion
+        particle.x += particle.vx
+        particle.y += particle.vy
         
-        // Keep centers within bounds
-        if (particle.centerX < 0 || particle.centerX > canvas.width) particle.vx *= -1
-        if (particle.centerY < 0 || particle.centerY > canvas.height) particle.vy *= -1
+        // Wrap around edges smoothly
+        if (particle.x < -50) particle.x = canvas.width + 50
+        if (particle.x > canvas.width + 50) particle.x = -50
+        if (particle.y < -50) particle.y = canvas.height + 50
+        if (particle.y > canvas.height + 50) particle.y = -50
         
-        // Calculate position based on orbit
-        particle.x = particle.centerX + Math.cos(particle.angle) * particle.orbitRadius
-        particle.y = particle.centerY + Math.sin(particle.angle) * particle.orbitRadius
+        // Smooth opacity transitions
+        particle.opacity += (particle.targetOpacity - particle.opacity) * 0.02
         
-        // Gentle fade in/out effect
-        particle.opacity += particle.fadeDirection * 0.003
-        if (particle.opacity > 0.7 || particle.opacity < 0.1) {
-          particle.fadeDirection *= -1
-        }
-        
-        // Mouse influence - subtle attraction
-        const dx = mouseX - particle.x
-        const dy = mouseY - particle.y
+        // Very subtle mouse influence
+        const dx = smoothMouseX - particle.x
+        const dy = smoothMouseY - particle.y
         const distance = Math.sqrt(dx * dx + dy * dy)
         
-        if (distance < 200) {
-          const force = (1 - distance / 200) * 0.02
-          particle.centerX += dx * force
-          particle.centerY += dy * force
+        if (distance < 300 && distance > 50) {
+          const force = (1 - distance / 300) * 0.005 // Very gentle force
+          particle.x += dx * force
+          particle.y += dy * force
         }
         
-        // Draw particle with glow
-        const gradient = ctx.createRadialGradient(
-          particle.x, particle.y, 0,
-          particle.x, particle.y, particle.radius * 3
-        )
-        gradient.addColorStop(0, `rgba(0, 200, 255, ${particle.opacity})`)
-        gradient.addColorStop(0.5, `rgba(0, 150, 255, ${particle.opacity * 0.5})`)
-        gradient.addColorStop(1, 'transparent')
-        
-        ctx.fillStyle = gradient
+        // Draw particle (simple dot)
+        ctx.fillStyle = `rgba(100, 180, 255, ${particle.opacity})`
         ctx.beginPath()
-        ctx.arc(particle.x, particle.y, particle.radius * 3, 0, Math.PI * 2)
-        ctx.fill()
-        
-        // Draw particle core
-        ctx.fillStyle = `rgba(255, 255, 255, ${particle.opacity * 0.8})`
-        ctx.beginPath()
-        ctx.arc(particle.x, particle.y, particle.radius * 0.5, 0, Math.PI * 2)
+        ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2)
         ctx.fill()
       })
       
-      // Draw connections between nearby particles
-      ctx.strokeStyle = 'rgba(0, 150, 255, 0.15)'
-      ctx.lineWidth = 1
-      
+      // Draw very subtle connections
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x
@@ -167,8 +129,9 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
           const distance = Math.sqrt(dx * dx + dy * dy)
           
           if (distance < connectionDistance) {
-            const opacity = (1 - distance / connectionDistance) * 0.3
-            ctx.strokeStyle = `rgba(0, 150, 255, ${opacity})`
+            const opacity = (1 - distance / connectionDistance) * 0.08 // Very faint lines
+            ctx.strokeStyle = `rgba(100, 180, 255, ${opacity})`
+            ctx.lineWidth = 0.5
             ctx.beginPath()
             ctx.moveTo(particles[i].x, particles[i].y)
             ctx.lineTo(particles[j].x, particles[j].y)
@@ -177,57 +140,21 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
         }
       }
       
-      // Draw sacred geometry overlay - Flower of Life pattern (subtle)
-      const time = Date.now() * 0.0001
-      const centerX = canvas.width / 2
-      const centerY = canvas.height / 2
-      const baseRadius = 150
-      
-      ctx.strokeStyle = `rgba(100, 200, 255, 0.05)`
-      ctx.lineWidth = 1
-      
-      // Central circle
-      ctx.beginPath()
-      ctx.arc(centerX, centerY, baseRadius, 0, Math.PI * 2)
-      ctx.stroke()
-      
-      // Six surrounding circles (Seed of Life)
-      for (let i = 0; i < 6; i++) {
-        const angle = (i / 6) * Math.PI * 2 + time
-        const x = centerX + Math.cos(angle) * baseRadius
-        const y = centerY + Math.sin(angle) * baseRadius
-        
-        ctx.beginPath()
-        ctx.arc(x, y, baseRadius, 0, Math.PI * 2)
-        ctx.stroke()
-      }
-      
-      // Mouse position indicator - subtle sacred geometry symbol
-      const mouseGradient = ctx.createRadialGradient(
-        mouseX, mouseY, 0,
-        mouseX, mouseY, 100
-      )
-      mouseGradient.addColorStop(0, 'rgba(255, 255, 255, 0.02)')
-      mouseGradient.addColorStop(0.5, 'rgba(0, 200, 255, 0.01)')
-      mouseGradient.addColorStop(1, 'transparent')
-      
-      ctx.fillStyle = mouseGradient
-      ctx.fillRect(0, 0, canvas.width, canvas.height)
-      
       animationId = requestAnimationFrame(animate)
     }
+    
+    // Fade in particles gradually
+    setTimeout(() => {
+      particles.forEach(p => {
+        p.targetOpacity = 0.15 + Math.random() * 0.15
+      })
+    }, 500)
     
     animate()
     
     const handleResize = () => {
       canvas.width = window.innerWidth
       canvas.height = window.innerHeight
-      
-      // Recalculate particle positions
-      particles.forEach(particle => {
-        particle.centerX = canvas.width / 2
-        particle.centerY = canvas.height / 2
-      })
     }
     
     window.addEventListener('resize', handleResize)
@@ -238,35 +165,25 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
     }
   }, [mousePos])
   
+  // Split title into letters for animation
+  const titleLetters = heroContent.heroTitle.split('')
+  
   return (
     <section ref={containerRef} className="relative min-h-screen overflow-hidden -mt-24 pt-24 bg-background">
-      {/* Elegant particle network canvas */}
+      {/* Subtle particle network canvas */}
       <canvas
         ref={canvasRef}
         className="absolute inset-0"
-        style={{ opacity: 0.7 }}
+        style={{ opacity: 0.4 }} // Reduced overall opacity
       />
       
-      {/* Subtle CSS grid overlay for depth */}
+      {/* Very subtle gradient overlay */}
       <div 
-        className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage: `
-            linear-gradient(rgba(0, 200, 255, 0.5) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(0, 200, 255, 0.5) 1px, transparent 1px)
-          `,
-          backgroundSize: '100px 100px',
-        }}
-      />
-      
-      {/* Gradient overlay for atmosphere */}
-      <div 
-        className="absolute inset-0 opacity-50"
+        className="absolute inset-0 opacity-30"
         style={{
           background: `
-            radial-gradient(circle at 20% 50%, rgba(0, 100, 200, 0.1) 0%, transparent 50%),
-            radial-gradient(circle at 80% 50%, rgba(100, 0, 200, 0.1) 0%, transparent 50%),
-            radial-gradient(circle at 50% 50%, rgba(0, 50, 150, 0.05) 0%, transparent 70%)
+            radial-gradient(ellipse at 20% 30%, rgba(0, 100, 200, 0.05) 0%, transparent 40%),
+            radial-gradient(ellipse at 80% 70%, rgba(100, 0, 200, 0.05) 0%, transparent 40%)
           `
         }}
       />
@@ -276,141 +193,199 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
         className="relative z-10 min-h-screen flex items-center justify-center px-4"
       >
         <div className="max-w-6xl mx-auto text-center">
-          {/* Title with subtle glitch */}
+          {/* Animated title with letter-by-letter reveal */}
           <motion.h1
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ 
-              duration: 1,
-              ease: [0.25, 0.1, 0.25, 1]
-            }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tight mb-6 relative"
+            initial="hidden"
+            animate="visible"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tight mb-6 relative overflow-hidden"
           >
-            <span className="relative">
-              {/* Subtle glitch layers */}
-              <span className="absolute inset-0 text-cyan-400 opacity-0 animate-glitch-1">
-                {heroContent.heroTitle}
-              </span>
-              <span className="absolute inset-0 text-pink-400 opacity-0 animate-glitch-2">
-                {heroContent.heroTitle}
-              </span>
-              <span className="relative text-foreground hover:animate-none">
-                {heroContent.heroTitle}
-              </span>
+            <span className="relative inline-block">
+              {titleLetters.map((letter, index) => (
+                <motion.span
+                  key={index}
+                  className="relative inline-block"
+                  variants={{
+                    hidden: {
+                      opacity: 0,
+                      y: 50,
+                      rotateX: -90,
+                    },
+                    visible: {
+                      opacity: 1,
+                      y: 0,
+                      rotateX: 0,
+                    }
+                  }}
+                  transition={{
+                    duration: 0.5,
+                    delay: index * 0.03, // Sequential reveal
+                    ease: [0.215, 0.61, 0.355, 1], // Smooth cubic bezier
+                  }}
+                  whileHover={{
+                    y: -5,
+                    color: 'rgb(0, 200, 255)',
+                    transition: { duration: 0.2 }
+                  }}
+                  style={{ transformStyle: 'preserve-3d' }}
+                >
+                  {letter === ' ' ? '\u00A0' : letter}
+                </motion.span>
+              ))}
             </span>
           </motion.h1>
           
-          {/* Simple tagline */}
+          {/* Tagline with smooth fade and slide */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ 
-              delay: 0.2,
-              duration: 0.8,
-              ease: "easeOut"
-            }}
-            className="mb-8"
-          >
-            <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground uppercase tracking-wider">
-              {heroContent.heroTagline}
-            </p>
-          </motion.div>
-          
-          {/* Description */}
-          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ 
-              delay: 0.4,
+              delay: titleLetters.length * 0.03 + 0.2,
               duration: 0.8,
               ease: [0.25, 0.1, 0.25, 1]
             }}
+            className="mb-8"
+          >
+            <motion.p 
+              className="text-lg sm:text-xl md:text-2xl text-muted-foreground uppercase tracking-wider"
+              initial={{ letterSpacing: '0.5em', opacity: 0 }}
+              animate={{ letterSpacing: '0.15em', opacity: 1 }}
+              transition={{ 
+                delay: titleLetters.length * 0.03 + 0.4,
+                duration: 1,
+                ease: "easeOut"
+              }}
+            >
+              {heroContent.heroTagline}
+            </motion.p>
+          </motion.div>
+          
+          {/* Description with word-by-word fade */}
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            transition={{ delay: titleLetters.length * 0.03 + 0.6 }}
             className="text-base sm:text-lg md:text-xl text-muted-foreground mb-4 max-w-3xl mx-auto"
           >
-            {heroContent.heroDescription}
-          </motion.p>
+            {heroContent.heroDescription.split(' ').map((word, index) => (
+              <motion.span
+                key={index}
+                className="inline-block mr-2"
+                variants={{
+                  hidden: { opacity: 0, y: 10 },
+                  visible: { opacity: 1, y: 0 }
+                }}
+                transition={{
+                  duration: 0.4,
+                  delay: index * 0.05,
+                  ease: "easeOut"
+                }}
+              >
+                {word}
+              </motion.span>
+            ))}
+          </motion.div>
           
+          {/* Highlight text with gradient reveal */}
           <motion.p
-            initial={{ opacity: 0, scale: 0.98 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ 
-              delay: 0.6,
+              delay: titleLetters.length * 0.03 + 1,
               duration: 0.8,
-              ease: "easeOut"
+              ease: [0.25, 0.1, 0.25, 1]
             }}
             className="text-base sm:text-lg md:text-xl mb-12 max-w-3xl mx-auto"
           >
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400 font-semibold">
+            <motion.span 
+              className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400 font-semibold inline-block"
+              initial={{ backgroundPosition: '200% center' }}
+              animate={{ backgroundPosition: '0% center' }}
+              transition={{ 
+                delay: titleLetters.length * 0.03 + 1.2,
+                duration: 1.5,
+                ease: "easeInOut"
+              }}
+              style={{ 
+                backgroundSize: '200% auto',
+              }}
+            >
               {heroContent.heroHighlight}
-            </span>
+            </motion.span>
           </motion.p>
           
-          {/* Interactive CTA Buttons */}
+          {/* CTA Buttons with stagger animation */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ 
-              delay: 0.8,
-              duration: 0.8,
-              ease: [0.25, 0.1, 0.25, 1]
+            initial="hidden"
+            animate="visible"
+            variants={{
+              visible: {
+                transition: {
+                  staggerChildren: 0.15,
+                  delayChildren: titleLetters.length * 0.03 + 1.5
+                }
+              }
             }}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
-            <Link href="/work">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="group relative px-8 py-3 overflow-hidden border-2 border-cyan-400"
-                onMouseEnter={(e) => {
-                  const rect = e.currentTarget.getBoundingClientRect()
-                  const x = e.clientX - rect.left
-                  const y = e.clientY - rect.top
-                  e.currentTarget.style.setProperty('--mouse-x', `${x}px`)
-                  e.currentTarget.style.setProperty('--mouse-y', `${y}px`)
-                }}
-              >
-                <div 
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  style={{
-                    background: 'radial-gradient(circle 100px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0,255,255,0.3), transparent)'
-                  }}
-                />
-                <span className="relative font-semibold text-cyan-400 group-hover:text-foreground transition-colors">
-                  View My Work
-                </span>
-              </motion.button>
-            </Link>
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, x: -30 },
+                visible: { opacity: 1, x: 0 }
+              }}
+              transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+            >
+              <Link href="/work">
+                <motion.button
+                  whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
+                  whileTap={{ scale: 0.98 }}
+                  className="group relative px-8 py-3 overflow-hidden border-2 border-cyan-400 transition-all duration-300"
+                >
+                  <motion.div 
+                    className="absolute inset-0 bg-cyan-400"
+                    initial={{ x: '-100%' }}
+                    whileHover={{ x: 0 }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    style={{ opacity: 0.1 }}
+                  />
+                  <span className="relative font-semibold text-cyan-400 group-hover:text-foreground transition-colors duration-300">
+                    View My Work
+                  </span>
+                </motion.button>
+              </Link>
+            </motion.div>
             
-            <Link href="/philosophy">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="group relative px-8 py-3 border border-foreground/20 hover:border-purple-400/50 transition-all overflow-hidden"
-                onMouseEnter={(e) => {
-                  const rect = e.currentTarget.getBoundingClientRect()
-                  const x = e.clientX - rect.left
-                  const y = e.clientY - rect.top
-                  e.currentTarget.style.setProperty('--mouse-x', `${x}px`)
-                  e.currentTarget.style.setProperty('--mouse-y', `${y}px`)
-                }}
-              >
-                <div 
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  style={{
-                    background: 'radial-gradient(circle 100px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(168,85,247,0.2), transparent)'
-                  }}
-                />
-                <span className="relative font-semibold">My Philosophy</span>
-              </motion.button>
-            </Link>
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, x: 30 },
+                visible: { opacity: 1, x: 0 }
+              }}
+              transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+            >
+              <Link href="/philosophy">
+                <motion.button
+                  whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
+                  whileTap={{ scale: 0.98 }}
+                  className="group relative px-8 py-3 border border-foreground/20 hover:border-purple-400/50 transition-all duration-300 overflow-hidden"
+                >
+                  <motion.div 
+                    className="absolute inset-0 bg-purple-400"
+                    initial={{ x: '-100%' }}
+                    whileHover={{ x: 0 }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    style={{ opacity: 0.1 }}
+                  />
+                  <span className="relative font-semibold">My Philosophy</span>
+                </motion.button>
+              </Link>
+            </motion.div>
           </motion.div>
           
-          {/* Interactive scroll indicator */}
+          {/* Scroll indicator with fade in */}
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ 
-              delay: 1,
+              delay: titleLetters.length * 0.03 + 2,
               duration: 0.8,
               ease: "easeOut"
             }}
@@ -419,19 +394,26 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
           >
             <motion.div
               animate={{ 
-                y: [0, 10, 0],
+                y: [0, 8, 0],
               }}
               transition={{ 
-                duration: 2, 
+                duration: 1.5, 
                 repeat: Infinity,
                 ease: "easeInOut"
               }}
               className="relative group"
             >
-              <div className="w-6 h-10 border-2 border-foreground/20 rounded-full flex justify-center group-hover:border-cyan-400 transition-colors">
+              <div className="w-6 h-10 border-2 border-foreground/20 rounded-full flex justify-center group-hover:border-cyan-400 transition-colors duration-300">
                 <motion.div
-                  animate={{ y: [0, 16, 0] }}
-                  transition={{ duration: 2, repeat: Infinity }}
+                  animate={{ 
+                    y: [2, 12, 2],
+                    opacity: [0.5, 1, 0.5]
+                  }}
+                  transition={{ 
+                    duration: 1.5, 
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
                   className="w-1 h-3 bg-cyan-400 rounded-full mt-2"
                 />
               </div>
@@ -439,39 +421,6 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
           </motion.div>
         </div>
       </motion.div>
-      
-      <style jsx>{`
-        @keyframes glitch-1 {
-          0%, 100% { 
-            opacity: 0;
-            transform: translate(0);
-          }
-          20% { 
-            opacity: 0.8;
-            transform: translate(-2px, 2px);
-          }
-        }
-        
-        @keyframes glitch-2 {
-          0%, 100% { 
-            opacity: 0;
-            transform: translate(0);
-          }
-          25% { 
-            opacity: 0.8;
-            transform: translate(2px, -2px);
-          }
-        }
-        
-        .animate-glitch-1 {
-          animation: glitch-1 2s infinite;
-        }
-        
-        .animate-glitch-2 {
-          animation: glitch-2 2s infinite;
-          animation-delay: 0.1s;
-        }
-      `}</style>
     </section>
   )
 }
