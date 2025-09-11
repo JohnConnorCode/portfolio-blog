@@ -248,10 +248,11 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
           <motion.h1
             initial="hidden"
             animate="visible"
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight mb-12 relative"
+            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black tracking-wider mb-12 relative"
             // Remove whole text hover effect
             style={{ 
-              lineHeight: 1.1,
+              lineHeight: 0.9,
+              letterSpacing: '0.02em',
               paddingBottom: '0.1em',
               // Simple shadow only
               textShadow: isDark ? `
