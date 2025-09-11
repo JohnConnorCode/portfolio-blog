@@ -97,6 +97,16 @@ h1, h2, h3, h4, h5, h6 {
   outline: none;
 }
 
+/* Grid animation */
+@keyframes gridScroll {
+  0% {
+    transform: perspective(1000px) rotateX(60deg) translateZ(-100px) translateY(0);
+  }
+  100% {
+    transform: perspective(1000px) rotateX(60deg) translateZ(-100px) translateY(60px);
+  }
+}
+
 *:focus-visible {
   outline: 2px solid hsl(var(--foreground));
   outline-offset: 3px;
