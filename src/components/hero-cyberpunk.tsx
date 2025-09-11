@@ -62,14 +62,14 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
       twinklePhase: number
     }> = []
     
-    const starCount = 150
+    const starCount = 250
     
     for (let i = 0; i < starCount; i++) {
       stars.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        size: Math.random() * 1.5 + 0.5,
-        brightness: Math.random() * 0.5 + 0.5,
+        size: Math.random() * 2 + 0.3,
+        brightness: Math.random() * 0.8 + 0.2,
         twinkleSpeed: Math.random() * 0.02 + 0.005,
         twinklePhase: Math.random() * Math.PI * 2
       })
@@ -168,7 +168,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
         }}
       />
       
-      {/* FINAL GRID WITH FADE AND ANIMATION */}
+      {/* Cyberpunk Grid - moves toward horizon */}
       <div 
         className="absolute inset-0 pointer-events-none overflow-hidden"
         style={{ zIndex: 5 }}
@@ -179,16 +179,17 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
             width: '200%',
             height: '150%',
             backgroundImage: `
-              linear-gradient(to right, cyan 2px, transparent 2px),
-              linear-gradient(to bottom, cyan 2px, transparent 2px)
+              linear-gradient(to right, ${isDark ? 'rgba(0, 255, 255, 0.5)' : 'rgba(147, 51, 234, 0.4)'} 1.5px, transparent 1.5px),
+              linear-gradient(to bottom, ${isDark ? 'rgba(0, 255, 255, 0.5)' : 'rgba(147, 51, 234, 0.4)'} 1.5px, transparent 1.5px)
             `,
-            backgroundSize: '50px 50px',
-            opacity: 0.5,
-            transform: 'perspective(1000px) rotateX(60deg) translateY(-20%)',
+            backgroundSize: '40px 40px',
+            backgroundPosition: 'center 0px',
+            opacity: isDark ? 0.4 : 0.3,
+            transform: 'perspective(800px) rotateX(65deg) translateY(-30%)',
             transformOrigin: 'center center',
-            maskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.3) 20%, rgba(0,0,0,0.8) 50%, black 80%)',
-            WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.3) 20%, rgba(0,0,0,0.8) 50%, black 80%)',
-            animation: 'gridScroll 20s linear infinite',
+            maskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.1) 15%, rgba(0,0,0,0.5) 40%, rgba(0,0,0,0.9) 70%, black 100%)',
+            WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.1) 15%, rgba(0,0,0,0.5) 40%, rgba(0,0,0,0.9) 70%, black 100%)',
+            animation: 'gridScroll 10s linear infinite',
           }}
         />
       </div>
@@ -246,21 +247,13 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
           <motion.h1
             initial="hidden"
             animate="visible"
-            className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tight mb-12 relative"
-            whileHover={{
-              textShadow: isDark 
-                ? '0 0 30px rgba(0, 200, 255, 0.8), 0 0 60px rgba(0, 200, 255, 0.5)'
-                : '0 2px 20px rgba(0, 0, 0, 0.2)',
-              transition: { duration: 0.3 }
-            }}
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight mb-12 relative"
+            // Remove whole text hover effect
             style={{ 
               lineHeight: 1.1,
               paddingBottom: '0.1em',
-              // Permanent glow and floating shadow
+              // Simple shadow only
               textShadow: isDark ? `
-                0 0 20px rgba(0, 200, 255, 0.5),
-                0 0 40px rgba(0, 150, 255, 0.3),
-                0 0 60px rgba(0, 100, 255, 0.2),
                 0 10px 20px rgba(0, 0, 0, 0.8)
               ` : `
                 0 2px 10px rgba(0, 0, 0, 0.1)
