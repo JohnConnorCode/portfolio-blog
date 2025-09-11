@@ -168,44 +168,42 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
         }}
       />
       
-      {/* Perspective grid */}
-      <motion.div className="absolute inset-0 overflow-hidden">
+      {/* Perspective grid - Full width with proper fade */}
+      <div className="absolute inset-0 overflow-hidden">
         <div 
-          className="absolute -left-[50%] -right-[50%] top-[40%] bottom-[-100%]"
+          className="absolute w-[200%] h-[200%] -left-1/2 -top-1/2"
           style={{
             backgroundImage: `
-              linear-gradient(${isDark ? 'rgba(0, 200, 255, 0.25)' : 'rgba(147, 51, 234, 0.2)'} 1.5px, transparent 1.5px),
-              linear-gradient(90deg, ${isDark ? 'rgba(0, 200, 255, 0.25)' : 'rgba(147, 51, 234, 0.2)'} 1.5px, transparent 1.5px)
+              linear-gradient(${isDark ? 'rgba(0, 200, 255, 0.4)' : 'rgba(147, 51, 234, 0.3)'} 2px, transparent 2px),
+              linear-gradient(90deg, ${isDark ? 'rgba(0, 200, 255, 0.4)' : 'rgba(147, 51, 234, 0.3)'} 2px, transparent 2px)
             `,
             backgroundSize: '60px 60px',
             backgroundPosition: 'center center',
-            transform: 'perspective(600px) rotateX(70deg) translateZ(0) scale(2)',
-            transformOrigin: 'center center',
-            maskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.05) 5%, rgba(0,0,0,0.2) 15%, rgba(0,0,0,0.6) 35%, black 55%, black 100%)',
-            WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.05) 5%, rgba(0,0,0,0.2) 15%, rgba(0,0,0,0.6) 35%, black 55%, black 100%)',
+            transform: 'perspective(800px) rotateX(65deg) translateZ(-50px)',
+            transformOrigin: 'center 120%',
+            maskImage: 'linear-gradient(to top, black 0%, rgba(0,0,0,0.8) 30%, rgba(0,0,0,0.3) 60%, transparent 90%)',
+            WebkitMaskImage: 'linear-gradient(to top, black 0%, rgba(0,0,0,0.8) 30%, rgba(0,0,0,0.3) 60%, transparent 90%)',
           }}
         />
         
-        {/* Horizon fade for depth */}
+        {/* Horizon fade */}
         <div 
-          className="absolute inset-0 pointer-events-none"
+          className="absolute inset-0"
           style={{
-            background: isDark ? `linear-gradient(to bottom, 
-              rgba(0, 0, 0, 0.8) 0%, 
-              rgba(0, 0, 0, 0.4) 15%, 
-              rgba(0, 0, 0, 0.1) 30%, 
-              transparent 45%,
-              transparent 100%
-            )` : `linear-gradient(to bottom, 
-              rgba(255, 255, 255, 0.7) 0%, 
-              rgba(255, 255, 255, 0.3) 15%, 
-              rgba(255, 255, 255, 0.1) 30%, 
-              transparent 45%,
-              transparent 100%
+            background: isDark ? `linear-gradient(to top, 
+              transparent 0%, 
+              transparent 60%, 
+              rgba(0, 0, 0, 0.4) 80%, 
+              rgba(0, 0, 0, 0.8) 100%
+            )` : `linear-gradient(to top, 
+              transparent 0%, 
+              transparent 60%, 
+              rgba(118, 75, 162, 0.1) 80%, 
+              rgba(118, 75, 162, 0.2) 100%
             )`,
           }}
         />
-      </motion.div>
+      </div>
       
       {/* Nebula-like color accents */}
       <div 
