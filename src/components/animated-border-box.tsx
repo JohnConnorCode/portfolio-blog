@@ -25,11 +25,11 @@ export function AnimatedBorderBox({
       opacity: 1,
       transition: {
         pathLength: { 
-          delay: delay * 0.1, // Reduced delay by 10x
-          duration: 0.3, // Faster animation
+          delay,
+          duration: 0.8,
           ease: [0.25, 0.1, 0.25, 1]
         },
-        opacity: { delay: 0, duration: 0.1 }
+        opacity: { delay, duration: 0.1 }
       }
     }
   }
@@ -61,12 +61,12 @@ export function AnimatedBorderBox({
       
       {/* Content */}
       <motion.div
-        initial={{ opacity: 1, scale: 1 }} // Start visible
+        initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true, margin: "-50px" }}
         transition={{ 
-          delay: 0, // No delay
-          duration: 0.2,
+          delay: delay + 0.3,
+          duration: 0.5,
           ease: [0.25, 0.1, 0.25, 1]
         }}
         className="relative z-10"
@@ -101,8 +101,8 @@ export function BorderFadeBox({
     <motion.div
       className={`${borderStyles[direction]} border-foreground/20 ${className}`}
       initial={{ 
-        opacity: 1,
-        borderColor: 'rgba(255, 255, 255, 0.2)'
+        opacity: 0,
+        borderColor: 'rgba(255, 255, 255, 0)'
       }}
       whileInView={{ 
         opacity: 1,
@@ -110,18 +110,18 @@ export function BorderFadeBox({
       }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ 
-        delay: 0,
-        duration: 0.2,
+        delay,
+        duration: 0.6,
         ease: [0.25, 0.1, 0.25, 1]
       }}
     >
       <motion.div
-        initial={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-50px" }}
         transition={{ 
-          delay: 0,
-          duration: 0.2,
+          delay: delay + 0.2,
+          duration: 0.5,
           ease: "easeOut"
         }}
       >
