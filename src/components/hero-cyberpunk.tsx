@@ -168,21 +168,22 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
         }}
       />
       
-      {/* Perspective grid - Full width with proper fade */}
-      <div className="absolute inset-0 overflow-hidden">
+      {/* Perspective grid - extends to screen edges with horizon fade */}
+      <div className="absolute inset-0">
         <div 
-          className="absolute w-[200%] h-[200%] -left-1/2 -top-1/2"
+          className="absolute left-0 right-0 bottom-0"
           style={{
+            width: '100vw',
+            height: '100vh',
             backgroundImage: `
-              linear-gradient(${isDark ? 'rgba(0, 200, 255, 0.4)' : 'rgba(147, 51, 234, 0.3)'} 2px, transparent 2px),
-              linear-gradient(90deg, ${isDark ? 'rgba(0, 200, 255, 0.4)' : 'rgba(147, 51, 234, 0.3)'} 2px, transparent 2px)
+              linear-gradient(${isDark ? 'rgba(0, 200, 255, 0.4)' : 'rgba(147, 51, 234, 0.35)'} 1.5px, transparent 1.5px),
+              linear-gradient(90deg, ${isDark ? 'rgba(0, 200, 255, 0.4)' : 'rgba(147, 51, 234, 0.35)'} 1.5px, transparent 1.5px)
             `,
-            backgroundSize: '60px 60px',
-            backgroundPosition: 'center center',
-            transform: 'perspective(800px) rotateX(65deg) translateZ(-50px)',
-            transformOrigin: 'center 120%',
-            maskImage: 'linear-gradient(to top, black 0%, rgba(0,0,0,0.8) 30%, rgba(0,0,0,0.3) 60%, transparent 90%)',
-            WebkitMaskImage: 'linear-gradient(to top, black 0%, rgba(0,0,0,0.8) 30%, rgba(0,0,0,0.3) 60%, transparent 90%)',
+            backgroundSize: '50px 50px',
+            backgroundPosition: 'center bottom',
+            transform: 'perspective(500px) rotateX(70deg)',
+            transformOrigin: 'center bottom',
+            opacity: 0.8,
           }}
         />
         
