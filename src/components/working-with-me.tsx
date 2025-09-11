@@ -92,7 +92,22 @@ export function WorkingWithMe() {
 
         {/* Process Timeline */}
         <div className="mb-20">
-          <h3 className="text-2xl font-bold mb-8 text-center">The Process</h3>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-12"
+          >
+            <h3 className="text-3xl font-bold mb-4">
+              <span style={{ color: 'var(--white)', fontWeight: 300 }}>THE</span>
+              <span className="text-gradient" style={{ fontWeight: 700 }}> PROCESS</span>
+            </h3>
+            <p className="text-lg font-light tracking-wide max-w-2xl mx-auto" style={{ color: 'var(--gray-400)' }}>
+              From discovery to scale in 8 weeks.
+            </p>
+          </motion.div>
+          
           <div className="grid md:grid-cols-4 gap-8 relative">
             {/* Removed confusing connection line */}
             
@@ -101,28 +116,48 @@ export function WorkingWithMe() {
               return (
                 <motion.div
                   key={phase.phase}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="relative"
+                  transition={{ 
+                    duration: 0.6,
+                    delay: index * 0.15,
+                    ease: [0.25, 0.1, 0.25, 1]
+                  }}
+                  className="relative group"
                 >
-                  <div className="relative z-10 bg-background">
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className="p-3 border-2 border-primary bg-background rounded-lg">
-                        <Icon className="w-6 h-6 text-primary" />
+                  <div className="relative z-10 bg-background p-6 rounded-xl border border-foreground/10 hover:border-cyan-400/30 transition-all duration-300">
+                    <div className="flex items-center gap-4 mb-6">
+                      <div className="w-14 h-14 bg-gradient-to-br from-cyan-400/20 to-purple-400/20 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                        <Icon className="w-7 h-7 text-cyan-400" />
                       </div>
                       <div>
-                        <h4 className="font-bold text-lg">{phase.phase}</h4>
-                        <p className="text-sm text-muted-foreground">{phase.duration}</p>
+                        <h4 className="font-bold text-xl group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-cyan-400 group-hover:to-purple-400 transition-all duration-300">
+                          {phase.phase}
+                        </h4>
+                        <p className="text-sm text-muted-foreground font-mono">
+                          {phase.duration}
+                        </p>
                       </div>
                     </div>
-                    <ul className="space-y-2 ml-16">
-                      {phase.activities.map((activity) => (
-                        <li key={activity} className="flex items-start gap-2 text-sm text-muted-foreground">
-                          <CheckCircle className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                          <span>{activity}</span>
-                        </li>
+                    <ul className="space-y-3">
+                      {phase.activities.map((activity, activityIndex) => (
+                        <motion.li 
+                          key={activity} 
+                          initial={{ opacity: 0, x: -10 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ 
+                            delay: index * 0.15 + activityIndex * 0.05,
+                            duration: 0.4
+                          }}
+                          className="flex items-start gap-3 text-sm text-muted-foreground"
+                        >
+                          <CheckCircle className="w-4 h-4 text-cyan-400 mt-0.5 flex-shrink-0" />
+                          <span className="group-hover:text-foreground transition-colors duration-300">
+                            {activity}
+                          </span>
+                        </motion.li>
                       ))}
                     </ul>
                   </div>
@@ -134,73 +169,144 @@ export function WorkingWithMe() {
 
         {/* Working Principles */}
         <div className="mb-20">
-          <h3 className="text-2xl font-bold mb-8 text-center">My Principles</h3>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-12"
+          >
+            <h3 className="text-3xl font-bold mb-4">
+              <span style={{ color: 'var(--white)', fontWeight: 300 }}>MY</span>
+              <span className="text-gradient" style={{ fontWeight: 700 }}> PRINCIPLES</span>
+            </h3>
+            <p className="text-lg font-light tracking-wide max-w-2xl mx-auto" style={{ color: 'var(--gray-400)' }}>
+              Core values that guide every engagement.
+            </p>
+          </motion.div>
+          
           <div className="grid md:grid-cols-2 gap-6">
             {principles.map((principle, index) => {
               const Icon = principle.icon
               return (
-                <AnimatedBorderBox
+                <motion.div
                   key={principle.title}
-                  delay={index * 0.15}
-                  className="p-6 rounded-xl hover:bg-foreground/5 transition-colors"
-                  borderColor="rgba(0, 200, 255, 0.3)"
+                  initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ 
+                    duration: 0.6,
+                    delay: index * 0.1,
+                    ease: [0.25, 0.1, 0.25, 1]
+                  }}
+                  className="group"
                 >
-                  <div className="flex gap-4">
-                    <div className="flex-shrink-0">
-                      <div className="w-12 h-12 bg-gradient-to-br from-cyan-400/10 to-purple-400/10 rounded-full flex items-center justify-center">
-                        <Icon className="w-6 h-6 text-cyan-400" />
+                  <AnimatedBorderBox
+                    delay={index * 0.1}
+                    className="p-6 rounded-xl hover:bg-foreground/5 transition-all duration-300 h-full"
+                    borderColor={index % 2 === 0 ? "rgba(0, 200, 255, 0.3)" : "rgba(147, 51, 234, 0.3)"}
+                  >
+                    <div className="flex gap-4">
+                      <div className="flex-shrink-0">
+                        <div className="w-14 h-14 bg-gradient-to-br from-cyan-400/20 to-purple-400/20 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                          <Icon className="w-7 h-7 text-cyan-400 group-hover:text-purple-400 transition-colors duration-300" />
+                        </div>
+                      </div>
+                      <div className="flex-1">
+                        <h4 className="text-xl font-bold mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-cyan-400 group-hover:to-purple-400 transition-all duration-300">
+                          {principle.title}
+                        </h4>
+                        <p className="text-muted-foreground leading-relaxed">
+                          {principle.description}
+                        </p>
                       </div>
                     </div>
-                    <div>
-                      <h4 className="text-xl font-bold mb-2">{principle.title}</h4>
-                      <p className="text-muted-foreground">{principle.description}</p>
-                    </div>
-                  </div>
-                </AnimatedBorderBox>
+                  </AnimatedBorderBox>
+                </motion.div>
               )
             })}
           </div>
         </div>
 
         {/* What You Get */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="bg-gradient-to-br from-primary/10 to-transparent p-8 md:p-12 rounded-lg border border-primary/20"
-        >
-          <h3 className="text-2xl font-bold mb-6">What You Get</h3>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div>
-              <h4 className="font-bold mb-3 flex items-center gap-2">
-                <Users className="w-5 h-5 text-primary" />
-                Direct Access
-              </h4>
-              <p className="text-muted-foreground">
-                Weekly calls, async communication, and rapid response times. I&apos;m embedded in your team.
-              </p>
-            </div>
-            <div>
-              <h4 className="font-bold mb-3 flex items-center gap-2">
-                <Brain className="w-5 h-5 text-primary" />
-                Strategic Thinking
-              </h4>
-              <p className="text-muted-foreground">
-                15+ years of pattern recognition across industries, applied to your specific challenges.
-              </p>
-            </div>
-            <div>
-              <h4 className="font-bold mb-3 flex items-center gap-2">
-                <Rocket className="w-5 h-5 text-primary" />
-                Execution Power
-              </h4>
-              <p className="text-muted-foreground">
-                I don&apos;t just advise—I build, ship, and iterate alongside your team.
-              </p>
-            </div>
+        <div className="mb-20">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-12"
+          >
+            <h3 className="text-3xl font-bold mb-4">
+              <span style={{ color: 'var(--white)', fontWeight: 300 }}>WHAT YOU</span>
+              <span className="text-gradient" style={{ fontWeight: 700 }}> GET</span>
+            </h3>
+            <p className="text-lg font-light tracking-wide max-w-2xl mx-auto" style={{ color: 'var(--gray-400)' }}>
+              Direct partnership. Strategic insight. Tangible results.
+            </p>
+          </motion.div>
+          
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                icon: Users,
+                title: 'Direct Access',
+                description: 'Weekly calls, async communication, and rapid response times. I\'m embedded in your team.',
+                color: 'text-cyan-400'
+              },
+              {
+                icon: Brain,
+                title: 'Strategic Thinking',
+                description: '15 years of pattern recognition across industries, applied to your specific challenges.',
+                color: 'text-purple-400'
+              },
+              {
+                icon: Rocket,
+                title: 'Execution Power',
+                description: 'I don\'t just advise—I build, ship, and iterate alongside your team.',
+                color: 'text-pink-500'
+              }
+            ].map((item, index) => {
+              const Icon = item.icon
+              return (
+                <motion.div
+                  key={item.title}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ 
+                    duration: 0.6,
+                    delay: index * 0.15,
+                    ease: [0.25, 0.1, 0.25, 1]
+                  }}
+                  className="group"
+                >
+                  <AnimatedBorderBox
+                    delay={index * 0.15}
+                    className="p-8 rounded-xl hover:bg-foreground/5 transition-all duration-300 h-full"
+                    borderColor={index === 0 ? "rgba(0, 200, 255, 0.3)" : index === 1 ? "rgba(147, 51, 234, 0.3)" : "rgba(236, 72, 153, 0.3)"}
+                  >
+                    <div className="flex flex-col h-full">
+                      <div className="mb-6">
+                        <div className="w-16 h-16 bg-gradient-to-br from-cyan-400/20 to-purple-400/20 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                          <Icon className={`w-8 h-8 ${item.color}`} />
+                        </div>
+                      </div>
+                      
+                      <h4 className="text-2xl font-bold mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-cyan-400 group-hover:to-purple-400 transition-all duration-300">
+                        {item.title}
+                      </h4>
+                      
+                      <p className="text-muted-foreground leading-relaxed flex-grow">
+                        {item.description}
+                      </p>
+                    </div>
+                  </AnimatedBorderBox>
+                </motion.div>
+              )
+            })}
           </div>
-        </motion.div>
+        </div>
 
         {/* CTA */}
         <motion.div

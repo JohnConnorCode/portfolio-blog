@@ -32,10 +32,6 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
   const scale = useTransform(scrollYProgress, [0, 0.5], [1, 1.1])
   
-  // Grid becomes more focused as you scroll
-  const gridOpacity = useTransform(scrollYProgress, [0, 0.3], [0.4, 0.7])
-  const gridBlur = useTransform(scrollYProgress, [0, 0.3], [1, 0])
-  
   // Track mouse for interactive effects
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -173,42 +169,40 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
       />
       
       {/* Perspective grid */}
-      <motion.div className="absolute inset-0">
+      <motion.div className="absolute inset-0 overflow-hidden">
         <div 
-          className="absolute inset-0"
+          className="absolute -left-[50%] -right-[50%] top-[40%] bottom-[-100%]"
           style={{
             backgroundImage: `
-              linear-gradient(${isDark ? 'rgba(0, 200, 255, 0.15)' : 'rgba(255, 255, 255, 0.15)'} 1px, transparent 1px),
-              linear-gradient(90deg, ${isDark ? 'rgba(0, 200, 255, 0.15)' : 'rgba(255, 255, 255, 0.15)'} 1px, transparent 1px)
+              linear-gradient(${isDark ? 'rgba(0, 200, 255, 0.25)' : 'rgba(147, 51, 234, 0.2)'} 1.5px, transparent 1.5px),
+              linear-gradient(90deg, ${isDark ? 'rgba(0, 200, 255, 0.25)' : 'rgba(147, 51, 234, 0.2)'} 1.5px, transparent 1.5px)
             `,
-            backgroundSize: '100px 100px',
+            backgroundSize: '60px 60px',
             backgroundPosition: 'center center',
-            transform: 'perspective(1000px) rotateX(60deg) translateZ(-100px)',
-            transformOrigin: 'center 100%',
-            opacity: gridOpacity,
-            filter: `blur(${gridBlur}px)`,
+            transform: 'perspective(600px) rotateX(70deg) translateZ(0) scale(2)',
+            transformOrigin: 'center center',
+            maskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.05) 5%, rgba(0,0,0,0.2) 15%, rgba(0,0,0,0.6) 35%, black 55%, black 100%)',
+            WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.05) 5%, rgba(0,0,0,0.2) 15%, rgba(0,0,0,0.6) 35%, black 55%, black 100%)',
           }}
         />
         
-        {/* Distance blur overlay - fade starts higher */}
-        <motion.div 
-          className="absolute inset-0"
+        {/* Horizon fade for depth */}
+        <div 
+          className="absolute inset-0 pointer-events-none"
           style={{
-            background: isDark ? `linear-gradient(to top, 
-              transparent 0%, 
-              transparent 40%, 
-              rgba(0, 0, 0, 0.3) 60%, 
-              rgba(0, 0, 0, 0.6) 80%, 
-              rgba(0, 0, 0, 0.9) 100%
-            )` : `linear-gradient(to top, 
-              transparent 0%, 
-              transparent 40%, 
-              rgba(102, 126, 234, 0.05) 60%, 
-              rgba(118, 75, 162, 0.1) 80%, 
-              rgba(118, 75, 162, 0.15) 100%
+            background: isDark ? `linear-gradient(to bottom, 
+              rgba(0, 0, 0, 0.8) 0%, 
+              rgba(0, 0, 0, 0.4) 15%, 
+              rgba(0, 0, 0, 0.1) 30%, 
+              transparent 45%,
+              transparent 100%
+            )` : `linear-gradient(to bottom, 
+              rgba(255, 255, 255, 0.7) 0%, 
+              rgba(255, 255, 255, 0.3) 15%, 
+              rgba(255, 255, 255, 0.1) 30%, 
+              transparent 45%,
+              transparent 100%
             )`,
-            backdropFilter: gridBlur,
-            WebkitBackdropFilter: gridBlur,
           }}
         />
       </motion.div>
