@@ -168,41 +168,27 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
         }}
       />
       
-      {/* Perspective grid - Extended and raised */}
-      <div className="absolute inset-0 overflow-hidden">
+      {/* FINAL GRID WITH FADE AND ANIMATION */}
+      <div 
+        className="absolute inset-0 pointer-events-none overflow-hidden"
+        style={{ zIndex: 5 }}
+      >
         <div 
-          className="absolute left-[-50%] right-[-50%] top-[20%]"
+          className="absolute -left-1/2 -right-1/2 top-0 bottom-0"
           style={{
             width: '200%',
-            height: '200%',
+            height: '150%',
             backgroundImage: `
-              linear-gradient(${isDark ? 'rgba(0, 200, 255, 0.4)' : 'rgba(147, 51, 234, 0.3)'} 2px, transparent 2px),
-              linear-gradient(90deg, ${isDark ? 'rgba(0, 200, 255, 0.4)' : 'rgba(147, 51, 234, 0.3)'} 2px, transparent 2px)
+              linear-gradient(to right, cyan 2px, transparent 2px),
+              linear-gradient(to bottom, cyan 2px, transparent 2px)
             `,
             backgroundSize: '50px 50px',
-            backgroundPosition: 'center center',
-            transform: 'perspective(1000px) rotateX(60deg) translateZ(-100px)',
-            transformOrigin: 'center 120%',
-            opacity: 0.8,
+            opacity: 0.5,
+            transform: 'perspective(1000px) rotateX(60deg) translateY(-20%)',
+            transformOrigin: 'center center',
+            maskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.3) 20%, rgba(0,0,0,0.8) 50%, black 80%)',
+            WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.3) 20%, rgba(0,0,0,0.8) 50%, black 80%)',
             animation: 'gridScroll 20s linear infinite',
-          }}
-        />
-        
-        {/* Distance fade overlay */}
-        <div 
-          className="absolute inset-0"
-          style={{
-            background: isDark ? `linear-gradient(to top, 
-              transparent 0%, 
-              transparent 50%, 
-              rgba(0, 0, 0, 0.3) 70%, 
-              rgba(0, 0, 0, 0.8) 100%
-            )` : `linear-gradient(to top, 
-              transparent 0%, 
-              transparent 50%, 
-              rgba(255, 255, 255, 0.2) 70%, 
-              rgba(255, 255, 255, 0.6) 100%
-            )`,
           }}
         />
       </div>
