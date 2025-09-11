@@ -173,7 +173,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
       />
       
       {/* Perspective grid */}
-      <motion.div className="absolute inset-0 overflow-hidden">
+      <motion.div className="absolute inset-0">
         <div 
           className="absolute inset-0"
           style={{
@@ -183,13 +183,10 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
             `,
             backgroundSize: '100px 100px',
             backgroundPosition: 'center center',
-            transform: 'perspective(800px) rotateX(50deg) translateZ(-50px) translateY(-30%)',
-            transformOrigin: 'center 150%',
+            transform: 'perspective(1000px) rotateX(60deg) translateZ(-100px)',
+            transformOrigin: 'center 100%',
             opacity: gridOpacity,
             filter: `blur(${gridBlur}px)`,
-            height: '200%',
-            width: '200%',
-            left: '-50%',
           }}
         />
         
