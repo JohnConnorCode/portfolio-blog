@@ -168,16 +168,17 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
         }}
       />
       
-      {/* Cyberpunk Grid - moves toward horizon */}
+      {/* Cyberpunk Grid - properly extends and moves toward horizon */}
       <div 
         className="absolute inset-0 pointer-events-none overflow-hidden"
         style={{ zIndex: 5 }}
       >
         <div 
-          className="absolute -left-1/2 -right-1/2 top-0 bottom-0"
+          className="absolute -left-1/2 -right-1/2 -bottom-1/2"
           style={{
             width: '200%',
-            height: '150%',
+            height: '200%',
+            top: '30%',
             backgroundImage: `
               linear-gradient(to right, ${isDark ? 'rgba(0, 255, 255, 0.5)' : 'rgba(147, 51, 234, 0.4)'} 1.5px, transparent 1.5px),
               linear-gradient(to bottom, ${isDark ? 'rgba(0, 255, 255, 0.5)' : 'rgba(147, 51, 234, 0.4)'} 1.5px, transparent 1.5px)
@@ -185,10 +186,10 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
             backgroundSize: '40px 40px',
             backgroundPosition: 'center 0px',
             opacity: isDark ? 0.4 : 0.3,
-            transform: 'perspective(800px) rotateX(65deg) translateY(-30%)',
-            transformOrigin: 'center center',
-            maskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.1) 15%, rgba(0,0,0,0.5) 40%, rgba(0,0,0,0.9) 70%, black 100%)',
-            WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.1) 15%, rgba(0,0,0,0.5) 40%, rgba(0,0,0,0.9) 70%, black 100%)',
+            transform: 'perspective(800px) rotateX(70deg)',
+            transformOrigin: 'center 80%',
+            maskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.2) 20%, rgba(0,0,0,0.6) 50%, black 100%)',
+            WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.2) 20%, rgba(0,0,0,0.6) 50%, black 100%)',
             animation: 'gridScroll 10s linear infinite',
           }}
         />
