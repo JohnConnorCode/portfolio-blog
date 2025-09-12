@@ -10,7 +10,7 @@ const writings = [
     excerpt: 'Traditional grant systems reward promises over delivery. Here\'s how to fix it.',
     category: 'WEB3',
     icon: Globe,
-    color: 'text-cyan-400',
+    color: 'text-cyan-600 dark:text-cyan-400',
     slug: 'why-ecosystem-funding-is-broken',
     featured: true
   },
@@ -19,7 +19,7 @@ const writings = [
     excerpt: 'The best leaders embrace intellectual conflict and use it to sharpen thinking.',
     category: 'LEADERSHIP',
     icon: Users,
-    color: 'text-purple-500',
+    color: 'text-purple-600 dark:text-purple-500',
     slug: 'debate-as-leadership-practice'
   },
   {
@@ -27,7 +27,7 @@ const writings = [
     excerpt: 'AI should free humans for creativity, not replace them entirely.',
     category: 'AI',
     icon: Brain,
-    color: 'text-pink-500',
+    color: 'text-pink-600 dark:text-pink-500',
     slug: 'automation-as-human-right'
   },
   {
@@ -35,7 +35,7 @@ const writings = [
     excerpt: 'Why vanity metrics are killing startups and what to measure instead.',
     category: 'PRODUCT',
     icon: Zap,
-    color: 'text-yellow-400',
+    color: 'text-yellow-600 dark:text-yellow-400',
     slug: 'death-of-growth-theater',
     featured: true
   }
@@ -43,7 +43,7 @@ const writings = [
 
 export function WritingsBrutal() {
   return (
-    <section className="py-24 px-4 bg-gradient-to-b from-gray-900 to-black relative overflow-hidden">
+    <section className="py-24 px-4 bg-gradient-to-b from-background via-muted/20 to-background dark:from-gray-900 dark:to-black relative overflow-hidden">
       {/* Cyberpunk grid background */}
       <div className="absolute inset-0 cyber-grid opacity-20" />
       
@@ -58,9 +58,9 @@ export function WritingsBrutal() {
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light mb-4">
             <span className="text-foreground">THOUGHT</span>
-            <span className="text-cyan-400 font-black neon-glow"> LEADERSHIP</span>
+            <span className="text-primary dark:text-cyan-400 font-black neon-glow"> LEADERSHIP</span>
           </h2>
-          <p className="text-base sm:text-lg text-gray-400 font-light tracking-wide">
+          <p className="text-base sm:text-lg text-muted-foreground dark:text-gray-400 font-light tracking-wide">
             Strategic insights on technology, community, and human potential
           </p>
         </motion.div>

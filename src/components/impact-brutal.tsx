@@ -9,28 +9,28 @@ const impacts = [
     label: "Funding Enabled",
     context: "Through product-market fit",
     icon: Trophy,
-    color: "text-yellow-400"
+    color: "text-yellow-600 dark:text-yellow-400"
   },
   {
     number: "50+",
     label: "Product Problems Solved",
     context: "Usability & market fit issues",
     icon: Code,
-    color: "text-cyan-400"
+    color: "text-cyan-600 dark:text-cyan-400"
   },
   {
     number: "15 Years",
     label: "Technology Strategy",
     context: "AI/Web3 & human-centered design",
     icon: Zap,
-    color: "text-pink-500"
+    color: "text-pink-600 dark:text-pink-500"
   },
   {
     number: "200+",
     label: "User Research Sessions",
     context: "Finding real product-market fit",
     icon: Users,
-    color: "text-purple-500"
+    color: "text-purple-600 dark:text-purple-500"
   }
 ]
 
@@ -41,7 +41,7 @@ export function ImpactBrutal() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.6 }}
-      className="py-24 px-4 bg-gradient-to-b from-gray-900 to-black relative overflow-hidden">
+      className="py-24 px-4 bg-gradient-to-b from-background via-muted/20 to-background dark:from-gray-900 dark:to-black relative overflow-hidden">
       {/* Cyberpunk grid background */}
       <div className="absolute inset-0 cyber-grid" />
       
@@ -60,9 +60,9 @@ export function ImpactBrutal() {
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light mb-4">
             <span className="text-foreground">PROVEN</span>
-            <span className="text-cyan-400 font-black neon-glow"> IMPACT</span>
+            <span className="text-primary dark:text-cyan-400 font-black neon-glow"> IMPACT</span>
           </h2>
-          <p className="text-base sm:text-lg text-gray-400 font-light tracking-wide">
+          <p className="text-base sm:text-lg text-muted-foreground dark:text-gray-400 font-light tracking-wide">
             Real outcomes from solving actual product problems
           </p>
         </motion.div>
@@ -103,7 +103,7 @@ export function ImpactBrutal() {
                   </p>
                   
                   {/* Context */}
-                  <p className="text-gray-500 text-xs sm:text-sm font-mono">
+                  <p className="text-muted-foreground dark:text-gray-500 text-xs sm:text-sm font-mono">
                     {impact.context}
                   </p>
                   
@@ -117,8 +117,8 @@ export function ImpactBrutal() {
         
         {/* Bottom accent text */}
         <div className="text-center mt-16">
-          <p className="text-gray-500 font-mono text-sm uppercase tracking-widest">
-            Building what <span className="text-cyan-400">actually works</span>
+          <p className="text-muted-foreground dark:text-gray-500 font-mono text-sm uppercase tracking-widest">
+            Building what <span className="text-primary dark:text-cyan-400">actually works</span>
           </p>
         </div>
       </div>

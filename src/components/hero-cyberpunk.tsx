@@ -180,12 +180,12 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
             height: '200%',
             top: '30%',
             backgroundImage: `
-              linear-gradient(to right, ${isDark ? 'rgba(0, 255, 255, 0.5)' : 'rgba(147, 51, 234, 0.4)'} 1.5px, transparent 1.5px),
-              linear-gradient(to bottom, ${isDark ? 'rgba(0, 255, 255, 0.5)' : 'rgba(147, 51, 234, 0.4)'} 1.5px, transparent 1.5px)
+              linear-gradient(to right, ${isDark ? 'rgba(0, 255, 255, 0.5)' : 'rgba(147, 51, 234, 0.7)'} 1.5px, transparent 1.5px),
+              linear-gradient(to bottom, ${isDark ? 'rgba(0, 255, 255, 0.5)' : 'rgba(147, 51, 234, 0.7)'} 1.5px, transparent 1.5px)
             `,
             backgroundSize: '40px 40px',
             backgroundPosition: 'center 0px',
-            opacity: isDark ? 0.4 : 0.3,
+            opacity: isDark ? 0.4 : 0.5,
             transform: 'perspective(800px) rotateX(70deg)',
             transformOrigin: 'center 80%',
             maskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.2) 20%, rgba(0,0,0,0.6) 50%, black 100%)',
@@ -264,7 +264,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                 ? 'drop-shadow(0 15px 25px rgba(0, 0, 0, 0.5))'
                 : 'none',
               transform: 'translateZ(50px)',
-              color: 'white'
+              color: isDark ? 'white' : '#1e1b4b'
             }}
           >
             <span className="relative inline-block">
@@ -291,7 +291,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                   }}
                   whileHover={{
                     y: -5,
-                    color: isDark ? 'rgb(0, 255, 255)' : 'white',
+                    color: isDark ? 'rgb(0, 255, 255)' : '#6b21a8',
                     transition: { duration: 0.2 }
                   }}
                   style={{ transformStyle: 'preserve-3d' }}
@@ -313,7 +313,9 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
             }}
             className="mb-12"
           >
-            <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white/90 font-light leading-relaxed max-w-4xl mx-auto">
+            <p className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light leading-relaxed max-w-4xl mx-auto ${
+              isDark ? 'text-white/90' : 'text-purple-900'
+            }`}>
               {heroContent.heroDescription}
             </p>
           </motion.div>
@@ -338,7 +340,11 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                 duration: 1.5
               }}
             >
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 font-medium inline-block leading-relaxed">
+              <span className={`text-transparent bg-clip-text font-medium inline-block leading-relaxed ${
+                isDark 
+                  ? 'bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400'
+                  : 'bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600'
+              }`}>
                 {heroContent.heroHighlight}
               </span>
             </motion.p>
@@ -364,7 +370,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                 visible: { opacity: 1, y: 0 }
               }}
               transition={{ 
-                duration: 0.8,
+                duration: 0.6,
                 ease: [0.25, 0.1, 0.25, 1]
               }}
             >
@@ -373,7 +379,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                   className={`px-8 py-4 font-semibold rounded-lg transition-all w-full sm:w-auto ${
                     isDark 
                       ? 'bg-white text-black hover:bg-gray-200' 
-                      : 'bg-white/90 text-purple-900 hover:bg-white backdrop-blur-sm'
+                      : 'bg-purple-900 text-white hover:bg-purple-800'
                   }`}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -394,7 +400,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                 visible: { opacity: 1, y: 0 }
               }}
               transition={{ 
-                duration: 0.8,
+                duration: 0.6,
                 ease: [0.25, 0.1, 0.25, 1]
               }}
             >
@@ -403,7 +409,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                   className={`px-8 py-4 font-semibold rounded-lg border-2 transition-all w-full sm:w-auto ${
                     isDark 
                       ? 'border-white/30 text-white hover:bg-white/10' 
-                      : 'border-white/50 text-white hover:bg-white/20 backdrop-blur-sm'
+                      : 'border-purple-900 text-purple-900 hover:bg-purple-100'
                   }`}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -427,14 +433,14 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 1.5, repeat: Infinity }}
           className={`w-6 h-10 border-2 rounded-full flex justify-center ${
-            isDark ? 'border-white/30' : 'border-white/40'
+            isDark ? 'border-white/30' : 'border-purple-900/40'
           }`}
         >
           <motion.div
             animate={{ y: [0, 12, 0] }}
             transition={{ duration: 1.5, repeat: Infinity }}
             className={`w-1 h-3 rounded-full mt-2 ${
-              isDark ? 'bg-white/50' : 'bg-white/60'
+              isDark ? 'bg-white/50' : 'bg-purple-900/60'
             }`}
           />
         </motion.div>

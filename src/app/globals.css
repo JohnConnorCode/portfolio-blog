@@ -27,6 +27,15 @@
     --input: 0 0% 90%;
     --ring: 234 89% 30%;
     --radius: 0.5rem;
+    /* Custom colors for better light/dark mode support */
+    --white: 255 255 255;
+    --gray-400: 156 163 175;
+    --gray-500: 107 114 128;
+    --gray-900: 17 24 39;
+    --cyan-400: 34 211 238;
+    --purple-500: 168 85 247;
+    --pink-500: 236 72 153;
+    --yellow-400: 250 204 21;
   }
 
   .dark {
@@ -49,6 +58,15 @@
     --border: 0 0% 12%;
     --input: 0 0% 12%;
     --ring: 234 89% 60%;
+    /* Custom colors remain the same for dark mode */
+    --white: 255 255 255;
+    --gray-400: 156 163 175;
+    --gray-500: 107 114 128;
+    --gray-900: 17 24 39;
+    --cyan-400: 34 211 238;
+    --purple-500: 168 85 247;
+    --pink-500: 236 72 153;
+    --yellow-400: 250 204 21;
   }
 }
 
@@ -97,15 +115,6 @@ h1, h2, h3, h4, h5, h6 {
   outline: none;
 }
 
-/* Grid animation - moves toward horizon */
-@keyframes gridScroll {
-  0% {
-    backgroundPosition: center 0px;
-  }
-  100% {
-    backgroundPosition: center -40px;
-  }
-}
 
 *:focus-visible {
   outline: 2px solid hsl(var(--foreground));
