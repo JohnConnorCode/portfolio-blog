@@ -9,7 +9,7 @@ test.describe('Visual Tests', () => {
     await page.waitForSelector('section')
     
     // Check if the grid is visible
-    const gridElement = await page.locator('.absolute.inset-x-0.bottom-0.h-full').first()
+    const gridElement = await page.locator('.hero-grid').first()
     await expect(gridElement).toBeVisible()
     
     // Take a screenshot for visual verification
@@ -36,7 +36,7 @@ test.describe('Visual Tests', () => {
     await page.setViewportSize({ width: 1920, height: 1080 })
     await page.goto('http://localhost:3000')
     
-    const gridElement = await page.locator('.absolute.inset-x-0.bottom-0.h-full').first()
+    const gridElement = await page.locator('.hero-grid').first()
     const box = await gridElement.boundingBox()
     
     // Grid should extend full viewport width
@@ -52,7 +52,7 @@ test.describe('Visual Tests', () => {
     await page.setViewportSize({ width: 375, height: 667 })
     await page.goto('http://localhost:3000')
     
-    const gridElement = await page.locator('.absolute.inset-x-0.bottom-0.h-full').first()
+    const gridElement = await page.locator('.hero-grid').first()
     await expect(gridElement).toBeVisible()
     
     await page.screenshot({ 

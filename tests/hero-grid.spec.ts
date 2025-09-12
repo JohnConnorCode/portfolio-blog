@@ -8,7 +8,7 @@ test.describe('Hero Grid Animation', () => {
     await page.waitForSelector('h1', { timeout: 10000 });
     
     // Check grid exists and is visible
-    const grid = await page.locator('.grid-animation').first();
+    const grid = await page.locator('.hero-grid').first();
     await expect(grid).toBeVisible();
     
     // Take screenshots at different moments to verify animation
