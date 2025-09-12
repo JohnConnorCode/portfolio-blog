@@ -41,7 +41,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
     return () => window.removeEventListener('mousemove', handleMouseMove)
   }, [])
   
-  // Twinkling stars effect
+  // Enhanced twinkling stars effect with movement
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
@@ -49,10 +49,14 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
     const ctx = canvas.getContext('2d')
     if (!ctx) return
     
-    canvas.width = window.innerWidth
-    canvas.height = window.innerHeight
+    const dpr = window.devicePixelRatio || 1
+    canvas.width = window.innerWidth * dpr
+    canvas.height = window.innerHeight * dpr
+    ctx.scale(dpr, dpr)
+    canvas.style.width = `${window.innerWidth}px`
+    canvas.style.height = `${window.innerHeight}px`
     
-    // Create stars
+    // Create stars with enhanced properties
     const stars: Array<{
       x: number
       y: number
@@ -60,55 +64,120 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
       brightness: number
       twinkleSpeed: number
       twinklePhase: number
+      driftX: number
+      driftY: number
+      color: string
     }> = []
     
-    const starCount = 250
+    const starCount = 350
     
     for (let i = 0; i < starCount; i++) {
+      const colors = ['#FFFFFF', '#FFF8E7', '#E0E7FF', '#FFE0E0', '#E0FFE7']
       stars.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        size: Math.random() * 2 + 0.3,
-        brightness: Math.random() * 0.8 + 0.2,
-        twinkleSpeed: Math.random() * 0.02 + 0.005,
-        twinklePhase: Math.random() * Math.PI * 2
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+        size: Math.random() * 2.5 + 0.3,
+        brightness: Math.random() * 0.9 + 0.1,
+        twinkleSpeed: Math.random() * 0.03 + 0.005,
+        twinklePhase: Math.random() * Math.PI * 2,
+        driftX: (Math.random() - 0.5) * 0.1,
+        driftY: (Math.random() - 0.5) * 0.05,
+        color: colors[Math.floor(Math.random() * colors.length)]
       })
     }
     
     let animationId: number
     
+    // Shooting stars
+    const shootingStars: Array<{
+      x: number
+      y: number
+      length: number
+      speed: number
+      opacity: number
+      angle: number
+    }> = []
+    
+    let frameCount = 0
+    
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
+      frameCount++
       
-      // Draw stars
+      // Draw and animate stars
       stars.forEach(star => {
         star.twinklePhase += star.twinkleSpeed
+        star.x += star.driftX
+        star.y += star.driftY
+        
+        // Wrap around edges
+        if (star.x < 0) star.x = window.innerWidth
+        if (star.x > window.innerWidth) star.x = 0
+        if (star.y < 0) star.y = window.innerHeight
+        if (star.y > window.innerHeight) star.y = 0
+        
         const twinkle = Math.sin(star.twinklePhase) * 0.5 + 0.5
         const currentBrightness = star.brightness * twinkle
         
-        // Adjust star color based on theme
-        const starColor = isDark 
-          ? `rgba(200, 220, 255, ${currentBrightness})`
-          : `rgba(100, 120, 150, ${currentBrightness * 0.6})`
-        
-        ctx.fillStyle = starColor
+        // Enhanced star rendering with color
+        const alpha = isDark ? currentBrightness : currentBrightness * 0.7
+        ctx.fillStyle = star.color + Math.floor(alpha * 255).toString(16).padStart(2, '0')
         ctx.beginPath()
         ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2)
         ctx.fill()
         
-        // Add subtle glow to brighter stars
-        if (currentBrightness > 0.7) {
+        // Enhanced glow for bright stars
+        if (currentBrightness > 0.6 && isDark) {
           const gradient = ctx.createRadialGradient(
             star.x, star.y, 0,
-            star.x, star.y, star.size * 3
+            star.x, star.y, star.size * 4
           )
-          const glowColor = isDark
-            ? `rgba(150, 200, 255, ${currentBrightness * 0.3})`
-            : `rgba(100, 150, 200, ${currentBrightness * 0.2})`
-          gradient.addColorStop(0, glowColor)
+          gradient.addColorStop(0, star.color + Math.floor(currentBrightness * 128).toString(16).padStart(2, '0'))
+          gradient.addColorStop(0.5, star.color + '20')
           gradient.addColorStop(1, 'transparent')
           ctx.fillStyle = gradient
-          ctx.fillRect(star.x - star.size * 3, star.y - star.size * 3, star.size * 6, star.size * 6)
+          ctx.fillRect(star.x - star.size * 4, star.y - star.size * 4, star.size * 8, star.size * 8)
+        }
+      })
+      
+      // Add shooting stars occasionally
+      if (frameCount % 180 === 0 && Math.random() > 0.3 && isDark) {
+        shootingStars.push({
+          x: Math.random() * window.innerWidth,
+          y: Math.random() * window.innerHeight * 0.5,
+          length: Math.random() * 80 + 40,
+          speed: Math.random() * 4 + 2,
+          opacity: 1,
+          angle: Math.random() * 60 + 30
+        })
+      }
+      
+      // Draw and animate shooting stars
+      shootingStars.forEach((star, index) => {
+        star.x += star.speed * Math.cos((star.angle * Math.PI) / 180)
+        star.y += star.speed * Math.sin((star.angle * Math.PI) / 180)
+        star.opacity -= 0.02
+        
+        if (star.opacity > 0) {
+          const gradient = ctx.createLinearGradient(
+            star.x, star.y,
+            star.x - star.length * Math.cos((star.angle * Math.PI) / 180),
+            star.y - star.length * Math.sin((star.angle * Math.PI) / 180)
+          )
+          gradient.addColorStop(0, `rgba(255, 255, 255, ${star.opacity})`)
+          gradient.addColorStop(1, 'transparent')
+          
+          ctx.strokeStyle = gradient
+          ctx.lineWidth = 2
+          ctx.beginPath()
+          ctx.moveTo(star.x, star.y)
+          ctx.lineTo(
+            star.x - star.length * Math.cos((star.angle * Math.PI) / 180),
+            star.y - star.length * Math.sin((star.angle * Math.PI) / 180)
+          )
+          ctx.stroke()
+        } else {
+          shootingStars.splice(index, 1)
         }
       })
       
@@ -118,13 +187,17 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
     animate()
     
     const handleResize = () => {
-      canvas.width = window.innerWidth
-      canvas.height = window.innerHeight
+      const dpr = window.devicePixelRatio || 1
+      canvas.width = window.innerWidth * dpr
+      canvas.height = window.innerHeight * dpr
+      ctx.scale(dpr, dpr)
+      canvas.style.width = `${window.innerWidth}px`
+      canvas.style.height = `${window.innerHeight}px`
       
       // Reposition stars
       stars.forEach(star => {
-        star.x = Math.random() * canvas.width
-        star.y = Math.random() * canvas.height
+        star.x = Math.random() * window.innerWidth
+        star.y = Math.random() * window.innerHeight
       })
     }
     
@@ -141,14 +214,15 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
   
   return (
     <section ref={containerRef} className="relative min-h-screen overflow-hidden -mt-24 pt-24 bg-black">
-      {/* Twinkling stars canvas - only in dark mode */}
-      {isDark && (
-        <canvas
-          ref={canvasRef}
-          className="absolute inset-0"
-          style={{ opacity: 0.8 }}
-        />
-      )}
+      {/* Enhanced twinkling stars canvas */}
+      <canvas
+        ref={canvasRef}
+        className="absolute inset-0"
+        style={{ 
+          opacity: isDark ? 1 : 0.4,
+          mixBlendMode: isDark ? 'screen' : 'multiply'
+        }}
+      />
       
       {/* Deep space gradient background */}
       <div 
@@ -170,7 +244,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
       
       {/* Cyberpunk Grid - properly extends and moves toward horizon */}
       <div 
-        className="absolute inset-0 pointer-events-none overflow-hidden"
+        className="hero-grid absolute inset-0 pointer-events-none overflow-hidden"
         style={{ zIndex: 5 }}
       >
         <div 
@@ -180,16 +254,16 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
             height: '200%',
             top: '30%',
             backgroundImage: `
-              linear-gradient(to right, ${isDark ? 'rgba(0, 255, 255, 0.5)' : 'rgba(147, 51, 234, 0.7)'} 1.5px, transparent 1.5px),
-              linear-gradient(to bottom, ${isDark ? 'rgba(0, 255, 255, 0.5)' : 'rgba(147, 51, 234, 0.7)'} 1.5px, transparent 1.5px)
+              linear-gradient(to right, ${isDark ? 'rgba(0, 255, 255, 0.6)' : 'rgba(147, 51, 234, 0.8)'} 2px, transparent 2px),
+              linear-gradient(to bottom, ${isDark ? 'rgba(0, 255, 255, 0.6)' : 'rgba(147, 51, 234, 0.8)'} 2px, transparent 2px)
             `,
             backgroundSize: '40px 40px',
             backgroundPosition: 'center 0px',
-            opacity: isDark ? 0.4 : 0.5,
+            opacity: isDark ? 0.6 : 0.7,
             transform: 'perspective(800px) rotateX(70deg)',
             transformOrigin: 'center 80%',
-            maskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.2) 20%, rgba(0,0,0,0.6) 50%, black 100%)',
-            WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.2) 20%, rgba(0,0,0,0.6) 50%, black 100%)',
+            maskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.3) 25%, rgba(0,0,0,0.8) 60%, black 100%)',
+            WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.3) 25%, rgba(0,0,0,0.8) 60%, black 100%)',
             animation: 'gridScroll 10s linear infinite',
           }}
         />
