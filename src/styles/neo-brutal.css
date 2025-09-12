@@ -122,3 +122,32 @@
   opacity: 0.15;
   mix-blend-mode: screen;
 }
+
+/*
+  Global keyframes used by the hero component.
+  These are defined globally so inline style animations in the hero work
+  reliably across desktop and mobile without styled-jsx scoping issues.
+*/
+@keyframes gridScroll {
+  /* Moves the tiled background forward toward the horizon */
+  0% { background-position: center 0; }
+  100% { background-position: center 400px; }
+}
+
+@keyframes nebulaPulse {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.1); }
+}
+
+@keyframes pulseUp {
+  0%, 100% { transform: translateY(100%); opacity: 0; }
+  50% { transform: translateY(0); opacity: 1; }
+}
+
+/* Reduce motion for accessibility and mobile power saving */
+@media (prefers-reduced-motion: reduce) {
+  .cyber-grid {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
