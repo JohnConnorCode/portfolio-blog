@@ -49,16 +49,8 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
     const ctx = canvas.getContext('2d')
     if (!ctx) return
     
-    // Handle high-DPI displays for crisp stars
-    const dpr = Math.min(window.devicePixelRatio || 1, 2)
-    const resizeCanvas = () => {
-      canvas.width = Math.floor(window.innerWidth * dpr)
-      canvas.height = Math.floor(window.innerHeight * dpr)
-      canvas.style.width = `${window.innerWidth}px`
-      canvas.style.height = `${window.innerHeight}px`
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
-    }
-    resizeCanvas()
+    canvas.width = window.innerWidth
+    canvas.height = window.innerHeight
     
     // Create stars
     const stars: Array<{
@@ -68,50 +60,31 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
       brightness: number
       twinkleSpeed: number
       twinklePhase: number
-      vx: number
-      vy: number
     }> = []
     
-    // Scale count by viewport area (lightweight)
-    const base = Math.max(window.innerWidth * window.innerHeight / 18000, 220)
-    const starCount = Math.min(Math.floor(base), 500)
+    const starCount = 250
     
     for (let i = 0; i < starCount; i++) {
       stars.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        size: Math.random() * 1.8 + 0.4,
-        brightness: Math.random() * 0.7 + 0.3,
-        twinkleSpeed: Math.random() * 0.02 + 0.006,
-        twinklePhase: Math.random() * Math.PI * 2,
-        vx: (Math.random() - 0.5) * 0.05,
-        vy: (Math.random() - 0.5) * 0.05,
+        size: Math.random() * 2 + 0.3,
+        brightness: Math.random() * 0.8 + 0.2,
+        twinkleSpeed: Math.random() * 0.02 + 0.005,
+        twinklePhase: Math.random() * Math.PI * 2
       })
     }
     
     let animationId: number
-    let lastTime = performance.now()
-    let shooting: null | { x: number; y: number; vx: number; vy: number; life: number } = null
     
     const animate = () => {
-      const now = performance.now()
-      const dt = Math.min((now - lastTime) / 16.67, 2) // frame factor vs 60fps
-      lastTime = now
       ctx.clearRect(0, 0, canvas.width, canvas.height)
       
       // Draw stars
       stars.forEach(star => {
-        star.twinklePhase += star.twinkleSpeed * dt
+        star.twinklePhase += star.twinkleSpeed
         const twinkle = Math.sin(star.twinklePhase) * 0.5 + 0.5
-        const currentBrightness = (isDark ? 1.0 : 0.7) * star.brightness * twinkle
-        
-        // Slow drift for parallax feel
-        star.x += star.vx * dt
-        star.y += star.vy * dt
-        if (star.x < 0) star.x = canvas.width
-        if (star.x > canvas.width) star.x = 0
-        if (star.y < 0) star.y = canvas.height
-        if (star.y > canvas.height) star.y = 0
+        const currentBrightness = star.brightness * twinkle
         
         // Adjust star color based on theme
         const starColor = isDark 
@@ -124,55 +97,29 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
         ctx.fill()
         
         // Add subtle glow to brighter stars
-        if (currentBrightness > 0.65) {
+        if (currentBrightness > 0.7) {
           const gradient = ctx.createRadialGradient(
             star.x, star.y, 0,
             star.x, star.y, star.size * 3
           )
           const glowColor = isDark
-            ? `rgba(150, 200, 255, ${currentBrightness * 0.35})`
-            : `rgba(100, 150, 200, ${currentBrightness * 0.25})`
+            ? `rgba(150, 200, 255, ${currentBrightness * 0.3})`
+            : `rgba(100, 150, 200, ${currentBrightness * 0.2})`
           gradient.addColorStop(0, glowColor)
           gradient.addColorStop(1, 'transparent')
           ctx.fillStyle = gradient
           ctx.fillRect(star.x - star.size * 3, star.y - star.size * 3, star.size * 6, star.size * 6)
         }
       })
-
-      // Rare shooting star for life
-      if (!shooting && Math.random() < 0.005) {
-        shooting = {
-          x: Math.random() * canvas.width,
-          y: Math.random() * (canvas.height * 0.4),
-          vx: (Math.random() * 2 + 2) * dpr,
-          vy: (Math.random() * 1 + 0.5) * dpr,
-          life: 1
-        }
-      }
-
-      if (shooting) {
-        const len = 80 * dpr
-        ctx.strokeStyle = isDark ? 'rgba(200,220,255,0.9)' : 'rgba(120,140,160,0.7)'
-        ctx.lineWidth = 1.5
-        ctx.beginPath()
-        ctx.moveTo(shooting.x, shooting.y)
-        ctx.lineTo(shooting.x - len, shooting.y - len * 0.4)
-        ctx.stroke()
-        shooting.x += shooting.vx * dt
-        shooting.y += shooting.vy * dt
-        shooting.life -= 0.02 * dt
-        if (shooting.life <= 0 || shooting.x > canvas.width || shooting.y > canvas.height) {
-          shooting = null
-        }
-      }
-    
+      
       animationId = requestAnimationFrame(animate)
     }
     
     animate()
     
     const handleResize = () => {
-      resizeCanvas()
+      canvas.width = window.innerWidth
+      canvas.height = window.innerHeight
       
       // Reposition stars
       stars.forEach(star => {
@@ -222,11 +169,33 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
       />
       
       {/* Cyberpunk Grid - properly extends and moves toward horizon */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 4 }}>
-        <div className="hero-grid" />
+      <div 
+        className="absolute inset-0 pointer-events-none overflow-hidden"
+        style={{ zIndex: 5 }}
+      >
+        <div 
+          className="absolute -left-1/2 -right-1/2 -bottom-1/2"
+          style={{
+            width: '200%',
+            height: '200%',
+            top: '30%',
+            backgroundImage: `
+              linear-gradient(to right, ${isDark ? 'rgba(0, 255, 255, 0.5)' : 'rgba(147, 51, 234, 0.7)'} 1.5px, transparent 1.5px),
+              linear-gradient(to bottom, ${isDark ? 'rgba(0, 255, 255, 0.5)' : 'rgba(147, 51, 234, 0.7)'} 1.5px, transparent 1.5px)
+            `,
+            backgroundSize: '40px 40px',
+            backgroundPosition: 'center 0px',
+            opacity: isDark ? 0.4 : 0.5,
+            transform: 'perspective(800px) rotateX(70deg)',
+            transformOrigin: 'center 80%',
+            maskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.2) 20%, rgba(0,0,0,0.6) 50%, black 100%)',
+            WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.2) 20%, rgba(0,0,0,0.6) 50%, black 100%)',
+            animation: 'gridScroll 10s linear infinite',
+          }}
+        />
       </div>
       
-      {/* Nebula-like color accents */
+      {/* Nebula-like color accents */}
       <div 
         className="absolute inset-0 opacity-30"
         style={{
@@ -240,7 +209,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
               transparent 40%
             )
           ` : 'transparent',
-          animation: 'nebulaPulse 12s ease-in-out infinite',
+          animation: 'nebulaPulse 10s ease-in-out infinite',
         }}
       />
       
@@ -257,7 +226,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
         }}
       />
       
-      {/* Clean pulse effect from bottom */
+      {/* Clean pulse effect from bottom */}
       <div className="absolute inset-0">
         <div 
           className="absolute bottom-0 left-0 right-0 h-96"
@@ -265,7 +234,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
             background: isDark 
               ? 'linear-gradient(to top, rgba(0, 150, 255, 0.15), transparent)'
               : 'transparent',
-            animation: 'pulseUp 5s ease-in-out infinite',
+            animation: 'pulseUp 4s ease-in-out infinite',
           }}
         />
       </div>
@@ -477,7 +446,17 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
         </motion.div>
       </motion.div>
       
-  {/* keyframes moved to global CSS for reliability */}
+      <style jsx>{`
+        @keyframes nebulaPulse {
+          0%, 100% { opacity: 0.3; transform: scale(1); }
+          50% { opacity: 0.5; transform: scale(1.1); }
+        }
+        
+        @keyframes pulseUp {
+          0%, 100% { transform: translateY(100%); opacity: 0; }
+          50% { transform: translateY(0); opacity: 1; }
+        }
+      `}</style>
     </section>
   )
 }
