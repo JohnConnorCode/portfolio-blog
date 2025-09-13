@@ -243,19 +243,56 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
         }}
       />
       
-      {/* Simple Tron Grid that WORKS */}
+      {/* Tron Grid with Horizon - Proper Implementation */}
       <div 
-        className="absolute inset-0 overflow-hidden pointer-events-none"
-        style={{ zIndex: 5 }}
+        className="tron-grid"
+        style={{
+          position: 'fixed',
+          zIndex: 5,
+          left: 0,
+          right: 0,
+          top: '50vh',
+          height: '100vh',
+          opacity: 0.75,
+          transformOrigin: 'center top',
+          transform: 'perspective(200px) rotateX(60.5deg) scale(1.5, 0.5) translateZ(0)',
+          backfaceVisibility: 'hidden',
+          overflow: 'hidden',
+          pointerEvents: 'none'
+        }}
       >
+        {/* Gradient fade to horizon */}
         <div
-          className="absolute inset-0"
           style={{
-            backgroundImage: 'linear-gradient(to right, rgba(0, 255, 255, 0.5) 2px, transparent 2px), linear-gradient(to bottom, rgba(0, 255, 255, 0.5) 2px, transparent 2px)',
-            backgroundSize: '50px 50px',
-            transform: 'perspective(500px) rotateX(60deg)',
-            transformOrigin: 'bottom center',
-            opacity: 0.8
+            content: '""',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            bottom: 0,
+            right: 0,
+            background: 'linear-gradient(to top, transparent, transparent 75%, rgba(0, 20, 40, 0.875))',
+            zIndex: -1
+          }}
+        />
+        
+        {/* Animated grid */}
+        <div
+          style={{
+            content: '""',
+            position: 'absolute',
+            top: '-900px',
+            left: 0,
+            right: 0,
+            zIndex: -2,
+            backgroundImage: `
+              linear-gradient(to right, rgba(0, 255, 255, 1) 3px, transparent 3px),
+              linear-gradient(to bottom, rgba(0, 255, 255, 1) 3px, transparent 3px)
+            `,
+            backgroundSize: '3.125% 3.125%',
+            transform: 'translateZ(0)',
+            width: '100%',
+            height: '1800px',
+            animation: 'slideGrid 12s linear infinite forwards'
           }}
         />
       </div>
