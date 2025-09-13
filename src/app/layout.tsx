@@ -134,9 +134,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className="dark" style={{ colorScheme: 'dark' }}>
+    <html lang="en" className="dark bg-black" style={{ colorScheme: 'dark', backgroundColor: 'black' }}>
       <body
-        className={`${alata.variable} ${jetbrainsMono.variable} font-sans antialiased min-h-screen flex flex-col dark`}
+        className={`${alata.variable} ${jetbrainsMono.variable} font-sans antialiased min-h-screen flex flex-col dark bg-black`}
+        style={{ backgroundColor: 'black' }}
       >
         <Providers>
           <CustomCursor />
