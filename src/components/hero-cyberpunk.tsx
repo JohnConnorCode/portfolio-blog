@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import Link from 'next/link'
-import { useTheme } from 'next-themes'
 
 interface HeroContent {
   heroTitle?: string
@@ -21,8 +20,8 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
   const containerRef = useRef<HTMLDivElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
-  const { theme } = useTheme()
-  const isDark = theme === 'dark'
+  // Force dark mode - no theme checking
+  const isDark = true
   
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -243,17 +242,17 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
         }}
       />
       
-      {/* Tron Grid with Horizon - Proper Implementation */}
+      {/* Tron Grid - Only in hero section */}
       <div 
         className="tron-grid"
         style={{
-          position: 'fixed',
+          position: 'absolute',
           zIndex: 5,
           left: 0,
           right: 0,
-          top: '50vh',
-          height: '100vh',
-          opacity: 0.75,
+          top: '40%',
+          bottom: 0,
+          opacity: 0.6,
           transformOrigin: 'center top',
           transform: 'perspective(200px) rotateX(60.5deg) scale(1.5, 0.5) translateZ(0)',
           backfaceVisibility: 'hidden',
@@ -261,7 +260,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
           pointerEvents: 'none'
         }}
       >
-        {/* Gradient fade to horizon */}
+        {/* Gradient fade to horizon - more glassy */}
         <div
           style={{
             content: '""',
@@ -270,12 +269,12 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
             left: 0,
             bottom: 0,
             right: 0,
-            background: 'linear-gradient(to top, transparent, transparent 75%, rgba(0, 20, 40, 0.875))',
+            background: 'linear-gradient(to top, transparent, transparent 50%, rgba(0, 20, 40, 0.5) 75%, rgba(0, 20, 40, 0.9))',
             zIndex: -1
           }}
         />
         
-        {/* Animated grid */}
+        {/* Animated grid - smaller lines, slower animation */}
         <div
           style={{
             content: '""',
@@ -285,14 +284,14 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
             right: 0,
             zIndex: -2,
             backgroundImage: `
-              linear-gradient(to right, rgba(0, 255, 255, 1) 3px, transparent 3px),
-              linear-gradient(to bottom, rgba(0, 255, 255, 1) 3px, transparent 3px)
+              linear-gradient(to right, rgba(0, 255, 255, 0.8) 2px, transparent 2px),
+              linear-gradient(to bottom, rgba(0, 255, 255, 0.8) 2px, transparent 2px)
             `,
-            backgroundSize: '3.125% 3.125%',
+            backgroundSize: '2% 2%',
             transform: 'translateZ(0)',
             width: '100%',
             height: '1800px',
-            animation: 'slideGrid 12s linear infinite forwards'
+            animation: 'slideGrid 24s linear infinite forwards'
           }}
         />
       </div>
