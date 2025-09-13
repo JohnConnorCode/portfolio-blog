@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import Link from 'next/link'
+import { useTheme } from 'next-themes'
 
 interface HeroContent {
   heroTitle?: string
@@ -20,8 +21,9 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
   const containerRef = useRef<HTMLDivElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
-  // Force dark mode - no theme checking
-  const isDark = true
+  const [mounted, setMounted] = useState(false)
+  const { theme } = useTheme()
+  const isDark = mounted ? theme === 'dark' : true // Default to dark during SSR
   
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -30,6 +32,11 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
   
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
   const scale = useTransform(scrollYProgress, [0, 0.5], [1, 1.1])
+  
+  // Wait for client-side mount
+  useEffect(() => {
+    setMounted(true)
+  }, [])
   
   // Track mouse for interactive effects
   useEffect(() => {
@@ -211,6 +218,21 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
   // Split title into letters for animation
   const titleLetters = heroContent.heroTitle.split('')
   
+  // Don't render theme-dependent content until mounted
+  if (!mounted) {
+    return (
+      <section ref={containerRef} className="relative min-h-screen overflow-hidden -mt-24 pt-24 bg-black">
+        <div className="relative z-20 min-h-screen flex items-center justify-center px-4">
+          <div className="max-w-6xl mx-auto text-center">
+            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black tracking-wider mb-12 text-white">
+              {heroContent.heroTitle}
+            </h1>
+          </div>
+        </div>
+      </section>
+    )
+  }
+  
   return (
     <section ref={containerRef} className="relative min-h-screen overflow-hidden -mt-24 pt-24 bg-black">
       {/* Enhanced twinkling stars canvas */}
@@ -283,9 +305,12 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
             left: 0,
             right: 0,
             zIndex: -2,
-            backgroundImage: `
+            backgroundImage: isDark ? `
               linear-gradient(to right, rgba(0, 255, 255, 0.8) 2px, transparent 2px),
               linear-gradient(to bottom, rgba(0, 255, 255, 0.8) 2px, transparent 2px)
+            ` : `
+              linear-gradient(to right, rgba(0, 150, 200, 0.9) 2px, transparent 2px),
+              linear-gradient(to bottom, rgba(0, 150, 200, 0.9) 2px, transparent 2px)
             `,
             backgroundSize: '2% 2%',
             transform: 'translateZ(0)',

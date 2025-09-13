@@ -4,6 +4,9 @@ import { ThemeProvider } from 'next-themes'
 import { ReactNode } from 'react'
 
 export function Providers({ children }: { children: ReactNode }) {
-  // Remove ThemeProvider completely - just force dark mode
-  return <>{children}</>
+  return (
+    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+      {children}
+    </ThemeProvider>
+  )
 }
