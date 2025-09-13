@@ -48,12 +48,14 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
   
   // Enhanced twinkling stars effect with movement
   useEffect(() => {
+    if (!mounted) return
+
     const canvas = canvasRef.current
     if (!canvas) return
-    
+
     const ctx = canvas.getContext('2d')
     if (!ctx) return
-    
+
     const dpr = window.devicePixelRatio || 1
     canvas.width = window.innerWidth * dpr
     canvas.height = window.innerHeight * dpr
@@ -212,7 +214,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
       cancelAnimationFrame(animationId)
       window.removeEventListener('resize', handleResize)
     }
-  }, [isDark])
+  }, [isDark, mounted])
   
   // Split title into letters for animation
   const titleLetters = heroContent.heroTitle.split('')
@@ -238,29 +240,31 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
       <canvas
         ref={canvasRef}
         className="absolute inset-0"
-        style={{ 
+        style={{
           opacity: isDark ? 1 : 0.4,
-          mixBlendMode: isDark ? 'screen' : 'multiply'
+          mixBlendMode: isDark ? 'screen' : 'multiply',
+          zIndex: 1
         }}
       />
       
       {/* Deep space gradient background - Tron style for light mode */}
-      <div 
+      <div
         className="absolute inset-0"
         style={{
           background: isDark ? `
-            radial-gradient(ellipse at top, 
-              rgba(10, 20, 40, 0.3) 0%, 
+            radial-gradient(ellipse at top,
+              rgba(10, 20, 40, 0.3) 0%,
               rgba(0, 0, 0, 0.7) 100%
             )
           ` : `
-            linear-gradient(135deg, 
-              rgba(255, 237, 213, 1) 0%, 
+            linear-gradient(135deg,
+              rgba(255, 237, 213, 1) 0%,
               rgba(255, 218, 185, 1) 25%,
               rgba(135, 206, 235, 1) 60%,
               rgba(100, 180, 220, 1) 100%
             )
-          `
+          `,
+          zIndex: 0
         }}
       />
       
