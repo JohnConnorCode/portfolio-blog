@@ -82,8 +82,15 @@ export function WorkingWithMe() {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="heading-section mb-6">
-            <span style={{ color: 'var(--white)', fontWeight: 300 }}>WORKING</span>
-            <span className="text-gradient" style={{ fontWeight: 700 }}> WITH ME</span>
+            <span style={{ color: '#ffffff', fontWeight: 300 }}>WORKING</span>
+            <span style={{
+              background: 'linear-gradient(135deg, #00ffff 0%, #8a2be2 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              fontWeight: 700,
+              display: 'inline-block'
+            }}> WITH ME</span>
           </h2>
           <p className="text-lg font-light tracking-wide max-w-3xl mx-auto" style={{ color: 'var(--gray-400)' }}>
             Structured transformation. Quick wins. Long-term impact.
@@ -100,8 +107,15 @@ export function WorkingWithMe() {
             className="text-center mb-12"
           >
             <h3 className="text-3xl font-bold mb-4">
-              <span style={{ color: 'var(--white)', fontWeight: 300 }}>THE</span>
-              <span className="text-gradient" style={{ fontWeight: 700 }}> PROCESS</span>
+              <span style={{ color: '#ffffff', fontWeight: 300 }}>THE</span>
+              <span style={{
+                background: 'linear-gradient(135deg, #00ffff 0%, #8a2be2 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                fontWeight: 700,
+                display: 'inline-block'
+              }}> PROCESS</span>
             </h3>
             <p className="text-lg font-light tracking-wide max-w-2xl mx-auto" style={{ color: 'var(--gray-400)' }}>
               From discovery to scale in 8 weeks.
@@ -177,8 +191,15 @@ export function WorkingWithMe() {
             className="text-center mb-12"
           >
             <h3 className="text-3xl font-bold mb-4">
-              <span style={{ color: 'var(--white)', fontWeight: 300 }}>MY</span>
-              <span className="text-gradient" style={{ fontWeight: 700 }}> PRINCIPLES</span>
+              <span style={{ color: '#ffffff', fontWeight: 300 }}>MY</span>
+              <span style={{
+                background: 'linear-gradient(135deg, #00ffff 0%, #8a2be2 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                fontWeight: 700,
+                display: 'inline-block'
+              }}> PRINCIPLES</span>
             </h3>
             <p className="text-lg font-light tracking-wide max-w-2xl mx-auto" style={{ color: 'var(--gray-400)' }}>
               Core values that guide every engagement.
@@ -238,8 +259,15 @@ export function WorkingWithMe() {
             className="text-center mb-12"
           >
             <h3 className="text-3xl font-bold mb-4">
-              <span style={{ color: 'var(--white)', fontWeight: 300 }}>WHAT YOU</span>
-              <span className="text-gradient" style={{ fontWeight: 700 }}> GET</span>
+              <span style={{ color: '#ffffff', fontWeight: 300 }}>WHAT YOU</span>
+              <span style={{
+                background: 'linear-gradient(135deg, #00ffff 0%, #8a2be2 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                fontWeight: 700,
+                display: 'inline-block'
+              }}> GET</span>
             </h3>
             <p className="text-lg font-light tracking-wide max-w-2xl mx-auto" style={{ color: 'var(--gray-400)' }}>
               Direct partnership. Strategic insight. Tangible results.
