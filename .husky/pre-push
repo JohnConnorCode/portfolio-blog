@@ -1,12 +1,9 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-# Temporarily disabled due to timeout issues
-# echo "🔍 Testing build before push..."
-# npm run build || {
-#   echo "❌ Build failed! Fix errors before pushing."
-#   echo "This prevents failed Vercel deployments."
-#   exit 1
-# }
-
-echo "⚡ Skipping build check for now..."
+echo "🔍 Testing build before push..."
+npm run build || {
+  echo "❌ Build failed! Fix errors before pushing."
+  echo "This prevents failed Vercel deployments."
+  exit 1
+}
