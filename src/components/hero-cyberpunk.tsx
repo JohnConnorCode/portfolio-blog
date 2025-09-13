@@ -269,68 +269,8 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
       />
       
       {/* Tron Grid - Only in hero section */}
-      <div
-        className="hero-grid"
-      >
-        {/* Gradient fade to horizon - more glassy */}
-        <div
-          style={{
-            content: '""',
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            bottom: 0,
-            right: 0,
-            background: isDark 
-              ? 'linear-gradient(to top, transparent 0%, transparent 20%, rgba(0, 20, 40, 0.4) 50%, rgba(0, 20, 40, 0.8) 75%, rgba(0, 10, 20, 0.98) 100%)'
-              : 'linear-gradient(to top, transparent 0%, transparent 20%, rgba(135, 206, 235, 0.3) 50%, rgba(100, 180, 220, 0.6) 75%, rgba(80, 160, 200, 0.9) 100%)',
-            zIndex: -1
-          }}
-        />
-        
-        {/* Animated grid with glow effect */}
-        <div
-          style={{
-            content: '""',
-            position: 'absolute',
-            top: '-900px',
-            left: 0,
-            right: 0,
-            zIndex: -2,
-            filter: isDark ? 'blur(0.3px) drop-shadow(0 0 4px rgba(0, 255, 255, 0.5))' : 'blur(0.2px) drop-shadow(0 0 3px rgba(255, 165, 0, 0.3))',
-            boxShadow: isDark ? 'inset 0 0 30px rgba(0, 255, 255, 0.1), 0 0 25px rgba(0, 255, 255, 0.15)' : 'inset 0 0 20px rgba(255, 165, 0, 0.08), 0 0 20px rgba(255, 165, 0, 0.1)',
-            backgroundImage: isDark ? `
-              linear-gradient(to right, rgba(0, 255, 255, 0.7) 0.5px, transparent 0.5px),
-              linear-gradient(to bottom, rgba(0, 255, 255, 0.7) 0.5px, transparent 0.5px)
-            ` : `
-              linear-gradient(to right, rgba(255, 165, 0, 0.35) 0.5px, transparent 0.5px),
-              linear-gradient(to bottom, rgba(255, 165, 0, 0.35) 0.5px, transparent 0.5px)
-            `,
-            backgroundSize: '1.6% 1.6%',
-            transform: 'translateZ(0)',
-            width: '100%',
-            height: '1800px',
-            animation: 'slideGrid 31s linear infinite forwards'
-          }}
-        />
-        
-        {/* Glass overlay for extra depth */}
-        <div
-          style={{
-            content: '""',
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background: isDark 
-              ? 'linear-gradient(180deg, rgba(0, 255, 255, 0.02) 0%, rgba(0, 255, 255, 0.05) 50%, rgba(0, 255, 255, 0.02) 100%)'
-              : 'linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.1) 100%)',
-            backdropFilter: 'blur(0.5px)',
-            pointerEvents: 'none'
-          }}
-        />
-      </div>
+      <div className="tron-grid" />
+
       
       {/* Nebula-like color accents */}
       <div 

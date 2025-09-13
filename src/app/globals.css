@@ -154,16 +154,8 @@ h1, h2, h3, h4, h5, h6 {
 
   /* Stark gradient for special elements */
   .text-gradient {
-    background: linear-gradient(90deg,
-      #00ffff 0%,
-      #ff00ff 25%,
-      #00ffff 50%,
-      #ff00ff 75%,
-      #00ffff 100%);
+    @apply bg-gradient-to-r from-foreground via-muted-foreground to-foreground bg-clip-text text-transparent;
     background-size: 200% auto;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
     animation: shimmer 3s linear infinite;
   }
 
@@ -275,29 +267,30 @@ h1, h2, h3, h4, h5, h6 {
   100% { background-position: center 40px; }
 }
 
-/* HERO GRID STYLES - TRON PERSPECTIVE */
-.hero-grid {
+/* HERO GRID STYLES - MAXIMUM VISIBILITY */
+.tron-grid {
   position: absolute !important;
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
-  height: 70% !important;
+  top: 50% !important;
   width: 100% !important;
+  height: 50% !important;
   background-image:
-    linear-gradient(to right, #00ffff 2px, transparent 2px),
-    linear-gradient(to bottom, #00ffff 2px, transparent 2px) !important;
-  background-size: 60px 60px !important;
+    linear-gradient(to right, rgba(0, 255, 255, 1) 4px, transparent 4px),
+    linear-gradient(to bottom, rgba(0, 255, 255, 1) 4px, transparent 4px) !important;
+  background-size: 40px 40px !important;
   background-position: center 0 !important;
-  opacity: 0.6 !important;
-  transform: perspective(400px) rotateX(65deg) !important;
-  transform-origin: bottom center !important;
-  animation: gridScroll 20s linear infinite !important;
-  z-index: 2 !important;
+  opacity: 1 !important;
+  transform: perspective(900px) rotateX(65deg) !important;
+  transform-origin: center 80% !important;
+  animation: gridScroll 10s linear infinite !important;
+  z-index: 5 !important;
   pointer-events: none !important;
 }
 
-.dark .hero-grid {
+.dark .tron-grid {
   background-image:
-    linear-gradient(to right, #00ffff 2px, transparent 2px),
-    linear-gradient(to bottom, #00ffff 2px, transparent 2px) !important;
+    linear-gradient(to right, rgba(0, 255, 255, 0.8) 3px, transparent 3px),
+    linear-gradient(to bottom, rgba(0, 255, 255, 0.8) 3px, transparent 3px) !important;
 }
