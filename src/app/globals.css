@@ -4,6 +4,20 @@
 @tailwind components;
 @tailwind utilities;
 
+/* FORCE DARK MODE */
+html {
+  color-scheme: dark !important;
+}
+
+html.dark,
+html {
+  @apply bg-black !important;
+}
+
+body {
+  @apply bg-black !important;
+}
+
 @layer base {
   :root {
     /* Stark, elegant color system with signature indigo */
