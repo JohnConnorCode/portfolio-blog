@@ -243,31 +243,43 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
         }}
       />
       
-      {/* Cyberpunk Grid - MUST BE VISIBLE */}
+      {/* Cyberpunk Grid - HIGHLY VISIBLE TRON STYLE */}
       <div 
-        className="hero-grid"
         style={{
           position: 'absolute',
-          left: '-50%',
-          right: '-50%',
-          bottom: '-50%',
-          top: '25%',
-          width: '200%',
-          height: '200%',
-          backgroundImage: `
-            linear-gradient(to right, ${isDark ? 'rgba(0, 255, 255, 0.8)' : 'rgba(0, 200, 255, 1)'} 3px, transparent 3px),
-            linear-gradient(to bottom, ${isDark ? 'rgba(0, 255, 255, 0.8)' : 'rgba(0, 200, 255, 1)'} 3px, transparent 3px)
-          `,
-          backgroundSize: '40px 40px',
-          backgroundPosition: 'center 0',
-          opacity: isDark ? 0.7 : 0.9,
-          transform: 'perspective(900px) rotateX(65deg)',
-          transformOrigin: 'center 80%',
-          animation: 'gridScroll 10s linear infinite',
+          left: 0,
+          right: 0,
+          bottom: 0,
+          height: '100%',
+          overflow: 'hidden',
           zIndex: 5,
           pointerEvents: 'none'
         }}
-      />
+      >
+        <div
+          style={{
+            position: 'absolute',
+            left: '-100%',
+            right: '-100%',
+            top: '50%',
+            bottom: '-50%',
+            width: '300%',
+            height: '150%',
+            backgroundImage: `
+              linear-gradient(to right, rgba(0, 255, 255, 1) 4px, transparent 4px),
+              linear-gradient(to bottom, rgba(0, 255, 255, 1) 4px, transparent 4px)
+            `,
+            backgroundSize: '50px 50px',
+            backgroundPosition: 'center 0%',
+            transform: 'perspective(500px) rotateX(75deg)',
+            transformOrigin: 'center center',
+            animation: 'gridScroll 8s linear infinite',
+            opacity: 1,
+            maskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.2) 20%, rgba(0,0,0,1) 50%, black 100%)',
+            WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.2) 20%, rgba(0,0,0,1) 50%, black 100%)'
+          }}
+        />
+      </div>
       
       {/* Nebula-like color accents */}
       <div 
@@ -315,7 +327,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
       
       <motion.div
         style={{ opacity, scale }}
-        className="relative z-10 min-h-screen flex items-center justify-center px-4"
+        className="relative z-20 min-h-screen flex items-center justify-center px-4"
       >
         <div className="max-w-6xl mx-auto text-center">
           {/* Animated title with permanent glow and floating effect */}
