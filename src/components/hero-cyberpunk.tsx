@@ -234,7 +234,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
   }
   
   return (
-    <section ref={containerRef} className="relative min-h-screen overflow-hidden -mt-24 pt-24 bg-black">
+    <section ref={containerRef} className="relative min-h-screen overflow-hidden -mt-24 pt-16 sm:pt-24 bg-black">
       {/* Enhanced twinkling stars canvas */}
       <canvas
         ref={canvasRef}
@@ -256,9 +256,10 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
             )
           ` : `
             linear-gradient(135deg, 
-              rgba(0, 30, 60, 1) 0%, 
-              rgba(0, 60, 120, 1) 50%,
-              rgba(0, 100, 150, 1) 100%
+              rgba(255, 237, 213, 1) 0%, 
+              rgba(255, 218, 185, 1) 25%,
+              rgba(135, 206, 235, 1) 60%,
+              rgba(100, 180, 220, 1) 100%
             )
           `
         }}
@@ -313,8 +314,8 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
               linear-gradient(to right, rgba(0, 255, 255, 0.9) 1px, transparent 1px),
               linear-gradient(to bottom, rgba(0, 255, 255, 0.9) 1px, transparent 1px)
             ` : `
-              linear-gradient(to right, rgba(0, 150, 200, 0.9) 1px, transparent 1px),
-              linear-gradient(to bottom, rgba(0, 150, 200, 0.9) 1px, transparent 1px)
+              linear-gradient(to right, rgba(255, 165, 0, 0.4) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(255, 165, 0, 0.4) 1px, transparent 1px)
             `,
             backgroundSize: '1.4% 1.4%',
             transform: 'translateZ(0)',
@@ -371,7 +372,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
       
       <motion.div
         style={{ opacity, scale }}
-        className="relative z-20 min-h-screen flex items-center justify-center px-4"
+        className="relative z-20 min-h-screen flex items-center justify-center px-4 pt-0 sm:pt-8"
       >
         <div className="max-w-6xl mx-auto text-center">
           {/* Animated title with permanent glow and floating effect */}
@@ -394,7 +395,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                 ? 'drop-shadow(0 15px 25px rgba(0, 0, 0, 0.5))'
                 : 'none',
               transform: 'translateZ(50px)',
-              color: isDark ? 'white' : '#00d4ff'
+              color: isDark ? 'white' : '#ff6b35'
             }}
           >
             <span className="relative inline-block">
@@ -421,7 +422,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                   }}
                   whileHover={{
                     y: -5,
-                    color: isDark ? 'rgb(0, 255, 255)' : '#00ffff',
+                    color: isDark ? 'rgb(0, 255, 255)' : '#ff8c42',
                     transition: { duration: 0.2 }
                   }}
                   style={{ transformStyle: 'preserve-3d' }}
@@ -444,13 +445,14 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
             className="mb-12"
           >
             <p className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light leading-relaxed max-w-4xl mx-auto ${
-              isDark ? 'text-white/95' : 'text-white'
+              isDark ? 'text-white/95' : 'text-gray-800'
             }`}
               style={{
                 textShadow: isDark 
                   ? '0 2px 10px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 0, 0, 0.5)'
-                  : '0 2px 8px rgba(0, 30, 60, 0.9), 0 0 20px rgba(0, 30, 60, 0.6)',
-                backdropFilter: 'blur(1px)'
+                  : '0 1px 3px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6)',
+                backdropFilter: 'blur(1px)',
+                fontWeight: isDark ? '300' : '500'
               }}>
               {heroContent.heroDescription}
             </p>
@@ -476,16 +478,16 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                 duration: 1.5
               }}
             >
-              <span className={`font-medium inline-block leading-relaxed ${
+              <span className={`font-bold inline-block leading-relaxed ${
                 isDark 
-                  ? 'text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400'
-                  : 'text-white'
+                  ? 'text-white'
+                  : 'text-orange-600'
               }`}
                 style={{
                   textShadow: isDark 
-                    ? 'none'
-                    : '0 2px 10px rgba(0, 30, 60, 0.9), 0 0 25px rgba(0, 30, 60, 0.7)',
-                  filter: isDark ? 'drop-shadow(0 0 20px rgba(0, 200, 255, 0.3))' : 'none'
+                    ? '0 2px 10px rgba(0, 255, 255, 0.4), 0 0 20px rgba(0, 200, 255, 0.3)'
+                    : '0 1px 3px rgba(255, 255, 255, 0.9), 0 0 15px rgba(255, 255, 255, 0.7)',
+                  filter: isDark ? 'drop-shadow(0 0 15px rgba(0, 200, 255, 0.2))' : 'none'
                 }}>
                 {heroContent.heroHighlight}
               </span>
@@ -521,7 +523,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                   className={`px-8 py-4 font-semibold rounded-lg transition-all w-full sm:w-auto ${
                     isDark 
                       ? 'bg-white text-black hover:bg-gray-200' 
-                      : 'bg-cyan-500 text-black hover:bg-cyan-400'
+                      : 'bg-orange-500 text-white hover:bg-orange-600'
                   }`}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -551,7 +553,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                   className={`px-8 py-4 font-semibold rounded-lg border-2 transition-all w-full sm:w-auto ${
                     isDark 
                       ? 'border-white/30 text-white hover:bg-white/10' 
-                      : 'border-cyan-400 text-cyan-300 hover:bg-cyan-900/30'
+                      : 'border-orange-400 text-orange-600 hover:bg-orange-100/50'
                   }`}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
