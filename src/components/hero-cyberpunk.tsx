@@ -274,7 +274,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
           right: 0,
           top: '40%',
           bottom: 0,
-          opacity: 0.6,
+          opacity: isDark ? 0.7 : 0.8,
           transformOrigin: 'center top',
           transform: 'perspective(200px) rotateX(60.5deg) scale(1.5, 0.5) translateZ(0)',
           backfaceVisibility: 'hidden',
@@ -291,12 +291,14 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
             left: 0,
             bottom: 0,
             right: 0,
-            background: 'linear-gradient(to top, transparent, transparent 50%, rgba(0, 20, 40, 0.5) 75%, rgba(0, 20, 40, 0.9))',
+            background: isDark 
+              ? 'linear-gradient(to top, transparent 0%, transparent 30%, rgba(0, 20, 40, 0.3) 60%, rgba(0, 20, 40, 0.7) 80%, rgba(0, 20, 40, 0.95) 100%)'
+              : 'linear-gradient(to top, transparent 0%, transparent 30%, rgba(0, 60, 120, 0.2) 60%, rgba(0, 60, 120, 0.5) 80%, rgba(0, 60, 120, 0.8) 100%)',
             zIndex: -1
           }}
         />
         
-        {/* Animated grid - smaller lines, slower animation */}
+        {/* Animated grid with glow effect */}
         <div
           style={{
             content: '""',
@@ -305,18 +307,20 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
             left: 0,
             right: 0,
             zIndex: -2,
+            filter: isDark ? 'drop-shadow(0 0 3px rgba(0, 255, 255, 0.4))' : 'drop-shadow(0 0 2px rgba(0, 150, 200, 0.3))',
+            boxShadow: isDark ? '0 0 20px rgba(0, 255, 255, 0.2)' : '0 0 15px rgba(0, 150, 200, 0.2)',
             backgroundImage: isDark ? `
-              linear-gradient(to right, rgba(0, 255, 255, 0.8) 2px, transparent 2px),
-              linear-gradient(to bottom, rgba(0, 255, 255, 0.8) 2px, transparent 2px)
+              linear-gradient(to right, rgba(0, 255, 255, 0.9) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(0, 255, 255, 0.9) 1px, transparent 1px)
             ` : `
-              linear-gradient(to right, rgba(0, 150, 200, 0.9) 2px, transparent 2px),
-              linear-gradient(to bottom, rgba(0, 150, 200, 0.9) 2px, transparent 2px)
+              linear-gradient(to right, rgba(0, 150, 200, 0.9) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(0, 150, 200, 0.9) 1px, transparent 1px)
             `,
-            backgroundSize: '2% 2%',
+            backgroundSize: '1.4% 1.4%',
             transform: 'translateZ(0)',
             width: '100%',
             height: '1800px',
-            animation: 'slideGrid 24s linear infinite forwards'
+            animation: 'slideGrid 31s linear infinite forwards'
           }}
         />
       </div>
@@ -428,7 +432,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
             </span>
           </motion.h1>
           
-          {/* Description - more prominent and elegant */}
+          {/* Description with better readability */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -440,13 +444,19 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
             className="mb-12"
           >
             <p className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light leading-relaxed max-w-4xl mx-auto ${
-              isDark ? 'text-white/90' : 'text-cyan-100'
-            }`}>
+              isDark ? 'text-white/95' : 'text-white'
+            }`}
+              style={{
+                textShadow: isDark 
+                  ? '0 2px 10px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 0, 0, 0.5)'
+                  : '0 2px 8px rgba(0, 30, 60, 0.9), 0 0 20px rgba(0, 30, 60, 0.6)',
+                backdropFilter: 'blur(1px)'
+              }}>
               {heroContent.heroDescription}
             </p>
           </motion.div>
           
-          {/* Highlight text with gradient reveal - refined */}
+          {/* Highlight text with enhanced readability */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -466,11 +476,17 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                 duration: 1.5
               }}
             >
-              <span className={`text-transparent bg-clip-text font-medium inline-block leading-relaxed ${
+              <span className={`font-medium inline-block leading-relaxed ${
                 isDark 
-                  ? 'bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400'
-                  : 'bg-gradient-to-r from-cyan-300 via-blue-300 to-cyan-300'
-              }`}>
+                  ? 'text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400'
+                  : 'text-white'
+              }`}
+                style={{
+                  textShadow: isDark 
+                    ? 'none'
+                    : '0 2px 10px rgba(0, 30, 60, 0.9), 0 0 25px rgba(0, 30, 60, 0.7)',
+                  filter: isDark ? 'drop-shadow(0 0 20px rgba(0, 200, 255, 0.3))' : 'none'
+                }}>
                 {heroContent.heroHighlight}
               </span>
             </motion.p>

@@ -292,7 +292,7 @@ export default function WorkPage() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-3xl font-bold mb-12 text-center"
+            className="text-3xl font-bold mb-12 text-center bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent"
           >
             Impact by Numbers
           </motion.h2>
@@ -398,7 +398,7 @@ export default function WorkPage() {
           transition={{ duration: 0.8 }}
           className="text-center p-12 border border-foreground/10 rounded-lg bg-gradient-to-br from-cyan-400/5 to-purple-400/5"
         >
-          <h2 className="text-3xl font-bold mb-6">Ready to Build Something Real?</h2>
+          <h2 className="text-3xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">Ready to Build Something Real?</h2>
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
             I work with teams that care more about solving problems than following trends.
           </p>
