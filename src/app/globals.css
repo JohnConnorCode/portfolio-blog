@@ -286,25 +286,25 @@ h1, h2, h3, h4, h5, h6 {
   pointer-events: none !important;
 }
 
-/* Dispersed vaporwave gradient */
+/* Vaporwave gradient with purple-cyan glow */
 .tron-grid::before {
   content: "" !important;
   position: absolute !important;
-  top: -100% !important;
-  left: -100% !important;
-  bottom: -100% !important;
-  right: -100% !important;
-  background: radial-gradient(ellipse 200% 100% at center,
-    rgba(138, 43, 226, 0.08) 0%,
-    rgba(75, 0, 130, 0.05) 30%,
-    rgba(0, 255, 255, 0.03) 60%,
-    transparent 80%) !important;
+  top: -50% !important;
+  left: -50% !important;
+  bottom: -50% !important;
+  right: -50% !important;
+  background:
+    radial-gradient(ellipse at 30% 50%, rgba(138, 43, 226, 0.3) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 50%, rgba(0, 255, 255, 0.2) 0%, transparent 50%),
+    radial-gradient(ellipse at center bottom, rgba(75, 0, 130, 0.4) 0%, transparent 70%) !important;
   z-index: -1 !important;
-  filter: blur(60px) !important;
-  transform: scale(1.5) !important;
+  filter: blur(80px) !important;
+  mix-blend-mode: screen !important;
+  opacity: 0.6 !important;
 }
 
-/* The animated moving grid */
+/* The animated moving grid with glassy fade */
 .tron-grid::after {
   content: "" !important;
   position: absolute !important;
@@ -318,8 +318,20 @@ h1, h2, h3, h4, h5, h6 {
   background-size: 40px 40px !important;
   width: 100% !important;
   height: 200% !important;
-  animation: slidegrid 8s linear infinite !important;
+  animation: slidegrid 12s linear infinite !important;
   filter: drop-shadow(0 0 8px rgba(0, 255, 255, 0.6)) !important;
+  mask-image: linear-gradient(to top,
+    rgba(0,0,0,0) 0%,
+    rgba(0,0,0,0.3) 20%,
+    rgba(0,0,0,0.6) 40%,
+    rgba(0,0,0,0.8) 60%,
+    rgba(0,0,0,1) 100%) !important;
+  -webkit-mask-image: linear-gradient(to top,
+    rgba(0,0,0,0) 0%,
+    rgba(0,0,0,0.3) 20%,
+    rgba(0,0,0,0.6) 40%,
+    rgba(0,0,0,0.8) 60%,
+    rgba(0,0,0,1) 100%) !important;
 }
 
 @keyframes slidegrid {
