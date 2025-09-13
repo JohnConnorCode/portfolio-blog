@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import Link from 'next/link'
 import { useTheme } from 'next-themes'
-import { TronGrid } from './TronGrid'
 
 interface HeroContent {
   heroTitle?: string
@@ -244,8 +243,22 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
         }}
       />
       
-      {/* Canvas-based Tron Grid - No flickering */}
-      <TronGrid />
+      {/* Simple Tron Grid that WORKS */}
+      <div 
+        className="absolute inset-0 overflow-hidden pointer-events-none"
+        style={{ zIndex: 5 }}
+      >
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: 'linear-gradient(to right, rgba(0, 255, 255, 0.5) 2px, transparent 2px), linear-gradient(to bottom, rgba(0, 255, 255, 0.5) 2px, transparent 2px)',
+            backgroundSize: '50px 50px',
+            transform: 'perspective(500px) rotateX(60deg)',
+            transformOrigin: 'bottom center',
+            opacity: 0.8
+          }}
+        />
+      </div>
       
       {/* Nebula-like color accents */}
       <div 
