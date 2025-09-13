@@ -20,8 +20,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
   const containerRef = useRef<HTMLDivElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
-  const [mounted, setMounted] = useState(false)
-  // Force dark mode only
+  // Force dark mode - no theme checking
   const isDark = true
   
   const { scrollYProgress } = useScroll({
@@ -31,11 +30,6 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
   
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
   const scale = useTransform(scrollYProgress, [0, 0.5], [1, 1.1])
-  
-  // Wait for client-side mount
-  useEffect(() => {
-    setMounted(true)
-  }, [])
   
   // Track mouse for interactive effects
   useEffect(() => {
@@ -48,14 +42,12 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
   
   // Enhanced twinkling stars effect with movement
   useEffect(() => {
-    if (!mounted) return
-
     const canvas = canvasRef.current
     if (!canvas) return
-
+    
     const ctx = canvas.getContext('2d')
     if (!ctx) return
-
+    
     const dpr = window.devicePixelRatio || 1
     canvas.width = window.innerWidth * dpr
     canvas.height = window.innerHeight * dpr
@@ -214,63 +206,44 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
       cancelAnimationFrame(animationId)
       window.removeEventListener('resize', handleResize)
     }
-  }, [isDark, mounted])
+  }, [isDark])
   
   // Split title into letters for animation
   const titleLetters = heroContent.heroTitle.split('')
   
-  // Don't render theme-dependent content until mounted
-  if (!mounted) {
-    return (
-      <section ref={containerRef} className="relative min-h-screen overflow-hidden -mt-24 pt-24 bg-black">
-        <div className="relative z-20 min-h-screen flex items-center justify-center px-4">
-          <div className="max-w-6xl mx-auto text-center">
-            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black tracking-wider mb-12 text-white">
-              {heroContent.heroTitle}
-            </h1>
-          </div>
-        </div>
-      </section>
-    )
-  }
-  
   return (
-    <section ref={containerRef} className="relative min-h-screen overflow-hidden -mt-24 pt-16 sm:pt-24 bg-black">
+    <section ref={containerRef} className="relative min-h-screen overflow-hidden -mt-24 pt-24 bg-black">
       {/* Enhanced twinkling stars canvas */}
       <canvas
         ref={canvasRef}
         className="absolute inset-0"
-        style={{
+        style={{ 
           opacity: isDark ? 1 : 0.4,
-          mixBlendMode: isDark ? 'screen' : 'multiply',
-          zIndex: 1
+          mixBlendMode: isDark ? 'screen' : 'multiply'
         }}
       />
       
       {/* Deep space gradient background - Tron style for light mode */}
-      <div
+      <div 
         className="absolute inset-0"
         style={{
           background: isDark ? `
-            radial-gradient(ellipse at top,
-              rgba(10, 20, 40, 0.3) 0%,
-              rgba(0, 0, 0, 0.7) 100%
+            radial-gradient(ellipse at top, 
+              rgba(10, 20, 40, 0.5) 0%, 
+              rgba(0, 0, 0, 0.9) 100%
             )
           ` : `
-            linear-gradient(135deg,
-              rgba(255, 237, 213, 1) 0%,
-              rgba(255, 218, 185, 1) 25%,
-              rgba(135, 206, 235, 1) 60%,
-              rgba(100, 180, 220, 1) 100%
+            linear-gradient(135deg, 
+              rgba(0, 30, 60, 1) 0%, 
+              rgba(0, 60, 120, 1) 50%,
+              rgba(0, 100, 150, 1) 100%
             )
-          `,
-          zIndex: 0
+          `
         }}
       />
       
-      {/* Tron Grid - Only in hero section */}
+      {/* Tron Grid - CSS handles all styling with pseudo-elements */}
       <div className="tron-grid" />
-
       
       {/* Nebula-like color accents */}
       <div 
@@ -318,7 +291,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
       
       <motion.div
         style={{ opacity, scale }}
-        className="relative z-20 min-h-screen flex items-center justify-center px-4 pt-0 sm:pt-8"
+        className="relative z-20 min-h-screen flex items-center justify-center px-4"
       >
         <div className="max-w-6xl mx-auto text-center">
           {/* Animated title with permanent glow and floating effect */}
@@ -341,7 +314,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                 ? 'drop-shadow(0 15px 25px rgba(0, 0, 0, 0.5))'
                 : 'none',
               transform: 'translateZ(50px)',
-              color: isDark ? 'white' : '#ff6b35'
+              color: isDark ? 'white' : '#00d4ff'
             }}
           >
             <span className="relative inline-block">
@@ -368,7 +341,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                   }}
                   whileHover={{
                     y: -5,
-                    color: isDark ? 'rgb(0, 255, 255)' : '#ff8c42',
+                    color: isDark ? 'rgb(0, 255, 255)' : '#00ffff',
                     transition: { duration: 0.2 }
                   }}
                   style={{ transformStyle: 'preserve-3d' }}
@@ -379,7 +352,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
             </span>
           </motion.h1>
           
-          {/* Description with better readability */}
+          {/* Description - more prominent and elegant */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -391,20 +364,13 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
             className="mb-12"
           >
             <p className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light leading-relaxed max-w-4xl mx-auto ${
-              isDark ? 'text-white/95' : 'text-gray-800'
-            }`}
-              style={{
-                textShadow: isDark 
-                  ? '0 2px 10px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 0, 0, 0.5)'
-                  : '0 1px 3px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6)',
-                backdropFilter: 'blur(1px)',
-                fontWeight: isDark ? '300' : '500'
-              }}>
+              isDark ? 'text-white/90' : 'text-cyan-100'
+            }`}>
               {heroContent.heroDescription}
             </p>
           </motion.div>
           
-          {/* Highlight text with enhanced readability */}
+          {/* Highlight text with gradient reveal - refined */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -424,17 +390,11 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                 duration: 1.5
               }}
             >
-              <span className={`font-bold inline-block leading-relaxed ${
+              <span className={`text-transparent bg-clip-text font-medium inline-block leading-relaxed ${
                 isDark 
-                  ? 'text-white'
-                  : 'text-orange-600'
-              }`}
-                style={{
-                  textShadow: isDark 
-                    ? '0 2px 10px rgba(0, 255, 255, 0.4), 0 0 20px rgba(0, 200, 255, 0.3)'
-                    : '0 1px 3px rgba(255, 255, 255, 0.9), 0 0 15px rgba(255, 255, 255, 0.7)',
-                  filter: isDark ? 'drop-shadow(0 0 15px rgba(0, 200, 255, 0.2))' : 'none'
-                }}>
+                  ? 'bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400'
+                  : 'bg-gradient-to-r from-cyan-300 via-blue-300 to-cyan-300'
+              }`}>
                 {heroContent.heroHighlight}
               </span>
             </motion.p>
@@ -469,7 +429,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                   className={`px-8 py-4 font-semibold rounded-lg transition-all w-full sm:w-auto ${
                     isDark 
                       ? 'bg-white text-black hover:bg-gray-200' 
-                      : 'bg-orange-500 text-white hover:bg-orange-600'
+                      : 'bg-cyan-500 text-black hover:bg-cyan-400'
                   }`}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -499,7 +459,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                   className={`px-8 py-4 font-semibold rounded-lg border-2 transition-all w-full sm:w-auto ${
                     isDark 
                       ? 'border-white/30 text-white hover:bg-white/10' 
-                      : 'border-orange-400 text-orange-600 hover:bg-orange-100/50'
+                      : 'border-cyan-400 text-cyan-300 hover:bg-cyan-900/30'
                   }`}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
