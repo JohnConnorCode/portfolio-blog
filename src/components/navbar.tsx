@@ -80,7 +80,7 @@ export function Navbar() {
                   </div>
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-2xl font-bold tracking-tight">
+                  <span className="text-xl md:text-2xl font-bold tracking-tight">
                     John Connor
                   </span>
                   <span className="text-xs text-muted-foreground uppercase tracking-widest">

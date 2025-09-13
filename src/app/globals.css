@@ -298,22 +298,26 @@ h1, h2, h3, h4, h5, h6 {
     rgba(0,0,0,0) 100%) !important;
 }
 
-/* Vaporwave gradient - diffused drop shadow, stronger at horizon */
+/* Vaporwave gradient - radial effect at horizon center */
 .tron-grid::before {
   content: "" !important;
   position: absolute !important;
-  top: -20% !important;
-  left: -20% !important;
-  right: -20% !important;
-  height: 80% !important;
+  top: 0 !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: 200% !important;
+  height: 60% !important;
   background: radial-gradient(ellipse at center top,
-    rgba(138, 43, 226, 0.5) 0%,
-    rgba(75, 0, 130, 0.3) 20%,
-    rgba(0, 255, 255, 0.2) 40%,
-    transparent 70%) !important;
-  z-index: -1 !important;
-  filter: blur(60px) !important;
+    rgba(138, 43, 226, 0.8) 0%,
+    rgba(75, 0, 130, 0.6) 10%,
+    rgba(0, 255, 255, 0.5) 20%,
+    rgba(255, 0, 255, 0.4) 30%,
+    rgba(138, 43, 226, 0.2) 40%,
+    transparent 60%) !important;
+  z-index: 1 !important;
+  filter: blur(40px) !important;
   pointer-events: none !important;
+  mix-blend-mode: screen !important;
 }
 
 /* The animated moving grid */
