@@ -243,40 +243,54 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
         }}
       />
       
-      {/* Cyberpunk Grid - HIGHLY VISIBLE TRON STYLE */}
+      {/* Tron Grid - Full screen flat grid with animation */}
+      <div 
+        style={{
+          position: 'absolute',
+          inset: 0,
+          backgroundImage: `
+            linear-gradient(to right, ${isDark ? 'rgba(0, 255, 255, 0.4)' : 'rgba(0, 150, 255, 0.6)'} 1px, transparent 1px),
+            linear-gradient(to bottom, ${isDark ? 'rgba(0, 255, 255, 0.4)' : 'rgba(0, 150, 255, 0.6)'} 1px, transparent 1px)
+          `,
+          backgroundSize: '50px 50px',
+          zIndex: 5,
+          pointerEvents: 'none',
+          opacity: isDark ? 0.6 : 0.8
+        }}
+      />
+      
+      {/* Perspective Grid - Bottom portion with 3D effect and animation */}
       <div 
         style={{
           position: 'absolute',
           left: 0,
           right: 0,
           bottom: 0,
-          height: '100%',
+          height: '70%',
           overflow: 'hidden',
-          zIndex: 5,
+          zIndex: 6,
           pointerEvents: 'none'
         }}
       >
         <div
           style={{
             position: 'absolute',
-            left: '-100%',
-            right: '-100%',
-            top: '50%',
-            bottom: '-50%',
-            width: '300%',
-            height: '150%',
+            left: '-50%',
+            right: '-50%',
+            top: 0,
+            width: '200%',
+            height: '200%',
             backgroundImage: `
-              linear-gradient(to right, rgba(0, 255, 255, 1) 4px, transparent 4px),
-              linear-gradient(to bottom, rgba(0, 255, 255, 1) 4px, transparent 4px)
+              linear-gradient(to right, ${isDark ? 'rgba(0, 255, 255, 1)' : 'rgba(0, 150, 255, 1)'} 3px, transparent 3px),
+              linear-gradient(to bottom, ${isDark ? 'rgba(0, 255, 255, 1)' : 'rgba(0, 150, 255, 1)'} 3px, transparent 3px)
             `,
-            backgroundSize: '50px 50px',
+            backgroundSize: '60px 60px',
             backgroundPosition: 'center 0%',
-            transform: 'perspective(500px) rotateX(75deg)',
-            transformOrigin: 'center center',
-            animation: 'gridScroll 8s linear infinite',
-            opacity: 1,
-            maskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.2) 20%, rgba(0,0,0,1) 50%, black 100%)',
-            WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.2) 20%, rgba(0,0,0,1) 50%, black 100%)'
+            transform: 'perspective(1000px) rotateX(65deg)',
+            transformOrigin: 'bottom center',
+            animation: 'gridScroll 10s linear infinite',
+            maskImage: 'linear-gradient(to bottom, transparent, rgba(0,0,0,0.5) 30%, rgba(0,0,0,0.9) 60%, black)',
+            WebkitMaskImage: 'linear-gradient(to bottom, transparent, rgba(0,0,0,0.5) 30%, rgba(0,0,0,0.9) 60%, black)'
           }}
         />
       </div>
