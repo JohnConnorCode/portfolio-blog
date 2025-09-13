@@ -5,7 +5,12 @@ import { ReactNode } from 'react'
 
 export function Providers({ children }: { children: ReactNode }) {
   return (
-    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+    <ThemeProvider 
+      attribute="class" 
+      defaultTheme="dark" 
+      enableSystem={false}
+      forcedTheme="dark"
+    >
       {children}
     </ThemeProvider>
   )

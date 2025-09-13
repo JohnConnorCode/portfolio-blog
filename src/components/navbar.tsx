@@ -4,8 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Moon, Sun, Briefcase, BookOpen, Home, Mail, Brain, MessageSquare } from 'lucide-react'
-import { useTheme } from 'next-themes'
+import { Menu, X, Briefcase, BookOpen, Home, Mail, Brain, MessageSquare } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const navItems = [
@@ -21,11 +20,8 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const pathname = usePathname()
-  const { theme, setTheme } = useTheme()
-  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    setMounted(true)
     const handleScroll = () => {
       setScrolled(window.scrollY > 20)
     }
@@ -137,22 +133,7 @@ export function Navbar() {
           </div>
 
           <div className="flex items-center space-x-4">
-            {mounted && (
-              <motion.button
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                className="p-2 rounded-lg bg-primary/10 hover:bg-primary/20 transition-colors"
-              >
-                {theme === 'dark' ? (
-                  <Sun className="w-5 h-5" />
-                ) : (
-                  <Moon className="w-5 h-5" />
-                )}
-              </motion.button>
-            )}
+            {/* Theme toggle disabled - dark mode only */}
 
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -221,23 +202,7 @@ export function Navbar() {
             
             {/* Theme toggle in mobile menu */}
             <div className="absolute bottom-6 left-6 right-6">
-              <div className="p-4 bg-foreground/5 rounded-lg">
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-muted-foreground">Theme</span>
-                  {mounted && (
-                    <button
-                      onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                      className="p-2 rounded-lg bg-primary/10 hover:bg-primary/20 transition-colors"
-                    >
-                      {theme === 'dark' ? (
-                        <Sun className="w-5 h-5" />
-                      ) : (
-                        <Moon className="w-5 h-5" />
-                      )}
-                    </button>
-                  )}
-                </div>
-              </div>
+              {/* Theme toggle disabled - dark mode only */}
             </div>
           </motion.div>
         )}

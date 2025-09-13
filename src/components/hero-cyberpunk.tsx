@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import Link from 'next/link'
-import { useTheme } from 'next-themes'
 
 interface HeroContent {
   heroTitle?: string
@@ -22,8 +21,8 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
   const [mounted, setMounted] = useState(false)
-  const { theme } = useTheme()
-  const isDark = mounted ? theme === 'dark' : true // Default to dark during SSR
+  // Force dark mode only
+  const isDark = true
   
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -266,22 +265,8 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
       />
       
       {/* Tron Grid - Only in hero section */}
-      <div 
-        className="tron-grid"
-        style={{
-          position: 'absolute',
-          zIndex: 5,
-          left: 0,
-          right: 0,
-          top: '40%',
-          bottom: 0,
-          opacity: isDark ? 0.5 : 0.6,
-          transformOrigin: 'center top',
-          transform: 'perspective(200px) rotateX(60.5deg) scale(1.5, 0.5) translateZ(0)',
-          backfaceVisibility: 'hidden',
-          overflow: 'hidden',
-          pointerEvents: 'none'
-        }}
+      <div
+        className="hero-grid"
       >
         {/* Gradient fade to horizon - more glassy */}
         <div
