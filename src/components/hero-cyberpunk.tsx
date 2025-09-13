@@ -390,11 +390,17 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                 duration: 1.5
               }}
             >
-              <span className={`text-transparent bg-clip-text font-medium inline-block leading-relaxed ${
-                isDark 
-                  ? 'bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400'
-                  : 'bg-gradient-to-r from-cyan-300 via-blue-300 to-cyan-300'
-              }`}>
+              <span className={`font-bold inline-block leading-relaxed ${
+                isDark
+                  ? 'text-cyan-400'
+                  : 'text-cyan-600'
+              }`}
+              style={{
+                textShadow: isDark
+                  ? '0 0 20px rgba(0, 255, 255, 0.5), 0 0 40px rgba(0, 255, 255, 0.3), 0 2px 4px rgba(0, 0, 0, 0.8)'
+                  : '0 2px 4px rgba(0, 0, 0, 0.2)',
+                filter: 'drop-shadow(0 0 10px rgba(0, 255, 255, 0.4))'
+              }}>
                 {heroContent.heroHighlight}
               </span>
             </motion.p>
