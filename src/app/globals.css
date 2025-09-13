@@ -356,49 +356,19 @@ h1, h2, h3, h4, h5, h6 {
 /* Vaporwave setting sun - glassy shadow half-orb at horizon */
 .vaporwave-sun {
   position: absolute !important;
-  top: 0 !important;
+  bottom: 28% !important;
   left: 50% !important;
   transform: translateX(-50%) !important;
-  width: 400px !important;
-  height: 200px !important;
-  z-index: 2 !important;
+  width: 600px !important;
+  height: 300px !important;
+  z-index: 4 !important;
   pointer-events: none !important;
-  overflow: hidden !important;
-}
-
-.vaporwave-sun::before {
-  content: "" !important;
-  position: absolute !important;
-  bottom: -100px !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  width: 400px !important;
-  height: 400px !important;
-  background: radial-gradient(circle at center,
-    rgba(255, 100, 200, 0.15) 0%,
-    rgba(255, 200, 0, 0.1) 20%,
-    rgba(138, 43, 226, 0.08) 40%,
-    rgba(0, 255, 255, 0.05) 60%,
-    transparent 80%) !important;
-  border-radius: 50% !important;
-  filter: blur(20px) !important;
-  mix-blend-mode: screen !important;
-}
-
-.vaporwave-sun::after {
-  content: "" !important;
-  position: absolute !important;
-  bottom: -150px !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  width: 500px !important;
-  height: 500px !important;
-  background: radial-gradient(circle at center,
-    transparent 30%,
-    rgba(255, 100, 200, 0.1) 40%,
-    rgba(138, 43, 226, 0.05) 60%,
-    transparent 80%) !important;
-  border-radius: 50% !important;
-  filter: blur(40px) !important;
+  background: radial-gradient(ellipse at center bottom,
+    rgba(255, 100, 200, 0.2) 0%,
+    rgba(255, 200, 0, 0.15) 10%,
+    rgba(138, 43, 226, 0.1) 20%,
+    rgba(0, 255, 255, 0.08) 30%,
+    transparent 50%) !important;
+  filter: blur(30px) !important;
   mix-blend-mode: screen !important;
 }
