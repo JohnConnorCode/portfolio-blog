@@ -238,7 +238,16 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* HERO GRID ANIMATION - MUST BE VISIBLE */
+/* TRON GRID ANIMATION - Forward motion */
+@keyframes tronGridMove {
+  0% { 
+    background-position: center 0px;
+  }
+  100% { 
+    background-position: center 100px;
+  }
+}
+
 @keyframes gridScroll {
   0% { background-position: center 0; }
   100% { background-position: center 40px; }

@@ -243,54 +243,71 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
         }}
       />
       
-      {/* Tron Grid - Full screen flat grid with animation */}
+      {/* PROPER TRON GRID - Like the classic 80s style */}
       <div 
-        style={{
-          position: 'absolute',
-          inset: 0,
-          backgroundImage: `
-            linear-gradient(to right, ${isDark ? 'rgba(0, 255, 255, 0.4)' : 'rgba(0, 150, 255, 0.6)'} 1px, transparent 1px),
-            linear-gradient(to bottom, ${isDark ? 'rgba(0, 255, 255, 0.4)' : 'rgba(0, 150, 255, 0.6)'} 1px, transparent 1px)
-          `,
-          backgroundSize: '50px 50px',
-          zIndex: 5,
-          pointerEvents: 'none',
-          opacity: isDark ? 0.6 : 0.8
-        }}
-      />
-      
-      {/* Perspective Grid - Bottom portion with 3D effect and animation */}
-      <div 
+        className="tron-grid-container"
         style={{
           position: 'absolute',
           left: 0,
           right: 0,
+          top: '20%',  // Start higher up
           bottom: 0,
-          height: '70%',
-          overflow: 'hidden',
-          zIndex: 6,
-          pointerEvents: 'none'
+          perspective: '600px',
+          perspectiveOrigin: '50% -20%',
+          zIndex: 5,
+          pointerEvents: 'none',
+          overflow: 'hidden'
         }}
       >
+        {/* Grid floor that extends to horizon */}
+        <div
+          className="tron-grid"
+          style={{
+            position: 'absolute',
+            left: '-300%',
+            right: '-300%',
+            top: '-50%',
+            bottom: '-400%',
+            width: '600%',
+            height: '550%',
+            backgroundImage: `
+              linear-gradient(to right, rgba(0, 255, 255, 1) 3px, transparent 3px),
+              linear-gradient(to bottom, rgba(0, 255, 255, 1) 3px, transparent 3px)
+            `,
+            backgroundSize: '100px 100px',
+            backgroundPosition: 'center center',
+            transform: 'rotateX(80deg) translateZ(-150px)',
+            transformOrigin: 'center center',
+            animation: 'tronGridMove 4s linear infinite',
+            filter: 'drop-shadow(0 0 15px rgba(0, 255, 255, 0.8))',
+            opacity: 1
+          }}
+        />
+        
+        {/* Stronger glow effect for the horizon */}
         <div
           style={{
             position: 'absolute',
-            left: '-50%',
-            right: '-50%',
+            left: 0,
+            right: 0,
             top: 0,
-            width: '200%',
-            height: '200%',
-            backgroundImage: `
-              linear-gradient(to right, ${isDark ? 'rgba(0, 255, 255, 1)' : 'rgba(0, 150, 255, 1)'} 3px, transparent 3px),
-              linear-gradient(to bottom, ${isDark ? 'rgba(0, 255, 255, 1)' : 'rgba(0, 150, 255, 1)'} 3px, transparent 3px)
-            `,
-            backgroundSize: '60px 60px',
-            backgroundPosition: 'center 0%',
-            transform: 'perspective(1000px) rotateX(65deg)',
-            transformOrigin: 'bottom center',
-            animation: 'gridScroll 10s linear infinite',
-            maskImage: 'linear-gradient(to bottom, transparent, rgba(0,0,0,0.5) 30%, rgba(0,0,0,0.9) 60%, black)',
-            WebkitMaskImage: 'linear-gradient(to bottom, transparent, rgba(0,0,0,0.5) 30%, rgba(0,0,0,0.9) 60%, black)'
+            height: '40%',
+            background: 'linear-gradient(to bottom, rgba(0, 255, 255, 0.3), transparent)',
+            pointerEvents: 'none',
+            filter: 'blur(20px)'
+          }}
+        />
+        
+        {/* Add grid lines on the sides for more depth */}
+        <div
+          style={{
+            position: 'absolute',
+            left: 0,
+            width: '100%',
+            top: '40%',
+            height: '2px',
+            background: 'linear-gradient(to right, transparent, rgba(0, 255, 255, 0.8), transparent)',
+            boxShadow: '0 0 20px rgba(0, 255, 255, 0.6)'
           }}
         />
       </div>
