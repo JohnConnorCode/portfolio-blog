@@ -263,8 +263,11 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
         }}
       />
       
+      {/* Vaporwave setting sun */}
+      <div className="vaporwave-sun" />
+
       {/* Interactive glow that follows mouse */}
-      <div 
+      <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background: `radial-gradient(
@@ -298,7 +301,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
           <motion.h1
             initial="hidden"
             animate="visible"
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black tracking-wider mb-12 relative"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-wider mb-12 relative"
             // Remove whole text hover effect
             style={{ 
               lineHeight: 0.9,
