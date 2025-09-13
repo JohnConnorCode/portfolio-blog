@@ -224,7 +224,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
         }}
       />
       
-      {/* Deep space gradient background */}
+      {/* Deep space gradient background - Tron style for light mode */}
       <div 
         className="absolute inset-0"
         style={{
@@ -235,39 +235,39 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
             )
           ` : `
             linear-gradient(135deg, 
-              #667eea 0%, 
-              #764ba2 100%
+              rgba(0, 30, 60, 1) 0%, 
+              rgba(0, 60, 120, 1) 50%,
+              rgba(0, 100, 150, 1) 100%
             )
           `
         }}
       />
       
-      {/* Cyberpunk Grid - properly extends and moves toward horizon */}
+      {/* Cyberpunk Grid - MUST BE VISIBLE */}
       <div 
-        className="hero-grid absolute inset-0 pointer-events-none overflow-hidden"
-        style={{ zIndex: 5 }}
-      >
-        <div 
-          className="absolute -left-1/2 -right-1/2 -bottom-1/2"
-          style={{
-            width: '200%',
-            height: '200%',
-            top: '30%',
-            backgroundImage: `
-              linear-gradient(to right, ${isDark ? 'rgba(0, 255, 255, 0.6)' : 'rgba(147, 51, 234, 0.8)'} 2px, transparent 2px),
-              linear-gradient(to bottom, ${isDark ? 'rgba(0, 255, 255, 0.6)' : 'rgba(147, 51, 234, 0.8)'} 2px, transparent 2px)
-            `,
-            backgroundSize: '40px 40px',
-            backgroundPosition: 'center 0px',
-            opacity: isDark ? 0.6 : 0.7,
-            transform: 'perspective(800px) rotateX(70deg)',
-            transformOrigin: 'center 80%',
-            maskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.3) 25%, rgba(0,0,0,0.8) 60%, black 100%)',
-            WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.3) 25%, rgba(0,0,0,0.8) 60%, black 100%)',
-            animation: 'gridScroll 10s linear infinite',
-          }}
-        />
-      </div>
+        className="hero-grid"
+        style={{
+          position: 'absolute',
+          left: '-50%',
+          right: '-50%',
+          bottom: '-50%',
+          top: '25%',
+          width: '200%',
+          height: '200%',
+          backgroundImage: `
+            linear-gradient(to right, ${isDark ? 'rgba(0, 255, 255, 0.8)' : 'rgba(0, 200, 255, 1)'} 3px, transparent 3px),
+            linear-gradient(to bottom, ${isDark ? 'rgba(0, 255, 255, 0.8)' : 'rgba(0, 200, 255, 1)'} 3px, transparent 3px)
+          `,
+          backgroundSize: '40px 40px',
+          backgroundPosition: 'center 0',
+          opacity: isDark ? 0.7 : 0.9,
+          transform: 'perspective(900px) rotateX(65deg)',
+          transformOrigin: 'center 80%',
+          animation: 'gridScroll 10s linear infinite',
+          zIndex: 5,
+          pointerEvents: 'none'
+        }}
+      />
       
       {/* Nebula-like color accents */}
       <div 
@@ -338,7 +338,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                 ? 'drop-shadow(0 15px 25px rgba(0, 0, 0, 0.5))'
                 : 'none',
               transform: 'translateZ(50px)',
-              color: isDark ? 'white' : '#1e1b4b'
+              color: isDark ? 'white' : '#00d4ff'
             }}
           >
             <span className="relative inline-block">
@@ -365,7 +365,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                   }}
                   whileHover={{
                     y: -5,
-                    color: isDark ? 'rgb(0, 255, 255)' : '#6b21a8',
+                    color: isDark ? 'rgb(0, 255, 255)' : '#00ffff',
                     transition: { duration: 0.2 }
                   }}
                   style={{ transformStyle: 'preserve-3d' }}
@@ -388,7 +388,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
             className="mb-12"
           >
             <p className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light leading-relaxed max-w-4xl mx-auto ${
-              isDark ? 'text-white/90' : 'text-purple-900'
+              isDark ? 'text-white/90' : 'text-cyan-100'
             }`}>
               {heroContent.heroDescription}
             </p>
@@ -417,7 +417,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
               <span className={`text-transparent bg-clip-text font-medium inline-block leading-relaxed ${
                 isDark 
                   ? 'bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400'
-                  : 'bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600'
+                  : 'bg-gradient-to-r from-cyan-300 via-blue-300 to-cyan-300'
               }`}>
                 {heroContent.heroHighlight}
               </span>
@@ -453,7 +453,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                   className={`px-8 py-4 font-semibold rounded-lg transition-all w-full sm:w-auto ${
                     isDark 
                       ? 'bg-white text-black hover:bg-gray-200' 
-                      : 'bg-purple-900 text-white hover:bg-purple-800'
+                      : 'bg-cyan-500 text-black hover:bg-cyan-400'
                   }`}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -483,7 +483,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                   className={`px-8 py-4 font-semibold rounded-lg border-2 transition-all w-full sm:w-auto ${
                     isDark 
                       ? 'border-white/30 text-white hover:bg-white/10' 
-                      : 'border-purple-900 text-purple-900 hover:bg-purple-100'
+                      : 'border-cyan-400 text-cyan-300 hover:bg-cyan-900/30'
                   }`}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -507,14 +507,14 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 1.5, repeat: Infinity }}
           className={`w-6 h-10 border-2 rounded-full flex justify-center ${
-            isDark ? 'border-white/30' : 'border-purple-900/40'
+            isDark ? 'border-white/30' : 'border-cyan-400/60'
           }`}
         >
           <motion.div
             animate={{ y: [0, 12, 0] }}
             transition={{ duration: 1.5, repeat: Infinity }}
             className={`w-1 h-3 rounded-full mt-2 ${
-              isDark ? 'bg-white/50' : 'bg-purple-900/60'
+              isDark ? 'bg-white/50' : 'bg-cyan-400/80'
             }`}
           />
         </motion.div>

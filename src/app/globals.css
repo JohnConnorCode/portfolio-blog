@@ -237,3 +237,37 @@ h1, h2, h3, h4, h5, h6 {
     transition: filter 0.5s ease;
   }
 }
+
+/* HERO GRID ANIMATION - MUST BE VISIBLE */
+@keyframes gridScroll {
+  0% { background-position: center 0; }
+  100% { background-position: center 40px; }
+}
+
+/* HERO GRID STYLES - MAXIMUM VISIBILITY */
+.hero-grid {
+  position: absolute !important;
+  left: -50% !important;
+  right: -50% !important;
+  bottom: -50% !important;
+  top: 25% !important;
+  width: 200% !important;
+  height: 200% !important;
+  background-image:
+    linear-gradient(to right, rgba(0, 255, 255, 1) 4px, transparent 4px),
+    linear-gradient(to bottom, rgba(0, 255, 255, 1) 4px, transparent 4px) !important;
+  background-size: 40px 40px !important;
+  background-position: center 0 !important;
+  opacity: 1 !important;
+  transform: perspective(900px) rotateX(65deg) !important;
+  transform-origin: center 80% !important;
+  animation: gridScroll 10s linear infinite !important;
+  z-index: 5 !important;
+  pointer-events: none !important;
+}
+
+.dark .hero-grid {
+  background-image:
+    linear-gradient(to right, rgba(0, 255, 255, 0.8) 3px, transparent 3px),
+    linear-gradient(to bottom, rgba(0, 255, 255, 0.8) 3px, transparent 3px) !important;
+}

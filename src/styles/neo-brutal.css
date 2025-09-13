@@ -131,7 +131,7 @@
 @keyframes gridScroll {
   /* Moves the tiled background forward toward the horizon */
   0% { background-position: center 0; }
-  100% { background-position: center 400px; }
+  100% { background-position: center 40px; }
 }
 
 @keyframes nebulaPulse {
@@ -152,50 +152,52 @@
   }
 }
 
-/* Themed variables for the hero grid lines */
+/* Themed variables for the hero grid lines - TRON STYLE */
 :root {
-  --hero-grid-line: rgba(147, 51, 234, 0.55); /* light mode purple */
+  --hero-grid-line: rgba(0, 200, 255, 1); /* light mode electric blue TRON FULL OPACITY */
   --hero-grid-size: 40px 40px;
-  --hero-grid-opacity: 0.5;
+  --hero-grid-opacity: 1;
 }
 .dark {
-  --hero-grid-line: rgba(0, 255, 255, 0.5); /* dark mode cyan */
+  --hero-grid-line: rgba(0, 255, 255, 1); /* dark mode cyan FULL OPACITY */
   --hero-grid-size: 40px 40px;
-  --hero-grid-opacity: 0.45;
+  --hero-grid-opacity: 1;
 }
 
-/* Dedicated hero grid with perspective + motion */
+/* Dedicated hero grid with perspective + motion - MAXIMUM VISIBILITY */
 .hero-grid {
   position: absolute;
   left: -50%;
   right: -50%;
   bottom: -50%;
-  top: 30%;
+  top: 25%;
   width: 200%;
   height: 200%;
   background-image:
-    linear-gradient(to right, var(--hero-grid-line) 2px, transparent 2px),
-    linear-gradient(to bottom, var(--hero-grid-line) 2px, transparent 2px);
+    linear-gradient(to right, var(--hero-grid-line) 4px, transparent 4px),
+    linear-gradient(to bottom, var(--hero-grid-line) 4px, transparent 4px);
   background-size: var(--hero-grid-size);
   background-position: center 0;
   opacity: var(--hero-grid-opacity);
-  transform: perspective(900px) rotateX(68deg);
+  transform: perspective(900px) rotateX(65deg);
   transform-origin: center 80%;
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.2) 20%, rgba(0,0,0,0.6) 55%, black 100%);
-          mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.2) 20%, rgba(0,0,0,0.6) 55%, black 100%);
-  animation: gridScroll 12s linear infinite;
+  animation: gridScroll 10s linear infinite;
   will-change: background-position, transform;
+  z-index: 5;
+  pointer-events: none;
 }
 
-/* Subtle intersection glow using blend for extra pop */
+/* Enhanced grid glow for visibility */
 .hero-grid::after {
   content: '';
   position: absolute;
-  inset: -2px;
+  inset: 0;
   background-image:
-    radial-gradient(circle at center, rgba(255,255,255,0.06), transparent 70%);
-  background-size: calc(var(--hero-grid-size, 40px 40px) * 1);
-  mix-blend-mode: screen;
+    linear-gradient(to right, var(--hero-grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--hero-grid-line) 1px, transparent 1px);
+  background-size: var(--hero-grid-size);
+  opacity: 0.3;
+  filter: blur(1px);
   pointer-events: none;
 }
 
