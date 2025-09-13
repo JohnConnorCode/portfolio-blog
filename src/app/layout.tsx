@@ -134,20 +134,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className="dark" style={{ colorScheme: 'dark' }}>
       <body
         className={`${alata.variable} ${jetbrainsMono.variable} font-sans antialiased min-h-screen flex flex-col dark`}
       >
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                document.documentElement.classList.add('dark');
-                localStorage.setItem('theme', 'dark');
-              })();
-            `,
-          }}
-        />
         <Providers>
           <CustomCursor />
           <NoiseTexture />

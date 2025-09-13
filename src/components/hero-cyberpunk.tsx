@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import Link from 'next/link'
 import { useTheme } from 'next-themes'
+import { TronGrid } from './TronGrid'
 
 interface HeroContent {
   heroTitle?: string
@@ -243,74 +244,8 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
         }}
       />
       
-      {/* PROPER TRON GRID - Like the classic 80s style */}
-      <div 
-        className="tron-grid-container"
-        style={{
-          position: 'absolute',
-          left: 0,
-          right: 0,
-          top: '20%',  // Start higher up
-          bottom: 0,
-          perspective: '600px',
-          perspectiveOrigin: '50% -20%',
-          zIndex: 5,
-          pointerEvents: 'none',
-          overflow: 'hidden'
-        }}
-      >
-        {/* Grid floor that extends to horizon */}
-        <div
-          className="tron-grid"
-          style={{
-            position: 'absolute',
-            left: '-300%',
-            right: '-300%',
-            top: '-50%',
-            bottom: '-400%',
-            width: '600%',
-            height: '550%',
-            backgroundImage: `
-              linear-gradient(to right, rgba(0, 255, 255, 1) 3px, transparent 3px),
-              linear-gradient(to bottom, rgba(0, 255, 255, 1) 3px, transparent 3px)
-            `,
-            backgroundSize: '100px 100px',
-            backgroundPosition: 'center center',
-            transform: 'rotateX(80deg) translateZ(-150px)',
-            transformOrigin: 'center center',
-            animation: 'tronGridMove 4s linear infinite',
-            filter: 'drop-shadow(0 0 15px rgba(0, 255, 255, 0.8))',
-            opacity: 1
-          }}
-        />
-        
-        {/* Stronger glow effect for the horizon */}
-        <div
-          style={{
-            position: 'absolute',
-            left: 0,
-            right: 0,
-            top: 0,
-            height: '40%',
-            background: 'linear-gradient(to bottom, rgba(0, 255, 255, 0.3), transparent)',
-            pointerEvents: 'none',
-            filter: 'blur(20px)'
-          }}
-        />
-        
-        {/* Add grid lines on the sides for more depth */}
-        <div
-          style={{
-            position: 'absolute',
-            left: 0,
-            width: '100%',
-            top: '40%',
-            height: '2px',
-            background: 'linear-gradient(to right, transparent, rgba(0, 255, 255, 0.8), transparent)',
-            boxShadow: '0 0 20px rgba(0, 255, 255, 0.6)'
-          }}
-        />
-      </div>
+      {/* Canvas-based Tron Grid - No flickering */}
+      <TronGrid />
       
       {/* Nebula-like color accents */}
       <div 
