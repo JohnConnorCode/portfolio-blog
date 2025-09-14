@@ -244,6 +244,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
       
       {/* Tron Grid - CSS handles all styling with pseudo-elements */}
       <div className="tron-grid" />
+      <div className="grid-glow" />
       
       {/* Nebula-like color accents */}
       <div 

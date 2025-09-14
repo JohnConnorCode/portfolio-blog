@@ -12,6 +12,7 @@ interface BlogPost {
   slug?: { current: string }
   excerpt?: string
   body?: any
+  htmlContent?: string
   publishedAt?: string
   author?: { name: string }
   categories?: Array<{ title: string }>
@@ -110,13 +111,15 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
         )}
 
         {/* Content */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
           className="prose prose-lg prose-neutral dark:prose-invert max-w-none"
         >
-          {post.body && (
+          {post.htmlContent ? (
+            <div dangerouslySetInnerHTML={{ __html: post.htmlContent }} />
+          ) : post.body ? (
             <PortableText 
               value={post.body}
               components={{
@@ -150,7 +153,7 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
                 },
               }}
             />
-          )}
+          ) : null}
         </motion.div>
 
         {/* Tags */}
