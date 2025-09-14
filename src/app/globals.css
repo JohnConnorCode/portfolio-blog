@@ -319,8 +319,9 @@ h1, h2, h3, h4, h5, h6 {
   will-change: transform !important;
   transform: translateZ(0) !important;
   backface-visibility: hidden !important;
-  image-rendering: auto !important;
-  -webkit-font-smoothing: antialiased !important;
+  image-rendering: optimizeSpeed !important;
+  -webkit-font-smoothing: subpixel-antialiased !important;
+  filter: blur(0.2px) !important;
 }
 
 @keyframes slidegrid {
