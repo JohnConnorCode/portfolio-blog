@@ -277,78 +277,59 @@ h1, h2, h3, h4, h5, h6 {
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
-  height: 70% !important;
-  opacity: 0.9 !important;
-  transform-origin: bottom center !important;
-  transform: perspective(800px) rotateX(65deg) scale(5) translateZ(0) !important;
-  backface-visibility: hidden !important;
+  height: 100% !important;
   overflow: hidden !important;
   pointer-events: none !important;
-  will-change: transform !important;
-  -webkit-font-smoothing: antialiased !important;
-  mask-image: linear-gradient(to bottom,
-    rgba(0,0,0,1) 0%,
-    rgba(0,0,0,0.9) 15%,
-    rgba(0,0,0,0.7) 30%,
-    rgba(0,0,0,0.4) 50%,
-    rgba(0,0,0,0.1) 70%,
-    rgba(0,0,0,0) 90%) !important;
-  -webkit-mask-image: linear-gradient(to bottom,
-    rgba(0,0,0,1) 0%,
-    rgba(0,0,0,0.9) 15%,
-    rgba(0,0,0,0.7) 30%,
-    rgba(0,0,0,0.4) 50%,
-    rgba(0,0,0,0.1) 70%,
-    rgba(0,0,0,0) 90%) !important;
+  transform-style: preserve-3d !important;
+  perspective: 1000px !important;
 }
 
-/* Vaporwave gradient - radial effect at horizon center */
-.tron-grid::before {
-  content: "" !important;
-  position: absolute !important;
-  top: -10% !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  width: 300% !important;
-  height: 80% !important;
-  background:
-    radial-gradient(circle at center 20%,
-      rgba(255, 120, 255, 0.9) 0%,
-      rgba(255, 0, 200, 0.7) 8%,
-      rgba(138, 43, 226, 0.6) 15%,
-      rgba(0, 255, 255, 0.4) 25%,
-      rgba(255, 0, 255, 0.3) 35%,
-      rgba(138, 43, 226, 0.15) 50%,
-      transparent 70%),
-    radial-gradient(ellipse at center top,
-      rgba(255, 200, 0, 0.3) 0%,
-      rgba(255, 100, 200, 0.2) 20%,
-      transparent 40%) !important;
-  z-index: 1 !important;
-  filter: blur(30px) !important;
-  pointer-events: none !important;
-  mix-blend-mode: screen !important;
-}
-
-/* The animated moving grid */
+/* The animated moving grid - visible and working */
 .tron-grid::after {
   content: "" !important;
   position: absolute !important;
-  top: -100% !important;
-  left: 0 !important;
-  right: 0 !important;
-  z-index: -2 !important;
+  left: -200% !important;
+  right: -200% !important;
+  top: 50% !important;
+  bottom: -300% !important;
   background-image:
     linear-gradient(to right, rgba(0, 255, 255, 0.8) 2px, transparent 2px),
     linear-gradient(to bottom, rgba(0, 255, 255, 0.8) 2px, transparent 2px) !important;
-  background-size: 40px 40px !important;
-  width: 100% !important;
-  height: 200% !important;
-  animation: slidegrid 20s linear infinite !important;
-  will-change: transform !important;
-  image-rendering: crisp-edges !important;
-  transform: translateZ(0) !important;
-  backface-visibility: hidden !important;
+  background-size: 60px 60px !important;
+  transform: rotateX(75deg) translateZ(0) !important;
+  transform-origin: center top !important;
+  animation: gridmove 8s linear infinite !important;
+  mask-image: linear-gradient(to top,
+    transparent 0%,
+    rgba(0,0,0,0.2) 30%,
+    rgba(0,0,0,0.5) 50%,
+    rgba(0,0,0,0.8) 70%,
+    rgba(0,0,0,1) 90%) !important;
+}
+
+@keyframes gridmove {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 60px;
+  }
+}
+
+/* Vaporwave gradient overlay */
+.tron-grid::before {
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background: radial-gradient(ellipse at center bottom,
+    rgba(255, 0, 255, 0.3) 0%,
+    rgba(0, 255, 255, 0.2) 20%,
+    rgba(138, 43, 226, 0.1) 40%,
+    transparent 60%) !important;
+  pointer-events: none !important;
 }
 
 @keyframes slidegrid {

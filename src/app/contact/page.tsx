@@ -123,26 +123,26 @@ export default function ContactPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-b from-gray-900 to-black">
+      <section className="relative py-12 px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-b from-gray-900 to-black">
         {/* Cyberpunk grid background */}
         <div className="absolute inset-0 cyber-grid" />
-        
+
         {/* Glowing accent lines */}
         <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent" />
-        
+
         <div className="max-w-7xl mx-auto relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-center mb-16"
+            className="text-center mb-8"
           >
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light mb-6">
               <span className="text-white">LET&apos;S BUILD</span>
-              <span className="text-cyan-400 font-black neon-glow"> FUTURES</span>
+              <span className="text-cyan-400 font-black neon-glow"> TOGETHER</span>
             </h1>
             <p className="text-base sm:text-lg text-gray-400 font-light tracking-wide max-w-3xl mx-auto">
-              I work with organizations that understand technology is a tool, not a replacement for human wisdom.
+              Creating transformative technology solutions that amplify human potential and drive meaningful impact.
             </p>
           </motion.div>
         </div>
@@ -151,7 +151,7 @@ export default function ContactPage() {
       <SectionDivider variant="geometric" />
 
       {/* Contact Methods & Form Section */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black to-gray-900">
+      <section className="py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black to-gray-900">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-3 gap-12">
             {/* Contact Methods */}
