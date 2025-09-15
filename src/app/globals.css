@@ -277,13 +277,13 @@ h1, h2, h3, h4, h5, h6 {
   right: 0 !important;
   bottom: -100% !important;
   background-image:
-    linear-gradient(to right, rgba(0, 255, 255, 1) 2px, transparent 2px),
-    linear-gradient(to bottom, rgba(0, 255, 255, 1) 2px, transparent 2px) !important;
+    linear-gradient(to right, rgba(34, 211, 238, 1) 2px, transparent 2px),
+    linear-gradient(to bottom, rgba(34, 211, 238, 1) 2px, transparent 2px) !important;
   background-size: 20px 20px !important;
   animation: gridmove 4s linear infinite !important;
 }
 
-/* Fade toward horizon */
+/* Fade toward horizon - crisp at bottom, blurred at top */
 .tron-grid::before {
   content: "" !important;
   position: absolute !important;
@@ -293,10 +293,14 @@ h1, h2, h3, h4, h5, h6 {
   bottom: 0 !important;
   background: linear-gradient(to top,
     transparent 0%,
-    transparent 30%,
-    rgba(0, 0, 0, 0.4) 70%,
-    rgba(0, 0, 0, 0.8) 100%) !important;
+    transparent 40%,
+    rgba(0, 0, 0, 0.3) 60%,
+    rgba(0, 0, 0, 0.7) 80%,
+    rgba(0, 0, 0, 0.95) 100%) !important;
   z-index: 1 !important;
+  /* Add blur only at the top */
+  -webkit-mask-image: linear-gradient(to top, black 60%, transparent 100%);
+  mask-image: linear-gradient(to top, black 60%, transparent 100%);
 }
 
 @keyframes gridmove {
@@ -334,15 +338,15 @@ h1, h2, h3, h4, h5, h6 {
   left: 50% !important;
   transform: translateX(-50%) !important;
   width: 200% !important;
-  height: 30% !important;
-  z-index: 4 !important;
+  height: 40% !important;
+  z-index: 6 !important;
   pointer-events: none !important;
   background: radial-gradient(ellipse at center,
-    rgba(255, 0, 255, 0.3) 0%,
-    rgba(138, 43, 226, 0.2) 20%,
-    rgba(0, 255, 255, 0.15) 40%,
+    rgba(255, 0, 255, 0.4) 0%,
+    rgba(138, 43, 226, 0.3) 20%,
+    rgba(34, 211, 238, 0.25) 40%,
     transparent 70%) !important;
-  filter: blur(40px) !important;
+  filter: blur(60px) !important;
   mix-blend-mode: screen !important;
 }
 
