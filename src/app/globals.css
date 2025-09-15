@@ -283,6 +283,13 @@ h1, h2, h3, h4, h5, h6 {
   animation: gridmove 5s linear infinite !important;
 }
 
+/* Mobile grid density */
+@media (max-width: 768px) {
+  .tron-grid::after {
+    background-size: 12px 12px !important;
+  }
+}
+
 /* Fade toward horizon - crisp at bottom, faded at top */
 .tron-grid::before {
   content: "" !important;
