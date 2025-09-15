@@ -310,18 +310,15 @@ h1, h2, h3, h4, h5, h6 {
   right: 0 !important;
   z-index: 2 !important;
   background-image:
-    linear-gradient(to right, rgba(0, 255, 255, 0.8) 1.5px, transparent 1.5px),
-    linear-gradient(to bottom, rgba(0, 255, 255, 0.8) 1.5px, transparent 1.5px) !important;
+    linear-gradient(to right, cyan 2px, transparent 2px),
+    linear-gradient(to bottom, cyan 2px, transparent 2px) !important;
   background-size: 50px 50px !important;
   width: 100% !important;
   height: 200% !important;
-  animation: slidegrid 12s linear infinite !important;
+  animation: slidegrid 8s linear infinite !important;
   will-change: transform !important;
   transform: translateZ(0) !important;
   backface-visibility: hidden !important;
-  image-rendering: optimizeSpeed !important;
-  -webkit-font-smoothing: subpixel-antialiased !important;
-  filter: blur(0.2px) !important;
 }
 
 @keyframes slidegrid {
