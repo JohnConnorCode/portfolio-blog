@@ -339,9 +339,9 @@ h1, h2, h3, h4, h5, h6 {
 /* Vaporwave gradient overlay at horizon */
 .vaporwave-glow {
   position: absolute !important;
-  bottom: 50% !important;
+  top: 50% !important;
   left: 50% !important;
-  transform: translateX(-50%) !important;
+  transform: translateX(-50%) translateY(-50%) !important;
   width: 200% !important;
   height: 30% !important;
   z-index: 6 !important;
