@@ -27,28 +27,27 @@ export default async function BlogPostPage({
 }) {
   const { slug } = await params
 
-  let post = null
+  // First check mock data
+  const mockPost = blogPosts.find(p => p.slug === slug)
+  if (mockPost) {
+    const post = {
+      ...mockPost,
+      slug: { current: mockPost.slug },
+      publishedAt: mockPost.publishedAt,
+      // Convert HTML content to be displayed
+      body: null,
+      htmlContent: mockPost.content,
+      author: { name: mockPost.author }
+    }
+    return <BlogPostClient post={post} />
+  }
 
+  // Fall back to Sanity if no mock data
+  let post = null
   try {
     post = await sanityClient.fetch(postBySlugQuery, { slug })
   } catch (error) {
     console.error('Error fetching post:', error)
-  }
-
-  // Fall back to mock data if Sanity returns nothing
-  if (!post) {
-    const mockPost = blogPosts.find(p => p.slug === slug)
-    if (mockPost) {
-      post = {
-        ...mockPost,
-        slug: { current: mockPost.slug },
-        publishedAt: mockPost.publishedAt,
-        // Convert HTML content to be displayed
-        body: null,
-        htmlContent: mockPost.content,
-        author: { name: mockPost.author }
-      }
-    }
   }
 
   if (!post) {
