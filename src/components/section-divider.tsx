@@ -1,13 +1,41 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, useMotionValue, useTransform, animate } from 'framer-motion'
+import { useEffect } from 'react'
+import { useMotionConfig } from '@/hooks/use-motion-config'
 
 interface SectionDividerProps {
-  variant?: 'geometric' | 'organic' | 'dots' | 'wave'
+  variant?: 'geometric' | 'organic' | 'dots' | 'wave' | 'morph'
   className?: string
 }
 
 export function SectionDivider({ variant = 'geometric', className = '' }: SectionDividerProps) {
+  const { prefersReducedMotion } = useMotionConfig()
+  const morphProgress = useMotionValue(0)
+
+  useEffect(() => {
+    if (variant === 'morph' && !prefersReducedMotion) {
+      const controls = animate(morphProgress, 1, {
+        duration: 8,
+        repeat: Infinity,
+        ease: 'linear'
+      })
+      return () => controls.stop()
+    }
+  }, [variant, morphProgress, prefersReducedMotion])
+
+  const morphPath = useTransform(
+    morphProgress,
+    [0, 0.25, 0.5, 0.75, 1],
+    [
+      'M0,30 Q300,10 600,30 T1200,30',
+      'M0,30 L300,5 L600,30 L900,5 L1200,30',
+      'M0,30 C200,50 400,10 600,30 C800,50 1000,10 1200,30',
+      'M0,30 Q300,50 600,30 T1200,30',
+      'M0,30 Q300,10 600,30 T1200,30'
+    ]
+  )
+
   const dividers = {
     geometric: (
       <svg
@@ -96,6 +124,29 @@ export function SectionDivider({ variant = 'geometric', className = '' }: Sectio
           </svg>
         </motion.div>
       </div>
+    ),
+    morph: (
+      <svg
+        viewBox="0 0 1200 60"
+        className="w-full h-12"
+        preserveAspectRatio="none"
+      >
+        <motion.path
+          d={morphPath}
+          stroke="currentColor"
+          strokeWidth="1.5"
+          fill="none"
+          className="text-foreground/30"
+        />
+        <motion.path
+          d={morphPath}
+          stroke="currentColor"
+          strokeWidth="1"
+          fill="none"
+          className="text-primary/50"
+          style={{ filter: 'blur(4px)' }}
+        />
+      </svg>
     ),
   }
 
