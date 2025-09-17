@@ -12,9 +12,9 @@ const platforms = [
     tagline: 'Where Ideas Compete and Truth Wins',
     description: 'A revolutionary platform transforming online discourse through structured debate, intellectual rigor, and gamified truth-seeking.',
     stats: [
-      { label: 'Active Debaters', value: '10K+' },
-      { label: 'Topics Explored', value: '500+' },
-      { label: 'Arguments Refined', value: '50K+' }
+      { label: 'Debate Formats', value: '4' },
+      { label: 'AI Training Modules', value: '5+' },
+      { label: 'Community', value: 'Growing' }
     ],
     features: [
       'Structured debate formats',
