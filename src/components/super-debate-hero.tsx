@@ -1,47 +1,20 @@
 'use client'
 
-import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import { Trophy, Shield, Brain, Users, MessageSquare, Zap, ArrowRight, Scale } from 'lucide-react'
 import Link from 'next/link'
-import { useRef, useEffect } from 'react'
-import { card3D, staggerContainer, textReveal, glowPulse } from '@/lib/animation-variants'
-import { useMotionConfig } from '@/hooks/use-motion-config'
+import { useRef } from 'react'
 
 export function SuperDebateHero() {
   const containerRef = useRef<HTMLDivElement>(null)
-  const { springConfig, duration, prefersReducedMotion } = useMotionConfig()
-  const mouseX = useMotionValue(0)
-  const mouseY = useMotionValue(0)
-  const springX = useSpring(mouseX, springConfig)
-  const springY = useSpring(mouseY, springConfig)
-
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"]
   })
 
-  const y = useTransform(scrollYProgress, [0, 1], prefersReducedMotion ? [50, -50] : [100, -100])
+  const y = useTransform(scrollYProgress, [0, 1], [100, -100])
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0])
   const scale = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.95, 1, 1, 0.95])
-  const rotateX = useTransform(springY, [-0.5, 0.5], prefersReducedMotion ? [0, 0] : [5, -5])
-  const rotateY = useTransform(springX, [-0.5, 0.5], prefersReducedMotion ? [0, 0] : [-5, 5])
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      const rect = containerRef.current?.getBoundingClientRect()
-      if (rect) {
-        const x = (e.clientX - rect.left) / rect.width - 0.5
-        const y = (e.clientY - rect.top) / rect.height - 0.5
-        mouseX.set(x)
-        mouseY.set(y)
-      }
-    }
-
-    if (!prefersReducedMotion) {
-      window.addEventListener('mousemove', handleMouseMove)
-      return () => window.removeEventListener('mousemove', handleMouseMove)
-    }
-  }, [mouseX, mouseY, prefersReducedMotion])
 
   const features = [
     {
@@ -72,17 +45,15 @@ export function SuperDebateHero() {
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-grid-pattern opacity-5" />
 
-        {/* Enhanced animated gradient orbs with parallax */}
+        {/* Purple glow orbs */}
         <motion.div
-          className="absolute top-20 left-20 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl will-change-transform"
-          style={{ y: useTransform(scrollYProgress, [0, 1], [0, -200]) }}
+          className="absolute top-20 left-20 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl"
           animate={{
-            x: prefersReducedMotion ? 0 : [0, 50, -30, 0],
-            y: prefersReducedMotion ? 0 : [0, -30, 50, 0],
-            scale: prefersReducedMotion ? 1 : [1, 1.1, 1],
+            x: [0, 50, -30, 0],
+            y: [0, -30, 50, 0],
           }}
           transition={{
-            duration: prefersReducedMotion ? 0 : 20,
+            duration: 20,
             repeat: Infinity,
             ease: "easeInOut"
           }}
@@ -102,14 +73,8 @@ export function SuperDebateHero() {
       </div>
 
       <motion.div
-        style={{
-          opacity,
-          scale,
-          rotateX: prefersReducedMotion ? 0 : rotateX,
-          rotateY: prefersReducedMotion ? 0 : rotateY,
-          transformPerspective: 1200
-        }}
-        className="max-w-7xl mx-auto relative z-10 will-change-transform"
+        style={{ opacity, scale }}
+        className="max-w-7xl mx-auto relative z-10"
       >
         {/* Header */}
         <motion.div
@@ -127,29 +92,13 @@ export function SuperDebateHero() {
             <span className="text-sm font-mono text-purple-400">SUPERDEBATE.ORG</span>
           </motion.div>
 
-          <motion.h2
-            className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6"
-            variants={textReveal}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-          >
+          <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6">
             <span className="text-foreground">Make </span>
-            <motion.span
-              className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500 inline-block"
-              animate={prefersReducedMotion ? {} : {
-                backgroundImage: [
-                  'linear-gradient(to right, #a855f7, #ec4899)',
-                  'linear-gradient(to right, #ec4899, #06b6d4)',
-                  'linear-gradient(to right, #06b6d4, #a855f7)'
-                ]
-              }}
-              transition={{ duration: 5, repeat: Infinity, ease: 'linear' }}
-            >
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">
               Arguing Fun
-            </motion.span>
+            </span>
             <span className="text-foreground"> Again</span>
-          </motion.h2>
+          </h2>
 
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
             The ultimate platform for structured debate, intellectual competition, and collaborative truth-seeking
@@ -195,12 +144,8 @@ export function SuperDebateHero() {
               >
                 <motion.div
                   className="relative group h-full"
-                  variants={card3D}
-                  initial="initial"
-                  whileInView="animate"
-                  whileHover="hover"
-                  viewport={{ once: true }}
-                  style={{ transformStyle: 'preserve-3d' }}
+                  whileHover={{ y: -5 }}
+                  transition={{ type: "spring", stiffness: 300 }}
                 >
                   <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity" />
 
