@@ -6,6 +6,7 @@ import Image from 'next/image'
 import { Calendar, Clock, ArrowLeft, User } from 'lucide-react'
 import { formatDate } from '@/lib/utils'
 import { motion } from 'framer-motion'
+import { StructuredData } from '@/components/structured-data'
 
 interface BlogPost {
   title: string
@@ -22,8 +23,29 @@ interface BlogPost {
 }
 
 export default function BlogPostClient({ post }: { post: BlogPost }) {
+  // Calculate word count from content
+  const wordCount = post.htmlContent
+    ? post.htmlContent.replace(/<[^>]*>/g, '').split(/\s+/).length
+    : post.body
+    ? JSON.stringify(post.body).split(/\s+/).length
+    : 500
+
   return (
-    <motion.article 
+    <>
+      <StructuredData
+        type="BlogPosting"
+        data={{
+          title: post.title,
+          excerpt: post.excerpt,
+          slug: post.slug?.current || '',
+          publishedAt: post.publishedAt,
+          author: post.author?.name,
+          category: post.categories?.[0]?.title,
+          tags: post.tags,
+          wordCount
+        }}
+      />
+      <motion.article 
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
@@ -214,5 +236,6 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
         </motion.nav>
       </div>
     </motion.article>
+    </>
   )
 }
