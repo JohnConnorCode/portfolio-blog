@@ -1,0 +1,178 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e4]:
+      - link "JC John Connor Technology Strategist" [ref=e6]:
+        - /url: /
+        - generic [ref=e7]:
+          - generic [ref=e12]: JC
+          - generic [ref=e13]:
+            - generic [ref=e14]: John Connor
+            - generic [ref=e15]: Technology Strategist
+      - generic [ref=e16]:
+        - link "Home" [ref=e18]:
+          - /url: /
+          - generic [ref=e19]:
+            - img [ref=e20]
+            - generic [ref=e23]: Home
+        - link "Work" [ref=e26]:
+          - /url: /work
+          - generic [ref=e27]:
+            - img [ref=e28]
+            - generic [ref=e31]: Work
+        - link "Blog" [ref=e34]:
+          - /url: /blog
+          - generic [ref=e35]:
+            - img [ref=e36]
+            - generic [ref=e38]: Blog
+        - link "Thoughts" [ref=e41]:
+          - /url: /thoughts
+          - generic [ref=e42]:
+            - img [ref=e43]
+            - generic [ref=e45]: Thoughts
+        - link "Philosophy" [ref=e48]:
+          - /url: /philosophy
+          - generic [ref=e49]:
+            - img [ref=e50]
+            - generic [ref=e58]: Philosophy
+        - link "Contact" [ref=e62]:
+          - /url: /contact
+          - generic [ref=e63]:
+            - img [ref=e64]
+            - generic [ref=e67]: Contact
+  - main [ref=e69]:
+    - generic [ref=e71]:
+      - heading "P h i l o s o p h y" [level=1] [ref=e73]:
+        - generic [ref=e74]:
+          - generic [ref=e75]: P
+          - generic [ref=e76]: h
+          - generic [ref=e77]: i
+          - generic [ref=e78]: l
+          - generic [ref=e79]: o
+          - generic [ref=e80]: s
+          - generic [ref=e81]: o
+          - generic [ref=e82]: p
+          - generic [ref=e83]: h
+          - generic [ref=e84]: "y"
+      - generic [ref=e85]:
+        - heading "Formation" [level=2] [ref=e86]
+        - generic [ref=e87]:
+          - paragraph [ref=e88]: I began as a debater in high school. Debate was my first laboratory for truth. You stood in public and risked humiliation for the chance to sharpen your thinking. Losing was painful but it revealed what was real.
+          - paragraph [ref=e89]: I moved from competing to teaching. I organized programs where younger students learned to test themselves through conflict. I also worked with decentralized community groups in education and food distribution. These grassroots projects were chaotic but they showed me how fragile trust can be, how easily cooperation unravels, and how much stronger people become when they take responsibility together.
+      - img [ref=e91]
+      - generic [ref=e94]:
+        - heading "Orientation" [level=2] [ref=e95]
+        - generic [ref=e96]:
+          - paragraph [ref=e97]: Those experiences shaped my orientation. I am drawn to work that cannot hide behind appearances. I want environments where illusions collapse, where outcomes are visible, and where participation makes people stronger.
+          - paragraph [ref=e98]: I am not motivated by novelty. I am motivated by leverage. By designs that compound value over time, not by avoiding reality but by exposing it. By tools and institutions that make people more capable of perceiving clearly, deciding wisely, and acting with conviction.
+      - generic [ref=e99]:
+        - heading "Commitments" [level=2] [ref=e100]
+        - generic [ref=e101]:
+          - paragraph [ref=e102]: I do not accept claims that cannot be tested. I do not trust metrics that exist to flatter. The only measure that matters is whether something holds up under pressure and creates durable value when exposed to the world.
+          - paragraph [ref=e103]: Confrontation clarifies. Comfort dulls. Ideas matter only when embodied. Nothing is ever finished. Everything is in the process of becoming.
+      - img [ref=e105]
+      - generic [ref=e107]:
+        - heading "Method" [level=2] [ref=e108]
+        - paragraph [ref=e109]: Over the years I have refined a way of working that applies across debate, community organizing, startups, and ecosystems.
+        - generic [ref=e110]:
+          - generic [ref=e111]:
+            - img
+            - generic [ref=e114]:
+              - heading "Surface reality" [level=3] [ref=e115]
+              - paragraph [ref=e116]: Name assumptions clearly. Stress test them. Expose every idea to conditions that can break it.
+          - generic [ref=e117]:
+            - img
+            - generic [ref=e120]:
+              - heading "Design alignment" [level=3] [ref=e121]
+              - paragraph [ref=e122]: Incentives matter more than intentions. Architectures shape behavior whether we admit it or not. Build so that valuable actions compound and noise collapses.
+          - generic [ref=e123]:
+            - img
+            - generic [ref=e126]:
+              - heading "Embrace difficulty" [level=3] [ref=e127]
+              - paragraph [ref=e128]: Risk, conflict, and error in public are not threats. They are conditions for growth. Create environments where people must face them.
+          - generic [ref=e129]:
+            - img
+            - generic [ref=e132]:
+              - heading "Judge by outcomes" [level=3] [ref=e133]
+              - paragraph [ref=e134]: Do not mistake appearance for achievement. The test is whether something produces durable, compounding value in the world.
+      - generic [ref=e135]:
+        - heading "In Practice" [level=2] [ref=e136]
+        - generic [ref=e137]:
+          - generic [ref=e138]:
+            - heading "Super Debate" [level=3] [ref=e139]
+            - paragraph [ref=e140]: Built on the conviction that growth requires confrontation. Creates rooms where people risk themselves in public, test their ideas, and leave sharper for it.
+          - generic [ref=e141]:
+            - heading "Accelerate" [level=3] [ref=e142]
+            - paragraph [ref=e143]: Redesigning how ecosystems fund builders. Funds only when milestones are delivered. Transparent, accountable, aligned with integrity.
+          - generic [ref=e144]:
+            - heading "Earlier Ventures" [level=3] [ref=e145]
+            - paragraph [ref=e146]: Sparkblox, Upland, Mode Mobile, HelpWith — experiments in alignment at different scales. Each revealed truths that only reality can teach.
+      - img [ref=e148]
+      - generic [ref=e150]:
+        - heading "Today" [level=2] [ref=e151]
+        - generic [ref=e152]:
+          - paragraph [ref=e153]: I am a technologist and a product strategist. My work is to imagine better futures and to build the scaffolding that makes them real. Sometimes that means designing platforms that reward integrity. Sometimes it means creating communities where people confront each other directly. Sometimes it means helping founders or ecosystems articulate and execute their own visions.
+          - paragraph [ref=e154]: "The common thread is this: I build with an eye on what compounds, what holds up under pressure, and what makes people stronger."
+      - generic [ref=e155]:
+        - heading "Closing" [level=2] [ref=e156]
+        - generic [ref=e157]:
+          - paragraph [ref=e158]: I do not build for polish or for spectacle. I build to expose what is real, to create structures that reward courage, and to shape futures that are worth inhabiting.
+          - paragraph [ref=e159]: That throughline runs from debate podiums to grassroots organizing to venture building and ecosystem design. It is the principle that connects my past and the role I play now — helping turn vision into reality.
+        - generic [ref=e160]:
+          - link "View My Work" [ref=e161]:
+            - /url: /work
+            - button "View My Work" [ref=e162]:
+              - generic [ref=e163]: View My Work
+              - img [ref=e164]
+          - link "Start a Conversation" [ref=e166]:
+            - /url: /contact
+            - button "Start a Conversation" [ref=e167]
+  - contentinfo [ref=e168]:
+    - generic [ref=e169]:
+      - generic [ref=e170]:
+        - generic [ref=e171]:
+          - heading "About" [level=3] [ref=e172]
+          - paragraph [ref=e173]: Building systems that serve humanity. Technology should empower human judgment, not replace it.
+        - generic [ref=e174]:
+          - heading "Quick Links" [level=3] [ref=e175]
+          - list [ref=e176]:
+            - listitem [ref=e177]:
+              - link "Work" [ref=e178]:
+                - /url: /work
+            - listitem [ref=e179]:
+              - link "Philosophy" [ref=e180]:
+                - /url: /philosophy
+            - listitem [ref=e181]:
+              - link "Contact" [ref=e182]:
+                - /url: /contact
+            - listitem [ref=e183]:
+              - link "Features" [ref=e184]:
+                - /url: /features
+        - generic [ref=e185]:
+          - heading "Connect" [level=3] [ref=e186]
+          - generic [ref=e187]:
+            - link "Twitter" [ref=e188]:
+              - /url: https://twitter.com/ablockunchained
+              - img [ref=e189]
+            - link "LinkedIn" [ref=e191]:
+              - /url: https://linkedin.com/in/johnconnor
+              - img [ref=e192]
+            - link "Email" [ref=e196]:
+              - /url: mailto:john@johnconnor.xyz
+              - img [ref=e197]
+      - paragraph [ref=e201]: © 2025 John Thomas Connor
+  - generic [ref=e206] [cursor=pointer]:
+    - button "Open Next.js Dev Tools" [ref=e207] [cursor=pointer]:
+      - img [ref=e208] [cursor=pointer]
+    - generic [ref=e211] [cursor=pointer]:
+      - button "Open issues overlay" [ref=e212] [cursor=pointer]:
+        - generic [ref=e213] [cursor=pointer]:
+          - generic [ref=e214] [cursor=pointer]: "0"
+          - generic [ref=e215] [cursor=pointer]: "1"
+        - generic [ref=e216] [cursor=pointer]: Issue
+      - button "Collapse issues badge" [ref=e217] [cursor=pointer]:
+        - img [ref=e218] [cursor=pointer]
+  - alert [ref=e220]
+```

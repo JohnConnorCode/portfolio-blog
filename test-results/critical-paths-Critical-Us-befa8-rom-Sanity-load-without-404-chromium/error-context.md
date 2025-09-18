@@ -1,0 +1,127 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e4]:
+      - link "JC John Connor Technology Strategist" [ref=e6]:
+        - /url: /
+        - generic [ref=e7]:
+          - generic [ref=e12]: JC
+          - generic [ref=e13]:
+            - generic [ref=e14]: John Connor
+            - generic [ref=e15]: Technology Strategist
+      - generic [ref=e16]:
+        - link "Home" [ref=e18]:
+          - /url: /
+          - generic [ref=e19]:
+            - img [ref=e20]
+            - generic [ref=e23]: Home
+        - link "Work" [ref=e26]:
+          - /url: /work
+          - generic [ref=e27]:
+            - img [ref=e28]
+            - generic [ref=e31]: Work
+        - link "Blog" [ref=e34]:
+          - /url: /blog
+          - generic [ref=e35]:
+            - img [ref=e36]
+            - generic [ref=e38]: Blog
+        - link "Thoughts" [ref=e41]:
+          - /url: /thoughts
+          - generic [ref=e42]:
+            - img [ref=e43]
+            - generic [ref=e45]: Thoughts
+        - link "Philosophy" [ref=e48]:
+          - /url: /philosophy
+          - generic [ref=e49]:
+            - img [ref=e50]
+            - generic [ref=e58]: Philosophy
+        - link "Contact" [ref=e61]:
+          - /url: /contact
+          - generic [ref=e62]:
+            - img [ref=e63]
+            - generic [ref=e66]: Contact
+  - main [ref=e68]:
+    - article [ref=e69]:
+      - generic [ref=e70]:
+        - link "Back to Blog" [ref=e72]:
+          - /url: /blog
+          - img [ref=e73]
+          - text: Back to Blog
+        - generic [ref=e75]:
+          - generic [ref=e76]:
+            - generic [ref=e77]:
+              - img [ref=e78]
+              - time [ref=e80]: January 15, 2024
+            - generic [ref=e81]:
+              - img [ref=e82]
+              - generic [ref=e85]: 5 min read
+          - heading "Why Ecosystem Funding Is Broken" [level=1] [ref=e86]
+          - paragraph [ref=e87]: The current model of ecosystem funding creates perverse incentives that work against genuine innovation.
+          - generic [ref=e88]:
+            - img [ref=e90]
+            - generic [ref=e93]:
+              - paragraph [ref=e94]: John Connor
+              - paragraph [ref=e95]: Technology Strategist
+        - generic [ref=e97]:
+          - heading "The Problem with Current Funding Models" [level=2] [ref=e98]
+          - paragraph [ref=e99]: Ecosystem funding has become a game of metrics manipulation rather than value creation. Teams optimize for vanity metrics instead of building sustainable products that serve real users.
+          - heading "Key Issues" [level=3] [ref=e100]
+          - list [ref=e101]:
+            - listitem [ref=e102]: Short-term thinking dominates long-term vision
+            - listitem [ref=e103]: Capital allocation favors hype over substance
+            - listitem [ref=e104]: Genuine builders get drowned out by growth hackers
+          - heading "A Better Path Forward" [level=2] [ref=e105]
+          - paragraph [ref=e106]: "We need funding models that align incentives with long-term value creation. This means:"
+          - list [ref=e107]:
+            - listitem [ref=e108]: Milestone-based funding tied to real usage
+            - listitem [ref=e109]: Community-driven allocation mechanisms
+            - listitem [ref=e110]: Focus on sustainable unit economics from day one
+          - paragraph [ref=e111]: The future of ecosystem funding isn't about bigger rounds or faster deployments. It's about building systems that reward genuine value creation over financial engineering.
+        - navigation [ref=e112]:
+          - generic [ref=e113]:
+            - link "← Previous Back to all posts" [ref=e115]:
+              - /url: /blog
+              - paragraph [ref=e116]: ← Previous
+              - paragraph [ref=e117]: Back to all posts
+            - link "Next → Work with me" [ref=e119]:
+              - /url: /contact
+              - paragraph [ref=e120]: Next →
+              - paragraph [ref=e121]: Work with me
+  - contentinfo [ref=e122]:
+    - generic [ref=e123]:
+      - generic [ref=e124]:
+        - generic [ref=e125]:
+          - heading "About" [level=3] [ref=e126]
+          - paragraph [ref=e127]: Building systems that serve humanity. Technology should empower human judgment, not replace it.
+        - generic [ref=e128]:
+          - heading "Quick Links" [level=3] [ref=e129]
+          - list [ref=e130]:
+            - listitem [ref=e131]:
+              - link "Work" [ref=e132]:
+                - /url: /work
+            - listitem [ref=e133]:
+              - link "Philosophy" [ref=e134]:
+                - /url: /philosophy
+            - listitem [ref=e135]:
+              - link "Contact" [ref=e136]:
+                - /url: /contact
+            - listitem [ref=e137]:
+              - link "Features" [ref=e138]:
+                - /url: /features
+        - generic [ref=e139]:
+          - heading "Connect" [level=3] [ref=e140]
+          - generic [ref=e141]:
+            - link "Twitter" [ref=e142]:
+              - /url: https://twitter.com/ablockunchained
+              - img [ref=e143]
+            - link "LinkedIn" [ref=e145]:
+              - /url: https://linkedin.com/in/johnconnor
+              - img [ref=e146]
+            - link "Email" [ref=e150]:
+              - /url: mailto:john@johnconnor.xyz
+              - img [ref=e151]
+      - paragraph [ref=e155]: © 2025 John Thomas Connor
+  - alert [ref=e156]
+```

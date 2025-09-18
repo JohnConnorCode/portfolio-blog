@@ -1,7 +1,7 @@
 'use client'
 
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { Trophy, Users, MessageSquare, Zap, ArrowRight, Globe, ChevronRight, ExternalLink, Mic, Calendar, MapPin, UserCheck, Brain, Star, TrendingUp } from 'lucide-react'
+import { Trophy, Users, MessageSquare, Zap, ArrowRight, Globe, ChevronRight, ExternalLink, Mic, Calendar, MapPin, UserCheck, Brain, Star, TrendingUp, Shield } from 'lucide-react'
 import Link from 'next/link'
 import { useRef } from 'react'
 import { fadeInUp, staggerContainer, ANIMATION_DELAY, ANIMATION_DURATION } from '@/lib/animation-config'

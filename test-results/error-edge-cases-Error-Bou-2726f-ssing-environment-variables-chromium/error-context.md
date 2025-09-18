@@ -1,0 +1,487 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e4]:
+      - link "JC John Connor Technology Strategist" [ref=e6]:
+        - /url: /
+        - generic [ref=e7]:
+          - generic [ref=e12]: JC
+          - generic [ref=e13]:
+            - generic [ref=e14]: John Connor
+            - generic [ref=e15]: Technology Strategist
+      - generic [ref=e16]:
+        - link "Home" [ref=e18]:
+          - /url: /
+          - generic [ref=e19]:
+            - img [ref=e20]
+            - generic [ref=e23]: Home
+        - link "Work" [ref=e27]:
+          - /url: /work
+          - generic [ref=e28]:
+            - img [ref=e29]
+            - generic [ref=e32]: Work
+        - link "Blog" [ref=e35]:
+          - /url: /blog
+          - generic [ref=e36]:
+            - img [ref=e37]
+            - generic [ref=e39]: Blog
+        - link "Thoughts" [ref=e42]:
+          - /url: /thoughts
+          - generic [ref=e43]:
+            - img [ref=e44]
+            - generic [ref=e46]: Thoughts
+        - link "Philosophy" [ref=e49]:
+          - /url: /philosophy
+          - generic [ref=e50]:
+            - img [ref=e51]
+            - generic [ref=e59]: Philosophy
+        - link "Contact" [ref=e62]:
+          - /url: /contact
+          - generic [ref=e63]:
+            - img [ref=e64]
+            - generic [ref=e67]: Contact
+  - main [ref=e69]:
+    - generic [ref=e77]:
+      - heading "J O H N C O N N O R" [level=1] [ref=e78]:
+        - generic [ref=e79]:
+          - generic: J
+          - generic: O
+          - generic: H
+          - generic: "N"
+          - generic: C
+          - generic: O
+          - generic: "N"
+          - generic: "N"
+          - generic: O
+          - generic: R
+      - paragraph [ref=e81]: Building systems that serve humanity.
+      - paragraph [ref=e83]:
+        - generic [ref=e84]: Product strategy. Human-first technology. Real impact.
+      - generic [ref=e85]:
+        - link "View My Work" [ref=e87]:
+          - /url: /work
+          - button "View My Work" [ref=e88]
+        - link "My Philosophy" [ref=e90]:
+          - /url: /philosophy
+          - button "My Philosophy" [ref=e91]
+    - generic [ref=e99]:
+      - generic [ref=e100]:
+        - heading "PROVEN IMPACT" [level=2] [ref=e101]:
+          - generic [ref=e102]: PROVEN
+          - generic [ref=e103]: IMPACT
+        - paragraph [ref=e104]: Real outcomes from solving actual product problems
+      - generic [ref=e105]:
+        - generic [ref=e107]:
+          - img [ref=e109]
+          - paragraph [ref=e116]: $50M+
+          - paragraph [ref=e117]: Funding Enabled
+          - paragraph [ref=e118]: Through product-market fit
+        - generic [ref=e120]:
+          - img [ref=e122]
+          - paragraph [ref=e126]: 50+
+          - paragraph [ref=e127]: Product Problems Solved
+          - paragraph [ref=e128]: Usability & market fit issues
+        - generic [ref=e130]:
+          - img [ref=e132]
+          - paragraph [ref=e135]: 15 Years
+          - paragraph [ref=e136]: Technology Strategy
+          - paragraph [ref=e137]: AI/Web3 & human-centered design
+        - generic [ref=e139]:
+          - img [ref=e141]
+          - paragraph [ref=e147]: 200+
+          - paragraph [ref=e148]: User Research Sessions
+          - paragraph [ref=e149]: Finding real product-market fit
+      - paragraph [ref=e151]:
+        - text: Building what
+        - generic [ref=e152]: actually works
+    - img [ref=e154]
+    - generic [ref=e162]:
+      - generic [ref=e163]:
+        - generic [ref=e164]:
+          - img [ref=e165]
+          - generic [ref=e171]: SUPERDEBATE.ORG
+        - heading "Structured Debate Platform" [level=2] [ref=e172]:
+          - generic [ref=e173]: Structured
+          - generic [ref=e174]: Debate Platform
+        - paragraph [ref=e175]: A platform for organizing and hosting in-person debate clubs with modular formats adaptable to any community
+        - link "Learn More" [ref=e177]:
+          - /url: /super-debate
+          - button "Learn More" [ref=e178]:
+            - generic [ref=e179]: Learn More
+            - img [ref=e180]
+      - generic [ref=e182]:
+        - generic [ref=e186]:
+          - img [ref=e187]
+          - heading "Live Debates" [level=3] [ref=e190]
+          - paragraph [ref=e191]: In-person events in cities worldwide
+        - generic [ref=e195]:
+          - img [ref=e196]
+          - heading "Local Clubs" [level=3] [ref=e201]
+          - paragraph [ref=e202]: Join debate communities in your city
+        - generic [ref=e206]:
+          - img [ref=e207]
+          - heading "Modular Format" [level=3] [ref=e211]
+          - paragraph [ref=e212]: Adaptable to any topic or community
+        - generic [ref=e216]:
+          - img [ref=e217]
+          - heading "Regular Meetups" [level=3] [ref=e219]
+          - paragraph [ref=e220]: Weekly and monthly debate events
+      - generic [ref=e222]:
+        - generic [ref=e223]:
+          - img [ref=e224]
+          - heading "One Format, Endless Adaptability" [level=3] [ref=e226]
+        - generic [ref=e227]:
+          - generic [ref=e228]:
+            - heading "Flexible Structure" [level=4] [ref=e229]
+            - paragraph [ref=e230]: Adapt speech lengths, rounds, and judging criteria to fit your community's needs and topics
+          - generic [ref=e231]:
+            - heading "City Chapters" [level=4] [ref=e232]
+            - paragraph [ref=e233]: Each city runs its own debates with local flavor while maintaining consistent quality
+    - img [ref=e237]
+    - generic [ref=e246]:
+      - generic [ref=e247]:
+        - generic [ref=e248]:
+          - img [ref=e249]
+          - generic [ref=e251]: ACCELERATEWITH.US
+        - heading "Where Web3 Builders Connect" [level=2] [ref=e252]:
+          - generic [ref=e253]: Where Web3
+          - generic [ref=e254]: Builders Connect
+        - paragraph [ref=e255]: The ecosystem platform connecting builders, investors, and resources for Web3 innovation
+        - generic [ref=e256]:
+          - link "Explore Platform" [ref=e257]:
+            - /url: https://acceleratewith.us
+            - button "Explore Platform" [ref=e258]:
+              - generic [ref=e259]: Explore Platform
+              - img [ref=e260]
+          - link "Learn More" [ref=e262]:
+            - /url: /accelerate
+            - button "Learn More" [ref=e263]
+      - generic [ref=e264]:
+        - generic [ref=e268]:
+          - img [ref=e269]
+          - heading "Global Ecosystem" [level=3] [ref=e272]
+          - paragraph [ref=e273]: Connect with builders, funders, and projects worldwide
+        - generic [ref=e277]:
+          - img [ref=e278]
+          - heading "Funding Discovery" [level=3] [ref=e280]
+          - paragraph [ref=e281]: Find grants, accelerators, and investment opportunities
+        - generic [ref=e285]:
+          - img [ref=e286]
+          - heading "Talent Network" [level=3] [ref=e291]
+          - paragraph [ref=e292]: Match with developers, designers, and marketers
+        - generic [ref=e296]:
+          - img [ref=e297]
+          - heading "Resource Hub" [level=3] [ref=e299]
+          - paragraph [ref=e300]: Access tools, guides, and strategic resources
+      - generic [ref=e302]:
+        - generic [ref=e303]:
+          - img [ref=e304]
+          - heading "Complete Web3 Ecosystem" [level=3] [ref=e307]
+        - generic [ref=e308]:
+          - generic [ref=e309]:
+            - generic [ref=e310]: 607+
+            - generic [ref=e311]: Projects
+          - generic [ref=e312]:
+            - generic [ref=e313]: 433+
+            - generic [ref=e314]: Funding Programs
+          - generic [ref=e315]:
+            - generic [ref=e316]: 363+
+            - generic [ref=e317]: Resources
+        - generic [ref=e318]:
+          - heading "Smart Matching Technology" [level=4] [ref=e320]
+          - paragraph [ref=e321]: AI-powered recommendations connect projects with the right funding, talent, and resources at the perfect time.
+      - generic [ref=e322]:
+        - paragraph [ref=e323]: Join hundreds of Web3 builders accelerating their projects
+        - link "Get Started" [ref=e324]:
+          - /url: https://acceleratewith.us
+          - button "Get Started" [ref=e325]:
+            - img [ref=e326]
+            - generic [ref=e328]: Get Started
+            - img [ref=e329]
+    - img [ref=e332]
+    - generic [ref=e335]:
+      - generic [ref=e336]:
+        - heading "WORKING WITH ME" [level=2] [ref=e337]:
+          - generic [ref=e338]: WORKING
+          - generic [ref=e339]: WITH ME
+        - paragraph [ref=e340]: Structured transformation. Quick wins. Long-term impact.
+      - generic [ref=e341]:
+        - generic [ref=e342]:
+          - heading "THE PROCESS" [level=3] [ref=e343]:
+            - generic [ref=e344]: THE
+            - generic [ref=e345]: PROCESS
+          - paragraph [ref=e346]: From discovery to scale in 8 weeks.
+        - generic [ref=e347]:
+          - generic [ref=e349]:
+            - generic [ref=e350]:
+              - img [ref=e352]
+              - generic [ref=e354]:
+                - heading "Discovery" [level=4] [ref=e355]
+                - paragraph [ref=e356]: Week 1
+            - list [ref=e357]:
+              - listitem [ref=e358]:
+                - img [ref=e359]
+                - generic [ref=e362]: Initial strategy call
+              - listitem [ref=e363]:
+                - img [ref=e364]
+                - generic [ref=e367]: Deep dive into your challenges
+              - listitem [ref=e368]:
+                - img [ref=e369]
+                - generic [ref=e372]: Audit existing systems
+              - listitem [ref=e373]:
+                - img [ref=e374]
+                - generic [ref=e377]: Define success metrics
+          - generic [ref=e379]:
+            - generic [ref=e380]:
+              - img [ref=e382]
+              - generic [ref=e390]:
+                - heading "Design" [level=4] [ref=e391]
+                - paragraph [ref=e392]: Week 2-3
+            - list [ref=e393]:
+              - listitem [ref=e394]:
+                - img [ref=e395]
+                - generic [ref=e398]: Solution architecture
+              - listitem [ref=e399]:
+                - img [ref=e400]
+                - generic [ref=e403]: Technology stack selection
+              - listitem [ref=e404]:
+                - img [ref=e405]
+                - generic [ref=e408]: Team alignment sessions
+              - listitem [ref=e409]:
+                - img [ref=e410]
+                - generic [ref=e413]: Roadmap creation
+          - generic [ref=e415]:
+            - generic [ref=e416]:
+              - img [ref=e418]
+              - generic [ref=e423]:
+                - heading "Build" [level=4] [ref=e424]
+                - paragraph [ref=e425]: Week 4-8
+            - list [ref=e426]:
+              - listitem [ref=e427]:
+                - img [ref=e428]
+                - generic [ref=e431]: Rapid prototyping
+              - listitem [ref=e432]:
+                - img [ref=e433]
+                - generic [ref=e436]: Weekly progress reviews
+              - listitem [ref=e437]:
+                - img [ref=e438]
+                - generic [ref=e441]: Continuous iteration
+              - listitem [ref=e442]:
+                - img [ref=e443]
+                - generic [ref=e446]: Team training
+          - generic [ref=e448]:
+            - generic [ref=e449]:
+              - img [ref=e451]
+              - generic [ref=e455]:
+                - heading "Scale" [level=4] [ref=e456]
+                - paragraph [ref=e457]: Ongoing
+            - list [ref=e458]:
+              - listitem [ref=e459]:
+                - img [ref=e460]
+                - generic [ref=e463]: Performance optimization
+              - listitem [ref=e464]:
+                - img [ref=e465]
+                - generic [ref=e468]: Growth strategy execution
+              - listitem [ref=e469]:
+                - img [ref=e470]
+                - generic [ref=e473]: Knowledge transfer
+              - listitem [ref=e474]:
+                - img [ref=e475]
+                - generic [ref=e478]: Long-term support
+      - generic [ref=e479]:
+        - generic [ref=e480]:
+          - heading "MY PRINCIPLES" [level=3] [ref=e481]:
+            - generic [ref=e482]: MY
+            - generic [ref=e483]: PRINCIPLES
+          - paragraph [ref=e484]: Core values that guide every engagement.
+        - generic [ref=e485]:
+          - generic [ref=e487]:
+            - img
+            - generic [ref=e489]:
+              - img [ref=e492]
+              - generic [ref=e495]:
+                - heading "Radical Transparency" [level=4] [ref=e496]
+                - paragraph [ref=e497]: No black boxes. You understand every system we build and own the IP.
+          - generic [ref=e499]:
+            - img
+            - generic [ref=e501]:
+              - img [ref=e504]
+              - generic [ref=e506]:
+                - heading "Speed to Value" [level=4] [ref=e507]
+                - paragraph [ref=e508]: First measurable impact within 2 weeks, not months.
+          - generic [ref=e510]:
+            - img
+            - generic [ref=e512]:
+              - img [ref=e515]
+              - generic [ref=e520]:
+                - heading "Human-Centered" [level=4] [ref=e521]
+                - paragraph [ref=e522]: Technology serves your team, not the other way around.
+          - generic [ref=e524]:
+            - img
+            - generic [ref=e526]:
+              - img [ref=e529]
+              - generic [ref=e532]:
+                - heading "No Vendor Lock-in" [level=4] [ref=e533]
+                - paragraph [ref=e534]: Open systems you can maintain and evolve without me.
+      - generic [ref=e535]:
+        - generic [ref=e536]:
+          - heading "WHAT YOU GET" [level=3] [ref=e537]:
+            - generic [ref=e538]: WHAT YOU
+            - generic [ref=e539]: GET
+          - paragraph [ref=e540]: Direct partnership. Strategic insight. Tangible results.
+        - generic [ref=e541]:
+          - generic [ref=e543]:
+            - img
+            - generic [ref=e545]:
+              - img [ref=e548]
+              - heading "Direct Access" [level=4] [ref=e553]
+              - paragraph [ref=e554]: Weekly calls, async communication, and rapid response times. I'm embedded in your team.
+          - generic [ref=e556]:
+            - img
+            - generic [ref=e558]:
+              - img [ref=e561]
+              - heading "Strategic Thinking" [level=4] [ref=e569]
+              - paragraph [ref=e570]: 15 years of pattern recognition across industries, applied to your specific challenges.
+          - generic [ref=e572]:
+            - img
+            - generic [ref=e574]:
+              - img [ref=e577]
+              - heading "Execution Power" [level=4] [ref=e582]
+              - paragraph [ref=e583]: I don't just advise—I build, ship, and iterate alongside your team.
+      - generic [ref=e584]:
+        - paragraph [ref=e585]: Ready to transform your organization?
+        - generic [ref=e586]:
+          - link "Schedule Discovery Call" [ref=e587]:
+            - /url: /contact
+            - button "Schedule Discovery Call" [ref=e588]:
+              - text: Schedule Discovery Call
+              - img [ref=e589]
+          - link "View Case Studies" [ref=e591]:
+            - /url: "#case-studies"
+            - button "View Case Studies" [ref=e592]:
+              - text: View Case Studies
+              - img [ref=e593]
+    - img [ref=e596]
+    - generic [ref=e600]:
+      - generic [ref=e601]:
+        - heading "THOUGHT LEADERSHIP" [level=2] [ref=e602]:
+          - generic [ref=e603]: THOUGHT
+          - generic [ref=e604]: LEADERSHIP
+        - paragraph [ref=e605]: Strategic insights on technology, community, and human potential
+      - generic [ref=e606]:
+        - article [ref=e607]:
+          - link "Featured [WEB3] Why Ecosystem Funding is Broken Traditional grant systems reward promises over delivery. Here's how to fix it. READ MORE" [ref=e608]:
+            - /url: /blog/why-ecosystem-funding-is-broken
+            - generic [ref=e609]:
+              - generic [ref=e610]: Featured
+              - generic [ref=e611]:
+                - img [ref=e613]
+                - generic [ref=e616]:
+                  - generic [ref=e617]: "[WEB3]"
+                  - heading "Why Ecosystem Funding is Broken" [level=3] [ref=e618]
+                  - paragraph [ref=e619]: Traditional grant systems reward promises over delivery. Here's how to fix it.
+                  - generic [ref=e620]:
+                    - text: READ MORE
+                    - img [ref=e621]
+        - article [ref=e624]:
+          - link "[LEADERSHIP] Debate as Leadership Practice The best leaders embrace intellectual conflict and use it to sharpen thinking. READ MORE" [ref=e625]:
+            - /url: /blog/debate-as-leadership-practice
+            - generic [ref=e627]:
+              - img [ref=e629]
+              - generic [ref=e634]:
+                - generic [ref=e635]: "[LEADERSHIP]"
+                - heading "Debate as Leadership Practice" [level=3] [ref=e636]
+                - paragraph [ref=e637]: The best leaders embrace intellectual conflict and use it to sharpen thinking.
+                - generic [ref=e638]:
+                  - text: READ MORE
+                  - img [ref=e639]
+        - article [ref=e642]:
+          - link "[AI] Automation as Human Right AI should free humans for creativity, not replace them entirely. READ MORE" [ref=e643]:
+            - /url: /blog/automation-as-human-right
+            - generic [ref=e645]:
+              - img [ref=e647]
+              - generic [ref=e655]:
+                - generic [ref=e656]: "[AI]"
+                - heading "Automation as Human Right" [level=3] [ref=e657]
+                - paragraph [ref=e658]: AI should free humans for creativity, not replace them entirely.
+                - generic [ref=e659]:
+                  - text: READ MORE
+                  - img [ref=e660]
+        - article [ref=e663]:
+          - link "Featured [PRODUCT] Death of Growth Theater Why vanity metrics are killing startups and what to measure instead. READ MORE" [ref=e664]:
+            - /url: /blog/death-of-growth-theater
+            - generic [ref=e665]:
+              - generic [ref=e666]: Featured
+              - generic [ref=e667]:
+                - img [ref=e669]
+                - generic [ref=e671]:
+                  - generic [ref=e672]: "[PRODUCT]"
+                  - heading "Death of Growth Theater" [level=3] [ref=e673]
+                  - paragraph [ref=e674]: Why vanity metrics are killing startups and what to measure instead.
+                  - generic [ref=e675]:
+                    - text: READ MORE
+                    - img [ref=e676]
+      - link "EXPLORE ALL WRITINGS" [ref=e680]:
+        - /url: /blog
+        - button "EXPLORE ALL WRITINGS" [ref=e681]:
+          - generic [ref=e682]: EXPLORE ALL WRITINGS
+    - img [ref=e686]
+    - generic [ref=e690]:
+      - heading "Ready to Solve Your Product Problems?" [level=2] [ref=e694]
+      - paragraph [ref=e695]: Let's find what's preventing your users from adopting your product and fix it.
+      - link "Book a Discovery Call" [ref=e697]:
+        - /url: /contact
+        - button "Book a Discovery Call" [ref=e698]:
+          - img [ref=e699]
+          - text: Book a Discovery Call
+          - img [ref=e701]
+      - paragraph [ref=e703]: "Typical response time: Within 24 hours"
+  - contentinfo [ref=e704]:
+    - generic [ref=e705]:
+      - generic [ref=e706]:
+        - generic [ref=e707]:
+          - heading "About" [level=3] [ref=e708]
+          - paragraph [ref=e709]: Building systems that serve humanity. Technology should empower human judgment, not replace it.
+        - generic [ref=e710]:
+          - heading "Quick Links" [level=3] [ref=e711]
+          - list [ref=e712]:
+            - listitem [ref=e713]:
+              - link "Work" [ref=e714]:
+                - /url: /work
+            - listitem [ref=e715]:
+              - link "Philosophy" [ref=e716]:
+                - /url: /philosophy
+            - listitem [ref=e717]:
+              - link "Contact" [ref=e718]:
+                - /url: /contact
+            - listitem [ref=e719]:
+              - link "Features" [ref=e720]:
+                - /url: /features
+        - generic [ref=e721]:
+          - heading "Connect" [level=3] [ref=e722]
+          - generic [ref=e723]:
+            - link "Twitter" [ref=e724]:
+              - /url: https://twitter.com/ablockunchained
+              - img [ref=e725]
+            - link "LinkedIn" [ref=e727]:
+              - /url: https://linkedin.com/in/johnconnor
+              - img [ref=e728]
+            - link "Email" [ref=e732]:
+              - /url: mailto:john@johnconnor.xyz
+              - img [ref=e733]
+      - paragraph [ref=e737]: © 2025 John Thomas Connor
+  - generic [ref=e742] [cursor=pointer]:
+    - button "Open Next.js Dev Tools" [ref=e743] [cursor=pointer]:
+      - img [ref=e744] [cursor=pointer]
+    - generic [ref=e747] [cursor=pointer]:
+      - button "Open issues overlay" [ref=e748] [cursor=pointer]:
+        - generic [ref=e749] [cursor=pointer]:
+          - generic [ref=e750] [cursor=pointer]: "0"
+          - generic [ref=e751] [cursor=pointer]: "1"
+        - generic [ref=e752] [cursor=pointer]: Issue
+      - button "Collapse issues badge" [ref=e753] [cursor=pointer]:
+        - img [ref=e754] [cursor=pointer]
+  - alert [ref=e756]
+```

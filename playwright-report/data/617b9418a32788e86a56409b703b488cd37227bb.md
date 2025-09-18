@@ -1,0 +1,83 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e4]:
+      - link "JC John Connor Technology Strategist" [ref=e6]:
+        - /url: /
+        - generic [ref=e7]:
+          - generic [ref=e12]: JC
+          - generic [ref=e13]:
+            - generic [ref=e14]: John Connor
+            - generic [ref=e15]: Technology Strategist
+      - generic [ref=e16]:
+        - link "Home" [ref=e18]:
+          - /url: /
+          - generic [ref=e19]:
+            - img [ref=e20]
+            - generic [ref=e23]: Home
+        - link "Work" [ref=e26]:
+          - /url: /work
+          - generic [ref=e27]:
+            - img [ref=e28]
+            - generic [ref=e31]: Work
+        - link "Blog" [ref=e35]:
+          - /url: /blog
+          - generic [ref=e36]:
+            - img [ref=e37]
+            - generic [ref=e39]: Blog
+        - link "Thoughts" [ref=e42]:
+          - /url: /thoughts
+          - generic [ref=e43]:
+            - img [ref=e44]
+            - generic [ref=e46]: Thoughts
+        - link "Philosophy" [ref=e49]:
+          - /url: /philosophy
+          - generic [ref=e50]:
+            - img [ref=e51]
+            - generic [ref=e59]: Philosophy
+        - link "Contact" [ref=e62]:
+          - /url: /contact
+          - generic [ref=e63]:
+            - img [ref=e64]
+            - generic [ref=e67]: Contact
+  - main [ref=e69]
+  - contentinfo [ref=e100]:
+    - generic [ref=e101]:
+      - generic [ref=e102]:
+        - generic [ref=e103]:
+          - heading "About" [level=3] [ref=e104]
+          - paragraph [ref=e105]: Building systems that serve humanity. Technology should empower human judgment, not replace it.
+        - generic [ref=e106]:
+          - heading "Quick Links" [level=3] [ref=e107]
+          - list [ref=e108]:
+            - listitem [ref=e109]:
+              - link "Work" [ref=e110]:
+                - /url: /work
+            - listitem [ref=e111]:
+              - link "Philosophy" [ref=e112]:
+                - /url: /philosophy
+            - listitem [ref=e113]:
+              - link "Contact" [ref=e114]:
+                - /url: /contact
+            - listitem [ref=e115]:
+              - link "Features" [ref=e116]:
+                - /url: /features
+        - generic [ref=e117]:
+          - heading "Connect" [level=3] [ref=e118]
+          - generic [ref=e119]:
+            - link "Twitter" [ref=e120]:
+              - /url: https://twitter.com/ablockunchained
+              - img [ref=e121]
+            - link "LinkedIn" [ref=e123]:
+              - /url: https://linkedin.com/in/johnconnor
+              - img [ref=e124]
+            - link "Email" [ref=e128]:
+              - /url: mailto:john@johnconnor.xyz
+              - img [ref=e129]
+      - paragraph [ref=e133]: © 2025 John Thomas Connor
+  - button "Open Next.js Dev Tools" [ref=e139] [cursor=pointer]:
+    - img [ref=e140] [cursor=pointer]
+  - alert [ref=e143]
+```
