@@ -9,18 +9,18 @@ const platforms = [
   {
     name: 'SuperDebate',
     url: 'https://superdebate.org',
-    tagline: 'Where Ideas Compete and Truth Wins',
-    description: 'A revolutionary platform transforming online discourse through structured debate, intellectual rigor, and gamified truth-seeking.',
+    tagline: 'Make Arguing Fun Again',
+    description: 'Building a global network of in-person debate communities that transform disagreement into productive dialogue and genuine connection.',
     stats: [
-      { label: 'Debate Formats', value: '4' },
-      { label: 'AI Training Modules', value: '5+' },
+      { label: 'Modular Format', value: '1' },
+      { label: 'City Chapters', value: '15+' },
       { label: 'Community', value: 'Growing' }
     ],
     features: [
-      'Structured debate formats',
-      'Reputation-based credibility',
-      'Evidence-driven arguments',
-      'Community moderation'
+      'In-person debate meetups',
+      'One adaptable format',
+      'Local chapter network',
+      'Community-driven culture'
     ],
     icon: Trophy,
     color: 'from-purple-600 to-pink-600',

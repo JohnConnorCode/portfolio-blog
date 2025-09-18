@@ -32,14 +32,14 @@ export function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
         >
           {/* Main headline */}
           <motion.h1 
             className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 sm:mb-8 leading-[1.1] sm:leading-tight"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.2 }}
+            transition={{ duration: 0.8, delay: 0.16 }}
           >
             Build systems that
             <span className="block text-gradient mt-2">serve humanity</span>
@@ -49,7 +49,7 @@ export function Hero() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.4 }}
+            transition={{ duration: 0.8, delay: 0.32 }}
             className="mb-12"
           >
             <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
@@ -63,7 +63,7 @@ export function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.6 }}
+            transition={{ duration: 0.8, delay: 0.48 }}
             className="mb-8 sm:mb-12 py-6 sm:py-8 border-y border-border/30"
           >
             <blockquote className="text-base sm:text-lg md:text-xl italic text-muted-foreground max-w-2xl mx-auto">
@@ -76,7 +76,7 @@ export function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.8 }}
+            transition={{ duration: 0.8, delay: 0.64 }}
             className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center"
           >
             <Link href="/contact">
@@ -105,7 +105,7 @@ export function Hero() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 1 }}
+          transition={{ delay: 0.96, duration: 0.8 }}
           className="absolute bottom-8 left-1/2 -translate-x-1/2 pointer-events-none z-0"
         >
           <motion.div

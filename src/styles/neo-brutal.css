@@ -181,7 +181,7 @@
   opacity: var(--hero-grid-opacity);
   transform: perspective(900px) rotateX(65deg);
   transform-origin: center 80%;
-  animation: gridScroll 10s linear infinite;
+  animation: gridScroll 20s linear infinite;
   will-change: background-position, transform;
   z-index: 5;
   pointer-events: none;

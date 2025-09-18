@@ -185,7 +185,7 @@ export function Navbar() {
             initial={{ opacity: 0, x: '100%' }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
-            transition={{ type: 'spring', damping: 20, stiffness: 300 }}
+            transition={{ type: 'tween', duration: 0.3, ease: 'easeInOut' }}
             className="md:hidden fixed inset-y-0 right-0 w-full sm:w-80 bg-background/95 backdrop-blur-xl border-l border-border/50 z-50"
           >
             {/* Close button */}
@@ -208,9 +208,9 @@ export function Navbar() {
                 return (
                   <motion.div
                     key={item.href}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.05 }}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ type: 'tween', duration: 0.2, delay: index * 0.08, ease: 'easeOut' }}
                   >
                     <Link
                       href={item.href}

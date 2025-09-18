@@ -116,7 +116,7 @@ export function HeroBackground() {
           y: [0, -50, 0],
         }}
         transition={{
-          duration: 20,
+          duration: 40,
           repeat: Infinity,
           ease: "easeInOut"
         }}
@@ -128,7 +128,7 @@ export function HeroBackground() {
           y: [0, 50, 0],
         }}
         transition={{
-          duration: 25,
+          duration: 45,
           repeat: Infinity,
           ease: "easeInOut"
         }}

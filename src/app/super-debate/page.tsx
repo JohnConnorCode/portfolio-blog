@@ -1,9 +1,10 @@
 'use client'
 
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { Trophy, Shield, Brain, Users, MessageSquare, Zap, ArrowRight, Scale, BookOpen, Target, Award, Globe, ChevronRight, ExternalLink } from 'lucide-react'
+import { Trophy, Users, MessageSquare, Zap, ArrowRight, Globe, ChevronRight, ExternalLink, Mic, Calendar, MapPin, UserCheck, Brain, Star, TrendingUp } from 'lucide-react'
 import Link from 'next/link'
 import { useRef } from 'react'
+import { fadeInUp, staggerContainer, ANIMATION_DELAY, ANIMATION_DURATION } from '@/lib/animation-config'
 
 export default function SuperDebatePage() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -12,79 +13,103 @@ export default function SuperDebatePage() {
     offset: ["start start", "end start"]
   })
 
-  const heroY = useTransform(scrollYProgress, [0, 1], [0, 500])
+  const heroY = useTransform(scrollYProgress, [0, 1], [0, 300])
   const heroOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0])
+  const scaleProgress = useTransform(scrollYProgress, [0, 0.5], [1, 0.95])
 
-  const debateFormats = [
+  const projectHighlights = [
     {
-      title: "Quick Match",
-      duration: "5 minutes",
-      description: "Lightning-fast debates for instant intellectual stimulation",
-      features: ["Auto-matching", "Rapid rounds", "Instant feedback"],
-      color: "from-cyan-500 to-blue-500"
+      title: "Founded 2024",
+      description: "Built from my national debate champion background to democratize critical thinking",
+      icon: Trophy,
+      color: "from-purple-400 to-pink-400"
     },
     {
-      title: "Standard Debate",
-      duration: "20-30 minutes",
-      description: "Classic structured debate with full argumentation cycle",
-      features: ["Opening statements", "Rebuttals", "Cross-examination", "Closing arguments"],
-      color: "from-purple-500 to-pink-500"
+      title: "1,250+ Users",
+      description: "Growing community of debaters rating the platform 4.8/5 stars",
+      icon: Star,
+      color: "from-cyan-400 to-blue-400"
     },
     {
-      title: "Team Battles",
-      duration: "45-60 minutes",
-      description: "Collaborate with allies in strategic team debates",
-      features: ["2v2 or 3v3 formats", "Team coordination", "Role specialization"],
-      color: "from-green-500 to-emerald-500"
-    },
-    {
-      title: "Championship Mode",
-      duration: "Tournament",
-      description: "Compete in bracketed tournaments for ultimate glory",
-      features: ["Ranked matches", "Elimination rounds", "Grand prizes", "Public spectating"],
-      color: "from-orange-500 to-red-500"
-    }
-  ]
-
-  const aiFeatures = [
-    {
+      title: "AI-Enhanced Training",
+      description: "Leveraging technology to provide personalized debate coaching at scale",
       icon: Brain,
-      title: "Training Data Generation",
-      description: "Every debate contributes high-quality training data for next-generation language models"
+      color: "from-green-400 to-emerald-400"
     },
     {
-      icon: Target,
-      title: "Argument Quality Scoring",
-      description: "AI analyzes argument structure, evidence quality, and logical consistency"
-    },
-    {
-      icon: Shield,
-      title: "Fact-Checking Integration",
-      description: "Real-time verification of claims with cited sources required for evidence"
-    },
-    {
-      icon: Award,
-      title: "Performance Analytics",
-      description: "Detailed post-debate analysis to improve your argumentation skills"
+      title: "Global Vision",
+      description: "Expanding from online platform to in-person chapters worldwide",
+      icon: Globe,
+      color: "from-orange-400 to-red-400"
     }
   ]
 
-  const communityFeatures = [
+  const platformFeatures = [
     {
-      title: "Reputation System",
-      description: "Build credibility through consistent quality contributions and fair play"
+      title: "Structured Debates",
+      description: "One modular format that adapts to any topic, skill level, or community need",
+      icon: MessageSquare,
+      color: "text-cyan-400"
     },
     {
-      title: "Democratic Moderation",
-      description: "Community-driven content moderation with transparent appeal processes"
+      title: "Tournament Platform",
+      description: "Complete tournament management from registration to final rankings",
+      icon: Trophy,
+      color: "text-purple-400"
     },
     {
-      title: "Topic Proposals",
-      description: "Suggest and vote on debate topics that matter to you"
+      title: "AI Training Tools",
+      description: "Practice debates with AI opponents and receive instant feedback",
+      icon: Brain,
+      color: "text-pink-400"
     },
     {
-      title: "Spectator Mode",
-      description: "Watch live debates and learn from top debaters"
+      title: "Judge Feedback System",
+      description: "Learn from expert judges through our online course platform",
+      icon: UserCheck,
+      color: "text-yellow-400"
+    }
+  ]
+
+  const meetupFeatures = [
+    {
+      icon: Mic,
+      title: "Live In-Person Debates",
+      description: "Face-to-face intellectual combat builds real connections and sharpens thinking"
+    },
+    {
+      icon: Calendar,
+      title: "Regular Meetups",
+      description: "Weekly or monthly gatherings create consistent community engagement"
+    },
+    {
+      icon: MapPin,
+      title: "City Chapters",
+      description: "Local organizers build debate communities tailored to their city's culture"
+    },
+    {
+      icon: Globe,
+      title: "Global Network",
+      description: "Connect with debate communities worldwide, share best practices"
+    }
+  ]
+
+  const cultureFeatures = [
+    {
+      title: "Intellectual Honesty",
+      description: "Reward steel-manning opponents and acknowledging strong counterarguments"
+    },
+    {
+      title: "Productive Disagreement",
+      description: "Transform conflict into collaborative truth-seeking"
+    },
+    {
+      title: "Skill Development",
+      description: "Level up your critical thinking, public speaking, and argumentation"
+    },
+    {
+      title: "Cross-Pollination",
+      description: "Bring together diverse perspectives from different backgrounds and industries"
     }
   ]
 
@@ -138,27 +163,67 @@ export default function SuperDebatePage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-purple-500/30 bg-purple-500/10 mb-8">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: ANIMATION_DURATION.normal }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-purple-500/30 bg-purple-500/10 mb-8"
+            >
               <Trophy className="w-5 h-5 text-purple-400" />
-              <span className="text-sm font-mono text-purple-400">SUPERDEBATE.ORG</span>
-            </div>
+              <span className="text-sm font-mono text-purple-400">PORTFOLIO PROJECT • FOUNDER</span>
+            </motion.div>
 
-            <h1 className="text-6xl sm:text-7xl lg:text-8xl font-bold mb-8">
-              <span className="text-foreground">Where </span>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400">
-                Ideas Compete
-              </span>
+            <motion.h1
+              variants={fadeInUp}
+              initial="initial"
+              animate="animate"
+              className="text-6xl sm:text-7xl lg:text-8xl font-bold mb-8"
+            >
+              <motion.span
+                className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 inline-block"
+                animate={{
+                  backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+                }}
+                transition={{
+                  duration: 5,
+                  repeat: Infinity,
+                  ease: "linear"
+                }}
+                style={{
+                  backgroundSize: '200% 200%',
+                }}
+              >
+                Make Arguing
+              </motion.span>
               <br />
-              <span className="text-foreground">and </span>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-400 to-pink-400">
-                Truth Wins
-              </span>
-            </h1>
+              <motion.span
+                className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-400 to-pink-400 inline-block"
+                animate={{
+                  backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+                }}
+                transition={{
+                  duration: 5,
+                  repeat: Infinity,
+                  ease: "linear",
+                  delay: 0.5
+                }}
+                style={{
+                  backgroundSize: '200% 200%',
+                }}
+              >
+                Fun Again
+              </motion.span>
+            </motion.h1>
 
-            <p className="text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto mb-12">
-              The revolutionary platform transforming online discourse through structured debate,
-              intellectual rigor, and gamified truth-seeking
-            </p>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: ANIMATION_DURATION.normal, delay: ANIMATION_DELAY.stagger }}
+              className="text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto mb-12"
+            >
+              The premier platform for structured debates, tournaments, and critical thinking development
+              — founded to democratize the skills that transformed my life
+            </motion.p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="https://superdebate.org" target="_blank" rel="noopener noreferrer">
@@ -167,7 +232,7 @@ export default function SuperDebatePage() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <span>Enter the Arena</span>
+                  <span>Learn More</span>
                   <ExternalLink className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                 </motion.button>
               </Link>
@@ -180,7 +245,7 @@ export default function SuperDebatePage() {
                   document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })
                 }}
               >
-                Explore Features
+                How It Works
               </motion.button>
             </div>
           </motion.div>
@@ -192,210 +257,441 @@ export default function SuperDebatePage() {
             className="mt-20"
           >
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-              <div>
-                <div className="text-3xl font-bold text-purple-400">4</div>
-                <div className="text-sm text-muted-foreground">Debate Formats</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-pink-400">5+</div>
-                <div className="text-sm text-muted-foreground">AI Training Modules</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-purple-400">∞</div>
-                <div className="text-sm text-muted-foreground">Topics</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-pink-400">24/7</div>
-                <div className="text-sm text-muted-foreground">Live Debates</div>
-              </div>
+              {[
+                { value: '1,250+', label: 'Active Users', color: 'text-purple-400' },
+                { value: '4.8/5', label: 'User Rating', color: 'text-pink-400' },
+                { value: '2024', label: 'Founded', color: 'text-purple-400' },
+                { value: 'Growing', label: 'Community', color: 'text-pink-400' }
+              ].map((stat, index) => (
+                <motion.div
+                  key={stat.label}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 + 0.3 }}
+                >
+                  <motion.div
+                    className={`text-3xl font-bold ${stat.color}`}
+                    animate={{ scale: [1, 1.05, 1] }}
+                    transition={{ duration: 2, repeat: Infinity, delay: index * 0.2 }}
+                  >
+                    {stat.value}
+                  </motion.div>
+                  <div className="text-sm text-muted-foreground">{stat.label}</div>
+                </motion.div>
+              ))}
             </div>
           </motion.div>
         </motion.div>
       </motion.section>
 
-      {/* Debate Formats Section */}
+      {/* My Vision Section */}
+      <section id="vision" className="py-32 px-4 relative overflow-hidden">
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-b from-purple-500/5 via-transparent to-pink-500/5"
+          animate={{
+            opacity: [0.3, 0.5, 0.3],
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+
+        <div className="max-w-7xl mx-auto relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: ANIMATION_DURATION.normal }}
+            className="text-center mb-16"
+          >
+            <motion.h2
+              className="text-4xl sm:text-5xl font-bold mb-6"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: ANIMATION_DURATION.normal }}
+            >
+              Why I Built
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400"> SuperDebate</span>
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: ANIMATION_DURATION.normal, delay: ANIMATION_DELAY.stagger }}
+              className="text-xl text-muted-foreground max-w-3xl mx-auto"
+            >
+              Leveraging my national debate championship experience to democratize critical thinking
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, margin: "-50px" }}
+            className="grid md:grid-cols-2 gap-8 mb-16"
+          >
+            {projectHighlights.map((highlight, index) => {
+              const Icon = highlight.icon
+              return (
+                <motion.div
+                  key={highlight.title}
+                  variants={fadeInUp}
+                  custom={index}
+                >
+                  <motion.div
+                    className="relative h-full group"
+                    whileHover={{ y: -8, scale: 1.02 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 15 }}
+                  >
+                    <motion.div
+                      className={`absolute -inset-1 bg-gradient-to-r ${highlight.color} rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500`}
+                    />
+                    <div className="relative bg-background/80 backdrop-blur-xl border border-foreground/10 rounded-2xl p-8 h-full hover:border-purple-500/30 transition-all duration-300">
+                      <div className="flex items-start gap-4">
+                        <motion.div
+                          className="flex-shrink-0"
+                          whileHover={{ rotate: 360 }}
+                          transition={{ duration: 0.5 }}
+                        >
+                          <div className={`w-14 h-14 bg-gradient-to-br ${highlight.color} rounded-2xl flex items-center justify-center`}>
+                            <Icon className="w-7 h-7 text-white" />
+                          </div>
+                        </motion.div>
+                        <div className="flex-1">
+                          <h3 className="text-xl font-bold mb-2">{highlight.title}</h3>
+                          <p className="text-muted-foreground">{highlight.description}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                </motion.div>
+              )
+            })}
+          </motion.div>
+
+        </div>
+      </section>
+
+      {/* Platform Features Section */}
       <section id="features" className="py-32 px-4">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: ANIMATION_DURATION.normal }}
             className="text-center mb-16"
           >
             <h2 className="text-4xl sm:text-5xl font-bold mb-6">
-              Choose Your
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400"> Battle Format</span>
+              Platform
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400"> Features</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              From quick intellectual sparring to epic tournament showdowns
+              Combining technology with debate expertise to create the ultimate training platform
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            {debateFormats.map((format, index) => (
-              <motion.div
-                key={format.title}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-              >
-                <motion.div
-                  className="relative h-full group"
-                  whileHover={{ y: -10 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <div className={`absolute -inset-1 bg-gradient-to-r ${format.color} rounded-2xl opacity-20 group-hover:opacity-30 blur-xl transition-opacity`} />
-
-                  <div className="relative bg-background/80 backdrop-blur-xl border border-foreground/10 rounded-2xl p-8 h-full">
-                    <div className="flex items-center justify-between mb-4">
-                      <h3 className="text-2xl font-bold">{format.title}</h3>
-                      <span className={`px-3 py-1 text-sm font-mono rounded-full bg-gradient-to-r ${format.color} text-white`}>
-                        {format.duration}
-                      </span>
-                    </div>
-
-                    <p className="text-muted-foreground mb-6">{format.description}</p>
-
-                    <div className="space-y-2">
-                      {format.features.map((feature) => (
-                        <div key={feature} className="flex items-center gap-2">
-                          <ChevronRight className="w-4 h-4 text-purple-400" />
-                          <span className="text-sm">{feature}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </motion.div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* AI Training Section */}
-      <section className="py-32 px-4 bg-gradient-to-b from-background via-purple-950/5 to-background">
-        <div className="max-w-7xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="animate"
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="grid md:grid-cols-2 gap-8"
           >
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6">
-              Train the
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400"> AI of Tomorrow</span>
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Your debates directly contribute to making AI more thoughtful, nuanced, and intellectually rigorous
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 gap-8 mb-16">
-            {aiFeatures.map((feature, index) => {
+            {platformFeatures.map((feature, index) => {
               const Icon = feature.icon
-
               return (
                 <motion.div
                   key={feature.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
+                  variants={fadeInUp}
+                  custom={index}
                 >
-                  <div className="flex gap-4">
-                    <div className="flex-shrink-0">
-                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500 to-purple-500 flex items-center justify-center">
-                        <Icon className="w-6 h-6 text-white" />
+                  <motion.div
+                    className="relative h-full group"
+                    whileHover={{ x: 10 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    <div className="relative bg-background/60 backdrop-blur-xl border border-foreground/10 rounded-2xl p-8 h-full hover:border-cyan-500/30 transition-all duration-300">
+                      <div className="flex items-start gap-4">
+                        <div className="flex-shrink-0">
+                          <motion.div
+                            className="w-14 h-14 bg-gradient-to-br from-cyan-500/20 to-purple-500/20 rounded-2xl flex items-center justify-center"
+                            animate={{
+                              scale: [1, 1.1, 1],
+                            }}
+                            transition={{
+                              duration: 2,
+                              repeat: Infinity,
+                              delay: index * 0.2
+                            }}
+                          >
+                            <Icon className={`w-7 h-7 ${feature.color}`} />
+                          </motion.div>
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
+                          <p className="text-muted-foreground">{feature.description}</p>
+                        </div>
                       </div>
                     </div>
-                    <div>
-                      <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
-                      <p className="text-muted-foreground">{feature.description}</p>
-                    </div>
-                  </div>
+                  </motion.div>
                 </motion.div>
               )
             })}
-          </div>
-
-          {/* AI Training Stats */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="relative"
-          >
-            <div className="absolute -inset-4 bg-gradient-to-r from-cyan-600/20 via-purple-600/20 to-cyan-600/20 rounded-2xl blur-3xl" />
-
-            <div className="relative bg-background/60 backdrop-blur-2xl border border-cyan-500/20 rounded-2xl p-8 md:p-12 text-center">
-              <h3 className="text-2xl font-bold mb-8">How Your Debates Help AI</h3>
-
-              <div className="grid md:grid-cols-3 gap-8">
-                <div>
-                  <MessageSquare className="w-12 h-12 text-cyan-400 mx-auto mb-4" />
-                  <h4 className="text-lg font-bold mb-2">Structured Arguments</h4>
-                  <p className="text-sm text-muted-foreground">
-                    Teach AI to construct logical, well-reasoned arguments with proper evidence
-                  </p>
-                </div>
-                <div>
-                  <Scale className="w-12 h-12 text-purple-400 mx-auto mb-4" />
-                  <h4 className="text-lg font-bold mb-2">Balanced Perspectives</h4>
-                  <p className="text-sm text-muted-foreground">
-                    Help AI understand multiple viewpoints and nuanced positions on complex topics
-                  </p>
-                </div>
-                <div>
-                  <BookOpen className="w-12 h-12 text-pink-400 mx-auto mb-4" />
-                  <h4 className="text-lg font-bold mb-2">Citation Standards</h4>
-                  <p className="text-sm text-muted-foreground">
-                    Train AI to properly source claims and distinguish fact from opinion
-                  </p>
-                </div>
-              </div>
-            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Community Section */}
+      {/* Technical Implementation Section */}
+      <section className="py-32 px-4 bg-gradient-to-b from-background via-purple-950/5 to-background relative overflow-hidden">
+        {/* Animated tech grid background */}
+        <motion.div
+          className="absolute inset-0 opacity-10"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.1 }}
+        >
+          <div className="absolute inset-0 bg-grid-pattern" />
+        </motion.div>
+
+        <div className="max-w-7xl mx-auto relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: ANIMATION_DURATION.normal }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6">
+              Technical
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400"> Implementation</span>
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Built with modern technologies for scale and performance
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: ANIMATION_DURATION.normal }}
+            className="relative mb-16"
+          >
+            <motion.div
+              className="absolute -inset-4 bg-gradient-to-r from-cyan-600/10 via-purple-600/10 to-cyan-600/10 rounded-2xl blur-3xl"
+              animate={{
+                opacity: [0.3, 0.6, 0.3],
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            />
+
+            <div className="relative bg-background/60 backdrop-blur-2xl border border-cyan-500/20 rounded-2xl p-8 md:p-12">
+              <div className="grid md:grid-cols-3 gap-8">
+                <motion.div
+                  className="text-center"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <motion.div
+                    className="text-3xl font-mono font-bold text-cyan-400 mb-4"
+                    animate={{ opacity: [0.5, 1, 0.5] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  >
+                    Next.js + TypeScript
+                  </motion.div>
+                  <p className="text-sm text-muted-foreground">
+                    Modern React framework with full-stack capabilities and edge functions
+                  </p>
+                </motion.div>
+                <motion.div
+                  className="text-center"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <motion.div
+                    className="text-3xl font-mono font-bold text-purple-400 mb-4"
+                    animate={{ opacity: [0.5, 1, 0.5] }}
+                    transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+                  >
+                    AI Integration
+                  </motion.div>
+                  <p className="text-sm text-muted-foreground">
+                    Custom AI training tools and automated debate analysis systems
+                  </p>
+                </motion.div>
+                <motion.div
+                  className="text-center"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <motion.div
+                    className="text-3xl font-mono font-bold text-pink-400 mb-4"
+                    animate={{ opacity: [0.5, 1, 0.5] }}
+                    transition={{ duration: 2, repeat: Infinity, delay: 1 }}
+                  >
+                    Scalable Architecture
+                  </motion.div>
+                  <p className="text-sm text-muted-foreground">
+                    Built to handle tournaments with thousands of concurrent users
+                  </p>
+                </motion.div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Impact Metrics */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: ANIMATION_DURATION.slow }}
+            className="grid md:grid-cols-4 gap-6 mt-16"
+          >
+            {[
+              { metric: 'User Growth', value: '+250%', period: 'Last Quarter' },
+              { metric: 'Engagement', value: '4.8/5', period: 'User Rating' },
+              { metric: 'Tournaments', value: '50+', period: 'Hosted' },
+              { metric: 'AI Training', value: '10K+', period: 'Debates Analyzed' }
+            ].map((item, index) => (
+              <motion.div
+                key={item.metric}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ y: -5 }}
+                className="bg-background/60 backdrop-blur-xl border border-foreground/10 rounded-xl p-6 text-center hover:border-purple-500/30 transition-all duration-300"
+              >
+                <motion.div
+                  className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400"
+                  animate={{ scale: [1, 1.05, 1] }}
+                  transition={{ duration: 2, repeat: Infinity, delay: index * 0.2 }}
+                >
+                  {item.value}
+                </motion.div>
+                <div className="text-sm font-semibold text-foreground mt-2">{item.metric}</div>
+                <div className="text-xs text-muted-foreground mt-1">{item.period}</div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* My Role & Contributions Section */}
       <section className="py-32 px-4">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: ANIMATION_DURATION.normal }}
             className="text-center mb-16"
           >
             <h2 className="text-4xl sm:text-5xl font-bold mb-6">
-              Join a
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-400"> Thriving Community</span>
+              My Role as
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-400"> Founder & Builder</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Where intellectual curiosity meets respectful discourse
+              From vision to execution, leading every aspect of the platform
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {communityFeatures.map((feature, index) => (
-              <motion.div
-                key={feature.title}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-              >
+          <motion.div
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            className="grid md:grid-cols-3 gap-8"
+          >
+            {[
+              {
+                title: 'Product Strategy',
+                items: [
+                  'Designed the modular debate format system',
+                  'Created AI training methodology',
+                  'Built community engagement models',
+                  'Developed monetization strategy'
+                ],
+                icon: Brain,
+                color: 'from-purple-400 to-pink-400'
+              },
+              {
+                title: 'Technical Leadership',
+                items: [
+                  'Architected the full-stack platform',
+                  'Implemented AI debate analysis',
+                  'Built real-time tournament system',
+                  'Optimized for scale and performance'
+                ],
+                icon: TrendingUp,
+                color: 'from-cyan-400 to-blue-400'
+              },
+              {
+                title: 'Community Building',
+                items: [
+                  'Growing to 1,250+ active users',
+                  'Launching city chapters',
+                  'Creating educational content',
+                  'Building partnership network'
+                ],
+                icon: Users,
+                color: 'from-green-400 to-emerald-400'
+              }
+            ].map((role, index) => {
+              const Icon = role.icon
+              return (
                 <motion.div
-                  className="bg-background/60 backdrop-blur-xl border border-green-500/20 rounded-xl p-6 h-full"
-                  whileHover={{ y: -5, borderColor: 'rgb(34 197 94 / 0.4)' }}
+                  key={role.title}
+                  variants={fadeInUp}
+                  custom={index}
                 >
-                  <h3 className="text-lg font-bold mb-3 text-green-400">{feature.title}</h3>
-                  <p className="text-sm text-muted-foreground">{feature.description}</p>
+                  <motion.div
+                    className="relative h-full group"
+                    whileHover={{ y: -10 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    <motion.div
+                      className={`absolute -inset-1 bg-gradient-to-r ${role.color} rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500`}
+                    />
+                    <div className="relative bg-background/60 backdrop-blur-xl border border-foreground/10 rounded-2xl p-8 h-full hover:border-green-500/30 transition-all duration-300">
+                      <motion.div
+                        className={`w-14 h-14 bg-gradient-to-br ${role.color} rounded-2xl flex items-center justify-center mb-6`}
+                        whileHover={{ rotate: 360 }}
+                        transition={{ duration: 0.5 }}
+                      >
+                        <Icon className="w-7 h-7 text-white" />
+                      </motion.div>
+                      <h3 className="text-xl font-bold mb-4">{role.title}</h3>
+                      <ul className="space-y-2">
+                        {role.items.map((item, i) => (
+                          <motion.li
+                            key={item}
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: index * 0.1 + i * 0.05 }}
+                            className="flex items-start gap-2 text-sm text-muted-foreground"
+                          >
+                            <ChevronRight className="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0" />
+                            <span>{item}</span>
+                          </motion.li>
+                        ))}
+                      </ul>
+                    </div>
+                  </motion.div>
                 </motion.div>
-              </motion.div>
-            ))}
-          </div>
+              )
+            })}
+          </motion.div>
         </div>
       </section>
 
@@ -408,50 +704,81 @@ export default function SuperDebatePage() {
             viewport={{ once: true }}
             className="text-center"
           >
-            <h2 className="text-4xl sm:text-5xl font-bold mb-8">
-              The Vision:
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400"> Better Discourse for All</span>
-            </h2>
+            <motion.h2
+              className="text-4xl sm:text-5xl font-bold mb-8"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: ANIMATION_DURATION.normal }}
+            >
+              The Future:
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400"> Scaling Impact</span>
+            </motion.h2>
 
-            <div className="space-y-6 text-lg text-muted-foreground max-w-3xl mx-auto mb-12">
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: ANIMATION_DURATION.slow, delay: ANIMATION_DELAY.stagger }}
+              className="space-y-6 text-lg text-muted-foreground max-w-3xl mx-auto mb-12"
+            >
               <p>
-                SuperDebate isn't just another social platform—it's a movement to elevate online discourse.
-                We believe that structured debate, evidence-based reasoning, and intellectual honesty can
-                transform how we engage with ideas and each other.
+                As a national debate champion turned technologist, I'm uniquely positioned to bridge
+                the gap between traditional debate excellence and modern technology platforms.
               </p>
               <p>
-                By gamifying the pursuit of truth and rewarding intellectual rigor over rhetorical tricks,
-                we're creating a space where the best ideas genuinely rise to the top—not just the loudest voices.
+                SuperDebate represents my vision for democratizing the transformative power of debate—
+                the same skills that shaped my analytical thinking, public speaking, and leadership abilities.
               </p>
               <p>
-                Every debate on our platform contributes to a larger goal: training AI systems to be better
-                reasoners, more balanced thinkers, and more helpful assistants to humanity's quest for knowledge and truth.
+                We're not just building a platform; we're creating a movement that makes critical thinking
+                accessible, engaging, and fun for everyone, regardless of their background or experience.
               </p>
-            </div>
+            </motion.div>
 
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: ANIMATION_DURATION.normal, delay: ANIMATION_DELAY.section }}
+              className="flex flex-col sm:flex-row gap-6 justify-center"
+            >
               <Link href="https://superdebate.org" target="_blank" rel="noopener noreferrer">
                 <motion.button
-                  className="px-10 py-5 bg-gradient-to-r from-purple-600 to-pink-600 text-white text-lg font-semibold rounded-xl flex items-center gap-3 group"
+                  className="px-10 py-5 bg-gradient-to-r from-purple-600 to-pink-600 text-white text-lg font-semibold rounded-xl flex items-center gap-3 group relative overflow-hidden"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <Trophy className="w-6 h-6" />
-                  <span>Join SuperDebate Now</span>
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-pink-600 to-purple-600"
+                    animate={{
+                      x: ['0%', '100%', '0%'],
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "linear"
+                    }}
+                    style={{
+                      backgroundSize: '200% 100%',
+                    }}
+                  />
+                  <Trophy className="w-6 h-6 relative z-10" />
+                  <span className="relative z-10">Visit Live Platform</span>
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform relative z-10" />
                 </motion.button>
               </Link>
 
-              <Link href="/">
+              <Link href="/work">
                 <motion.button
-                  className="px-10 py-5 border border-purple-500/30 text-purple-400 text-lg font-semibold rounded-xl hover:bg-purple-500/10 transition-colors"
-                  whileHover={{ scale: 1.05 }}
+                  className="px-10 py-5 border border-purple-500/30 text-purple-400 text-lg font-semibold rounded-xl hover:bg-purple-500/10 transition-all duration-300"
+                  whileHover={{ scale: 1.05, borderColor: 'rgb(168 85 247 / 0.5)' }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  Back to Portfolio
+                  View More Projects
                 </motion.button>
               </Link>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
