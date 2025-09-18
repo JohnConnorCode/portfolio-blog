@@ -9,7 +9,15 @@ import { cn } from '@/lib/utils'
 
 const navItems = [
   { href: '/', label: 'Home', icon: Home },
-  { href: '/work', label: 'Work', icon: Briefcase },
+  {
+    href: '/work',
+    label: 'Work',
+    icon: Briefcase,
+    subItems: [
+      { href: '/super-debate', label: 'Super Debate' },
+      { href: '/accelerate', label: 'Accelerate' },
+    ]
+  },
   { href: '/blog', label: 'Blog', icon: BookOpen },
   { href: '/thoughts', label: 'Thoughts', icon: MessageSquare },
   { href: '/philosophy', label: 'Philosophy', icon: Brain },
@@ -94,18 +102,21 @@ export function Navbar() {
           <div className="hidden md:flex items-center space-x-6">
             {navItems.map((item, index) => {
               const Icon = item.icon
-              const isActive = pathname === item.href
+              const isActive = pathname === item.href || item.subItems?.some(sub => pathname === sub.href)
+              const hasSubItems = item.subItems && item.subItems.length > 0
+
               return (
                 <motion.div
                   key={item.href}
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="relative group"
                 >
                   <Link
                     href={item.href}
                     className={cn(
-                      'relative px-6 py-3 group overflow-hidden rounded-lg transition-all',
+                      'relative px-6 py-3 group/link overflow-hidden rounded-lg transition-all flex items-center',
                       isActive
                         ? 'text-foreground'
                         : 'text-muted-foreground hover:text-foreground hover:bg-foreground/5'
@@ -118,15 +129,38 @@ export function Navbar() {
                         {/* Underline effect for active and hover */}
                         <span className={cn(
                           "absolute -bottom-1 left-0 h-[2px] bg-primary transition-all duration-300",
-                          isActive ? "w-full" : "w-0 group-hover:w-full"
+                          isActive ? "w-full" : "w-0 group-hover/link:w-full"
                         )} />
                       </span>
                     </span>
                     {/* Background sweep effect on hover */}
                     <motion.div
-                      className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"
+                      className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent -translate-x-full group-hover/link:translate-x-full transition-transform duration-700"
                     />
                   </Link>
+
+                  {/* Dropdown for sub-items */}
+                  {hasSubItems && (
+                    <div className="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                      <div className="bg-background/95 backdrop-blur-xl border border-border/50 rounded-lg shadow-xl overflow-hidden min-w-[200px]">
+                        {item.subItems?.map((subItem) => {
+                          const isSubActive = pathname === subItem.href
+                          return (
+                            <Link
+                              key={subItem.href}
+                              href={subItem.href}
+                              className={cn(
+                                'block px-4 py-3 hover:bg-foreground/5 transition-colors',
+                                isSubActive ? 'text-primary bg-primary/10' : 'text-muted-foreground hover:text-foreground'
+                              )}
+                            >
+                              {subItem.label}
+                            </Link>
+                          )
+                        })}
+                      </div>
+                    </div>
+                  )}
                 </motion.div>
               )
             })}
@@ -168,7 +202,9 @@ export function Navbar() {
             <div className="p-6 space-y-2">
               {navItems.map((item, index) => {
                 const Icon = item.icon
-                const isActive = pathname === item.href
+                const isActive = pathname === item.href || item.subItems?.some(sub => pathname === sub.href)
+                const hasSubItems = item.subItems && item.subItems.length > 0
+
                 return (
                   <motion.div
                     key={item.href}
@@ -178,7 +214,7 @@ export function Navbar() {
                   >
                     <Link
                       href={item.href}
-                      onClick={() => setIsOpen(false)}
+                      onClick={() => !hasSubItems && setIsOpen(false)}
                       className={cn(
                         'flex items-center space-x-3 px-4 py-3 rounded-lg transition-all group',
                         isActive
@@ -188,13 +224,43 @@ export function Navbar() {
                     >
                       <Icon className="w-5 h-5" />
                       <span className="flex-1">{item.label}</span>
-                      {isActive && (
+                      {isActive && !hasSubItems && (
                         <motion.div
                           layoutId="mobile-active-indicator"
                           className="w-1 h-6 bg-primary rounded-full"
                         />
                       )}
                     </Link>
+
+                    {/* Sub-items for mobile */}
+                    {hasSubItems && (
+                      <div className="ml-8 space-y-1 mt-1">
+                        {item.subItems?.map((subItem) => {
+                          const isSubActive = pathname === subItem.href
+                          return (
+                            <Link
+                              key={subItem.href}
+                              href={subItem.href}
+                              onClick={() => setIsOpen(false)}
+                              className={cn(
+                                'flex items-center px-4 py-2 rounded-lg transition-all text-sm',
+                                isSubActive
+                                  ? 'bg-primary/10 text-primary'
+                                  : 'hover:bg-primary/5 text-muted-foreground hover:text-foreground'
+                              )}
+                            >
+                              <span className="flex-1">{subItem.label}</span>
+                              {isSubActive && (
+                                <motion.div
+                                  layoutId="mobile-sub-active-indicator"
+                                  className="w-1 h-4 bg-primary rounded-full"
+                                />
+                              )}
+                            </Link>
+                          )
+                        })}
+                      </div>
+                    )}
                   </motion.div>
                 )
               })}

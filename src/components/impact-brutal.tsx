@@ -1,7 +1,9 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import { Zap, Users, Code, Trophy } from 'lucide-react'
+import { fadeInUp, headerAnimation, cardHover, staggerContainer, ANIMATION_DELAY } from '@/lib/animation-config'
+import { useRef } from 'react'
 
 const impacts = [
   {
@@ -35,93 +37,132 @@ const impacts = [
 ]
 
 export function ImpactBrutal() {
+  const containerRef = useRef<HTMLDivElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  })
+
+  const opacity = useTransform(scrollYProgress, [0, 0.15, 0.85, 1], [0, 1, 1, 0])
+
   return (
-    <motion.section 
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
+    <motion.section
+      ref={containerRef}
+      style={{ opacity }}
+      variants={fadeInUp}
+      initial="initial"
+      whileInView="animate"
       viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.6 }}
       className="py-24 px-4 bg-gradient-to-b from-background via-muted/20 to-background dark:from-gray-900 dark:to-black relative overflow-hidden">
       {/* Cyberpunk grid background */}
       <div className="absolute inset-0 cyber-grid" />
-      
+
       {/* Glowing accent lines */}
       <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent" />
       <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-pink-500 to-transparent" />
-      
-      <div className="max-w-7xl mx-auto relative z-10">
+
+      <motion.div
+        variants={staggerContainer}
+        initial="initial"
+        whileInView="animate"
+        viewport={{ once: true, margin: "-50px" }}
+        className="max-w-7xl mx-auto relative z-10"
+      >
         {/* Section title with glitch effect */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+        <motion.div
+          variants={fadeInUp}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light mb-4">
+          <motion.h2
+            {...headerAnimation}
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light mb-4"
+          >
             <span className="text-foreground">PROVEN</span>
             <span className="text-primary dark:text-cyan-400 font-black neon-glow"> IMPACT</span>
-          </h2>
-          <p className="text-base sm:text-lg text-muted-foreground dark:text-gray-400 font-light tracking-wide">
+          </motion.h2>
+          <motion.p
+            {...headerAnimation}
+            transition={{ ...headerAnimation.transition, delay: ANIMATION_DELAY.stagger }}
+            className="text-base sm:text-lg text-muted-foreground dark:text-gray-400 font-light tracking-wide"
+          >
             Real outcomes from solving actual product problems
-          </p>
+          </motion.p>
         </motion.div>
         
         {/* Impact cards with brutal design */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <motion.div
+          variants={staggerContainer}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+        >
           {impacts.map((impact, index) => {
             const Icon = impact.icon
             return (
               <motion.div
                 key={impact.label}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ scale: 1.02, y: -5 }}
+                variants={fadeInUp}
+                {...cardHover}
                 className="relative group"
               >
                 {/* Card with brutal shadow */}
                 <div className="card-glass hover:border-cyan-400/50 transition-all">
                   {/* Icon with neon glow */}
-                  <div className={`mb-4 ${impact.color}`}>
+                  <motion.div
+                    variants={fadeInUp}
+                    className={`mb-4 ${impact.color}`}
+                  >
                     <Icon className="w-12 h-12" />
-                  </div>
-                  
+                  </motion.div>
+
                   {/* Number with glitch on hover */}
-                  <div className="mb-2">
-                    <motion.p 
+                  <motion.div
+                    variants={fadeInUp}
+                    className="mb-2"
+                  >
+                    <motion.p
                       className={`text-3xl sm:text-4xl font-black ${impact.color} group-hover:animate-pulse`}
                     >
                       {impact.number}
                     </motion.p>
-                  </div>
-                  
+                  </motion.div>
+
                   {/* Label */}
-                  <p className="text-foreground font-bold text-base sm:text-lg mb-1">
+                  <motion.p
+                    variants={fadeInUp}
+                    className="text-foreground font-bold text-base sm:text-lg mb-1"
+                  >
                     {impact.label}
-                  </p>
-                  
+                  </motion.p>
+
                   {/* Context */}
-                  <p className="text-muted-foreground dark:text-gray-500 text-xs sm:text-sm font-mono">
+                  <motion.p
+                    variants={fadeInUp}
+                    className="text-muted-foreground dark:text-gray-500 text-xs sm:text-sm font-mono"
+                  >
                     {impact.context}
-                  </p>
-                  
+                  </motion.p>
+
                   {/* Hover accent */}
                   <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
                 </div>
               </motion.div>
             )
           })}
-        </div>
+        </motion.div>
         
         {/* Bottom accent text */}
-        <div className="text-center mt-16">
-          <p className="text-muted-foreground dark:text-gray-500 font-mono text-sm uppercase tracking-widest">
+        <motion.div
+          variants={fadeInUp}
+          className="text-center mt-16"
+        >
+          <motion.p
+            {...headerAnimation}
+            transition={{ ...headerAnimation.transition, delay: ANIMATION_DELAY.section }}
+            className="text-muted-foreground dark:text-gray-500 font-mono text-sm uppercase tracking-widest"
+          >
             Building what <span className="text-primary dark:text-cyan-400">actually works</span>
-          </p>
-        </div>
-      </div>
+          </motion.p>
+        </motion.div>
+      </motion.div>
     </motion.section>
   )
 }

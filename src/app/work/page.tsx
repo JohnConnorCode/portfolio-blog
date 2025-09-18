@@ -100,14 +100,16 @@ const currentProjects = [
     role: 'Founder',
     description: 'Platform for in-person intellectual discourse. Creating spaces where people confront ideas directly.',
     status: 'Active in 3 cities',
-    link: 'https://superdebate.com'
+    link: '/super-debate',
+    external: 'https://superdebate.org'
   },
   {
     name: 'Accelerate',
     role: 'Founder',
-    description: 'AI-powered funding platform with 500+ programs. Matching builders with the right funding opportunities using intelligent algorithms.',
-    status: 'Live with 500+ programs',
-    link: 'https://www.acceleratewith.us'
+    description: 'Web3 ecosystem platform connecting builders with funding, talent, and resources through intelligent matching.',
+    status: 'Live with 600+ projects',
+    link: '/accelerate',
+    external: 'https://acceleratewith.us'
   }
 ]
 
@@ -170,16 +172,26 @@ export default function WorkPage() {
                 <p className="text-muted-foreground mb-2">{project.description}</p>
                 <div className="flex items-center justify-between">
                   <span className="text-sm font-mono text-cyan-400/70">{project.status}</span>
-                  {project.link && (
-                    <a 
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm text-cyan-400 hover:text-cyan-300 flex items-center gap-1 transition-colors"
-                    >
-                      Visit <ArrowRight className="w-3 h-3" />
-                    </a>
-                  )}
+                  <div className="flex items-center gap-4">
+                    {project.link && (
+                      <Link
+                        href={project.link}
+                        className="text-sm text-cyan-400 hover:text-cyan-300 flex items-center gap-1 transition-colors"
+                      >
+                        View Details <ArrowRight className="w-3 h-3" />
+                      </Link>
+                    )}
+                    {project.external && (
+                      <a
+                        href={project.external}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm text-cyan-400 hover:text-cyan-300 flex items-center gap-1 transition-colors"
+                      >
+                        Visit Site <Globe className="w-3 h-3" />
+                      </a>
+                    )}
+                  </div>
                 </div>
               </AnimatedBorderBox>
             ))}

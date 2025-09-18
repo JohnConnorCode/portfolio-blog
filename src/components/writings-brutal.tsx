@@ -1,8 +1,10 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import { ArrowUpRight, Zap, Brain, Users, Globe } from 'lucide-react'
+import { fadeInUp, headerAnimation, cardHover, staggerContainer, ANIMATION_DELAY } from '@/lib/animation-config'
 import Link from 'next/link'
+import { useRef } from 'react'
 
 const writings = [
   {
@@ -42,77 +44,123 @@ const writings = [
 ]
 
 export function WritingsBrutal() {
+  const containerRef = useRef<HTMLDivElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  })
+
+  const opacity = useTransform(scrollYProgress, [0, 0.15, 0.85, 1], [0, 1, 1, 0])
+
   return (
-    <section className="py-24 px-4 bg-gradient-to-b from-background via-muted/20 to-background dark:from-gray-900 dark:to-black relative overflow-hidden">
+    <motion.section
+      ref={containerRef}
+      style={{ opacity }}
+      variants={fadeInUp}
+      initial="initial"
+      whileInView="animate"
+      viewport={{ once: true, margin: "-100px" }}
+      className="py-24 px-4 bg-gradient-to-b from-background via-muted/20 to-background dark:from-gray-900 dark:to-black relative overflow-hidden"
+    >
       {/* Cyberpunk grid background */}
       <div className="absolute inset-0 cyber-grid opacity-20" />
-      
-      <div className="max-w-7xl mx-auto relative z-10">
+
+      <motion.div
+        variants={staggerContainer}
+        initial="initial"
+        whileInView="animate"
+        viewport={{ once: true, margin: "-50px" }}
+        className="max-w-7xl mx-auto relative z-10"
+      >
         {/* Section title with glitch effect */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          variants={fadeInUp}
           className="text-center mb-16"
-          transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light mb-4">
+          <motion.h2
+            {...headerAnimation}
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light mb-4"
+          >
             <span className="text-foreground">THOUGHT</span>
             <span className="text-primary dark:text-cyan-400 font-black neon-glow"> LEADERSHIP</span>
-          </h2>
-          <p className="text-base sm:text-lg text-muted-foreground dark:text-gray-400 font-light tracking-wide">
+          </motion.h2>
+          <motion.p
+            {...headerAnimation}
+            transition={{ ...headerAnimation.transition, delay: ANIMATION_DELAY.stagger }}
+            className="text-base sm:text-lg text-muted-foreground dark:text-gray-400 font-light tracking-wide"
+          >
             Strategic insights on technology, community, and human potential
-          </p>
+          </motion.p>
         </motion.div>
         
         {/* Writing cards in brutal grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <motion.div
+          variants={staggerContainer}
+          className="grid grid-cols-1 md:grid-cols-2 gap-8"
+        >
           {writings.map((writing, index) => {
             const Icon = writing.icon
             return (
               <motion.article
                 key={writing.title}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                variants={fadeInUp}
                 className={`group ${writing.featured ? 'md:col-span-2' : ''}`}
               >
                 <Link href={`/blog/${writing.slug}`}>
-                  <motion.div 
-                    whileHover={{ scale: 1.02, y: -5 }}
-                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  <motion.div
+                    {...cardHover}
                     className="card-glass hover:border-cyan-400/50 transition-all"
                   >
                     {/* Featured badge */}
                     {writing.featured && (
-                      <div className="absolute -top-2 -right-2 bg-gradient-to-r from-cyan-400 to-cyan-500 text-black px-4 py-1 font-bold text-xs uppercase tracking-wide">
+                      <motion.div
+                        variants={fadeInUp}
+                        className="absolute -top-2 -right-2 bg-gradient-to-r from-cyan-400 to-cyan-500 text-black px-4 py-1 font-bold text-xs uppercase tracking-wide"
+                      >
                         Featured
-                      </div>
+                      </motion.div>
                     )}
-                    
+
                     {/* Content */}
-                    <div className="flex items-start gap-6">
-                      <div className={`${writing.color} flex-shrink-0`}>
+                    <motion.div
+                      variants={staggerContainer}
+                      className="flex items-start gap-6"
+                    >
+                      <motion.div
+                        variants={fadeInUp}
+                        className={`${writing.color} flex-shrink-0`}
+                      >
                         <Icon className="w-12 h-12" />
-                      </div>
+                      </motion.div>
                       <div className="flex-1">
-                        <div className={`${writing.color} font-mono text-xs mb-2`}>
+                        <motion.div
+                          variants={fadeInUp}
+                          className={`${writing.color} font-mono text-xs mb-2`}
+                        >
                           [{writing.category}]
-                        </div>
-                        <h3 className="text-xl sm:text-2xl font-black text-foreground group-hover:text-cyan-400 transition-colors mb-2">
+                        </motion.div>
+                        <motion.h3
+                          variants={fadeInUp}
+                          className="text-xl sm:text-2xl font-black text-foreground group-hover:text-cyan-400 transition-colors mb-2"
+                        >
                           {writing.title}
-                        </h3>
-                        <p className="text-gray-400 font-mono text-xs sm:text-sm mb-4">
+                        </motion.h3>
+                        <motion.p
+                          variants={fadeInUp}
+                          className="text-gray-400 font-mono text-xs sm:text-sm mb-4"
+                        >
                           {writing.excerpt}
-                        </p>
-                        <div className="flex items-center gap-2 text-cyan-400 font-black uppercase text-xs sm:text-sm opacity-0 group-hover:opacity-100 transition-opacity">
+                        </motion.p>
+                        <motion.div
+                          variants={fadeInUp}
+                          className="flex items-center gap-2 text-cyan-400 font-black uppercase text-xs sm:text-sm opacity-0 group-hover:opacity-100 transition-opacity"
+                        >
                           READ MORE
                           <ArrowUpRight className="w-4 h-4" />
-                        </div>
+                        </motion.div>
                       </div>
-                    </div>
-                    
+                    </motion.div>
+
                     {/* Hover effect */}
                     <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
                   </motion.div>
@@ -120,18 +168,17 @@ export function WritingsBrutal() {
               </motion.article>
             )
           })}
-        </div>
+        </motion.div>
         
         {/* CTA with brutal button */}
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.5 }}
+          variants={fadeInUp}
           className="text-center mt-16"
         >
           <Link href="/blog">
             <motion.button
+              {...headerAnimation}
+              transition={{ ...headerAnimation.transition, delay: ANIMATION_DELAY.section }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-8 py-3 bg-foreground text-background hover:bg-foreground/90 transition-all duration-300 font-semibold uppercase tracking-wider"
@@ -140,7 +187,7 @@ export function WritingsBrutal() {
             </motion.button>
           </Link>
         </motion.div>
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   )
 }
