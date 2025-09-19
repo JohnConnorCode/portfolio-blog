@@ -30,7 +30,7 @@ const values = [
 
 const achievements = [
   { metric: '50+', label: 'Product Problems Solved' },
-  { metric: '$50M+', label: 'Funding Enabled' },
+  { metric: '$20M+', label: 'Funding Enabled' },
   { metric: '200+', label: 'User Research Sessions' },
   { metric: '10+', label: 'Years Technology Strategy' },
 ]
@@ -63,13 +63,18 @@ export default function AboutPage() {
           {/* Profile Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
             className="glass rounded-2xl p-8 mb-16"
           >
             <div className="grid md:grid-cols-3 gap-8">
               <div className="md:col-span-1">
                 <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
                   whileHover={{ scale: 1.02 }}
                   className="relative w-full aspect-square rounded-xl overflow-hidden"
                 >
@@ -83,11 +88,16 @@ export default function AboutPage() {
               </div>
               
               <div className="md:col-span-2 space-y-6">
-                <div>
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+                >
                   <h2 className="text-2xl font-bold mb-4">My Journey</h2>
                   <p className="text-muted-foreground mb-4">
-                    With over a decade of experience as a technical product leader, I&apos;ve worked with 
-                    everyone from local businesses to startups with $50M+ funding. My background combines 
+                    With over a decade of experience as a technical product leader, I&apos;ve worked with
+                    everyone from local businesses to startups with $20M+ funding. My background combines 
                     philosophy, economics, and behavioral theory with deep technical expertise in AI and Web3.
                   </p>
                   <p className="text-muted-foreground mb-4">
@@ -99,16 +109,30 @@ export default function AboutPage() {
                     Whether it&apos;s fixing usability issues, conducting user research, or building AI/Web3 
                     products, I bring both technical depth and philosophical insight to every product challenge.
                   </p>
-                </div>
+                </motion.div>
 
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                  {achievements.map((achievement) => (
-                    <div key={achievement.label} className="text-center">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+                  className="grid grid-cols-2 sm:grid-cols-4 gap-4"
+                >
+                  {achievements.map((achievement, index) => (
+                    <motion.div
+                      key={achievement.label}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: 0.5 + index * 0.1, ease: "easeOut" }}
+                      whileHover={{ scale: 1.05, y: -2 }}
+                      className="text-center"
+                    >
                       <p className="text-2xl font-bold text-primary">{achievement.metric}</p>
                       <p className="text-xs text-muted-foreground">{achievement.label}</p>
-                    </div>
+                    </motion.div>
                   ))}
-                </div>
+                </motion.div>
               </div>
             </div>
           </motion.div>
@@ -116,13 +140,20 @@ export default function AboutPage() {
           {/* Values Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
             className="mb-16"
           >
-            <h2 className="text-3xl font-bold text-center mb-8">
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+              className="text-3xl font-bold text-center mb-8"
+            >
               My <span className="text-gradient">Philosophy</span>
-            </h2>
+            </motion.h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {values.map((value, index) => {
                 const Icon = value.icon
@@ -130,8 +161,10 @@ export default function AboutPage() {
                   <motion.div
                     key={value.title}
                     initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.3 + index * 0.1, ease: "easeOut" }}
+                    whileHover={{ scale: 1.02, y: -4 }}
                     className="glass rounded-xl p-6 text-center hover:bg-primary/5 transition-all"
                   >
                     <Icon className="w-10 h-10 text-primary mx-auto mb-4" />
@@ -146,13 +179,27 @@ export default function AboutPage() {
           {/* Expertise Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
             className="glass rounded-2xl p-8 mb-16"
           >
-            <h2 className="text-2xl font-bold mb-6">Areas of Expertise</h2>
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+              className="text-2xl font-bold mb-6"
+            >
+              Areas of Expertise
+            </motion.h2>
             <div className="grid md:grid-cols-3 gap-6">
-              <div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+              >
                 <h3 className="font-semibold mb-3 flex items-center gap-2">
                   <Award className="w-5 h-5 text-primary" />
                   Technology Strategy & Leadership
@@ -163,8 +210,13 @@ export default function AboutPage() {
                   <li>• Product Architecture & Scaling</li>
                   <li>• Technology Assessment</li>
                 </ul>
-              </div>
-              <div>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+              >
                 <h3 className="font-semibold mb-3 flex items-center gap-2">
                   <TrendingUp className="w-5 h-5 text-primary" />
                   Product-Market Fit
@@ -175,8 +227,13 @@ export default function AboutPage() {
                   <li>• Product Gap Identification</li>
                   <li>• Market Validation</li>
                 </ul>
-              </div>
-              <div>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
+              >
                 <h3 className="font-semibold mb-3 flex items-center gap-2">
                   <Users className="w-5 h-5 text-primary" />
                   Problem Solving
@@ -187,54 +244,90 @@ export default function AboutPage() {
                   <li>• Cross-functional Leadership</li>
                   <li>• Stakeholder Alignment</li>
                 </ul>
-              </div>
+              </motion.div>
             </div>
           </motion.div>
 
           {/* Speaking & Writing */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
             className="grid md:grid-cols-2 gap-8 mb-16"
           >
-            <div className="glass rounded-xl p-6">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+              whileHover={{ scale: 1.02, y: -2 }}
+              className="glass rounded-xl p-6"
+            >
               <BookOpen className="w-10 h-10 text-primary mb-4" />
               <h3 className="text-xl font-bold mb-3">Writing & Thought Leadership</h3>
               <p className="text-muted-foreground mb-4">
-                I regularly share insights on product strategy, user research, and the intersection 
+                I regularly share insights on product strategy, user research, and the intersection
                 of technology with human behavior through my blog and various publications.
               </p>
               <Link href="/blog" className="text-primary font-medium hover:underline">
                 Read My Articles →
               </Link>
-            </div>
-            <div className="glass rounded-xl p-6">
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+              whileHover={{ scale: 1.02, y: -2 }}
+              className="glass rounded-xl p-6"
+            >
               <Award className="w-10 h-10 text-primary mb-4" />
               <h3 className="text-xl font-bold mb-3">Speaking & Workshops</h3>
               <p className="text-muted-foreground mb-4">
-                Available for keynote speaking, workshops, and panel discussions on topics related 
+                Available for keynote speaking, workshops, and panel discussions on topics related
                 to product strategy, user research, and AI/Web3 product development.
               </p>
               <Link href="/contact" className="text-primary font-medium hover:underline">
                 Book a Speaking Engagement →
               </Link>
-            </div>
+            </motion.div>
           </motion.div>
 
           {/* CTA Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
             className="text-center"
           >
-            <h2 className="text-2xl font-bold mb-4">Let&apos;s Solve Your Product Problems</h2>
-            <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Whether you need to find product-market fit, fix usability issues, or build 
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+              className="text-2xl font-bold mb-4"
+            >
+              Let&apos;s Solve Your Product Problems
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+              className="text-muted-foreground mb-8 max-w-2xl mx-auto"
+            >
+              Whether you need to find product-market fit, fix usability issues, or build
               AI/Web3 products, I&apos;m here to help.
-            </p>
-            <div className="flex gap-4 justify-center">
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+              className="flex gap-4 justify-center"
+            >
               <Link href="/work">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
@@ -253,7 +346,7 @@ export default function AboutPage() {
                   Get in Touch
                 </motion.button>
               </Link>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>

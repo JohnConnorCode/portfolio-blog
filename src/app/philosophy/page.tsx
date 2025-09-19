@@ -53,7 +53,7 @@ export default function PhilosophyPage() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           className="mb-16"
         >
           <AnimatedLetters 
@@ -68,32 +68,42 @@ export default function PhilosophyPage() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           className="mb-20"
         >
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             className="text-3xl font-bold mb-6 text-cyan-400"
           >
             Formation
           </motion.h2>
           
-          <motion.div 
+          <motion.div
             className="prose prose-lg mx-auto text-muted-foreground space-y-4"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
           >
-            <p>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+            >
               I began as a debater in high school. Debate was my first laboratory for truth. You stood in public and risked humiliation for the chance to sharpen your thinking. Losing was painful but it revealed what was real.
-            </p>
-            <p>
+            </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+            >
               I moved from competing to teaching. I organized programs where younger students learned to test themselves through conflict. I also worked with decentralized community groups in education and food distribution. These grassroots projects were chaotic but they showed me how fragile trust can be, how easily cooperation unravels, and how much stronger people become when they take responsibility together.
-            </p>
+            </motion.p>
           </motion.div>
         </motion.section>
 
@@ -104,32 +114,42 @@ export default function PhilosophyPage() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           className="mb-20"
         >
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             className="text-3xl font-bold mb-6 text-purple-400"
           >
             Orientation
           </motion.h2>
           
-          <motion.div 
+          <motion.div
             className="prose prose-lg mx-auto text-muted-foreground space-y-4"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
           >
-            <p>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+            >
               Those experiences shaped my orientation. I am drawn to work that cannot hide behind appearances. I want environments where illusions collapse, where outcomes are visible, and where participation makes people stronger.
-            </p>
-            <p>
+            </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+            >
               I am not motivated by novelty. I am motivated by leverage. By designs that compound value over time, not by avoiding reality but by exposing it. By tools and institutions that make people more capable of perceiving clearly, deciding wisely, and acting with conviction.
-            </p>
+            </motion.p>
           </motion.div>
         </motion.section>
 
@@ -138,35 +158,40 @@ export default function PhilosophyPage() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           className="mb-20"
         >
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             className="text-3xl font-bold mb-6 text-cyan-400"
           >
             Commitments
           </motion.h2>
           
-          <motion.div 
+          <motion.div
             className="prose prose-lg mx-auto text-muted-foreground space-y-4"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
           >
-            <p>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+            >
               I do not accept claims that cannot be tested. I do not trust metrics that exist to flatter. The only measure that matters is whether something holds up under pressure and creates durable value when exposed to the world.
-            </p>
-            <motion.p 
+            </motion.p>
+            <motion.p
               className="text-lg font-semibold text-foreground border-l-4 border-cyan-400 pl-4"
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.4 }}
+              transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
             >
               Confrontation clarifies. Comfort dulls. Ideas matter only when embodied. Nothing is ever finished. Everything is in the process of becoming.
             </motion.p>
@@ -180,25 +205,25 @@ export default function PhilosophyPage() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           className="mb-20"
         >
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             className="text-3xl font-bold mb-8 text-center"
           >
             Method
           </motion.h2>
           
-          <motion.p 
+          <motion.p
             className="text-lg text-muted-foreground mb-12 text-center"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
           >
             Over the years I have refined a way of working that applies across debate, community organizing, startups, and ecosystems.
           </motion.p>
@@ -209,30 +234,35 @@ export default function PhilosophyPage() {
               return (
                 <AnimatedBorderBox
                   key={method.title}
-                  delay={index * 0.15}
+                  delay={index * 0.2}
                   className="p-6 rounded-xl hover:bg-foreground/5 transition-colors"
                   borderColor="rgba(0, 200, 255, 0.3)"
                 >
                   <div className="flex gap-4">
-                    <motion.div 
+                    <motion.div
                       className="flex-shrink-0"
                       initial={{ scale: 0, rotate: -180 }}
                       whileInView={{ scale: 1, rotate: 0 }}
                       viewport={{ once: true }}
-                      transition={{ 
-                        delay: index * 0.15 + 0.4,
+                      transition={{
+                        delay: index * 0.2 + 0.4,
                         duration: 0.6,
-                        ease: [0.25, 0.1, 0.25, 1]
+                        ease: "easeOut"
                       }}
                     >
                       <div className="w-12 h-12 bg-gradient-to-br from-cyan-400/10 to-purple-400/10 rounded-full flex items-center justify-center">
                         <Icon className="w-6 h-6 text-cyan-400" />
                       </div>
                     </motion.div>
-                    <div>
+                    <motion.div
+                      initial={{ opacity: 0, x: 20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.2 + 0.5, ease: "easeOut" }}
+                    >
                       <h3 className="text-xl font-bold mb-2">{method.title}</h3>
                       <p className="text-muted-foreground">{method.description}</p>
-                    </div>
+                    </motion.div>
                   </div>
                 </AnimatedBorderBox>
               )
@@ -245,14 +275,14 @@ export default function PhilosophyPage() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           className="mb-20"
         >
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             className="text-3xl font-bold mb-8 text-purple-400"
           >
             In Practice
@@ -265,15 +295,31 @@ export default function PhilosophyPage() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ 
+                transition={{
                   duration: 0.6,
-                  delay: index * 0.1,
-                  ease: [0.25, 0.1, 0.25, 1]
+                  delay: index * 0.15,
+                  ease: "easeOut"
                 }}
                 className="border-l-2 border-cyan-400/30 pl-6 hover:border-cyan-400 transition-colors"
               >
-                <h3 className="text-xl font-bold mb-2 text-cyan-400">{venture.name}</h3>
-                <p className="text-muted-foreground">{venture.description}</p>
+                <motion.h3
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.15 + 0.2, ease: "easeOut" }}
+                  className="text-xl font-bold mb-2 text-cyan-400"
+                >
+                  {venture.name}
+                </motion.h3>
+                <motion.p
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.15 + 0.3, ease: "easeOut" }}
+                  className="text-muted-foreground"
+                >
+                  {venture.description}
+                </motion.p>
               </motion.div>
             ))}
           </div>
@@ -286,32 +332,43 @@ export default function PhilosophyPage() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           className="mb-20"
         >
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             className="text-3xl font-bold mb-6 text-cyan-400"
           >
             Today
           </motion.h2>
           
-          <motion.div 
+          <motion.div
             className="prose prose-lg mx-auto text-muted-foreground space-y-4"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
           >
-            <p>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+            >
               I am a technologist and a product strategist. My work is to imagine better futures and to build the scaffolding that makes them real. Sometimes that means designing platforms that reward integrity. Sometimes it means creating communities where people confront each other directly. Sometimes it means helping founders or ecosystems articulate and execute their own visions.
-            </p>
-            <p className="font-semibold text-foreground">
+            </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+              className="font-semibold text-foreground"
+            >
               The common thread is this: I build with an eye on what compounds, what holds up under pressure, and what makes people stronger.
-            </p>
+            </motion.p>
           </motion.div>
         </motion.section>
 
@@ -323,36 +380,46 @@ export default function PhilosophyPage() {
           transition={{ duration: 0.8 }}
           className="mb-20 p-8 border border-foreground/10 rounded-lg bg-gradient-to-br from-cyan-400/5 to-purple-400/5"
         >
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             className="text-3xl font-bold mb-6"
           >
             Closing
           </motion.h2>
           
-          <motion.div 
+          <motion.div
             className="prose prose-lg mx-auto text-muted-foreground space-y-4"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
           >
-            <p>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+            >
               I do not build for polish or for spectacle. I build to expose what is real, to create structures that reward courage, and to shape futures that are worth inhabiting.
-            </p>
-            <p>
+            </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+            >
               That throughline runs from debate podiums to grassroots organizing to venture building and ecosystem design. It is the principle that connects my past and the role I play now — helping turn vision into reality.
-            </p>
+            </motion.p>
           </motion.div>
           
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
             className="mt-8 flex flex-col sm:flex-row gap-4 justify-center"
           >
             <Link href="/work">

@@ -62,7 +62,7 @@ export default function BlogList({ initialPosts }: { initialPosts: Post[] }) {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           className="text-center mb-16"
         >
           <AnimatedLetters 
@@ -70,11 +70,11 @@ export default function BlogList({ initialPosts }: { initialPosts: Post[] }) {
             className="text-5xl sm:text-6xl font-black mb-8 text-center block"
             as="h1"
           />
-          <motion.p 
+          <motion.p
             className="text-xl text-muted-foreground max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
           >
             Essays and insights on human-first futurism, community building, and technology that empowers
           </motion.p>
@@ -83,13 +83,20 @@ export default function BlogList({ initialPosts }: { initialPosts: Post[] }) {
         {/* Search and Filter with better animations */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
           className="mb-12 p-6 bg-gradient-to-br from-cyan-400/5 to-purple-400/5 border border-foreground/10 rounded-xl"
         >
           <div className="flex flex-col gap-6">
             {/* Search Bar */}
-            <div className="relative">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+              className="relative"
+            >
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
               <input
                 type="text"
@@ -106,10 +113,15 @@ export default function BlogList({ initialPosts }: { initialPosts: Post[] }) {
                   ✕
                 </button>
               )}
-            </div>
+            </motion.div>
 
             {/* Category Pills */}
-            <div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+            >
               <div className="flex items-center gap-2 mb-3">
                 <Filter className="w-4 h-4 text-muted-foreground" />
                 <span className="text-sm font-medium text-muted-foreground">Filter by category:</span>
@@ -119,8 +131,9 @@ export default function BlogList({ initialPosts }: { initialPosts: Post[] }) {
                   <motion.button
                     key={category}
                     initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.3, delay: index * 0.05 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: 0.4 + index * 0.08, ease: "easeOut" }}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => setSelectedCategory(category)}
@@ -134,10 +147,16 @@ export default function BlogList({ initialPosts }: { initialPosts: Post[] }) {
                   </motion.button>
                 ))}
               </div>
-            </div>
-            
+            </motion.div>
+
             {/* Results Count */}
-            <div className="text-sm text-muted-foreground flex items-center justify-between">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.7, ease: "easeOut" }}
+              className="text-sm text-muted-foreground flex items-center justify-between"
+            >
               <span>
                 Showing <strong className="text-cyan-400">{filteredPosts.length}</strong> {filteredPosts.length === 1 ? 'post' : 'posts'}
                 {searchTerm && ` matching "${searchTerm}"`}
@@ -154,7 +173,7 @@ export default function BlogList({ initialPosts }: { initialPosts: Post[] }) {
                   Clear filters
                 </button>
               )}
-            </div>
+            </motion.div>
           </div>
         </motion.div>
 
@@ -167,16 +186,16 @@ export default function BlogList({ initialPosts }: { initialPosts: Post[] }) {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ 
+                transition={{
                   duration: 0.6,
-                  delay: index * 0.1,
-                  ease: [0.25, 0.1, 0.25, 1]
+                  delay: index * 0.15,
+                  ease: "easeOut"
                 }}
                 className="group h-full"
               >
                 <Link href={`/blog/${post.slug}`} className="block h-full">
                   <AnimatedBorderBox
-                    delay={index * 0.1}
+                    delay={index * 0.15}
                     className="h-full rounded-xl overflow-hidden hover:bg-foreground/5 transition-colors"
                     borderColor={index % 2 === 0 ? "rgba(0, 200, 255, 0.3)" : "rgba(147, 51, 234, 0.3)"}
                   >
@@ -252,17 +271,39 @@ export default function BlogList({ initialPosts }: { initialPosts: Post[] }) {
         ) : (
           <motion.div
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             className="text-center py-20"
           >
-            <BookOpen className="w-16 h-16 mx-auto mb-6 text-muted-foreground" />
-            <h2 className="text-2xl font-bold mb-4">No posts found</h2>
-            <p className="text-muted-foreground max-w-md mx-auto">
-              {searchTerm || selectedCategory !== 'All' 
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+            >
+              <BookOpen className="w-16 h-16 mx-auto mb-6 text-muted-foreground" />
+            </motion.div>
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+              className="text-2xl font-bold mb-4"
+            >
+              No posts found
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+              className="text-muted-foreground max-w-md mx-auto"
+            >
+              {searchTerm || selectedCategory !== 'All'
                 ? 'Try adjusting your search or filter criteria'
                 : 'Check back soon for new content'}
-            </p>
+            </motion.p>
           </motion.div>
         )}
 
@@ -271,24 +312,24 @@ export default function BlogList({ initialPosts }: { initialPosts: Post[] }) {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           className="mt-20 p-12 border border-foreground/10 rounded-lg bg-gradient-to-br from-cyan-400/5 to-purple-400/5 text-center"
         >
-          <motion.h2 
+          <motion.h2
             className="text-3xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent"
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
           >
             Stay Updated
           </motion.h2>
-          <motion.p 
+          <motion.p
             className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
           >
             Get insights on building systems that serve humanity delivered to your inbox
           </motion.p>
@@ -296,7 +337,7 @@ export default function BlogList({ initialPosts }: { initialPosts: Post[] }) {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
           >
             <Link href="/contact">
               <motion.button

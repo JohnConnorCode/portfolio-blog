@@ -134,16 +134,26 @@ export default function ContactPage() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
             className="text-center mb-8"
           >
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light mb-6">
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light mb-6"
+            >
               <span className="text-white">LET&apos;S BUILD</span>
               <span className="text-cyan-400 font-black neon-glow"> TOGETHER</span>
-            </h1>
-            <p className="text-base sm:text-lg text-gray-400 font-light tracking-wide max-w-3xl mx-auto">
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+              className="text-base sm:text-lg text-gray-400 font-light tracking-wide max-w-3xl mx-auto"
+            >
               Creating transformative technology solutions that amplify human potential and drive meaningful impact.
-            </p>
+            </motion.p>
           </motion.div>
         </div>
       </section>
@@ -157,18 +167,25 @@ export default function ContactPage() {
             {/* Contact Methods */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
               className="lg:col-span-1 space-y-8"
             >
-              <div className="card-brutal">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+                className="card-brutal"
+              >
                 <h2 className="text-2xl sm:text-3xl font-black text-white mb-4 text-brutal">
                   GET IN TOUCH
                 </h2>
                 <p className="text-gray-400 font-mono text-sm mb-8">
                   Whether you&apos;re building a startup, transforming an ecosystem, or creating community-driven systems, let&apos;s talk.
                 </p>
-              </div>
+              </motion.div>
 
               {contactMethods.map((method, index) => {
                 const Icon = method.icon
@@ -177,8 +194,9 @@ export default function ContactPage() {
                     key={method.title}
                     href={method.href}
                     initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.3 + index * 0.15, ease: "easeOut" }}
                     whileHover={{ scale: 1.02, y: -2 }}
                     className="block card-brutal group"
                   >
@@ -197,41 +215,64 @@ export default function ContactPage() {
               })}
 
               {/* Social Links */}
-              <div className="card-brutal">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
+                className="card-brutal"
+              >
                 <p className="text-xs text-gray-500 mb-4 font-mono uppercase tracking-widest">CONNECT ON SOCIAL</p>
                 <div className="space-y-4">
-                  <a
+                  <motion.a
                     href="https://twitter.com/ablockunchained"
                     target="_blank"
                     rel="noopener noreferrer"
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
+                    whileHover={{ scale: 1.02, x: 5 }}
                     className="flex items-center gap-3 p-3 border-2 border-gray-700 hover:border-cyan-400 bg-black/50 transition-all group"
                   >
                     <Twitter className="w-5 h-5 text-cyan-400" />
                     <span className="text-sm font-mono text-white group-hover:text-cyan-400 transition-colors">@ablockunchained</span>
-                  </a>
-                  <a
+                  </motion.a>
+                  <motion.a
                     href="https://t.me/blockunchained"
                     target="_blank"
                     rel="noopener noreferrer"
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.7, ease: "easeOut" }}
+                    whileHover={{ scale: 1.02, x: 5 }}
                     className="flex items-center gap-3 p-3 border-2 border-gray-700 hover:border-cyan-400 bg-black/50 transition-all group"
                   >
                     <svg className="w-5 h-5 text-cyan-400" viewBox="0 0 24 24" fill="currentColor">
                       <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z"/>
                     </svg>
                     <span className="text-sm font-mono text-white group-hover:text-cyan-400 transition-colors">@blockunchained</span>
-                  </a>
+                  </motion.a>
                 </div>
-              </div>
+              </motion.div>
             </motion.div>
 
             {/* Contact Form */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
               className="lg:col-span-2"
             >
-              <div className="card-brutal">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+                className="card-brutal"
+              >
                 <h2 className="text-2xl sm:text-3xl font-black text-white mb-2 text-brutal">
                   START A CONVERSATION
                 </h2>
@@ -239,9 +280,21 @@ export default function ContactPage() {
                   Fill out the form below and I&apos;ll get back to you within 24 hours
                 </p>
                 
-                <form onSubmit={handleSubmit} className="space-y-8">
+                <motion.form
+                  onSubmit={handleSubmit}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+                  className="space-y-8"
+                >
                   <div className="grid md:grid-cols-2 gap-8">
-                    <div>
+                    <motion.div
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
+                    >
                       <label className="flex items-center gap-2 text-sm font-black text-white mb-3 text-brutal">
                         <User className="w-4 h-4 text-cyan-400" />
                         YOUR NAME *
@@ -265,8 +318,13 @@ export default function ContactPage() {
                           {errors.name}
                         </motion.p>
                       )}
-                    </div>
-                    <div>
+                    </motion.div>
+                    <motion.div
+                      initial={{ opacity: 0, x: 20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
+                    >
                       <label className="flex items-center gap-2 text-sm font-black text-white mb-3 text-brutal">
                         <Mail className="w-4 h-4 text-cyan-400" />
                         EMAIL ADDRESS *
@@ -290,10 +348,15 @@ export default function ContactPage() {
                           {errors.email}
                         </motion.p>
                       )}
-                    </div>
+                    </motion.div>
                   </div>
 
-                  <div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.7, ease: "easeOut" }}
+                  >
                     <label className="flex items-center gap-2 text-sm font-black text-white mb-3 text-brutal">
                       <Building2 className="w-4 h-4 text-cyan-400" />
                       COMPANY / ORGANIZATION
@@ -306,10 +369,15 @@ export default function ContactPage() {
                       className="w-full px-4 py-4 bg-black border-2 border-white text-white font-mono placeholder-gray-500 focus:border-cyan-400 focus:outline-none transition-colors"
                       placeholder="Your company or organization"
                     />
-                  </div>
+                  </motion.div>
 
                   <div className="grid md:grid-cols-2 gap-8">
-                    <div>
+                    <motion.div
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
+                    >
                       <label className="flex items-center gap-2 text-sm font-black text-white mb-3 text-brutal">
                         <Briefcase className="w-4 h-4 text-cyan-400" />
                         PROJECT TYPE
@@ -328,8 +396,13 @@ export default function ContactPage() {
                         <option value="consulting" className="bg-black text-white">Strategic Consulting</option>
                         <option value="other" className="bg-black text-white">Other</option>
                       </select>
-                    </div>
-                    <div>
+                    </motion.div>
+                    <motion.div
+                      initial={{ opacity: 0, x: 20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6, delay: 0.9, ease: "easeOut" }}
+                    >
                       <label className="flex items-center gap-2 text-sm font-black text-white mb-3 text-brutal">
                         <DollarSign className="w-4 h-4 text-cyan-400" />
                         BUDGET RANGE
@@ -347,10 +420,15 @@ export default function ContactPage() {
                         <option value="50-100k" className="bg-black text-white">$50k - $100k</option>
                         <option value=">100k" className="bg-black text-white">More than $100k</option>
                       </select>
-                    </div>
+                    </motion.div>
                   </div>
 
-                  <div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 1.0, ease: "easeOut" }}
+                  >
                     <label className="flex items-center gap-2 text-sm font-black text-white mb-3 text-brutal">
                       <MessageSquare className="w-4 h-4 text-cyan-400" />
                       PROJECT DETAILS *
@@ -374,11 +452,15 @@ export default function ContactPage() {
                         {errors.message}
                       </motion.p>
                     )}
-                  </div>
+                  </motion.div>
 
                   <motion.button
                     type="submit"
                     disabled={isSubmitting}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 1.1, ease: "easeOut" }}
                     whileHover={{ scale: isSubmitting ? 1 : 1.02, y: isSubmitting ? 0 : -2 }}
                     whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
                     className="btn-brutal w-full py-4 px-8 text-lg flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
@@ -410,8 +492,8 @@ export default function ContactPage() {
                       </p>
                     </motion.div>
                   )}
-                </form>
-              </div>
+                </motion.form>
+              </motion.div>
             </motion.div>
           </div>
         </div>
@@ -426,16 +508,28 @@ export default function ContactPage() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-light mb-4">
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+              className="text-3xl sm:text-4xl md:text-5xl font-light mb-4"
+            >
               <span className="text-white">FREQUENTLY</span>
               <span className="text-cyan-400 font-black neon-glow"> ASKED</span>
-            </h2>
-            <p className="text-gray-500 font-mono text-sm uppercase tracking-widest">
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+              className="text-gray-500 font-mono text-sm uppercase tracking-widest"
+            >
               Common questions about working together
-            </p>
+            </motion.p>
           </motion.div>
           
           <div className="grid md:grid-cols-2 gap-8">
@@ -462,7 +556,8 @@ export default function ContactPage() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{ duration: 0.6, delay: 0.4 + index * 0.15, ease: "easeOut" }}
+                whileHover={{ scale: 1.02, y: -2 }}
                 className="card-brutal group hover:border-cyan-400/50"
               >
                 <h3 className="font-black text-white mb-4 text-brutal">{faq.question}</h3>
@@ -478,7 +573,7 @@ export default function ContactPage() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.5 }}
+            transition={{ duration: 0.6, delay: 1.0, ease: "easeOut" }}
             className="text-center mt-16"
           >
             <p className="text-gray-500 font-mono text-sm uppercase tracking-widest">

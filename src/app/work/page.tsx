@@ -121,7 +121,7 @@ export default function WorkPage() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           className="mb-16"
         >
           <AnimatedLetters 
@@ -129,11 +129,11 @@ export default function WorkPage() {
             className="text-5xl sm:text-6xl font-black mb-8 text-center block"
             as="h1"
           />
-          <motion.p 
+          <motion.p
             className="text-xl text-center text-muted-foreground max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
           >
             15 years building products that solve real problems. Not growth theater.
           </motion.p>
@@ -144,14 +144,14 @@ export default function WorkPage() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           className="mb-20"
         >
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             className="text-3xl font-bold mb-8 text-cyan-400"
           >
             Current Focus
@@ -161,7 +161,7 @@ export default function WorkPage() {
             {currentProjects.map((project, index) => (
               <AnimatedBorderBox
                 key={project.name}
-                delay={index * 0.15}
+                delay={index * 0.2}
                 className="p-6 rounded-xl hover:bg-foreground/5 transition-colors"
                 borderColor="rgba(0, 200, 255, 0.3)"
               >
@@ -205,14 +205,14 @@ export default function WorkPage() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           className="mb-20"
         >
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             className="text-3xl font-bold mb-12 text-center bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent"
           >
             Experience Timeline
@@ -222,7 +222,7 @@ export default function WorkPage() {
             {experiences.map((exp, index) => (
               <AnimatedBorderBox
                 key={exp.company}
-                delay={index * 0.15}
+                delay={index * 0.2}
                 className="p-8 rounded-xl hover:bg-foreground/5 transition-all duration-300"
                 borderColor={index % 2 === 0 ? "rgba(0, 200, 255, 0.3)" : "rgba(147, 51, 234, 0.3)"}
               >
@@ -250,7 +250,7 @@ export default function WorkPage() {
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
-                      transition={{ delay: index * 0.1 + i * 0.05 }}
+                      transition={{ delay: index * 0.1 + i * 0.08, ease: "easeOut" }}
                       className="flex items-start gap-3 p-3 rounded-lg bg-gradient-to-r from-cyan-400/5 to-purple-400/5 border border-foreground/5 hover:border-foreground/20 transition-colors"
                     >
                       <Zap className="w-4 h-4 text-cyan-400 mt-1 flex-shrink-0" />
@@ -260,12 +260,12 @@ export default function WorkPage() {
                 </div>
                 
                 {/* Impact Statement */}
-                <motion.div 
+                <motion.div
                   className="p-4 bg-gradient-to-r from-cyan-400/10 to-purple-400/10 rounded-lg border border-cyan-400/20 mb-6"
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 + 0.3 }}
+                  transition={{ delay: index * 0.1 + 0.4, ease: "easeOut" }}
                 >
                   <p className="text-lg font-bold italic bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
                     → {exp.impact}
@@ -296,14 +296,14 @@ export default function WorkPage() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           className="mb-20"
         >
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             className="text-3xl font-bold mb-12 text-center bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent"
           >
             Impact by Numbers
@@ -311,7 +311,7 @@ export default function WorkPage() {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { icon: Trophy, value: '$50M+', label: 'Funding Enabled', color: 'text-yellow-400' },
+              { icon: Trophy, value: '$20M+', label: 'Funding Enabled', color: 'text-yellow-400' },
               { icon: Code, value: '50+', label: 'Products Shipped', color: 'text-cyan-400' },
               { icon: Users, value: '200K+', label: 'Users Served', color: 'text-purple-400' },
               { icon: TrendingUp, value: '15x', label: 'Best Growth Rate', color: 'text-green-400' }
@@ -323,18 +323,18 @@ export default function WorkPage() {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  transition={{ duration: 0.6, delay: index * 0.15, ease: "easeOut" }}
                   className="text-center"
                 >
-                  <motion.div 
+                  <motion.div
                     className="inline-flex items-center justify-center w-16 h-16 mb-4 bg-gradient-to-br from-cyan-400/10 to-purple-400/10 rounded-full"
                     initial={{ scale: 0, rotate: -180 }}
                     whileInView={{ scale: 1, rotate: 0 }}
                     viewport={{ once: true }}
-                    transition={{ 
-                      delay: index * 0.1 + 0.3,
+                    transition={{
+                      delay: index * 0.15 + 0.3,
                       duration: 0.6,
-                      ease: [0.25, 0.1, 0.25, 1]
+                      ease: "easeOut"
                     }}
                   >
                     <Icon className={`w-8 h-8 ${metric.color}`} />
@@ -354,14 +354,14 @@ export default function WorkPage() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           className="mb-20"
         >
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             className="text-3xl font-bold mb-8 text-cyan-400"
           >
             How I Work
@@ -389,7 +389,7 @@ export default function WorkPage() {
               return (
                 <AnimatedBorderBox
                   key={approach.title}
-                  delay={index * 0.2}
+                  delay={index * 0.25}
                   className="p-6 rounded-xl"
                   borderColor="rgba(147, 51, 234, 0.3)"
                 >
@@ -407,14 +407,34 @@ export default function WorkPage() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           className="text-center p-12 border border-foreground/10 rounded-lg bg-gradient-to-br from-cyan-400/5 to-purple-400/5"
         >
-          <h2 className="text-3xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">Ready to Build Something Real?</h2>
-          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+            className="text-3xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent"
+          >
+            Ready to Build Something Real?
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+            className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto"
+          >
             I work with teams that care more about solving problems than following trends.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+          >
             <Link href="/philosophy">
               <motion.button
                 whileHover={{ scale: 1.02 }}
@@ -435,7 +455,7 @@ export default function WorkPage() {
                 Start a Conversation
               </motion.button>
             </Link>
-          </div>
+          </motion.div>
         </motion.section>
       </div>
     </section>
