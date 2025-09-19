@@ -88,11 +88,15 @@ export function SuperDebateHero() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
           className="text-center mb-12"
         >
           <motion.div
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-purple-500/30 bg-purple-500/10 mb-6"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
             whileHover={{ scale: 1.05 }}
           >
             <Trophy className="w-4 h-4 text-purple-400" />
@@ -111,7 +115,13 @@ export function SuperDebateHero() {
           </p>
 
           {/* CTA Button */}
-          <div className="flex justify-center">
+          <motion.div
+            className="flex justify-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+          >
             <Link href="/super-debate">
               <motion.button
                 className="px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-xl flex items-center gap-2 group"
@@ -122,7 +132,7 @@ export function SuperDebateHero() {
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </motion.button>
             </Link>
-          </div>
+          </motion.div>
         </motion.div>
 
         {/* Compact Features */}
@@ -136,7 +146,7 @@ export function SuperDebateHero() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1, duration: 0.5 }}
+                transition={{ delay: 0.7 + index * 0.1, duration: 0.5 }}
               >
                 <motion.div
                   className="relative group h-full"

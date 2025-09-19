@@ -101,11 +101,15 @@ export function AccelerateHero() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
           className="text-center mb-12"
         >
           <motion.div
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 mb-6"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
             whileHover={{ scale: 1.05 }}
           >
             <Zap className="w-4 h-4 text-cyan-400" />
@@ -124,7 +128,13 @@ export function AccelerateHero() {
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <motion.div
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+          >
             <Link href="https://acceleratewith.us" target="_blank" rel="noopener noreferrer">
               <motion.button
                 className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold rounded-xl flex items-center gap-2 group"
@@ -145,7 +155,7 @@ export function AccelerateHero() {
                 Learn More
               </motion.button>
             </Link>
-          </div>
+          </motion.div>
         </motion.div>
 
         {/* Compact Features */}
@@ -159,7 +169,7 @@ export function AccelerateHero() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
+                transition={{ delay: 0.7 + index * 0.1, duration: 0.5 }}
               >
                 <motion.div
                   className="relative group h-full"
@@ -185,6 +195,7 @@ export function AccelerateHero() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 1.1 }}
           className="relative max-w-4xl mx-auto mt-12"
         >
           <div className="relative bg-background/80 backdrop-blur-xl border border-cyan-500/40 rounded-xl p-6 shadow-[0_0_50px_rgba(6,182,212,0.15)]">
@@ -239,6 +250,7 @@ export function AccelerateHero() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 1.3 }}
           className="text-center mt-8"
         >
           <p className="text-base text-muted-foreground mb-4">

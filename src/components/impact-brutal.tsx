@@ -7,7 +7,7 @@ import { useRef } from 'react'
 
 const impacts = [
   {
-    number: "$50M+",
+    number: "$20M+",
     label: "Funding Enabled",
     context: "Through product-market fit",
     icon: Trophy,
@@ -100,6 +100,12 @@ export function ImpactBrutal() {
               <motion.div
                 key={impact.label}
                 variants={fadeInUp}
+                custom={index}
+                transition={{
+                  duration: 0.6,
+                  delay: index * 0.15,
+                  ease: "easeOut"
+                }}
                 {...cardHover}
                 className="relative group"
               >

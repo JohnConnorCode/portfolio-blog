@@ -14,7 +14,7 @@ const heroContent = {
   heroDescription: 'Building systems that serve humanity.',
   heroHighlight: 'Product strategy. Human-first technology. Real impact.',
   metrics: [
-    { number: '$50M+', label: 'Funded Startups', context: 'Products built for high-growth companies' },
+    { number: '$20M+', label: 'Funded Startups', context: 'Products built for high-growth companies' },
     { number: '50+', label: 'Products Shipped', context: 'From local businesses to enterprise' },
     { number: '15+ Years', label: 'Product Experience', context: 'Philosophy, economics, behavior theory' },
     { number: '100+', label: 'Businesses Helped', context: 'From hummus shops to unicorns' }
