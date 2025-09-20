@@ -79,7 +79,7 @@ export function WritingsBrutal() {
         >
           <motion.h2
             {...headerAnimation}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light mb-4"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light mb-4 leading-[1.1] sm:leading-[1.05] lg:leading-[1.02]"
           >
             <span className="text-foreground">THOUGHT</span>
             <span className="text-primary dark:text-cyan-400 font-black neon-glow"> LEADERSHIP</span>
@@ -87,7 +87,7 @@ export function WritingsBrutal() {
           <motion.p
             {...headerAnimation}
             transition={{ ...headerAnimation.transition, delay: ANIMATION_DELAY.stagger }}
-            className="text-base sm:text-lg text-muted-foreground dark:text-gray-400 font-light tracking-wide"
+            className="text-base sm:text-lg text-gray-100 dark:text-gray-400 font-light tracking-wide"
           >
             Strategic insights on technology, community, and human potential
           </motion.p>

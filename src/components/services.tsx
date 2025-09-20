@@ -62,7 +62,7 @@ export function Services() {
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
             Product Expertise
           </h2>
-          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-gray-100 max-w-3xl mx-auto">
             Technical product leadership grounded in philosophy, economics, and behavioral theory—
             from local businesses to $50M+ startups.
           </p>
@@ -85,9 +85,9 @@ export function Services() {
                   <Icon className="w-12 h-12 mb-8 stroke-1" />
                   
                   <h3 className="text-xl sm:text-2xl font-semibold mb-4">{service.title}</h3>
-                  <p className="text-base sm:text-lg text-muted-foreground mb-6 leading-relaxed">{service.description}</p>
+                  <p className="text-base sm:text-lg text-gray-100 mb-6 leading-relaxed">{service.description}</p>
                   
-                  <p className="text-sm sm:text-base italic text-muted-foreground/80 pt-6 border-t border-foreground/5">
+                  <p className="text-sm sm:text-base italic text-gray-100/80 pt-6 border-t border-foreground/5">
                     &ldquo;{service.philosophy}&rdquo;
                   </p>
                 </div>

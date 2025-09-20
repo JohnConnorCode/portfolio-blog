@@ -110,7 +110,7 @@ export function SuperDebateHero() {
             </span>
           </h2>
 
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-6">
+          <p className="text-lg text-gray-100 max-w-2xl mx-auto mb-6">
             A platform for organizing and hosting in-person debate clubs with modular formats adaptable to any community
           </p>
 
@@ -158,7 +158,7 @@ export function SuperDebateHero() {
                   <div className="relative bg-background/90 backdrop-blur-xl border border-purple-500/30 rounded-xl p-4 h-full group-hover:border-purple-500/50 transition-all duration-300">
                     <Icon className="w-8 h-8 text-purple-400 mb-3" />
                     <h3 className="text-base font-bold mb-1">{feature.title}</h3>
-                    <p className="text-xs text-muted-foreground">{feature.description}</p>
+                    <p className="text-xs text-gray-100">{feature.description}</p>
                   </div>
                 </motion.div>
               </motion.div>
@@ -183,13 +183,13 @@ export function SuperDebateHero() {
             <div className="grid md:grid-cols-2 gap-6">
               <div>
                 <h4 className="text-base font-bold text-purple-400 mb-2">Flexible Structure</h4>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm text-gray-100">
                   Adapt speech lengths, rounds, and judging criteria to fit your community's needs and topics
                 </p>
               </div>
               <div>
                 <h4 className="text-base font-bold text-purple-400 mb-2">City Chapters</h4>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm text-gray-100">
                   Each city runs its own debates with local flavor while maintaining consistent quality
                 </p>
               </div>

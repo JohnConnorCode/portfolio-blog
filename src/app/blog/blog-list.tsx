@@ -67,7 +67,7 @@ export default function BlogList({ initialPosts }: { initialPosts: Post[] }) {
         >
           <AnimatedLetters 
             text="Blog" 
-            className="text-5xl sm:text-6xl font-black mb-8 text-center block"
+            className="text-5xl sm:text-6xl font-black mb-8 text-center block leading-[1.1] sm:leading-[1.05]"
             as="h1"
           />
           <motion.p

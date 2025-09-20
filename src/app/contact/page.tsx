@@ -141,7 +141,7 @@ export default function ContactPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light mb-6"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light mb-6 leading-[1.1] sm:leading-[1.05] lg:leading-[1.02]"
             >
               <span className="text-white">LET&apos;S BUILD</span>
               <span className="text-cyan-400 font-black neon-glow"> TOGETHER</span>
@@ -150,7 +150,7 @@ export default function ContactPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-              className="text-base sm:text-lg text-gray-400 font-light tracking-wide max-w-3xl mx-auto"
+              className="text-base sm:text-lg text-gray-100 font-light tracking-wide max-w-3xl mx-auto"
             >
               Creating transformative technology solutions that amplify human potential and drive meaningful impact.
             </motion.p>

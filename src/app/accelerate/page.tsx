@@ -23,42 +23,42 @@ export default function AcceleratePage() {
   const scaleProgress = useTransform(scrollYProgress, [0, 0.5], [1, 0.98])
 
   const projectStats = [
-    { value: '$50M+', label: 'Funding Tracked', color: 'text-cyan-400' },
-    { value: '500+', label: 'Programs Managed', color: 'text-blue-400' },
-    { value: '2K+', label: 'Teams Funded', color: 'text-purple-400' },
-    { value: '95%', label: 'Match Accuracy', color: 'text-green-400' }
+    { value: '607+', label: 'Projects Connected', color: 'text-cyan-400' },
+    { value: '433+', label: 'Funding Programs', color: 'text-blue-400' },
+    { value: '363+', label: 'Resources Available', color: 'text-purple-400' },
+    { value: '95%', label: 'Match Success Rate', color: 'text-green-400' }
   ]
 
   const myContributions = [
     {
       title: 'Vision & Strategy',
       items: [
-        'Identified the fragmentation problem in Web3 funding',
-        'Designed the all-in-one platform concept',
-        'Created the AI-powered matching algorithm',
-        'Developed the ecosystem network effects model'
+        'Recognized the need for ecosystem-wide founder connections',
+        'Designed the intelligent matching system architecture',
+        'Created the three-way connection model (founders/builders/funders)',
+        'Developed the community-driven growth strategy'
       ],
       icon: Brain,
       color: 'from-purple-400 to-pink-400'
     },
     {
-      title: 'Technical Architecture',
+      title: 'Platform Development',
       items: [
-        'Built with React 18 + TypeScript + Supabase',
-        'Implemented collaborative filtering with ML',
-        'Created real-time matching algorithms',
-        'Achieved 100% test coverage (123/123 passing)'
+        'Built with modern React and real-time capabilities',
+        'Implemented smart matching algorithms',
+        'Created resource curation and discovery system',
+        'Developed progress tracking and analytics'
       ],
       icon: Code2,
       color: 'from-cyan-400 to-blue-400'
     },
     {
-      title: 'Business Development',
+      title: 'Ecosystem Building',
       items: [
-        'Onboarded 500+ funding programs',
-        'Built partnerships with major ecosystems',
-        'Grew to 2000+ funded teams',
-        'Tracking $50M+ in ecosystem funding'
+        'Connected 607+ projects across Web3 ecosystems',
+        'Curated 433+ funding programs and opportunities',
+        'Built network of 363+ valuable resources',
+        'Fostered intelligent connections and ecosystem growth'
       ],
       icon: TrendingUp,
       color: 'from-green-400 to-emerald-400'
@@ -153,7 +153,7 @@ export default function AcceleratePage() {
             variants={fadeInUp}
             initial="initial"
             animate="animate"
-            className="text-6xl sm:text-7xl lg:text-8xl font-bold mb-8"
+            className="text-6xl sm:text-7xl lg:text-8xl font-bold mb-8 leading-[1.1] sm:leading-[1.05] lg:leading-[1.02]"
           >
             <motion.span
               className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-cyan-400 inline-block"
@@ -169,7 +169,7 @@ export default function AcceleratePage() {
                 backgroundSize: '200% 200%',
               }}
             >
-              Funding That
+              Build Your Team
             </motion.span>
             <br />
             <motion.span
@@ -187,7 +187,7 @@ export default function AcceleratePage() {
                 backgroundSize: '200% 200%',
               }}
             >
-              Actually Ships
+              Get Funding
             </motion.span>
           </motion.h1>
 
@@ -195,17 +195,17 @@ export default function AcceleratePage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: ANIMATION_DURATION.normal, delay: ANIMATION_DELAY.stagger }}
-            className="text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto mb-12"
+            className="text-xl sm:text-2xl text-gray-100 max-w-3xl mx-auto mb-12"
           >
-            The premier grants management platform connecting builders with capital
-            — solving Web3's funding discovery problem through AI-powered intelligence
+            The Web3 founder hub connecting builders, developers, and funders
+            through intelligent matching and ecosystem growth
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: ANIMATION_DURATION.normal, delay: ANIMATION_DELAY.stagger * 2 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
           >
             <Link href="https://acceleratewith.us" target="_blank" rel="noopener noreferrer">
               <motion.button
@@ -261,7 +261,7 @@ export default function AcceleratePage() {
                 >
                   {stat.value}
                 </motion.div>
-                <div className="text-sm text-muted-foreground">{stat.label}</div>
+                <div className="text-sm text-gray-100">{stat.label}</div>
               </motion.div>
             ))}
           </div>
@@ -297,7 +297,7 @@ export default function AcceleratePage() {
               viewport={{ once: true }}
               transition={{ duration: ANIMATION_DURATION.normal }}
             >
-              Why I Built
+              The Vision Behind
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400"> Accelerate</span>
             </motion.h2>
             <motion.p
@@ -305,9 +305,9 @@ export default function AcceleratePage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: ANIMATION_DURATION.normal, delay: ANIMATION_DELAY.stagger }}
-              className="text-xl text-muted-foreground max-w-3xl mx-auto"
+              className="text-xl text-gray-100 max-w-3xl mx-auto"
             >
-              Solving the fragmentation problem in Web3 ecosystem funding
+              Growing Web3 ecosystems through intelligent connections
             </motion.p>
           </motion.div>
 
@@ -326,23 +326,23 @@ export default function AcceleratePage() {
             >
               <div className="absolute -inset-1 bg-gradient-to-r from-red-500/20 to-orange-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="relative bg-background/80 backdrop-blur-xl border border-red-500/20 rounded-2xl p-8">
-                <h3 className="text-2xl font-bold mb-4 text-red-400">The Problem</h3>
-                <ul className="space-y-3 text-muted-foreground">
+                <h3 className="text-2xl font-bold mb-4 text-red-400">The Challenge</h3>
+                <ul className="space-y-3 text-gray-100">
                   <li className="flex items-start gap-2">
                     <ChevronRight className="w-5 h-5 text-red-400 mt-0.5 flex-shrink-0" />
-                    <span>Funding opportunities scattered across 100+ platforms</span>
+                    <span>Web3 founders struggle to find the right team members</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <ChevronRight className="w-5 h-5 text-red-400 mt-0.5 flex-shrink-0" />
-                    <span>Builders waste weeks searching for grants</span>
+                    <span>Funding opportunities are fragmented across ecosystems</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <ChevronRight className="w-5 h-5 text-red-400 mt-0.5 flex-shrink-0" />
-                    <span>No intelligent matching between projects and funding</span>
+                    <span>Developers and funders lack visibility into quality projects</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <ChevronRight className="w-5 h-5 text-red-400 mt-0.5 flex-shrink-0" />
-                    <span>Milestone tracking is manual and opaque</span>
+                    <span>Ecosystem growth happens in isolated silos</span>
                   </li>
                 </ul>
               </div>
@@ -355,23 +355,23 @@ export default function AcceleratePage() {
             >
               <div className="absolute -inset-1 bg-gradient-to-r from-green-500/20 to-emerald-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="relative bg-background/80 backdrop-blur-xl border border-green-500/20 rounded-2xl p-8">
-                <h3 className="text-2xl font-bold mb-4 text-green-400">My Solution</h3>
-                <ul className="space-y-3 text-muted-foreground">
+                <h3 className="text-2xl font-bold mb-4 text-green-400">The Solution</h3>
+                <ul className="space-y-3 text-gray-100">
                   <li className="flex items-start gap-2">
                     <ChevronRight className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
-                    <span>One platform aggregating all Web3 funding sources</span>
+                    <span>Central hub connecting founders, developers, and funders</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <ChevronRight className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
-                    <span>AI-powered matching with 95% accuracy</span>
+                    <span>Intelligent matching based on skills, interests, and goals</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <ChevronRight className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
-                    <span>Automated milestone tracking and reporting</span>
+                    <span>Curated resources and funding opportunities</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <ChevronRight className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
-                    <span>Transparent, performance-based allocation</span>
+                    <span>Progress tracking and ecosystem growth metrics</span>
                   </li>
                 </ul>
               </div>
@@ -391,11 +391,11 @@ export default function AcceleratePage() {
             className="text-center mb-16"
           >
             <h2 className="text-4xl sm:text-5xl font-bold mb-6">
-              Core Platform
+              Platform
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400"> Features</span>
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Everything builders need to secure funding and grow their projects
+            <p className="text-xl text-gray-100 max-w-3xl mx-auto">
+              Connecting the Web3 ecosystem through intelligent founder-builder-funder relationships
             </p>
           </motion.div>
 
@@ -419,23 +419,14 @@ export default function AcceleratePage() {
                     whileHover={{ y: -8, scale: 1.02 }}
                     transition={{ type: "spring", stiffness: 400, damping: 15 }}
                   >
-                    <motion.div
-                      className={`absolute -inset-1 bg-gradient-to-r ${feature.gradient} rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500`}
-                    />
                     <div className="relative bg-background/80 backdrop-blur-xl border border-foreground/10 rounded-2xl p-8 h-full hover:border-cyan-500/30 transition-all duration-300">
                       <div className="flex items-start gap-4">
-                        <motion.div
-                          className="flex-shrink-0"
-                          whileHover={{ rotate: 360 }}
-                          transition={{ duration: 0.5 }}
-                        >
-                          <div className={`w-14 h-14 bg-gradient-to-br ${feature.gradient} rounded-2xl flex items-center justify-center`}>
-                            <Icon className="w-7 h-7 text-white" />
-                          </div>
-                        </motion.div>
+                        <div className="flex-shrink-0">
+                          <Icon className="w-8 h-8 text-cyan-400 mb-3" />
+                        </div>
                         <div className="flex-1">
                           <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
-                          <p className="text-muted-foreground">{feature.description}</p>
+                          <p className="text-gray-100">{feature.description}</p>
                         </div>
                       </div>
                     </div>
@@ -466,11 +457,11 @@ export default function AcceleratePage() {
             className="text-center mb-16"
           >
             <h2 className="text-4xl sm:text-5xl font-bold mb-6">
-              My Role as
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400"> Founder & Builder</span>
+              Building
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400"> The Ecosystem</span>
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              From concept to $50M+ in tracked funding
+            <p className="text-xl text-gray-100 max-w-3xl mx-auto">
+              Connecting founders, builders, and funders across Web3
             </p>
           </motion.div>
 
@@ -494,17 +485,10 @@ export default function AcceleratePage() {
                     whileHover={{ y: -10 }}
                     transition={{ type: "spring", stiffness: 300 }}
                   >
-                    <motion.div
-                      className={`absolute -inset-1 bg-gradient-to-r ${contribution.color} rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500`}
-                    />
-                    <div className="relative bg-background/60 backdrop-blur-xl border border-foreground/10 rounded-2xl p-8 h-full hover:border-purple-500/30 transition-all duration-300">
-                      <motion.div
-                        className={`w-14 h-14 bg-gradient-to-br ${contribution.color} rounded-2xl flex items-center justify-center mb-6`}
-                        whileHover={{ rotate: 360 }}
-                        transition={{ duration: 0.5 }}
-                      >
-                        <Icon className="w-7 h-7 text-white" />
-                      </motion.div>
+                    <div className="relative bg-background/60 backdrop-blur-xl border border-foreground/10 rounded-2xl p-8 h-full hover:border-cyan-500/30 transition-all duration-300">
+                      <div className="mb-6">
+                        <Icon className="w-8 h-8 text-cyan-400" />
+                      </div>
                       <h3 className="text-xl font-bold mb-4">{contribution.title}</h3>
                       <ul className="space-y-2">
                         {contribution.items.map((item, i) => (
@@ -514,7 +498,7 @@ export default function AcceleratePage() {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 + i * 0.05 }}
-                            className="flex items-start gap-2 text-sm text-muted-foreground"
+                            className="flex items-start gap-2 text-sm text-gray-100"
                           >
                             <ChevronRight className="w-4 h-4 text-cyan-400 mt-0.5 flex-shrink-0" />
                             <span>{item}</span>
@@ -542,10 +526,10 @@ export default function AcceleratePage() {
           >
             <h2 className="text-4xl sm:text-5xl font-bold mb-6">
               Technical
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-400"> Excellence</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-400"> Implementation</span>
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Built with cutting-edge technology for scale and performance
+            <p className="text-xl text-gray-100 max-w-3xl mx-auto">
+              Modern technology stack enabling intelligent ecosystem connections
             </p>
           </motion.div>
 
@@ -580,10 +564,10 @@ export default function AcceleratePage() {
                     animate={{ opacity: [0.5, 1, 0.5] }}
                     transition={{ duration: 2, repeat: Infinity }}
                   >
-                    React 18 + Supabase
+                    Modern Web Stack
                   </motion.div>
-                  <p className="text-sm text-muted-foreground">
-                    Modern stack with real-time subscriptions and edge functions
+                  <p className="text-sm text-gray-100">
+                    React, TypeScript, and real-time data synchronization
                   </p>
                 </motion.div>
                 <motion.div
@@ -596,10 +580,10 @@ export default function AcceleratePage() {
                     animate={{ opacity: [0.5, 1, 0.5] }}
                     transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
                   >
-                    AI-Powered Matching
+                    Smart Connections
                   </motion.div>
-                  <p className="text-sm text-muted-foreground">
-                    Collaborative filtering + neural networks for 95% accuracy
+                  <p className="text-sm text-gray-100">
+                    Intelligent matching between founders, builders, and funders
                   </p>
                 </motion.div>
                 <motion.div
@@ -612,10 +596,10 @@ export default function AcceleratePage() {
                     animate={{ opacity: [0.5, 1, 0.5] }}
                     transition={{ duration: 2, repeat: Infinity, delay: 1 }}
                   >
-                    100% Test Coverage
+                    Quality Assurance
                   </motion.div>
-                  <p className="text-sm text-muted-foreground">
-                    123/123 tests passing with CI/CD automation
+                  <p className="text-sm text-gray-100">
+                    Comprehensive testing and deployment automation
                   </p>
                 </motion.div>
               </div>
@@ -631,10 +615,10 @@ export default function AcceleratePage() {
             className="grid md:grid-cols-4 gap-6"
           >
             {[
-              { metric: 'API Response', value: '<100ms', period: 'p95 latency' },
-              { metric: 'Uptime', value: '99.9%', period: 'SLA guarantee' },
-              { metric: 'Data Processed', value: '10M+', period: 'Events/month' },
-              { metric: 'Cost Efficiency', value: '$0.05', period: 'Per 1M tokens' }
+              { metric: 'Projects', value: '607+', period: 'Connected' },
+              { metric: 'Programs', value: '433+', period: 'Funding sources' },
+              { metric: 'Resources', value: '363+', period: 'Curated tools' },
+              { metric: 'Success Rate', value: '95%', period: 'Match quality' }
             ].map((item, index) => (
               <motion.div
                 key={item.metric}
@@ -653,7 +637,7 @@ export default function AcceleratePage() {
                   {item.value}
                 </motion.div>
                 <div className="text-sm font-semibold text-foreground mt-2">{item.metric}</div>
-                <div className="text-xs text-muted-foreground mt-1">{item.period}</div>
+                <div className="text-xs text-gray-100 mt-1">{item.period}</div>
               </motion.div>
             ))}
           </motion.div>
@@ -686,21 +670,20 @@ export default function AcceleratePage() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: ANIMATION_DURATION.slow, delay: ANIMATION_DELAY.stagger }}
-              className="space-y-6 text-lg text-muted-foreground max-w-3xl mx-auto mb-12"
+              className="space-y-6 text-lg text-gray-100 max-w-3xl mx-auto mb-12"
             >
               <p>
-                Accelerate represents my vision for solving Web3's biggest growth challenge:
-                connecting the right builders with the right resources at the right time.
+                Accelerate represents my vision for growing Web3 ecosystems through
+                intelligent connections between founders, developers, and funders.
               </p>
               <p>
-                By aggregating fragmented funding sources and applying AI intelligence,
-                we're not just saving time — we're fundamentally changing how innovation
-                gets funded in the decentralized economy.
+                Rather than building in isolation, we believe the strongest projects emerge
+                when the right people find each other at the right time, with access to
+                the right resources and funding opportunities.
               </p>
               <p>
-                With $50M+ already tracked and 2000+ teams funded, we're just getting started.
-                The goal is to become the default platform where every Web3 project begins
-                its funding journey.
+                With 607+ projects connected and 433+ funding programs integrated, we're building
+                the central nervous system that enables Web3 founders to build better, faster.
               </p>
             </motion.div>
 
@@ -709,7 +692,7 @@ export default function AcceleratePage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: ANIMATION_DURATION.normal, delay: ANIMATION_DELAY.section }}
-              className="flex flex-col sm:flex-row gap-6 justify-center"
+              className="flex flex-col sm:flex-row gap-6 justify-center items-center"
             >
               <Link href="https://acceleratewith.us" target="_blank" rel="noopener noreferrer">
                 <motion.button

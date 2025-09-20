@@ -36,7 +36,7 @@ export function Hero() {
         >
           {/* Main headline */}
           <motion.h1 
-            className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 sm:mb-8 leading-[1.1] sm:leading-tight"
+            className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 sm:mb-8 leading-[1.1] sm:leading-[1.05] lg:leading-[1.02]"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.16 }}
@@ -52,7 +52,7 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.32 }}
             className="mb-12"
           >
-            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-gray-100 max-w-4xl mx-auto leading-relaxed">
               John Thomas Connor is a product strategist, builder, and father who creates systems at the 
               intersection of technology and community. For over 15 years he&apos;s been reading, writing, 
               and building the future—focused on making technology work for people rather than replacing them.
@@ -66,7 +66,7 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.48 }}
             className="mb-8 sm:mb-12 py-6 sm:py-8 border-y border-border/30"
           >
-            <blockquote className="text-base sm:text-lg md:text-xl italic text-muted-foreground max-w-2xl mx-auto">
+            <blockquote className="text-base sm:text-lg md:text-xl italic text-gray-100 max-w-2xl mx-auto">
               &ldquo;The human journey is transformative—individually and collectively. 
               We must conserve our humanity while building the future.&rdquo;
             </blockquote>
@@ -77,7 +77,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.64 }}
-            className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center"
+            className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center"
           >
             <Link href="/contact">
               <motion.button
@@ -111,7 +111,7 @@ export function Hero() {
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="flex flex-col items-center gap-2 text-muted-foreground"
+            className="flex flex-col items-center gap-2 text-gray-100"
           >
             <span className="text-xs uppercase tracking-widest">Scroll</span>
             <ArrowDown className="w-4 h-4" />

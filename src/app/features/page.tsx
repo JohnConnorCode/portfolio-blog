@@ -136,10 +136,10 @@ export default function FeaturesPage() {
         animate={{ opacity: 1, y: 0 }}
         className="max-w-6xl mx-auto text-center mb-20"
       >
-        <h1 className="text-5xl sm:text-6xl font-bold mb-6">
+        <h1 className="text-5xl sm:text-6xl font-bold mb-6 leading-[1.1] sm:leading-[1.05]">
           Platform Features
         </h1>
-        <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
+        <p className="text-xl text-gray-100 max-w-3xl mx-auto mb-8">
           A comprehensive portfolio and blog platform built with cutting-edge technologies. 
           Designed for performance, scalability, and exceptional user experience.
         </p>

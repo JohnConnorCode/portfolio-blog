@@ -98,14 +98,14 @@ export function PlatformsShowcase() {
             <span className="text-sm font-mono text-cyan-400">FLAGSHIP PLATFORMS</span>
           </motion.div>
 
-          <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6">
+          <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-[1.1] sm:leading-[1.05] lg:leading-[1.02]">
             <span className="text-foreground">Building the </span>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">
               Future
             </span>
           </h2>
 
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-xl text-gray-100 max-w-3xl mx-auto">
             Two platforms revolutionizing how we debate ideas and fund innovation
           </p>
         </motion.div>
@@ -162,7 +162,7 @@ export function PlatformsShowcase() {
                     </div>
 
                     {/* Description */}
-                    <p className="text-muted-foreground mb-8">
+                    <p className="text-gray-100 mb-8">
                       {platform.description}
                     </p>
 
@@ -180,7 +180,7 @@ export function PlatformsShowcase() {
                           <div className={`text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r ${platform.color}`}>
                             {stat.value}
                           </div>
-                          <div className="text-xs text-muted-foreground">
+                          <div className="text-xs text-gray-100">
                             {stat.label}
                           </div>
                         </motion.div>
@@ -199,7 +199,7 @@ export function PlatformsShowcase() {
                           className="flex items-center gap-3"
                         >
                           <div className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${platform.color}`} />
-                          <span className="text-sm text-muted-foreground">
+                          <span className="text-sm text-gray-100">
                             {feature}
                           </span>
                         </motion.div>
@@ -243,7 +243,7 @@ export function PlatformsShowcase() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="text-center mt-20"
         >
-          <p className="text-lg text-muted-foreground mb-6">
+          <p className="text-lg text-gray-100 mb-6">
             Want to build something revolutionary together?
           </p>
           <Link href="/contact">

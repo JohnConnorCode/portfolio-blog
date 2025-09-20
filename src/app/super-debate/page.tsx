@@ -177,7 +177,7 @@ export default function SuperDebatePage() {
               variants={fadeInUp}
               initial="initial"
               animate="animate"
-              className="text-6xl sm:text-7xl lg:text-8xl font-bold mb-8"
+              className="text-6xl sm:text-7xl lg:text-8xl font-bold mb-8 leading-[1.1] sm:leading-[1.05] lg:leading-[1.02]"
             >
               <motion.span
                 className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 inline-block"
@@ -219,13 +219,13 @@ export default function SuperDebatePage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: ANIMATION_DURATION.normal, delay: ANIMATION_DELAY.stagger }}
-              className="text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto mb-12"
+              className="text-xl sm:text-2xl text-gray-100 max-w-3xl mx-auto mb-12"
             >
               The premier platform for structured debates, tournaments, and critical thinking development
-              — founded to democratize the skills that transformed my life
+              founded to democratize the skills that transformed my life
             </motion.p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link href="https://superdebate.org" target="_blank" rel="noopener noreferrer">
                 <motion.button
                   className="px-10 py-5 bg-gradient-to-r from-purple-600 to-pink-600 text-white text-lg font-semibold rounded-xl flex items-center gap-3 group"
@@ -277,7 +277,7 @@ export default function SuperDebatePage() {
                   >
                     {stat.value}
                   </motion.div>
-                  <div className="text-sm text-muted-foreground">{stat.label}</div>
+                  <div className="text-sm text-gray-100">{stat.label}</div>
                 </motion.div>
               ))}
             </div>
@@ -322,7 +322,7 @@ export default function SuperDebatePage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: ANIMATION_DURATION.normal, delay: ANIMATION_DELAY.stagger }}
-              className="text-xl text-muted-foreground max-w-3xl mx-auto"
+              className="text-xl text-gray-100 max-w-3xl mx-auto"
             >
               Leveraging my national debate championship experience to democratize critical thinking
             </motion.p>
@@ -348,23 +348,14 @@ export default function SuperDebatePage() {
                     whileHover={{ y: -8, scale: 1.02 }}
                     transition={{ type: "spring", stiffness: 400, damping: 15 }}
                   >
-                    <motion.div
-                      className={`absolute -inset-1 bg-gradient-to-r ${highlight.color} rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500`}
-                    />
                     <div className="relative bg-background/80 backdrop-blur-xl border border-foreground/10 rounded-2xl p-8 h-full hover:border-purple-500/30 transition-all duration-300">
                       <div className="flex items-start gap-4">
-                        <motion.div
-                          className="flex-shrink-0"
-                          whileHover={{ rotate: 360 }}
-                          transition={{ duration: 0.5 }}
-                        >
-                          <div className={`w-14 h-14 bg-gradient-to-br ${highlight.color} rounded-2xl flex items-center justify-center`}>
-                            <Icon className="w-7 h-7 text-white" />
-                          </div>
-                        </motion.div>
+                        <div className="flex-shrink-0">
+                          <Icon className="w-8 h-8 text-purple-400 mb-3" />
+                        </div>
                         <div className="flex-1">
                           <h3 className="text-xl font-bold mb-2">{highlight.title}</h3>
-                          <p className="text-muted-foreground">{highlight.description}</p>
+                          <p className="text-gray-100">{highlight.description}</p>
                         </div>
                       </div>
                     </div>
@@ -419,23 +410,11 @@ export default function SuperDebatePage() {
                     <div className="relative bg-background/60 backdrop-blur-xl border border-foreground/10 rounded-2xl p-8 h-full hover:border-cyan-500/30 transition-all duration-300">
                       <div className="flex items-start gap-4">
                         <div className="flex-shrink-0">
-                          <motion.div
-                            className="w-14 h-14 bg-gradient-to-br from-cyan-500/20 to-purple-500/20 rounded-2xl flex items-center justify-center"
-                            animate={{
-                              scale: [1, 1.1, 1],
-                            }}
-                            transition={{
-                              duration: 2,
-                              repeat: Infinity,
-                              delay: index * 0.2
-                            }}
-                          >
-                            <Icon className={`w-7 h-7 ${feature.color}`} />
-                          </motion.div>
+                          <Icon className="w-8 h-8 text-purple-400 mb-3" />
                         </div>
                         <div className="flex-1">
                           <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
-                          <p className="text-muted-foreground">{feature.description}</p>
+                          <p className="text-gray-100">{feature.description}</p>
                         </div>
                       </div>
                     </div>
@@ -508,7 +487,7 @@ export default function SuperDebatePage() {
                   >
                     Next.js + TypeScript
                   </motion.div>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-sm text-gray-100">
                     Modern React framework with full-stack capabilities and edge functions
                   </p>
                 </motion.div>
@@ -524,7 +503,7 @@ export default function SuperDebatePage() {
                   >
                     AI Integration
                   </motion.div>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-sm text-gray-100">
                     Custom AI training tools and automated debate analysis systems
                   </p>
                 </motion.div>
@@ -540,7 +519,7 @@ export default function SuperDebatePage() {
                   >
                     Scalable Architecture
                   </motion.div>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-sm text-gray-100">
                     Built to handle tournaments with thousands of concurrent users
                   </p>
                 </motion.div>
@@ -579,7 +558,7 @@ export default function SuperDebatePage() {
                   {item.value}
                 </motion.div>
                 <div className="text-sm font-semibold text-foreground mt-2">{item.metric}</div>
-                <div className="text-xs text-muted-foreground mt-1">{item.period}</div>
+                <div className="text-xs text-gray-100 mt-1">{item.period}</div>
               </motion.div>
             ))}
           </motion.div>
@@ -659,17 +638,10 @@ export default function SuperDebatePage() {
                     whileHover={{ y: -10 }}
                     transition={{ type: "spring", stiffness: 300 }}
                   >
-                    <motion.div
-                      className={`absolute -inset-1 bg-gradient-to-r ${role.color} rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500`}
-                    />
-                    <div className="relative bg-background/60 backdrop-blur-xl border border-foreground/10 rounded-2xl p-8 h-full hover:border-green-500/30 transition-all duration-300">
-                      <motion.div
-                        className={`w-14 h-14 bg-gradient-to-br ${role.color} rounded-2xl flex items-center justify-center mb-6`}
-                        whileHover={{ rotate: 360 }}
-                        transition={{ duration: 0.5 }}
-                      >
-                        <Icon className="w-7 h-7 text-white" />
-                      </motion.div>
+                    <div className="relative bg-background/60 backdrop-blur-xl border border-foreground/10 rounded-2xl p-8 h-full hover:border-purple-500/30 transition-all duration-300">
+                      <div className="mb-6">
+                        <Icon className="w-8 h-8 text-purple-400" />
+                      </div>
                       <h3 className="text-xl font-bold mb-4">{role.title}</h3>
                       <ul className="space-y-2">
                         {role.items.map((item, i) => (
@@ -679,7 +651,7 @@ export default function SuperDebatePage() {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 + i * 0.05 }}
-                            className="flex items-start gap-2 text-sm text-muted-foreground"
+                            className="flex items-start gap-2 text-sm text-gray-100"
                           >
                             <ChevronRight className="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0" />
                             <span>{item}</span>
@@ -720,14 +692,14 @@ export default function SuperDebatePage() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: ANIMATION_DURATION.slow, delay: ANIMATION_DELAY.stagger }}
-              className="space-y-6 text-lg text-muted-foreground max-w-3xl mx-auto mb-12"
+              className="space-y-6 text-lg text-gray-100 max-w-3xl mx-auto mb-12"
             >
               <p>
                 As a national debate champion turned technologist, I'm uniquely positioned to bridge
                 the gap between traditional debate excellence and modern technology platforms.
               </p>
               <p>
-                SuperDebate represents my vision for democratizing the transformative power of debate—
+                SuperDebate represents my vision for democratizing the transformative power of debate
                 the same skills that shaped my analytical thinking, public speaking, and leadership abilities.
               </p>
               <p>
@@ -741,7 +713,7 @@ export default function SuperDebatePage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: ANIMATION_DURATION.normal, delay: ANIMATION_DELAY.section }}
-              className="flex flex-col sm:flex-row gap-6 justify-center"
+              className="flex flex-col sm:flex-row gap-6 justify-center items-center"
             >
               <Link href="https://superdebate.org" target="_blank" rel="noopener noreferrer">
                 <motion.button

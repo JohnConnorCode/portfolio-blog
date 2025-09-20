@@ -53,7 +53,7 @@ export function CallToAction() {
           <motion.p
             {...headerAnimation}
             transition={{ ...headerAnimation.transition, delay: ANIMATION_DELAY.stagger }}
-            className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto"
+            className="text-base sm:text-lg md:text-xl text-gray-100 mb-8 max-w-2xl mx-auto"
           >
             Let&apos;s find what&apos;s preventing your users from adopting your product and fix it.
           </motion.p>
@@ -78,7 +78,7 @@ export function CallToAction() {
           <motion.p
             {...headerAnimation}
             transition={{ ...headerAnimation.transition, delay: ANIMATION_DELAY.section }}
-            className="text-xs sm:text-sm text-muted-foreground mt-8"
+            className="text-xs sm:text-sm text-gray-100 mt-8"
           >
             Typical response time: Within 24 hours
           </motion.p>

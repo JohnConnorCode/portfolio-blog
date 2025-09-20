@@ -66,7 +66,7 @@ export function Ventures() {
             Focus & Recent Apps
           </AnimatedText>
           <FadeInText delay={0.2}>
-            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl text-gray-100 max-w-3xl mx-auto">
               I build and launch experimental apps to explore how technology can serve humanity—tools for 
               collective decision-making, AI-driven matching, and community governance
             </p>
@@ -110,14 +110,14 @@ export function Ventures() {
                             {venture.name}
                             <ArrowUpRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
                           </h3>
-                          <p className="text-xs sm:text-sm text-muted-foreground uppercase tracking-wider">
+                          <p className="text-xs sm:text-sm text-gray-100 uppercase tracking-wider">
                             {venture.category}
                           </p>
                         </div>
                       </div>
                     </div>
                     
-                    <p className="text-sm sm:text-base md:text-lg text-muted-foreground mb-4">
+                    <p className="text-sm sm:text-base md:text-lg text-gray-100 mb-4">
                       {venture.description}
                     </p>
                     

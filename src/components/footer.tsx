@@ -23,7 +23,7 @@ export function Footer() {
         >
           <div>
             <h3 className="font-bold text-base sm:text-lg mb-4">About</h3>
-            <p className="text-sm sm:text-base text-muted-foreground">
+            <p className="text-sm sm:text-base text-gray-100">
               Building systems that serve humanity. Technology should empower human judgment, not replace it.
             </p>
           </div>
@@ -32,22 +32,22 @@ export function Footer() {
             <h3 className="font-bold text-base sm:text-lg mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/work" className="text-sm sm:text-base text-muted-foreground hover:text-foreground transition-colors">
+                <Link href="/work" className="text-sm sm:text-base text-gray-100 hover:text-foreground transition-colors">
                   Work
                 </Link>
               </li>
               <li>
-                <Link href="/philosophy" className="text-sm sm:text-base text-muted-foreground hover:text-foreground transition-colors">
+                <Link href="/philosophy" className="text-sm sm:text-base text-gray-100 hover:text-foreground transition-colors">
                   Philosophy
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-sm sm:text-base text-muted-foreground hover:text-foreground transition-colors">
+                <Link href="/contact" className="text-sm sm:text-base text-gray-100 hover:text-foreground transition-colors">
                   Contact
                 </Link>
               </li>
               <li>
-                <Link href="/features" className="text-sm sm:text-base text-muted-foreground hover:text-foreground transition-colors">
+                <Link href="/features" className="text-sm sm:text-base text-gray-100 hover:text-foreground transition-colors">
                   Features
                 </Link>
               </li>
@@ -85,7 +85,7 @@ export function Footer() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="mt-8 pt-8 border-t border-border/50"
         >
-          <p className="text-center text-sm sm:text-base text-muted-foreground flex items-center justify-center gap-1">
+          <p className="text-center text-sm sm:text-base text-gray-100 flex items-center justify-center gap-1">
             © 2025 John Thomas Connor
           </p>
         </motion.div>

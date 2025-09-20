@@ -109,7 +109,7 @@ export function CaseStudies() {
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">
             Detailed <span className="text-gradient">Case Studies</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-lg text-gray-100 max-w-3xl mx-auto">
             Real problems, real solutions, real impact. From local businesses to high-growth startups.
           </p>
         </motion.div>
@@ -141,7 +141,7 @@ export function CaseStudies() {
                           </div>
                           <div>
                             <h3 className="text-2xl font-bold mb-1">{study.title}</h3>
-                            <p className="text-muted-foreground">{study.subtitle}</p>
+                            <p className="text-gray-100">{study.subtitle}</p>
                           </div>
                         </div>
                         
@@ -152,7 +152,7 @@ export function CaseStudies() {
                           {Object.entries(study.metrics).map(([key, value]) => (
                             <div key={key} className="text-center p-4 bg-background/50 rounded-lg">
                               <p className="text-2xl font-bold text-primary">{value}</p>
-                              <p className="text-xs text-muted-foreground capitalize">{key}</p>
+                              <p className="text-xs text-gray-100 capitalize">{key}</p>
                             </div>
                           ))}
                         </div>
@@ -174,7 +174,7 @@ export function CaseStudies() {
                       <div className="space-y-6">
                         {/* Challenge */}
                         <div>
-                          <h4 className="font-semibold mb-2 text-sm text-muted-foreground uppercase tracking-wider">
+                          <h4 className="font-semibold mb-2 text-sm text-gray-100 uppercase tracking-wider">
                             The Challenge
                           </h4>
                           <p className="text-foreground/80">{study.challenge}</p>
@@ -182,7 +182,7 @@ export function CaseStudies() {
                         
                         {/* Solution */}
                         <div>
-                          <h4 className="font-semibold mb-2 text-sm text-muted-foreground uppercase tracking-wider">
+                          <h4 className="font-semibold mb-2 text-sm text-gray-100 uppercase tracking-wider">
                             The Solution
                           </h4>
                           <p className="text-foreground/80">{study.solution}</p>
@@ -190,7 +190,7 @@ export function CaseStudies() {
                         
                         {/* Results */}
                         <div>
-                          <h4 className="font-semibold mb-3 text-sm text-muted-foreground uppercase tracking-wider">
+                          <h4 className="font-semibold mb-3 text-sm text-gray-100 uppercase tracking-wider">
                             The Results
                           </h4>
                           <ul className="space-y-2">
@@ -219,7 +219,7 @@ export function CaseStudies() {
           transition={{ duration: 0.5 }}
           className="text-center mt-16"
         >
-          <p className="text-lg text-muted-foreground mb-6">
+          <p className="text-lg text-gray-100 mb-6">
             Every project starts with understanding the real problem
           </p>
           <Link href="/contact">

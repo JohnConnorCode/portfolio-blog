@@ -303,7 +303,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
           <motion.h1
             initial="hidden"
             animate="visible"
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-wider mb-12 relative"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-wider mb-12 relative leading-[1.1] sm:leading-[1.05] lg:leading-[1.02]"
             // Remove whole text hover effect
             style={{ 
               lineHeight: 0.9,
@@ -420,7 +420,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                 }
               }
             }}
-            className="flex flex-col sm:flex-row gap-4 justify-center px-4"
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center px-4"
           >
             <motion.div
               variants={{

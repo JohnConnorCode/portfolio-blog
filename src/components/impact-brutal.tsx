@@ -75,7 +75,7 @@ export function ImpactBrutal() {
         >
           <motion.h2
             {...headerAnimation}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light mb-4"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light mb-4 leading-[1.1] sm:leading-[1.05] lg:leading-[1.02]"
           >
             <span className="text-foreground">PROVEN</span>
             <span className="text-primary dark:text-cyan-400 font-black neon-glow"> IMPACT</span>
@@ -83,7 +83,7 @@ export function ImpactBrutal() {
           <motion.p
             {...headerAnimation}
             transition={{ ...headerAnimation.transition, delay: ANIMATION_DELAY.stagger }}
-            className="text-base sm:text-lg text-muted-foreground dark:text-gray-400 font-light tracking-wide"
+            className="text-base sm:text-lg text-gray-100 dark:text-gray-400 font-light tracking-wide"
           >
             Real outcomes from solving actual product problems
           </motion.p>
@@ -142,7 +142,7 @@ export function ImpactBrutal() {
                   {/* Context */}
                   <motion.p
                     variants={fadeInUp}
-                    className="text-muted-foreground dark:text-gray-500 text-xs sm:text-sm font-mono"
+                    className="text-gray-100 dark:text-gray-500 text-xs sm:text-sm font-mono"
                   >
                     {impact.context}
                   </motion.p>
@@ -163,7 +163,7 @@ export function ImpactBrutal() {
           <motion.p
             {...headerAnimation}
             transition={{ ...headerAnimation.transition, delay: ANIMATION_DELAY.section }}
-            className="text-muted-foreground dark:text-gray-500 font-mono text-sm uppercase tracking-widest"
+            className="text-gray-100 dark:text-gray-500 font-mono text-sm uppercase tracking-widest"
           >
             Building what <span className="text-primary dark:text-cyan-400">actually works</span>
           </motion.p>

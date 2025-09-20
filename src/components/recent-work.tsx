@@ -54,7 +54,7 @@ export function RecentWork() {
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">
             Recent <span className="text-gradient">Success Stories</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-xl text-gray-100 max-w-3xl mx-auto">
             Real results from real clients. Here&apos;s how I&apos;ve helped businesses grow.
           </p>
         </motion.div>
@@ -73,7 +73,7 @@ export function RecentWork() {
               <div className="mb-4">
                 <p className="text-sm text-primary font-medium mb-2">{project.client}</p>
                 <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-                <p className="text-muted-foreground text-sm">{project.description}</p>
+                <p className="text-gray-100 text-sm">{project.description}</p>
               </div>
 
               <div className="grid grid-cols-3 gap-4 mb-6 py-4 border-y border-border/50">
@@ -83,7 +83,7 @@ export function RecentWork() {
                     <div key={result.label} className="text-center">
                       <Icon className="w-4 h-4 text-primary mx-auto mb-1" />
                       <p className="text-lg font-bold">{result.metric}</p>
-                      <p className="text-xs text-muted-foreground">{result.label}</p>
+                      <p className="text-xs text-gray-100">{result.label}</p>
                     </div>
                   )
                 })}

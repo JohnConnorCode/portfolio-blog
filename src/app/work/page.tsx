@@ -126,11 +126,11 @@ export default function WorkPage() {
         >
           <AnimatedLetters 
             text="Work" 
-            className="text-5xl sm:text-6xl font-black mb-8 text-center block"
+            className="text-5xl sm:text-6xl font-black mb-8 text-center block leading-[1.1] sm:leading-[1.05]"
             as="h1"
           />
           <motion.p
-            className="text-xl text-center text-muted-foreground max-w-3xl mx-auto"
+            className="text-xl text-center text-gray-100 max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}

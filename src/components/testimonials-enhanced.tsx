@@ -65,7 +65,7 @@ export function TestimonialsEnhanced() {
             Client Success Stories
           </AnimatedText>
           <FadeInText delay={0.2}>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-xl text-gray-100 max-w-3xl mx-auto">
               Real results from founders and leaders who&apos;ve transformed their organizations
             </p>
           </FadeInText>
@@ -99,7 +99,7 @@ export function TestimonialsEnhanced() {
                   <div className="flex items-center justify-between flex-wrap gap-4">
                     <div>
                       <p className="font-semibold text-lg">{testimonial.author}</p>
-                      <p className="text-muted-foreground">
+                      <p className="text-gray-100">
                         {testimonial.role}, {testimonial.company}
                       </p>
                     </div>
@@ -132,13 +132,13 @@ export function TestimonialsEnhanced() {
                     <Star key={i} className="w-4 h-4 fill-primary text-primary" />
                   ))}
                 </div>
-                <blockquote className="text-lg mb-6 text-muted-foreground">
+                <blockquote className="text-lg mb-6 text-gray-100">
                   &ldquo;{testimonial.quote}&rdquo;
                 </blockquote>
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="font-semibold">{testimonial.author}</p>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-sm text-gray-100">
                       {testimonial.role}, {testimonial.company}
                     </p>
                   </div>

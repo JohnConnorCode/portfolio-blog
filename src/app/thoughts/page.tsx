@@ -34,7 +34,7 @@ export default function ThoughtsPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-5xl md:text-6xl font-light mb-4"
+            className="text-5xl md:text-6xl font-light mb-4 leading-[1.1] md:leading-[1.05]"
           >
             <span className="text-white">RANDOM</span>
             <span className="text-cyan-400 font-black neon-glow"> THOUGHTS</span>
