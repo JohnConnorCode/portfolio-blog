@@ -4,7 +4,6 @@ import { useEffect, ReactNode } from 'react'
 import { motion, useScroll, useSpring, useTransform } from 'framer-motion'
 import { useKeyboardShortcuts } from '@/hooks/use-keyboard-shortcuts'
 import { useMomentumScroll } from '@/components/smooth-scroll'
-import { PremiumPolish } from '@/components/ui/premium-polish'
 import { usePathname } from 'next/navigation'
 
 interface PremiumLayoutProps {
@@ -83,8 +82,6 @@ export function PremiumLayout({ children }: PremiumLayoutProps) {
 
   return (
     <>
-      {/* Premium Polish Components */}
-      <PremiumPolish currentPath={pathname} />
 
       {/* Premium scroll progress indicator */}
       <motion.div

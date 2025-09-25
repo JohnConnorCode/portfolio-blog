@@ -6,8 +6,6 @@ import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Briefcase, BookOpen, Home, Mail, Brain, MessageSquare } from 'lucide-react'
 import { cn } from '@/lib/utils'
-import { IconDraw } from './ui/icon-draw'
-import { AnimatedUnderline, MagneticHover } from './ui/premium-hover'
 
 const navItems = [
   { href: '/', label: 'Home', icon: Home },
@@ -122,42 +120,18 @@ export function Navbar() {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="relative group"
                 >
-                  <MagneticHover strength={0.2} maxDistance={40}>
-                    <Link
-                      href={item.href}
-                      className={cn(
-                        'relative px-6 py-3 group/link overflow-hidden rounded-lg transition-all flex items-center',
-                        isActive
-                          ? 'text-foreground'
-                          : 'text-muted-foreground hover:text-foreground hover:bg-foreground/5'
-                      )}
-                    >
-                      <span className="relative z-10 flex items-center space-x-2">
-                        <IconDraw
-                          icon={Icon}
-                          size="sm"
-                          drawSpeed={1}
-                          staggerDelay={0.05}
-                          triggerOnHover={true}
-                          autoPlay={false}
-                          className="w-4 h-4"
-                        />
-                        <AnimatedUnderline
-                          direction="left-to-right"
-                          color={isActive ? '#06b6d4' : 'currentColor'}
-                          duration={0.3}
-                          thickness={2}
-                          as="span"
-                        >
-                          {item.label}
-                        </AnimatedUnderline>
-                      </span>
-                      {/* Background sweep effect on hover */}
-                      <motion.div
-                        className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent -translate-x-full group-hover/link:translate-x-full transition-transform duration-700"
-                      />
-                    </Link>
-                  </MagneticHover>
+                  <Link
+                    href={item.href}
+                    className={cn(
+                      'relative px-6 py-3 rounded-lg transition-all flex items-center space-x-2',
+                      isActive
+                        ? 'text-foreground'
+                        : 'text-muted-foreground hover:text-foreground hover:bg-foreground/5'
+                    )}
+                  >
+                    <Icon className="w-4 h-4" />
+                    <span>{item.label}</span>
+                  </Link>
 
                   {/* Dropdown for sub-items */}
                   {hasSubItems && (
@@ -194,23 +168,9 @@ export function Navbar() {
               className="md:hidden p-2 rounded-lg hover:bg-primary/10 transition-colors"
             >
               {isOpen ? (
-                <IconDraw
-                  icon={X}
-                  size="md"
-                  drawSpeed={0.8}
-                  autoPlay={false}
-                  triggerOnHover={true}
-                  className="w-6 h-6"
-                />
+                <X className="w-6 h-6" />
               ) : (
-                <IconDraw
-                  icon={Menu}
-                  size="md"
-                  drawSpeed={0.8}
-                  autoPlay={false}
-                  triggerOnHover={true}
-                  className="w-6 h-6"
-                />
+                <Menu className="w-6 h-6" />
               )}
             </button>
           </div>
@@ -237,14 +197,7 @@ export function Navbar() {
                 onClick={() => setIsOpen(false)}
                 className="p-2 rounded-lg hover:bg-primary/10 transition-colors"
               >
-                <IconDraw
-                  icon={X}
-                  size="md"
-                  drawSpeed={0.8}
-                  autoPlay={false}
-                  triggerOnHover={true}
-                  className="w-6 h-6"
-                />
+                <X className="w-6 h-6" />
               </button>
             </div>
             
@@ -271,15 +224,7 @@ export function Navbar() {
                           : 'hover:bg-primary/5 text-muted-foreground hover:text-foreground'
                       )}
                     >
-                      <IconDraw
-                        icon={Icon}
-                        size="sm"
-                        drawSpeed={1}
-                        staggerDelay={0.05}
-                        triggerOnHover={true}
-                        autoPlay={false}
-                        className="w-5 h-5"
-                      />
+                      <Icon className="w-5 h-5" />
                       <span className="flex-1">{item.label}</span>
                       {isActive && !hasSubItems && (
                         <motion.div

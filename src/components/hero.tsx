@@ -2,14 +2,10 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { ArrowDown } from 'lucide-react'
-import { IconDraw } from './ui/icon-draw'
 import Link from 'next/link'
 import { useRef } from 'react'
 import { useMobileAnimation } from '@/hooks/use-viewport-animation'
 import { HeroBackground } from './hero-background'
-import { PremiumButton } from './ui/premium-button'
-import { TextReveal, HeroTextReveal } from './ui/text-reveal'
-import { ParallaxSection } from './ui/parallax-section'
 
 export function Hero() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -23,34 +19,34 @@ export function Hero() {
   const scale = useTransform(scrollYProgress, [0, 1], [1, 0.8])
 
   return (
-    <ParallaxSection speed={0.3} enableTilt={!isMobile} className="relative min-h-screen">
-      <section ref={containerRef} className="relative min-h-screen flex items-center justify-center overflow-hidden py-16 sm:py-0">
-        {/* Animated network background */}
-        <div className="absolute inset-0 -z-10">
-          <HeroBackground />
-        </div>
+    <section ref={containerRef} className="relative min-h-screen flex items-center justify-center overflow-hidden py-16 sm:py-0">
+      {/* Animated network background */}
+      <div className="absolute inset-0 -z-10">
+        <HeroBackground />
+      </div>
 
-        <motion.div
-          style={{ opacity, scale }}
-          className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 text-center"
-        >
+      <motion.div
+        style={{ opacity, scale }}
+        className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 text-center"
+      >
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           {/* Main headline */}
-          <HeroTextReveal className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 sm:mb-8 leading-[1.1] sm:leading-[1.05] lg:leading-[1.02]">
+          <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 sm:mb-8 leading-[1.1] sm:leading-[1.05] lg:leading-[1.02]">
             Build systems that
-          </HeroTextReveal>
-          <HeroTextReveal className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 sm:mb-8 leading-[1.1] sm:leading-[1.05] lg:leading-[1.02] text-gradient mt-2 block">
+          </h1>
+          <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 sm:mb-8 leading-[1.1] sm:leading-[1.05] lg:leading-[1.02] text-gradient mt-2 block">
             serve humanity
-          </HeroTextReveal>
+          </h1>
 
           {/* Subheadline with manifesto */}
-          <TextReveal
-            variant="fade-up"
-            delay={0.8}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
             className="mb-12"
           >
             <p className="text-base sm:text-lg md:text-xl text-gray-100 max-w-4xl mx-auto leading-relaxed">
@@ -58,7 +54,7 @@ export function Hero() {
               intersection of technology and community. For over 15 years he&apos;s been reading, writing,
               and building the future—focused on making technology work for people rather than replacing them.
             </p>
-          </TextReveal>
+          </motion.div>
 
           {/* Core belief */}
           <motion.div
@@ -73,35 +69,26 @@ export function Hero() {
             </blockquote>
           </motion.div>
 
-          {/* CTAs with premium styling */}
+          {/* CTAs */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.64 }}
             className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center"
           >
-            <PremiumButton
-              variant="primary"
-              size="lg"
+            <Link
               href="/contact"
-              magneticStrength={0.4}
-              rippleEffect={true}
-              soundEffect={false}
-              className="w-full sm:w-auto"
+              className="w-full sm:w-auto px-8 py-4 bg-primary text-white font-semibold rounded-lg hover:bg-primary/90 transition-colors"
             >
               Start a Project
-            </PremiumButton>
+            </Link>
 
-            <PremiumButton
-              variant="ghost"
-              size="lg"
+            <Link
               href="/work"
-              magneticStrength={0.3}
-              rippleEffect={true}
-              className="w-full sm:w-auto"
+              className="w-full sm:w-auto px-8 py-4 border border-white/20 text-white font-semibold rounded-lg hover:bg-white/10 transition-colors"
             >
               Explore My Work
-            </PremiumButton>
+            </Link>
           </motion.div>
         </motion.div>
 
@@ -118,19 +105,10 @@ export function Hero() {
             className="flex flex-col items-center gap-2 text-gray-100"
           >
             <span className="text-xs uppercase tracking-widest">Scroll</span>
-            <IconDraw
-              icon={ArrowDown}
-              size="sm"
-              drawSpeed={1.5}
-              staggerDelay={0.1}
-              triggerOnHover={false}
-              autoPlay={true}
-              className="w-4 h-4"
-            />
+            <ArrowDown className="w-4 h-4" />
           </motion.div>
         </motion.div>
       </motion.div>
-      </section>
-    </ParallaxSection>
+    </section>
   )
 }

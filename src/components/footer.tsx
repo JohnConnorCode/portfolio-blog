@@ -3,7 +3,6 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { Github, Linkedin, Twitter, Mail, Heart } from 'lucide-react'
-import { IconDraw } from './ui/icon-draw'
 
 const socialLinks = [
   { href: 'https://twitter.com/ablockunchained', icon: Twitter, label: 'Twitter' },
@@ -71,15 +70,7 @@ export function Footer() {
                     className="p-2 rounded-lg bg-primary/10 hover:bg-primary/20 text-foreground transition-colors"
                     aria-label={link.label}
                   >
-                    <IconDraw
-                      icon={Icon}
-                      size="sm"
-                      drawSpeed={1.2}
-                      staggerDelay={0.05}
-                      triggerOnHover={true}
-                      autoPlay={false}
-                      className="w-5 h-5 text-current"
-                    />
+                    <Icon className="w-5 h-5" />
                   </motion.a>
                 )
               })}

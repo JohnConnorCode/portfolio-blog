@@ -7,15 +7,7 @@ import "@/styles/premium-scrollbar.css";
 import { Providers } from "@/components/providers";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
-import { CustomCursor } from "@/components/custom-cursor";
 import { NoiseTexture } from "@/components/noise-texture";
-import { PremiumLayout } from "@/components/premium-layout";
-import { AmbientBackground } from "@/components/ui/ambient-background";
-import { CustomCursor as PremiumCursor } from "@/components/ui/micro-interactions";
-import { PageTransition } from "@/components/ui/page-transitions";
-import { SoundSystemProvider, SoundToggle } from "@/components/ui/sound-system";
-import { ToastSystemProvider } from "@/components/ui/toast-system";
-import { FloatingActionButton, ScrollToTopFAB } from "@/components/ui/floating-action-button";
 import { Analytics } from "@vercel/analytics/react";
 
 const alata = Alata({
@@ -148,33 +140,11 @@ export default function RootLayout({
         style={{ backgroundColor: 'black' }}
       >
         <Providers>
-          <SoundSystemProvider>
-            <ToastSystemProvider>
-              <PremiumCursor enabled={true} size={20} trailLength={5} />
-              <AmbientBackground
-                variant="atmospheric"
-                intensity={0.6}
-                colors={['#06b6d4', '#3b82f6', '#8b5cf6', '#ec4899']}
-                interactive={true}
-              />
-              <NoiseTexture />
-              <PremiumLayout>
-                <Navbar />
-                <PageTransition>
-                  <main className="flex-1 pt-24">{children}</main>
-                </PageTransition>
-                <Footer />
-              </PremiumLayout>
-
-              {/* Floating elements */}
-              <ScrollToTopFAB />
-              <div className="fixed top-4 right-4 z-50">
-                <SoundToggle />
-              </div>
-
-              <Analytics />
-            </ToastSystemProvider>
-          </SoundSystemProvider>
+          <NoiseTexture />
+          <Navbar />
+          <main className="flex-1 pt-24">{children}</main>
+          <Footer />
+          <Analytics />
         </Providers>
       </body>
     </html>
