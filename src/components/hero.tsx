@@ -6,6 +6,9 @@ import Link from 'next/link'
 import { useRef } from 'react'
 import { useMobileAnimation } from '@/hooks/use-viewport-animation'
 import { HeroBackground } from './hero-background'
+import { PremiumButton } from './ui/premium-button'
+import { TextReveal, HeroTextReveal } from './ui/text-reveal'
+import { ParallaxSection } from './ui/parallax-section'
 
 export function Hero() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -19,45 +22,42 @@ export function Hero() {
   const scale = useTransform(scrollYProgress, [0, 1], [1, 0.8])
 
   return (
-    <section ref={containerRef} className="relative min-h-screen flex items-center justify-center overflow-hidden py-16 sm:py-0">
-      {/* Animated network background */}
-      <div className="absolute inset-0 -z-10">
-        <HeroBackground />
-      </div>
+    <ParallaxSection speed={0.3} enableTilt={!isMobile} className="relative min-h-screen">
+      <section ref={containerRef} className="relative min-h-screen flex items-center justify-center overflow-hidden py-16 sm:py-0">
+        {/* Animated network background */}
+        <div className="absolute inset-0 -z-10">
+          <HeroBackground />
+        </div>
 
-      <motion.div 
-        style={{ opacity, scale }}
-        className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 text-center"
-      >
+        <motion.div
+          style={{ opacity, scale }}
+          className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 text-center"
+        >
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           {/* Main headline */}
-          <motion.h1 
-            className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 sm:mb-8 leading-[1.1] sm:leading-[1.05] lg:leading-[1.02]"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.16 }}
-          >
+          <HeroTextReveal className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 sm:mb-8 leading-[1.1] sm:leading-[1.05] lg:leading-[1.02]">
             Build systems that
-            <span className="block text-gradient mt-2">serve humanity</span>
-          </motion.h1>
+          </HeroTextReveal>
+          <HeroTextReveal className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 sm:mb-8 leading-[1.1] sm:leading-[1.05] lg:leading-[1.02] text-gradient mt-2 block">
+            serve humanity
+          </HeroTextReveal>
 
           {/* Subheadline with manifesto */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.32 }}
+          <TextReveal
+            variant="fade-up"
+            delay={0.8}
             className="mb-12"
           >
             <p className="text-base sm:text-lg md:text-xl text-gray-100 max-w-4xl mx-auto leading-relaxed">
-              John Thomas Connor is a product strategist, builder, and father who creates systems at the 
-              intersection of technology and community. For over 15 years he&apos;s been reading, writing, 
+              John Thomas Connor is a product strategist, builder, and father who creates systems at the
+              intersection of technology and community. For over 15 years he&apos;s been reading, writing,
               and building the future—focused on making technology work for people rather than replacing them.
             </p>
-          </motion.div>
+          </TextReveal>
 
           {/* Core belief */}
           <motion.div
@@ -72,32 +72,35 @@ export function Hero() {
             </blockquote>
           </motion.div>
 
-          {/* CTAs with refined styling */}
+          {/* CTAs with premium styling */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.64 }}
             className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center"
           >
-            <Link href="/contact">
-              <motion.button
-                whileHover={!isMobile ? { scale: 1.02 } : {}}
-                whileTap={{ scale: 0.98 }}
-                className="px-8 sm:px-10 py-3.5 sm:py-4 bg-foreground text-background font-medium text-base sm:text-lg border-2 border-foreground hover:bg-transparent hover:text-foreground transition-all duration-300 w-full sm:w-auto"
-              >
-                Start a Project
-              </motion.button>
-            </Link>
-            
-            <Link href="/work">
-              <motion.button
-                whileHover={!isMobile ? { scale: 1.02 } : {}}
-                whileTap={{ scale: 0.98 }}
-                className="px-8 sm:px-10 py-3.5 sm:py-4 border-2 border-foreground/20 text-foreground font-medium text-base sm:text-lg hover:border-foreground hover:bg-foreground hover:text-background transition-all duration-300 w-full sm:w-auto"
-              >
-                Explore My Work
-              </motion.button>
-            </Link>
+            <PremiumButton
+              variant="primary"
+              size="lg"
+              href="/contact"
+              magneticStrength={0.4}
+              rippleEffect={true}
+              soundEffect={false}
+              className="w-full sm:w-auto"
+            >
+              Start a Project
+            </PremiumButton>
+
+            <PremiumButton
+              variant="ghost"
+              size="lg"
+              href="/work"
+              magneticStrength={0.3}
+              rippleEffect={true}
+              className="w-full sm:w-auto"
+            >
+              Explore My Work
+            </PremiumButton>
           </motion.div>
         </motion.div>
 
@@ -118,6 +121,7 @@ export function Hero() {
           </motion.div>
         </motion.div>
       </motion.div>
-    </section>
+      </section>
+    </ParallaxSection>
   )
 }

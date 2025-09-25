@@ -3,6 +3,10 @@
 import { motion, useMotionValue, useTransform, animate } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { DollarSign, Users, TrendingUp, Clock, Briefcase } from 'lucide-react'
+import { GlassmorphismCard } from './ui/glassmorphism-card'
+import { CounterAnimation, MetricCounter } from './ui/counter-animation'
+import { TextReveal, HeroTextReveal } from './ui/text-reveal'
+import { ScrollReveal, StaggeredReveal } from './ui/scroll-reveal'
 
 interface CounterProps {
   from: number
@@ -92,65 +96,93 @@ export function ImpactMetrics() {
       </div>
 
       <div className="max-w-7xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          onViewportEnter={() => setIsVisible(true)}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl sm:text-5xl font-bold mb-6">
+        <ScrollReveal variant="slide-up" className="text-center mb-16">
+          <HeroTextReveal className="text-4xl sm:text-5xl font-bold mb-6">
             Track Record
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          </HeroTextReveal>
+          <TextReveal
+            variant="fade-up"
+            delay={0.3}
+            className="text-xl text-muted-foreground max-w-3xl mx-auto"
+          >
             Verified metrics from my work across startups and enterprises
-          </p>
-        </motion.div>
+          </TextReveal>
+        </ScrollReveal>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <StaggeredReveal
+          staggerDelay={0.1}
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
           {metrics.map((metric, index) => {
             const Icon = metric.icon
             return (
-              <motion.div
+              <GlassmorphismCard
                 key={metric.label}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="relative group"
+                variant="intense"
+                tiltEffect={true}
+                glowOnHover={true}
+                borderGlow={true}
+                className="p-8 group relative"
               >
-                <div className={`absolute inset-0 bg-gradient-to-br ${metric.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg blur-xl`} />
-                <div className="relative p-8 border border-foreground/10 hover:border-primary/50 transition-all duration-300 rounded-lg bg-background/80 backdrop-blur-sm">
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="p-3 border border-foreground/20 rounded-lg group-hover:border-primary/50 transition-colors">
+                {/* Background gradient glow */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${metric.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl blur-xl`} />
+
+                <div className="relative z-10">
+                  <div className="flex items-start justify-between mb-6">
+                    <motion.div
+                      className="p-3 border border-white/20 rounded-lg group-hover:border-primary/50 transition-colors bg-white/5"
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                    >
                       <Icon className="w-6 h-6 text-primary" />
-                    </div>
+                    </motion.div>
+
+                    {/* Floating decoration */}
+                    <motion.div
+                      className="w-3 h-3 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 opacity-60"
+                      animate={{
+                        scale: [1, 1.2, 1],
+                        opacity: [0.6, 1, 0.6]
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        delay: index * 0.2
+                      }}
+                    />
                   </div>
-                  
-                  <div className="space-y-2">
-                    <p className="text-3xl md:text-4xl font-bold text-foreground">
-                      {isVisible ? (
-                        <Counter
-                          from={0}
-                          to={metric.value}
-                          prefix={metric.prefix}
-                          suffix={metric.suffix}
-                        />
-                      ) : (
-                        <span>{metric.prefix}0{metric.suffix}</span>
-                      )}
-                    </p>
-                    <p className="text-lg font-semibold">{metric.label}</p>
-                    <p className="text-sm text-muted-foreground">
+
+                  <div className="space-y-3">
+                    <CounterAnimation
+                      value={metric.value}
+                      duration={2.5}
+                      delay={0.5 + index * 0.1}
+                      className="text-3xl md:text-4xl font-bold text-white block"
+                      prefix={metric.prefix || ''}
+                      suffix={metric.suffix || ''}
+                    />
+
+                    <TextReveal
+                      variant="fade-up"
+                      delay={0.8 + index * 0.1}
+                      className="text-lg font-semibold text-gray-200"
+                    >
+                      {metric.label}
+                    </TextReveal>
+
+                    <TextReveal
+                      variant="fade-up"
+                      delay={1 + index * 0.1}
+                      className="text-sm text-gray-400"
+                    >
                       {metric.description}
-                    </p>
+                    </TextReveal>
                   </div>
                 </div>
-              </motion.div>
+              </GlassmorphismCard>
             )
           })}
-        </div>
+        </StaggeredReveal>
 
       </div>
     </section>

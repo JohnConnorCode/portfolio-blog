@@ -44,9 +44,16 @@ export function Navbar() {
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
         scrolled
-          ? 'bg-background/80 backdrop-blur-xl border-b border-border/50 shadow-lg'
+          ? 'bg-black/20 backdrop-blur-xl border-b border-white/10 shadow-2xl shadow-black/20'
           : 'bg-transparent'
       )}
+      style={{
+        backdropFilter: scrolled ? 'blur(20px) saturate(180%)' : 'none',
+        WebkitBackdropFilter: scrolled ? 'blur(20px) saturate(180%)' : 'none',
+        background: scrolled
+          ? 'linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6))'
+          : 'transparent'
+      }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-24">
@@ -186,7 +193,11 @@ export function Navbar() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
             transition={{ type: 'tween', duration: 0.3, ease: 'easeInOut' }}
-            className="md:hidden fixed inset-y-0 right-0 w-full sm:w-80 bg-background/95 backdrop-blur-xl border-l border-border/50 z-50"
+            className="md:hidden fixed inset-y-0 right-0 w-full sm:w-80 bg-black/30 backdrop-blur-2xl border-l border-white/10 z-50 shadow-2xl"
+            style={{
+              backdropFilter: 'blur(24px) saturate(180%)',
+              WebkitBackdropFilter: 'blur(24px) saturate(180%)'
+            }}
           >
             {/* Close button */}
             <div className="flex justify-between items-center p-6 border-b border-border/20">

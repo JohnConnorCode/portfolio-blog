@@ -3,11 +3,13 @@ import { Alata, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import "@/styles/design-system.css";
 import "@/styles/neo-brutal.css";
+import "@/styles/premium-scrollbar.css";
 import { Providers } from "@/components/providers";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { CustomCursor } from "@/components/custom-cursor";
 import { NoiseTexture } from "@/components/noise-texture";
+import { PremiumLayout } from "@/components/premium-layout";
 import { Analytics } from "@vercel/analytics/react";
 
 const alata = Alata({
@@ -142,9 +144,11 @@ export default function RootLayout({
         <Providers>
           <CustomCursor />
           <NoiseTexture />
-          <Navbar />
-          <main className="flex-1 pt-24">{children}</main>
-          <Footer />
+          <PremiumLayout>
+            <Navbar />
+            <main className="flex-1 pt-24">{children}</main>
+            <Footer />
+          </PremiumLayout>
           <Analytics />
         </Providers>
       </body>
