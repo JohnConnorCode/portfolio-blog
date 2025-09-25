@@ -4,6 +4,8 @@ import { useEffect, ReactNode } from 'react'
 import { motion, useScroll, useSpring, useTransform } from 'framer-motion'
 import { useKeyboardShortcuts } from '@/hooks/use-keyboard-shortcuts'
 import { useMomentumScroll } from '@/components/smooth-scroll'
+import { PremiumPolish } from '@/components/ui/premium-polish'
+import { usePathname } from 'next/navigation'
 
 interface PremiumLayoutProps {
   children: ReactNode
@@ -15,6 +17,9 @@ export function PremiumLayout({ children }: PremiumLayoutProps) {
 
   // Enable momentum scrolling on mobile
   useMomentumScroll()
+
+  // Get current path for navigation indicator
+  const pathname = usePathname()
 
   // Scroll progress indicator
   const { scrollYProgress } = useScroll()
@@ -78,6 +83,9 @@ export function PremiumLayout({ children }: PremiumLayoutProps) {
 
   return (
     <>
+      {/* Premium Polish Components */}
+      <PremiumPolish currentPath={pathname} />
+
       {/* Premium scroll progress indicator */}
       <motion.div
         className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 origin-left z-50 shadow-lg shadow-indigo-500/30"
