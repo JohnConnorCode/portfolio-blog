@@ -5,22 +5,32 @@ import { useEffect, useState } from 'react'
 
 // Premium Page Loader
 export function PremiumPageLoader() {
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
   const [progress, setProgress] = useState(0)
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setProgress(prev => {
-        if (prev >= 100) {
-          setLoading(false)
-          clearInterval(timer)
-          return 100
-        }
-        return prev + Math.random() * 30
-      })
-    }, 100)
+    setMounted(true)
+    // Only show loader on initial page load, not on navigation
+    const isInitialLoad = !window.performance.navigation || window.performance.navigation.type === 0
 
-    return () => clearInterval(timer)
+    if (isInitialLoad && !sessionStorage.getItem('hasLoaded')) {
+      setLoading(true)
+      sessionStorage.setItem('hasLoaded', 'true')
+
+      const timer = setInterval(() => {
+        setProgress(prev => {
+          if (prev >= 100) {
+            setLoading(false)
+            clearInterval(timer)
+            return 100
+          }
+          return prev + Math.random() * 30
+        })
+      }, 100)
+
+      return () => clearInterval(timer)
+    }
   }, [])
 
   return (
