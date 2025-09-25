@@ -193,7 +193,25 @@ export function Navbar() {
               onClick={() => setIsOpen(!isOpen)}
               className="md:hidden p-2 rounded-lg hover:bg-primary/10 transition-colors"
             >
-              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isOpen ? (
+                <IconDraw
+                  icon={X}
+                  size="md"
+                  drawSpeed={0.8}
+                  autoPlay={false}
+                  triggerOnHover={true}
+                  className="w-6 h-6"
+                />
+              ) : (
+                <IconDraw
+                  icon={Menu}
+                  size="md"
+                  drawSpeed={0.8}
+                  autoPlay={false}
+                  triggerOnHover={true}
+                  className="w-6 h-6"
+                />
+              )}
             </button>
           </div>
         </div>
@@ -219,7 +237,14 @@ export function Navbar() {
                 onClick={() => setIsOpen(false)}
                 className="p-2 rounded-lg hover:bg-primary/10 transition-colors"
               >
-                <X className="w-6 h-6" />
+                <IconDraw
+                  icon={X}
+                  size="md"
+                  drawSpeed={0.8}
+                  autoPlay={false}
+                  triggerOnHover={true}
+                  className="w-6 h-6"
+                />
               </button>
             </div>
             
@@ -246,7 +271,15 @@ export function Navbar() {
                           : 'hover:bg-primary/5 text-muted-foreground hover:text-foreground'
                       )}
                     >
-                      <Icon className="w-5 h-5" />
+                      <IconDraw
+                        icon={Icon}
+                        size="sm"
+                        drawSpeed={1}
+                        staggerDelay={0.05}
+                        triggerOnHover={true}
+                        autoPlay={false}
+                        className="w-5 h-5"
+                      />
                       <span className="flex-1">{item.label}</span>
                       {isActive && !hasSubItems && (
                         <motion.div

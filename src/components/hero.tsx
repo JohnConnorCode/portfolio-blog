@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { ArrowDown } from 'lucide-react'
+import { IconDraw } from './ui/icon-draw'
 import Link from 'next/link'
 import { useRef } from 'react'
 import { useMobileAnimation } from '@/hooks/use-viewport-animation'
@@ -117,7 +118,15 @@ export function Hero() {
             className="flex flex-col items-center gap-2 text-gray-100"
           >
             <span className="text-xs uppercase tracking-widest">Scroll</span>
-            <ArrowDown className="w-4 h-4" />
+            <IconDraw
+              icon={ArrowDown}
+              size="sm"
+              drawSpeed={1.5}
+              staggerDelay={0.1}
+              triggerOnHover={false}
+              autoPlay={true}
+              className="w-4 h-4"
+            />
           </motion.div>
         </motion.div>
       </motion.div>
