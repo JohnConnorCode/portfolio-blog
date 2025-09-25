@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import Link from 'next/link'
+import { PremiumText } from './ui/premium-text'
+import { LiquidButton } from './ui/premium-hover'
 
 interface HeroContent {
   heroTitle?: string

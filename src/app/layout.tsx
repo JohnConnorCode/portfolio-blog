@@ -10,6 +10,8 @@ import { Footer } from "@/components/footer";
 import { CustomCursor } from "@/components/custom-cursor";
 import { NoiseTexture } from "@/components/noise-texture";
 import { PremiumLayout } from "@/components/premium-layout";
+import { AmbientBackground } from "@/components/ui/ambient-background";
+import { CustomCursor as PremiumCursor } from "@/components/ui/micro-interactions";
 import { Analytics } from "@vercel/analytics/react";
 
 const alata = Alata({
@@ -142,7 +144,13 @@ export default function RootLayout({
         style={{ backgroundColor: 'black' }}
       >
         <Providers>
-          <CustomCursor />
+          <PremiumCursor enabled={true} size={20} trailLength={5} />
+          <AmbientBackground
+            variant="atmospheric"
+            intensity={0.6}
+            colors={['#06b6d4', '#3b82f6', '#8b5cf6', '#ec4899']}
+            interactive={true}
+          />
           <NoiseTexture />
           <PremiumLayout>
             <Navbar />

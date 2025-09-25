@@ -7,6 +7,10 @@ import { GlassmorphismCard } from './ui/glassmorphism-card'
 import { CounterAnimation, MetricCounter } from './ui/counter-animation'
 import { TextReveal, HeroTextReveal } from './ui/text-reveal'
 import { ScrollReveal, StaggeredReveal } from './ui/scroll-reveal'
+import { IconDraw } from './ui/icon-draw'
+import { NumberTicker } from './ui/number-ticker'
+import { PremiumText } from './ui/premium-text'
+import { Premium3DCard, MagneticHover } from './ui/premium-hover'
 
 interface CounterProps {
   from: number
@@ -97,16 +101,25 @@ export function ImpactMetrics() {
 
       <div className="max-w-7xl mx-auto">
         <ScrollReveal variant="slide-up" className="text-center mb-16">
-          <HeroTextReveal className="text-4xl sm:text-5xl font-bold mb-6">
+          <PremiumText
+            variant="gradient"
+            hoverEffect="gradient-shift"
+            as="h2"
+            className="text-4xl sm:text-5xl font-bold mb-6"
+            gradientFrom="#06b6d4"
+            gradientTo="#a855f7"
+            gradientVia="#ec4899"
+          >
             Track Record
-          </HeroTextReveal>
-          <TextReveal
-            variant="fade-up"
-            delay={0.3}
+          </PremiumText>
+          <PremiumText
+            variant="reveal"
             className="text-xl text-muted-foreground max-w-3xl mx-auto"
+            delay={0.3}
+            wordDelay={0.1}
           >
             Verified metrics from my work across startups and enterprises
-          </TextReveal>
+          </PremiumText>
         </ScrollReveal>
 
         <StaggeredReveal
@@ -116,70 +129,93 @@ export function ImpactMetrics() {
           {metrics.map((metric, index) => {
             const Icon = metric.icon
             return (
-              <GlassmorphismCard
+              <MagneticHover
                 key={metric.label}
-                variant="intense"
-                tiltEffect={true}
-                glowOnHover={true}
-                borderGlow={true}
-                className="p-8 group relative"
+                strength={0.3}
+                maxDistance={60}
               >
-                {/* Background gradient glow */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${metric.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl blur-xl`} />
+                <Premium3DCard
+                  tiltStrength={0.15}
+                  shadowIntensity={0.4}
+                  hoverScale={1.03}
+                  className="h-full"
+                >
+                  <GlassmorphismCard
+                    variant="intense"
+                    tiltEffect={false} // Disable since we're using Premium3DCard
+                    glowOnHover={true}
+                    borderGlow={true}
+                    className="p-8 group relative h-full"
+                  >
+                    {/* Background gradient glow */}
+                    <div className={`absolute inset-0 bg-gradient-to-br ${metric.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl blur-xl`} />
 
-                <div className="relative z-10">
-                  <div className="flex items-start justify-between mb-6">
-                    <motion.div
-                      className="p-3 border border-white/20 rounded-lg group-hover:border-primary/50 transition-colors bg-white/5"
-                      whileHover={{ scale: 1.1, rotate: 5 }}
-                      transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-                    >
-                      <Icon className="w-6 h-6 text-primary" />
-                    </motion.div>
+                    <div className="relative z-10">
+                      <div className="flex items-start justify-between mb-6">
+                        <MagneticHover strength={0.5} maxDistance={30}>
+                          <div className="p-3 border border-white/20 rounded-lg group-hover:border-primary/50 transition-colors bg-white/5">
+                            <IconDraw
+                              icon={Icon}
+                              size="md"
+                              drawSpeed={1.5}
+                              staggerDelay={0.1}
+                              fillAfterStroke={true}
+                              triggerOnHover={true}
+                              autoPlay={false}
+                              className="text-primary"
+                            />
+                          </div>
+                        </MagneticHover>
 
-                    {/* Floating decoration */}
-                    <motion.div
-                      className="w-3 h-3 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 opacity-60"
-                      animate={{
-                        scale: [1, 1.2, 1],
-                        opacity: [0.6, 1, 0.6]
-                      }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        delay: index * 0.2
-                      }}
-                    />
-                  </div>
+                        {/* Floating decoration */}
+                        <motion.div
+                          className="w-3 h-3 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 opacity-60"
+                          animate={{
+                            scale: [1, 1.2, 1],
+                            opacity: [0.6, 1, 0.6]
+                          }}
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            delay: index * 0.2
+                          }}
+                        />
+                      </div>
 
-                  <div className="space-y-3">
-                    <CounterAnimation
-                      value={metric.value}
-                      duration={2.5}
-                      delay={0.5 + index * 0.1}
-                      className="text-3xl md:text-4xl font-bold text-white block"
-                      prefix={metric.prefix || ''}
-                      suffix={metric.suffix || ''}
-                    />
+                      <div className="space-y-3">
+                        <NumberTicker
+                          value={metric.value}
+                          duration={2.5}
+                          delay={0.5 + index * 0.1}
+                          className="text-3xl md:text-4xl font-bold text-white block"
+                          prefix={metric.prefix}
+                          suffix={metric.suffix}
+                          slotMachine={true}
+                          staggerDigits={true}
+                        />
 
-                    <TextReveal
-                      variant="fade-up"
-                      delay={0.8 + index * 0.1}
-                      className="text-lg font-semibold text-gray-200"
-                    >
-                      {metric.label}
-                    </TextReveal>
+                        <PremiumText
+                          variant="blur-in"
+                          delay={0.8 + index * 0.1}
+                          className="text-lg font-semibold text-gray-200"
+                          charDelay={0.02}
+                        >
+                          {metric.label}
+                        </PremiumText>
 
-                    <TextReveal
-                      variant="fade-up"
-                      delay={1 + index * 0.1}
-                      className="text-sm text-gray-400"
-                    >
-                      {metric.description}
-                    </TextReveal>
-                  </div>
-                </div>
-              </GlassmorphismCard>
+                        <PremiumText
+                          variant="blur-in"
+                          delay={1 + index * 0.1}
+                          className="text-sm text-gray-400"
+                          charDelay={0.01}
+                        >
+                          {metric.description}
+                        </PremiumText>
+                      </div>
+                    </div>
+                  </GlassmorphismCard>
+                </Premium3DCard>
+              </MagneticHover>
             )
           })}
         </StaggeredReveal>

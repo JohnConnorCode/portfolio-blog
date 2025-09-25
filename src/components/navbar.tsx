@@ -6,6 +6,8 @@ import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Briefcase, BookOpen, Home, Mail, Brain, MessageSquare } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { IconDraw } from './ui/icon-draw'
+import { AnimatedUnderline, MagneticHover } from './ui/premium-hover'
 
 const navItems = [
   { href: '/', label: 'Home', icon: Home },
@@ -120,31 +122,42 @@ export function Navbar() {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="relative group"
                 >
-                  <Link
-                    href={item.href}
-                    className={cn(
-                      'relative px-6 py-3 group/link overflow-hidden rounded-lg transition-all flex items-center',
-                      isActive
-                        ? 'text-foreground'
-                        : 'text-muted-foreground hover:text-foreground hover:bg-foreground/5'
-                    )}
-                  >
-                    <span className="relative z-10 flex items-center space-x-2">
-                      <Icon className="w-4 h-4" />
-                      <span className="relative">
-                        {item.label}
-                        {/* Underline effect for active and hover */}
-                        <span className={cn(
-                          "absolute -bottom-1 left-0 h-[2px] bg-primary transition-all duration-300",
-                          isActive ? "w-full" : "w-0 group-hover/link:w-full"
-                        )} />
+                  <MagneticHover strength={0.2} maxDistance={40}>
+                    <Link
+                      href={item.href}
+                      className={cn(
+                        'relative px-6 py-3 group/link overflow-hidden rounded-lg transition-all flex items-center',
+                        isActive
+                          ? 'text-foreground'
+                          : 'text-muted-foreground hover:text-foreground hover:bg-foreground/5'
+                      )}
+                    >
+                      <span className="relative z-10 flex items-center space-x-2">
+                        <IconDraw
+                          icon={Icon}
+                          size="sm"
+                          drawSpeed={1}
+                          staggerDelay={0.05}
+                          triggerOnHover={true}
+                          autoPlay={false}
+                          className="w-4 h-4"
+                        />
+                        <AnimatedUnderline
+                          direction="left-to-right"
+                          color={isActive ? '#06b6d4' : 'currentColor'}
+                          duration={0.3}
+                          thickness={2}
+                          as="span"
+                        >
+                          {item.label}
+                        </AnimatedUnderline>
                       </span>
-                    </span>
-                    {/* Background sweep effect on hover */}
-                    <motion.div
-                      className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent -translate-x-full group-hover/link:translate-x-full transition-transform duration-700"
-                    />
-                  </Link>
+                      {/* Background sweep effect on hover */}
+                      <motion.div
+                        className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent -translate-x-full group-hover/link:translate-x-full transition-transform duration-700"
+                      />
+                    </Link>
+                  </MagneticHover>
 
                   {/* Dropdown for sub-items */}
                   {hasSubItems && (
