@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { ArrowUpRight, Zap, Brain, Users, Globe } from 'lucide-react'
-import { fadeInUp, headerAnimation, cardHover, staggerContainer, ANIMATION_DELAY } from '@/lib/animation-config'
+import { fadeInUp, headerAnimation, cardHover, staggerContainer, ANIMATION_DELAY, SECTION_DELAYS } from '@/lib/animation-config'
 import Link from 'next/link'
 import { useRef } from 'react'
 
@@ -60,6 +60,7 @@ export function WritingsBrutal() {
       initial="initial"
       whileInView="animate"
       viewport={{ once: true, margin: "-100px" }}
+      transition={{ delay: SECTION_DELAYS.writings }}
       className="py-24 px-4 bg-gradient-to-b from-background via-muted/20 to-background dark:from-gray-900 dark:to-black relative overflow-hidden"
     >
       {/* Cyberpunk grid background */}

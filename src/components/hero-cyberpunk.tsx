@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import Link from 'next/link'
 import { PremiumText } from './ui/premium-text'
-import { LiquidButton } from './ui/premium-hover'
+// import { LiquidButton } from './ui/premium-hover' // File was deleted
 
 interface HeroContent {
   heroTitle?: string
@@ -245,30 +245,53 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
       />
       
       {/* Tron Grid - CSS handles all styling with pseudo-elements */}
-      <div className="tron-grid" />
-      <div className="grid-glow" />
-      <div className="vaporwave-glow" />
+      <motion.div
+        className="tron-grid"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.5, duration: 1.5, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="grid-glow"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.0, duration: 1.5, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="vaporwave-glow"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.5, duration: 2, ease: "easeInOut" }}
+      />
 
       {/* Nebula-like color accents */}
-      <div 
+      <motion.div
         className="absolute inset-0 opacity-30"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.3 }}
+        transition={{ delay: 2, duration: 2, ease: "easeInOut" }}
         style={{
           background: isDark ? `
-            radial-gradient(ellipse at 30% 40%, 
-              rgba(50, 100, 200, 0.2) 0%, 
+            radial-gradient(ellipse at 30% 40%,
+              rgba(50, 100, 200, 0.2) 0%,
               transparent 40%
             ),
-            radial-gradient(ellipse at 70% 60%, 
-              rgba(150, 50, 200, 0.15) 0%, 
+            radial-gradient(ellipse at 70% 60%,
+              rgba(150, 50, 200, 0.15) 0%,
               transparent 40%
             )
           ` : 'transparent',
           animation: 'nebulaPulse 10s ease-in-out infinite',
         }}
       />
-      
+
       {/* Vaporwave setting sun */}
-      <div className="vaporwave-sun" />
+      <motion.div
+        className="vaporwave-sun"
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 1.2, duration: 1.8, ease: "easeOut" }}
+      />
 
       {/* Interactive glow that follows mouse */}
       <div

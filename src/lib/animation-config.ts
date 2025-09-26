@@ -13,6 +13,18 @@ export const ANIMATION_DELAY = {
   section: 0.2,
 } as const
 
+// Sequential delays for home page sections
+// Hero completes at ~2s, so sections start after that
+export const SECTION_DELAYS = {
+  hero: 0,           // Starts immediately
+  impact: 0.2,       // After hero completes (~2.2s)
+  superDebate: 0.4,  // +0.2s
+  accelerate: 0.6,   // +0.2s
+  workingWithMe: 0.8, // +0.2s
+  writings: 1.0,     // +0.2s
+  callToAction: 1.2  // +0.2s
+} as const
+
 // Standard fade in animations for all content
 export const fadeInUp: Variants = {
   initial: {

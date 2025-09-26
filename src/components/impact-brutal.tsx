@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Zap, Users, Code, Trophy } from 'lucide-react'
-import { fadeInUp, headerAnimation, cardHover, staggerContainer, ANIMATION_DELAY } from '@/lib/animation-config'
+import { fadeInUp, headerAnimation, cardHover, staggerContainer, ANIMATION_DELAY, SECTION_DELAYS } from '@/lib/animation-config'
 import { useRef } from 'react'
 
 const impacts = [
@@ -53,6 +53,7 @@ export function ImpactBrutal() {
       initial="initial"
       whileInView="animate"
       viewport={{ once: true, margin: "-100px" }}
+      transition={{ delay: SECTION_DELAYS.impact }}
       className="py-24 px-4 bg-gradient-to-b from-background via-muted/20 to-background dark:from-gray-900 dark:to-black relative overflow-hidden">
       {/* Cyberpunk grid background */}
       <div className="absolute inset-0 cyber-grid" />
@@ -103,7 +104,7 @@ export function ImpactBrutal() {
                 custom={index}
                 transition={{
                   duration: 0.6,
-                  delay: index * 0.15,
+                  delay: SECTION_DELAYS.impact + 0.2 + (index * 0.15),
                   ease: "easeOut"
                 }}
                 {...cardHover}

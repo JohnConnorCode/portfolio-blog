@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 import Link from 'next/link'
 import { ArrowRight, Calendar, MessageSquare } from 'lucide-react'
-import { fadeInUp, headerAnimation, cardHover, staggerContainer, ANIMATION_DELAY } from '@/lib/animation-config'
+import { fadeInUp, headerAnimation, cardHover, staggerContainer, ANIMATION_DELAY, SECTION_DELAYS } from '@/lib/animation-config'
 
 export function CallToAction() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -24,6 +24,7 @@ export function CallToAction() {
       initial="initial"
       whileInView="animate"
       viewport={{ once: true, margin: "-100px" }}
+      transition={{ delay: SECTION_DELAYS.callToAction }}
       className="py-20 px-4 sm:px-6 lg:px-8"
     >
       <motion.div
@@ -66,7 +67,7 @@ export function CallToAction() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="group px-10 sm:px-12 py-5 sm:py-6 bg-foreground text-background font-bold text-lg sm:text-xl flex items-center gap-4 hover:bg-primary transition-all rounded-lg"
+                className="group px-10 sm:px-12 py-5 sm:py-6 bg-foreground text-background font-bold text-lg sm:text-xl flex items-center justify-center gap-4 hover:bg-primary transition-all rounded-lg"
               >
                 <Calendar className="w-6 h-6" />
                 Book a Discovery Call

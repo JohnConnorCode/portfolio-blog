@@ -39,12 +39,13 @@ export function Navbar() {
 
   return (
     <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+        'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
         scrolled
-          ? 'bg-black/20 backdrop-blur-xl border-b border-white/10 shadow-2xl shadow-black/20'
+          ? 'bg-black/20 backdrop-blur-xl shadow-2xl shadow-black/20'
           : 'bg-transparent'
       )}
       style={{
@@ -55,6 +56,16 @@ export function Navbar() {
           : 'transparent'
       }}
     >
+      {/* Animated border that appears on scroll */}
+      <motion.div
+        className="absolute bottom-0 left-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent"
+        initial={{ width: 0, opacity: 0 }}
+        animate={{
+          width: scrolled ? '100%' : 0,
+          opacity: scrolled ? 1 : 0
+        }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-24">
           <motion.div
@@ -65,42 +76,131 @@ export function Navbar() {
             <Link href="/" className="group">
               <div className="flex items-center gap-3">
                 {/* Cool geometric logo with animated gradient */}
-                <div className="relative w-10 h-10">
-                  <motion.div 
-                    className="absolute inset-0 rounded-lg rotate-45"
-                    animate={{
-                      background: [
-                        "linear-gradient(135deg, #06b6d4 0%, #a855f7 100%)",
-                        "linear-gradient(135deg, #a855f7 0%, #ec4899 100%)",
-                        "linear-gradient(135deg, #ec4899 0%, #06b6d4 100%)",
-                        "linear-gradient(135deg, #06b6d4 0%, #a855f7 100%)",
-                      ],
-                      rotate: [45, 45, 45, 45],
-                    }}
+                <div className="relative w-10 h-10 group">
+                  {/* JC Text - appears first */}
+                  <motion.div
+                    className="absolute inset-0 flex items-center justify-center z-10"
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
                     transition={{
-                      background: {
-                        duration: 5,
-                        repeat: Infinity,
-                        ease: "linear"
-                      },
-                      rotate: {
-                        duration: 0.5,
-                      }
+                      duration: 0.4,
+                      delay: 0.3,
+                      ease: [0.34, 1.56, 0.64, 1]
                     }}
-                    whileHover={{ rotate: 90 }}
+                  >
+                    <motion.span
+                      className="text-lg font-black text-foreground"
+                      whileHover={{ scale: 1.1 }}
+                      transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                    >
+                      JC
+                    </motion.span>
+                  </motion.div>
+
+                  {/* Diamond border - animates after JC text */}
+                  <motion.div
+                    className="absolute inset-0"
+                    initial={{ scale: 0, opacity: 0, rotate: 45 }}
+                    animate={{ scale: 1, opacity: 1, rotate: 45 }}
+                    transition={{
+                      duration: 0.6,
+                      delay: 1.0,
+                      ease: [0.22, 1, 0.36, 1]
+                    }}
+                  >
+                    <div
+                      className="w-full h-full border-2 rounded-sm bg-gradient-to-br from-cyan-500 to-purple-500"
+                      style={{
+                        borderImage: 'linear-gradient(135deg, #06b6d4, #a855f7) 1',
+                        WebkitMaskImage: 'linear-gradient(#fff 0 0)',
+                        maskImage: 'linear-gradient(#fff 0 0)',
+                        WebkitMaskComposite: 'xor',
+                        maskComposite: 'exclude',
+                        background: 'transparent',
+                        border: '2px solid',
+                        borderImageSlice: '1',
+                        borderImageSource: 'linear-gradient(135deg, #06b6d4, #a855f7)',
+                      }}
+                    />
+                  </motion.div>
+
+                  {/* Alternative approach - SVG diamond that will definitely show */}
+                  <motion.svg
+                    className="absolute inset-0 w-full h-full pointer-events-none"
+                    viewBox="0 0 40 40"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{
+                      duration: 0.6,
+                      delay: 1.0,
+                      ease: [0.22, 1, 0.36, 1]
+                    }}
+                  >
+                    <defs>
+                      <linearGradient id="diamondGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="#06b6d4" />
+                        <stop offset="100%" stopColor="#a855f7" />
+                      </linearGradient>
+                    </defs>
+                    <path
+                      d="M 20 5 L 35 20 L 20 35 L 5 20 Z"
+                      fill="none"
+                      stroke="url(#diamondGradient)"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </motion.svg>
+
+                  {/* Subtle glow on hover */}
+                  <motion.div
+                    className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100"
+                    style={{
+                      background: 'radial-gradient(circle at center, rgba(168, 85, 247, 0.2), transparent 70%)',
+                      filter: 'blur(8px)'
+                    }}
+                    transition={{ duration: 0.3 }}
                   />
-                  <div className="absolute inset-[3px] bg-background rounded-lg rotate-45" />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-lg font-black text-foreground">JC</span>
-                  </div>
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-xl md:text-2xl font-bold tracking-tight">
-                    John Connor
-                  </span>
-                  <span className="text-xs text-muted-foreground uppercase tracking-widest">
-                    Technology Strategist
-                  </span>
+                  <motion.span
+                    className="text-xl md:text-2xl font-bold tracking-tight overflow-hidden block"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 1.3 }}
+                  >
+                    <motion.span
+                      className="block"
+                      initial={{ y: 20, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      transition={{
+                        duration: 0.6,
+                        delay: 1.4,
+                        ease: [0.22, 1, 0.36, 1]
+                      }}
+                    >
+                      John Connor
+                    </motion.span>
+                  </motion.span>
+                  <motion.span
+                    className="text-xs text-muted-foreground uppercase tracking-widest overflow-hidden block"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 1.5 }}
+                  >
+                    <motion.span
+                      className="block"
+                      initial={{ y: 10, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      transition={{
+                        duration: 0.6,
+                        delay: 1.6,
+                        ease: [0.22, 1, 0.36, 1]
+                      }}
+                    >
+                      Technology Strategist
+                    </motion.span>
+                  </motion.span>
                 </div>
               </div>
             </Link>
@@ -115,9 +215,13 @@ export function Navbar() {
               return (
                 <motion.div
                   key={item.href}
-                  initial={{ opacity: 0, y: -20 }}
+                  initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  transition={{
+                    duration: 0.4,
+                    delay: 1.8 + index * 0.05,
+                    ease: [0.22, 1, 0.36, 1]
+                  }}
                   className="relative group"
                 >
                   <Link
@@ -165,13 +269,113 @@ export function Navbar() {
 
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden p-2 rounded-lg hover:bg-primary/10 transition-colors"
+              className="md:hidden p-3 rounded-xl hover:bg-gradient-to-br hover:from-cyan-400/10 hover:to-purple-400/10 transition-all duration-300 relative group"
+              aria-label="Toggle menu"
             >
-              {isOpen ? (
-                <X className="w-6 h-6" />
-              ) : (
-                <Menu className="w-6 h-6" />
-              )}
+              {/* Unique geometric menu icon */}
+              <div className="w-7 h-7 relative">
+                {/* Morphing dots pattern */}
+                <svg
+                  viewBox="0 0 28 28"
+                  fill="none"
+                  className="w-full h-full"
+                >
+                  <motion.circle
+                    cx={isOpen ? "14" : "7"}
+                    cy={isOpen ? "14" : "7"}
+                    r="2.5"
+                    fill="currentColor"
+                    animate={{
+                      cx: isOpen ? 14 : 7,
+                      cy: isOpen ? 14 : 7,
+                      scale: isOpen ? 1.2 : 1
+                    }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    className="text-cyan-400"
+                  />
+                  <motion.circle
+                    cx="21"
+                    cy={isOpen ? "14" : "7"}
+                    r="2.5"
+                    fill="currentColor"
+                    animate={{
+                      cy: isOpen ? 14 : 7,
+                      opacity: isOpen ? 0 : 1,
+                      scale: isOpen ? 0 : 1
+                    }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    className="text-purple-400"
+                  />
+                  <motion.circle
+                    cx={isOpen ? "14" : "7"}
+                    cy="21"
+                    r="2.5"
+                    fill="currentColor"
+                    animate={{
+                      cx: isOpen ? 14 : 7,
+                      scale: isOpen ? 0 : 1,
+                      opacity: isOpen ? 0 : 1
+                    }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    className="text-cyan-400"
+                  />
+                  <motion.circle
+                    cx="21"
+                    cy="21"
+                    r="2.5"
+                    fill="currentColor"
+                    animate={{
+                      scale: isOpen ? 1.2 : 1
+                    }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    className="text-purple-400"
+                  />
+
+                  {/* X pattern when open */}
+                  <motion.line
+                    x1="10"
+                    y1="10"
+                    x2="18"
+                    y2="18"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    className="text-white"
+                    initial={{ pathLength: 0, opacity: 0 }}
+                    animate={{
+                      pathLength: isOpen ? 1 : 0,
+                      opacity: isOpen ? 1 : 0
+                    }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  />
+                  <motion.line
+                    x1="18"
+                    y1="10"
+                    x2="10"
+                    y2="18"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    className="text-white"
+                    initial={{ pathLength: 0, opacity: 0 }}
+                    animate={{
+                      pathLength: isOpen ? 1 : 0,
+                      opacity: isOpen ? 1 : 0
+                    }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  />
+                </svg>
+
+                {/* Glow effect on hover */}
+                <motion.div
+                  className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100"
+                  style={{
+                    background: 'radial-gradient(circle at center, rgba(6, 182, 212, 0.3), transparent 70%)',
+                    filter: 'blur(10px)'
+                  }}
+                  transition={{ duration: 0.3 }}
+                />
+              </div>
             </button>
           </div>
         </div>
@@ -184,10 +388,11 @@ export function Navbar() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
             transition={{ type: 'tween', duration: 0.3, ease: 'easeInOut' }}
-            className="md:hidden fixed inset-y-0 right-0 w-full sm:w-80 bg-black/30 backdrop-blur-2xl border-l border-white/10 z-50 shadow-2xl"
+            className="md:hidden fixed inset-y-0 right-0 w-full sm:w-80 bg-black/60 backdrop-blur-2xl border-l border-white/20 z-50 shadow-2xl"
             style={{
-              backdropFilter: 'blur(24px) saturate(180%)',
-              WebkitBackdropFilter: 'blur(24px) saturate(180%)'
+              backdropFilter: 'blur(30px) saturate(200%)',
+              WebkitBackdropFilter: 'blur(30px) saturate(200%)',
+              background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5))'
             }}
           >
             {/* Close button */}

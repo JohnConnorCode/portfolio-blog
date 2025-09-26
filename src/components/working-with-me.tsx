@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { CheckCircle, ArrowRight, Calendar, MessageSquare, Rocket, Target, Users, Brain, Eye, Zap, Unlock } from 'lucide-react'
 import { AnimatedText, FadeInText } from '@/components/animated-text'
 import { AnimatedBorderBox } from '@/components/animated-border-box'
-import { fadeInUp, headerAnimation, cardHover, staggerContainer, ANIMATION_DELAY } from '@/lib/animation-config'
+import { fadeInUp, headerAnimation, cardHover, staggerContainer, ANIMATION_DELAY, SECTION_DELAYS } from '@/lib/animation-config'
 import Link from 'next/link'
 import { useRef } from 'react'
 
@@ -95,6 +95,7 @@ export function WorkingWithMe() {
       initial="initial"
       whileInView="animate"
       viewport={{ once: true, margin: "-100px" }}
+      transition={{ delay: SECTION_DELAYS.workingWithMe }}
       className="py-20 px-4 sm:px-6 lg:px-8"
     >
       <motion.div
@@ -430,7 +431,7 @@ export function WorkingWithMe() {
                 variants={fadeInUp}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="px-8 py-4 bg-foreground text-background border-2 border-foreground hover:bg-transparent hover:text-foreground transition-all duration-300 font-medium text-lg flex items-center gap-2"
+                className="px-8 py-4 bg-foreground text-background border-2 border-foreground hover:bg-transparent hover:text-foreground transition-all duration-300 font-medium text-lg flex items-center justify-center gap-2"
               >
                 Schedule Discovery Call
                 <Calendar className="w-5 h-5" />
@@ -441,7 +442,7 @@ export function WorkingWithMe() {
                 variants={fadeInUp}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="px-8 py-4 border-2 border-foreground/20 text-foreground hover:border-foreground hover:bg-foreground hover:text-background transition-all duration-300 font-medium text-lg flex items-center gap-2"
+                className="px-8 py-4 border-2 border-foreground/20 text-foreground hover:border-foreground hover:bg-foreground hover:text-background transition-all duration-300 font-medium text-lg flex items-center justify-center gap-2"
               >
                 View Case Studies
                 <ArrowRight className="w-5 h-5" />

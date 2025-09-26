@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Zap, DollarSign, Users, ArrowRight, Globe, BookOpen } from 'lucide-react'
+import { SECTION_DELAYS } from '@/lib/animation-config'
 import Link from 'next/link'
 import { useRef } from 'react'
 
@@ -101,7 +102,7 @@ export function AccelerateHero() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.6, delay: SECTION_DELAYS.accelerate }}
           className="text-center mb-12"
         >
           <motion.div
@@ -109,7 +110,7 @@ export function AccelerateHero() {
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.3 }}
+            transition={{ duration: 0.5, delay: SECTION_DELAYS.accelerate + 0.1 }}
             whileHover={{ scale: 1.05 }}
           >
             <Zap className="w-4 h-4 text-cyan-400" />
@@ -133,11 +134,11 @@ export function AccelerateHero() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.5 }}
+            transition={{ duration: 0.6, delay: SECTION_DELAYS.accelerate + 0.3 }}
           >
             <Link href="https://acceleratewith.us" target="_blank" rel="noopener noreferrer">
               <motion.button
-                className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold rounded-xl flex items-center gap-2 group"
+                className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold rounded-xl flex items-center justify-center gap-2 group"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -169,7 +170,7 @@ export function AccelerateHero() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.7 + index * 0.1, duration: 0.5 }}
+                transition={{ delay: SECTION_DELAYS.accelerate + 0.5 + (index * 0.1), duration: 0.5 }}
               >
                 <motion.div
                   className="relative group h-full"
@@ -195,7 +196,7 @@ export function AccelerateHero() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 1.1 }}
+          transition={{ duration: 0.6, delay: SECTION_DELAYS.accelerate + 0.9 }}
           className="relative max-w-4xl mx-auto mt-12"
         >
           <div className="relative bg-background/80 backdrop-blur-xl border border-cyan-500/40 rounded-xl p-6 shadow-[0_0_50px_rgba(6,182,212,0.15)]">
@@ -250,7 +251,7 @@ export function AccelerateHero() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 1.3 }}
+          transition={{ duration: 0.6, delay: SECTION_DELAYS.accelerate + 1.1 }}
           className="text-center mt-8"
         >
           <p className="text-base text-gray-100 mb-4">
@@ -258,7 +259,7 @@ export function AccelerateHero() {
           </p>
           <Link href="https://acceleratewith.us" target="_blank" rel="noopener noreferrer">
             <motion.button
-              className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold rounded-xl hover:from-cyan-400 hover:to-blue-500 transition-all duration-300 inline-flex items-center gap-2 group shadow-[0_0_30px_rgba(6,182,212,0.3)] hover:shadow-[0_0_40px_rgba(6,182,212,0.5)]"
+              className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold rounded-xl hover:from-cyan-400 hover:to-blue-500 transition-all duration-300 inline-flex items-center justify-center gap-2 group shadow-[0_0_30px_rgba(6,182,212,0.3)] hover:shadow-[0_0_40px_rgba(6,182,212,0.5)]"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >

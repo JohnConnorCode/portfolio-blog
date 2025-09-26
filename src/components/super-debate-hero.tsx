@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Trophy, MessageSquare, Users, ArrowRight, Scale, Mic, Calendar } from 'lucide-react'
+import { SECTION_DELAYS } from '@/lib/animation-config'
 import Link from 'next/link'
 import { useRef } from 'react'
 
@@ -88,7 +89,7 @@ export function SuperDebateHero() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.6, delay: SECTION_DELAYS.superDebate }}
           className="text-center mb-12"
         >
           <motion.div
@@ -96,7 +97,7 @@ export function SuperDebateHero() {
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.3 }}
+            transition={{ duration: 0.5, delay: SECTION_DELAYS.superDebate + 0.1 }}
             whileHover={{ scale: 1.05 }}
           >
             <Trophy className="w-4 h-4 text-purple-400" />
@@ -120,11 +121,11 @@ export function SuperDebateHero() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.5 }}
+            transition={{ duration: 0.6, delay: SECTION_DELAYS.superDebate + 0.3 }}
           >
             <Link href="/super-debate">
               <motion.button
-                className="px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-xl flex items-center gap-2 group"
+                className="px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-xl flex items-center justify-center gap-2 group"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -146,7 +147,7 @@ export function SuperDebateHero() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.7 + index * 0.1, duration: 0.5 }}
+                transition={{ delay: SECTION_DELAYS.superDebate + 0.5 + (index * 0.1), duration: 0.5 }}
               >
                 <motion.div
                   className="relative group h-full"
@@ -171,7 +172,7 @@ export function SuperDebateHero() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          transition={{ duration: 0.6, delay: SECTION_DELAYS.superDebate + 0.9 }}
           className="relative max-w-4xl mx-auto"
         >
           <div className="relative bg-background/60 backdrop-blur-xl border border-purple-500/20 rounded-xl p-6">

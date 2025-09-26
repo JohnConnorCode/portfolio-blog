@@ -131,12 +131,7 @@ export default function ContactPage() {
         <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent" />
 
         <div className="max-w-7xl mx-auto relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            className="text-center mb-8"
-          >
+          <div className="text-center mb-8">
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -154,7 +149,7 @@ export default function ContactPage() {
             >
               Creating transformative technology solutions that amplify human potential and drive meaningful impact.
             </motion.p>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -172,20 +167,14 @@ export default function ContactPage() {
               transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
               className="lg:col-span-1 space-y-8"
             >
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-                className="card-brutal"
-              >
+              <div className="card-brutal">
                 <h2 className="text-2xl sm:text-3xl font-black text-white mb-4 text-brutal">
                   GET IN TOUCH
                 </h2>
                 <p className="text-gray-400 font-mono text-sm mb-8">
                   Whether you&apos;re building a startup, transforming an ecosystem, or creating community-driven systems, let&apos;s talk.
                 </p>
-              </motion.div>
+              </div>
 
               {contactMethods.map((method, index) => {
                 const Icon = method.icon
@@ -228,10 +217,6 @@ export default function ContactPage() {
                     href="https://twitter.com/ablockunchained"
                     target="_blank"
                     rel="noopener noreferrer"
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
                     whileHover={{ scale: 1.02, x: 5 }}
                     className="flex items-center gap-3 p-3 border-2 border-gray-700 hover:border-cyan-400 bg-black/50 transition-all group"
                   >
@@ -242,10 +227,6 @@ export default function ContactPage() {
                     href="https://t.me/blockunchained"
                     target="_blank"
                     rel="noopener noreferrer"
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.7, ease: "easeOut" }}
                     whileHover={{ scale: 1.02, x: 5 }}
                     className="flex items-center gap-3 p-3 border-2 border-gray-700 hover:border-cyan-400 bg-black/50 transition-all group"
                   >
@@ -266,35 +247,20 @@ export default function ContactPage() {
               transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
               className="lg:col-span-2"
             >
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-                className="card-brutal"
-              >
+              <div className="card-brutal">
                 <h2 className="text-2xl sm:text-3xl font-black text-white mb-2 text-brutal">
                   START A CONVERSATION
                 </h2>
                 <p className="text-gray-500 font-mono text-xs uppercase tracking-widest mb-8">
                   Fill out the form below and I&apos;ll get back to you within 24 hours
                 </p>
-                
-                <motion.form
+
+                <form
                   onSubmit={handleSubmit}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
                   className="space-y-8"
                 >
                   <div className="grid md:grid-cols-2 gap-8">
-                    <motion.div
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
-                    >
+                    <div>
                       <label className="flex items-center gap-2 text-sm font-black text-white mb-3 text-brutal">
                         <User className="w-4 h-4 text-cyan-400" />
                         YOUR NAME *
@@ -310,7 +276,7 @@ export default function ContactPage() {
                         placeholder="Enter your full name"
                       />
                       {errors.name && touched.name && (
-                        <motion.p 
+                        <motion.p
                           initial={{ opacity: 0, y: -10 }}
                           animate={{ opacity: 1, y: 0 }}
                           className="text-red-500 text-xs mt-2 font-mono"
@@ -318,13 +284,8 @@ export default function ContactPage() {
                           {errors.name}
                         </motion.p>
                       )}
-                    </motion.div>
-                    <motion.div
-                      initial={{ opacity: 0, x: 20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
-                    >
+                    </div>
+                    <div>
                       <label className="flex items-center gap-2 text-sm font-black text-white mb-3 text-brutal">
                         <Mail className="w-4 h-4 text-cyan-400" />
                         EMAIL ADDRESS *
@@ -340,7 +301,7 @@ export default function ContactPage() {
                         placeholder="your.email@company.com"
                       />
                       {errors.email && touched.email && (
-                        <motion.p 
+                        <motion.p
                           initial={{ opacity: 0, y: -10 }}
                           animate={{ opacity: 1, y: 0 }}
                           className="text-red-500 text-xs mt-2 font-mono"
@@ -348,15 +309,10 @@ export default function ContactPage() {
                           {errors.email}
                         </motion.p>
                       )}
-                    </motion.div>
+                    </div>
                   </div>
 
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.7, ease: "easeOut" }}
-                  >
+                  <div>
                     <label className="flex items-center gap-2 text-sm font-black text-white mb-3 text-brutal">
                       <Building2 className="w-4 h-4 text-cyan-400" />
                       COMPANY / ORGANIZATION
@@ -369,15 +325,10 @@ export default function ContactPage() {
                       className="w-full px-4 py-4 bg-black border-2 border-white text-white font-mono placeholder-gray-500 focus:border-cyan-400 focus:outline-none transition-colors"
                       placeholder="Your company or organization"
                     />
-                  </motion.div>
+                  </div>
 
                   <div className="grid md:grid-cols-2 gap-8">
-                    <motion.div
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
-                    >
+                    <div>
                       <label className="flex items-center gap-2 text-sm font-black text-white mb-3 text-brutal">
                         <Briefcase className="w-4 h-4 text-cyan-400" />
                         PROJECT TYPE
@@ -396,13 +347,8 @@ export default function ContactPage() {
                         <option value="consulting" className="bg-black text-white">Strategic Consulting</option>
                         <option value="other" className="bg-black text-white">Other</option>
                       </select>
-                    </motion.div>
-                    <motion.div
-                      initial={{ opacity: 0, x: 20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.6, delay: 0.9, ease: "easeOut" }}
-                    >
+                    </div>
+                    <div>
                       <label className="flex items-center gap-2 text-sm font-black text-white mb-3 text-brutal">
                         <DollarSign className="w-4 h-4 text-cyan-400" />
                         BUDGET RANGE
@@ -420,15 +366,10 @@ export default function ContactPage() {
                         <option value="50-100k" className="bg-black text-white">$50k - $100k</option>
                         <option value=">100k" className="bg-black text-white">More than $100k</option>
                       </select>
-                    </motion.div>
+                    </div>
                   </div>
 
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 1.0, ease: "easeOut" }}
-                  >
+                  <div>
                     <label className="flex items-center gap-2 text-sm font-black text-white mb-3 text-brutal">
                       <MessageSquare className="w-4 h-4 text-cyan-400" />
                       PROJECT DETAILS *
@@ -444,7 +385,7 @@ export default function ContactPage() {
                       className={`w-full px-4 py-4 bg-black border-2 ${errors.message && touched.message ? 'border-red-500' : 'border-white'} text-white font-mono placeholder-gray-500 focus:border-cyan-400 focus:outline-none transition-colors resize-none`}
                     />
                     {errors.message && touched.message && (
-                      <motion.p 
+                      <motion.p
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
                         className="text-red-500 text-xs mt-2 font-mono"
@@ -452,15 +393,11 @@ export default function ContactPage() {
                         {errors.message}
                       </motion.p>
                     )}
-                  </motion.div>
+                  </div>
 
                   <motion.button
                     type="submit"
                     disabled={isSubmitting}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 1.1, ease: "easeOut" }}
                     whileHover={{ scale: isSubmitting ? 1 : 1.02, y: isSubmitting ? 0 : -2 }}
                     whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
                     className="btn-brutal w-full py-4 px-8 text-lg flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
@@ -492,8 +429,8 @@ export default function ContactPage() {
                       </p>
                     </motion.div>
                   )}
-                </motion.form>
-              </motion.div>
+                </form>
+              </div>
             </motion.div>
           </div>
         </div>
@@ -511,25 +448,13 @@ export default function ContactPage() {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="text-center mb-16"
           >
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-              className="text-3xl sm:text-4xl md:text-5xl font-light mb-4"
-            >
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-light mb-4">
               <span className="text-white">FREQUENTLY</span>
               <span className="text-cyan-400 font-black neon-glow"> ASKED</span>
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-              className="text-gray-500 font-mono text-sm uppercase tracking-widest"
-            >
+            </h2>
+            <p className="text-gray-500 font-mono text-sm uppercase tracking-widest">
               Common questions about working together
-            </motion.p>
+            </p>
           </motion.div>
           
           <div className="grid md:grid-cols-2 gap-8">
