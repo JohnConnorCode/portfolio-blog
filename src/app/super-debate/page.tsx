@@ -177,18 +177,21 @@ export default function SuperDebatePage() {
               variants={fadeInUp}
               initial="initial"
               animate="animate"
-              className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-8 leading-[1.15] sm:leading-[1.1] lg:leading-[1.05]"
+              className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 tracking-tight"
             >
-              <span className="text-white">Make </span>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
-                Arguing
-              </span>
-              <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-400">
-                Fun
-              </span>
-              <span className="text-white"> Again</span>
+              <span className="text-white">Super </span>
+              <span className="text-purple-400">Debate</span>
+              <span className="text-white"> Club</span>
             </motion.h1>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: ANIMATION_DURATION.normal, delay: ANIMATION_DELAY.stagger * 0.5 }}
+              className="text-2xl sm:text-3xl lg:text-4xl font-semibold mb-8 text-pink-400"
+            >
+              Make Arguing Fun Again
+            </motion.div>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
