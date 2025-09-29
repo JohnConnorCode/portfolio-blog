@@ -213,9 +213,10 @@ export default function WorkPage() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="text-3xl font-bold mb-12 text-center bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent"
+            className="text-3xl font-bold mb-12 text-center"
           >
-            Experience Timeline
+            <span className="text-white">Experience </span>
+            <span className="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">Timeline</span>
           </motion.h2>
           
           <div className="space-y-8">
@@ -229,7 +230,7 @@ export default function WorkPage() {
                 {/* Header */}
                 <div className="flex flex-col lg:flex-row lg:items-center justify-between mb-6 pb-4 border-b border-foreground/10">
                   <div className="flex flex-col lg:flex-row lg:items-center gap-3">
-                    <h3 className="text-2xl font-black bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+                    <h3 className="text-2xl font-black text-cyan-400">
                       {exp.company}
                     </h3>
                     <span className="text-lg text-foreground">{exp.role}</span>
@@ -267,7 +268,7 @@ export default function WorkPage() {
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 + 0.4, ease: "easeOut" }}
                 >
-                  <p className="text-lg font-bold italic bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+                  <p className="text-lg font-bold italic text-cyan-400">
                     → {exp.impact}
                   </p>
                 </motion.div>
@@ -304,9 +305,10 @@ export default function WorkPage() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="text-3xl font-bold mb-12 text-center bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent"
+            className="text-3xl font-bold mb-12 text-center"
           >
-            Impact by Numbers
+            <span className="text-white">Impact by </span>
+            <span className="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">Numbers</span>
           </motion.h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -415,9 +417,10 @@ export default function WorkPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-            className="text-3xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent"
+            className="text-3xl font-bold mb-6"
           >
-            Ready to Build Something Real?
+            <span className="text-white">Ready to Build Something </span>
+            <span className="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">Real?</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}

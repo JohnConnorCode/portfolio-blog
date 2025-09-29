@@ -177,42 +177,17 @@ export default function SuperDebatePage() {
               variants={fadeInUp}
               initial="initial"
               animate="animate"
-              className="text-6xl sm:text-7xl lg:text-8xl font-bold mb-8 leading-[1.1] sm:leading-[1.05] lg:leading-[1.02]"
+              className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-8 leading-[1.15] sm:leading-[1.1] lg:leading-[1.05]"
             >
-              <motion.span
-                className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 inline-block"
-                animate={{
-                  backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
-                }}
-                transition={{
-                  duration: 5,
-                  repeat: Infinity,
-                  ease: "linear"
-                }}
-                style={{
-                  backgroundSize: '200% 200%',
-                }}
-              >
-                Make Arguing
-              </motion.span>
+              <span className="text-white">Make </span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
+                Arguing
+              </span>
               <br />
-              <motion.span
-                className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-400 to-pink-400 inline-block"
-                animate={{
-                  backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
-                }}
-                transition={{
-                  duration: 5,
-                  repeat: Infinity,
-                  ease: "linear",
-                  delay: 0.5
-                }}
-                style={{
-                  backgroundSize: '200% 200%',
-                }}
-              >
-                Fun Again
-              </motion.span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-400">
+                Fun
+              </span>
+              <span className="text-white"> Again</span>
             </motion.h1>
 
             <motion.p

@@ -155,6 +155,7 @@ export default function AcceleratePage() {
             animate="animate"
             className="text-6xl sm:text-7xl lg:text-8xl font-bold mb-8 leading-[1.1] sm:leading-[1.05] lg:leading-[1.02]"
           >
+            <span className="text-white">Build Your </span>
             <motion.span
               className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-cyan-400 inline-block"
               animate={{
@@ -169,9 +170,10 @@ export default function AcceleratePage() {
                 backgroundSize: '200% 200%',
               }}
             >
-              Build Your Team
+              Team
             </motion.span>
             <br />
+            <span className="text-white">Get </span>
             <motion.span
               className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400 inline-block"
               animate={{
@@ -187,7 +189,7 @@ export default function AcceleratePage() {
                 backgroundSize: '200% 200%',
               }}
             >
-              Get Funding
+              Funding
             </motion.span>
           </motion.h1>
 
@@ -297,8 +299,8 @@ export default function AcceleratePage() {
               viewport={{ once: true }}
               transition={{ duration: ANIMATION_DURATION.normal }}
             >
-              The Vision Behind
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400"> Accelerate</span>
+              <span className="text-white">The Vision Behind </span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">Accelerate</span>
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -391,8 +393,8 @@ export default function AcceleratePage() {
             className="text-center mb-16"
           >
             <h2 className="text-4xl sm:text-5xl font-bold mb-6">
-              Platform
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400"> Features</span>
+              <span className="text-white">Platform </span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">Features</span>
             </h2>
             <p className="text-xl text-gray-100 max-w-3xl mx-auto">
               Connecting the Web3 ecosystem through intelligent founder-builder-funder relationships
@@ -457,8 +459,8 @@ export default function AcceleratePage() {
             className="text-center mb-16"
           >
             <h2 className="text-4xl sm:text-5xl font-bold mb-6">
-              Building
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400"> The Ecosystem</span>
+              <span className="text-white">Building </span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">The Ecosystem</span>
             </h2>
             <p className="text-xl text-gray-100 max-w-3xl mx-auto">
               Connecting founders, builders, and funders across Web3
@@ -525,8 +527,8 @@ export default function AcceleratePage() {
             className="text-center mb-16"
           >
             <h2 className="text-4xl sm:text-5xl font-bold mb-6">
-              Technical
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-400"> Implementation</span>
+              <span className="text-white">Technical </span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-400">Implementation</span>
             </h2>
             <p className="text-xl text-gray-100 max-w-3xl mx-auto">
               Modern technology stack enabling intelligent ecosystem connections
@@ -661,8 +663,8 @@ export default function AcceleratePage() {
               viewport={{ once: true }}
               transition={{ duration: ANIMATION_DURATION.normal }}
             >
-              The Future:
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400"> Scaling Impact</span>
+              <span className="text-white">The Future: </span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">Scaling Impact</span>
             </motion.h2>
 
             <motion.div
