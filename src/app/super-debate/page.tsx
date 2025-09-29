@@ -1,7 +1,7 @@
 'use client'
 
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { Trophy, Users, MessageSquare, Zap, ArrowRight, Globe, ChevronRight, ExternalLink, Mic, Calendar, MapPin, UserCheck, Brain, Star, TrendingUp, Shield } from 'lucide-react'
+import { Trophy, Users, MessageSquare, ArrowRight, Globe, ChevronRight, ExternalLink, Mic, Calendar, MapPin, UserCheck, Brain, TrendingUp } from 'lucide-react'
 import Link from 'next/link'
 import { useRef } from 'react'
 import { fadeInUp, staggerContainer, ANIMATION_DELAY, ANIMATION_DURATION } from '@/lib/animation-config'
@@ -25,20 +25,20 @@ export default function SuperDebatePage() {
       color: "from-purple-400 to-pink-400"
     },
     {
-      title: "1,250+ Users",
-      description: "Growing community of debaters rating the platform 4.8/5 stars",
-      icon: Star,
+      title: "Bali Workshops",
+      description: "Currently running workshops and events in Bali, building a thriving debate community",
+      icon: MapPin,
       color: "from-cyan-400 to-blue-400"
     },
     {
-      title: "AI-Enhanced Training",
-      description: "Leveraging technology to provide personalized debate coaching at scale",
-      icon: Brain,
+      title: "Chicago Flagship Event",
+      description: "Planning first major event with 1871, Chicago's biggest incubator and coworking space",
+      icon: Calendar,
       color: "from-green-400 to-emerald-400"
     },
     {
       title: "Global Vision",
-      description: "Expanding from online platform to in-person chapters worldwide",
+      description: "Expanding from online platform to in-person chapters in major cities worldwide",
       icon: Globe,
       color: "from-orange-400 to-red-400"
     }
@@ -238,10 +238,10 @@ export default function SuperDebatePage() {
           >
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
               {[
-                { value: '1,250+', label: 'Active Users', color: 'text-purple-400' },
-                { value: '4.8/5', label: 'User Rating', color: 'text-pink-400' },
-                { value: '2024', label: 'Founded', color: 'text-purple-400' },
-                { value: 'Growing', label: 'Community', color: 'text-pink-400' }
+                { value: 'Bali', label: 'Current Location', color: 'text-purple-400' },
+                { value: 'Chicago', label: '2025 Flagship', color: 'text-pink-400' },
+                { value: '1871', label: 'Partner Space', color: 'text-purple-400' },
+                { value: 'Global', label: 'Vision', color: 'text-pink-400' }
               ].map((stat, index) => (
                 <motion.div
                   key={stat.label}
@@ -292,7 +292,8 @@ export default function SuperDebatePage() {
               transition={{ duration: ANIMATION_DURATION.normal, delay: ANIMATION_DELAY.stagger }}
               className="text-xl text-gray-100 max-w-3xl mx-auto"
             >
-              Leveraging my national debate championship experience to democratize critical thinking
+              From running workshops in Bali to planning our Chicago flagship event with 1871,
+              we're building a global movement to make critical thinking accessible to everyone
             </motion.p>
           </motion.div>
 
@@ -479,7 +480,7 @@ export default function SuperDebatePage() {
             </div>
           </motion.div>
 
-          {/* Impact Metrics */}
+          {/* Current Initiatives */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -488,10 +489,10 @@ export default function SuperDebatePage() {
             className="grid md:grid-cols-4 gap-6 mt-16"
           >
             {[
-              { metric: 'User Growth', value: '+250%', period: 'Last Quarter' },
-              { metric: 'Engagement', value: '4.8/5', period: 'User Rating' },
-              { metric: 'Tournaments', value: '50+', period: 'Hosted' },
-              { metric: 'AI Training', value: '10K+', period: 'Debates Analyzed' }
+              { metric: 'Workshops', value: 'Active', period: 'In Bali' },
+              { metric: 'Chicago Event', value: '2025', period: 'With 1871' },
+              { metric: 'Platform', value: 'Live', period: 'superdebate.org' },
+              { metric: 'Vision', value: 'Global', period: 'City Chapters' }
             ].map((item, index) => (
               <motion.div
                 key={item.metric}
@@ -567,10 +568,10 @@ export default function SuperDebatePage() {
               {
                 title: 'Community Building',
                 items: [
-                  'Growing to 1,250+ active users',
-                  'Launching city chapters',
-                  'Creating educational content',
-                  'Building partnership network'
+                  'Running workshops in Bali',
+                  'Planning Chicago flagship with 1871',
+                  'Building global city chapters',
+                  'Creating educational content'
                 ],
                 icon: Users,
                 color: 'from-green-400 to-emerald-400'
