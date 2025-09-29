@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { Mail, Linkedin, Twitter, Send, User, Building2, Briefcase, DollarSign, MessageSquare } from 'lucide-react'
 import { useState } from 'react'
 import { SectionDivider } from '@/components/section-divider'
+import { fadeInUp, fadeInUpDelayed, ANIMATION_DURATION, ANIMATION_DELAY } from '@/lib/animation-config'
 
 const contactMethods = [
   {
@@ -135,7 +136,7 @@ export default function ContactPage() {
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+              transition={{ duration: ANIMATION_DURATION.normal, delay: ANIMATION_DELAY.section, ease: "easeOut" }}
               className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light mb-6 leading-[1.1] sm:leading-[1.05] lg:leading-[1.02]"
             >
               <span className="text-white">LET&apos;S BUILD</span>
@@ -144,7 +145,7 @@ export default function ContactPage() {
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+              transition={{ duration: ANIMATION_DURATION.normal, delay: ANIMATION_DELAY.section + ANIMATION_DELAY.stagger, ease: "easeOut" }}
               className="text-base sm:text-lg text-gray-100 font-light tracking-wide max-w-3xl mx-auto"
             >
               Creating transformative technology solutions that amplify human potential and drive meaningful impact.
@@ -161,10 +162,10 @@ export default function ContactPage() {
           <div className="grid lg:grid-cols-3 gap-12">
             {/* Contact Methods */}
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
+              variants={fadeInUp}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true, margin: "-50px" }}
               className="lg:col-span-1 space-y-8"
             >
               <div className="card-brutal">
@@ -182,10 +183,11 @@ export default function ContactPage() {
                   <motion.a
                     key={method.title}
                     href={method.href}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.3 + index * 0.15, ease: "easeOut" }}
+                    variants={fadeInUpDelayed}
+                    custom={index + 1}
+                    initial="initial"
+                    whileInView="animate"
+                    viewport={{ once: true, margin: "-50px" }}
                     whileHover={{ scale: 1.02, y: -2 }}
                     className="block card-brutal group"
                   >
@@ -205,10 +207,11 @@ export default function ContactPage() {
 
               {/* Social Links */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
+                variants={fadeInUpDelayed}
+                custom={3}
+                initial="initial"
+                whileInView="animate"
+                viewport={{ once: true, margin: "-50px" }}
                 className="card-brutal"
               >
                 <p className="text-xs text-gray-500 mb-4 font-mono uppercase tracking-widest">CONNECT ON SOCIAL</p>
@@ -241,10 +244,10 @@ export default function ContactPage() {
 
             {/* Contact Form */}
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+              variants={fadeInUp}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true, margin: "-50px" }}
               className="lg:col-span-2"
             >
               <div className="card-brutal">
@@ -442,10 +445,10 @@ export default function ContactPage() {
       <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-900 to-black">
         <div className="max-w-7xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            variants={fadeInUp}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, margin: "-50px" }}
             className="text-center mb-16"
           >
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-light mb-4">
@@ -478,10 +481,11 @@ export default function ContactPage() {
             ].map((faq, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.4 + index * 0.15, ease: "easeOut" }}
+                variants={fadeInUpDelayed}
+                custom={index}
+                initial="initial"
+                whileInView="animate"
+                viewport={{ once: true, margin: "-50px" }}
                 whileHover={{ scale: 1.02, y: -2 }}
                 className="card-brutal group hover:border-cyan-400/50"
               >
@@ -495,10 +499,11 @@ export default function ContactPage() {
 
           {/* Bottom accent */}
           <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 1.0, ease: "easeOut" }}
+            variants={fadeInUpDelayed}
+            custom={5}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, margin: "-50px" }}
             className="text-center mt-16"
           >
             <p className="text-gray-500 font-mono text-sm uppercase tracking-widest">

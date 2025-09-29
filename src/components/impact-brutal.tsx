@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Zap, Users, Code, Trophy } from 'lucide-react'
-import { fadeInUp, headerAnimation, cardHover, staggerContainer, ANIMATION_DELAY, SECTION_DELAYS } from '@/lib/animation-config'
+import { fadeInUp, fadeInUpDelayed, headerAnimation, cardHover, staggerContainer, ANIMATION_DELAY, ANIMATION_DURATION, SECTION_DELAYS } from '@/lib/animation-config'
 import { useRef } from 'react'
 
 const impacts = [
@@ -91,62 +91,43 @@ export function ImpactBrutal() {
         </motion.div>
         
         {/* Impact cards with brutal design */}
-        <motion.div
-          variants={staggerContainer}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {impacts.map((impact, index) => {
             const Icon = impact.icon
             return (
               <motion.div
                 key={impact.label}
-                variants={fadeInUp}
+                variants={fadeInUpDelayed}
                 custom={index}
-                transition={{
-                  duration: 0.6,
-                  delay: SECTION_DELAYS.impact + 0.2 + (index * 0.15),
-                  ease: "easeOut"
-                }}
+                initial="initial"
+                whileInView="animate"
+                viewport={{ once: true, margin: "-50px" }}
                 {...cardHover}
                 className="relative group"
               >
                 {/* Card with brutal shadow */}
                 <div className="card-glass hover:border-cyan-400/50 transition-all">
                   {/* Icon with neon glow */}
-                  <motion.div
-                    variants={fadeInUp}
-                    className={`mb-4 ${impact.color}`}
-                  >
+                  <div className={`mb-4 ${impact.color}`}>
                     <Icon className="w-12 h-12" />
-                  </motion.div>
+                  </div>
 
                   {/* Number with glitch on hover */}
-                  <motion.div
-                    variants={fadeInUp}
-                    className="mb-2"
-                  >
-                    <motion.p
-                      className={`text-3xl sm:text-4xl font-black ${impact.color} group-hover:animate-pulse`}
-                    >
+                  <div className="mb-2">
+                    <p className={`text-3xl sm:text-4xl font-black ${impact.color} group-hover:animate-pulse`}>
                       {impact.number}
-                    </motion.p>
-                  </motion.div>
+                    </p>
+                  </div>
 
                   {/* Label */}
-                  <motion.p
-                    variants={fadeInUp}
-                    className="text-foreground font-bold text-base sm:text-lg mb-1"
-                  >
+                  <p className="text-foreground font-bold text-base sm:text-lg mb-1">
                     {impact.label}
-                  </motion.p>
+                  </p>
 
                   {/* Context */}
-                  <motion.p
-                    variants={fadeInUp}
-                    className="text-gray-100 dark:text-gray-500 text-xs sm:text-sm font-mono"
-                  >
+                  <p className="text-gray-100 dark:text-gray-500 text-xs sm:text-sm font-mono">
                     {impact.context}
-                  </motion.p>
+                  </p>
 
                   {/* Hover accent */}
                   <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
@@ -154,7 +135,7 @@ export function ImpactBrutal() {
               </motion.div>
             )
           })}
-        </motion.div>
+        </div>
         
         {/* Bottom accent text */}
         <motion.div
