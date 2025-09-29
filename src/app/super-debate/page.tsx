@@ -127,27 +127,27 @@ export default function SuperDebatePage() {
 
           {/* Animated orbs */}
           <motion.div
-            className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-600/30 rounded-full blur-3xl"
+            className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl"
             animate={{
-              scale: [1, 1.2, 1],
-              x: [-50, 50, -50],
-              y: [-30, 30, -30],
+              scale: [1, 1.1, 1],
+              x: [-30, 30, -30],
+              y: [-20, 20, -20],
             }}
             transition={{
-              duration: 15,
+              duration: 20,
               repeat: Infinity,
               ease: "easeInOut"
             }}
           />
           <motion.div
-            className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-pink-600/30 rounded-full blur-3xl"
+            className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-pink-600/20 rounded-full blur-3xl"
             animate={{
-              scale: [1, 1.3, 1],
-              x: [50, -50, 50],
-              y: [30, -30, 30],
+              scale: [1, 1.15, 1],
+              x: [30, -30, 30],
+              y: [20, -20, 20],
             }}
             transition={{
-              duration: 20,
+              duration: 25,
               repeat: Infinity,
               ease: "easeInOut"
             }}
@@ -174,10 +174,11 @@ export default function SuperDebatePage() {
             </motion.div>
 
             <motion.h1
-              variants={fadeInUp}
-              initial="initial"
-              animate="animate"
-              className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 tracking-tight"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: ANIMATION_DURATION.normal }}
+              className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight overflow-visible"
+              style={{ lineHeight: 1.1 }}
             >
               <span className="text-white">Super </span>
               <span className="text-purple-400">Debate</span>
@@ -187,8 +188,9 @@ export default function SuperDebatePage() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: ANIMATION_DURATION.normal, delay: ANIMATION_DELAY.stagger * 0.5 }}
-              className="text-2xl sm:text-3xl lg:text-4xl font-semibold mb-8 text-pink-400"
+              transition={{ duration: ANIMATION_DURATION.normal, delay: ANIMATION_DELAY.stagger }}
+              className="text-2xl sm:text-3xl lg:text-4xl font-semibold mb-8 text-pink-400 leading-tight overflow-visible"
+              style={{ lineHeight: 1.2 }}
             >
               Make Arguing Fun Again
             </motion.div>
@@ -196,11 +198,11 @@ export default function SuperDebatePage() {
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: ANIMATION_DURATION.normal, delay: ANIMATION_DELAY.stagger }}
+              transition={{ duration: ANIMATION_DURATION.normal, delay: ANIMATION_DELAY.stagger * 2 }}
               className="text-xl sm:text-2xl text-gray-100 max-w-3xl mx-auto mb-12"
             >
-              The premier platform for structured debates, tournaments, and critical thinking development
-              founded to democratize the skills that transformed my life
+              Join structured debates, tournaments, and critical thinking development.
+              Founded to democratize the skills that transformed my life.
             </motion.p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -246,12 +248,10 @@ export default function SuperDebatePage() {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 + 0.3 }}
+                  transition={{ delay: index * 0.1 + 0.3, duration: ANIMATION_DURATION.normal }}
                 >
                   <motion.div
                     className={`text-3xl font-bold ${stat.color}`}
-                    animate={{ scale: [1, 1.05, 1] }}
-                    transition={{ duration: 2, repeat: Infinity, delay: index * 0.2 }}
                   >
                     {stat.value}
                   </motion.div>
@@ -265,17 +265,7 @@ export default function SuperDebatePage() {
 
       {/* My Vision Section */}
       <section id="vision" className="py-32 px-4 relative overflow-hidden">
-        <motion.div
-          className="absolute inset-0 bg-gradient-to-b from-purple-500/5 via-transparent to-pink-500/5"
-          animate={{
-            opacity: [0.3, 0.5, 0.3],
-          }}
-          transition={{
-            duration: 4,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
+        <div className="absolute inset-0 bg-gradient-to-b from-purple-500/5 via-transparent to-pink-500/5" />
 
         <div className="max-w-7xl mx-auto relative z-10">
           <motion.div
@@ -323,8 +313,8 @@ export default function SuperDebatePage() {
                 >
                   <motion.div
                     className="relative h-full group"
-                    whileHover={{ y: -8, scale: 1.02 }}
-                    transition={{ type: "spring", stiffness: 400, damping: 15 }}
+                    whileHover={{ y: -5 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
                   >
                     <div className="relative bg-background/80 backdrop-blur-xl border border-foreground/10 rounded-2xl p-8 h-full hover:border-purple-500/30 transition-all duration-300">
                       <div className="flex items-start gap-4">
@@ -382,8 +372,8 @@ export default function SuperDebatePage() {
                 >
                   <motion.div
                     className="relative h-full group"
-                    whileHover={{ x: 10 }}
-                    transition={{ type: "spring", stiffness: 300 }}
+                    whileHover={{ x: 5 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
                   >
                     <div className="relative bg-background/60 backdrop-blur-xl border border-foreground/10 rounded-2xl p-8 h-full hover:border-cyan-500/30 transition-all duration-300">
                       <div className="flex items-start gap-4">
@@ -439,17 +429,7 @@ export default function SuperDebatePage() {
             transition={{ duration: ANIMATION_DURATION.normal }}
             className="relative mb-16"
           >
-            <motion.div
-              className="absolute -inset-4 bg-gradient-to-r from-cyan-600/10 via-purple-600/10 to-cyan-600/10 rounded-2xl blur-3xl"
-              animate={{
-                opacity: [0.3, 0.6, 0.3],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            />
+            <div className="absolute -inset-4 bg-gradient-to-r from-cyan-600/10 via-purple-600/10 to-cyan-600/10 rounded-2xl blur-3xl opacity-40" />
 
             <div className="relative bg-background/60 backdrop-blur-2xl border border-cyan-500/20 rounded-2xl p-8 md:p-12">
               <div className="grid md:grid-cols-3 gap-8">
@@ -458,13 +438,11 @@ export default function SuperDebatePage() {
                   whileHover={{ scale: 1.05 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <motion.div
+                  <div
                     className="text-3xl font-mono font-bold text-cyan-400 mb-4"
-                    animate={{ opacity: [0.5, 1, 0.5] }}
-                    transition={{ duration: 2, repeat: Infinity }}
                   >
                     Next.js + TypeScript
-                  </motion.div>
+                  </div>
                   <p className="text-sm text-gray-100">
                     Modern React framework with full-stack capabilities and edge functions
                   </p>
@@ -474,13 +452,11 @@ export default function SuperDebatePage() {
                   whileHover={{ scale: 1.05 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <motion.div
+                  <div
                     className="text-3xl font-mono font-bold text-purple-400 mb-4"
-                    animate={{ opacity: [0.5, 1, 0.5] }}
-                    transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
                   >
                     AI Integration
-                  </motion.div>
+                  </div>
                   <p className="text-sm text-gray-100">
                     Custom AI training tools and automated debate analysis systems
                   </p>
@@ -490,13 +466,11 @@ export default function SuperDebatePage() {
                   whileHover={{ scale: 1.05 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <motion.div
+                  <div
                     className="text-3xl font-mono font-bold text-pink-400 mb-4"
-                    animate={{ opacity: [0.5, 1, 0.5] }}
-                    transition={{ duration: 2, repeat: Infinity, delay: 1 }}
                   >
                     Scalable Architecture
-                  </motion.div>
+                  </div>
                   <p className="text-sm text-gray-100">
                     Built to handle tournaments with thousands of concurrent users
                   </p>
@@ -528,13 +502,11 @@ export default function SuperDebatePage() {
                 whileHover={{ y: -5 }}
                 className="bg-background/60 backdrop-blur-xl border border-foreground/10 rounded-xl p-6 text-center hover:border-purple-500/30 transition-all duration-300"
               >
-                <motion.div
+                <div
                   className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400"
-                  animate={{ scale: [1, 1.05, 1] }}
-                  transition={{ duration: 2, repeat: Infinity, delay: index * 0.2 }}
                 >
                   {item.value}
-                </motion.div>
+                </div>
                 <div className="text-sm font-semibold text-foreground mt-2">{item.metric}</div>
                 <div className="text-xs text-gray-100 mt-1">{item.period}</div>
               </motion.div>
@@ -613,8 +585,8 @@ export default function SuperDebatePage() {
                 >
                   <motion.div
                     className="relative h-full group"
-                    whileHover={{ y: -10 }}
-                    transition={{ type: "spring", stiffness: 300 }}
+                    whileHover={{ y: -5 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
                   >
                     <div className="relative bg-background/60 backdrop-blur-xl border border-foreground/10 rounded-2xl p-8 h-full hover:border-purple-500/30 transition-all duration-300">
                       <div className="mb-6">
@@ -699,20 +671,7 @@ export default function SuperDebatePage() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-pink-600 to-purple-600"
-                    animate={{
-                      x: ['0%', '100%', '0%'],
-                    }}
-                    transition={{
-                      duration: 3,
-                      repeat: Infinity,
-                      ease: "linear"
-                    }}
-                    style={{
-                      backgroundSize: '200% 100%',
-                    }}
-                  />
+                  <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <Trophy className="w-6 h-6 relative z-10" />
                   <span className="relative z-10">Visit Live Platform</span>
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform relative z-10" />
@@ -733,31 +692,6 @@ export default function SuperDebatePage() {
         </div>
       </section>
 
-      {/* Floating elements */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden">
-        {[Trophy, Shield, Brain, Users, MessageSquare, Zap].map((Icon, i) => (
-          <motion.div
-            key={i}
-            className="absolute"
-            initial={{
-              x: `${Math.random() * 100}%`,
-              y: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              x: `${Math.random() * 100}%`,
-              y: `${Math.random() * 100}%`,
-            }}
-            transition={{
-              duration: Math.random() * 40 + 30,
-              repeat: Infinity,
-              repeatType: 'reverse',
-              ease: 'linear'
-            }}
-          >
-            <Icon className="w-6 h-6 text-purple-400/5" />
-          </motion.div>
-        ))}
-      </div>
     </div>
   )
 }
