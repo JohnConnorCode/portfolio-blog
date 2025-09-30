@@ -83,8 +83,8 @@ export function Navbar() {
                     initial={{ scale: 0, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{
-                      duration: 0.4,
-                      delay: 0.3,
+                      duration: 0.3,
+                      delay: 0.1,
                       ease: [0.34, 1.56, 0.64, 1]
                     }}
                   >
@@ -103,8 +103,8 @@ export function Navbar() {
                     initial={{ scale: 0, opacity: 0, rotate: 45 }}
                     animate={{ scale: 1, opacity: 1, rotate: 45 }}
                     transition={{
-                      duration: 0.6,
-                      delay: 1.0,
+                      duration: 0.4,
+                      delay: 0.2,
                       ease: [0.22, 1, 0.36, 1]
                     }}
                   >
@@ -131,8 +131,8 @@ export function Navbar() {
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{
-                      duration: 0.6,
-                      delay: 1.0,
+                      duration: 0.4,
+                      delay: 0.2,
                       ease: [0.22, 1, 0.36, 1]
                     }}
                   >
@@ -167,15 +167,15 @@ export function Navbar() {
                     className="text-xl md:text-2xl font-bold tracking-tight overflow-hidden block"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ delay: 1.3 }}
+                    transition={{ delay: 0.3 }}
                   >
                     <motion.span
                       className="block"
                       initial={{ y: 20, opacity: 0 }}
                       animate={{ y: 0, opacity: 1 }}
                       transition={{
-                        duration: 0.6,
-                        delay: 1.4,
+                        duration: 0.5,
+                        delay: 0.4,
                         ease: [0.22, 1, 0.36, 1]
                       }}
                     >
@@ -186,15 +186,15 @@ export function Navbar() {
                     className="text-xs text-muted-foreground uppercase tracking-widest overflow-hidden block"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ delay: 1.5 }}
+                    transition={{ delay: 0.5 }}
                   >
                     <motion.span
                       className="block"
                       initial={{ y: 10, opacity: 0 }}
                       animate={{ y: 0, opacity: 1 }}
                       transition={{
-                        duration: 0.6,
-                        delay: 1.6,
+                        duration: 0.5,
+                        delay: 0.6,
                         ease: [0.22, 1, 0.36, 1]
                       }}
                     >
@@ -218,8 +218,8 @@ export function Navbar() {
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{
-                    duration: 0.4,
-                    delay: 1.8 + index * 0.05,
+                    duration: 0.3,
+                    delay: 0.7 + index * 0.05,
                     ease: [0.22, 1, 0.36, 1]
                   }}
                   className="relative group"

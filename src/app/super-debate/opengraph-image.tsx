@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/og'
 
 export const runtime = 'edge'
 
-export const alt = 'John Connor - Technology Strategist'
+export const alt = 'SuperDebate - Make Arguing Fun Again'
 export const size = {
   width: 1200,
   height: 630,
@@ -20,18 +20,18 @@ export default async function Image() {
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          background: 'linear-gradient(to bottom, #000000, #0a0a1a)',
+          background: 'linear-gradient(135deg, #1a0a2e 0%, #0f0517 100%)',
           position: 'relative',
         }}
       >
-        {/* Vaporwave grid lines */}
+        {/* Grid pattern */}
         <div
           style={{
             position: 'absolute',
             inset: 0,
             backgroundImage: `
-              linear-gradient(to right, rgba(0, 255, 255, 0.3) 2px, transparent 2px),
-              linear-gradient(to bottom, rgba(0, 255, 255, 0.3) 2px, transparent 2px)
+              linear-gradient(to right, rgba(168, 85, 247, 0.2) 2px, transparent 2px),
+              linear-gradient(to bottom, rgba(168, 85, 247, 0.2) 2px, transparent 2px)
             `,
             backgroundSize: '40px 40px',
             opacity: 0.4,
@@ -39,16 +39,16 @@ export default async function Image() {
           }}
         />
 
-        {/* Gradient glow */}
+        {/* Purple glow */}
         <div
           style={{
             position: 'absolute',
-            bottom: 0,
+            top: '30%',
             left: '50%',
             transform: 'translateX(-50%)',
-            width: '100%',
+            width: '70%',
             height: '50%',
-            background: 'radial-gradient(ellipse at center bottom, rgba(138, 43, 226, 0.4), transparent 70%)',
+            background: 'radial-gradient(ellipse at center, rgba(168, 85, 247, 0.4), transparent 60%)',
             display: 'flex',
           }}
         />
@@ -61,42 +61,59 @@ export default async function Image() {
             alignItems: 'center',
             justifyContent: 'center',
             zIndex: 10,
+            textAlign: 'center',
           }}
         >
           <div
             style={{
-              fontSize: 96,
+              fontSize: 110,
               fontWeight: 900,
-              background: 'linear-gradient(135deg, #00ffff 0%, #8a2be2 100%)',
+              background: 'linear-gradient(135deg, #a855f7 0%, #ec4899 100%)',
               backgroundClip: 'text',
               color: 'transparent',
               letterSpacing: '-0.02em',
               display: 'flex',
             }}
           >
-            JOHN CONNOR
+            SUPERDEBATE
           </div>
           <div
             style={{
-              fontSize: 36,
+              fontSize: 42,
               color: 'white',
               marginTop: 20,
-              opacity: 0.9,
+              fontWeight: 700,
               display: 'flex',
             }}
           >
-            Building systems that serve humanity
+            Make Arguing Fun Again
           </div>
           <div
             style={{
               fontSize: 28,
-              color: '#00ffff',
+              color: '#a855f7',
               marginTop: 30,
-              opacity: 0.8,
+              opacity: 0.9,
               display: 'flex',
             }}
           >
-            Product Strategy • Human-First Technology • Real Impact
+            Structured Debates • Critical Thinking • Community
+          </div>
+
+          {/* Badge */}
+          <div
+            style={{
+              marginTop: 40,
+              padding: '12px 32px',
+              border: '2px solid #a855f7',
+              borderRadius: 8,
+              fontSize: 20,
+              color: '#a855f7',
+              fontWeight: 600,
+              display: 'flex',
+            }}
+          >
+            Founded by John Connor
           </div>
         </div>
 
@@ -107,8 +124,8 @@ export default async function Image() {
             bottom: 0,
             left: 0,
             right: 0,
-            height: 2,
-            background: 'linear-gradient(to right, transparent, #00ffff, #8a2be2, transparent)',
+            height: 3,
+            background: 'linear-gradient(to right, transparent, #a855f7, #ec4899, transparent)',
             display: 'flex',
           }}
         />

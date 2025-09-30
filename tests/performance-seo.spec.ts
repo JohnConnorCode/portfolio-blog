@@ -10,30 +10,30 @@ test.describe('Performance and SEO Tests', () => {
     expect(loadTime).toBeLessThan(5000);
     
     // Check Core Web Vitals
-    const metrics = await page.evaluate(() => {
+    const metrics: any = await page.evaluate(() => {
       return new Promise((resolve) => {
-        let fcp, lcp;
-        
+        let fcp: number | undefined, lcp: number | undefined;
+
         // First Contentful Paint
         const fcpObserver = new PerformanceObserver((list) => {
           const entries = list.getEntries();
           fcp = entries[entries.length - 1].startTime;
         });
         fcpObserver.observe({ entryTypes: ['paint'] });
-        
+
         // Largest Contentful Paint
         const lcpObserver = new PerformanceObserver((list) => {
           const entries = list.getEntries();
           lcp = entries[entries.length - 1].startTime;
         });
         lcpObserver.observe({ entryTypes: ['largest-contentful-paint'] });
-        
+
         setTimeout(() => {
           resolve({ fcp, lcp });
         }, 3000);
       });
     });
-    
+
     // FCP should be under 2.5s (good), LCP under 4s (good)
     if (metrics.fcp) expect(metrics.fcp).toBeLessThan(2500);
     if (metrics.lcp) expect(metrics.lcp).toBeLessThan(4000);

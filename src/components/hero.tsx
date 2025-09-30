@@ -73,7 +73,7 @@ export function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.64 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
             className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center"
           >
             <Link
@@ -96,7 +96,7 @@ export function Hero() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.96, duration: 0.8 }}
+          transition={{ delay: 0.6, duration: 0.6 }}
           className="absolute bottom-8 left-1/2 -translate-x-1/2 pointer-events-none z-0"
         >
           <motion.div

@@ -8,11 +8,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'SuperDebate - Make Arguing Fun Again',
     description: 'The premier platform for structured debates and critical thinking. Founded by national debate champion John Connor.',
-    url: 'https://johnconnor.ai/super-debate',
+    url: 'https://johnconnor.xyz/super-debate',
     siteName: 'John Connor Portfolio',
     images: [
       {
-        url: 'https://johnconnor.ai/og-superdebate.jpg',
+        url: 'https://johnconnor.xyz/og-superdebate.png',
         width: 1200,
         height: 630,
         alt: 'SuperDebate Platform - Make Arguing Fun Again'
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'SuperDebate - Make Arguing Fun Again',
     description: 'The premier platform for structured debates and critical thinking. Founded by national debate champion John Connor.',
-    images: ['https://johnconnor.ai/og-superdebate.jpg'],
+    images: ['https://johnconnor.xyz/og-superdebate.png'],
     creator: '@johnconnor',
   },
 
@@ -43,10 +43,10 @@ export const metadata: Metadata = {
   },
 
   alternates: {
-    canonical: 'https://johnconnor.ai/super-debate',
+    canonical: 'https://johnconnor.xyz/super-debate',
   },
 
-  authors: [{ name: 'John Connor', url: 'https://johnconnor.ai' }],
+  authors: [{ name: 'John Connor', url: 'https://johnconnor.xyz' }],
   creator: 'John Connor',
   publisher: 'John Connor',
 

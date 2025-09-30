@@ -26,7 +26,7 @@ export function ParallaxSection({
   const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset
+    offset: offset as any
   })
 
   const y = useTransform(
@@ -71,7 +71,7 @@ export function LayeredParallax({ layers, className }: LayeredParallaxProps) {
   const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start end", "end start"]
+    offset: ["start end", "end start"] as any
   })
 
   return (
@@ -170,7 +170,7 @@ export function DepthParallax({ children, className, spacing = 100 }: DepthParal
   const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start end", "end start"]
+    offset: ["start end", "end start"] as any
   })
 
   return (
@@ -217,7 +217,7 @@ export function FloatingParallax({
   const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start end", "end start"]
+    offset: ["start end", "end start"] as any
   })
 
   return (
@@ -233,7 +233,7 @@ export function FloatingParallax({
           () => Math.sin(Date.now() * 0.001 + index) * (element.amplitude || 10)
         )
 
-        const combinedY = useTransform([y, floatY], (values) => values[0] + values[1])
+        const combinedY = useTransform([y, floatY], ([yVal, floatVal]) => (yVal as number) + (floatVal as number))
 
         return (
           <motion.div

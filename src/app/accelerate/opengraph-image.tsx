@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/og'
 
 export const runtime = 'edge'
 
-export const alt = 'John Connor - Technology Strategist'
+export const alt = 'Accelerate - Funding That Actually Ships'
 export const size = {
   width: 1200,
   height: 630,
@@ -24,31 +24,31 @@ export default async function Image() {
           position: 'relative',
         }}
       >
-        {/* Vaporwave grid lines */}
+        {/* Grid pattern */}
         <div
           style={{
             position: 'absolute',
             inset: 0,
             backgroundImage: `
-              linear-gradient(to right, rgba(0, 255, 255, 0.3) 2px, transparent 2px),
-              linear-gradient(to bottom, rgba(0, 255, 255, 0.3) 2px, transparent 2px)
+              linear-gradient(to right, rgba(34, 211, 238, 0.2) 2px, transparent 2px),
+              linear-gradient(to bottom, rgba(34, 211, 238, 0.2) 2px, transparent 2px)
             `,
             backgroundSize: '40px 40px',
-            opacity: 0.4,
+            opacity: 0.5,
             display: 'flex',
           }}
         />
 
-        {/* Gradient glow */}
+        {/* Cyan glow */}
         <div
           style={{
             position: 'absolute',
-            bottom: 0,
+            top: '20%',
             left: '50%',
             transform: 'translateX(-50%)',
-            width: '100%',
-            height: '50%',
-            background: 'radial-gradient(ellipse at center bottom, rgba(138, 43, 226, 0.4), transparent 70%)',
+            width: '80%',
+            height: '60%',
+            background: 'radial-gradient(ellipse at center, rgba(34, 211, 238, 0.3), transparent 60%)',
             display: 'flex',
           }}
         />
@@ -61,42 +61,58 @@ export default async function Image() {
             alignItems: 'center',
             justifyContent: 'center',
             zIndex: 10,
+            textAlign: 'center',
           }}
         >
           <div
             style={{
-              fontSize: 96,
+              fontSize: 120,
               fontWeight: 900,
-              background: 'linear-gradient(135deg, #00ffff 0%, #8a2be2 100%)',
-              backgroundClip: 'text',
-              color: 'transparent',
+              color: '#22d3ee',
               letterSpacing: '-0.02em',
+              textShadow: '0 0 40px rgba(34, 211, 238, 0.5)',
               display: 'flex',
             }}
           >
-            JOHN CONNOR
+            ACCELERATE
           </div>
           <div
             style={{
-              fontSize: 36,
+              fontSize: 42,
               color: 'white',
               marginTop: 20,
-              opacity: 0.9,
+              fontWeight: 700,
               display: 'flex',
             }}
           >
-            Building systems that serve humanity
+            Funding That Actually Ships
           </div>
           <div
             style={{
               fontSize: 28,
-              color: '#00ffff',
+              color: '#22d3ee',
               marginTop: 30,
               opacity: 0.8,
               display: 'flex',
             }}
           >
-            Product Strategy • Human-First Technology • Real Impact
+            $50M+ Tracked • 2K+ Teams Funded
+          </div>
+
+          {/* Badge */}
+          <div
+            style={{
+              marginTop: 40,
+              padding: '12px 32px',
+              border: '2px solid #22d3ee',
+              borderRadius: 8,
+              fontSize: 20,
+              color: '#22d3ee',
+              fontWeight: 600,
+              display: 'flex',
+            }}
+          >
+            By John Connor
           </div>
         </div>
 
@@ -107,8 +123,8 @@ export default async function Image() {
             bottom: 0,
             left: 0,
             right: 0,
-            height: 2,
-            background: 'linear-gradient(to right, transparent, #00ffff, #8a2be2, transparent)',
+            height: 3,
+            background: 'linear-gradient(to right, transparent, #22d3ee, transparent)',
             display: 'flex',
           }}
         />

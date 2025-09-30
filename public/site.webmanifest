@@ -1,0 +1,16 @@
+{
+  "name": "John Connor - Technology Strategist",
+  "short_name": "John Connor",
+  "description": "Building systems that serve humanity. Technology strategist with 15+ years experience.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#00ffff",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

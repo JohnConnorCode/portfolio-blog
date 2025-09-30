@@ -82,7 +82,7 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
             )}
             <div className="flex items-center gap-2">
               <Calendar className="w-4 h-4" />
-              <time>{formatDate(post.publishedAt)}</time>
+              <time>{post.publishedAt ? formatDate(post.publishedAt) : 'No date'}</time>
             </div>
             {post.readTime && (
               <div className="flex items-center gap-2">

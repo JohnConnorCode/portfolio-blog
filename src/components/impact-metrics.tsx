@@ -3,11 +3,9 @@
 import { motion, useMotionValue, useTransform, animate } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { DollarSign, Users, TrendingUp, Clock, Briefcase } from 'lucide-react'
-import { GlassmorphismCard } from './ui/glassmorphism-card'
 import { CounterAnimation, MetricCounter } from './ui/counter-animation'
 import { TextReveal, HeroTextReveal } from './ui/text-reveal'
 import { ScrollReveal, StaggeredReveal } from './ui/scroll-reveal'
-import { NumberTicker } from './ui/number-ticker'
 import { PremiumText } from './ui/premium-text'
 
 interface CounterProps {
@@ -114,9 +112,9 @@ export function ImpactMetrics() {
           {metrics.map((metric, index) => {
             const Icon = metric.icon
             return (
-              <GlassmorphismCard
+              <motion.div
                 key={metric.label}
-                className="p-8 group relative h-full hover:scale-105 transition-transform duration-300"
+                className="p-8 group relative h-full hover:scale-105 transition-transform duration-300 bg-white/5 backdrop-blur-md border border-white/10 rounded-lg"
               >
                 <div className="flex items-start justify-between mb-6">
                   <div className="p-3 border border-white/20 rounded-lg group-hover:border-primary/50 transition-colors bg-white/5">
@@ -157,7 +155,7 @@ export function ImpactMetrics() {
                     {metric.description}
                   </p>
                 </div>
-              </GlassmorphismCard>
+              </motion.div>
             )
           })}
         </StaggeredReveal>

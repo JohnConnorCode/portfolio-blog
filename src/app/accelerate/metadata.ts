@@ -8,11 +8,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Accelerate - Funding That Actually Ships',
     description: 'The premier grants management platform connecting builders with capital. $50M+ tracked, 2K+ teams funded. Founded by John Connor.',
-    url: 'https://johnconnor.ai/accelerate',
+    url: 'https://johnconnor.xyz/accelerate',
     siteName: 'John Connor Portfolio',
     images: [
       {
-        url: 'https://johnconnor.ai/og-accelerate.jpg',
+        url: 'https://johnconnor.xyz/og-accelerate.png',
         width: 1200,
         height: 630,
         alt: 'Accelerate Platform - Funding That Actually Ships'
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Accelerate - Funding That Actually Ships',
     description: 'The premier grants management platform. $50M+ tracked, 2K+ teams funded. Founded by John Connor.',
-    images: ['https://johnconnor.ai/og-accelerate.jpg'],
+    images: ['https://johnconnor.xyz/og-accelerate.png'],
     creator: '@johnconnor',
   },
 
@@ -43,10 +43,10 @@ export const metadata: Metadata = {
   },
 
   alternates: {
-    canonical: 'https://johnconnor.ai/accelerate',
+    canonical: 'https://johnconnor.xyz/accelerate',
   },
 
-  authors: [{ name: 'John Connor', url: 'https://johnconnor.ai' }],
+  authors: [{ name: 'John Connor', url: 'https://johnconnor.xyz' }],
   creator: 'John Connor',
   publisher: 'John Connor',
 

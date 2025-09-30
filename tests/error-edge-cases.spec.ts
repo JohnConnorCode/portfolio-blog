@@ -46,7 +46,7 @@ test.describe('Error Boundaries and Edge Cases', () => {
       expect(response?.status()).toBeLessThan(500);
       
       // Should not execute scripts
-      const alerts = [];
+      const alerts: any[] = [];
       page.on('dialog', dialog => alerts.push(dialog));
       await page.waitForTimeout(1000);
       expect(alerts).toHaveLength(0);
@@ -154,10 +154,10 @@ test.describe('Error Boundaries and Edge Cases', () => {
     await expect(page.locator('h1')).toBeVisible();
     
     // No uncaught errors
-    const errors = [];
+    const errors: any[] = [];
     page.on('pageerror', err => errors.push(err));
     await page.waitForTimeout(1000);
-    
+
     // Should handle storage errors gracefully
     const uncaughtErrors = errors.filter(e => !e.message.includes('localStorage'));
     expect(uncaughtErrors).toHaveLength(0);
