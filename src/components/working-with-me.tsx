@@ -1,7 +1,7 @@
 'use client'
 
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { CheckCircle, ArrowRight, Calendar, MessageSquare, Rocket, Target, Users, Brain, Eye, Zap, Unlock } from 'lucide-react'
+import { CheckCircle, ArrowRight, Calendar, MessageSquare, Rocket, Target, Users, Brain, Eye, Zap, Unlock, Code } from 'lucide-react'
 import { AnimatedText, FadeInText } from '@/components/animated-text'
 import { AnimatedBorderBox } from '@/components/animated-border-box'
 import { fadeInUp, headerAnimation, cardHover, staggerContainer, ANIMATION_DELAY, SECTION_DELAYS } from '@/lib/animation-config'
@@ -113,7 +113,7 @@ export function WorkingWithMe() {
             {...headerAnimation}
             className="heading-section mb-6"
           >
-            <span style={{ color: '#ffffff', fontWeight: 300 }}>WORKING </span>
+            <span style={{ color: '#ffffff', fontWeight: 300 }}>ADVISORY </span>
             <span style={{
               background: 'linear-gradient(135deg, #00ffff 0%, #8a2be2 100%)',
               WebkitBackgroundClip: 'text',
@@ -121,7 +121,7 @@ export function WorkingWithMe() {
               backgroundClip: 'text',
               fontWeight: 700,
               display: 'inline-block'
-            }}>WITH ME</span>
+            }}>SERVICES</span>
           </motion.h2>
           <motion.p
             {...headerAnimation}
@@ -129,7 +129,7 @@ export function WorkingWithMe() {
             className="text-lg font-light tracking-wide max-w-3xl mx-auto"
             style={{ color: 'var(--gray-400)' }}
           >
-            Structured transformation. Quick wins. Long-term impact.
+            AI and blockchain strategy. From vision to working product.
           </motion.p>
         </motion.div>
 
@@ -322,7 +322,7 @@ export function WorkingWithMe() {
               {...headerAnimation}
               className="text-3xl font-bold mb-4"
             >
-              <span style={{ color: '#ffffff', fontWeight: 300 }}>WHAT YOU </span>
+              <span style={{ color: '#ffffff', fontWeight: 300 }}>HOW I </span>
               <span style={{
                 background: 'linear-gradient(135deg, #00ffff 0%, #8a2be2 100%)',
                 WebkitBackgroundClip: 'text',
@@ -330,7 +330,7 @@ export function WorkingWithMe() {
                 backgroundClip: 'text',
                 fontWeight: 700,
                 display: 'inline-block'
-              }}>GET</span>
+              }}>HELP</span>
             </motion.h3>
             <motion.p
               {...headerAnimation}
@@ -338,7 +338,7 @@ export function WorkingWithMe() {
               className="text-lg font-light tracking-wide max-w-2xl mx-auto"
               style={{ color: 'var(--gray-400)' }}
             >
-              Direct partnership. Strategic insight. Tangible results.
+              Helping companies build with AI and blockchain—strategy through implementation.
             </motion.p>
           </motion.div>
           <motion.div
@@ -347,21 +347,21 @@ export function WorkingWithMe() {
           >
             {[
               {
-                icon: Users,
-                title: 'Direct Access',
-                description: 'Weekly calls, async communication, and rapid response times. I\'m embedded in your team.',
+                icon: Brain,
+                title: 'AI Strategy & Implementation',
+                description: 'From proof-of-concept to production. Cutting through hype to build AI that actually works for your business.',
                 color: 'text-cyan-400'
               },
               {
-                icon: Brain,
-                title: 'Strategic Thinking',
-                description: '15 years of pattern recognition across industries, applied to your specific challenges.',
+                icon: Zap,
+                title: 'Blockchain Architecture',
+                description: 'Token economics, smart contracts, decentralized systems—built for real utility, not speculation.',
                 color: 'text-purple-400'
               },
               {
                 icon: Rocket,
-                title: 'Execution Power',
-                description: 'I don\'t just advise—I build, ship, and iterate alongside your team.',
+                title: 'End-to-End Delivery',
+                description: 'Not just strategy decks. I build alongside your team from architecture through launch.',
                 color: 'text-pink-500'
               }
             ].map((item, index) => {
@@ -420,7 +420,7 @@ export function WorkingWithMe() {
             {...headerAnimation}
             className="text-lg text-gray-400 mb-6"
           >
-            Ready to transform your organization?
+            Interested in working together?
           </motion.p>
           <motion.div
             variants={staggerContainer}
@@ -433,18 +433,7 @@ export function WorkingWithMe() {
                 whileTap={{ scale: 0.98 }}
                 className="px-8 py-4 bg-foreground text-background border-2 border-foreground hover:bg-transparent hover:text-foreground transition-all duration-300 font-medium text-lg flex items-center justify-center gap-2"
               >
-                Schedule Discovery Call
-                <Calendar className="w-5 h-5" />
-              </motion.button>
-            </Link>
-            <Link href="#case-studies">
-              <motion.button
-                variants={fadeInUp}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="px-8 py-4 border-2 border-foreground/20 text-foreground hover:border-foreground hover:bg-foreground hover:text-background transition-all duration-300 font-medium text-lg flex items-center justify-center gap-2"
-              >
-                View Case Studies
+                Get in Touch
                 <ArrowRight className="w-5 h-5" />
               </motion.button>
             </Link>

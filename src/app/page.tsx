@@ -1,7 +1,6 @@
 import { HeroCyberpunk } from '@/components/hero-cyberpunk'
 import { ImpactBrutal } from '@/components/impact-brutal'
 import { SuperDebateHero } from '@/components/super-debate-hero'
-import { AccelerateHero } from '@/components/accelerate-hero'
 import { WorkingWithMe } from '@/components/working-with-me'
 import { WritingsBrutal } from '@/components/writings-brutal'
 import { CallToAction } from '@/components/call-to-action'
@@ -12,7 +11,7 @@ import { StructuredData } from '@/components/structured-data'
 const heroContent = {
   heroTitle: 'JOHN CONNOR',
   heroDescription: 'Building systems that serve humanity.',
-  heroHighlight: 'Founder. Builder. Systems thinker.',
+  heroHighlight: 'AI & Blockchain Strategist. Builder. Founder.',
   metrics: [
     { number: '$20M+', label: 'Funded Startups', context: 'Products built for high-growth companies' },
     { number: '50+', label: 'Products Shipped', context: 'From local businesses to enterprise' },
@@ -30,8 +29,6 @@ export default function Home() {
       <ImpactBrutal />
       <SectionDivider variant="deco" />
       <SuperDebateHero />
-      <SectionDivider variant="dots" />
-      <AccelerateHero />
       <SectionDivider variant="agora" />
       <WorkingWithMe />
       <SectionDivider variant="greek" />
