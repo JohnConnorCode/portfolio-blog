@@ -124,7 +124,7 @@ export function AccelerateHero() {
             </span>
           </h2>
 
-          <p className="text-lg text-gray-100 max-w-2xl mx-auto mb-6">
+          <p className="text-lg text-gray-400 max-w-2xl mx-auto mb-6">
             The ecosystem platform connecting builders, investors, and resources for Web3 innovation
           </p>
 
@@ -183,7 +183,7 @@ export function AccelerateHero() {
                   <div className="relative bg-background/90 backdrop-blur-xl border border-cyan-500/30 rounded-xl p-4 h-full group-hover:border-cyan-400/60 transition-all duration-300 group-hover:bg-background/95">
                     <Icon className="w-8 h-8 text-cyan-400 mb-3" />
                     <h3 className="text-base font-bold mb-1">{feature.title}</h3>
-                    <p className="text-xs text-gray-100">{feature.description}</p>
+                    <p className="text-xs text-gray-400">{feature.description}</p>
                   </div>
                 </motion.div>
               </motion.div>
@@ -208,15 +208,15 @@ export function AccelerateHero() {
             <div className="grid md:grid-cols-3 gap-4 text-center">
               <div>
                 <div className="text-2xl font-bold text-cyan-400 mb-1">607+</div>
-                <div className="text-xs text-gray-100">Projects</div>
+                <div className="text-xs text-gray-400">Projects</div>
               </div>
               <div>
                 <div className="text-2xl font-bold text-blue-400 mb-1">433+</div>
-                <div className="text-xs text-gray-100">Funding Programs</div>
+                <div className="text-xs text-gray-400">Funding Programs</div>
               </div>
               <div>
                 <div className="text-2xl font-bold text-purple-400 mb-1">363+</div>
-                <div className="text-xs text-gray-100">Resources</div>
+                <div className="text-xs text-gray-400">Resources</div>
               </div>
             </div>
 
@@ -239,7 +239,7 @@ export function AccelerateHero() {
                 }}
               />
               <h4 className="text-base font-bold mb-2">Smart Matching Technology</h4>
-              <p className="text-sm text-gray-100">
+              <p className="text-sm text-gray-400">
                 AI-powered recommendations connect projects with the right funding, talent, and resources at the perfect time.
               </p>
             </motion.div>
@@ -254,7 +254,7 @@ export function AccelerateHero() {
           transition={{ duration: 0.6, delay: SECTION_DELAYS.accelerate + 1.1 }}
           className="text-center mt-8"
         >
-          <p className="text-base text-gray-100 mb-4">
+          <p className="text-base text-gray-400 mb-4">
             Join hundreds of Web3 builders accelerating their projects
           </p>
           <Link href="https://acceleratewith.us" target="_blank" rel="noopener noreferrer">

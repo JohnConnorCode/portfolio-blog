@@ -198,7 +198,7 @@ export function WorkingWithMe() {
                         </motion.h4>
                         <motion.p
                           variants={fadeInUp}
-                          className="text-sm text-gray-100 font-mono"
+                          className="text-sm text-gray-400 font-mono"
                         >
                           {phase.duration}
                         </motion.p>
@@ -212,7 +212,7 @@ export function WorkingWithMe() {
                         <motion.li
                           key={activity}
                           variants={fadeInUp}
-                          className="flex items-start gap-3 text-sm text-gray-100"
+                          className="flex items-start gap-3 text-sm text-gray-400"
                         >
                           <CheckCircle className="w-4 h-4 text-cyan-400 mt-0.5 flex-shrink-0" />
                           <span className="group-hover:text-foreground transition-colors duration-300">
@@ -296,7 +296,7 @@ export function WorkingWithMe() {
                         </motion.h4>
                         <motion.p
                           variants={fadeInUp}
-                          className="text-gray-100 leading-relaxed"
+                          className="text-gray-400 leading-relaxed"
                         >
                           {principle.description}
                         </motion.p>
@@ -399,7 +399,7 @@ export function WorkingWithMe() {
 
                       <motion.p
                         variants={fadeInUp}
-                        className="text-gray-100 leading-relaxed flex-grow"
+                        className="text-gray-400 leading-relaxed flex-grow"
                       >
                         {item.description}
                       </motion.p>
@@ -418,7 +418,7 @@ export function WorkingWithMe() {
         >
           <motion.p
             {...headerAnimation}
-            className="text-lg text-gray-100 mb-6"
+            className="text-lg text-gray-400 mb-6"
           >
             Ready to transform your organization?
           </motion.p>

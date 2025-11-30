@@ -92,7 +92,7 @@ export function WritingsBrutal() {
           <motion.p
             {...headerAnimation}
             transition={{ ...headerAnimation.transition, delay: ANIMATION_DELAY.stagger }}
-            className="text-base sm:text-lg text-gray-100 dark:text-gray-400 font-light tracking-wide"
+            className="text-base sm:text-lg text-gray-400 dark:text-gray-400 font-light tracking-wide"
           >
             Strategic insights on technology, community, and human potential
           </motion.p>

@@ -537,10 +537,10 @@ export default function WorkPage() {
           <div className="absolute bottom-0 right-0 w-20 h-20 border-b-2 border-r-2 border-purple-500/50 rounded-br-2xl" />
 
           <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-white">
-            Ready to Build Something Real?
+            Have a Problem Worth Solving?
           </h2>
           <p className="text-gray-300 mb-8 max-w-xl mx-auto">
-            I work with teams that care more about solving problems than following trends.
+            I partner with teams focused on outcomes over optics. Let&apos;s talk about what you&apos;re building.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/philosophy">

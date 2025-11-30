@@ -108,7 +108,7 @@ export function ImpactBrutal() {
           <motion.p
             {...headerAnimation}
             transition={{ ...headerAnimation.transition, delay: ANIMATION_DELAY.stagger }}
-            className="text-base sm:text-lg text-gray-100 dark:text-gray-400 tracking-wide"
+            className="text-base sm:text-lg text-gray-400 dark:text-gray-400 tracking-wide"
             style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300 }}
           >
             Real outcomes from solving actual product problems
@@ -181,7 +181,7 @@ export function ImpactBrutal() {
           <motion.p
             {...headerAnimation}
             transition={{ ...headerAnimation.transition, delay: ANIMATION_DELAY.section }}
-            className="text-gray-100 dark:text-gray-500 text-sm uppercase tracking-[0.25em]"
+            className="text-gray-400 dark:text-gray-500 text-sm uppercase tracking-[0.25em]"
             style={{ fontFamily: "'Cinzel', serif" }}
           >
             Building what <span style={{ color: '#d4af37' }}>actually works</span>
