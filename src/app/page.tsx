@@ -28,15 +28,15 @@ export default function Home() {
       <StructuredData type="Person" />
       <HeroCyberpunk content={heroContent} />
       <ImpactBrutal />
-      <SectionDivider variant="agora" />
-      <SuperDebateHero />
-      <SectionDivider variant="greek" />
-      <AccelerateHero />
       <SectionDivider variant="deco" />
-      <WorkingWithMe />
+      <SuperDebateHero />
+      <SectionDivider variant="dots" />
+      <AccelerateHero />
       <SectionDivider variant="agora" />
-      <WritingsBrutal />
+      <WorkingWithMe />
       <SectionDivider variant="greek" />
+      <WritingsBrutal />
+      <SectionDivider variant="dots" />
       <CallToAction />
     </>
   )

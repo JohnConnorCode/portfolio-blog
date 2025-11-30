@@ -22,7 +22,7 @@ export function StructuredData({ type, data }: StructuredDataProps) {
           "url": "https://johnconnor.xyz",
           "sameAs": [
             "https://twitter.com/johnconnor",
-            "https://linkedin.com/in/johnconnor",
+            "https://www.linkedin.com/in/johnconnor",
             "https://github.com/JohnConnorCode"
           ]
         },
@@ -89,7 +89,7 @@ export function StructuredData({ type, data }: StructuredDataProps) {
         "url": "https://johnconnor.xyz",
         "sameAs": [
           "https://twitter.com/johnconnor",
-          "https://linkedin.com/in/johnconnor",
+          "https://www.linkedin.com/in/johnconnor",
           "https://github.com/JohnConnorCode"
         ],
         "knowsAbout": [

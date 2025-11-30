@@ -123,9 +123,10 @@ const currentProjects = [
 
 const otherProjects = [
   {
-    name: 'TellTail',
-    description: 'AI cat behavior analysis using video ML pipelines. Computer vision meets consumer appeal.',
-    tech: 'ML • Video Analysis • React'
+    name: 'SmartStarts',
+    description: 'AI-powered business planning platform helping entrepreneurs validate ideas and create actionable roadmaps.',
+    tech: 'AI • Next.js • Business Strategy',
+    link: 'https://www.smartstarts.xyz/'
   },
   {
     name: 'Proclosure',
@@ -259,7 +260,14 @@ export default function WorkPage() {
                 transition={{ delay: index * 0.1 }}
                 className="bg-black/40 border border-white/5 rounded-lg p-4 hover:border-white/10 transition-all"
               >
-                <h3 className="text-white font-semibold mb-1">{project.name}</h3>
+                <div className="flex items-center justify-between mb-1">
+                  <h3 className="text-white font-semibold">{project.name}</h3>
+                  {project.link && (
+                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:text-cyan-300 text-sm flex items-center gap-1">
+                      Visit <Globe className="w-3 h-3" />
+                    </a>
+                  )}
+                </div>
                 <p className="text-gray-400 text-sm mb-2">{project.description}</p>
                 <span className="text-xs font-mono text-cyan-400/60">{project.tech}</span>
               </motion.div>

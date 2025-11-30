@@ -324,35 +324,29 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
         className="relative z-20 min-h-screen flex items-center justify-center px-4"
       >
         <div className="max-w-6xl mx-auto text-center">
-          {/* Greek-inspired decorative element above title */}
+          {/* Subtle decorative element above title - cyan dominant */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.3, duration: 0.8 }}
             className="flex items-center justify-center gap-4 mb-8"
           >
-            <div className="w-16 h-px bg-gradient-to-r from-transparent to-amber-500/60" />
-            <svg viewBox="0 0 40 40" className="w-8 h-8">
+            <div className="w-16 h-px bg-gradient-to-r from-transparent to-cyan-500/40" />
+            <svg viewBox="0 0 40 40" className="w-6 h-6">
               <defs>
                 <linearGradient id="heroDecoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#d4af37" />
-                  <stop offset="100%" stopColor="#00d4ff" />
+                  <stop offset="0%" stopColor="#00d4ff" />
+                  <stop offset="100%" stopColor="#d4af37" stopOpacity="0.6" />
                 </linearGradient>
               </defs>
               <path
                 d="M 20 5 L 35 20 L 20 35 L 5 20 Z"
                 fill="none"
                 stroke="url(#heroDecoGradient)"
-                strokeWidth="2"
-              />
-              <path
-                d="M 20 12 L 28 20 L 20 28 L 12 20 Z"
-                fill="rgba(212, 175, 55, 0.2)"
-                stroke="url(#heroDecoGradient)"
-                strokeWidth="1"
+                strokeWidth="1.5"
               />
             </svg>
-            <div className="w-16 h-px bg-gradient-to-l from-transparent to-amber-500/60" />
+            <div className="w-16 h-px bg-gradient-to-l from-transparent to-cyan-500/40" />
           </motion.div>
 
           {/* Animated title with premium glow and floating effect */}
@@ -415,7 +409,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
             </span>
           </motion.h1>
           
-          {/* Classical tagline */}
+          {/* Classical tagline - subtle */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -426,11 +420,9 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
             className="mb-10"
           >
             <p
-              className="text-sm sm:text-base tracking-[0.3em] uppercase"
+              className="text-sm sm:text-base tracking-[0.25em] uppercase text-gray-400"
               style={{
                 fontFamily: "'Cormorant Garamond', serif",
-                color: '#d4af37',
-                textShadow: '0 0 20px rgba(212, 175, 55, 0.3)'
               }}
             >
               Digital Architect · Product Philosopher · Builder
@@ -563,9 +555,9 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                   style={{
                     fontFamily: "'Cinzel', serif",
                     background: 'transparent',
-                    color: '#d4af37',
-                    boxShadow: '0 0 20px rgba(212, 175, 55, 0.2), inset 0 0 20px rgba(212, 175, 55, 0.1)',
-                    border: '2px solid rgba(212, 175, 55, 0.6)',
+                    color: '#fff',
+                    boxShadow: '0 0 20px rgba(255, 255, 255, 0.1)',
+                    border: '1px solid rgba(255, 255, 255, 0.3)',
                     textTransform: 'uppercase',
                     letterSpacing: '0.15em'
                   }}
@@ -576,7 +568,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                     initial={{ opacity: 0 }}
                     whileHover={{ opacity: 1 }}
                     transition={{ duration: 0.3 }}
-                    style={{ background: 'linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(0, 212, 255, 0.2) 100%)' }}
+                    style={{ background: 'rgba(0, 212, 255, 0.1)' }}
                   />
                 </motion.button>
               </Link>

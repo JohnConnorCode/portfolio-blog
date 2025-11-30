@@ -6,8 +6,8 @@ import { Linkedin, Twitter, Mail, ArrowUpRight, Zap } from 'lucide-react'
 
 const socialLinks = [
   { href: 'https://twitter.com/ablockunchained', icon: Twitter, label: 'Twitter' },
-  { href: 'https://linkedin.com/in/johnconnor', icon: Linkedin, label: 'LinkedIn' },
-  { href: 'mailto:john@johnconnor.xyz', icon: Mail, label: 'Email' },
+  { href: 'https://www.linkedin.com/in/johnconnor', icon: Linkedin, label: 'LinkedIn' },
+  { href: 'mailto:john@superdebate.org', icon: Mail, label: 'Email' },
 ]
 
 const quickLinks = [

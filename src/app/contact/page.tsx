@@ -11,15 +11,15 @@ const contactMethods = [
     icon: Mail,
     title: 'Email',
     description: 'For detailed inquiries and proposals',
-    action: 'john@johnconnor.xyz',
-    href: 'mailto:john@johnconnor.xyz',
+    action: 'john@superdebate.org',
+    href: 'mailto:john@superdebate.org',
   },
   {
     icon: Linkedin,
     title: 'LinkedIn',
     description: 'Connect professionally',
     action: 'View Profile',
-    href: 'https://linkedin.com/in/johnconnor',
+    href: 'https://www.linkedin.com/in/johnconnor',
   },
 ]
 
