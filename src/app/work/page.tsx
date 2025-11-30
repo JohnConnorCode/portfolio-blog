@@ -152,15 +152,33 @@ export default function WorkPage() {
           transition={{ duration: 0.6 }}
           className="mb-16 text-center"
         >
+          {/* Decorative element */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.1, duration: 0.5 }}
+            className="flex items-center justify-center gap-4 mb-6"
+          >
+            <div className="w-12 h-px bg-gradient-to-r from-transparent to-cyan-500/50" />
+            <svg viewBox="0 0 24 24" className="w-5 h-5">
+              <path d="M12 2 L22 12 L12 22 L2 12 Z" fill="none" stroke="rgba(0, 212, 255, 0.6)" strokeWidth="1.5" />
+            </svg>
+            <div className="w-12 h-px bg-gradient-to-l from-transparent to-cyan-500/50" />
+          </motion.div>
+
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="text-cyan-400 font-mono text-sm tracking-wider mb-4"
+            className="text-cyan-400/70 text-xs tracking-[0.3em] uppercase mb-4"
+            style={{ fontFamily: "'Cinzel', serif" }}
           >
-            15+ YEARS BUILDING PRODUCTS THAT MATTER
+            15+ Years Building Products That Matter
           </motion.p>
-          <h1 className="text-5xl sm:text-6xl font-black mb-6">
+          <h1
+            className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6"
+            style={{ fontFamily: "'Cinzel', serif", letterSpacing: '0.02em' }}
+          >
             <span className="text-white">Work That </span>
             <span style={{
               background: 'linear-gradient(135deg, #00ffff 0%, #a855f7 100%)',
@@ -171,7 +189,10 @@ export default function WorkPage() {
               Ships
             </span>
           </h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p
+            className="text-lg text-gray-400 max-w-3xl mx-auto"
+            style={{ fontFamily: "'Cormorant Garamond', serif" }}
+          >
             Not growth theater. Real products solving real problems across AI, Web3,
             marketplaces, civic tech, and human development.
           </p>

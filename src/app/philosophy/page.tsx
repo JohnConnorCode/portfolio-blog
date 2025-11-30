@@ -74,25 +74,46 @@ export default function PhilosophyPage() {
           transition={{ duration: 0.6 }}
           className="mb-16 text-center"
         >
+          {/* Decorative element */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.1, duration: 0.5 }}
+            className="flex items-center justify-center gap-4 mb-6"
+          >
+            <div className="w-12 h-px bg-gradient-to-r from-transparent to-amber-500/50" />
+            <svg viewBox="0 0 24 24" className="w-5 h-5">
+              <path d="M12 2 L22 12 L12 22 L2 12 Z" fill="none" stroke="rgba(212, 175, 55, 0.6)" strokeWidth="1.5" />
+            </svg>
+            <div className="w-12 h-px bg-gradient-to-l from-transparent to-amber-500/50" />
+          </motion.div>
+
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="text-purple-400 font-mono text-sm tracking-wider mb-4"
+            className="text-amber-500/70 text-xs tracking-[0.3em] uppercase mb-4"
+            style={{ fontFamily: "'Cinzel', serif" }}
           >
-            WORLDVIEW • METHOD • PRACTICE
+            Worldview • Method • Practice
           </motion.p>
-          <h1 className="text-5xl sm:text-6xl font-black mb-6">
-            <span style={{
-              background: 'linear-gradient(135deg, #a855f7 0%, #00ffff 100%)',
+          <h1
+            className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6"
+            style={{
+              fontFamily: "'Cinzel', serif",
+              letterSpacing: '0.05em',
+              background: 'linear-gradient(135deg, #ffffff 0%, #d4af37 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
-            }}>
-              Philosophy
-            </span>
+            }}
+          >
+            Philosophy
           </h1>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+          <p
+            className="text-lg text-gray-400 max-w-2xl mx-auto"
+            style={{ fontFamily: "'Cormorant Garamond', serif" }}
+          >
             I build systems that expose reality, reward integrity, and make people stronger.
             Not polish. Not spectacle. What compounds.
           </p>

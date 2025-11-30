@@ -93,15 +93,33 @@ export default function AboutPage() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
+            {/* Decorative element */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.1, duration: 0.5 }}
+              className="flex items-center justify-center gap-4 mb-6"
+            >
+              <div className="w-12 h-px bg-gradient-to-r from-transparent to-cyan-500/50" />
+              <svg viewBox="0 0 24 24" className="w-5 h-5">
+                <path d="M12 2 L22 12 L12 22 L2 12 Z" fill="none" stroke="rgba(0, 212, 255, 0.6)" strokeWidth="1.5" />
+              </svg>
+              <div className="w-12 h-px bg-gradient-to-l from-transparent to-cyan-500/50" />
+            </motion.div>
+
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className="text-cyan-400 font-mono text-sm tracking-wider mb-4"
+              className="text-cyan-400/70 text-xs tracking-[0.3em] uppercase mb-4"
+              style={{ fontFamily: "'Cinzel', serif" }}
             >
-              PRODUCT STRATEGIST • FOUNDER • SYSTEMS BUILDER
+              Product Strategist • Founder • Systems Builder
             </motion.p>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
+            <h1
+              className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6"
+              style={{ fontFamily: "'Cinzel', serif", letterSpacing: '0.02em' }}
+            >
               <span className="text-white">I Build </span>
               <span style={{
                 background: 'linear-gradient(135deg, #00ffff 0%, #a855f7 100%)',
@@ -112,7 +130,10 @@ export default function AboutPage() {
                 Systems That Serve Humanity
               </span>
             </h1>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            <p
+              className="text-lg text-gray-400 max-w-3xl mx-auto leading-relaxed"
+              style={{ fontFamily: "'Cormorant Garamond', serif" }}
+            >
               Multi-disciplinary founder with 15+ years launching complex platforms across AI, Web3,
               civic engagement, and digital communities. I operate at the intersection of
               <span className="text-cyan-400"> technology</span>,
