@@ -173,7 +173,7 @@ export default function WorkPage() {
             className="text-cyan-400/70 text-xs tracking-[0.3em] uppercase mb-4"
             style={{ fontFamily: "'Cinzel', serif" }}
           >
-            Movements I&apos;ve Started. Systems I&apos;ve Built.
+            Projects & Experience
           </motion.p>
           <h1
             className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6"
@@ -193,8 +193,7 @@ export default function WorkPage() {
             className="text-lg text-gray-400 max-w-3xl mx-auto"
             style={{ fontFamily: "'Cormorant Garamond', serif" }}
           >
-            From bringing debate back to adults, to connecting Web3 builders with funding—each project
-            is about restoring something important we&apos;ve lost.
+            Current projects, past experience, and the work that shaped how I build.
           </p>
         </motion.div>
 

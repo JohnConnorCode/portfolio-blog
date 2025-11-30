@@ -114,29 +114,28 @@ export default function AboutPage() {
               className="text-cyan-400/70 text-xs tracking-[0.3em] uppercase mb-4"
               style={{ fontFamily: "'Cinzel', serif" }}
             >
-              Founder • Movement Builder • Systems Thinker
+              Founder • Builder • Systems Thinker
             </motion.p>
             <h1
               className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6"
               style={{ fontFamily: "'Cinzel', serif", letterSpacing: '0.02em' }}
             >
-              <span className="text-white">I Build </span>
+              <span className="text-white">About </span>
               <span style={{
                 background: 'linear-gradient(135deg, #00ffff 0%, #a855f7 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
               }}>
-                Movements
+                Me
               </span>
             </h1>
             <p
               className="text-lg text-gray-400 max-w-3xl mx-auto leading-relaxed"
               style={{ fontFamily: "'Cormorant Garamond', serif" }}
             >
-              I&apos;m not building platforms. I&apos;m building cultural infrastructure—spaces where
-              communities form around ideas, the best arguments win, and technology serves
-              <span className="text-cyan-400"> human flourishing</span>.
+              15+ years building products across AI, Web3, civic tech, and digital communities.
+              I care about technology that makes people more capable, not more dependent.
             </p>
           </motion.div>
 
@@ -186,8 +185,7 @@ export default function AboutPage() {
                 viewport={{ once: true }}
                 className="text-3xl sm:text-4xl font-bold mb-6"
               >
-                <span className="text-white">Why I </span>
-                <span className="text-cyan-400">Build</span>
+                <span className="text-white">Background</span>
               </motion.h2>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -197,17 +195,16 @@ export default function AboutPage() {
                 className="space-y-4 text-gray-300"
               >
                 <p>
-                  I started in competitive debate—teaching teenagers how to <strong className="text-white">reason, argue, and change minds</strong>.
-                  That foundation shapes everything I build: systems where the best ideas win, not the loudest voices.
+                  I started in competitive debate—teaching people how to <strong className="text-white">reason, argue, and change minds</strong>.
+                  That foundation shapes how I approach building: clarity over complexity, structure over chaos.
                 </p>
                 <p>
-                  We&apos;re in a crisis of discourse. Social media optimizes for outrage. Public conversation is broken.
-                  I believe we can <strong className="text-cyan-400">rebuild the spaces</strong> where people come together to test ideas and find truth.
+                  Since then, I&apos;ve built marketplaces, raised funding, scaled products to hundreds of thousands of users,
+                  and worked across AI, Web3, and civic tech. I&apos;ve seen what works and what doesn&apos;t.
                 </p>
                 <p>
-                  That&apos;s why I created SuperDebate—bringing structured debate back to adults.
-                  That&apos;s why I built Accelerate—connecting Web3 builders with resources.
-                  <strong className="text-white"> Every project is about restoring something we&apos;ve lost.</strong>
+                  Now I&apos;m focused on SuperDebate (bringing structured debate back to adults) and
+                  Accelerate (helping Web3 builders find funding and resources).
                 </p>
               </motion.div>
             </div>

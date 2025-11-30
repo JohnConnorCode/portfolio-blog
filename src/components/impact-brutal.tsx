@@ -102,8 +102,8 @@ export function ImpactBrutal() {
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-4 leading-[1.1] sm:leading-[1.05] lg:leading-[1.02]"
             style={{ fontFamily: "'Cinzel', serif", letterSpacing: '0.1em' }}
           >
-            <span className="text-foreground font-light">WHAT I&apos;VE</span>
-            <span className="font-bold" style={{ color: '#d4af37', textShadow: '0 0 30px rgba(212, 175, 55, 0.4)' }}> SHIPPED</span>
+            <span className="text-foreground font-light">TRACK</span>
+            <span className="font-bold" style={{ color: '#d4af37', textShadow: '0 0 30px rgba(212, 175, 55, 0.4)' }}> RECORD</span>
           </motion.h2>
           <motion.p
             {...headerAnimation}
@@ -111,7 +111,7 @@ export function ImpactBrutal() {
             className="text-base sm:text-lg text-gray-400 dark:text-gray-400 tracking-wide"
             style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300 }}
           >
-            Not vanity metrics. Real things that work.
+            Results from building products that matter
           </motion.p>
         </motion.div>
         

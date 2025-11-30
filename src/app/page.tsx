@@ -11,8 +11,8 @@ import { StructuredData } from '@/components/structured-data'
 // Default hero content
 const heroContent = {
   heroTitle: 'JOHN CONNOR',
-  heroDescription: 'I build movements, not just products.',
-  heroHighlight: 'Founder. Systems architect. Builder of things that matter.',
+  heroDescription: 'Building systems that serve humanity.',
+  heroHighlight: 'Founder. Builder. Systems thinker.',
   metrics: [
     { number: '$20M+', label: 'Funded Startups', context: 'Products built for high-growth companies' },
     { number: '50+', label: 'Products Shipped', context: 'From local businesses to enterprise' },

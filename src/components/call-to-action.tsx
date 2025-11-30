@@ -104,7 +104,7 @@ export function CallToAction() {
               backgroundClip: 'text',
             }}
           >
-            Let&apos;s Build Something That Matters
+            Let&apos;s Talk
           </motion.h2>
 
           <motion.p
@@ -113,7 +113,7 @@ export function CallToAction() {
             className="text-base sm:text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto"
             style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300 }}
           >
-            I work with people who care more about impact than optics. If that&apos;s you, let&apos;s talk.
+            Have a project in mind? I&apos;d love to hear about it.
           </motion.p>
 
           <motion.div
