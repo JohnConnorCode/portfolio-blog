@@ -104,7 +104,7 @@ export function CallToAction() {
               backgroundClip: 'text',
             }}
           >
-            Ready to Solve Your Product Problems?
+            Let&apos;s Build Something That Matters
           </motion.h2>
 
           <motion.p
@@ -113,7 +113,7 @@ export function CallToAction() {
             className="text-base sm:text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto"
             style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300 }}
           >
-            Let&apos;s find what&apos;s preventing your users from adopting your product and fix it.
+            I work with people who care more about impact than optics. If that&apos;s you, let&apos;s talk.
           </motion.p>
 
           <motion.div

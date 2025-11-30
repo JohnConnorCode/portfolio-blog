@@ -173,28 +173,28 @@ export default function WorkPage() {
             className="text-cyan-400/70 text-xs tracking-[0.3em] uppercase mb-4"
             style={{ fontFamily: "'Cinzel', serif" }}
           >
-            15+ Years Building Products That Matter
+            Movements I&apos;ve Started. Systems I&apos;ve Built.
           </motion.p>
           <h1
             className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6"
             style={{ fontFamily: "'Cinzel', serif", letterSpacing: '0.02em' }}
           >
-            <span className="text-white">Work That </span>
+            <span className="text-white">The </span>
             <span style={{
               background: 'linear-gradient(135deg, #00ffff 0%, #a855f7 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
             }}>
-              Ships
+              Work
             </span>
           </h1>
           <p
             className="text-lg text-gray-400 max-w-3xl mx-auto"
             style={{ fontFamily: "'Cormorant Garamond', serif" }}
           >
-            Not growth theater. Real products solving real problems across AI, Web3,
-            marketplaces, civic tech, and human development.
+            From bringing debate back to adults, to connecting Web3 builders with funding—each project
+            is about restoring something important we&apos;ve lost.
           </p>
         </motion.div>
 

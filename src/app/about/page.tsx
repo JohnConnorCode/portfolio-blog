@@ -114,7 +114,7 @@ export default function AboutPage() {
               className="text-cyan-400/70 text-xs tracking-[0.3em] uppercase mb-4"
               style={{ fontFamily: "'Cinzel', serif" }}
             >
-              Product Strategist • Founder • Systems Builder
+              Founder • Movement Builder • Systems Thinker
             </motion.p>
             <h1
               className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6"
@@ -127,18 +127,16 @@ export default function AboutPage() {
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
               }}>
-                Systems That Serve Humanity
+                Movements
               </span>
             </h1>
             <p
               className="text-lg text-gray-400 max-w-3xl mx-auto leading-relaxed"
               style={{ fontFamily: "'Cormorant Garamond', serif" }}
             >
-              Multi-disciplinary founder with 15+ years launching complex platforms across AI, Web3,
-              civic engagement, and digital communities. I operate at the intersection of
-              <span className="text-cyan-400"> technology</span>,
-              <span className="text-purple-400"> philosophy</span>, and
-              <span className="text-pink-400"> human development</span>.
+              I&apos;m not building platforms. I&apos;m building cultural infrastructure—spaces where
+              communities form around ideas, the best arguments win, and technology serves
+              <span className="text-cyan-400"> human flourishing</span>.
             </p>
           </motion.div>
 
@@ -188,10 +186,8 @@ export default function AboutPage() {
                 viewport={{ once: true }}
                 className="text-3xl sm:text-4xl font-bold mb-6"
               >
-                <span className="text-white">Not Just a </span>
-                <span className="text-cyan-400">Strategist</span>
-                <span className="text-white">—A </span>
-                <span className="text-purple-400">Builder</span>
+                <span className="text-white">Why I </span>
+                <span className="text-cyan-400">Build</span>
               </motion.h2>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -201,18 +197,17 @@ export default function AboutPage() {
                 className="space-y-4 text-gray-300"
               >
                 <p>
-                  I'm one of the few operators who combines <strong className="text-white">technical competency</strong>,
-                  <strong className="text-white"> systems thinking</strong>, and <strong className="text-white">founder empathy</strong> with
-                  real-world execution across dozens of domains.
+                  I started in competitive debate—teaching teenagers how to <strong className="text-white">reason, argue, and change minds</strong>.
+                  That foundation shapes everything I build: systems where the best ideas win, not the loudest voices.
                 </p>
                 <p>
-                  My work spans consumer apps, education tools, AI-driven platforms, ecosystem infrastructure,
-                  marketplaces, and civic systems. I don't just advise—I <strong className="text-cyan-400">build, ship, and iterate</strong> alongside your team.
+                  We&apos;re in a crisis of discourse. Social media optimizes for outrage. Public conversation is broken.
+                  I believe we can <strong className="text-cyan-400">rebuild the spaces</strong> where people come together to test ideas and find truth.
                 </p>
                 <p>
-                  Early career in competitive debate taught me how people reason, argue, and change their minds.
-                  This informs every product I create: <strong className="text-white">clarity over complexity</strong>,
-                  <strong className="text-white"> structure over chaos</strong>, <strong className="text-white">rigor over hype</strong>.
+                  That&apos;s why I created SuperDebate—bringing structured debate back to adults.
+                  That&apos;s why I built Accelerate—connecting Web3 builders with resources.
+                  <strong className="text-white"> Every project is about restoring something we&apos;ve lost.</strong>
                 </p>
               </motion.div>
             </div>
@@ -341,10 +336,10 @@ export default function AboutPage() {
             className="text-center mb-12"
           >
             <h2 className="text-3xl font-bold mb-4">
-              <span className="text-white">I Build Systems For</span>
+              <span className="text-white">What I Care About</span>
             </h2>
             <p className="text-gray-400 max-w-2xl mx-auto">
-              Everything I create serves a deeper purpose—advancing human capability, not just user metrics.
+              The best ideas should win. Communities should form around shared purpose. Technology should make us more capable, not more dependent.
             </p>
           </motion.div>
 

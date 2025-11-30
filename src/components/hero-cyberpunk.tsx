@@ -425,7 +425,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                 fontFamily: "'Cormorant Garamond', serif",
               }}
             >
-              Digital Architect · Product Philosopher · Builder
+              Founder · Movement Builder · Systems Thinker
             </p>
           </motion.div>
 
