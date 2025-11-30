@@ -201,8 +201,8 @@ export default function SuperDebatePage() {
               transition={{ duration: ANIMATION_DURATION.normal, delay: ANIMATION_DELAY.stagger * 2 }}
               className="text-xl sm:text-2xl text-gray-100 max-w-3xl mx-auto mb-12"
             >
-              Join structured debates, tournaments, and critical thinking development.
-              Founded to democratize the skills that transformed my life.
+              The first large-scale adult debate ecosystem since ancient times.
+              Local clubs, national tournaments, AI-powered judging. <strong className="text-purple-400">Reinventing civic discourse.</strong>
             </motion.p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -646,16 +646,17 @@ export default function SuperDebatePage() {
               className="space-y-6 text-lg text-gray-100 max-w-3xl mx-auto mb-12"
             >
               <p>
-                As a national debate champion turned technologist, I'm uniquely positioned to bridge
-                the gap between traditional debate excellence and modern technology platforms.
+                SuperDebate is <strong className="text-purple-400">one of the most original civic ventures</strong> launched
+                in the US in the last decade. From Tuesday-night meetups to UFC-level championship events—a sport-like
+                ecosystem that teaches listening, argumentation, reasoning, and intellectual humility.
               </p>
               <p>
-                SuperDebate represents my vision for democratizing the transformative power of debate
-                the same skills that shaped my analytical thinking, public speaking, and leadership abilities.
+                Built on a conviction that <strong className="text-white">growth requires confrontation</strong>. Creates rooms
+                where people risk themselves in public, test their ideas against opposition, and leave sharper for it.
               </p>
               <p>
-                We're not just building a platform; we're creating a movement that makes critical thinking
-                accessible, engaging, and fun for everyone, regardless of their background or experience.
+                The strategic aim: create a global, positive alternative to online outrage.
+                <strong className="text-pink-400"> Restore civic integrity. Rebuild the world&apos;s capacity for reasoned discourse.</strong>
               </p>
             </motion.div>
 

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -94,6 +94,19 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Premium smooth scrolling */
+@supports (scroll-behavior: smooth) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Global transition defaults for smoother feel */
+*, *::before, *::after {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 html,
@@ -136,9 +149,42 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @layer utilities {
+  /* Premium Easing Functions */
+  .ease-premium {
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .ease-bounce {
+    transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .ease-smooth {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
   /* Elegant animations */
   .animate-fade-in {
-    animation: fadeIn 0.8s ease-out forwards;
+    animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .animate-fade-up {
+    animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .animate-slide-in-right {
+    animation: slideInRight 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .animate-glow-pulse {
+    animation: glowPulse 3s ease-in-out infinite;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
   }
 
   @keyframes fadeIn {
@@ -150,6 +196,271 @@ h1, h2, h3, h4, h5, h6 {
       opacity: 1;
       transform: translateY(0);
     }
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes glowPulse {
+    0%, 100% {
+      box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 40px rgba(0, 212, 255, 0.6), 0 0 60px rgba(0, 212, 255, 0.3);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     DIGITAL AGORA - Greek + Art Deco Fusion Styles
+     ═══════════════════════════════════════════════════════════ */
+
+  /* Classical Typography */
+  .font-classical {
+    font-family: 'Cinzel', serif;
+    letter-spacing: 0.1em;
+  }
+
+  .font-elegant {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+  }
+
+  /* Greek Key / Meander Pattern Border */
+  .greek-border {
+    position: relative;
+  }
+
+  .greek-border::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background:
+      repeating-linear-gradient(90deg,
+        transparent 0px,
+        transparent 4px,
+        rgba(212, 175, 55, 0.6) 4px,
+        rgba(212, 175, 55, 0.6) 8px,
+        transparent 8px,
+        transparent 12px,
+        rgba(212, 175, 55, 0.6) 12px,
+        rgba(212, 175, 55, 0.6) 16px
+      );
+  }
+
+  /* Art Deco Sunburst */
+  .deco-sunburst {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .deco-sunburst::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200%;
+    height: 200%;
+    background: repeating-conic-gradient(
+      from 0deg,
+      transparent 0deg 5deg,
+      rgba(212, 175, 55, 0.03) 5deg 10deg
+    );
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  /* Art Deco Stepped Frame */
+  .deco-frame {
+    position: relative;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+  }
+
+  .deco-frame::before,
+  .deco-frame::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 1px solid rgba(212, 175, 55, 0.5);
+  }
+
+  .deco-frame::before {
+    top: -5px;
+    left: -5px;
+    border-right: none;
+    border-bottom: none;
+  }
+
+  .deco-frame::after {
+    bottom: -5px;
+    right: -5px;
+    border-left: none;
+    border-top: none;
+  }
+
+  /* Golden Accent Colors */
+  .text-gold {
+    color: #d4af37;
+  }
+
+  .text-gold-light {
+    color: #f4d03f;
+  }
+
+  .border-gold {
+    border-color: rgba(212, 175, 55, 0.5);
+  }
+
+  .bg-gold {
+    background: linear-gradient(135deg, #d4af37 0%, #f4d03f 50%, #d4af37 100%);
+  }
+
+  /* Gold Glow Effect */
+  .glow-gold {
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3),
+                0 0 40px rgba(212, 175, 55, 0.1);
+  }
+
+  .text-glow-gold {
+    text-shadow: 0 0 20px rgba(212, 175, 55, 0.5),
+                 0 0 40px rgba(212, 175, 55, 0.3);
+  }
+
+  /* Laurel Wreath Decorative Element */
+  .laurel-left::before,
+  .laurel-right::after {
+    content: '❦';
+    position: absolute;
+    font-size: 1.5rem;
+    color: rgba(212, 175, 55, 0.6);
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .laurel-left::before {
+    left: -2rem;
+  }
+
+  .laurel-right::after {
+    right: -2rem;
+    transform: translateY(-50%) scaleX(-1);
+  }
+
+  /* Art Deco Geometric Line */
+  .deco-line {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .deco-line::before,
+  .deco-line::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg,
+      transparent,
+      rgba(212, 175, 55, 0.5) 20%,
+      rgba(212, 175, 55, 0.5) 80%,
+      transparent
+    );
+  }
+
+  /* Column-Inspired Vertical Lines */
+  .column-lines {
+    position: relative;
+  }
+
+  .column-lines::before,
+  .column-lines::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom,
+      transparent,
+      rgba(212, 175, 55, 0.3) 20%,
+      rgba(212, 175, 55, 0.3) 80%,
+      transparent
+    );
+  }
+
+  .column-lines::before {
+    left: 0;
+  }
+
+  .column-lines::after {
+    right: 0;
+  }
+
+  /* Art Deco Diamond Pattern */
+  .deco-diamond {
+    position: relative;
+  }
+
+  .deco-diamond::before {
+    content: '◆';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.5rem;
+    color: rgba(212, 175, 55, 0.8);
+  }
+
+  /* Agora Gradient - Gold to Cyan fusion */
+  .gradient-agora {
+    background: linear-gradient(135deg, #d4af37 0%, #00d4ff 100%);
+  }
+
+  .text-gradient-agora {
+    background: linear-gradient(135deg, #d4af37 0%, #00d4ff 50%, #d4af37 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
   /* Stark gradient for special elements */

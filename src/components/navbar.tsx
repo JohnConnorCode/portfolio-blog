@@ -227,29 +227,48 @@ export function Navbar() {
                   <Link
                     href={item.href}
                     className={cn(
-                      'relative px-6 py-3 rounded-lg transition-all flex items-center space-x-2',
+                      'relative px-5 py-2.5 rounded-lg transition-all duration-300 flex items-center space-x-2 group/link',
                       isActive
-                        ? 'text-foreground'
-                        : 'text-muted-foreground hover:text-foreground hover:bg-foreground/5'
+                        ? 'text-cyan-400'
+                        : 'text-gray-400 hover:text-white'
                     )}
                   >
-                    <Icon className="w-4 h-4" />
-                    <span>{item.label}</span>
+                    {/* Hover glow background */}
+                    <span className="absolute inset-0 rounded-lg bg-gradient-to-r from-cyan-500/10 to-purple-500/10 opacity-0 group-hover/link:opacity-100 transition-opacity duration-300" />
+
+                    {/* Active indicator */}
+                    {isActive && (
+                      <motion.span
+                        layoutId="nav-indicator"
+                        className="absolute inset-0 rounded-lg bg-white/5 border border-cyan-500/30"
+                        transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                      />
+                    )}
+
+                    <Icon className={cn(
+                      "w-4 h-4 relative z-10 transition-all duration-300",
+                      isActive ? "text-cyan-400" : "group-hover/link:text-cyan-400"
+                    )} />
+                    <span className="relative z-10">{item.label}</span>
                   </Link>
 
                   {/* Dropdown for sub-items */}
                   {hasSubItems && (
-                    <div className="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                      <div className="bg-background/95 backdrop-blur-xl border border-border/50 rounded-lg shadow-xl overflow-hidden min-w-[200px]">
-                        {item.subItems?.map((subItem) => {
+                    <div className="absolute top-full left-0 pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2">
+                      <div className="bg-black/90 backdrop-blur-2xl border border-white/10 rounded-xl shadow-2xl overflow-hidden min-w-[200px]"
+                        style={{ boxShadow: '0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 212, 255, 0.1)' }}
+                      >
+                        {item.subItems?.map((subItem, subIndex) => {
                           const isSubActive = pathname === subItem.href
                           return (
                             <Link
                               key={subItem.href}
                               href={subItem.href}
                               className={cn(
-                                'block px-4 py-3 hover:bg-foreground/5 transition-colors',
-                                isSubActive ? 'text-primary bg-primary/10' : 'text-muted-foreground hover:text-foreground'
+                                'block px-5 py-3 transition-all duration-200 border-l-2 border-transparent hover:border-cyan-400',
+                                isSubActive
+                                  ? 'text-cyan-400 bg-cyan-500/10 border-l-cyan-400'
+                                  : 'text-gray-400 hover:text-white hover:bg-white/5'
                               )}
                             >
                               {subItem.label}

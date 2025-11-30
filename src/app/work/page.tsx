@@ -1,322 +1,396 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ArrowRight, Zap, Users, Code, Trophy, Target, Shield, TrendingUp, Globe } from 'lucide-react'
+import { ArrowRight, Zap, Users, Code, Trophy, Target, Shield, TrendingUp, Globe, Rocket, Brain, MessageSquare } from 'lucide-react'
 import Link from 'next/link'
-import { AnimatedLetters } from '@/components/animated-text'
 import { SectionDivider } from '@/components/section-divider'
-import { AnimatedBorderBox } from '@/components/animated-border-box'
 
 const experiences = [
   {
-    company: 'ThriveProtocol',
-    role: 'Ecosystem Specialist',
-    period: '2024',
-    description: 'Managing retroactive grant allocations and building autonomous evaluation tools.',
-    achievements: [
-      'Distributed $2M+ in grants using custom evaluation frameworks',
-      'Saved the team 20+ hours weekly through process automation',
-      'Built Telegram and Slack bots to streamline ecosystem operations',
-      'Created milestone-based funding mechanisms that improved accountability'
-    ],
-    impact: 'Made ecosystem funding transparent and aligned with actual delivery.',
-    tags: ['Grant Management', 'Process Automation', 'Web3', 'AI Tools']
-  },
-  {
     company: 'Sparkblox',
-    role: 'Founder & Product Lead',
+    role: 'Founder & CEO',
     period: '2022-2023',
-    description: 'Created NFT 2.0 infrastructure with dynamic assets that evolve based on user behavior.',
+    description: 'Built no-code NFT infrastructure for brands and creators. Led full product architecture, engineering, and go-to-market.',
     achievements: [
-      'Raised $1M+ in funding and built team of 18 engineers',
-      'Secured major partnerships with Chainlink and Algorand',
-      'Designed tokenomics model with sustainable revenue streams',
-      'Built proof-of-concept that attracted institutional interest'
+      'Raised over $1M in funding',
+      'Built and led team of 18 engineers',
+      'Secured partnerships with Chainlink and Algorand',
+      'Built modular deployers, dynamic metadata tools, and branded storefronts'
     ],
-    impact: 'Demonstrated how NFTs could be more than static JPEGs.',
-    tags: ['Web3', 'Product Strategy', 'Fundraising', 'Team Building']
+    impact: 'Demonstrated how to lead teams, raise capital, and ship complex Web3 products.',
+    tags: ['Web3', 'Fundraising', 'Team Leadership', 'Product Architecture'],
+    color: 'cyan'
   },
   {
-    company: 'Upland',
+    company: 'Upland.me',
     role: 'Product & Operations Manager',
     period: '2021-2022',
-    description: 'Scaled virtual property game from 13K to 200K monthly active users.',
+    description: 'Managed product flows, UX, operations, and game economy mechanics for a major Web3 virtual economy at scale.',
     achievements: [
-      'Led product strategy for 15x user growth in 12 months',
+      'Scaled from 13K to 200K monthly active users (15x growth)',
       'Designed SPARK token economics and launch strategy',
-      'Built onboarding flows that improved D7 retention by 40%',
-      'Managed cross-functional team of designers and engineers'
+      'Built onboarding flows improving D7 retention by 40%',
+      'Managed token economies, player dynamics, and transaction systems'
     ],
-    impact: 'Proved virtual economies work when aligned with player interests.',
-    tags: ['Gaming', 'Token Design', 'Growth', 'Product Management']
+    impact: 'Learned how virtual economies work when aligned with player interests.',
+    tags: ['Gaming', 'Token Design', 'Growth', 'Virtual Economies'],
+    color: 'purple'
   },
   {
     company: 'Mode Mobile',
     role: 'Product Manager',
     period: '2020-2021',
-    description: 'Transformed ad-tech product into sustainable business model.',
+    description: 'Transformed failing ad-tech product into sustainable business through user research and strategic pivots.',
     achievements: [
-      'Pivoted failing product to achieve product-market fit',
+      'Pivoted struggling product to achieve product-market fit',
       'Increased revenue 3x through strategic feature development',
-      'Reduced churn by 50% through user research and iteration',
-      'Built analytics dashboard that revealed critical user insights'
+      'Reduced churn by 50% through user research',
+      'Built analytics dashboard revealing critical insights'
     ],
-    impact: 'Saved a struggling product by listening to actual users.',
-    tags: ['Product Turnaround', 'User Research', 'Analytics', 'Mobile']
+    impact: 'Saved a product by listening to actual users instead of assumptions.',
+    tags: ['Product Turnaround', 'User Research', 'Analytics', 'Mobile'],
+    color: 'pink'
   },
   {
     company: 'Business of AI',
     role: 'Lead Product Researcher',
     period: '2019-2020',
-    description: 'Built AI strategy framework for Fortune 500 companies.',
+    description: 'Created AI strategy frameworks helping enterprises cut through hype to find real value.',
     achievements: [
-      'Created decision framework used by 10+ enterprises',
+      'Decision framework used by 10+ enterprises',
       'Conducted 50+ executive interviews on AI adoption',
-      'Published research reaching 100K+ industry professionals',
+      'Published research reaching 100K+ professionals',
       'Advised startups on practical AI implementation'
     ],
-    impact: 'Helped companies cut through AI hype to find real value.',
-    tags: ['AI Strategy', 'Research', 'Enterprise', 'Thought Leadership']
+    impact: 'Helped companies understand AI beyond the buzzwords.',
+    tags: ['AI Strategy', 'Research', 'Enterprise', 'Thought Leadership'],
+    color: 'yellow'
   },
   {
     company: 'HelpWith',
-    role: 'Product Lead',
+    role: 'Founder & Product Lead',
     period: '2018-2019',
-    description: 'Created marketplace for local services that prioritized human connection.',
+    description: 'One of the early skill-sharing and task-help marketplaces. Built matching engine, UI, and community operations from scratch.',
     achievements: [
       'Launched in 3 cities with 500+ service providers',
-      'Built trust system that reduced disputes by 80%',
-      'Designed matching algorithm prioritizing quality over speed',
-      'Created community features that increased repeat usage 2x'
+      'Built trust system reducing disputes by 80%',
+      'Designed matching algorithm prioritizing quality',
+      'Created community features increasing repeat usage 2x'
     ],
-    impact: 'Proved marketplaces work better when they foster relationships.',
-    tags: ['Marketplace', 'Community', 'Trust Systems', 'Local Commerce']
+    impact: 'Learned to build platforms that map incentives and scale social value.',
+    tags: ['Marketplace', 'Community', 'Trust Systems', 'Zero-to-One'],
+    color: 'cyan'
+  },
+  {
+    company: 'Chicago Debates',
+    role: 'Debate Instructor',
+    period: 'Early Career',
+    description: 'Competitive debate instruction that shaped how I think about reasoning, persuasion, and human development.',
+    achievements: [
+      'Trained students in argumentation and critical thinking',
+      'Developed pedagogical frameworks for discourse',
+      'Learned how people reason and change their minds',
+      'Built foundation for all future product work'
+    ],
+    impact: 'This experience informs everything I build: clarity, rigor, structure.',
+    tags: ['Education', 'Debate', 'Communication', 'Human Development'],
+    color: 'purple'
   }
 ]
 
 const currentProjects = [
   {
-    name: 'Super Debate',
+    name: 'SuperDebate',
     role: 'Founder',
-    description: 'Platform for in-person intellectual discourse. Creating spaces where people confront ideas directly.',
-    status: 'Active in 3 cities',
+    description: 'The first large-scale adult debate ecosystem since ancient times. Local clubs, national tournaments, AI-powered judging. Reinventing civic discourse.',
+    status: 'Active • Chicago + Bali',
     link: '/super-debate',
-    external: 'https://superdebate.org'
+    external: 'https://superdebate.org',
+    color: 'purple',
+    icon: MessageSquare
   },
   {
     name: 'Accelerate',
     role: 'Founder',
-    description: 'Web3 ecosystem platform connecting builders with funding, talent, and resources through intelligent matching.',
-    status: 'Live with 600+ projects',
+    description: 'Modular platform for builder profiles, funding programs, evaluation engines, and intelligent matching. Systems-level innovation for Web3 ecosystems.',
+    status: 'Live • 600+ Projects',
     link: '/accelerate',
-    external: 'https://acceleratewith.us'
+    external: 'https://acceleratewith.us',
+    color: 'cyan',
+    icon: Rocket
+  }
+]
+
+const otherProjects = [
+  {
+    name: 'TellTail',
+    description: 'AI cat behavior analysis using video ML pipelines. Computer vision meets consumer appeal.',
+    tech: 'ML • Video Analysis • React'
+  },
+  {
+    name: 'Proclosure',
+    description: 'Full-stack real estate intelligence platform. Predictive analytics, CRM, automated workflows.',
+    tech: 'AI • Supabase • Data Pipelines'
   }
 ]
 
 export default function WorkPage() {
   return (
     <section className="min-h-screen py-20 px-4 sm:px-6 lg:px-8">
+      {/* Background effects */}
+      <div className="fixed inset-0 -z-10 pointer-events-none">
+        <div className="absolute top-1/4 left-0 w-96 h-96 bg-cyan-500/5 rounded-full blur-[150px]" />
+        <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-purple-500/5 rounded-full blur-[150px]" />
+      </div>
+
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="mb-16"
+          transition={{ duration: 0.6 }}
+          className="mb-16 text-center"
         >
-          <AnimatedLetters 
-            text="Work" 
-            className="text-5xl sm:text-6xl font-black mb-8 text-center block leading-[1.1] sm:leading-[1.05]"
-            as="h1"
-          />
           <motion.p
-            className="text-xl text-center text-gray-100 max-w-3xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="text-cyan-400 font-mono text-sm tracking-wider mb-4"
           >
-            15 years building products that solve real problems. Not growth theater.
+            15+ YEARS BUILDING PRODUCTS THAT MATTER
           </motion.p>
+          <h1 className="text-5xl sm:text-6xl font-black mb-6">
+            <span className="text-white">Work That </span>
+            <span style={{
+              background: 'linear-gradient(135deg, #00ffff 0%, #a855f7 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+            }}>
+              Ships
+            </span>
+          </h1>
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            Not growth theater. Real products solving real problems across AI, Web3,
+            marketplaces, civic tech, and human development.
+          </p>
         </motion.div>
 
         {/* Current Projects */}
         <motion.section
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true }}
           className="mb-20"
         >
           <motion.h2
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="text-3xl font-bold mb-8 text-cyan-400"
+            className="text-2xl font-bold mb-8"
           >
-            Current Focus
+            <span className="text-white">Current </span>
+            <span className="text-cyan-400">Focus</span>
           </motion.h2>
-          
-          <div className="space-y-6">
-            {currentProjects.map((project, index) => (
-              <AnimatedBorderBox
-                key={project.name}
-                delay={index * 0.2}
-                className="p-6 rounded-xl hover:bg-foreground/5 transition-colors"
-                borderColor="rgba(0, 200, 255, 0.3)"
-              >
-                <div className="flex justify-between items-start mb-2">
-                  <h3 className="text-xl font-bold text-cyan-400">{project.name}</h3>
-                  <span className="text-sm text-muted-foreground">{project.role}</span>
-                </div>
-                <p className="text-muted-foreground mb-2">{project.description}</p>
-                <div className="flex items-center justify-between">
-                  <span className="text-sm font-mono text-cyan-400/70">{project.status}</span>
-                  <div className="flex items-center gap-4">
-                    {project.link && (
-                      <Link
-                        href={project.link}
-                        className="text-sm text-cyan-400 hover:text-cyan-300 flex items-center gap-1 transition-colors"
-                      >
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {currentProjects.map((project, index) => {
+              const Icon = project.icon
+              return (
+                <motion.div
+                  key={project.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  whileHover={{ y: -5, scale: 1.01 }}
+                  className="relative group"
+                >
+                  <div className={`absolute -inset-1 rounded-xl opacity-0 group-hover:opacity-100 blur-xl transition-all duration-500 ${project.color === 'cyan' ? 'bg-cyan-500/20' : 'bg-purple-500/20'}`} />
+                  <div className="relative bg-black/60 backdrop-blur-xl border border-white/10 rounded-xl p-6 h-full group-hover:border-white/20 transition-all">
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="flex items-center gap-3">
+                        <Icon className={`w-8 h-8 ${project.color === 'cyan' ? 'text-cyan-400' : 'text-purple-400'}`} style={{ filter: 'drop-shadow(0 0 10px currentColor)' }} />
+                        <div>
+                          <h3 className={`text-xl font-bold ${project.color === 'cyan' ? 'text-cyan-400' : 'text-purple-400'}`}>{project.name}</h3>
+                          <span className="text-gray-500 text-sm">{project.role}</span>
+                        </div>
+                      </div>
+                      <span className="text-xs font-mono text-gray-400 bg-white/5 px-2 py-1 rounded">{project.status}</span>
+                    </div>
+                    <p className="text-gray-300 mb-4">{project.description}</p>
+                    <div className="flex items-center gap-4">
+                      <Link href={project.link} className={`text-sm font-semibold flex items-center gap-1 ${project.color === 'cyan' ? 'text-cyan-400 hover:text-cyan-300' : 'text-purple-400 hover:text-purple-300'} transition-colors`}>
                         View Details <ArrowRight className="w-3 h-3" />
                       </Link>
-                    )}
-                    {project.external && (
-                      <a
-                        href={project.external}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-sm text-cyan-400 hover:text-cyan-300 flex items-center gap-1 transition-colors"
-                      >
+                      <a href={project.external} target="_blank" rel="noopener noreferrer" className="text-sm text-gray-400 hover:text-white flex items-center gap-1 transition-colors">
                         Visit Site <Globe className="w-3 h-3" />
                       </a>
-                    )}
+                    </div>
                   </div>
-                </div>
-              </AnimatedBorderBox>
-            ))}
+                </motion.div>
+              )
+            })}
           </div>
         </motion.section>
 
-        <SectionDivider variant="organic" />
-
-        {/* Experience Timeline */}
+        {/* Other Projects */}
         <motion.section
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true }}
           className="mb-20"
         >
           <motion.h2
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="text-3xl font-bold mb-12 text-center"
+            className="text-xl font-bold mb-6 text-gray-400"
           >
-            <span className="text-white">Experience </span>
-            <span className="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">Timeline</span>
+            Other Projects
           </motion.h2>
-          
-          <div className="space-y-8">
-            {experiences.map((exp, index) => (
-              <AnimatedBorderBox
-                key={exp.company}
-                delay={index * 0.2}
-                className="p-8 rounded-xl hover:bg-foreground/5 transition-all duration-300"
-                borderColor={index % 2 === 0 ? "rgba(0, 200, 255, 0.3)" : "rgba(147, 51, 234, 0.3)"}
+          <div className="grid md:grid-cols-2 gap-4">
+            {otherProjects.map((project, index) => (
+              <motion.div
+                key={project.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-black/40 border border-white/5 rounded-lg p-4 hover:border-white/10 transition-all"
               >
-                {/* Header */}
-                <div className="flex flex-col lg:flex-row lg:items-center justify-between mb-6 pb-4 border-b border-foreground/10">
-                  <div className="flex flex-col lg:flex-row lg:items-center gap-3">
-                    <h3 className="text-2xl font-black text-cyan-400">
-                      {exp.company}
-                    </h3>
-                    <span className="text-lg text-foreground">{exp.role}</span>
-                  </div>
-                  <span className="text-sm font-mono text-cyan-400 mt-2 lg:mt-0">{exp.period}</span>
-                </div>
-                
-                {/* Description */}
-                <p className="text-lg text-muted-foreground mb-6">
-                  {exp.description}
-                </p>
-                
-                {/* Achievements Grid */}
-                <div className="grid md:grid-cols-2 gap-3 mb-6">
-                  {exp.achievements.map((achievement, i) => (
-                    <motion.div
-                      key={i}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: index * 0.1 + i * 0.08, ease: "easeOut" }}
-                      className="flex items-start gap-3 p-3 rounded-lg bg-gradient-to-r from-cyan-400/5 to-purple-400/5 border border-foreground/5 hover:border-foreground/20 transition-colors"
-                    >
-                      <Zap className="w-4 h-4 text-cyan-400 mt-1 flex-shrink-0" />
-                      <span className="text-sm text-muted-foreground">{achievement}</span>
-                    </motion.div>
-                  ))}
-                </div>
-                
-                {/* Impact Statement */}
-                <motion.div
-                  className="p-4 bg-gradient-to-r from-cyan-400/10 to-purple-400/10 rounded-lg border border-cyan-400/20 mb-6"
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 + 0.4, ease: "easeOut" }}
-                >
-                  <p className="text-lg font-bold italic text-cyan-400">
-                    → {exp.impact}
-                  </p>
-                </motion.div>
-                
-                {/* Tags */}
-                <div className="flex flex-wrap gap-2">
-                  {exp.tags.map((tag) => (
-                    <motion.span
-                      key={tag}
-                      whileHover={{ scale: 1.05 }}
-                      className="px-3 py-1 text-xs font-mono border border-foreground/20 rounded-full hover:border-cyan-400/50 hover:text-cyan-400 transition-all cursor-default"
-                    >
-                      {tag}
-                    </motion.span>
-                  ))}
-                </div>
-              </AnimatedBorderBox>
+                <h3 className="text-white font-semibold mb-1">{project.name}</h3>
+                <p className="text-gray-400 text-sm mb-2">{project.description}</p>
+                <span className="text-xs font-mono text-cyan-400/60">{project.tech}</span>
+              </motion.div>
             ))}
           </div>
         </motion.section>
 
         <SectionDivider variant="geometric" />
 
+        {/* Experience Timeline */}
+        <motion.section
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="mb-20"
+        >
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-3xl font-bold mb-12 text-center"
+          >
+            <span className="text-white">Experience </span>
+            <span style={{
+              background: 'linear-gradient(135deg, #00ffff 0%, #a855f7 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+            }}>Timeline</span>
+          </motion.h2>
+
+          <div className="space-y-6">
+            {experiences.map((exp, index) => (
+              <motion.div
+                key={exp.company}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className={`relative bg-black/40 backdrop-blur-xl border-l-4 rounded-r-xl p-6 hover:bg-black/60 transition-all ${
+                  exp.color === 'cyan' ? 'border-cyan-500/50' :
+                  exp.color === 'purple' ? 'border-purple-500/50' :
+                  exp.color === 'pink' ? 'border-pink-500/50' :
+                  'border-yellow-500/50'
+                }`}
+              >
+                {/* Header */}
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4">
+                  <div>
+                    <h3 className={`text-xl font-bold ${
+                      exp.color === 'cyan' ? 'text-cyan-400' :
+                      exp.color === 'purple' ? 'text-purple-400' :
+                      exp.color === 'pink' ? 'text-pink-400' :
+                      'text-yellow-400'
+                    }`}>{exp.company}</h3>
+                    <span className="text-white">{exp.role}</span>
+                  </div>
+                  <span className="text-sm font-mono text-gray-500 mt-2 sm:mt-0">{exp.period}</span>
+                </div>
+
+                {/* Description */}
+                <p className="text-gray-300 mb-4">{exp.description}</p>
+
+                {/* Achievements */}
+                <div className="grid sm:grid-cols-2 gap-2 mb-4">
+                  {exp.achievements.map((achievement, i) => (
+                    <div key={i} className="flex items-start gap-2 text-sm text-gray-400">
+                      <Zap className={`w-3 h-3 mt-1 flex-shrink-0 ${
+                        exp.color === 'cyan' ? 'text-cyan-400' :
+                        exp.color === 'purple' ? 'text-purple-400' :
+                        exp.color === 'pink' ? 'text-pink-400' :
+                        'text-yellow-400'
+                      }`} />
+                      <span>{achievement}</span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Impact */}
+                <div className={`p-3 rounded-lg mb-4 ${
+                  exp.color === 'cyan' ? 'bg-cyan-500/10 border border-cyan-500/20' :
+                  exp.color === 'purple' ? 'bg-purple-500/10 border border-purple-500/20' :
+                  exp.color === 'pink' ? 'bg-pink-500/10 border border-pink-500/20' :
+                  'bg-yellow-500/10 border border-yellow-500/20'
+                }`}>
+                  <p className={`text-sm font-medium ${
+                    exp.color === 'cyan' ? 'text-cyan-400' :
+                    exp.color === 'purple' ? 'text-purple-400' :
+                    exp.color === 'pink' ? 'text-pink-400' :
+                    'text-yellow-400'
+                  }`}>→ {exp.impact}</p>
+                </div>
+
+                {/* Tags */}
+                <div className="flex flex-wrap gap-2">
+                  {exp.tags.map((tag) => (
+                    <span key={tag} className="px-2 py-1 text-xs font-mono text-gray-400 bg-white/5 border border-white/10 rounded hover:border-white/20 transition-all">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.section>
+
+        <SectionDivider variant="wave" />
+
         {/* Key Metrics */}
         <motion.section
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true }}
           className="mb-20"
         >
           <motion.h2
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
             className="text-3xl font-bold mb-12 text-center"
           >
             <span className="text-white">Impact by </span>
-            <span className="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">Numbers</span>
+            <span className="text-cyan-400">Numbers</span>
           </motion.h2>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {[
-              { icon: Trophy, value: '$20M+', label: 'Funding Enabled', color: 'text-yellow-400' },
-              { icon: Code, value: '50+', label: 'Products Shipped', color: 'text-cyan-400' },
-              { icon: Users, value: '200K+', label: 'Users Served', color: 'text-purple-400' },
-              { icon: TrendingUp, value: '15x', label: 'Best Growth Rate', color: 'text-green-400' }
+              { icon: Trophy, value: '$20M+', label: 'Funding Enabled', color: 'yellow', glow: 'rgba(250, 204, 21, 0.4)' },
+              { icon: Code, value: '50+', label: 'Products Shipped', color: 'cyan', glow: 'rgba(0, 212, 255, 0.4)' },
+              { icon: Users, value: '200K+', label: 'Users Served', color: 'purple', glow: 'rgba(168, 85, 247, 0.4)' },
+              { icon: TrendingUp, value: '15x', label: 'Best Growth Rate', color: 'pink', glow: 'rgba(236, 72, 153, 0.4)' }
             ].map((metric, index) => {
               const Icon = metric.icon
               return (
@@ -325,80 +399,94 @@ export default function WorkPage() {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.15, ease: "easeOut" }}
-                  className="text-center"
+                  transition={{ delay: index * 0.1 }}
+                  whileHover={{ y: -5, scale: 1.02 }}
+                  className="relative group"
                 >
-                  <motion.div
-                    className="inline-flex items-center justify-center w-16 h-16 mb-4 bg-gradient-to-br from-cyan-400/10 to-purple-400/10 rounded-full"
-                    initial={{ scale: 0, rotate: -180 }}
-                    whileInView={{ scale: 1, rotate: 0 }}
-                    viewport={{ once: true }}
-                    transition={{
-                      delay: index * 0.15 + 0.3,
-                      duration: 0.6,
-                      ease: "easeOut"
-                    }}
-                  >
-                    <Icon className={`w-8 h-8 ${metric.color}`} />
-                  </motion.div>
-                  <p className={`text-3xl font-black ${metric.color} mb-2`}>{metric.value}</p>
-                  <p className="text-sm text-muted-foreground">{metric.label}</p>
+                  <div
+                    className="absolute -inset-1 rounded-xl opacity-0 group-hover:opacity-100 blur-xl transition-all duration-500"
+                    style={{ background: `radial-gradient(circle, ${metric.glow}, transparent 70%)` }}
+                  />
+                  <div className="relative bg-black/60 backdrop-blur-xl border border-white/10 rounded-xl p-6 text-center group-hover:border-white/20 transition-all">
+                    <Icon className={`w-8 h-8 mx-auto mb-3 ${
+                      metric.color === 'yellow' ? 'text-yellow-400' :
+                      metric.color === 'cyan' ? 'text-cyan-400' :
+                      metric.color === 'purple' ? 'text-purple-400' :
+                      'text-pink-400'
+                    }`} style={{ filter: 'drop-shadow(0 0 10px currentColor)' }} />
+                    <p className={`text-3xl font-black mb-1 ${
+                      metric.color === 'yellow' ? 'text-yellow-400' :
+                      metric.color === 'cyan' ? 'text-cyan-400' :
+                      metric.color === 'purple' ? 'text-purple-400' :
+                      'text-pink-400'
+                    }`} style={{ textShadow: `0 0 30px ${metric.glow}` }}>{metric.value}</p>
+                    <p className="text-sm text-gray-400">{metric.label}</p>
+                  </div>
                 </motion.div>
               )
             })}
           </div>
         </motion.section>
 
-        <SectionDivider variant="wave" />
+        <SectionDivider variant="organic" />
 
         {/* Approach */}
         <motion.section
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true }}
           className="mb-20"
         >
           <motion.h2
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="text-3xl font-bold mb-8 text-cyan-400"
+            className="text-2xl font-bold mb-8"
           >
-            How I Work
+            <span className="text-white">How I </span>
+            <span className="text-purple-400">Work</span>
           </motion.h2>
-          
-          <div className="grid md:grid-cols-3 gap-8">
+
+          <div className="grid md:grid-cols-3 gap-6">
             {[
               {
                 icon: Target,
-                title: 'Find the Real Problem',
-                description: 'Most failures come from solving the wrong problem well. I start by understanding what actually needs fixing.'
+                title: 'Surface Reality',
+                description: 'Most failures come from solving the wrong problem. I start by naming assumptions and testing them against reality.',
+                color: 'cyan'
               },
               {
                 icon: Shield,
-                title: 'Test Against Reality',
-                description: 'Ideas are cheap. I build quickly, test with real users, and let the market tell us what works.'
+                title: 'Design Alignment',
+                description: 'Incentives matter. I build systems where what\'s good for users is good for the business—no manipulation required.',
+                color: 'purple'
               },
               {
-                icon: Globe,
-                title: 'Design for Durability',
-                description: 'Growth hacks die. I build systems that compound value over time through aligned incentives.'
+                icon: Brain,
+                title: 'Judge by Outcomes',
+                description: 'Ideas are cheap. I measure success by durable, compounding value—not vanity metrics or growth theater.',
+                color: 'pink'
               }
             ].map((approach, index) => {
               const Icon = approach.icon
               return (
-                <AnimatedBorderBox
+                <motion.div
                   key={approach.title}
-                  delay={index * 0.25}
-                  className="p-6 rounded-xl"
-                  borderColor="rgba(147, 51, 234, 0.3)"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  whileHover={{ y: -5 }}
+                  className="bg-black/40 backdrop-blur-xl border border-white/10 rounded-xl p-6 hover:border-white/20 transition-all"
                 >
-                  <Icon className="w-8 h-8 text-purple-400 mb-4" />
-                  <h3 className="text-xl font-bold mb-3">{approach.title}</h3>
-                  <p className="text-muted-foreground">{approach.description}</p>
-                </AnimatedBorderBox>
+                  <Icon className={`w-8 h-8 mb-4 ${
+                    approach.color === 'cyan' ? 'text-cyan-400' :
+                    approach.color === 'purple' ? 'text-purple-400' :
+                    'text-pink-400'
+                  }`} />
+                  <h3 className="text-lg font-bold text-white mb-2">{approach.title}</h3>
+                  <p className="text-gray-400 text-sm">{approach.description}</p>
+                </motion.div>
               )
             })}
           </div>
@@ -406,59 +494,56 @@ export default function WorkPage() {
 
         {/* CTA */}
         <motion.section
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-center p-12 border border-foreground/10 rounded-lg bg-gradient-to-br from-cyan-400/5 to-purple-400/5"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="relative rounded-2xl p-8 sm:p-12 text-center overflow-hidden"
+          style={{
+            background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 20, 40, 0.9) 100%)',
+            border: '1px solid rgba(0, 212, 255, 0.3)',
+            boxShadow: '0 0 60px rgba(0, 212, 255, 0.15)'
+          }}
         >
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-            className="text-3xl font-bold mb-6"
-          >
-            <span className="text-white">Ready to Build Something </span>
-            <span className="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">Real?</span>
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-            className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto"
-          >
+          <div className="absolute top-0 left-0 w-20 h-20 border-t-2 border-l-2 border-cyan-500/50 rounded-tl-2xl" />
+          <div className="absolute bottom-0 right-0 w-20 h-20 border-b-2 border-r-2 border-purple-500/50 rounded-br-2xl" />
+
+          <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-white">
+            Ready to Build Something Real?
+          </h2>
+          <p className="text-gray-300 mb-8 max-w-xl mx-auto">
             I work with teams that care more about solving problems than following trends.
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
-          >
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/philosophy">
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="group px-8 py-3 border-2 border-purple-400 hover:bg-purple-400/10 transition-all duration-300 flex items-center gap-2"
+                className="px-8 py-4 font-bold text-white"
+                style={{
+                  background: 'transparent',
+                  border: '2px solid rgba(168, 85, 247, 0.6)',
+                  boxShadow: '0 0 20px rgba(168, 85, 247, 0.2)',
+                }}
               >
-                <span className="font-semibold">Read My Philosophy</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                Read My Philosophy
               </motion.button>
             </Link>
-            
             <Link href="/contact">
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="px-8 py-3 bg-foreground text-background hover:bg-foreground/90 transition-all duration-300 font-semibold"
+                className="px-8 py-4 font-bold flex items-center justify-center gap-2"
+                style={{
+                  background: 'linear-gradient(135deg, #00d4ff 0%, #00ffff 100%)',
+                  color: '#000',
+                  boxShadow: '0 0 30px rgba(0, 212, 255, 0.5)',
+                }}
               >
                 Start a Conversation
+                <ArrowRight className="w-5 h-5" />
               </motion.button>
             </Link>
-          </motion.div>
+          </div>
         </motion.section>
       </div>
     </section>

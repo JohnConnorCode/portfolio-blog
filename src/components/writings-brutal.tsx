@@ -12,7 +12,8 @@ const writings = [
     excerpt: 'Traditional grant systems reward promises over delivery. Here\'s how to fix it.',
     category: 'WEB3',
     icon: Globe,
-    color: 'text-cyan-600 dark:text-cyan-400',
+    color: 'text-cyan-400',
+    glow: 'rgba(0, 212, 255, 0.4)',
     slug: 'why-ecosystem-funding-is-broken',
     featured: true
   },
@@ -21,7 +22,8 @@ const writings = [
     excerpt: 'The best leaders embrace intellectual conflict and use it to sharpen thinking.',
     category: 'LEADERSHIP',
     icon: Users,
-    color: 'text-purple-600 dark:text-purple-500',
+    color: 'text-purple-400',
+    glow: 'rgba(168, 85, 247, 0.4)',
     slug: 'debate-as-leadership-practice'
   },
   {
@@ -29,7 +31,8 @@ const writings = [
     excerpt: 'AI should free humans for creativity, not replace them entirely.',
     category: 'AI',
     icon: Brain,
-    color: 'text-pink-600 dark:text-pink-500',
+    color: 'text-pink-500',
+    glow: 'rgba(236, 72, 153, 0.4)',
     slug: 'automation-as-human-right'
   },
   {
@@ -37,7 +40,8 @@ const writings = [
     excerpt: 'Why vanity metrics are killing startups and what to measure instead.',
     category: 'PRODUCT',
     icon: Zap,
-    color: 'text-yellow-600 dark:text-yellow-400',
+    color: 'text-yellow-400',
+    glow: 'rgba(250, 204, 21, 0.4)',
     slug: 'death-of-growth-theater',
     featured: true
   }
@@ -94,10 +98,10 @@ export function WritingsBrutal() {
           </motion.p>
         </motion.div>
         
-        {/* Writing cards in brutal grid */}
+        {/* Writing cards in premium grid */}
         <motion.div
           variants={staggerContainer}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 gap-6"
         >
           {writings.map((writing, index) => {
             const Icon = writing.icon
@@ -105,73 +109,68 @@ export function WritingsBrutal() {
               <motion.article
                 key={writing.title}
                 variants={fadeInUp}
+                whileHover={{ y: -5, scale: 1.01 }}
+                transition={{ type: "spring", stiffness: 400, damping: 15 }}
                 className={`group ${writing.featured ? 'md:col-span-2' : ''}`}
               >
                 <Link href={`/blog/${writing.slug}`}>
-                  <motion.div
-                    {...cardHover}
-                    className="card-glass hover:border-cyan-400/50 transition-all"
-                  >
-                    {/* Featured badge */}
-                    {writing.featured && (
-                      <motion.div
-                        variants={fadeInUp}
-                        className="absolute -top-2 -right-2 bg-gradient-to-r from-cyan-400 to-cyan-500 text-black px-4 py-1 font-bold text-xs uppercase tracking-wide"
-                      >
-                        Featured
-                      </motion.div>
-                    )}
+                  <div className="relative">
+                    {/* Glow effect on hover */}
+                    <div
+                      className="absolute -inset-1 rounded-xl opacity-0 group-hover:opacity-100 blur-xl transition-all duration-500"
+                      style={{ background: `radial-gradient(circle, ${writing.glow}, transparent 70%)` }}
+                    />
 
-                    {/* Content */}
-                    <motion.div
-                      variants={staggerContainer}
-                      className="flex items-start gap-6"
+                    <div
+                      className="relative bg-black/60 backdrop-blur-xl border border-white/10 rounded-xl p-6 h-full group-hover:border-white/20 transition-all duration-300"
                     >
-                      <motion.div
-                        variants={fadeInUp}
-                        className={`${writing.color} flex-shrink-0`}
-                      >
-                        <Icon className="w-12 h-12" />
-                      </motion.div>
-                      <div className="flex-1">
-                        <motion.div
-                          variants={fadeInUp}
-                          className={`${writing.color} font-mono text-xs mb-2`}
+                      {/* Featured badge */}
+                      {writing.featured && (
+                        <div
+                          className="absolute -top-3 -right-3 px-4 py-1 font-bold text-xs uppercase tracking-wide text-black"
+                          style={{
+                            background: 'linear-gradient(135deg, #00d4ff 0%, #00ffff 100%)',
+                            boxShadow: '0 0 20px rgba(0, 212, 255, 0.5)'
+                          }}
                         >
-                          [{writing.category}]
-                        </motion.div>
-                        <motion.h3
-                          variants={fadeInUp}
-                          className="text-xl sm:text-2xl font-black text-foreground group-hover:text-cyan-400 transition-colors mb-2"
-                        >
-                          {writing.title}
-                        </motion.h3>
-                        <motion.p
-                          variants={fadeInUp}
-                          className="text-gray-400 font-mono text-xs sm:text-sm mb-4"
-                        >
-                          {writing.excerpt}
-                        </motion.p>
-                        <motion.div
-                          variants={fadeInUp}
-                          className="flex items-center gap-2 text-cyan-400 font-black uppercase text-xs sm:text-sm opacity-0 group-hover:opacity-100 transition-opacity"
-                        >
-                          READ MORE
-                          <ArrowUpRight className="w-4 h-4" />
-                        </motion.div>
-                      </div>
-                    </motion.div>
+                          Featured
+                        </div>
+                      )}
 
-                    {/* Hover effect */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
-                  </motion.div>
+                      {/* Content */}
+                      <div className="flex items-start gap-5">
+                        <div className={`${writing.color} flex-shrink-0`}>
+                          <Icon className="w-10 h-10" style={{ filter: `drop-shadow(0 0 10px currentColor)` }} />
+                        </div>
+                        <div className="flex-1">
+                          <div
+                            className={`${writing.color} font-mono text-xs mb-2 tracking-wider`}
+                          >
+                            [{writing.category}]
+                          </div>
+                          <h3
+                            className="text-xl sm:text-2xl font-bold text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-cyan-400 group-hover:to-purple-400 transition-all duration-300 mb-3"
+                          >
+                            {writing.title}
+                          </h3>
+                          <p className="text-gray-400 text-sm mb-4 leading-relaxed">
+                            {writing.excerpt}
+                          </p>
+                          <div className="flex items-center gap-2 text-cyan-400 font-semibold uppercase text-xs tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            READ MORE
+                            <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </Link>
               </motion.article>
             )
           })}
         </motion.div>
         
-        {/* CTA with brutal button */}
+        {/* CTA with premium button */}
         <motion.div
           variants={fadeInUp}
           className="text-center mt-16"
@@ -180,11 +179,24 @@ export function WritingsBrutal() {
             <motion.button
               {...headerAnimation}
               transition={{ ...headerAnimation.transition, delay: ANIMATION_DELAY.section }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-3 bg-foreground text-background hover:bg-foreground/90 transition-all duration-300 font-semibold uppercase tracking-wider"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="relative px-10 py-4 font-bold uppercase tracking-wider overflow-hidden"
+              style={{
+                background: 'transparent',
+                color: '#fff',
+                boxShadow: '0 0 20px rgba(0, 212, 255, 0.2), inset 0 0 20px rgba(0, 212, 255, 0.1)',
+                border: '2px solid rgba(0, 212, 255, 0.6)',
+              }}
             >
               <span className="relative z-10">EXPLORE ALL WRITINGS</span>
+              <motion.div
+                className="absolute inset-0"
+                initial={{ opacity: 0 }}
+                whileHover={{ opacity: 1 }}
+                transition={{ duration: 0.3 }}
+                style={{ background: 'linear-gradient(135deg, rgba(0, 212, 255, 0.2) 0%, rgba(138, 43, 226, 0.2) 100%)' }}
+              />
             </motion.button>
           </Link>
         </motion.div>

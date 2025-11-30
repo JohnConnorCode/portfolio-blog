@@ -2,351 +2,414 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { Award, BookOpen, Target, Lightbulb, Users, TrendingUp } from 'lucide-react'
+import { Brain, Zap, Target, Users, Code, Rocket, Globe, MessageSquare, Sparkles, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 
-const values = [
+const coreCapabilities = [
   {
-    icon: Target,
-    title: 'Problem-Focused',
-    description: 'Identify and solve real product problems, not hypothetical ones.',
+    icon: Brain,
+    title: 'Systems Thinking',
+    description: 'I see the connections others miss. Every product exists within systems of incentives, behaviors, and constraints.',
+    color: 'text-purple-400',
+    glow: 'rgba(168, 85, 247, 0.4)'
   },
   {
-    icon: Lightbulb,
-    title: 'Behavioral Insight',
-    description: 'Apply economics and psychology to understand user behavior.',
+    icon: Zap,
+    title: 'AI-Native Building',
+    description: 'Not just using AI tools—architecting intelligent systems, automation pipelines, and ML-powered products.',
+    color: 'text-cyan-400',
+    glow: 'rgba(0, 212, 255, 0.4)'
+  },
+  {
+    icon: Target,
+    title: 'Zero-to-One Execution',
+    description: 'From concept to shipped product. I don\'t just strategize—I build, ship, and iterate.',
+    color: 'text-pink-500',
+    glow: 'rgba(236, 72, 153, 0.4)'
   },
   {
     icon: Users,
-    title: 'User Research',
-    description: 'Talk to users extensively to find what they actually need.',
-  },
-  {
-    icon: TrendingUp,
-    title: 'Technical Depth',
-    description: 'Leverage AI and Web3 technologies with purpose, not hype.',
+    title: 'Human-Centered Design',
+    description: 'Technology serves people, not the other way around. Every system I build puts humans first.',
+    color: 'text-yellow-400',
+    glow: 'rgba(250, 204, 21, 0.4)'
   },
 ]
 
 const achievements = [
-  { metric: '50+', label: 'Product Problems Solved' },
-  { metric: '$20M+', label: 'Funding Enabled' },
-  { metric: '200+', label: 'User Research Sessions' },
-  { metric: '10+', label: 'Years Technology Strategy' },
+  { metric: '$20M+', label: 'Funding Enabled', detail: 'Through product-market fit' },
+  { metric: '50+', label: 'Products Shipped', detail: 'From startups to enterprise' },
+  { metric: '15+', label: 'Years Building', detail: 'Across AI, Web3, and civic tech' },
+  { metric: '200+', label: 'Research Sessions', detail: 'Finding real problems' },
+]
+
+const technicalStack = [
+  'React/Next.js', 'TypeScript', 'Supabase', 'AI/ML Pipelines',
+  'Web3/Blockchain', 'Framer Motion', 'Tailwind', 'Serverless'
+]
+
+const journey = [
+  {
+    phase: 'Foundation',
+    title: 'Debate & Human Development',
+    description: 'Started in competitive debate instruction at Chicago Debates. Learned how people reason, argue, and change their minds. This foundation informs everything I build today.',
+    color: 'border-purple-500/50'
+  },
+  {
+    phase: 'Building',
+    title: 'Marketplaces & Platforms',
+    description: 'Founded HelpWith (skill-sharing marketplace) and Sparkblox (raised $1M+ for no-code NFT infrastructure). Learned to build platforms that connect people and scale social value.',
+    color: 'border-cyan-500/50'
+  },
+  {
+    phase: 'Scaling',
+    title: 'Product Leadership',
+    description: 'Product & Ops at Upland.me (Web3 virtual economy). Managed token economies, player dynamics, and transaction systems at scale.',
+    color: 'border-pink-500/50'
+  },
+  {
+    phase: 'Current',
+    title: 'AI + Civic Innovation',
+    description: 'Building SuperDebate (reinventing civic discourse) and Accelerate (Web3 builder intelligence). Combining AI automation with systems that serve human flourishing.',
+    color: 'border-yellow-500/50'
+  },
 ]
 
 export default function AboutPage() {
   return (
     <>
-      <section className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      {/* Hero Section */}
+      <section className="relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        {/* Background effects */}
         <div className="absolute inset-0 -z-10">
-          <div className="absolute inset-0 bg-gradient-to-br from-purple-900/10 via-blue-900/10 to-indigo-900/10" />
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-[120px]" />
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-[120px]" />
         </div>
 
-        <div className="max-w-7xl mx-auto">
-          {/* Hero Section */}
+        <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h1 className="text-4xl sm:text-5xl font-bold mb-4">
-              Technology Strategist with <span className="text-gradient">Human Insight</span>
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.2 }}
+              className="text-cyan-400 font-mono text-sm tracking-wider mb-4"
+            >
+              PRODUCT STRATEGIST • FOUNDER • SYSTEMS BUILDER
+            </motion.p>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
+              <span className="text-white">I Build </span>
+              <span style={{
+                background: 'linear-gradient(135deg, #00ffff 0%, #a855f7 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+              }}>
+                Systems That Serve Humanity
+              </span>
             </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              I&apos;m John Connor - a technical product leader who solves real problems through 
-              deep user research, behavioral analysis, and expertise in AI and Web3 technologies.
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+              Multi-disciplinary founder with 15+ years launching complex platforms across AI, Web3,
+              civic engagement, and digital communities. I operate at the intersection of
+              <span className="text-cyan-400"> technology</span>,
+              <span className="text-purple-400"> philosophy</span>, and
+              <span className="text-pink-400"> human development</span>.
             </p>
           </motion.div>
 
-          {/* Profile Section */}
+          {/* Achievement Stats */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-            className="glass rounded-2xl p-8 mb-16"
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-20"
           >
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="md:col-span-1">
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-                  whileHover={{ scale: 1.02 }}
-                  className="relative w-full aspect-square rounded-xl overflow-hidden"
-                >
-                  <Image
-                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80"
-                    alt="John Connor"
-                    fill
-                    className="object-cover"
-                  />
-                </motion.div>
-              </div>
-              
-              <div className="md:col-span-2 space-y-6">
-                <motion.div
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-                >
-                  <h2 className="text-2xl font-bold mb-4">My Journey</h2>
-                  <p className="text-muted-foreground mb-4">
-                    With over a decade of experience as a technical product leader, I&apos;ve worked with
-                    everyone from local businesses to startups with $20M+ funding. My background combines 
-                    philosophy, economics, and behavioral theory with deep technical expertise in AI and Web3.
+            {achievements.map((item, index) => (
+              <motion.div
+                key={item.label}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 + index * 0.1 }}
+                whileHover={{ y: -4, scale: 1.02 }}
+                className="relative group"
+              >
+                <div className="absolute -inset-1 rounded-xl opacity-0 group-hover:opacity-100 blur-xl transition-all duration-500 bg-gradient-to-r from-cyan-500/20 to-purple-500/20" />
+                <div className="relative bg-black/60 backdrop-blur-xl border border-white/10 rounded-xl p-5 text-center group-hover:border-cyan-500/30 transition-all">
+                  <p className="text-3xl sm:text-4xl font-black text-cyan-400" style={{ textShadow: '0 0 30px rgba(0, 212, 255, 0.4)' }}>
+                    {item.metric}
                   </p>
-                  <p className="text-muted-foreground mb-4">
-                    I specialize in finding product-market fit through extensive user research and behavioral 
-                    analysis. Rather than building features, I focus on solving real problems that prevent 
-                    user adoption and business growth. My approach is human-centered but technically rigorous.
-                  </p>
-                  <p className="text-muted-foreground">
-                    Whether it&apos;s fixing usability issues, conducting user research, or building AI/Web3 
-                    products, I bring both technical depth and philosophical insight to every product challenge.
-                  </p>
-                </motion.div>
+                  <p className="text-white font-semibold text-sm mt-1">{item.label}</p>
+                  <p className="text-gray-500 text-xs mt-1">{item.detail}</p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
 
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
-                  className="grid grid-cols-2 sm:grid-cols-4 gap-4"
-                >
-                  {achievements.map((achievement, index) => (
-                    <motion.div
-                      key={achievement.label}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.5, delay: 0.5 + index * 0.1, ease: "easeOut" }}
-                      whileHover={{ scale: 1.05, y: -2 }}
-                      className="text-center"
-                    >
-                      <p className="text-2xl font-bold text-primary">{achievement.metric}</p>
-                      <p className="text-xs text-muted-foreground">{achievement.label}</p>
-                    </motion.div>
-                  ))}
-                </motion.div>
-              </div>
+      {/* Core Identity Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="grid lg:grid-cols-2 gap-12 items-center mb-20"
+          >
+            <div>
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="text-3xl sm:text-4xl font-bold mb-6"
+              >
+                <span className="text-white">Not Just a </span>
+                <span className="text-cyan-400">Strategist</span>
+                <span className="text-white">—A </span>
+                <span className="text-purple-400">Builder</span>
+              </motion.h2>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 }}
+                className="space-y-4 text-gray-300"
+              >
+                <p>
+                  I'm one of the few operators who combines <strong className="text-white">technical competency</strong>,
+                  <strong className="text-white"> systems thinking</strong>, and <strong className="text-white">founder empathy</strong> with
+                  real-world execution across dozens of domains.
+                </p>
+                <p>
+                  My work spans consumer apps, education tools, AI-driven platforms, ecosystem infrastructure,
+                  marketplaces, and civic systems. I don't just advise—I <strong className="text-cyan-400">build, ship, and iterate</strong> alongside your team.
+                </p>
+                <p>
+                  Early career in competitive debate taught me how people reason, argue, and change their minds.
+                  This informs every product I create: <strong className="text-white">clarity over complexity</strong>,
+                  <strong className="text-white"> structure over chaos</strong>, <strong className="text-white">rigor over hype</strong>.
+                </p>
+              </motion.div>
             </div>
+
+            {/* Technical Stack */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              <div className="absolute -inset-4 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 rounded-2xl blur-xl" />
+              <div className="relative bg-black/60 backdrop-blur-xl border border-white/10 rounded-2xl p-8">
+                <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                  <Code className="w-5 h-5 text-cyan-400" />
+                  Technical Stack
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {technicalStack.map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-sm text-gray-300 hover:border-cyan-500/50 hover:text-cyan-400 transition-all"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+                <div className="mt-6 pt-6 border-t border-white/10">
+                  <p className="text-sm text-gray-400">
+                    <span className="text-cyan-400 font-semibold">AI-native builder</span>—architecting intelligent
+                    systems, ML pipelines, and automation workflows. Not just prompting, but building the infrastructure.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
           </motion.div>
 
-          {/* Values Section */}
+          {/* Core Capabilities */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-            className="mb-16"
+            className="mb-20"
           >
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-              className="text-3xl font-bold text-center mb-8"
-            >
-              My <span className="text-gradient">Philosophy</span>
-            </motion.h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {values.map((value, index) => {
-                const Icon = value.icon
+            <h2 className="text-3xl font-bold text-center mb-12">
+              <span className="text-white">Core </span>
+              <span style={{
+                background: 'linear-gradient(135deg, #00ffff 0%, #a855f7 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+              }}>
+                Capabilities
+              </span>
+            </h2>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {coreCapabilities.map((capability, index) => {
+                const Icon = capability.icon
                 return (
                   <motion.div
-                    key={value.title}
+                    key={capability.title}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.3 + index * 0.1, ease: "easeOut" }}
-                    whileHover={{ scale: 1.02, y: -4 }}
-                    className="glass rounded-xl p-6 text-center hover:bg-primary/5 transition-all"
+                    transition={{ delay: index * 0.1 }}
+                    whileHover={{ y: -8, scale: 1.02 }}
+                    className="relative group"
                   >
-                    <Icon className="w-10 h-10 text-primary mx-auto mb-4" />
-                    <h3 className="font-semibold mb-2">{value.title}</h3>
-                    <p className="text-sm text-muted-foreground">{value.description}</p>
+                    <div
+                      className="absolute -inset-1 rounded-xl opacity-0 group-hover:opacity-100 blur-xl transition-all duration-500"
+                      style={{ background: `radial-gradient(circle, ${capability.glow}, transparent 70%)` }}
+                    />
+                    <div className="relative bg-black/60 backdrop-blur-xl border border-white/10 rounded-xl p-6 h-full group-hover:border-white/20 transition-all">
+                      <Icon className={`w-10 h-10 ${capability.color} mb-4`} style={{ filter: 'drop-shadow(0 0 10px currentColor)' }} />
+                      <h3 className="text-lg font-bold text-white mb-2">{capability.title}</h3>
+                      <p className="text-gray-400 text-sm">{capability.description}</p>
+                    </div>
                   </motion.div>
                 )
               })}
             </div>
           </motion.div>
+        </div>
+      </section>
 
-          {/* Expertise Section */}
+      {/* Journey Timeline */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-500/5 to-transparent" />
+        <div className="max-w-4xl mx-auto relative">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-3xl font-bold text-center mb-12"
+          >
+            <span className="text-white">The </span>
+            <span className="text-cyan-400">Journey</span>
+          </motion.h2>
+
+          <div className="space-y-6">
+            {journey.map((phase, index) => (
+              <motion.div
+                key={phase.phase}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className={`relative bg-black/40 backdrop-blur-xl border-l-4 ${phase.color} rounded-r-xl p-6`}
+              >
+                <span className="text-xs font-mono text-gray-500 uppercase tracking-wider">{phase.phase}</span>
+                <h3 className="text-xl font-bold text-white mt-1 mb-2">{phase.title}</h3>
+                <p className="text-gray-400">{phase.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* What I Build For */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-            className="glass rounded-2xl p-8 mb-16"
+            className="text-center mb-12"
           >
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-              className="text-2xl font-bold mb-6"
-            >
-              Areas of Expertise
-            </motion.h2>
-            <div className="grid md:grid-cols-3 gap-6">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-              >
-                <h3 className="font-semibold mb-3 flex items-center gap-2">
-                  <Award className="w-5 h-5 text-primary" />
-                  Technology Strategy & Leadership
-                </h3>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li>• AI & Web3 Product Development</li>
-                  <li>• Technical Product Strategy</li>
-                  <li>• Product Architecture & Scaling</li>
-                  <li>• Technology Assessment</li>
-                </ul>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
-              >
-                <h3 className="font-semibold mb-3 flex items-center gap-2">
-                  <TrendingUp className="w-5 h-5 text-primary" />
-                  Product-Market Fit
-                </h3>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li>• User Research & Interviews</li>
-                  <li>• Behavioral Analysis</li>
-                  <li>• Product Gap Identification</li>
-                  <li>• Market Validation</li>
-                </ul>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
-              >
-                <h3 className="font-semibold mb-3 flex items-center gap-2">
-                  <Users className="w-5 h-5 text-primary" />
-                  Problem Solving
-                </h3>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li>• Usability Issue Resolution</li>
-                  <li>• Product Strategy Consulting</li>
-                  <li>• Cross-functional Leadership</li>
-                  <li>• Stakeholder Alignment</li>
-                </ul>
-              </motion.div>
-            </div>
+            <h2 className="text-3xl font-bold mb-4">
+              <span className="text-white">I Build Systems For</span>
+            </h2>
+            <p className="text-gray-400 max-w-2xl mx-auto">
+              Everything I create serves a deeper purpose—advancing human capability, not just user metrics.
+            </p>
           </motion.div>
 
-          {/* Speaking & Writing */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-            className="grid md:grid-cols-2 gap-8 mb-16"
-          >
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-              whileHover={{ scale: 1.02, y: -2 }}
-              className="glass rounded-xl p-6"
-            >
-              <BookOpen className="w-10 h-10 text-primary mb-4" />
-              <h3 className="text-xl font-bold mb-3">Writing & Thought Leadership</h3>
-              <p className="text-muted-foreground mb-4">
-                I regularly share insights on product strategy, user research, and the intersection
-                of technology with human behavior through my blog and various publications.
-              </p>
-              <Link href="/blog" className="text-primary font-medium hover:underline">
-                Read My Articles →
-              </Link>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-              whileHover={{ scale: 1.02, y: -2 }}
-              className="glass rounded-xl p-6"
-            >
-              <Award className="w-10 h-10 text-primary mb-4" />
-              <h3 className="text-xl font-bold mb-3">Speaking & Workshops</h3>
-              <p className="text-muted-foreground mb-4">
-                Available for keynote speaking, workshops, and panel discussions on topics related
-                to product strategy, user research, and AI/Web3 product development.
-              </p>
-              <Link href="/contact" className="text-primary font-medium hover:underline">
-                Book a Speaking Engagement →
-              </Link>
-            </motion.div>
-          </motion.div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { icon: Users, title: 'Human Development', desc: 'Tools that make people more capable, not more dependent' },
+              { icon: Globe, title: 'Community Formation', desc: 'Platforms that connect people around shared purpose' },
+              { icon: Sparkles, title: 'Transparent Value Flow', desc: 'Systems where incentives align with outcomes' },
+              { icon: Rocket, title: 'Builder Enablement', desc: 'Infrastructure that accelerates creators and founders' },
+              { icon: MessageSquare, title: 'Civic Capability', desc: 'Restoring reasoned discourse and democratic participation' },
+              { icon: Brain, title: 'Decentralized Coordination', desc: 'New forms of governance and collective action' },
+            ].map((item, index) => {
+              const Icon = item.icon
+              return (
+                <motion.div
+                  key={item.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="bg-black/40 backdrop-blur-xl border border-white/10 rounded-xl p-5 hover:border-cyan-500/30 transition-all group"
+                >
+                  <Icon className="w-8 h-8 text-cyan-400 mb-3 group-hover:scale-110 transition-transform" />
+                  <h3 className="text-white font-semibold mb-1">{item.title}</h3>
+                  <p className="text-gray-500 text-sm">{item.desc}</p>
+                </motion.div>
+              )
+            })}
+          </div>
+        </div>
+      </section>
 
-          {/* CTA Section */}
+      {/* CTA Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-            className="text-center"
+            className="relative rounded-2xl p-8 sm:p-12 text-center overflow-hidden"
+            style={{
+              background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 20, 40, 0.9) 100%)',
+              border: '1px solid rgba(0, 212, 255, 0.3)',
+              boxShadow: '0 0 60px rgba(0, 212, 255, 0.15)'
+            }}
           >
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-              className="text-2xl font-bold mb-4"
-            >
-              Let&apos;s Solve Your Product Problems
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-              className="text-muted-foreground mb-8 max-w-2xl mx-auto"
-            >
-              Whether you need to find product-market fit, fix usability issues, or build
-              AI/Web3 products, I&apos;m here to help.
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
-              className="flex gap-4 justify-center"
-            >
+            <div className="absolute top-0 left-0 w-20 h-20 border-t-2 border-l-2 border-cyan-500/50 rounded-tl-2xl" />
+            <div className="absolute bottom-0 right-0 w-20 h-20 border-b-2 border-r-2 border-purple-500/50 rounded-br-2xl" />
+
+            <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-white">
+              Ready to Build Something Real?
+            </h2>
+            <p className="text-gray-300 mb-8 max-w-xl mx-auto">
+              Whether you need product strategy, technical architecture, or a co-builder who ships—let's talk.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/work">
                 <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:shadow-xl hover:shadow-primary/25 transition-all"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="px-8 py-4 font-bold text-lg flex items-center justify-center gap-2"
+                  style={{
+                    background: 'linear-gradient(135deg, #00d4ff 0%, #00ffff 100%)',
+                    color: '#000',
+                    boxShadow: '0 0 30px rgba(0, 212, 255, 0.5)',
+                  }}
                 >
                   View My Work
+                  <ArrowRight className="w-5 h-5" />
                 </motion.button>
               </Link>
               <Link href="/contact">
                 <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-6 py-3 glass rounded-lg font-medium hover:bg-primary/10 transition-all"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="px-8 py-4 font-bold text-lg text-white"
+                  style={{
+                    background: 'transparent',
+                    border: '2px solid rgba(0, 212, 255, 0.6)',
+                    boxShadow: '0 0 20px rgba(0, 212, 255, 0.2)',
+                  }}
                 >
                   Get in Touch
                 </motion.button>
               </Link>
-            </motion.div>
+            </div>
           </motion.div>
         </div>
       </section>

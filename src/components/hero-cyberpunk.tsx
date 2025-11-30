@@ -324,24 +324,57 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
         className="relative z-20 min-h-screen flex items-center justify-center px-4"
       >
         <div className="max-w-6xl mx-auto text-center">
-          {/* Animated title with permanent glow and floating effect */}
+          {/* Greek-inspired decorative element above title */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+            className="flex items-center justify-center gap-4 mb-8"
+          >
+            <div className="w-16 h-px bg-gradient-to-r from-transparent to-amber-500/60" />
+            <svg viewBox="0 0 40 40" className="w-8 h-8">
+              <defs>
+                <linearGradient id="heroDecoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#d4af37" />
+                  <stop offset="100%" stopColor="#00d4ff" />
+                </linearGradient>
+              </defs>
+              <path
+                d="M 20 5 L 35 20 L 20 35 L 5 20 Z"
+                fill="none"
+                stroke="url(#heroDecoGradient)"
+                strokeWidth="2"
+              />
+              <path
+                d="M 20 12 L 28 20 L 20 28 L 12 20 Z"
+                fill="rgba(212, 175, 55, 0.2)"
+                stroke="url(#heroDecoGradient)"
+                strokeWidth="1"
+              />
+            </svg>
+            <div className="w-16 h-px bg-gradient-to-l from-transparent to-amber-500/60" />
+          </motion.div>
+
+          {/* Animated title with premium glow and floating effect */}
           <motion.h1
             initial="hidden"
             animate="visible"
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-wider mb-12 relative leading-[1.1] sm:leading-[1.05] lg:leading-[1.02]"
-            // Remove whole text hover effect
-            style={{ 
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-wider mb-8 relative leading-[1.1] sm:leading-[1.05] lg:leading-[1.02] whitespace-nowrap"
+            style={{
+              fontFamily: "'Cinzel', serif",
               lineHeight: 0.9,
-              letterSpacing: '0.02em',
+              letterSpacing: '0.05em',
               paddingBottom: '0.1em',
-              // Simple shadow only
               textShadow: isDark ? `
-                0 10px 20px rgba(0, 0, 0, 0.8)
+                0 0 40px rgba(0, 212, 255, 0.5),
+                0 0 80px rgba(0, 212, 255, 0.3),
+                0 0 120px rgba(0, 212, 255, 0.15),
+                0 10px 40px rgba(0, 0, 0, 0.8)
               ` : `
                 0 2px 10px rgba(0, 0, 0, 0.1)
               `,
-              filter: isDark 
-                ? 'drop-shadow(0 15px 25px rgba(0, 0, 0, 0.5))'
+              filter: isDark
+                ? 'drop-shadow(0 0 30px rgba(0, 212, 255, 0.4))'
                 : 'none',
               transform: 'translateZ(50px)',
               color: isDark ? 'white' : '#00d4ff'
@@ -382,20 +415,48 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
             </span>
           </motion.h1>
           
+          {/* Classical tagline */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{
+              delay: titleLetters.length * 0.06 + 1.2,
+              duration: 1,
+            }}
+            className="mb-10"
+          >
+            <p
+              className="text-sm sm:text-base tracking-[0.3em] uppercase"
+              style={{
+                fontFamily: "'Cormorant Garamond', serif",
+                color: '#d4af37',
+                textShadow: '0 0 20px rgba(212, 175, 55, 0.3)'
+              }}
+            >
+              Digital Architect · Product Philosopher · Builder
+            </p>
+          </motion.div>
+
           {/* Description - more prominent and elegant */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ 
+            transition={{
               delay: titleLetters.length * 0.06 + 1.5,
               duration: 1.2,
               ease: [0.25, 0.1, 0.25, 1]
             }}
             className="mb-12"
           >
-            <p className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light leading-relaxed max-w-4xl mx-auto ${
-              isDark ? 'text-white/90' : 'text-cyan-100'
-            }`}>
+            <p
+              className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light leading-relaxed max-w-4xl mx-auto ${
+                isDark ? 'text-white/90' : 'text-cyan-100'
+              }`}
+              style={{
+                fontFamily: "'Cormorant Garamond', serif",
+                fontWeight: 300,
+              }}
+            >
               {heroContent.heroDescription}
             </p>
           </motion.div>
@@ -452,52 +513,71 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                 hidden: { opacity: 0, y: 20 },
                 visible: { opacity: 1, y: 0 }
               }}
-              transition={{ 
+              transition={{
                 duration: 0.6,
                 ease: [0.25, 0.1, 0.25, 1]
               }}
             >
               <Link href="/work">
-                <motion.button 
-                  className={`px-8 py-4 font-semibold rounded-lg transition-all w-full sm:w-auto ${
-                    isDark 
-                      ? 'bg-white text-black hover:bg-gray-200' 
-                      : 'bg-cyan-500 text-black hover:bg-cyan-400'
-                  }`}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                <motion.button
+                  className="relative px-10 py-4 font-bold text-lg rounded-none transition-all w-full sm:w-auto overflow-hidden group"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                   style={{
-                    boxShadow: isDark 
-                      ? '0 0 30px rgba(255, 255, 255, 0.3)' 
-                      : '0 4px 20px rgba(0, 0, 0, 0.1)'
+                    fontFamily: "'Cinzel', serif",
+                    background: 'linear-gradient(135deg, #00d4ff 0%, #00ffff 50%, #00d4ff 100%)',
+                    color: '#000',
+                    boxShadow: '0 0 30px rgba(0, 212, 255, 0.5), 0 0 60px rgba(0, 212, 255, 0.3), inset 0 0 20px rgba(255, 255, 255, 0.2)',
+                    border: '2px solid rgba(255, 255, 255, 0.3)',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.15em'
                   }}
                 >
-                  View My Work
+                  <span className="relative z-10">View My Work</span>
+                  <motion.div
+                    className="absolute inset-0 bg-white"
+                    initial={{ x: '-100%' }}
+                    whileHover={{ x: '100%' }}
+                    transition={{ duration: 0.5, ease: 'easeInOut' }}
+                    style={{ opacity: 0.2 }}
+                  />
                 </motion.button>
               </Link>
             </motion.div>
-            
+
             <motion.div
               variants={{
                 hidden: { opacity: 0, y: 20 },
                 visible: { opacity: 1, y: 0 }
               }}
-              transition={{ 
+              transition={{
                 duration: 0.6,
                 ease: [0.25, 0.1, 0.25, 1]
               }}
             >
               <Link href="/philosophy">
-                <motion.button 
-                  className={`px-8 py-4 font-semibold rounded-lg border-2 transition-all w-full sm:w-auto ${
-                    isDark 
-                      ? 'border-white/30 text-white hover:bg-white/10' 
-                      : 'border-cyan-400 text-cyan-300 hover:bg-cyan-900/30'
-                  }`}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                <motion.button
+                  className="relative px-10 py-4 font-bold text-lg rounded-none transition-all w-full sm:w-auto overflow-hidden group"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  style={{
+                    fontFamily: "'Cinzel', serif",
+                    background: 'transparent',
+                    color: '#d4af37',
+                    boxShadow: '0 0 20px rgba(212, 175, 55, 0.2), inset 0 0 20px rgba(212, 175, 55, 0.1)',
+                    border: '2px solid rgba(212, 175, 55, 0.6)',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.15em'
+                  }}
                 >
-                  My Philosophy
+                  <span className="relative z-10">My Philosophy</span>
+                  <motion.div
+                    className="absolute inset-0"
+                    initial={{ opacity: 0 }}
+                    whileHover={{ opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                    style={{ background: 'linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(0, 212, 255, 0.2) 100%)' }}
+                  />
                 </motion.button>
               </Link>
             </motion.div>

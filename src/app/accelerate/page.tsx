@@ -199,8 +199,8 @@ export default function AcceleratePage() {
             transition={{ duration: ANIMATION_DURATION.normal, delay: ANIMATION_DELAY.stagger }}
             className="text-xl sm:text-2xl text-gray-100 max-w-3xl mx-auto mb-12"
           >
-            The Web3 founder hub connecting builders, developers, and funders
-            through intelligent matching and ecosystem growth
+            A modular platform for builder profiles, funding programs, evaluation engines, and intelligent matching.
+            Systems-level innovation for Web3 ecosystems.
           </motion.p>
 
           <motion.div
@@ -675,17 +675,17 @@ export default function AcceleratePage() {
               className="space-y-6 text-lg text-gray-100 max-w-3xl mx-auto mb-12"
             >
               <p>
-                Accelerate represents my vision for growing Web3 ecosystems through
-                intelligent connections between founders, developers, and funders.
+                Accelerate is not just a Web3 tool—it&apos;s a <strong className="text-cyan-400">systems-level innovation</strong> for
+                how ecosystems fund and support builders. Builder profiles, project objects, program metadata,
+                evaluation engines, web scraping, and intelligent matching—all in one modular platform.
               </p>
               <p>
-                Rather than building in isolation, we believe the strongest projects emerge
-                when the right people find each other at the right time, with access to
-                the right resources and funding opportunities.
+                Traditional grant systems reward promises over delivery. Accelerate flips that.
+                <strong className="text-white"> Milestone-based funding. Transparent evaluation. Aligned incentives.</strong>
               </p>
               <p>
-                With 607+ projects connected and 433+ funding programs integrated, we're building
-                the central nervous system that enables Web3 founders to build better, faster.
+                With 607+ projects connected and 433+ funding programs integrated, we&apos;re building the infrastructure
+                that creates <strong className="text-cyan-400">consistent, high-signal due diligence</strong> at scale.
               </p>
             </motion.div>
 

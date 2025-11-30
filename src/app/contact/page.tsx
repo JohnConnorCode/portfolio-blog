@@ -124,31 +124,44 @@ export default function ContactPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative py-12 px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-b from-gray-900 to-black">
-        {/* Cyberpunk grid background */}
-        <div className="absolute inset-0 cyber-grid" />
-
-        {/* Glowing accent lines */}
-        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent" />
+      <section className="relative py-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        {/* Background effects */}
+        <div className="absolute inset-0 -z-10">
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-[150px]" />
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-[150px]" />
+        </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-8">
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.2 }}
+              className="text-cyan-400 font-mono text-sm tracking-wider mb-4"
+            >
+              LET&apos;S BUILD SOMETHING REAL
+            </motion.p>
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: ANIMATION_DURATION.normal, delay: ANIMATION_DELAY.section, ease: "easeOut" }}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light mb-6 leading-[1.1] sm:leading-[1.05] lg:leading-[1.02]"
+              transition={{ duration: 0.6 }}
+              className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6"
             >
-              <span className="text-white">LET&apos;S BUILD</span>
-              <span className="text-cyan-400 font-black neon-glow"> TOGETHER</span>
+              <span className="text-white">Start a </span>
+              <span style={{
+                background: 'linear-gradient(135deg, #00ffff 0%, #a855f7 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+              }}>Conversation</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: ANIMATION_DURATION.normal, delay: ANIMATION_DELAY.section + ANIMATION_DELAY.stagger, ease: "easeOut" }}
-              className="text-base sm:text-lg text-gray-100 font-light tracking-wide max-w-3xl mx-auto"
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="text-lg text-gray-300 max-w-2xl mx-auto"
             >
-              Creating transformative technology solutions that amplify human potential and drive meaningful impact.
+              Whether you need product strategy, technical architecture, or a co-builder who ships—I&apos;m here to help turn vision into reality.
             </motion.p>
           </div>
         </div>
@@ -464,19 +477,19 @@ export default function ContactPage() {
             {[
               {
                 question: "What types of projects do you take on?",
-                answer: "I specialize in systems architecture, growth strategy, operations optimization, and creator economy platforms. I work with startups to enterprise companies."
+                answer: "Product strategy, AI integration, Web3 infrastructure, marketplace design, and civic tech platforms. I work with founders who care about building systems that actually work—not growth theater."
               },
               {
-                question: "What's your typical timeline?",
-                answer: "Project timelines vary based on scope. Most engagements range from 1-6 months, with the ability to extend for ongoing support."
+                question: "Do you build or just advise?",
+                answer: "Both. I'm hands-on—I can architect systems, write code, and ship products alongside your team. Not just decks and frameworks."
               },
               {
-                question: "Do you work remotely?",
-                answer: "Yes, I work with clients globally. I'm comfortable with remote collaboration and can adjust to different time zones as needed."
+                question: "What's your approach?",
+                answer: "Surface reality first. I start by understanding what's actually broken, test assumptions against real users, and design systems where incentives align with outcomes."
               },
               {
                 question: "How do we get started?",
-                answer: "Fill out the inquiry form or book a discovery call. We'll discuss your needs, and I'll provide a proposal within 48 hours."
+                answer: "Fill out the form or email directly. I'll respond within 24 hours. If there's fit, we'll scope a focused engagement that delivers real value quickly."
               }
             ].map((faq, index) => (
               <motion.div
