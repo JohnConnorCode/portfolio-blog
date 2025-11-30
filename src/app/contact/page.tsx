@@ -133,33 +133,52 @@ export default function ContactPage() {
 
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-8">
-            <motion.p
+            {/* Decorative element */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.1, duration: 0.5 }}
+              className="flex items-center justify-center gap-4 mb-6"
+            >
+              <div className="w-16 h-px bg-gradient-to-r from-transparent to-cyan-500/50" />
+              <svg viewBox="0 0 24 24" className="w-5 h-5">
+                <path d="M12 2 L22 12 L12 22 L2 12 Z" fill="none" stroke="rgba(0, 212, 255, 0.6)" strokeWidth="1.5" />
+              </svg>
+              <div className="w-16 h-px bg-gradient-to-l from-transparent to-cyan-500/50" />
+            </motion.div>
+
+            <motion.span
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.2 }}
-              className="text-cyan-400 font-mono text-sm tracking-wider mb-4"
+              transition={{ delay: 0.15, duration: 0.5 }}
+              className="text-cyan-400/60 text-xs tracking-[0.3em] uppercase block mb-4"
+              style={{ fontFamily: "'Cinzel', serif" }}
             >
-              LET&apos;S BUILD SOMETHING REAL
-            </motion.p>
+              Let&apos;s Build Together
+            </motion.span>
+
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6"
-            >
-              <span className="text-white">Start a </span>
-              <span style={{
-                background: 'linear-gradient(135deg, #00ffff 0%, #a855f7 100%)',
+              className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6"
+              style={{
+                fontFamily: "'Cinzel', serif",
+                letterSpacing: '0.05em',
+                background: 'linear-gradient(135deg, #ffffff 0%, #00d4ff 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
-              }}>Conversation</span>
+              }}
+            >
+              Contact
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-lg text-gray-300 max-w-2xl mx-auto"
+              className="text-lg text-gray-400 max-w-2xl mx-auto"
+              style={{ fontFamily: "'Cormorant Garamond', serif" }}
             >
               Whether you need product strategy, technical architecture, or a co-builder who ships—I&apos;m here to help turn vision into reality.
             </motion.p>

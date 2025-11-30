@@ -197,7 +197,7 @@ export default function AcceleratePage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: ANIMATION_DURATION.normal, delay: ANIMATION_DELAY.stagger }}
-            className="text-xl sm:text-2xl text-gray-100 max-w-3xl mx-auto mb-12"
+            className="text-xl sm:text-2xl text-gray-300 max-w-3xl mx-auto mb-12"
           >
             A modular platform for builder profiles, funding programs, evaluation engines, and intelligent matching.
             Systems-level innovation for Web3 ecosystems.
@@ -263,7 +263,7 @@ export default function AcceleratePage() {
                 >
                   {stat.value}
                 </motion.div>
-                <div className="text-sm text-gray-100">{stat.label}</div>
+                <div className="text-sm text-gray-300">{stat.label}</div>
               </motion.div>
             ))}
           </div>
@@ -307,7 +307,7 @@ export default function AcceleratePage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: ANIMATION_DURATION.normal, delay: ANIMATION_DELAY.stagger }}
-              className="text-xl text-gray-100 max-w-3xl mx-auto"
+              className="text-xl text-gray-300 max-w-3xl mx-auto"
             >
               Growing Web3 ecosystems through intelligent connections
             </motion.p>
@@ -329,7 +329,7 @@ export default function AcceleratePage() {
               <div className="absolute -inset-1 bg-gradient-to-r from-red-500/20 to-orange-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="relative bg-background/80 backdrop-blur-xl border border-red-500/20 rounded-2xl p-8">
                 <h3 className="text-2xl font-bold mb-4 text-red-400">The Challenge</h3>
-                <ul className="space-y-3 text-gray-100">
+                <ul className="space-y-3 text-gray-300">
                   <li className="flex items-start gap-2">
                     <ChevronRight className="w-5 h-5 text-red-400 mt-0.5 flex-shrink-0" />
                     <span>Web3 founders struggle to find the right team members</span>
@@ -358,7 +358,7 @@ export default function AcceleratePage() {
               <div className="absolute -inset-1 bg-gradient-to-r from-green-500/20 to-emerald-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="relative bg-background/80 backdrop-blur-xl border border-green-500/20 rounded-2xl p-8">
                 <h3 className="text-2xl font-bold mb-4 text-green-400">The Solution</h3>
-                <ul className="space-y-3 text-gray-100">
+                <ul className="space-y-3 text-gray-300">
                   <li className="flex items-start gap-2">
                     <ChevronRight className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
                     <span>Central hub connecting founders, developers, and funders</span>
@@ -396,7 +396,7 @@ export default function AcceleratePage() {
               <span className="text-white">Platform </span>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">Features</span>
             </h2>
-            <p className="text-xl text-gray-100 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               Connecting the Web3 ecosystem through intelligent founder-builder-funder relationships
             </p>
           </motion.div>
@@ -428,7 +428,7 @@ export default function AcceleratePage() {
                         </div>
                         <div className="flex-1">
                           <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
-                          <p className="text-gray-100">{feature.description}</p>
+                          <p className="text-gray-300">{feature.description}</p>
                         </div>
                       </div>
                     </div>
@@ -462,7 +462,7 @@ export default function AcceleratePage() {
               <span className="text-white">Building </span>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">The Ecosystem</span>
             </h2>
-            <p className="text-xl text-gray-100 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               Connecting founders, builders, and funders across Web3
             </p>
           </motion.div>
@@ -500,7 +500,7 @@ export default function AcceleratePage() {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 + i * 0.05 }}
-                            className="flex items-start gap-2 text-sm text-gray-100"
+                            className="flex items-start gap-2 text-sm text-gray-300"
                           >
                             <ChevronRight className="w-4 h-4 text-cyan-400 mt-0.5 flex-shrink-0" />
                             <span>{item}</span>
@@ -530,7 +530,7 @@ export default function AcceleratePage() {
               <span className="text-white">Technical </span>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-400">Implementation</span>
             </h2>
-            <p className="text-xl text-gray-100 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               Modern technology stack enabling intelligent ecosystem connections
             </p>
           </motion.div>
@@ -568,7 +568,7 @@ export default function AcceleratePage() {
                   >
                     Modern Web Stack
                   </motion.div>
-                  <p className="text-sm text-gray-100">
+                  <p className="text-sm text-gray-300">
                     React, TypeScript, and real-time data synchronization
                   </p>
                 </motion.div>
@@ -584,7 +584,7 @@ export default function AcceleratePage() {
                   >
                     Smart Connections
                   </motion.div>
-                  <p className="text-sm text-gray-100">
+                  <p className="text-sm text-gray-300">
                     Intelligent matching between founders, builders, and funders
                   </p>
                 </motion.div>
@@ -600,7 +600,7 @@ export default function AcceleratePage() {
                   >
                     Quality Assurance
                   </motion.div>
-                  <p className="text-sm text-gray-100">
+                  <p className="text-sm text-gray-300">
                     Comprehensive testing and deployment automation
                   </p>
                 </motion.div>
@@ -639,7 +639,7 @@ export default function AcceleratePage() {
                   {item.value}
                 </motion.div>
                 <div className="text-sm font-semibold text-foreground mt-2">{item.metric}</div>
-                <div className="text-xs text-gray-100 mt-1">{item.period}</div>
+                <div className="text-xs text-gray-300 mt-1">{item.period}</div>
               </motion.div>
             ))}
           </motion.div>
@@ -672,7 +672,7 @@ export default function AcceleratePage() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: ANIMATION_DURATION.slow, delay: ANIMATION_DELAY.stagger }}
-              className="space-y-6 text-lg text-gray-100 max-w-3xl mx-auto mb-12"
+              className="space-y-6 text-lg text-gray-300 max-w-3xl mx-auto mb-12"
             >
               <p>
                 Accelerate is not just a Web3 tool—it&apos;s a <strong className="text-cyan-400">systems-level innovation</strong> for

@@ -199,7 +199,7 @@ export default function SuperDebatePage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: ANIMATION_DURATION.normal, delay: ANIMATION_DELAY.stagger * 2 }}
-              className="text-xl sm:text-2xl text-gray-100 max-w-3xl mx-auto mb-12"
+              className="text-xl sm:text-2xl text-gray-300 max-w-3xl mx-auto mb-12"
             >
               The first large-scale adult debate ecosystem since ancient times.
               Local clubs, national tournaments, AI-powered judging. <strong className="text-purple-400">Reinventing civic discourse.</strong>
@@ -255,7 +255,7 @@ export default function SuperDebatePage() {
                   >
                     {stat.value}
                   </motion.div>
-                  <div className="text-sm text-gray-100">{stat.label}</div>
+                  <div className="text-sm text-gray-300">{stat.label}</div>
                 </motion.div>
               ))}
             </div>
@@ -290,7 +290,7 @@ export default function SuperDebatePage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: ANIMATION_DURATION.normal, delay: ANIMATION_DELAY.stagger }}
-              className="text-xl text-gray-100 max-w-3xl mx-auto"
+              className="text-xl text-gray-300 max-w-3xl mx-auto"
             >
               From running workshops in Bali to planning our Chicago flagship event with 1871,
               we're building a global movement to make critical thinking accessible to everyone
@@ -324,7 +324,7 @@ export default function SuperDebatePage() {
                         </div>
                         <div className="flex-1">
                           <h3 className="text-xl font-bold mb-2">{highlight.title}</h3>
-                          <p className="text-gray-100">{highlight.description}</p>
+                          <p className="text-gray-300">{highlight.description}</p>
                         </div>
                       </div>
                     </div>
@@ -383,7 +383,7 @@ export default function SuperDebatePage() {
                         </div>
                         <div className="flex-1">
                           <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
-                          <p className="text-gray-100">{feature.description}</p>
+                          <p className="text-gray-300">{feature.description}</p>
                         </div>
                       </div>
                     </div>
@@ -444,7 +444,7 @@ export default function SuperDebatePage() {
                   >
                     Next.js + TypeScript
                   </div>
-                  <p className="text-sm text-gray-100">
+                  <p className="text-sm text-gray-300">
                     Modern React framework with full-stack capabilities and edge functions
                   </p>
                 </motion.div>
@@ -458,7 +458,7 @@ export default function SuperDebatePage() {
                   >
                     AI Integration
                   </div>
-                  <p className="text-sm text-gray-100">
+                  <p className="text-sm text-gray-300">
                     Custom AI training tools and automated debate analysis systems
                   </p>
                 </motion.div>
@@ -472,7 +472,7 @@ export default function SuperDebatePage() {
                   >
                     Scalable Architecture
                   </div>
-                  <p className="text-sm text-gray-100">
+                  <p className="text-sm text-gray-300">
                     Built to handle tournaments with thousands of concurrent users
                   </p>
                 </motion.div>
@@ -509,7 +509,7 @@ export default function SuperDebatePage() {
                   {item.value}
                 </div>
                 <div className="text-sm font-semibold text-foreground mt-2">{item.metric}</div>
-                <div className="text-xs text-gray-100 mt-1">{item.period}</div>
+                <div className="text-xs text-gray-300 mt-1">{item.period}</div>
               </motion.div>
             ))}
           </motion.div>
@@ -602,7 +602,7 @@ export default function SuperDebatePage() {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 + i * 0.05 }}
-                            className="flex items-start gap-2 text-sm text-gray-100"
+                            className="flex items-start gap-2 text-sm text-gray-300"
                           >
                             <ChevronRight className="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0" />
                             <span>{item}</span>
@@ -643,7 +643,7 @@ export default function SuperDebatePage() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: ANIMATION_DURATION.slow, delay: ANIMATION_DELAY.stagger }}
-              className="space-y-6 text-lg text-gray-100 max-w-3xl mx-auto mb-12"
+              className="space-y-6 text-lg text-gray-300 max-w-3xl mx-auto mb-12"
             >
               <p>
                 SuperDebate is <strong className="text-purple-400">one of the most original civic ventures</strong> launched
