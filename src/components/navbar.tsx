@@ -15,7 +15,6 @@ const navItems = [
     icon: Briefcase,
     subItems: [
       { href: '/super-debate', label: 'Super Debate' },
-      { href: '/accelerate', label: 'Accelerate' },
     ]
   },
   { href: '/blog', label: 'Blog', icon: BookOpen },
@@ -45,20 +44,13 @@ export function Navbar() {
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
         scrolled
-          ? 'bg-black/20 backdrop-blur-xl shadow-2xl shadow-black/20'
+          ? 'bg-[#faf9f7]/90 backdrop-blur-xl shadow-sm'
           : 'bg-transparent'
       )}
-      style={{
-        backdropFilter: scrolled ? 'blur(20px) saturate(180%)' : 'none',
-        WebkitBackdropFilter: scrolled ? 'blur(20px) saturate(180%)' : 'none',
-        background: scrolled
-          ? 'linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6))'
-          : 'transparent'
-      }}
     >
-      {/* Animated border that appears on scroll */}
+      {/* Subtle border that appears on scroll */}
       <motion.div
-        className="absolute bottom-0 left-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent"
+        className="absolute bottom-0 left-0 h-[1px] bg-gradient-to-r from-transparent via-[#1a2744]/10 to-transparent"
         initial={{ width: 0, opacity: 0 }}
         animate={{
           width: scrolled ? '100%' : 0,
@@ -75,9 +67,9 @@ export function Navbar() {
           >
             <Link href="/" className="group">
               <div className="flex items-center gap-3">
-                {/* Cool geometric logo with animated gradient */}
+                {/* Refined geometric logo */}
                 <div className="relative w-10 h-10 group">
-                  {/* JC Text - appears first */}
+                  {/* JC Text */}
                   <motion.div
                     className="absolute inset-0 flex items-center justify-center z-10"
                     initial={{ scale: 0, opacity: 0 }}
@@ -89,7 +81,7 @@ export function Navbar() {
                     }}
                   >
                     <motion.span
-                      className="text-lg font-black text-foreground"
+                      className="text-lg font-bold text-[#1a2744]"
                       whileHover={{ scale: 1.1 }}
                       transition={{ type: "spring", stiffness: 400, damping: 10 }}
                     >
@@ -97,34 +89,7 @@ export function Navbar() {
                     </motion.span>
                   </motion.div>
 
-                  {/* Diamond border - animates after JC text */}
-                  <motion.div
-                    className="absolute inset-0"
-                    initial={{ scale: 0, opacity: 0, rotate: 45 }}
-                    animate={{ scale: 1, opacity: 1, rotate: 45 }}
-                    transition={{
-                      duration: 0.4,
-                      delay: 0.2,
-                      ease: [0.22, 1, 0.36, 1]
-                    }}
-                  >
-                    <div
-                      className="w-full h-full border-2 rounded-sm bg-gradient-to-br from-cyan-500 to-purple-500"
-                      style={{
-                        borderImage: 'linear-gradient(135deg, #06b6d4, #a855f7) 1',
-                        WebkitMaskImage: 'linear-gradient(#fff 0 0)',
-                        maskImage: 'linear-gradient(#fff 0 0)',
-                        WebkitMaskComposite: 'xor',
-                        maskComposite: 'exclude',
-                        background: 'transparent',
-                        border: '2px solid',
-                        borderImageSlice: '1',
-                        borderImageSource: 'linear-gradient(135deg, #06b6d4, #a855f7)',
-                      }}
-                    />
-                  </motion.div>
-
-                  {/* Alternative approach - SVG diamond that will definitely show */}
+                  {/* Diamond border - navy/gold gradient */}
                   <motion.svg
                     className="absolute inset-0 w-full h-full pointer-events-none"
                     viewBox="0 0 40 40"
@@ -138,33 +103,23 @@ export function Navbar() {
                   >
                     <defs>
                       <linearGradient id="diamondGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="#06b6d4" />
-                        <stop offset="100%" stopColor="#a855f7" />
+                        <stop offset="0%" stopColor="#1a2744" />
+                        <stop offset="100%" stopColor="#c9a227" />
                       </linearGradient>
                     </defs>
                     <path
                       d="M 20 5 L 35 20 L 20 35 L 5 20 Z"
                       fill="none"
                       stroke="url(#diamondGradient)"
-                      strokeWidth="2"
+                      strokeWidth="1.5"
                       strokeLinecap="round"
                       strokeLinejoin="round"
                     />
                   </motion.svg>
-
-                  {/* Subtle glow on hover */}
-                  <motion.div
-                    className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100"
-                    style={{
-                      background: 'radial-gradient(circle at center, rgba(168, 85, 247, 0.2), transparent 70%)',
-                      filter: 'blur(8px)'
-                    }}
-                    transition={{ duration: 0.3 }}
-                  />
                 </div>
                 <div className="flex flex-col">
                   <motion.span
-                    className="text-xl md:text-2xl font-bold tracking-tight overflow-hidden block"
+                    className="text-xl md:text-2xl font-semibold tracking-tight text-[#1a2744] overflow-hidden block"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.3 }}
@@ -183,7 +138,7 @@ export function Navbar() {
                     </motion.span>
                   </motion.span>
                   <motion.span
-                    className="text-xs text-muted-foreground uppercase tracking-widest overflow-hidden block"
+                    className="text-xs text-[#1a2744]/50 uppercase tracking-widest overflow-hidden block"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.5 }}
@@ -206,7 +161,7 @@ export function Navbar() {
             </Link>
           </motion.div>
 
-          <div className="hidden md:flex items-center space-x-6">
+          <div className="hidden md:flex items-center space-x-2">
             {navItems.map((item, index) => {
               const Icon = item.icon
               const isActive = pathname === item.href || item.subItems?.some(sub => pathname === sub.href)
@@ -227,27 +182,27 @@ export function Navbar() {
                   <Link
                     href={item.href}
                     className={cn(
-                      'relative px-5 py-2.5 rounded-lg transition-all duration-300 flex items-center space-x-2 group/link',
+                      'relative px-4 py-2.5 rounded-lg transition-all duration-300 flex items-center space-x-2 group/link text-sm',
                       isActive
-                        ? 'text-cyan-400'
-                        : 'text-gray-400 hover:text-white'
+                        ? 'text-[#c9a227]'
+                        : 'text-[#1a2744]/60 hover:text-[#1a2744]'
                     )}
                   >
-                    {/* Hover glow background */}
-                    <span className="absolute inset-0 rounded-lg bg-gradient-to-r from-cyan-500/10 to-purple-500/10 opacity-0 group-hover/link:opacity-100 transition-opacity duration-300" />
+                    {/* Hover background */}
+                    <span className="absolute inset-0 rounded-lg bg-[#1a2744]/5 opacity-0 group-hover/link:opacity-100 transition-opacity duration-300" />
 
                     {/* Active indicator */}
                     {isActive && (
                       <motion.span
                         layoutId="nav-indicator"
-                        className="absolute inset-0 rounded-lg bg-white/5 border border-cyan-500/30"
+                        className="absolute inset-0 rounded-lg bg-[#c9a227]/10 border border-[#c9a227]/20"
                         transition={{ type: "spring", stiffness: 400, damping: 30 }}
                       />
                     )}
 
                     <Icon className={cn(
                       "w-4 h-4 relative z-10 transition-all duration-300",
-                      isActive ? "text-cyan-400" : "group-hover/link:text-cyan-400"
+                      isActive ? "text-[#c9a227]" : "group-hover/link:text-[#c9a227]"
                     )} />
                     <span className="relative z-10">{item.label}</span>
                   </Link>
@@ -255,20 +210,18 @@ export function Navbar() {
                   {/* Dropdown for sub-items */}
                   {hasSubItems && (
                     <div className="absolute top-full left-0 pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2">
-                      <div className="bg-black/90 backdrop-blur-2xl border border-white/10 rounded-xl shadow-2xl overflow-hidden min-w-[200px]"
-                        style={{ boxShadow: '0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 212, 255, 0.1)' }}
-                      >
-                        {item.subItems?.map((subItem, subIndex) => {
+                      <div className="bg-[#faf9f7] backdrop-blur-2xl border border-[#1a2744]/10 rounded-xl shadow-lg overflow-hidden min-w-[200px]">
+                        {item.subItems?.map((subItem) => {
                           const isSubActive = pathname === subItem.href
                           return (
                             <Link
                               key={subItem.href}
                               href={subItem.href}
                               className={cn(
-                                'block px-5 py-3 transition-all duration-200 border-l-2 border-transparent hover:border-cyan-400',
+                                'block px-5 py-3 transition-all duration-200 border-l-2 border-transparent hover:border-[#c9a227]',
                                 isSubActive
-                                  ? 'text-cyan-400 bg-cyan-500/10 border-l-cyan-400'
-                                  : 'text-gray-400 hover:text-white hover:bg-white/5'
+                                  ? 'text-[#c9a227] bg-[#c9a227]/10 border-l-[#c9a227]'
+                                  : 'text-[#1a2744]/60 hover:text-[#1a2744] hover:bg-[#1a2744]/5'
                               )}
                             >
                               {subItem.label}
@@ -284,115 +237,23 @@ export function Navbar() {
           </div>
 
           <div className="flex items-center space-x-4">
-            {/* Theme toggle disabled - dark mode only */}
-
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden p-3 rounded-xl hover:bg-gradient-to-br hover:from-cyan-400/10 hover:to-purple-400/10 transition-all duration-300 relative group"
+              className="md:hidden p-3 rounded-xl hover:bg-[#1a2744]/5 transition-all duration-300 relative group"
               aria-label="Toggle menu"
             >
-              {/* Unique geometric menu icon */}
-              <div className="w-7 h-7 relative">
-                {/* Morphing dots pattern */}
-                <svg
-                  viewBox="0 0 28 28"
-                  fill="none"
-                  className="w-full h-full"
-                >
-                  <motion.circle
-                    cx={isOpen ? "14" : "7"}
-                    cy={isOpen ? "14" : "7"}
-                    r="2.5"
-                    fill="currentColor"
-                    animate={{
-                      cx: isOpen ? 14 : 7,
-                      cy: isOpen ? 14 : 7,
-                      scale: isOpen ? 1.2 : 1
-                    }}
-                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                    className="text-cyan-400"
-                  />
-                  <motion.circle
-                    cx="21"
-                    cy={isOpen ? "14" : "7"}
-                    r="2.5"
-                    fill="currentColor"
-                    animate={{
-                      cy: isOpen ? 14 : 7,
-                      opacity: isOpen ? 0 : 1,
-                      scale: isOpen ? 0 : 1
-                    }}
-                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                    className="text-purple-400"
-                  />
-                  <motion.circle
-                    cx={isOpen ? "14" : "7"}
-                    cy="21"
-                    r="2.5"
-                    fill="currentColor"
-                    animate={{
-                      cx: isOpen ? 14 : 7,
-                      scale: isOpen ? 0 : 1,
-                      opacity: isOpen ? 0 : 1
-                    }}
-                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                    className="text-cyan-400"
-                  />
-                  <motion.circle
-                    cx="21"
-                    cy="21"
-                    r="2.5"
-                    fill="currentColor"
-                    animate={{
-                      scale: isOpen ? 1.2 : 1
-                    }}
-                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                    className="text-purple-400"
-                  />
-
-                  {/* X pattern when open */}
-                  <motion.line
-                    x1="10"
-                    y1="10"
-                    x2="18"
-                    y2="18"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    className="text-white"
-                    initial={{ pathLength: 0, opacity: 0 }}
-                    animate={{
-                      pathLength: isOpen ? 1 : 0,
-                      opacity: isOpen ? 1 : 0
-                    }}
-                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                  />
-                  <motion.line
-                    x1="18"
-                    y1="10"
-                    x2="10"
-                    y2="18"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    className="text-white"
-                    initial={{ pathLength: 0, opacity: 0 }}
-                    animate={{
-                      pathLength: isOpen ? 1 : 0,
-                      opacity: isOpen ? 1 : 0
-                    }}
-                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                  />
-                </svg>
-
-                {/* Glow effect on hover */}
+              <div className="w-6 h-6 relative flex items-center justify-center">
                 <motion.div
-                  className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100"
-                  style={{
-                    background: 'radial-gradient(circle at center, rgba(6, 182, 212, 0.3), transparent 70%)',
-                    filter: 'blur(10px)'
-                  }}
-                  transition={{ duration: 0.3 }}
+                  animate={isOpen ? { rotate: 45, y: 0 } : { rotate: 0, y: -4 }}
+                  className="absolute w-5 h-0.5 bg-[#1a2744] rounded-full"
+                />
+                <motion.div
+                  animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
+                  className="absolute w-5 h-0.5 bg-[#1a2744] rounded-full"
+                />
+                <motion.div
+                  animate={isOpen ? { rotate: -45, y: 0 } : { rotate: 0, y: 4 }}
+                  className="absolute w-5 h-0.5 bg-[#1a2744] rounded-full"
                 />
               </div>
             </button>
@@ -407,24 +268,19 @@ export function Navbar() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
             transition={{ type: 'tween', duration: 0.3, ease: 'easeInOut' }}
-            className="md:hidden fixed inset-y-0 right-0 w-full sm:w-80 bg-black/60 backdrop-blur-2xl border-l border-white/20 z-50 shadow-2xl"
-            style={{
-              backdropFilter: 'blur(30px) saturate(200%)',
-              WebkitBackdropFilter: 'blur(30px) saturate(200%)',
-              background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5))'
-            }}
+            className="md:hidden fixed inset-y-0 right-0 w-full sm:w-80 bg-[#faf9f7] border-l border-[#1a2744]/10 z-50 shadow-xl"
           >
             {/* Close button */}
-            <div className="flex justify-between items-center p-6 border-b border-border/20">
-              <span className="text-lg font-semibold">Menu</span>
+            <div className="flex justify-between items-center p-6 border-b border-[#1a2744]/10">
+              <span className="text-lg font-semibold text-[#1a2744]">Menu</span>
               <button
                 onClick={() => setIsOpen(false)}
-                className="p-2 rounded-lg hover:bg-primary/10 transition-colors"
+                className="p-2 rounded-lg hover:bg-[#1a2744]/5 transition-colors"
               >
-                <X className="w-6 h-6" />
+                <X className="w-6 h-6 text-[#1a2744]" />
               </button>
             </div>
-            
+
             <div className="p-6 space-y-2">
               {navItems.map((item, index) => {
                 const Icon = item.icon
@@ -444,8 +300,8 @@ export function Navbar() {
                       className={cn(
                         'flex items-center space-x-3 px-4 py-3 rounded-lg transition-all group',
                         isActive
-                          ? 'bg-primary/10 text-primary'
-                          : 'hover:bg-primary/5 text-muted-foreground hover:text-foreground'
+                          ? 'bg-[#c9a227]/10 text-[#c9a227]'
+                          : 'hover:bg-[#1a2744]/5 text-[#1a2744]/60 hover:text-[#1a2744]'
                       )}
                     >
                       <Icon className="w-5 h-5" />
@@ -453,7 +309,7 @@ export function Navbar() {
                       {isActive && !hasSubItems && (
                         <motion.div
                           layoutId="mobile-active-indicator"
-                          className="w-1 h-6 bg-primary rounded-full"
+                          className="w-1 h-6 bg-[#c9a227] rounded-full"
                         />
                       )}
                     </Link>
@@ -471,15 +327,15 @@ export function Navbar() {
                               className={cn(
                                 'flex items-center px-4 py-2 rounded-lg transition-all text-sm',
                                 isSubActive
-                                  ? 'bg-primary/10 text-primary'
-                                  : 'hover:bg-primary/5 text-muted-foreground hover:text-foreground'
+                                  ? 'bg-[#c9a227]/10 text-[#c9a227]'
+                                  : 'hover:bg-[#1a2744]/5 text-[#1a2744]/60 hover:text-[#1a2744]'
                               )}
                             >
                               <span className="flex-1">{subItem.label}</span>
                               {isSubActive && (
                                 <motion.div
                                   layoutId="mobile-sub-active-indicator"
-                                  className="w-1 h-4 bg-primary rounded-full"
+                                  className="w-1 h-4 bg-[#c9a227] rounded-full"
                                 />
                               )}
                             </Link>
@@ -491,15 +347,10 @@ export function Navbar() {
                 )
               })}
             </div>
-            
-            {/* Theme toggle in mobile menu */}
-            <div className="absolute bottom-6 left-6 right-6">
-              {/* Theme toggle disabled - dark mode only */}
-            </div>
           </motion.div>
         )}
       </AnimatePresence>
-      
+
       {/* Overlay */}
       <AnimatePresence>
         {isOpen && (
@@ -508,7 +359,7 @@ export function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setIsOpen(false)}
-            className="md:hidden fixed inset-0 bg-black/50 z-40"
+            className="md:hidden fixed inset-0 bg-[#1a2744]/20 z-40"
           />
         )}
       </AnimatePresence>

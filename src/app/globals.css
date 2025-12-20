@@ -1,21 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* FORCE DARK MODE */
+/* Light mode default */
 html {
-  color-scheme: dark !important;
+  color-scheme: light;
 }
 
-html.dark,
-html {
-  @apply bg-black !important;
-}
-
+html,
 body {
-  @apply bg-black !important;
+  @apply bg-[#faf9f7];
 }
 
 @layer base {
@@ -565,122 +561,21 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* TRON GRID ANIMATION - Working animation with all vaporwave effects */
-.tron-grid {
-  position: absolute !important;
-  left: 0 !important;
-  right: 0 !important;
-  top: 50% !important;
-  height: 50% !important;
-  transform-origin: center top !important;
-  transform: perspective(300px) rotateX(65deg) scale(3) !important;
-  overflow: hidden !important;
-  z-index: 5 !important;
-  pointer-events: none !important;
+/* Refined serif typography */
+.font-serif {
+  font-family: 'Playfair Display', Georgia, serif;
 }
 
-.tron-grid::after {
-  content: "" !important;
-  position: absolute !important;
-  top: -100% !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: -100% !important;
-  background-image:
-    linear-gradient(to right, rgba(34, 211, 238, 1) 2px, transparent 2px),
-    linear-gradient(to bottom, rgba(34, 211, 238, 1) 2px, transparent 2px) !important;
-  background-size: 20px 20px !important;
-  animation: gridmove 15s linear infinite !important;
+/* Navy color utilities */
+.text-navy {
+  color: #1a2744;
 }
 
-/* Mobile grid density */
-@media (max-width: 768px) {
-  .tron-grid::after {
-    background-size: 12px 12px !important;
-  }
+.bg-navy {
+  background-color: #1a2744;
 }
 
-/* Fade toward horizon - crisp at bottom, faded at top */
-.tron-grid::before {
-  content: "" !important;
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  background: linear-gradient(to bottom,
-    rgba(0, 0, 0, 0.95) 0%,
-    rgba(0, 0, 0, 0.8) 10%,
-    rgba(0, 0, 0, 0.5) 25%,
-    rgba(0, 0, 0, 0.2) 40%,
-    transparent 60%,
-    transparent 100%) !important;
-  z-index: 1 !important;
-}
-
-@keyframes gridmove {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(20px);
-  }
-}
-
-
-/* Grid glow effect - separate layer to avoid pixelation */
-.grid-glow {
-  position: absolute !important;
-  bottom: 30% !important;
-  left: 0 !important;
-  right: 0 !important;
-  height: 20px !important;
-  background: linear-gradient(to bottom,
-    transparent,
-    rgba(0, 255, 255, 0.3),
-    rgba(0, 255, 255, 0.1),
-    transparent) !important;
-  filter: blur(15px) !important;
-  z-index: 4 !important;
-  pointer-events: none !important;
-  mix-blend-mode: screen !important;
-}
-
-/* Vaporwave gradient overlay at horizon */
-.vaporwave-glow {
-  position: absolute !important;
-  top: 50% !important;
-  left: 50% !important;
-  transform: translateX(-50%) translateY(-50%) !important;
-  width: 200% !important;
-  height: 30% !important;
-  z-index: 6 !important;
-  pointer-events: none !important;
-  background: radial-gradient(ellipse at center,
-    rgba(255, 0, 255, 0.5) 0%,
-    rgba(138, 43, 226, 0.4) 20%,
-    rgba(34, 211, 238, 0.3) 40%,
-    transparent 70%) !important;
-  filter: blur(40px) !important;
-  mix-blend-mode: screen !important;
-}
-
-/* Vaporwave setting sun - glassy shadow half-orb at horizon */
-.vaporwave-sun {
-  position: absolute !important;
-  bottom: 48% !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  width: 400px !important;
-  height: 200px !important;
-  z-index: 4 !important;
-  pointer-events: none !important;
-  background: radial-gradient(ellipse at center bottom,
-    rgba(255, 100, 200, 0.25) 0%,
-    rgba(255, 200, 0, 0.2) 10%,
-    rgba(138, 43, 226, 0.15) 20%,
-    rgba(0, 255, 255, 0.1) 30%,
-    transparent 50%) !important;
-  filter: blur(20px) !important;
-  mix-blend-mode: screen !important;
+/* Warm cream background */
+.bg-cream {
+  background-color: #faf9f7;
 }
