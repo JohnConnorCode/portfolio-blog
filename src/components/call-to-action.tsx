@@ -94,11 +94,9 @@ export function CallToAction() {
 
           <motion.h2
             {...headerAnimation}
-            className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4"
+            className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 tracking-wide"
             style={{
-              fontFamily: "'Cinzel', serif",
-              letterSpacing: '0.08em',
-              background: 'linear-gradient(135deg, #ffffff 0%, #d4af37 100%)',
+              background: 'linear-gradient(135deg, #ffffff 0%, #00d4ff 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
@@ -110,8 +108,7 @@ export function CallToAction() {
           <motion.p
             {...headerAnimation}
             transition={{ ...headerAnimation.transition, delay: ANIMATION_DELAY.stagger }}
-            className="text-base sm:text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto"
-            style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300 }}
+            className="text-base sm:text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto font-light"
           >
             Have a project in mind? I&apos;d love to hear about it.
           </motion.p>
@@ -124,15 +121,12 @@ export function CallToAction() {
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="group relative px-10 sm:px-14 py-5 sm:py-6 font-bold text-lg sm:text-xl flex items-center justify-center gap-4 overflow-hidden"
+                className="group relative px-10 sm:px-14 py-5 sm:py-6 font-bold text-lg sm:text-xl flex items-center justify-center gap-4 overflow-hidden uppercase tracking-wider"
                 style={{
-                  fontFamily: "'Cinzel', serif",
-                  background: 'linear-gradient(135deg, #d4af37 0%, #f5d67a 50%, #d4af37 100%)',
+                  background: 'linear-gradient(135deg, #00d4ff 0%, #00a8cc 50%, #00d4ff 100%)',
                   color: '#000',
-                  boxShadow: '0 0 40px rgba(212, 175, 55, 0.4), 0 0 80px rgba(212, 175, 55, 0.2)',
+                  boxShadow: '0 0 40px rgba(0, 212, 255, 0.4), 0 0 80px rgba(0, 212, 255, 0.2)',
                   border: '2px solid rgba(255, 255, 255, 0.2)',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.1em'
                 }}
               >
                 <Calendar className="w-6 h-6" />
@@ -153,7 +147,6 @@ export function CallToAction() {
             {...headerAnimation}
             transition={{ ...headerAnimation.transition, delay: ANIMATION_DELAY.section }}
             className="text-xs sm:text-sm text-gray-400 mt-8 tracking-widest uppercase"
-            style={{ fontFamily: "'Cinzel', serif" }}
           >
             Typical response time: Within 24 hours
           </motion.p>

@@ -112,13 +112,11 @@ export default function AboutPage() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
               className="text-cyan-400/70 text-xs tracking-[0.3em] uppercase mb-4"
-              style={{ fontFamily: "'Cinzel', serif" }}
             >
               Founder • Builder • Systems Thinker
             </motion.p>
             <h1
-              className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6"
-              style={{ fontFamily: "'Cinzel', serif", letterSpacing: '0.02em' }}
+              className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 tracking-wide"
             >
               <span className="text-white">About </span>
               <span style={{
@@ -131,8 +129,7 @@ export default function AboutPage() {
               </span>
             </h1>
             <p
-              className="text-lg text-gray-400 max-w-3xl mx-auto leading-relaxed"
-              style={{ fontFamily: "'Cormorant Garamond', serif" }}
+              className="text-lg text-gray-400 max-w-3xl mx-auto leading-relaxed font-light"
             >
               15+ years building products across AI, Web3, civic tech, and digital communities.
               I care about technology that makes people more capable, not more dependent.

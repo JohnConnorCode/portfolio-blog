@@ -152,7 +152,6 @@ export default function ContactPage() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.15, duration: 0.5 }}
               className="text-cyan-400/60 text-xs tracking-[0.3em] uppercase block mb-4"
-              style={{ fontFamily: "'Cinzel', serif" }}
             >
               Let&apos;s Build Together
             </motion.span>
@@ -161,10 +160,8 @@ export default function ContactPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6"
+              className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 tracking-wide"
               style={{
-                fontFamily: "'Cinzel', serif",
-                letterSpacing: '0.05em',
                 background: 'linear-gradient(135deg, #ffffff 0%, #00d4ff 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
@@ -177,8 +174,7 @@ export default function ContactPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-lg text-gray-400 max-w-2xl mx-auto"
-              style={{ fontFamily: "'Cormorant Garamond', serif" }}
+              className="text-lg text-gray-400 max-w-2xl mx-auto font-light"
             >
               Whether you need product strategy, technical architecture, or a co-builder who ships—I&apos;m here to help turn vision into reality.
             </motion.p>

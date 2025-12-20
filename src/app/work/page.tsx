@@ -171,13 +171,11 @@ export default function WorkPage() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
             className="text-cyan-400/70 text-xs tracking-[0.3em] uppercase mb-4"
-            style={{ fontFamily: "'Cinzel', serif" }}
           >
             Projects & Experience
           </motion.p>
           <h1
-            className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6"
-            style={{ fontFamily: "'Cinzel', serif", letterSpacing: '0.02em' }}
+            className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 tracking-wide"
           >
             <span className="text-white">The </span>
             <span style={{
@@ -190,8 +188,7 @@ export default function WorkPage() {
             </span>
           </h1>
           <p
-            className="text-lg text-gray-400 max-w-3xl mx-auto"
-            style={{ fontFamily: "'Cormorant Garamond', serif" }}
+            className="text-lg text-gray-400 max-w-3xl mx-auto font-light"
           >
             Current projects, past experience, and the work that shaped how I build.
           </p>

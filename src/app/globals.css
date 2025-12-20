@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -253,14 +253,13 @@ h1, h2, h3, h4, h5, h6 {
      DIGITAL AGORA - Greek + Art Deco Fusion Styles
      ═══════════════════════════════════════════════════════════ */
 
-  /* Classical Typography */
-  .font-classical {
-    font-family: 'Cinzel', serif;
-    letter-spacing: 0.1em;
+  /* Typography utilities */
+  .font-display {
+    font-weight: 700;
+    letter-spacing: 0.05em;
   }
 
   .font-elegant {
-    font-family: 'Cormorant Garamond', serif;
     font-weight: 300;
   }
 

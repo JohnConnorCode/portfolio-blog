@@ -99,17 +99,15 @@ export function ImpactBrutal() {
 
           <motion.h2
             {...headerAnimation}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-4 leading-[1.1] sm:leading-[1.05] lg:leading-[1.02]"
-            style={{ fontFamily: "'Cinzel', serif", letterSpacing: '0.1em' }}
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-4 leading-[1.1] sm:leading-[1.05] lg:leading-[1.02] tracking-wider"
           >
             <span className="text-foreground font-light">TRACK</span>
-            <span className="font-bold" style={{ color: '#d4af37', textShadow: '0 0 30px rgba(212, 175, 55, 0.4)' }}> RECORD</span>
+            <span className="font-bold" style={{ color: '#00d4ff', textShadow: '0 0 30px rgba(0, 212, 255, 0.4)' }}> RECORD</span>
           </motion.h2>
           <motion.p
             {...headerAnimation}
             transition={{ ...headerAnimation.transition, delay: ANIMATION_DELAY.stagger }}
-            className="text-base sm:text-lg text-gray-400 dark:text-gray-400 tracking-wide"
-            style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 300 }}
+            className="text-base sm:text-lg text-gray-400 dark:text-gray-400 tracking-wide font-light"
           >
             Results from building products that matter
           </motion.p>
@@ -182,9 +180,8 @@ export function ImpactBrutal() {
             {...headerAnimation}
             transition={{ ...headerAnimation.transition, delay: ANIMATION_DELAY.section }}
             className="text-gray-400 dark:text-gray-500 text-sm uppercase tracking-[0.25em]"
-            style={{ fontFamily: "'Cinzel', serif" }}
           >
-            Building what <span style={{ color: '#d4af37' }}>actually works</span>
+            Building what <span style={{ color: '#00d4ff' }}>actually works</span>
           </motion.p>
         </motion.div>
       </motion.div>

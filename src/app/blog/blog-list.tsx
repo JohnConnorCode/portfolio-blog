@@ -73,17 +73,15 @@ export default function BlogList({ initialPosts }: { initialPosts: Post[] }) {
             className="flex items-center justify-center gap-4 mb-6"
           >
             <div className="w-16 h-px bg-gradient-to-r from-transparent to-cyan-500/50" />
-            <span className="text-cyan-400/60 text-xs tracking-[0.3em] uppercase" style={{ fontFamily: "'Cinzel', serif" }}>
+            <span className="text-cyan-400/60 text-xs tracking-[0.3em] uppercase">
               Ideas & Insights
             </span>
             <div className="w-16 h-px bg-gradient-to-l from-transparent to-cyan-500/50" />
           </motion.div>
 
           <h1
-            className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 text-center"
+            className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 text-center tracking-wide"
             style={{
-              fontFamily: "'Cinzel', serif",
-              letterSpacing: '0.05em',
               background: 'linear-gradient(135deg, #ffffff 0%, #00d4ff 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
@@ -93,11 +91,10 @@ export default function BlogList({ initialPosts }: { initialPosts: Post[] }) {
             Blog
           </h1>
           <motion.p
-            className="text-lg text-gray-400 max-w-2xl mx-auto"
+            className="text-lg text-gray-400 max-w-2xl mx-auto font-light"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-            style={{ fontFamily: "'Cormorant Garamond', serif" }}
           >
             Essays and insights on human-first futurism, community building, and technology that empowers
           </motion.p>

@@ -92,17 +92,14 @@ export default function PhilosophyPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="text-amber-500/70 text-xs tracking-[0.3em] uppercase mb-4"
-            style={{ fontFamily: "'Cinzel', serif" }}
+            className="text-cyan-400/70 text-xs tracking-[0.3em] uppercase mb-4"
           >
             Worldview • Method • Practice
           </motion.p>
           <h1
-            className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6"
+            className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 tracking-wide"
             style={{
-              fontFamily: "'Cinzel', serif",
-              letterSpacing: '0.05em',
-              background: 'linear-gradient(135deg, #ffffff 0%, #d4af37 100%)',
+              background: 'linear-gradient(135deg, #ffffff 0%, #00d4ff 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
@@ -111,8 +108,7 @@ export default function PhilosophyPage() {
             Philosophy
           </h1>
           <p
-            className="text-lg text-gray-400 max-w-2xl mx-auto"
-            style={{ fontFamily: "'Cormorant Garamond', serif" }}
+            className="text-lg text-gray-400 max-w-2xl mx-auto font-light"
           >
             I build systems that expose reality, reward integrity, and make people stronger.
             Not polish. Not spectacle. What compounds.

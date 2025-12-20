@@ -355,9 +355,8 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
             animate="visible"
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-wider mb-8 relative leading-[1.1] sm:leading-[1.05] lg:leading-[1.02] whitespace-nowrap"
             style={{
-              fontFamily: "'Cinzel', serif",
               lineHeight: 0.9,
-              letterSpacing: '0.05em',
+              letterSpacing: '0.1em',
               paddingBottom: '0.1em',
               textShadow: isDark ? `
                 0 0 40px rgba(0, 212, 255, 0.5),
@@ -421,9 +420,6 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
           >
             <p
               className="text-sm sm:text-base tracking-[0.25em] uppercase text-gray-400"
-              style={{
-                fontFamily: "'Cormorant Garamond', serif",
-              }}
             >
               Founder · Builder · Systems Thinker
             </p>
@@ -444,10 +440,6 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
               className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light leading-relaxed max-w-4xl mx-auto ${
                 isDark ? 'text-white/90' : 'text-cyan-100'
               }`}
-              style={{
-                fontFamily: "'Cormorant Garamond', serif",
-                fontWeight: 300,
-              }}
             >
               {heroContent.heroDescription}
             </p>
@@ -516,7 +508,6 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   style={{
-                    fontFamily: "'Cinzel', serif",
                     background: 'linear-gradient(135deg, #00d4ff 0%, #00ffff 50%, #00d4ff 100%)',
                     color: '#000',
                     boxShadow: '0 0 30px rgba(0, 212, 255, 0.5), 0 0 60px rgba(0, 212, 255, 0.3), inset 0 0 20px rgba(255, 255, 255, 0.2)',
@@ -553,7 +544,6 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   style={{
-                    fontFamily: "'Cinzel', serif",
                     background: 'transparent',
                     color: '#fff',
                     boxShadow: '0 0 20px rgba(255, 255, 255, 0.1)',
