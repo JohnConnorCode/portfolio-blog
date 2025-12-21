@@ -22,10 +22,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }))
   
   // Dynamic blog posts
-  let blogPosts: any[] = []
+  interface SanityPost {
+    slug?: { current: string }
+    publishedAt?: string
+    _updatedAt?: string
+  }
+  let blogPosts: MetadataRoute.Sitemap = []
   try {
     const posts = await sanityClient.fetch(postsQuery)
-    blogPosts = posts?.map((post: any) => ({
+    blogPosts = posts?.map((post: SanityPost) => ({
       url: `${baseUrl}/blog/${post.slug?.current}`,
       lastModified: new Date(post.publishedAt || post._updatedAt),
       changeFrequency: 'weekly' as const,

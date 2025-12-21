@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Briefcase, BookOpen, Home, Mail, Brain, MessageSquare } from 'lucide-react'
+import { X, Briefcase, BookOpen, Home, Mail, Brain, MessageSquare } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const navItems = [

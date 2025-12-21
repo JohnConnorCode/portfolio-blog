@@ -8,15 +8,13 @@ interface AnimatedBorderBoxProps {
   delay?: number
   className?: string
   borderColor?: string
-  borderWidth?: number
 }
 
 export function AnimatedBorderBox({ 
   children, 
   delay = 0, 
   className = '',
-  borderColor = 'rgba(255, 255, 255, 0.2)',
-  borderWidth = 2
+  borderColor = 'rgba(255, 255, 255, 0.2)'
 }: AnimatedBorderBoxProps) {
   const pathVariants = {
     hidden: { pathLength: 0, opacity: 0 },
@@ -27,7 +25,7 @@ export function AnimatedBorderBox({
         pathLength: {
           delay,
           duration: 0.8,
-          ease: [0.25, 0.1, 0.25, 1] as any
+          ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number]
         },
         opacity: { delay, duration: 0.1 }
       }

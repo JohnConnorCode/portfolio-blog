@@ -1,12 +1,24 @@
 import Script from 'next/script'
 
+interface BlogPostData {
+  title?: string
+  excerpt?: string
+  publishedAt?: string
+  updatedAt?: string
+  author?: string
+  slug?: string
+  category?: string
+  tags?: string[]
+  wordCount?: number
+}
+
 interface StructuredDataProps {
   type: 'WebSite' | 'BlogPosting' | 'Person' | 'Organization'
-  data?: any
+  data?: BlogPostData
 }
 
 export function StructuredData({ type, data }: StructuredDataProps) {
-  let structuredData: any = {}
+  let structuredData: Record<string, unknown> = {}
 
   switch (type) {
     case 'WebSite':

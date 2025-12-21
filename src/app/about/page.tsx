@@ -1,7 +1,6 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import Image from 'next/image'
 import { Brain, Zap, Target, Users, Code, Rocket, Globe, MessageSquare, Sparkles, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 
@@ -387,7 +386,7 @@ export default function AboutPage() {
               Ready to Build Something Real?
             </h2>
             <p className="text-gray-300 mb-8 max-w-xl mx-auto">
-              Whether you need product strategy, technical architecture, or a co-builder who ships—let's talk.
+              Whether you need product strategy, technical architecture, or a co-builder who ships—let&apos;s talk.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/work">

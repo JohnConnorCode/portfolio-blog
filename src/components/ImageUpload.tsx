@@ -1,8 +1,9 @@
 'use client'
+/* eslint-disable @next/next/no-img-element */
 
 import { useState } from 'react'
 import { createClient } from '@/lib/supabase/client'
-import { Upload, X, Image as ImageIcon } from 'lucide-react'
+import { Upload, X } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 interface ImageUploadProps {

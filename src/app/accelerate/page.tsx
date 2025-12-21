@@ -2,10 +2,9 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion'
 import {
-  Zap, DollarSign, Users, Brain, Rocket, Shield, Search,
-  MessageCircle, BookOpen, Globe, Target, TrendingUp,
-  ArrowRight, ChevronRight, ExternalLink, Database,
-  Code2, Layers, Award, BarChart3, FileCheck, Sparkles, Star, GitBranch
+  Zap, DollarSign, Users, Brain, Rocket, Shield,
+  TrendingUp, ArrowRight, ChevronRight, ExternalLink,
+  Code2
 } from 'lucide-react'
 import Link from 'next/link'
 import { useRef } from 'react'

@@ -3,7 +3,6 @@
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Calendar, Users, TrendingUp, Code, Briefcase } from 'lucide-react'
-import { AnimatedText, FadeInText } from '@/components/animated-text'
 
 const experiences = [
   {

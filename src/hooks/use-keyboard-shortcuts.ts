@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useCallback } from 'react'
+import { useEffect, useCallback, useMemo } from 'react'
 import { useRouter } from 'next/navigation'
 
 interface KeyboardShortcut {
@@ -17,8 +17,8 @@ interface KeyboardShortcut {
 export function useKeyboardShortcuts(shortcuts: KeyboardShortcut[] = []) {
   const router = useRouter()
 
-  // Default shortcuts for the portfolio
-  const defaultShortcuts: KeyboardShortcut[] = [
+  // Default shortcuts for the portfolio - wrapped in useMemo to prevent recreation on every render
+  const defaultShortcuts: KeyboardShortcut[] = useMemo(() => [
     {
       key: 'h',
       action: () => router.push('/'),
@@ -65,8 +65,8 @@ export function useKeyboardShortcuts(shortcuts: KeyboardShortcut[] = []) {
         // Close any open modals or dropdowns
         const modals = document.querySelectorAll('[data-modal="true"]')
         const dropdowns = document.querySelectorAll('[data-dropdown="true"]')
-        modals.forEach((modal: any) => modal.close?.())
-        dropdowns.forEach((dropdown: any) => dropdown.close?.())
+        modals.forEach((modal) => (modal as HTMLDialogElement).close?.())
+        dropdowns.forEach((dropdown) => (dropdown as HTMLDialogElement).close?.())
 
         // Remove focus from active element
         if (document.activeElement instanceof HTMLElement) {
@@ -117,16 +117,15 @@ export function useKeyboardShortcuts(shortcuts: KeyboardShortcut[] = []) {
       },
       description: 'Go to bottom'
     }
-  ]
-
-  const allShortcuts = [...defaultShortcuts, ...shortcuts]
+  ], [router])
 
   const handleKeyDown = useCallback((event: KeyboardEvent) => {
+    const allShortcuts = [...defaultShortcuts, ...shortcuts]
     // Don't trigger shortcuts when typing in inputs or textareas
     if (event.target instanceof HTMLInputElement ||
         event.target instanceof HTMLTextAreaElement ||
         event.target instanceof HTMLSelectElement ||
-        (event.target as any)?.contentEditable === 'true') {
+        (event.target as HTMLElement)?.contentEditable === 'true') {
       // Allow Escape to work even in inputs
       if (event.key !== 'Escape') {
         return
@@ -148,14 +147,14 @@ export function useKeyboardShortcuts(shortcuts: KeyboardShortcut[] = []) {
         break
       }
     }
-  }, [allShortcuts])
+  }, [defaultShortcuts, shortcuts])
 
   useEffect(() => {
     document.addEventListener('keydown', handleKeyDown)
     return () => document.removeEventListener('keydown', handleKeyDown)
   }, [handleKeyDown])
 
-  return allShortcuts
+  return [...defaultShortcuts, ...shortcuts]
 }
 
 // Help modal for showing shortcuts

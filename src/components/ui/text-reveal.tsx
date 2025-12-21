@@ -1,6 +1,6 @@
 'use client'
 
-import { motion, Variants, useInView } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
 import { useRef, ReactNode } from 'react'
 import { cn } from '@/lib/utils'
 
@@ -12,7 +12,6 @@ interface TextRevealProps {
   duration?: number
   stagger?: number
   once?: boolean
-  threshold?: number
 }
 
 export function TextReveal({
@@ -22,8 +21,7 @@ export function TextReveal({
   delay = 0,
   duration = 0.6,
   stagger = 0.05,
-  once = true,
-  threshold = 0.1
+  once = true
 }: TextRevealProps) {
   const ref = useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, { once, margin: '-10%' })

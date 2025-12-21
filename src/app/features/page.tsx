@@ -1,11 +1,11 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { 
-  Code2, Database, Globe, Shield, Zap, Users, 
-  Palette, Search, FileText, Settings, Lock, Rocket,
-  CheckCircle, ArrowRight, Sparkles, Brain, Terminal,
-  Layout, Cloud, GitBranch
+import {
+  Database, Shield, Zap,
+  Palette, FileText,
+  CheckCircle, ArrowRight, Brain, Terminal,
+  Layout, Cloud
 } from 'lucide-react'
 import Link from 'next/link'
 
@@ -277,7 +277,7 @@ export default function FeaturesPage() {
         </h2>
         <p className="text-xl text-muted-foreground mb-8">
           This platform showcases the power of modern web technologies. 
-          Let's discuss how we can build something similar for your business.
+          Let&apos;s discuss how we can build something similar for your business.
         </p>
         <div className="flex gap-4 justify-center">
           <Link href="/contact">

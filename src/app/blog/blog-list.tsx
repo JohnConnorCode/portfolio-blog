@@ -6,7 +6,6 @@ import Link from 'next/link'
 import { Calendar, Clock, Search, Filter, BookOpen, ArrowRight } from 'lucide-react'
 import { formatDate } from '@/lib/utils'
 import { useState, useMemo } from 'react'
-import { AnimatedLetters } from '@/components/animated-text'
 import { AnimatedBorderBox } from '@/components/animated-border-box'
 
 interface Post {

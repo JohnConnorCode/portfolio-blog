@@ -1,12 +1,9 @@
 'use client'
 
 import { motion, useMotionValue, useTransform, animate } from 'framer-motion'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { DollarSign, Users, TrendingUp, Clock, Briefcase } from 'lucide-react'
-import { CounterAnimation, MetricCounter } from './ui/counter-animation'
-import { TextReveal, HeroTextReveal } from './ui/text-reveal'
 import { ScrollReveal, StaggeredReveal } from './ui/scroll-reveal'
-import { PremiumText } from './ui/premium-text'
 
 interface CounterProps {
   from: number
@@ -86,8 +83,6 @@ const metrics = [
 ]
 
 export function ImpactMetrics() {
-  const [isVisible, setIsVisible] = useState(false)
-
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       {/* Background gradient animation */}

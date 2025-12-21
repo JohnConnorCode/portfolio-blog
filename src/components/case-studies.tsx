@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ArrowRight, Users, TrendingUp, Zap, Target, Brain, Layers } from 'lucide-react'
+import { ArrowRight, Users, TrendingUp, Brain, Layers } from 'lucide-react'
 import Link from 'next/link'
 
 const caseStudies = [
@@ -228,7 +228,7 @@ export function CaseStudies() {
               whileTap={{ scale: 0.95 }}
               className="group px-8 py-4 bg-primary text-primary-foreground rounded-lg font-medium hover:shadow-xl hover:shadow-primary/25 transition-all flex items-center gap-2 mx-auto"
             >
-              Let's Solve Your Product Challenge
+              Let&apos;s Solve Your Product Challenge
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </motion.button>
           </Link>

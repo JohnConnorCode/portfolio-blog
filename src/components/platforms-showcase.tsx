@@ -1,7 +1,7 @@
 'use client'
 
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { ArrowUpRight, Users, Trophy, Globe, Zap, Brain, Target, Sparkles } from 'lucide-react'
+import { ArrowUpRight, Trophy, Zap, Sparkles } from 'lucide-react'
 import Link from 'next/link'
 import { useRef } from 'react'
 
@@ -57,7 +57,6 @@ export function PlatformsShowcase() {
     offset: ["start end", "end start"]
   })
 
-  const y = useTransform(scrollYProgress, [0, 1], [100, -100])
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0])
 
   return (
@@ -252,7 +251,7 @@ export function PlatformsShowcase() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              Let's Talk Strategy
+              Let&apos;s Talk Strategy
             </motion.button>
           </Link>
         </motion.div>

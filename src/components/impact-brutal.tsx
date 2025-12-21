@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Zap, Users, Code, Trophy } from 'lucide-react'
-import { fadeInUp, fadeInUpDelayed, headerAnimation, cardHover, staggerContainer, ANIMATION_DELAY, ANIMATION_DURATION, SECTION_DELAYS } from '@/lib/animation-config'
+import { fadeInUp, fadeInUpDelayed, headerAnimation, staggerContainer, ANIMATION_DELAY, SECTION_DELAYS } from '@/lib/animation-config'
 import { useRef } from 'react'
 
 const impacts = [

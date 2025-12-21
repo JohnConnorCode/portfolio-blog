@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Zap, Target, Shield, Compass, Brain, Users, ArrowRight, Sparkles, Eye, Scale } from 'lucide-react'
+import { Shield, Compass, ArrowRight, Eye, Scale } from 'lucide-react'
 import Link from 'next/link'
 import { SectionDivider } from '@/components/section-divider'
 
@@ -190,7 +190,7 @@ export default function PhilosophyPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              Those experiences shaped my orientation. I'm drawn to work that <strong className="text-white">cannot hide
+              Those experiences shaped my orientation. I&apos;m drawn to work that <strong className="text-white">cannot hide
               behind appearances</strong>—environments where illusions collapse, outcomes are visible,
               and participation makes people stronger.
             </motion.p>
@@ -200,7 +200,7 @@ export default function PhilosophyPage() {
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
             >
-              I'm not motivated by novelty. <strong className="text-purple-400">I'm motivated by leverage.</strong> By designs
+              I&apos;m not motivated by novelty. <strong className="text-purple-400">I&apos;m motivated by leverage.</strong> By designs
               that compound value over time—not by avoiding reality but by exposing it. By tools
               and institutions that make people more capable of perceiving clearly, deciding wisely,
               and acting with conviction.
@@ -215,8 +215,8 @@ export default function PhilosophyPage() {
             className="mt-8 border-l-4 border-purple-500/50 pl-6 py-4 bg-purple-500/5 rounded-r-lg"
           >
             <p className="text-lg text-white font-medium italic">
-              "Confrontation clarifies. Comfort dulls. Ideas matter only when embodied.
-              Nothing is ever finished. Everything is in the process of becoming."
+              &ldquo;Confrontation clarifies. Comfort dulls. Ideas matter only when embodied.
+              Nothing is ever finished. Everything is in the process of becoming.&rdquo;
             </p>
           </motion.div>
         </motion.section>
@@ -386,7 +386,7 @@ export default function PhilosophyPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              I'm a technologist and product strategist. My work is to imagine better futures
+              I&apos;m a technologist and product strategist. My work is to imagine better futures
               and build the scaffolding that makes them real. Sometimes that means designing
               platforms that reward integrity. Sometimes it means creating communities where
               people confront ideas directly. Sometimes it means helping founders articulate
@@ -424,8 +424,8 @@ export default function PhilosophyPage() {
             Build Something That Matters
           </h2>
           <p className="text-gray-300 mb-8 max-w-xl mx-auto">
-            If this resonates—if you're building something that needs more than surface-level
-            strategy—let's talk.
+            If this resonates—if you&apos;re building something that needs more than surface-level
+            strategy—let&apos;s talk.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/work">

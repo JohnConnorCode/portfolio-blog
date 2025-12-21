@@ -28,7 +28,7 @@ export default function ThoughtsFeed() {
       try {
         const data = await sanityClient.fetch(thoughtsQuery)
         setThoughts(data || [])
-      } catch (error) {
+      } catch {
         console.log('No thoughts yet')
       } finally {
         setLoading(false)
@@ -99,9 +99,10 @@ function ThoughtCard({ thought, index }: { thought: Thought; index: number }) {
               types: {
                 image: ({value}: {value: PortableTextImageValue}) => (
                   <div className="my-4 rounded-lg overflow-hidden">
-                    <img 
-                      src={value.asset?.url || ''} 
-                      alt={value.alt || ''} 
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={value.asset?.url || ''}
+                      alt={value.alt || ''}
                       className="w-full h-auto"
                     />
                     {value.caption && (

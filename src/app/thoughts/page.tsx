@@ -1,8 +1,6 @@
 'use client'
 
 import ThoughtsFeed from '@/components/thoughts-feed'
-import Link from 'next/link'
-import { ArrowLeft } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 export default function ThoughtsPage() {

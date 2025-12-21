@@ -1,12 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { sendEmailNotification } from '@/lib/notifications'
 
-// Rate limiting map
-interface RateLimit {
-  count: number
-  resetTime: number
-}
-const rateLimitMap = new Map<string, RateLimit>()
+// Rate limiting map - reserved for future use
+// interface RateLimit {
+//   count: number
+//   resetTime: number
+// }
+// const rateLimitMap = new Map<string, RateLimit>()
 
 export async function POST(request: NextRequest) {
   try {

@@ -4,6 +4,9 @@ import { motion, useScroll, useTransform, useSpring, MotionValue } from 'framer-
 import { useRef, ReactNode } from 'react'
 import { cn } from '@/lib/utils'
 
+// Type for scroll offset
+type ScrollOffset = ["start end" | "start start" | "end start" | "end end", "start end" | "start start" | "end start" | "end end"]
+
 interface ParallaxSectionProps {
   children: ReactNode
   className?: string
@@ -11,7 +14,7 @@ interface ParallaxSectionProps {
   direction?: 'up' | 'down'
   enableTilt?: boolean
   enableScale?: boolean
-  offset?: [string, string]
+  offset?: ScrollOffset
 }
 
 export function ParallaxSection({
@@ -26,7 +29,7 @@ export function ParallaxSection({
   const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: offset as any
+    offset
   })
 
   const y = useTransform(
@@ -35,18 +38,19 @@ export function ParallaxSection({
     direction === 'up' ? ['0%', `-${speed * 100}%`] : ['0%', `${speed * 100}%`]
   )
 
-  const scale = enableScale ? useTransform(scrollYProgress, [0, 0.5, 1], [1, 1.1, 1]) : 1
-  const rotateX = enableTilt ? useTransform(scrollYProgress, [0, 0.5, 1], [0, 5, 0]) : 0
-  const rotateY = enableTilt ? useTransform(scrollYProgress, [0, 0.5, 1], [0, 2, 0]) : 0
+  // Always call hooks unconditionally
+  const scaleValue = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1.1, 1])
+  const rotateXValue = useTransform(scrollYProgress, [0, 0.5, 1], [0, 5, 0])
+  const rotateYValue = useTransform(scrollYProgress, [0, 0.5, 1], [0, 2, 0])
 
   return (
     <div ref={ref} className={cn('relative overflow-hidden', className)}>
       <motion.div
         style={{
           y,
-          scale,
-          rotateX,
-          rotateY,
+          scale: enableScale ? scaleValue : 1,
+          rotateX: enableTilt ? rotateXValue : 0,
+          rotateY: enableTilt ? rotateYValue : 0,
           transformStyle: 'preserve-3d'
         }}
         className="will-change-transform"
@@ -54,6 +58,32 @@ export function ParallaxSection({
         {children}
       </motion.div>
     </div>
+  )
+}
+
+// Extracted component for LayeredParallax layers
+interface LayerItemProps {
+  content: ReactNode
+  speed: number
+  className?: string
+  zIndex?: number
+  index: number
+  scrollYProgress: MotionValue<number>
+}
+
+function LayerItem({ content, speed, className, zIndex, index, scrollYProgress }: LayerItemProps) {
+  const y = useTransform(scrollYProgress, [0, 1], ['0%', `${speed * -100}%`])
+
+  return (
+    <motion.div
+      style={{
+        y,
+        zIndex: zIndex || index
+      }}
+      className={cn('absolute inset-0', className)}
+    >
+      {content}
+    </motion.div>
   )
 }
 
@@ -71,27 +101,22 @@ export function LayeredParallax({ layers, className }: LayeredParallaxProps) {
   const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start end", "end start"] as any
+    offset: ["start end", "end start"] as ScrollOffset
   })
 
   return (
     <div ref={ref} className={cn('relative overflow-hidden', className)}>
-      {layers.map((layer, index) => {
-        const y = useTransform(scrollYProgress, [0, 1], ['0%', `${layer.speed * -100}%`])
-
-        return (
-          <motion.div
-            key={index}
-            style={{
-              y,
-              zIndex: layer.zIndex || index
-            }}
-            className={cn('absolute inset-0', layer.className)}
-          >
-            {layer.content}
-          </motion.div>
-        )
-      })}
+      {layers.map((layer, index) => (
+        <LayerItem
+          key={index}
+          content={layer.content}
+          speed={layer.speed}
+          className={layer.className}
+          zIndex={layer.zIndex}
+          index={index}
+          scrollYProgress={scrollYProgress}
+        />
+      ))}
     </div>
   )
 }
@@ -119,9 +144,10 @@ export function MouseParallax({
   const springMouseX = useSpring(mouseX, { stiffness: 300, damping: 50 })
   const springMouseY = useSpring(mouseY, { stiffness: 300, damping: 50 })
 
-  const rotateX = enableRotation ? useTransform(springMouseY, [-0.5, 0.5], [10, -10]) : 0
-  const rotateY = enableRotation ? useTransform(springMouseX, [-0.5, 0.5], [-10, 10]) : 0
-  const scale = enableScale ? useTransform(springMouseX, [-0.5, 0.5], [0.95, 1.05]) : 1
+  // Always call hooks unconditionally
+  const rotateXValue = useTransform(springMouseY, [-0.5, 0.5], [10, -10])
+  const rotateYValue = useTransform(springMouseX, [-0.5, 0.5], [-10, 10])
+  const scaleValue = useTransform(springMouseX, [-0.5, 0.5], [0.95, 1.05])
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!ref.current) return
@@ -147,15 +173,45 @@ export function MouseParallax({
       ref={ref}
       className={cn('transform-gpu will-change-transform', className)}
       style={{
-        rotateX,
-        rotateY,
-        scale,
+        rotateX: enableRotation ? rotateXValue : 0,
+        rotateY: enableRotation ? rotateYValue : 0,
+        scale: enableScale ? scaleValue : 1,
         transformStyle: 'preserve-3d'
       }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
       {children}
+    </motion.div>
+  )
+}
+
+// Extracted component for DepthParallax children
+interface DepthItemProps {
+  child: ReactNode
+  index: number
+  totalChildren: number
+  spacing: number
+  scrollYProgress: MotionValue<number>
+}
+
+function DepthItem({ child, index, totalChildren, spacing, scrollYProgress }: DepthItemProps) {
+  const depth = index + 1
+  const y = useTransform(scrollYProgress, [0, 1], [0, depth * spacing])
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1 + depth * 0.1])
+  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1, 0.3])
+
+  return (
+    <motion.div
+      className="absolute inset-0 flex items-center justify-center"
+      style={{
+        y,
+        scale,
+        opacity,
+        zIndex: totalChildren - index
+      }}
+    >
+      {child}
     </motion.div>
   )
 }
@@ -170,37 +226,72 @@ export function DepthParallax({ children, className, spacing = 100 }: DepthParal
   const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start end", "end start"] as any
+    offset: ["start end", "end start"] as ScrollOffset
   })
 
   return (
     <div ref={ref} className={cn('relative', className)} style={{ height: '150vh' }}>
-      {children.map((child, index) => {
-        const depth = index + 1
-        const y = useTransform(scrollYProgress, [0, 1], [0, depth * spacing])
-        const scale = useTransform(scrollYProgress, [0, 1], [1, 1 + depth * 0.1])
-        const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1, 0.3])
-
-        return (
-          <motion.div
-            key={index}
-            className="absolute inset-0 flex items-center justify-center"
-            style={{
-              y,
-              scale,
-              opacity,
-              zIndex: children.length - index
-            }}
-          >
-            {child}
-          </motion.div>
-        )
-      })}
+      {children.map((child, index) => (
+        <DepthItem
+          key={index}
+          child={child}
+          index={index}
+          totalChildren={children.length}
+          spacing={spacing}
+          scrollYProgress={scrollYProgress}
+        />
+      ))}
     </div>
   )
 }
 
-// Floating elements with parallax
+// Extracted component for FloatingParallax elements
+interface FloatingItemProps {
+  content: ReactNode
+  initialX: number
+  initialY: number
+  speed: number
+  amplitude?: number
+  index: number
+  scrollYProgress: MotionValue<number>
+}
+
+function FloatingItem({ content, initialX, initialY, speed, amplitude = 10, index, scrollYProgress }: FloatingItemProps) {
+  const y = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [initialY, initialY + (speed * -200)]
+  )
+
+  const floatY = useTransform(
+    () => Math.sin(Date.now() * 0.001 + index) * amplitude
+  )
+
+  const combinedY = useTransform([y, floatY], ([yVal, floatVal]) => (yVal as number) + (floatVal as number))
+
+  return (
+    <motion.div
+      className="absolute"
+      style={{
+        x: initialX,
+        y: combinedY,
+        zIndex: index
+      }}
+      animate={{
+        x: [initialX - 5, initialX + 5, initialX],
+        rotate: [-2, 2, -2]
+      }}
+      transition={{
+        duration: 4 + index,
+        repeat: Infinity,
+        ease: 'easeInOut'
+      }}
+    >
+      {content}
+    </motion.div>
+  )
+}
+
 export function FloatingParallax({
   elements,
   className
@@ -217,47 +308,23 @@ export function FloatingParallax({
   const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start end", "end start"] as any
+    offset: ["start end", "end start"] as ScrollOffset
   })
 
   return (
     <div ref={ref} className={cn('relative overflow-hidden', className)}>
-      {elements.map((element, index) => {
-        const y = useTransform(
-          scrollYProgress,
-          [0, 1],
-          [element.initialY, element.initialY + (element.speed * -200)]
-        )
-
-        const floatY = useTransform(
-          () => Math.sin(Date.now() * 0.001 + index) * (element.amplitude || 10)
-        )
-
-        const combinedY = useTransform([y, floatY], ([yVal, floatVal]) => (yVal as number) + (floatVal as number))
-
-        return (
-          <motion.div
-            key={index}
-            className="absolute"
-            style={{
-              x: element.initialX,
-              y: combinedY,
-              zIndex: index
-            }}
-            animate={{
-              x: [element.initialX - 5, element.initialX + 5, element.initialX],
-              rotate: [-2, 2, -2]
-            }}
-            transition={{
-              duration: 4 + index,
-              repeat: Infinity,
-              ease: 'easeInOut'
-            }}
-          >
-            {element.content}
-          </motion.div>
-        )
-      })}
+      {elements.map((element, index) => (
+        <FloatingItem
+          key={index}
+          content={element.content}
+          initialX={element.initialX}
+          initialY={element.initialY}
+          speed={element.speed}
+          amplitude={element.amplitude}
+          index={index}
+          scrollYProgress={scrollYProgress}
+        />
+      ))}
     </div>
   )
 }

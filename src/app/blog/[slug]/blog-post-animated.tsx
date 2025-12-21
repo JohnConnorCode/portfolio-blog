@@ -3,10 +3,17 @@
 import { motion } from 'framer-motion'
 import { PortableText } from '@portabletext/react'
 import { format } from 'date-fns'
-import { fadeInUp, staggerContainer } from '@/lib/animation-config'
+interface BlogPost {
+  title: string
+  publishedAt: string
+  author?: { name: string }
+  categories?: Array<{ title: string }>
+  mainImage?: string
+  body: unknown
+}
 
 interface BlogPostAnimatedProps {
-  post: any
+  post: BlogPost
 }
 
 export default function BlogPostAnimated({ post }: BlogPostAnimatedProps) {
@@ -63,6 +70,7 @@ export default function BlogPostAnimated({ post }: BlogPostAnimatedProps) {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={post.mainImage}
               alt={post.title}

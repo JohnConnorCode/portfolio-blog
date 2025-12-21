@@ -26,7 +26,7 @@ export default async function SanityHero() {
         ...settings
       }
     }
-  } catch (error) {
+  } catch {
     console.log('Using default content - Sanity not configured yet')
   }
   

@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Users, Globe, Home, Shield, ArrowUpRight } from 'lucide-react'
+import { Users, Globe, Shield, ArrowUpRight } from 'lucide-react'
 import { AnimatedText, FadeInText } from '@/components/animated-text'
 import Link from 'next/link'
 

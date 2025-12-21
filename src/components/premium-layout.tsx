@@ -1,10 +1,9 @@
 'use client'
 
 import { useEffect, ReactNode } from 'react'
-import { motion, useScroll, useSpring, useTransform } from 'framer-motion'
+import { motion, useScroll, useSpring } from 'framer-motion'
 import { useKeyboardShortcuts } from '@/hooks/use-keyboard-shortcuts'
 import { useMomentumScroll } from '@/components/smooth-scroll'
-import { usePathname } from 'next/navigation'
 
 interface PremiumLayoutProps {
   children: ReactNode
@@ -16,9 +15,6 @@ export function PremiumLayout({ children }: PremiumLayoutProps) {
 
   // Enable momentum scrolling on mobile
   useMomentumScroll()
-
-  // Get current path for navigation indicator
-  const pathname = usePathname()
 
   // Scroll progress indicator
   const { scrollYProgress } = useScroll()

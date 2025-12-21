@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import { Mail, Linkedin, Twitter, Send, User, Building2, Briefcase, DollarSign, MessageSquare } from 'lucide-react'
 import { useState } from 'react'
 import { SectionDivider } from '@/components/section-divider'
-import { fadeInUp, fadeInUpDelayed, ANIMATION_DURATION, ANIMATION_DELAY } from '@/lib/animation-config'
+import { fadeInUp, fadeInUpDelayed } from '@/lib/animation-config'
 
 const contactMethods = [
   {
@@ -65,7 +65,7 @@ export default function ContactPage() {
       } else {
         setSubmitStatus('error')
       }
-    } catch (error) {
+    } catch {
       setSubmitStatus('error')
     } finally {
       setIsSubmitting(false)

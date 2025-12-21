@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { ArrowUpRight, Zap, Brain, Users, Globe } from 'lucide-react'
-import { fadeInUp, headerAnimation, cardHover, staggerContainer, ANIMATION_DELAY, SECTION_DELAYS } from '@/lib/animation-config'
+import { fadeInUp, headerAnimation, staggerContainer, ANIMATION_DELAY, SECTION_DELAYS } from '@/lib/animation-config'
 import Link from 'next/link'
 import { useRef } from 'react'
 
@@ -103,7 +103,7 @@ export function WritingsBrutal() {
           variants={staggerContainer}
           className="grid grid-cols-1 md:grid-cols-2 gap-6"
         >
-          {writings.map((writing, index) => {
+          {writings.map((writing) => {
             const Icon = writing.icon
             return (
               <motion.article

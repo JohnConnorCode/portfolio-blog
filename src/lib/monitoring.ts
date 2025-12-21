@@ -121,7 +121,12 @@ class MonitoringService {
 export const monitoring = new MonitoringService()
 
 // Web Vitals tracking
-export function reportWebVitals(metric: any) {
+interface WebVitalMetric {
+  name: string
+  value: number
+}
+
+export function reportWebVitals(metric: WebVitalMetric) {
   // Log Core Web Vitals
   switch (metric.name) {
     case 'FCP': // First Contentful Paint

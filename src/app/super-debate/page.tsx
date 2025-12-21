@@ -1,7 +1,7 @@
 'use client'
 
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { Trophy, Users, MessageSquare, ArrowRight, Globe, ChevronRight, ExternalLink, Mic, Calendar, MapPin, UserCheck, Brain, TrendingUp } from 'lucide-react'
+import { Trophy, Users, MessageSquare, ArrowRight, Globe, ChevronRight, ExternalLink, Calendar, MapPin, UserCheck, Brain, TrendingUp } from 'lucide-react'
 import Link from 'next/link'
 import { useRef } from 'react'
 import { fadeInUp, staggerContainer, ANIMATION_DELAY, ANIMATION_DURATION } from '@/lib/animation-config'
@@ -15,7 +15,6 @@ export default function SuperDebatePage() {
 
   const heroY = useTransform(scrollYProgress, [0, 1], [0, 300])
   const heroOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0])
-  const scaleProgress = useTransform(scrollYProgress, [0, 0.5], [1, 0.95])
 
   const projectHighlights = [
     {
@@ -68,48 +67,6 @@ export default function SuperDebatePage() {
       description: "Learn from expert judges through our online course platform",
       icon: UserCheck,
       color: "text-yellow-400"
-    }
-  ]
-
-  const meetupFeatures = [
-    {
-      icon: Mic,
-      title: "Live In-Person Debates",
-      description: "Face-to-face intellectual combat builds real connections and sharpens thinking"
-    },
-    {
-      icon: Calendar,
-      title: "Regular Meetups",
-      description: "Weekly or monthly gatherings create consistent community engagement"
-    },
-    {
-      icon: MapPin,
-      title: "City Chapters",
-      description: "Local organizers build debate communities tailored to their city's culture"
-    },
-    {
-      icon: Globe,
-      title: "Global Network",
-      description: "Connect with debate communities worldwide, share best practices"
-    }
-  ]
-
-  const cultureFeatures = [
-    {
-      title: "Intellectual Honesty",
-      description: "Reward steel-manning opponents and acknowledging strong counterarguments"
-    },
-    {
-      title: "Productive Disagreement",
-      description: "Transform conflict into collaborative truth-seeking"
-    },
-    {
-      title: "Skill Development",
-      description: "Level up your critical thinking, public speaking, and argumentation"
-    },
-    {
-      title: "Cross-Pollination",
-      description: "Bring together diverse perspectives from different backgrounds and industries"
     }
   ]
 
@@ -293,7 +250,7 @@ export default function SuperDebatePage() {
               className="text-xl text-gray-300 max-w-3xl mx-auto"
             >
               From running workshops in Bali to planning our Chicago flagship event with 1871,
-              we're building a global movement to make critical thinking accessible to everyone
+              we&apos;re building a global movement to make critical thinking accessible to everyone
             </motion.p>
           </motion.div>
 

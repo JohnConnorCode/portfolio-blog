@@ -185,7 +185,7 @@ export function SuperDebateHero() {
               <div>
                 <h4 className="text-base font-bold text-purple-400 mb-2">Flexible Structure</h4>
                 <p className="text-sm text-gray-400">
-                  Adapt speech lengths, rounds, and judging criteria to fit your community's needs and topics
+                  Adapt speech lengths, rounds, and judging criteria to fit your community&apos;s needs and topics
                 </p>
               </div>
               <div>

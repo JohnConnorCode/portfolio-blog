@@ -1,8 +1,7 @@
 'use client'
 
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { CheckCircle, ArrowRight, Calendar, MessageSquare, Rocket, Target, Users, Brain, Eye, Zap, Unlock, Code } from 'lucide-react'
-import { AnimatedText, FadeInText } from '@/components/animated-text'
+import { CheckCircle, ArrowRight, MessageSquare, Rocket, Target, Users, Brain, Eye, Zap, Unlock } from 'lucide-react'
 import { AnimatedBorderBox } from '@/components/animated-border-box'
 import { fadeInUp, headerAnimation, cardHover, staggerContainer, ANIMATION_DELAY, SECTION_DELAYS } from '@/lib/animation-config'
 import Link from 'next/link'
@@ -172,7 +171,7 @@ export function WorkingWithMe() {
           >
             {/* Removed confusing connection line */}
 
-            {process.map((phase, index) => {
+            {process.map((phase) => {
               const Icon = phase.icon
               return (
                 <motion.div
@@ -208,7 +207,7 @@ export function WorkingWithMe() {
                       variants={staggerContainer}
                       className="space-y-3"
                     >
-                      {phase.activities.map((activity, activityIndex) => (
+                      {phase.activities.map((activity) => (
                         <motion.li
                           key={activity}
                           variants={fadeInUp}

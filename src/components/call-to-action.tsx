@@ -3,8 +3,8 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 import Link from 'next/link'
-import { ArrowRight, Calendar, MessageSquare } from 'lucide-react'
-import { fadeInUp, headerAnimation, cardHover, staggerContainer, ANIMATION_DELAY, SECTION_DELAYS } from '@/lib/animation-config'
+import { ArrowRight, Calendar } from 'lucide-react'
+import { fadeInUp, headerAnimation, staggerContainer, ANIMATION_DELAY, SECTION_DELAYS } from '@/lib/animation-config'
 
 export function CallToAction() {
   const sectionRef = useRef<HTMLElement>(null)

@@ -4,12 +4,10 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { ArrowDown } from 'lucide-react'
 import Link from 'next/link'
 import { useRef } from 'react'
-import { useMobileAnimation } from '@/hooks/use-viewport-animation'
 import { HeroBackground } from './hero-background'
 
 export function Hero() {
   const containerRef = useRef<HTMLDivElement>(null)
-  const { isMobile } = useMobileAnimation()
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"]

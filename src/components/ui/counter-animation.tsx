@@ -6,7 +6,6 @@ import { cn } from '@/lib/utils'
 
 interface CounterAnimationProps {
   value: number
-  duration?: number
   delay?: number
   className?: string
   prefix?: string
@@ -17,7 +16,6 @@ interface CounterAnimationProps {
 
 export function CounterAnimation({
   value,
-  duration = 2,
   delay = 0,
   className,
   prefix = '',
