@@ -7,6 +7,7 @@ import { cn } from '@/lib/utils'
 interface CounterAnimationProps {
   value: number
   delay?: number
+  duration?: number  // Not used directly, but passed by parent components
   className?: string
   prefix?: string
   suffix?: string

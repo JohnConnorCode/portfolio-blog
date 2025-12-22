@@ -159,16 +159,17 @@ export default function ContactPage() {
               transition={{ delay: 0.15, duration: 0.5 }}
               className="text-xs tracking-[0.3em] uppercase block mb-6 text-primary"
             >
-              Get in Touch
+              Let&apos;s Connect
             </motion.span>
 
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 tracking-wide text-foreground font-jost"
+              className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 tracking-wide font-jost"
             >
-              Contact
+              <span className="text-foreground">Get in </span>
+              <span className="text-primary">Touch</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}

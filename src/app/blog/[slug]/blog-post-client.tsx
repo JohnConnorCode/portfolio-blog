@@ -8,15 +8,11 @@ import { formatDate } from '@/lib/utils'
 import { motion } from 'framer-motion'
 import { StructuredData } from '@/components/structured-data'
 
-interface PortableTextChild {
-  children: React.ReactNode
-}
-
 interface BlogPost {
   title: string
   slug?: { current: string }
   excerpt?: string
-  body?: unknown
+  body?: Parameters<typeof PortableText>[0]['value']
   htmlContent?: string
   publishedAt?: string
   author?: { name: string }
@@ -146,36 +142,33 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
           {post.htmlContent ? (
             <div dangerouslySetInnerHTML={{ __html: post.htmlContent }} />
           ) : post.body ? (
-            <PortableText 
+            <PortableText
               value={post.body}
               components={{
-                types: {
-                  block: ({children}: PortableTextChild) => <p className="mb-4 leading-relaxed">{children}</p>,
-                },
                 marks: {
-                  strong: ({children}: PortableTextChild) => <strong className="font-bold text-foreground">{children}</strong>,
-                  em: ({children}: PortableTextChild) => <em className="italic">{children}</em>,
-                  code: ({children}: PortableTextChild) => <code className="px-1 py-0.5 bg-foreground/10 rounded text-sm font-mono">{children}</code>,
+                  strong: ({children}) => <strong className="font-bold text-foreground">{children}</strong>,
+                  em: ({children}) => <em className="italic">{children}</em>,
+                  code: ({children}) => <code className="px-1 py-0.5 bg-foreground/10 rounded text-sm font-mono">{children}</code>,
                 },
                 block: {
-                  h1: ({children}: PortableTextChild) => <h1 className="text-4xl font-bold mt-8 mb-4">{children}</h1>,
-                  h2: ({children}: PortableTextChild) => <h2 className="text-3xl font-bold mt-8 mb-4">{children}</h2>,
-                  h3: ({children}: PortableTextChild) => <h3 className="text-2xl font-bold mt-6 mb-3">{children}</h3>,
-                  h4: ({children}: PortableTextChild) => <h4 className="text-xl font-bold mt-6 mb-3">{children}</h4>,
-                  normal: ({children}: PortableTextChild) => <p className="mb-4 leading-relaxed">{children}</p>,
-                  blockquote: ({children}: PortableTextChild) => (
+                  h1: ({children}) => <h1 className="text-4xl font-bold mt-8 mb-4">{children}</h1>,
+                  h2: ({children}) => <h2 className="text-3xl font-bold mt-8 mb-4">{children}</h2>,
+                  h3: ({children}) => <h3 className="text-2xl font-bold mt-6 mb-3">{children}</h3>,
+                  h4: ({children}) => <h4 className="text-xl font-bold mt-6 mb-3">{children}</h4>,
+                  normal: ({children}) => <p className="mb-4 leading-relaxed">{children}</p>,
+                  blockquote: ({children}) => (
                     <blockquote className="border-l-4 border-cyan-400 pl-6 my-6 italic text-muted-foreground">
                       {children}
                     </blockquote>
                   ),
                 },
                 list: {
-                  bullet: ({children}: PortableTextChild) => <ul className="list-disc list-inside mb-4 space-y-2">{children}</ul>,
-                  number: ({children}: PortableTextChild) => <ol className="list-decimal list-inside mb-4 space-y-2">{children}</ol>,
+                  bullet: ({children}) => <ul className="list-disc list-inside mb-4 space-y-2">{children}</ul>,
+                  number: ({children}) => <ol className="list-decimal list-inside mb-4 space-y-2">{children}</ol>,
                 },
                 listItem: {
-                  bullet: ({children}: PortableTextChild) => <li className="ml-4">{children}</li>,
-                  number: ({children}: PortableTextChild) => <li className="ml-4">{children}</li>,
+                  bullet: ({children}) => <li className="ml-4">{children}</li>,
+                  number: ({children}) => <li className="ml-4">{children}</li>,
                 },
               }}
             />

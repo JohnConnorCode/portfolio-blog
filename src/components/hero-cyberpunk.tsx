@@ -105,14 +105,6 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
             {/* Left Column - Content */}
             <div className="lg:col-span-7 order-2 lg:order-1 text-center lg:text-left">
 
-              {/* Accent line */}
-              <div className="hidden lg:flex items-center gap-4 mb-8">
-                <div className="w-12 h-px bg-primary" />
-                <span className="text-xs tracking-[0.3em] uppercase text-primary font-jost">
-                  Product Strategist
-                </span>
-              </div>
-
               {/* Name - BOLD and distinctive */}
               <h1 className="relative mb-6">
                 <span
@@ -178,19 +170,6 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                 </Link>
               </div>
 
-              {/* Stats row */}
-              <div className="flex items-center justify-center lg:justify-start gap-8 mt-12 pt-8 border-t border-foreground/10">
-                {[
-                  { value: '15+', label: 'Years' },
-                  { value: '300K+', label: 'Users' },
-                  { value: '$20M+', label: 'Funded' }
-                ].map((stat) => (
-                  <div key={stat.label} className="text-center">
-                    <p className="text-2xl sm:text-3xl font-bold text-primary font-jost">{stat.value}</p>
-                    <p className="text-xs tracking-[0.2em] uppercase text-foreground/50 font-jost">{stat.label}</p>
-                  </div>
-                ))}
-              </div>
             </div>
 
             {/* Right Column - Photo */}

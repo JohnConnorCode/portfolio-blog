@@ -32,7 +32,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const posts = await sanityClient.fetch(postsQuery)
     blogPosts = posts?.map((post: SanityPost) => ({
       url: `${baseUrl}/blog/${post.slug?.current}`,
-      lastModified: new Date(post.publishedAt || post._updatedAt),
+      lastModified: new Date(post.publishedAt || post._updatedAt || new Date()),
       changeFrequency: 'weekly' as const,
       priority: 0.6,
     })) || []

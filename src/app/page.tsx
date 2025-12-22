@@ -29,11 +29,11 @@ export default function Home() {
       <ImpactBrutal />
       <SectionDivider variant="deco" />
       <SuperDebateHero />
-      <SectionDivider variant="agora" />
+      <SectionDivider variant="geometric" />
       <WorkingWithMe />
-      <SectionDivider variant="greek" />
+      <SectionDivider variant="wave" />
       <WritingsBrutal />
-      <SectionDivider variant="dots" />
+      <SectionDivider variant="geometric" />
       <CallToAction />
     </>
   )

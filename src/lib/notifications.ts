@@ -34,7 +34,9 @@ ${submission.message}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   `
 
-  console.log(emailContent)
+  if (process.env.NODE_ENV === 'development') {
+    console.log(emailContent)
+  }
 
   // Send actual email if API key is configured
   if (resendApiKey) {
@@ -111,7 +113,6 @@ ${submission.message}
         }
       }
 
-      console.log('Email sent successfully:', data)
       return {
         success: true,
         message: 'Email sent successfully'
@@ -124,7 +125,6 @@ ${submission.message}
       }
     }
   } else {
-    console.log('⚠️ RESEND_API_KEY not configured - email not sent')
     // Still return success for the form submission
     return {
       success: true,

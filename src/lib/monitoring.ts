@@ -65,7 +65,7 @@ class MonitoringService {
   trackPageView(path: string) {
     if (typeof window !== 'undefined') {
       // Basic analytics
-      console.log(`📊 Page view: ${path}`)
+      // Page view tracked
       
       // In production, send to analytics service
       if (process.env.NODE_ENV === 'production') {

@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 
 interface SectionDividerProps {
-  variant?: 'geometric' | 'organic' | 'dots' | 'wave' | 'greek' | 'deco' | 'agora'
+  variant?: 'geometric' | 'wave' | 'deco'
   className?: string
 }
 
@@ -36,46 +36,37 @@ export function SectionDivider({ variant = 'geometric', className = '' }: Sectio
       </div>
     ),
 
-    // Greek Key / Meander Pattern
-    greek: (
-      <div className="relative py-4">
-        <div className="flex items-center justify-center gap-4">
-          <div className="flex-1 h-px bg-gradient-to-r from-transparent to-primary/30" />
-          <motion.svg
-            viewBox="0 0 120 24"
-            className="w-32 h-6"
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
+    wave: (
+      <div className="relative h-16 overflow-hidden">
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="w-2/3 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+        </div>
+        <motion.div
+          className="absolute inset-0 flex items-center justify-center"
+          initial={{ x: '-100%' }}
+          whileInView={{ x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+        >
+          <svg viewBox="0 0 1200 60" className="w-full h-8 text-primary" preserveAspectRatio="none">
             <defs>
-              <linearGradient id="greekGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" className="[stop-color:hsl(var(--primary))]" />
-                <stop offset="50%" className="[stop-color:hsl(var(--foreground))]" />
-                <stop offset="100%" className="[stop-color:hsl(var(--primary))]" />
+              <linearGradient id="waveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="currentColor" stopOpacity="0" />
+                <stop offset="50%" stopColor="currentColor" stopOpacity="0.6" />
+                <stop offset="100%" stopColor="currentColor" stopOpacity="0" />
               </linearGradient>
             </defs>
-            {/* Greek Key Pattern */}
             <path
-              d="M0,12 H10 V4 H20 V12 H30 V4 H40 V12 H50 V4 H60 V20 H50 V12 H40 V20 H30 V12 H20 V20 H10 V12 H0"
-              fill="none"
-              stroke="url(#greekGradient)"
+              d="M0,30 C200,50 400,10 600,30 C800,50 1000,10 1200,30"
+              stroke="url(#waveGradient)"
               strokeWidth="1.5"
-            />
-            <path
-              d="M60,12 H70 V4 H80 V12 H90 V4 H100 V12 H110 V4 H120 V20 H110 V12 H100 V20 H90 V12 H80 V20 H70 V12 H60"
               fill="none"
-              stroke="url(#greekGradient)"
-              strokeWidth="1.5"
             />
-          </motion.svg>
-          <div className="flex-1 h-px bg-gradient-to-l from-transparent to-primary/30" />
-        </div>
+          </svg>
+        </motion.div>
       </div>
     ),
 
-    // Art Deco Sunburst
     deco: (
       <div className="relative py-6">
         <div className="flex items-center justify-center">
@@ -126,211 +117,6 @@ export function SectionDivider({ variant = 'geometric', className = '' }: Sectio
             <line x1="115" y1="20" x2="200" y2="20" stroke="url(#decoGradient)" strokeWidth="1" />
           </motion.svg>
         </div>
-      </div>
-    ),
-
-    // Agora - Classical Greek style
-    agora: (
-      <div className="relative py-8">
-        <div className="flex items-center justify-center gap-6">
-          {/* Left Column */}
-          <motion.div
-            className="w-px h-12 bg-gradient-to-b from-transparent via-primary/50 to-transparent"
-            initial={{ scaleY: 0 }}
-            whileInView={{ scaleY: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          />
-
-          {/* Left Meander */}
-          <motion.div
-            className="flex items-center"
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            <svg viewBox="0 0 40 20" className="w-10 h-5 text-primary">
-              <path
-                d="M0,10 H8 V2 H16 V10 H24 V2 H32 V18 H24 V10 H16 V18 H8 V10 H0"
-                fill="none"
-                stroke="currentColor"
-                strokeOpacity="0.6"
-                strokeWidth="1.5"
-              />
-            </svg>
-          </motion.div>
-
-          {/* Center Element - Laurel + Diamond */}
-          <motion.div
-            className="relative"
-            initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-          >
-            <svg viewBox="0 0 60 40" className="w-16 h-10">
-              <defs>
-                <linearGradient id="agoraGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" className="[stop-color:hsl(var(--primary))]" />
-                  <stop offset="50%" className="[stop-color:hsl(var(--foreground))]" />
-                  <stop offset="100%" className="[stop-color:hsl(var(--primary))]" />
-                </linearGradient>
-              </defs>
-              {/* Left Laurel */}
-              <path
-                d="M10,20 Q5,15 8,10 M10,20 Q3,20 5,15 M10,20 Q5,25 8,30"
-                fill="none"
-                className="stroke-primary"
-                strokeWidth="1"
-                opacity="0.6"
-              />
-              {/* Right Laurel */}
-              <path
-                d="M50,20 Q55,15 52,10 M50,20 Q57,20 55,15 M50,20 Q55,25 52,30"
-                fill="none"
-                className="stroke-primary"
-                strokeWidth="1"
-                opacity="0.6"
-              />
-              {/* Central Diamond */}
-              <path
-                d="M30,8 L40,20 L30,32 L20,20 Z"
-                fill="none"
-                stroke="url(#agoraGradient)"
-                strokeWidth="2"
-              />
-              {/* Inner Diamond */}
-              <path
-                d="M30,14 L35,20 L30,26 L25,20 Z"
-                className="fill-primary/15 stroke-primary/60"
-                strokeWidth="1"
-              />
-            </svg>
-          </motion.div>
-
-          {/* Right Meander */}
-          <motion.div
-            className="flex items-center"
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            <svg viewBox="0 0 40 20" className="w-10 h-5 text-primary">
-              <path
-                d="M40,10 H32 V2 H24 V10 H16 V2 H8 V18 H16 V10 H24 V18 H32 V10 H40"
-                fill="none"
-                stroke="currentColor"
-                strokeOpacity="0.6"
-                strokeWidth="1.5"
-              />
-            </svg>
-          </motion.div>
-
-          {/* Right Column */}
-          <motion.div
-            className="w-px h-12 bg-gradient-to-b from-transparent via-primary/50 to-transparent"
-            initial={{ scaleY: 0 }}
-            whileInView={{ scaleY: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          />
-        </div>
-      </div>
-    ),
-
-    organic: (
-      <div className="relative">
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="w-1/3 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
-        </div>
-        <svg viewBox="0 0 1200 80" className="w-full h-16 text-primary" preserveAspectRatio="none">
-          <defs>
-            <linearGradient id="organicGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="currentColor" stopOpacity="0" />
-              <stop offset="50%" stopColor="currentColor" stopOpacity="0.6" />
-              <stop offset="100%" stopColor="currentColor" stopOpacity="0" />
-            </linearGradient>
-          </defs>
-          <motion.path
-            d="M0,40 Q300,10 600,40 T1200,40"
-            stroke="url(#organicGradient)"
-            strokeWidth="1.5"
-            fill="none"
-            initial={{ pathLength: 0, opacity: 0 }}
-            whileInView={{ pathLength: 1, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 2.5, ease: "easeOut" }}
-          />
-          <motion.circle
-            cx="600"
-            cy="40"
-            r="4"
-            fill="currentColor"
-            initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 1.2, duration: 0.5 }}
-          />
-        </svg>
-      </div>
-    ),
-
-    dots: (
-      <div className="flex justify-center items-center space-x-8 py-8">
-        {[0, 1, 2, 3, 4].map((i) => (
-          <motion.div
-            key={i}
-            className="relative"
-            initial={{ scale: 0, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.1, duration: 0.5 }}
-          >
-            <div
-              className={`w-2 h-2 rounded-full ${
-                i === 2
-                  ? 'bg-primary shadow-[0_0_12px_hsl(var(--primary)/0.6)]'
-                  : 'bg-foreground/20'
-              }`}
-            />
-            {i === 2 && (
-              <div className="absolute inset-0 w-2 h-2 rounded-full animate-ping bg-primary/30" />
-            )}
-          </motion.div>
-        ))}
-      </div>
-    ),
-
-    wave: (
-      <div className="relative h-16 overflow-hidden">
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="w-2/3 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
-        </div>
-        <motion.div
-          className="absolute inset-0 flex items-center justify-center"
-          initial={{ x: '-100%' }}
-          whileInView={{ x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-        >
-          <svg viewBox="0 0 1200 60" className="w-full h-8 text-primary" preserveAspectRatio="none">
-            <defs>
-              <linearGradient id="waveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="currentColor" stopOpacity="0" />
-                <stop offset="50%" stopColor="currentColor" stopOpacity="0.6" />
-                <stop offset="100%" stopColor="currentColor" stopOpacity="0" />
-              </linearGradient>
-            </defs>
-            <path
-              d="M0,30 C200,50 400,10 600,30 C800,50 1000,10 1200,30"
-              stroke="url(#waveGradient)"
-              strokeWidth="1.5"
-              fill="none"
-            />
-          </svg>
-        </motion.div>
       </div>
     ),
   }

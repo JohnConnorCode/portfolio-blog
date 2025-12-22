@@ -9,7 +9,7 @@ interface BlogPost {
   author?: { name: string }
   categories?: Array<{ title: string }>
   mainImage?: string
-  body: unknown
+  body: Parameters<typeof PortableText>[0]['value']
 }
 
 interface BlogPostAnimatedProps {

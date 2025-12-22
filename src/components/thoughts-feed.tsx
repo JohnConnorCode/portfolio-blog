@@ -29,7 +29,7 @@ export default function ThoughtsFeed() {
         const data = await sanityClient.fetch(thoughtsQuery)
         setThoughts(data || [])
       } catch {
-        console.log('No thoughts yet')
+        // Sanity not configured or no thoughts yet
       } finally {
         setLoading(false)
       }

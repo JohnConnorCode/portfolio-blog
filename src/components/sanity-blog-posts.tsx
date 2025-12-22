@@ -9,7 +9,7 @@ export default async function SanityBlogPosts() {
   try {
     posts = await sanityClient.fetch(postsQuery)
   } catch {
-    console.log('No Sanity posts yet - using fallback')
+    // No Sanity posts yet - using fallback
     // Return empty or use Supabase as fallback
     return <SanityBlogPostsAnimated posts={[]} />
   }

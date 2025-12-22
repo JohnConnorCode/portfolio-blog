@@ -27,7 +27,7 @@ export default async function SanityHero() {
       }
     }
   } catch {
-    console.log('Using default content - Sanity not configured yet')
+    // Using default content - Sanity not configured yet
   }
   
   return <HeroCyberpunk content={content} />

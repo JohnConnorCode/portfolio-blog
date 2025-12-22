@@ -30,7 +30,7 @@ export function ThoughtsPreview() {
         const data = await sanityClient.fetch(thoughtsQuery)
         setThoughts(data?.slice(0, 3) || [])
       } catch {
-        console.log('No thoughts yet')
+        // Sanity not configured or no thoughts yet
       } finally {
         setLoading(false)
       }

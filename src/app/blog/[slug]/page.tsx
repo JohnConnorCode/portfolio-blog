@@ -120,7 +120,7 @@ export default async function BlogPostPage({
       slug: { current: localPost.slug },
       publishedAt: localPost.publishedAt,
       // Convert HTML content to be displayed
-      body: null,
+      body: undefined,
       htmlContent: localPost.content,
       author: { name: localPost.author }
     }

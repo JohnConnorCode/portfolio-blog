@@ -39,9 +39,9 @@ export function Navbar() {
 
   return (
     <motion.nav
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.2 }}
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
         scrolled
@@ -58,33 +58,85 @@ export function Navbar() {
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-24">
-          <div>
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
+          >
             <Link href="/" className="group">
               <div className="flex items-center gap-4">
-                {/* Logo - Bold and distinctive */}
-                <div className="relative w-11 h-11 group-hover:scale-105 transition-transform duration-300">
-                  {/* Filled background on hover */}
-                  <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors duration-300 rotate-45" />
-                  {/* Border */}
-                  <div className="absolute inset-0 border-2 border-primary rotate-45" />
-                  {/* JC Text */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-lg font-bold text-primary tracking-wider font-jost">
+                {/* Logo - Bold animated diamond */}
+                <motion.div
+                  className="relative w-14 h-14"
+                  whileHover={{ scale: 1.08 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 20 }}
+                >
+                  {/* Ambient glow - always visible, stronger on hover */}
+                  <motion.div
+                    className="absolute -inset-2 bg-primary/20 blur-2xl rounded-full"
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.8, delay: 0.1 }}
+                  />
+                  <div className="absolute -inset-1 bg-primary/0 group-hover:bg-primary/30 blur-xl transition-all duration-500 rounded-full" />
+
+                  {/* Outer diamond border */}
+                  <motion.div
+                    className="absolute inset-0 border-2 border-primary rotate-45"
+                    initial={{ scale: 0, rotate: 45, opacity: 0 }}
+                    animate={{ scale: 1, rotate: 45, opacity: 1 }}
+                    transition={{ duration: 0.6, delay: 0.15, type: "spring", stiffness: 150 }}
+                  />
+
+                  {/* Inner filled diamond */}
+                  <motion.div
+                    className="absolute inset-[6px] bg-primary/10 rotate-45"
+                    initial={{ scale: 0, rotate: 45 }}
+                    animate={{ scale: 1, rotate: 45 }}
+                    transition={{ duration: 0.5, delay: 0.25, type: "spring", stiffness: 180 }}
+                  />
+
+                  {/* Center accent dot */}
+                  <motion.div
+                    className="absolute inset-[18px] bg-primary/40 rotate-45"
+                    initial={{ scale: 0, rotate: 45 }}
+                    animate={{ scale: 1, rotate: 45 }}
+                    transition={{ duration: 0.4, delay: 0.35, type: "spring", stiffness: 200 }}
+                  />
+
+                  {/* JC Text - Bold */}
+                  <motion.div
+                    className="absolute inset-0 flex items-center justify-center"
+                    initial={{ opacity: 0, scale: 0.3 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.4, delay: 0.4, type: "spring", stiffness: 300 }}
+                  >
+                    <span className="text-xl font-black text-primary tracking-wide font-jost drop-shadow-[0_0_10px_rgba(0,212,255,0.5)]">
                       JC
                     </span>
-                  </div>
-                </div>
+                  </motion.div>
+                </motion.div>
                 <div className="flex flex-col">
-                  <span className="text-lg font-semibold tracking-tight text-foreground font-jost">
+                  <motion.span
+                    className="text-lg font-semibold tracking-tight text-foreground font-jost"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: 0.3 }}
+                  >
                     John Connor
-                  </span>
-                  <span className="text-[10px] text-primary uppercase tracking-[0.2em] font-jost">
+                  </motion.span>
+                  <motion.span
+                    className="text-[10px] text-primary uppercase tracking-[0.2em] font-jost"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: 0.4 }}
+                  >
                     Product Strategist
-                  </span>
+                  </motion.span>
                 </div>
               </div>
             </Link>
-          </div>
+          </motion.div>
 
           <div className="hidden md:flex items-center space-x-2">
             {navItems.map((item, index) => {
@@ -93,9 +145,12 @@ export function Navbar() {
               const hasSubItems = item.subItems && item.subItems.length > 0
 
               return (
-                <div
+                <motion.div
                   key={item.href}
                   className="relative group"
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: 0.2 + index * 0.08, ease: "easeOut" }}
                 >
                   <Link
                     href={item.href}
@@ -149,12 +204,18 @@ export function Navbar() {
                       </div>
                     </div>
                   )}
-                </div>
+                </motion.div>
               )
             })}
           </div>
 
-          <div className="flex items-center space-x-4">
+          {/* Theme toggle with animation */}
+          <motion.div
+            className="flex items-center space-x-4"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.5, ease: "easeOut" }}
+          >
             {/* Theme toggle - desktop */}
             <div className="hidden md:block">
               <ThemeToggle />
@@ -180,7 +241,7 @@ export function Navbar() {
                 />
               </div>
             </button>
-          </div>
+          </motion.div>
         </div>
       </div>
 

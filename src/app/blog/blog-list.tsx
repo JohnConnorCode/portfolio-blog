@@ -84,8 +84,9 @@ export default function BlogList({ initialPosts }: { initialPosts: Post[] }) {
             <div className="w-16 h-px bg-gradient-to-l from-transparent to-primary" />
           </motion.div>
 
-          <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 text-center tracking-wide text-foreground font-jost">
-            Blog
+          <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 text-center tracking-wide font-jost">
+            <span className="text-foreground">The </span>
+            <span className="text-primary">Blog</span>
           </h1>
           <motion.p
             className="text-lg max-w-2xl mx-auto font-light text-foreground/70 font-jost"

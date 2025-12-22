@@ -21,18 +21,18 @@ export default function ThoughtsPage() {
             transition={{ delay: 0.1, duration: 0.5 }}
             className="flex items-center justify-center gap-4 mb-6"
           >
-            <div className="w-12 h-px bg-gradient-to-r from-transparent to-cyan-500/50" />
-            <svg viewBox="0 0 24 24" className="w-5 h-5">
-              <path d="M12 2 L22 12 L12 22 L2 12 Z" fill="none" stroke="rgba(0, 212, 255, 0.6)" strokeWidth="1.5" />
+            <div className="w-12 h-px bg-gradient-to-r from-transparent to-primary/50" />
+            <svg viewBox="0 0 24 24" className="w-5 h-5 text-primary">
+              <path d="M12 2 L22 12 L12 22 L2 12 Z" fill="none" stroke="currentColor" strokeWidth="1.5" />
             </svg>
-            <div className="w-12 h-px bg-gradient-to-l from-transparent to-cyan-500/50" />
+            <div className="w-12 h-px bg-gradient-to-l from-transparent to-primary/50" />
           </motion.div>
 
           <motion.span
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.15, duration: 0.5 }}
-            className="text-cyan-400/60 text-xs tracking-[0.3em] uppercase block mb-4"
+            className="text-primary/60 text-xs tracking-[0.3em] uppercase block mb-4 font-jost"
           >
             Unfiltered
           </motion.span>
@@ -41,15 +41,10 @@ export default function ThoughtsPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-5xl md:text-6xl font-bold mb-4 tracking-wide"
-            style={{
-              background: 'linear-gradient(135deg, #ffffff 0%, #00d4ff 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-            }}
+            className="text-5xl md:text-6xl font-bold mb-4 tracking-wide font-jost"
           >
-            Thoughts
+            <span className="text-foreground">The </span>
+            <span className="text-primary">Thoughts</span>
           </motion.h1>
 
           <motion.p
