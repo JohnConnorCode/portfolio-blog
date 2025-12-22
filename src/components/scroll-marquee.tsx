@@ -7,9 +7,10 @@ interface ScrollMarqueeProps {
   text: string
   direction?: 'left' | 'right'
   className?: string
+  variant?: 'default' | 'outline' | 'mixed'
 }
 
-export function ScrollMarquee({ text, direction = 'left', className = '' }: ScrollMarqueeProps) {
+export function ScrollMarquee({ text, direction = 'left', className = '', variant = 'mixed' }: ScrollMarqueeProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -22,19 +23,67 @@ export function ScrollMarquee({ text, direction = 'left', className = '' }: Scro
     direction === 'left' ? ['0%', '-25%'] : ['-25%', '0%']
   )
 
+  // Split text into words for mixed styling
+  const words = text.split(' • ').filter(Boolean)
+
   return (
-    <div ref={containerRef} className={`overflow-hidden py-4 md:py-8 ${className}`}>
+    <div ref={containerRef} className={`overflow-hidden py-6 md:py-10 relative ${className}`}>
+      {/* Gradient fade edges */}
+      <div className="absolute left-0 top-0 bottom-0 w-20 md:w-40 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+      <div className="absolute right-0 top-0 bottom-0 w-20 md:w-40 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+
       <motion.div
         style={{ x, willChange: 'transform' }}
-        className="flex whitespace-nowrap"
+        className="flex items-center whitespace-nowrap"
       >
-        {[...Array(4)].map((_, i) => (
-          <span
-            key={i}
-            className="text-[14vw] sm:text-[9vw] md:text-[5vw] font-black tracking-tight text-primary/30 sm:text-primary/25 md:text-primary/20 font-jost mx-3 sm:mx-4 md:mx-8 select-none"
-          >
-            {text}
-          </span>
+        {[...Array(4)].map((_, repeatIdx) => (
+          <div key={repeatIdx} className="flex items-center">
+            {words.map((word, wordIdx) => (
+              <div key={`${repeatIdx}-${wordIdx}`} className="flex items-center">
+                {/* Word with alternating styles */}
+                {variant === 'mixed' && wordIdx % 2 === 0 ? (
+                  // Filled text with glow
+                  <span
+                    className="text-[12vw] sm:text-[8vw] md:text-[4.5vw] font-black tracking-tight text-primary/40 font-jost select-none drop-shadow-[0_0_20px_rgba(var(--primary-rgb),0.3)]"
+                    style={{ textShadow: '0 0 40px hsl(var(--primary) / 0.2)' }}
+                  >
+                    {word}
+                  </span>
+                ) : variant === 'mixed' ? (
+                  // Outlined text
+                  <span
+                    className="text-[12vw] sm:text-[8vw] md:text-[4.5vw] font-black tracking-tight font-jost select-none"
+                    style={{
+                      WebkitTextStroke: '1px hsl(var(--primary) / 0.5)',
+                      WebkitTextFillColor: 'transparent',
+                    }}
+                  >
+                    {word}
+                  </span>
+                ) : variant === 'outline' ? (
+                  <span
+                    className="text-[12vw] sm:text-[8vw] md:text-[4.5vw] font-black tracking-tight font-jost select-none"
+                    style={{
+                      WebkitTextStroke: '1px hsl(var(--primary) / 0.4)',
+                      WebkitTextFillColor: 'transparent',
+                    }}
+                  >
+                    {word}
+                  </span>
+                ) : (
+                  <span className="text-[12vw] sm:text-[8vw] md:text-[4.5vw] font-black tracking-tight text-primary/30 font-jost select-none">
+                    {word}
+                  </span>
+                )}
+
+                {/* Decorative separator */}
+                <span className="mx-4 sm:mx-6 md:mx-10 flex items-center gap-2">
+                  <span className="w-1 h-1 md:w-1.5 md:h-1.5 bg-primary/40 rotate-45" />
+                  <span className="w-6 md:w-10 h-px bg-gradient-to-r from-primary/40 to-transparent" />
+                </span>
+              </div>
+            ))}
+          </div>
         ))}
       </motion.div>
     </div>
