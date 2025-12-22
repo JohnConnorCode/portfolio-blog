@@ -4,11 +4,6 @@ import { useEffect, useRef, useState } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
-import {
-  pageHeaderVariants,
-  childVariants,
-  staggerOrchestrator,
-} from '@/lib/animation-config'
 
 interface HeroContent {
   heroTitle?: string
@@ -25,42 +20,64 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
   }
   const containerRef = useRef<HTMLDivElement>(null)
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
+  const [isMobile, setIsMobile] = useState(false)
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"]
   })
 
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
-  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 1.02])
+  // Simpler parallax - less layers, better performance
+  const heroY = useTransform(scrollYProgress, [0, 1], [0, 200])
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
+  const bgY = useTransform(scrollYProgress, [0, 1], [0, 100])
+  const floatY = useTransform(scrollYProgress, [0, 1], [0, -150])
+  const photoY = useTransform(scrollYProgress, [0, 1], [0, 80])
+  const textY = useTransform(scrollYProgress, [0, 1], [0, 60])
+  const glowScale = useTransform(scrollYProgress, [0, 0.5], [1, 1.2])
 
   useEffect(() => {
+    // Check for mobile
+    const checkMobile = () => setIsMobile(window.innerWidth < 768)
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+
+    // Mouse tracking only on desktop
     const handleMouseMove = (e: MouseEvent) => {
-      setMousePos({ x: e.clientX, y: e.clientY })
+      if (window.innerWidth >= 768) {
+        setMousePos({ x: e.clientX, y: e.clientY })
+      }
     }
     window.addEventListener('mousemove', handleMouseMove)
-    return () => window.removeEventListener('mousemove', handleMouseMove)
+
+    return () => {
+      window.removeEventListener('resize', checkMobile)
+      window.removeEventListener('mousemove', handleMouseMove)
+    }
   }, [])
 
   return (
     <section ref={containerRef} className="relative min-h-screen overflow-hidden -mt-24 pt-24 bg-background">
-      {/* Dramatic gradient background */}
-      <div className="absolute inset-0">
+      {/* Gradient background - simple parallax on desktop only */}
+      <motion.div
+        style={isMobile ? {} : { y: bgY, willChange: 'transform' }}
+        className="absolute inset-0"
+      >
         <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-background" />
-        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[150px]" />
-        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary/3 rounded-full blur-[120px]" />
-      </div>
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] md:w-[800px] md:h-[800px] bg-primary/5 rounded-full blur-[100px] md:blur-[150px]" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-primary/3 rounded-full blur-[80px] md:blur-[120px]" />
+      </motion.div>
 
-      {/* Animated grid background */}
+      {/* Grid background - static for performance */}
       <div className="absolute inset-0 overflow-hidden">
         <div
-          className="absolute inset-0 opacity-[0.08]"
+          className="absolute inset-0 opacity-[0.06] md:opacity-[0.08]"
           style={{
             backgroundImage: `
               linear-gradient(to right, hsl(var(--primary)) 1px, transparent 1px),
               linear-gradient(to bottom, hsl(var(--primary)) 1px, transparent 1px)
             `,
-            backgroundSize: '80px 80px'
+            backgroundSize: '60px 60px'
           }}
         />
         {/* Horizontal accent lines */}
@@ -68,58 +85,69 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
         <div className="absolute top-3/4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
       </div>
 
-      {/* Interactive glow follows cursor */}
-      <div
-        className="absolute inset-0 pointer-events-none transition-opacity duration-500"
-        style={{
-          background: `radial-gradient(
-            circle 400px at ${mousePos.x}px ${mousePos.y}px,
-            hsl(var(--primary) / 0.08),
-            transparent 50%
-          )`
-        }}
-      />
+      {/* Interactive glow - desktop only */}
+      {!isMobile && (
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: `radial-gradient(
+              circle 400px at ${mousePos.x}px ${mousePos.y}px,
+              hsl(var(--primary) / 0.06),
+              transparent 50%
+            )`
+          }}
+        />
+      )}
 
-      {/* Floating geometric accents */}
+      {/* Floating geometric accents - desktop only for performance */}
       <motion.div
-        animate={{ rotate: 360 }}
-        transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-        className="absolute top-20 right-20 w-32 h-32 opacity-20"
+        style={isMobile ? {} : { y: floatY, willChange: 'transform' }}
+        className="absolute top-20 right-10 md:right-20 w-20 md:w-32 h-20 md:h-32 opacity-10 md:opacity-20 hidden sm:block"
       >
-        <svg viewBox="0 0 100 100" className="w-full h-full text-primary">
+        <motion.svg
+          animate={{ rotate: 360 }}
+          transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+          viewBox="0 0 100 100"
+          className="w-full h-full text-primary"
+        >
           <polygon points="50,5 95,27.5 95,72.5 50,95 5,72.5 5,27.5" fill="none" stroke="currentColor" strokeWidth="0.5" />
-        </svg>
+        </motion.svg>
       </motion.div>
 
       <motion.div
-        animate={{ rotate: -360 }}
-        transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
-        className="absolute bottom-32 left-16 w-24 h-24 opacity-10"
+        className="absolute bottom-32 left-8 md:left-16 w-16 md:w-24 h-16 md:h-24 opacity-10 hidden sm:block"
       >
-        <svg viewBox="0 0 100 100" className="w-full h-full text-primary">
+        <motion.svg
+          animate={{ rotate: -360 }}
+          transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
+          viewBox="0 0 100 100"
+          className="w-full h-full text-primary"
+        >
           <polygon points="50,5 95,27.5 95,72.5 50,95 5,72.5 5,27.5" fill="none" stroke="currentColor" strokeWidth="0.5" />
-        </svg>
+        </motion.svg>
       </motion.div>
 
+      {/* Main content wrapper with parallax */}
       <motion.div
-        style={{ opacity, scale }}
+        style={isMobile ? { opacity: heroOpacity } : { y: heroY, opacity: heroOpacity, willChange: 'transform, opacity' }}
         className="relative z-20 min-h-screen flex items-center px-6 sm:px-8 lg:px-16"
       >
         <div className="max-w-7xl mx-auto w-full">
-          <motion.div
-            variants={pageHeaderVariants}
-            initial="hidden"
-            animate="visible"
-            className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center"
-          >
-            {/* Photo Column - First in DOM for mobile animation order */}
+          <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            {/* Photo Column with its own parallax */}
             <motion.div
-              variants={childVariants}
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              style={isMobile ? {} : { y: photoY, willChange: 'transform' }}
               className="lg:col-span-5 order-1 lg:order-2 flex justify-center lg:justify-end"
             >
               <div className="relative">
                 {/* Glowing backdrop */}
-                <div className="absolute -inset-8 bg-gradient-to-br from-primary/20 via-primary/5 to-transparent rounded-full blur-3xl" />
+                <motion.div
+                  style={isMobile ? {} : { scale: glowScale }}
+                  className="absolute -inset-8 bg-gradient-to-br from-primary/20 via-primary/5 to-transparent rounded-full blur-3xl"
+                />
 
                 {/* Photo frame with accent */}
                 <div className="relative">
@@ -162,14 +190,19 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
               </div>
             </motion.div>
 
-            {/* Content Column - Second in DOM, animates after photo */}
+            {/* Content Column with staggered parallax */}
             <motion.div
-              variants={staggerOrchestrator}
+              style={isMobile ? {} : { y: textY, willChange: 'transform' }}
               className="lg:col-span-7 order-2 lg:order-1 text-center lg:text-left"
             >
 
               {/* Name - BOLD and distinctive */}
-              <motion.h1 variants={childVariants} className="relative mb-6">
+              <motion.h1
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="relative mb-6"
+              >
                 <span
                   className="block text-6xl sm:text-7xl md:text-8xl lg:text-[7rem] font-bold tracking-tight text-foreground font-jost"
                   style={{ lineHeight: 0.9 }}
@@ -185,29 +218,52 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
               </motion.h1>
 
               {/* Role badges */}
-              <motion.div variants={childVariants} className="flex flex-wrap items-center justify-center lg:justify-start gap-3 mb-8">
-                {['Product', 'Engineering', 'Strategy'].map((role) => (
-                  <span
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.1 }}
+                className="flex flex-wrap items-center justify-center lg:justify-start gap-3 mb-8"
+              >
+                {['Product', 'Engineering', 'Strategy'].map((role, i) => (
+                  <motion.span
                     key={role}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.4, delay: 0.3 + i * 0.1 }}
                     className="px-4 py-2 text-xs tracking-[0.2em] uppercase border border-primary/30 text-primary font-jost bg-primary/5 backdrop-blur-sm"
                   >
                     {role}
-                  </span>
+                  </motion.span>
                 ))}
               </motion.div>
 
               {/* Description */}
-              <motion.p variants={childVariants} className="text-xl sm:text-2xl md:text-3xl leading-relaxed mb-4 max-w-2xl mx-auto lg:mx-0 text-foreground/90 font-jost font-light">
+              <motion.p
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="text-xl sm:text-2xl md:text-3xl leading-relaxed mb-4 max-w-2xl mx-auto lg:mx-0 text-foreground/90 font-jost font-light"
+              >
                 {heroContent.heroDescription}
               </motion.p>
 
               {/* Tagline */}
-              <motion.p variants={childVariants} className="text-lg md:text-xl mb-12 max-w-xl mx-auto lg:mx-0 text-primary font-jost font-medium">
+              <motion.p
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="text-lg md:text-xl mb-12 max-w-xl mx-auto lg:mx-0 text-primary font-jost font-medium"
+              >
                 {heroContent.heroHighlight}
               </motion.p>
 
-              {/* CTA Buttons - more impactful */}
-              <motion.div variants={childVariants} className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              {/* CTA Buttons */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+              >
                 <Link href="/contact">
                   <button className="group relative px-10 py-5 font-semibold text-sm overflow-hidden bg-primary text-background uppercase tracking-[0.15em] font-jost hover:scale-[1.02] active:scale-[0.98] transition-transform duration-200">
                     <span className="relative z-10">Get in Touch</span>
@@ -226,8 +282,26 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
               </motion.div>
 
             </motion.div>
-          </motion.div>
+          </div>
         </div>
+      </motion.div>
+
+      {/* Scroll indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.5, duration: 1 }}
+        style={{ opacity: heroOpacity }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30"
+      >
+        <motion.div
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          className="flex flex-col items-center gap-2"
+        >
+          <span className="text-xs uppercase tracking-[0.3em] text-foreground/40 font-jost">Scroll</span>
+          <div className="w-px h-8 bg-gradient-to-b from-primary/60 to-transparent" />
+        </motion.div>
       </motion.div>
 
       {/* Bottom border */}

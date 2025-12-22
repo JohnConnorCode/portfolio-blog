@@ -1,7 +1,7 @@
 'use client'
 
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { Trophy, Users, MessageSquare, ArrowRight, Globe, ChevronRight, ExternalLink, Calendar, MapPin, UserCheck, Brain, TrendingUp } from 'lucide-react'
+import { Trophy, Users, MessageSquare, ArrowRight, Globe, ChevronRight, ExternalLink, Calendar, MapPin, Flame, Award, Sparkles } from 'lucide-react'
 import Link from 'next/link'
 import { useRef } from 'react'
 import {
@@ -22,49 +22,26 @@ export default function SuperDebatePage() {
   const heroY = useTransform(scrollYProgress, [0, 1], [0, 300])
   const heroOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0])
 
-  const projectHighlights = [
+  const platformFeatures = [
     {
-      title: "Founded 2024",
-      description: "Built to restore the agora—a space where citizens gather to challenge ideas and grow through discourse",
-      icon: Trophy,
+      title: "Adult Debate Clubs",
+      description: "The only platform built specifically for grown-ups who want to sharpen their minds through structured discourse",
+      icon: Users,
     },
     {
-      title: "Bali Workshops",
-      description: "Currently running workshops and events in Bali, building a thriving debate community",
-      icon: MapPin,
-    },
-    {
-      title: "Chicago Flagship Event",
-      description: "Planning first major event with 1871, Chicago's biggest incubator and coworking space",
+      title: "Live Events",
+      description: "From intimate club nights to championship tournaments—real people, real debates, real growth",
       icon: Calendar,
     },
     {
-      title: "Global Vision",
-      description: "Expanding from online platform to in-person chapters in major cities worldwide",
+      title: "Global Community",
+      description: "Connect with debaters worldwide. Organize, compete, or judge from anywhere",
       icon: Globe,
-    }
-  ]
-
-  const platformFeatures = [
-    {
-      title: "Structured Debates",
-      description: "One modular format that adapts to any topic, skill level, or community need",
-      icon: MessageSquare,
     },
     {
       title: "Tournament Platform",
-      description: "Complete tournament management from registration to final rankings",
+      description: "Complete tournament management from registration through final rankings and NFT trophies",
       icon: Trophy,
-    },
-    {
-      title: "AI Training Tools",
-      description: "Practice debates with AI opponents and receive instant feedback",
-      icon: Brain,
-    },
-    {
-      title: "Judge Feedback System",
-      description: "Learn from expert judges through our online course platform",
-      icon: UserCheck,
     }
   ]
 
@@ -125,7 +102,7 @@ export default function SuperDebatePage() {
               variants={childVariants}
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8 border border-primary/30 bg-primary/5"
             >
-              <Trophy className="w-5 h-5 text-primary" />
+              <Flame className="w-5 h-5 text-primary" />
               <span className="text-sm font-jost text-primary">STARTUP • FOUNDER</span>
             </motion.div>
 
@@ -136,7 +113,6 @@ export default function SuperDebatePage() {
             >
               <span className="text-foreground">Super </span>
               <span className="text-primary">Debate</span>
-              <span className="text-foreground"> Club</span>
             </motion.h1>
 
             <motion.div
@@ -144,21 +120,21 @@ export default function SuperDebatePage() {
               className="text-2xl sm:text-3xl lg:text-4xl font-semibold mb-8 leading-tight overflow-visible text-primary font-jost"
               style={{ lineHeight: 1.2 }}
             >
-              Make Arguing Fun Again
+              Bring Debate Back to Life
             </motion.div>
 
             <motion.p
               variants={childVariants}
               className="text-xl sm:text-2xl max-w-3xl mx-auto mb-12 text-foreground/70 font-jost"
             >
-              Building a new intellectual sport for the 21st century.
-              Local clubs, national tournaments, AI-powered judging. <strong className="text-primary">Restoring the values of the Greek agora.</strong>
+              The only platform for adult debate clubs. Local meetups, global championships,
+              and a community dedicated to <strong className="text-primary">the lost art of civil discourse</strong>.
             </motion.p>
 
             <motion.div variants={childVariants} className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link href="https://superdebate.org" target="_blank" rel="noopener noreferrer">
                 <button className="px-10 py-5 text-lg font-semibold rounded-xl flex items-center gap-3 group bg-primary text-primary-foreground font-jost hover:scale-105 active:scale-95 transition-transform duration-200">
-                  <span>Learn More</span>
+                  <span>Visit Platform</span>
                   <ExternalLink className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                 </button>
               </Link>
@@ -166,10 +142,10 @@ export default function SuperDebatePage() {
               <button
                 className="px-10 py-5 text-lg font-semibold rounded-xl transition-all border border-primary/30 text-primary bg-transparent hover:bg-primary/5 font-jost hover:scale-105 active:scale-95 duration-200"
                 onClick={() => {
-                  document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })
+                  document.getElementById('championship')?.scrollIntoView({ behavior: 'smooth' })
                 }}
               >
-                How It Works
+                Infinita Championship
               </button>
             </motion.div>
           </motion.div>
@@ -183,10 +159,10 @@ export default function SuperDebatePage() {
           >
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
               {[
-                { value: 'Bali', label: 'Current Location' },
-                { value: 'Chicago', label: '2025 Flagship' },
-                { value: '1871', label: 'Partner Space' },
-                { value: 'Global', label: 'Vision' }
+                { value: '64', label: 'Championship Competitors' },
+                { value: 'Feb 2026', label: 'Infinita Championship' },
+                { value: 'Roatán', label: 'Honduras' },
+                { value: 'NYC', label: 'NeueHouse Events' }
               ].map((stat) => (
                 <motion.div
                   key={stat.label}
@@ -203,8 +179,8 @@ export default function SuperDebatePage() {
         </motion.div>
       </motion.section>
 
-      {/* My Vision Section */}
-      <section id="vision" className="py-32 px-4 relative overflow-hidden">
+      {/* Infinita Championship Section */}
+      <section id="championship" className="py-32 px-4 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/[0.02] via-transparent to-primary/[0.02]" />
 
         <div className="max-w-7xl mx-auto relative z-10">
@@ -215,19 +191,27 @@ export default function SuperDebatePage() {
             viewport={viewportOnce}
             className="text-center mb-16"
           >
+            <motion.div
+              variants={childVariants}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 border border-primary/30 bg-primary/5"
+            >
+              <Trophy className="w-5 h-5 text-primary" />
+              <span className="text-sm font-jost text-primary">FLAGSHIP EVENT</span>
+            </motion.div>
+
             <motion.h2
               variants={childVariants}
               className="text-4xl sm:text-5xl font-bold mb-6 text-foreground font-jost"
             >
-              Why I Built
-              <span className="text-primary"> SuperDebate</span>
+              The Infinita
+              <span className="text-primary"> Championship</span>
             </motion.h2>
             <motion.p
               variants={childVariants}
               className="text-xl max-w-3xl mx-auto text-foreground/70 font-jost"
             >
-              The Greeks understood that wisdom emerges from structured disagreement.
-              We&apos;re building modern agoras—spaces where citizens come together to challenge ideas and sharpen thinking.
+              February 18-20, 2026 in Roatán, Honduras. 32 two-person teams compete for glory,
+              NFT trophies on Solana, and the title of world&apos;s best debaters.
             </motion.p>
           </motion.div>
 
@@ -236,13 +220,34 @@ export default function SuperDebatePage() {
             initial="hidden"
             whileInView="visible"
             viewport={viewportOnce}
-            className="grid md:grid-cols-2 gap-8 mb-16"
+            className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16"
           >
-            {projectHighlights.map((highlight) => {
-              const Icon = highlight.icon
+            {[
+              {
+                title: "32 Teams",
+                description: "64 competitors from around the world battle through 6 preliminary rounds",
+                icon: Users,
+              },
+              {
+                title: "Single Elimination",
+                description: "Top 8 teams advance to knockout rounds. One shot. No second chances.",
+                icon: Flame,
+              },
+              {
+                title: "NFT Trophies",
+                description: "Winners immortalized on Solana blockchain. Permanent proof of victory.",
+                icon: Award,
+              },
+              {
+                title: "Peer Judging",
+                description: "4-criteria system scored by fellow debaters. Fair, transparent, accountable.",
+                icon: MessageSquare,
+              }
+            ].map((item) => {
+              const Icon = item.icon
               return (
                 <motion.div
-                  key={highlight.title}
+                  key={item.title}
                   variants={itemVariants}
                 >
                   <motion.div
@@ -250,34 +255,19 @@ export default function SuperDebatePage() {
                     whileHover={{ y: -5 }}
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
                   >
-                    <div className="relative rounded-2xl p-8 h-full transition-all duration-300 bg-card border border-border hover:border-primary/30 font-jost">
-                      {/* Corner accents - visible on hover */}
+                    <div className="relative rounded-2xl p-6 h-full transition-all duration-300 bg-card border border-border hover:border-primary/30 font-jost">
                       <div className="absolute top-0 left-0 w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <div className="absolute top-0 left-0 w-full h-0.5 bg-primary" />
                         <div className="absolute top-0 left-0 w-0.5 h-full bg-primary" />
-                      </div>
-                      <div className="absolute top-0 right-0 w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <div className="absolute top-0 right-0 w-full h-0.5 bg-primary" />
-                        <div className="absolute top-0 right-0 w-0.5 h-full bg-primary" />
-                      </div>
-                      <div className="absolute bottom-0 left-0 w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <div className="absolute bottom-0 left-0 w-full h-0.5 bg-primary" />
-                        <div className="absolute bottom-0 left-0 w-0.5 h-full bg-primary" />
                       </div>
                       <div className="absolute bottom-0 right-0 w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <div className="absolute bottom-0 right-0 w-full h-0.5 bg-primary" />
                         <div className="absolute bottom-0 right-0 w-0.5 h-full bg-primary" />
                       </div>
 
-                      <div className="flex items-start gap-4">
-                        <div className="flex-shrink-0">
-                          <Icon className="w-8 h-8 mb-3 text-primary" />
-                        </div>
-                        <div className="flex-1">
-                          <h3 className="text-xl font-bold mb-2 text-foreground font-jost">{highlight.title}</h3>
-                          <p className="text-foreground/70 font-jost">{highlight.description}</p>
-                        </div>
-                      </div>
+                      <Icon className="w-8 h-8 mb-4 text-primary" />
+                      <h3 className="text-lg font-bold mb-2 text-foreground font-jost">{item.title}</h3>
+                      <p className="text-sm text-foreground/70 font-jost">{item.description}</p>
                     </div>
                   </motion.div>
                 </motion.div>
@@ -285,6 +275,44 @@ export default function SuperDebatePage() {
             })}
           </motion.div>
 
+          {/* Championship Details Card */}
+          <motion.div
+            variants={childVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
+          >
+            <div className="relative rounded-2xl p-8 md:p-12 bg-card/60 backdrop-blur-xl border border-primary/20 font-jost">
+              <div className="absolute -inset-4 rounded-2xl blur-3xl opacity-20 bg-[radial-gradient(ellipse,hsl(var(--primary)/0.2)_0%,transparent_70%)]" />
+
+              <div className="relative grid md:grid-cols-3 gap-8 text-center">
+                <div>
+                  <div className="flex items-center justify-center gap-2 mb-3">
+                    <Calendar className="w-5 h-5 text-primary" />
+                    <span className="text-sm uppercase tracking-wider text-foreground/60">When</span>
+                  </div>
+                  <div className="text-2xl font-bold text-foreground">Feb 18-20, 2026</div>
+                  <div className="text-sm text-foreground/60 mt-1">Three days of competition</div>
+                </div>
+                <div>
+                  <div className="flex items-center justify-center gap-2 mb-3">
+                    <MapPin className="w-5 h-5 text-primary" />
+                    <span className="text-sm uppercase tracking-wider text-foreground/60">Where</span>
+                  </div>
+                  <div className="text-2xl font-bold text-foreground">Roatán, Honduras</div>
+                  <div className="text-sm text-foreground/60 mt-1">Caribbean island paradise</div>
+                </div>
+                <div>
+                  <div className="flex items-center justify-center gap-2 mb-3">
+                    <Trophy className="w-5 h-5 text-primary" />
+                    <span className="text-sm uppercase tracking-wider text-foreground/60">Format</span>
+                  </div>
+                  <div className="text-2xl font-bold text-foreground">$150/Team</div>
+                  <div className="text-sm text-foreground/60 mt-1">$80 individual entry</div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -299,11 +327,11 @@ export default function SuperDebatePage() {
             className="text-center mb-16"
           >
             <motion.h2 variants={childVariants} className="text-4xl sm:text-5xl font-bold mb-6 text-foreground font-jost">
-              Platform
-              <span className="text-primary"> Features</span>
+              The
+              <span className="text-primary"> Platform</span>
             </motion.h2>
             <motion.p variants={childVariants} className="text-xl max-w-3xl mx-auto text-foreground/70 font-jost">
-              Combining technology with debate expertise to create the ultimate training platform
+              Everything you need to organize, compete, and grow as a debater
             </motion.p>
           </motion.div>
 
@@ -327,7 +355,6 @@ export default function SuperDebatePage() {
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
                   >
                     <div className="relative rounded-2xl p-8 h-full transition-all duration-300 bg-card border border-border hover:border-primary/30 font-jost">
-                      {/* Corner accents */}
                       <div className="absolute top-0 left-0 w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <div className="absolute top-0 left-0 w-full h-0.5 bg-primary" />
                         <div className="absolute top-0 left-0 w-0.5 h-full bg-primary" />
@@ -363,9 +390,8 @@ export default function SuperDebatePage() {
         </div>
       </section>
 
-      {/* Technical Implementation Section */}
+      {/* Three Ways to Participate */}
       <section className="py-32 px-4 relative overflow-hidden bg-gradient-to-b from-background via-primary/[0.03] to-background">
-        {/* Subtle tech grid background */}
         <div
           className="absolute inset-0 opacity-[0.02] bg-[linear-gradient(hsl(var(--foreground)/0.1)_1px,transparent_1px),linear-gradient(90deg,hsl(var(--foreground)/0.1)_1px,transparent_1px)] bg-[size:50px_50px]"
         />
@@ -379,112 +405,11 @@ export default function SuperDebatePage() {
             className="text-center mb-16"
           >
             <motion.h2 variants={childVariants} className="text-4xl sm:text-5xl font-bold mb-6 text-foreground font-jost">
-              Technical
-              <span className="text-primary"> Implementation</span>
+              Join the
+              <span className="text-primary"> Movement</span>
             </motion.h2>
             <motion.p variants={childVariants} className="text-xl max-w-3xl mx-auto text-foreground/70 font-jost">
-              Built with modern technologies for scale and performance
-            </motion.p>
-          </motion.div>
-
-          <motion.div
-            variants={childVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewportOnce}
-            className="relative mb-16"
-          >
-            <div className="absolute -inset-4 rounded-2xl blur-3xl opacity-20 bg-[radial-gradient(ellipse,hsl(var(--primary)/0.2)_0%,transparent_70%)]" />
-
-            <div className="relative rounded-2xl p-8 md:p-12 bg-card/60 backdrop-blur-xl border border-primary/20 font-jost">
-              <div className="grid md:grid-cols-3 gap-8">
-                <motion.div
-                  className="text-center"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <div className="text-3xl font-mono font-bold mb-4 text-primary font-jost">
-                    Next.js + TypeScript
-                  </div>
-                  <p className="text-sm text-foreground/70 font-jost">
-                    Modern React framework with full-stack capabilities and edge functions
-                  </p>
-                </motion.div>
-                <motion.div
-                  className="text-center"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <div className="text-3xl font-mono font-bold mb-4 text-primary font-jost">
-                    AI Integration
-                  </div>
-                  <p className="text-sm text-foreground/70 font-jost">
-                    Custom AI training tools and automated debate analysis systems
-                  </p>
-                </motion.div>
-                <motion.div
-                  className="text-center"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <div className="text-3xl font-mono font-bold mb-4 text-primary font-jost">
-                    Scalable Architecture
-                  </div>
-                  <p className="text-sm text-foreground/70 font-jost">
-                    Built to handle tournaments with thousands of concurrent users
-                  </p>
-                </motion.div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Current Initiatives */}
-          <motion.div
-            variants={sectionWithChildrenVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewportOnce}
-            className="grid md:grid-cols-4 gap-6 mt-16"
-          >
-            {[
-              { metric: 'Workshops', value: 'Active', period: 'In Bali' },
-              { metric: 'Chicago Event', value: '2025', period: 'With 1871' },
-              { metric: 'Platform', value: 'Live', period: 'superdebate.org' },
-              { metric: 'Vision', value: 'Global', period: 'City Chapters' }
-            ].map((item) => (
-              <motion.div
-                key={item.metric}
-                variants={itemVariants}
-                whileHover={{ y: -5 }}
-                className="rounded-xl p-6 text-center transition-all duration-300 bg-card/60 backdrop-blur-xl border border-border hover:border-primary/30 font-jost"
-              >
-                <div className="text-2xl font-bold text-primary font-jost">
-                  {item.value}
-                </div>
-                <div className="text-sm font-semibold mt-2 text-foreground font-jost">{item.metric}</div>
-                <div className="text-xs mt-1 text-foreground/60 font-jost">{item.period}</div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* My Role & Contributions Section */}
-      <section className="py-32 px-4">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            variants={sectionWithChildrenVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewportOnce}
-            className="text-center mb-16"
-          >
-            <motion.h2 variants={childVariants} className="text-4xl sm:text-5xl font-bold mb-6 text-foreground font-jost">
-              My Role as
-              <span className="text-primary"> Founder & Builder</span>
-            </motion.h2>
-            <motion.p variants={childVariants} className="text-xl max-w-3xl mx-auto text-foreground/70 font-jost">
-              From vision to execution, leading every aspect of the platform
+              Three ways to be part of the debate renaissance
             </motion.p>
           </motion.div>
 
@@ -497,34 +422,37 @@ export default function SuperDebatePage() {
           >
             {[
               {
-                title: 'Product Strategy',
+                title: 'Organize',
+                description: 'Start a club in your city. We provide the format, platform, and community support.',
                 items: [
-                  'Designed the modular debate format system',
-                  'Created AI training methodology',
-                  'Built community engagement models',
-                  'Developed monetization strategy'
+                  'Access to debate formats',
+                  'Tournament management tools',
+                  'Marketing materials',
+                  'Community of organizers'
                 ],
-                icon: Brain,
+                icon: Sparkles,
               },
               {
-                title: 'Technical Leadership',
+                title: 'Debate',
+                description: 'Compete locally or globally. Build your skills through structured practice.',
                 items: [
-                  'Architected the full-stack platform',
-                  'Implemented AI debate analysis',
-                  'Built real-time tournament system',
-                  'Optimized for scale and performance'
+                  'Join local clubs',
+                  'Enter tournaments',
+                  'Track your rankings',
+                  'Connect with partners'
                 ],
-                icon: TrendingUp,
+                icon: MessageSquare,
               },
               {
-                title: 'Community Building',
+                title: 'Judge',
+                description: 'Shape the discourse. Fair judging is the backbone of great debate.',
                 items: [
-                  'Running workshops in Bali',
-                  'Planning Chicago flagship with 1871',
-                  'Building global city chapters',
-                  'Creating educational content'
+                  'Peer judging system',
+                  '4-criteria scoring',
+                  'Build reputation',
+                  'Earn recognition'
                 ],
-                icon: Users,
+                icon: Award,
               }
             ].map((role) => {
               const Icon = role.icon
@@ -539,7 +467,6 @@ export default function SuperDebatePage() {
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
                   >
                     <div className="relative rounded-2xl p-8 h-full transition-all duration-300 bg-card/60 backdrop-blur-xl border border-border hover:border-primary/30 font-jost">
-                      {/* Corner accents */}
                       <div className="absolute top-0 left-0 w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <div className="absolute top-0 left-0 w-full h-0.5 bg-primary" />
                         <div className="absolute top-0 left-0 w-0.5 h-full bg-primary" />
@@ -560,7 +487,8 @@ export default function SuperDebatePage() {
                       <div className="mb-6">
                         <Icon className="w-8 h-8 text-primary" />
                       </div>
-                      <h3 className="text-xl font-bold mb-4 text-foreground font-jost">{role.title}</h3>
+                      <h3 className="text-xl font-bold mb-2 text-foreground font-jost">{role.title}</h3>
+                      <p className="text-foreground/70 mb-4 font-jost">{role.description}</p>
                       <ul className="space-y-2">
                         {role.items.map((item) => (
                           <li
@@ -581,7 +509,163 @@ export default function SuperDebatePage() {
         </div>
       </section>
 
-      {/* Vision Section */}
+      {/* NYC Events Section */}
+      <section className="py-32 px-4">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            variants={sectionWithChildrenVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
+            className="text-center mb-16"
+          >
+            <motion.h2 variants={childVariants} className="text-4xl sm:text-5xl font-bold mb-6 text-foreground font-jost">
+              NYC
+              <span className="text-primary"> Events</span>
+            </motion.h2>
+            <motion.p variants={childVariants} className="text-xl max-w-3xl mx-auto text-foreground/70 font-jost">
+              SuperDebate at NeueHouse Madison Square. Where ideas clash in style.
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            variants={childVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
+          >
+            <div className="relative rounded-2xl p-8 md:p-12 bg-card/60 backdrop-blur-xl border border-primary/20 font-jost">
+              <div className="grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                  <h3 className="text-2xl font-bold mb-4 text-foreground">NeueHouse Madison Square</h3>
+                  <p className="text-foreground/70 mb-6">
+                    Our NYC home base. A creative workspace turned battleground for ideas.
+                    Regular debate nights, special events, and the energy of Manhattan&apos;s
+                    sharpest minds going head-to-head.
+                  </p>
+                  <div className="flex flex-wrap gap-3">
+                    <span className="px-3 py-1 rounded-full text-sm bg-primary/10 text-primary border border-primary/20">
+                      Monthly Events
+                    </span>
+                    <span className="px-3 py-1 rounded-full text-sm bg-primary/10 text-primary border border-primary/20">
+                      Premium Venue
+                    </span>
+                    <span className="px-3 py-1 rounded-full text-sm bg-primary/10 text-primary border border-primary/20">
+                      Feb 2026
+                    </span>
+                  </div>
+                </div>
+                <div className="grid grid-cols-2 gap-4 text-center">
+                  <div className="rounded-xl p-6 bg-background/50 border border-border">
+                    <div className="text-3xl font-bold text-primary">NYC</div>
+                    <div className="text-sm text-foreground/60 mt-1">Home Base</div>
+                  </div>
+                  <div className="rounded-xl p-6 bg-background/50 border border-border">
+                    <div className="text-3xl font-bold text-primary">2026</div>
+                    <div className="text-sm text-foreground/60 mt-1">Season Launch</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* My Role Section */}
+      <section className="py-32 px-4 relative overflow-hidden bg-gradient-to-b from-background via-primary/[0.03] to-background">
+        <div className="max-w-7xl mx-auto relative z-10">
+          <motion.div
+            variants={sectionWithChildrenVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
+            className="text-center mb-16"
+          >
+            <motion.h2 variants={childVariants} className="text-4xl sm:text-5xl font-bold mb-6 text-foreground font-jost">
+              My Role as
+              <span className="text-primary"> Founder</span>
+            </motion.h2>
+            <motion.p variants={childVariants} className="text-xl max-w-3xl mx-auto text-foreground/70 font-jost">
+              Building the infrastructure for a new intellectual sport
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            variants={sectionWithChildrenVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
+            className="grid md:grid-cols-3 gap-8"
+          >
+            {[
+              {
+                title: 'Product Vision',
+                items: [
+                  'Designed the debate format system',
+                  'Created the tournament structure',
+                  'Built community engagement models',
+                  'Developed the championship concept'
+                ],
+              },
+              {
+                title: 'Platform Development',
+                items: [
+                  'Architected the full-stack platform',
+                  'Built real-time tournament system',
+                  'Integrated Solana for NFT trophies',
+                  'Designed peer judging system'
+                ],
+              },
+              {
+                title: 'Community Building',
+                items: [
+                  'Organizing NYC events',
+                  'Planning Infinita Championship',
+                  'Building global chapter network',
+                  'Recruiting ambassadors'
+                ],
+              }
+            ].map((role) => (
+              <motion.div
+                key={role.title}
+                variants={itemVariants}
+              >
+                <motion.div
+                  className="relative h-full group"
+                  whileHover={{ y: -5 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                >
+                  <div className="relative rounded-2xl p-8 h-full transition-all duration-300 bg-card/60 backdrop-blur-xl border border-border hover:border-primary/30 font-jost">
+                    <div className="absolute top-0 left-0 w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="absolute top-0 left-0 w-full h-0.5 bg-primary" />
+                      <div className="absolute top-0 left-0 w-0.5 h-full bg-primary" />
+                    </div>
+                    <div className="absolute bottom-0 right-0 w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="absolute bottom-0 right-0 w-full h-0.5 bg-primary" />
+                      <div className="absolute bottom-0 right-0 w-0.5 h-full bg-primary" />
+                    </div>
+
+                    <h3 className="text-xl font-bold mb-4 text-foreground font-jost">{role.title}</h3>
+                    <ul className="space-y-2">
+                      {role.items.map((item) => (
+                        <li
+                          key={item}
+                          className="flex items-start gap-2 text-sm text-foreground/70 font-jost"
+                        >
+                          <ChevronRight className="w-4 h-4 mt-0.5 flex-shrink-0 text-primary" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </motion.div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Vision CTA Section */}
       <section className="py-32 px-4 bg-gradient-to-b from-background via-primary/5 to-background">
         <div className="max-w-5xl mx-auto">
           <motion.div
@@ -595,8 +679,8 @@ export default function SuperDebatePage() {
               variants={childVariants}
               className="text-4xl sm:text-5xl font-bold mb-8 text-foreground font-jost"
             >
-              The Future:
-              <span className="text-primary"> Scaling Impact</span>
+              The Vision:
+              <span className="text-primary"> Restore the Agora</span>
             </motion.h2>
 
             <motion.div
@@ -604,16 +688,17 @@ export default function SuperDebatePage() {
               className="space-y-6 text-lg max-w-3xl mx-auto mb-12 text-foreground/70 font-jost"
             >
               <p>
-                SuperDebate is building <strong className="text-primary">a new intellectual sport for the 21st century</strong>.
-                From Tuesday-night meetups to championship events—a sport-like ecosystem that teaches listening, argumentation, reasoning, and intellectual humility.
+                The ancient agora wasn&apos;t just a marketplace—it was where citizens
+                debated, challenged, and governed themselves. <strong className="text-primary">We&apos;re bringing it back.</strong>
               </p>
               <p>
-                The ancient agora wasn&apos;t just a marketplace—it was where citizens debated, challenged, and governed themselves.
-                We&apos;re restoring these values: <strong className="text-foreground">public discourse, intellectual courage, and the belief that the best ideas should win.</strong>
+                SuperDebate is building a new intellectual sport for the 21st century.
+                From Tuesday-night meetups to championship events in paradise—a global
+                community dedicated to <strong className="text-foreground">listening, reasoning, and the belief that
+                the best ideas should win.</strong>
               </p>
               <p>
-                The strategic aim: create a global, positive alternative to online outrage.
-                <strong className="text-primary"> Rebuild the world&apos;s capacity for reasoned discourse.</strong>
+                Join us. <strong className="text-primary">Bring debate back to life.</strong>
               </p>
             </motion.div>
 
@@ -623,8 +708,8 @@ export default function SuperDebatePage() {
             >
               <Link href="https://superdebate.org" target="_blank" rel="noopener noreferrer">
                 <button className="px-10 py-5 text-lg font-semibold rounded-xl flex items-center gap-3 group relative overflow-hidden bg-primary text-primary-foreground font-jost hover:scale-105 active:scale-95 transition-transform duration-200">
-                  <Trophy className="w-6 h-6 relative z-10" />
-                  <span className="relative z-10">Visit Live Platform</span>
+                  <Flame className="w-6 h-6 relative z-10" />
+                  <span className="relative z-10">Join SuperDebate</span>
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform relative z-10" />
                 </button>
               </Link>

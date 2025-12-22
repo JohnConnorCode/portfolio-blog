@@ -3,15 +3,6 @@
 import { motion } from 'framer-motion'
 import { Mail, Linkedin, Twitter, Send, User, Building2, Briefcase, DollarSign, MessageSquare } from 'lucide-react'
 import { useState } from 'react'
-import {
-  pageHeaderVariants,
-  decoratorVariants,
-  titleVariants,
-  childVariants,
-  sectionWithChildrenVariants,
-  itemVariants,
-  viewportOnce,
-} from '@/lib/animation-config'
 
 const contactMethods = [
   {
@@ -107,7 +98,6 @@ export default function ContactPage() {
       [name]: value,
     })
 
-    // Validate on change if field was touched
     if (touched[name]) {
       const error = validateField(name, value)
       setErrors(prev => ({
@@ -146,44 +136,32 @@ export default function ContactPage() {
 
         <div className="max-w-7xl mx-auto relative z-10">
           <motion.div
-            variants={pageHeaderVariants}
-            initial="hidden"
-            animate="visible"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
             className="text-center mb-12"
           >
             {/* Decorative pattern */}
-            <motion.div
-              variants={decoratorVariants}
-              className="flex items-center justify-center gap-4 mb-8"
-            >
+            <div className="flex items-center justify-center gap-4 mb-8">
               <div className="w-20 h-px bg-gradient-to-r from-transparent to-primary" />
               <svg viewBox="0 0 24 24" className="w-6 h-6 text-primary">
                 <path d="M12 2 L22 12 L12 22 L2 12 Z" fill="none" stroke="currentColor" strokeWidth="1.5" />
                 <circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" strokeWidth="1" />
               </svg>
               <div className="w-20 h-px bg-gradient-to-l from-transparent to-primary" />
-            </motion.div>
+            </div>
 
-            <motion.span
-              variants={childVariants}
-              className="text-xs tracking-[0.3em] uppercase block mb-6 text-primary"
-            >
+            <span className="text-xs tracking-[0.3em] uppercase block mb-6 text-primary">
               Let&apos;s Connect
-            </motion.span>
+            </span>
 
-            <motion.h1
-              variants={titleVariants}
-              className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 tracking-wide font-jost"
-            >
+            <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 tracking-wide font-jost">
               <span className="text-foreground">Get in </span>
               <span className="text-primary">Touch</span>
-            </motion.h1>
-            <motion.p
-              variants={childVariants}
-              className="text-lg max-w-2xl mx-auto font-light text-foreground/80"
-            >
+            </h1>
+            <p className="text-lg max-w-2xl mx-auto font-light text-foreground/80">
               Whether you need product strategy, technology guidance, or a cross-functional partner who ships—I&apos;m here to help.
-            </motion.p>
+            </p>
           </motion.div>
         </div>
       </section>
@@ -191,24 +169,21 @@ export default function ContactPage() {
       {/* Contact Methods & Form Section */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-background">
         <div className="max-w-7xl mx-auto">
-          <motion.div
-            variants={sectionWithChildrenVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewportOnce}
-            className="grid lg:grid-cols-3 gap-12"
-          >
+          <div className="grid lg:grid-cols-3 gap-12">
             {/* Contact Methods */}
             <div className="lg:col-span-1 space-y-6">
-              {/* Corner accent component */}
-              <motion.div variants={itemVariants} className="relative p-8 bg-card rounded-lg border border-border transition-all duration-300">
-                {/* Top-left corner accent */}
+              {/* How I Work card */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4 }}
+                className="relative p-8 bg-card rounded-lg border border-border"
+              >
+                {/* Corner accents */}
                 <div className="absolute top-0 left-0 w-4 h-4 border-l-2 border-t-2 border-primary" />
-                {/* Top-right corner accent */}
                 <div className="absolute top-0 right-0 w-4 h-4 border-r-2 border-t-2 border-primary" />
-                {/* Bottom-left corner accent */}
                 <div className="absolute bottom-0 left-0 w-4 h-4 border-l-2 border-b-2 border-primary" />
-                {/* Bottom-right corner accent */}
                 <div className="absolute bottom-0 right-0 w-4 h-4 border-r-2 border-b-2 border-primary" />
 
                 <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-foreground">
@@ -232,15 +207,17 @@ export default function ContactPage() {
                 </div>
               </motion.div>
 
-              {contactMethods.map((method) => {
+              {contactMethods.map((method, index) => {
                 const Icon = method.icon
                 return (
                   <motion.a
                     key={method.title}
                     href={method.href}
-                    variants={itemVariants}
-                    whileHover={{ scale: 1.02, y: -2 }}
-                    className="block relative p-6 bg-card rounded-lg border border-border transition-all duration-300 hover:shadow-lg hover:border-primary/30 group"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: index * 0.1 }}
+                    className="block relative p-6 bg-card rounded-lg border border-border transition-all duration-300 hover:shadow-lg hover:border-primary/30 hover:-translate-y-1 group"
                   >
                     {/* Corner accents */}
                     <div className="absolute top-0 left-0 w-3 h-3 border-l-2 border-t-2 border-primary" />
@@ -264,7 +241,10 @@ export default function ContactPage() {
 
               {/* Social Links */}
               <motion.div
-                variants={itemVariants}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.2 }}
                 className="relative p-6 bg-card rounded-lg border border-border"
               >
                 {/* Corner accents */}
@@ -275,35 +255,36 @@ export default function ContactPage() {
                   Connect On Social
                 </p>
                 <div className="space-y-3">
-                  <motion.a
+                  <a
                     href="https://twitter.com/ablockunchained"
                     target="_blank"
                     rel="noopener noreferrer"
-                    whileHover={{ scale: 1.02, x: 5 }}
-                    className="flex items-center gap-3 p-3 rounded border border-border bg-foreground/5 transition-all group hover:border-primary/30"
+                    className="flex items-center gap-3 p-3 rounded border border-border bg-foreground/5 transition-all group hover:border-primary/30 hover:translate-x-1"
                   >
                     <Twitter className="w-5 h-5 text-primary" />
                     <span className="text-sm transition-colors text-foreground">@ablockunchained</span>
-                  </motion.a>
-                  <motion.a
+                  </a>
+                  <a
                     href="https://t.me/blockunchained"
                     target="_blank"
                     rel="noopener noreferrer"
-                    whileHover={{ scale: 1.02, x: 5 }}
-                    className="flex items-center gap-3 p-3 rounded border border-border bg-foreground/5 transition-all group hover:border-primary/30"
+                    className="flex items-center gap-3 p-3 rounded border border-border bg-foreground/5 transition-all group hover:border-primary/30 hover:translate-x-1"
                   >
                     <svg className="w-5 h-5 text-primary" viewBox="0 0 24 24" fill="currentColor">
                       <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z"/>
                     </svg>
                     <span className="text-sm transition-colors text-foreground">@blockunchained</span>
-                  </motion.a>
+                  </a>
                 </div>
               </motion.div>
             </div>
 
             {/* Contact Form */}
             <motion.div
-              variants={itemVariants}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.1 }}
               className="lg:col-span-2"
             >
               <div className="relative p-8 sm:p-10 bg-card rounded-lg border border-border">
@@ -341,13 +322,7 @@ export default function ContactPage() {
                         placeholder="Enter your full name"
                       />
                       {errors.name && touched.name && (
-                        <motion.p
-                          initial={{ opacity: 0, y: -10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          className="text-xs mt-2 text-red-500"
-                        >
-                          {errors.name}
-                        </motion.p>
+                        <p className="text-xs mt-2 text-red-500">{errors.name}</p>
                       )}
                     </div>
                     <div>
@@ -366,13 +341,7 @@ export default function ContactPage() {
                         placeholder="your.email@company.com"
                       />
                       {errors.email && touched.email && (
-                        <motion.p
-                          initial={{ opacity: 0, y: -10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          className="text-xs mt-2 text-red-500"
-                        >
-                          {errors.email}
-                        </motion.p>
+                        <p className="text-xs mt-2 text-red-500">{errors.email}</p>
                       )}
                     </div>
                   </div>
@@ -449,13 +418,7 @@ export default function ContactPage() {
                       className={`${getInputClassName('message')} resize-none`}
                     />
                     {errors.message && touched.message && (
-                      <motion.p
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="text-xs mt-2 text-red-500"
-                      >
-                        {errors.message}
-                      </motion.p>
+                      <p className="text-xs mt-2 text-red-500">{errors.message}</p>
                     )}
                   </div>
 
@@ -469,45 +432,37 @@ export default function ContactPage() {
                   </button>
 
                   {submitStatus === 'success' && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className="p-4 rounded border-2 border-green-500 bg-green-500/10 text-green-500"
-                    >
+                    <div className="p-4 rounded border-2 border-green-500 bg-green-500/10 text-green-500">
                       <p className="text-sm text-center font-medium">
                         Message sent successfully! I&apos;ll get back to you within 24 hours.
                       </p>
-                    </motion.div>
+                    </div>
                   )}
 
                   {submitStatus === 'error' && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className="p-4 rounded border-2 border-red-500 bg-red-500/10 text-red-500"
-                    >
+                    <div className="p-4 rounded border-2 border-red-500 bg-red-500/10 text-red-500">
                       <p className="text-sm text-center font-medium">
                         Something went wrong. Please try again or email directly.
                       </p>
-                    </motion.div>
+                    </div>
                   )}
                 </form>
               </div>
             </motion.div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <motion.section
-        variants={sectionWithChildrenVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={viewportOnce}
-        className="py-20 px-4 sm:px-6 lg:px-8 bg-background"
-      >
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-background">
         <div className="max-w-7xl mx-auto">
-          <motion.div variants={childVariants} className="text-center mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+            className="text-center mb-16"
+          >
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-foreground">
               Frequently Asked Questions
             </h2>
@@ -537,9 +492,11 @@ export default function ContactPage() {
             ].map((faq, index) => (
               <motion.div
                 key={index}
-                variants={itemVariants}
-                whileHover={{ scale: 1.02, y: -2 }}
-                className="relative p-6 bg-card rounded-lg border border-border transition-all duration-300 group hover:shadow-lg hover:border-primary/30"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
+                className="relative p-6 bg-card rounded-lg border border-border transition-all duration-300 group hover:shadow-lg hover:border-primary/30 hover:-translate-y-1"
               >
                 {/* Corner accents */}
                 <div className="absolute top-0 left-0 w-3 h-3 border-l-2 border-t-2 border-primary" />
@@ -554,11 +511,11 @@ export default function ContactPage() {
           </div>
 
           {/* Bottom accent */}
-          <motion.p variants={childVariants} className="text-center mt-16 text-sm uppercase tracking-widest text-foreground/50">
+          <p className="text-center mt-16 text-sm uppercase tracking-widest text-foreground/50">
             Building what <span className="text-primary font-bold">actually works</span>
-          </motion.p>
+          </p>
         </div>
-      </motion.section>
+      </section>
     </div>
   )
 }

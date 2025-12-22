@@ -6,6 +6,7 @@ import { WritingsBrutal } from '@/components/writings-brutal'
 import { CallToAction } from '@/components/call-to-action'
 import { SectionDivider } from '@/components/section-divider'
 import { StructuredData } from '@/components/structured-data'
+import { ScrollMarquee, ParallaxDivider } from '@/components/scroll-marquee'
 
 // Default hero content
 const heroContent = {
@@ -26,14 +27,29 @@ export default function Home() {
       <StructuredData type="WebSite" />
       <StructuredData type="Person" />
       <HeroCyberpunk content={heroContent} />
+
+      {/* Scrolling text marquee */}
+      <ScrollMarquee text="PRODUCT • STRATEGY • ENGINEERING • SCALE •" direction="left" />
+
       <ImpactBrutal />
+
       <SectionDivider variant="deco" />
+
       <SuperDebateHero />
-      <SectionDivider variant="geometric" />
+
+      {/* Another marquee in opposite direction */}
+      <ScrollMarquee text="BUILD • SHIP • ITERATE • GROW •" direction="right" />
+
+      <ParallaxDivider />
+
       <WorkingWithMe />
+
       <SectionDivider variant="wave" />
+
       <WritingsBrutal />
+
       <SectionDivider variant="geometric" />
+
       <CallToAction />
     </>
   )
