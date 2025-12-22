@@ -1,18 +1,9 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import { ArrowRight, Zap, Users, Code, Trophy, Target, Shield, TrendingUp, Globe, Rocket, Brain, MessageSquare } from 'lucide-react'
 import Link from 'next/link'
-import {
-  pageHeaderVariants,
-  decoratorVariants,
-  childVariants,
-  titleVariants,
-  sectionWithChildrenVariants,
-  itemVariants,
-  viewportOnce,
-  cardHover,
-} from '@/lib/animation-config'
+import { useRef } from 'react'
 
 const experiences = [
   {
@@ -109,19 +100,72 @@ const otherProjects = [
 ]
 
 export default function WorkPage() {
+  const containerRef = useRef<HTMLDivElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"]
+  })
+
+  const bgTextX = useTransform(scrollYProgress, [0, 1], ['0%', '-10%'])
+  const bgTextX2 = useTransform(scrollYProgress, [0, 1], ['0%', '10%'])
+
   return (
-    <section className="min-h-screen py-20 px-4 sm:px-6 lg:px-8 bg-background">
-      <div className="max-w-5xl mx-auto">
+    <section ref={containerRef} className="min-h-screen py-20 px-4 sm:px-6 lg:px-8 bg-background relative overflow-hidden">
+      {/* Grid background */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div
+          className="absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage: `
+              linear-gradient(to right, hsl(var(--primary)) 1px, transparent 1px),
+              linear-gradient(to bottom, hsl(var(--primary)) 1px, transparent 1px)
+            `,
+            backgroundSize: '60px 60px'
+          }}
+        />
+        {/* Horizontal accent lines */}
+        <div className="absolute top-1/4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+        <div className="absolute top-2/4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/10 to-transparent" />
+        <div className="absolute top-3/4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+      </div>
+
+      {/* Large scrolling background text */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none hidden md:block">
+        <motion.div
+          style={{ x: bgTextX }}
+          className="absolute top-[15%] left-0 whitespace-nowrap"
+        >
+          <span className="text-[12vw] font-bold tracking-tight text-foreground/[0.02] font-jost">
+            WORK • EXPERIENCE • PRODUCTS • SHIPPED •
+          </span>
+        </motion.div>
+        <motion.div
+          style={{ x: bgTextX2 }}
+          className="absolute top-[55%] left-0 whitespace-nowrap"
+        >
+          <span className="text-[12vw] font-bold tracking-tight text-foreground/[0.02] font-jost">
+            BUILD • SCALE • ITERATE • GROW •
+          </span>
+        </motion.div>
+      </div>
+
+      {/* Gradient orbs */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-1/3 left-0 w-[400px] h-[400px] bg-primary/3 rounded-full blur-[100px] pointer-events-none" />
+
+      <div className="max-w-5xl mx-auto relative z-10">
         {/* Header */}
         <motion.div
-          variants={pageHeaderVariants}
-          initial="hidden"
-          animate="visible"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
           className="mb-16 text-center"
         >
           {/* Decorative element */}
           <motion.div
-            variants={decoratorVariants}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
             className="flex items-center justify-center gap-4 mb-6"
           >
             <div className="w-12 h-px bg-gradient-to-r from-transparent to-primary/50" />
@@ -132,20 +176,26 @@ export default function WorkPage() {
           </motion.div>
 
           <motion.p
-            variants={childVariants}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
             className="text-xs tracking-[0.3em] uppercase mb-4 text-primary font-jost"
           >
             Work & Experience
           </motion.p>
           <motion.h1
-            variants={titleVariants}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
             className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 tracking-wide font-jost"
           >
             <span className="text-foreground">The </span>
             <span className="text-primary">Work</span>
           </motion.h1>
           <motion.p
-            variants={childVariants}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
             className="text-lg max-w-3xl mx-auto text-foreground/70 font-jost"
           >
             Products shipped, companies built, systems scaled.
@@ -154,14 +204,17 @@ export default function WorkPage() {
 
         {/* Shipped Products */}
         <motion.section
-          variants={sectionWithChildrenVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportOnce}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
           className="mb-20"
         >
           <motion.h2
-            variants={childVariants}
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
             className="text-2xl font-bold mb-8 font-jost"
           >
             <span className="text-foreground">Products </span>
@@ -169,13 +222,15 @@ export default function WorkPage() {
           </motion.h2>
 
           <div className="grid md:grid-cols-2 gap-6">
-            {shippedProducts.map((project) => {
+            {shippedProducts.map((project, index) => {
               const Icon = project.icon
               return (
                 <motion.div
                   key={project.name}
-                  variants={itemVariants}
-                  whileHover={cardHover}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="relative group"
                 >
                   {/* Corner accents */}
@@ -196,9 +251,7 @@ export default function WorkPage() {
                     <div className="absolute bottom-0 right-0 w-0.5 h-full bg-primary" />
                   </div>
 
-                  <div
-                    className="relative rounded-xl p-6 h-full transition-all border bg-card border-border"
-                  >
+                  <div className="relative p-6 h-full transition-all border bg-card border-border hover:border-primary/30 hover:-translate-y-1 duration-300">
                     <div className="flex items-start justify-between mb-4">
                       <div className="flex items-center gap-3">
                         <Icon className="w-8 h-8 text-primary" />
@@ -207,18 +260,16 @@ export default function WorkPage() {
                           <span className="text-sm text-foreground/60 font-jost">{project.role}</span>
                         </div>
                       </div>
-                      <span
-                        className="text-xs px-2 py-1 rounded text-primary bg-primary/10 font-jost"
-                      >
+                      <span className="text-xs px-2 py-1 text-primary bg-primary/10 font-jost">
                         {project.status}
                       </span>
                     </div>
                     <p className="mb-4 text-foreground/80 font-jost">{project.description}</p>
                     <div className="flex items-center gap-4">
-                      <Link href={project.link} className="text-sm font-semibold flex items-center gap-1 transition-opacity hover:opacity-70 text-primary font-jost">
+                      <Link href={project.link} className="text-sm font-semibold flex items-center gap-1 transition-colors hover:text-primary/70 text-primary font-jost">
                         View Details <ArrowRight className="w-3 h-3" />
                       </Link>
-                      <a href={project.external} target="_blank" rel="noopener noreferrer" className="text-sm flex items-center gap-1 transition-opacity hover:opacity-70 text-foreground/60 font-jost">
+                      <a href={project.external} target="_blank" rel="noopener noreferrer" className="text-sm flex items-center gap-1 transition-colors hover:text-foreground text-foreground/60 font-jost">
                         Visit Site <Globe className="w-3 h-3" />
                       </a>
                     </div>
@@ -231,29 +282,35 @@ export default function WorkPage() {
 
         {/* Other Projects */}
         <motion.section
-          variants={sectionWithChildrenVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportOnce}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
           className="mb-20"
         >
           <motion.h2
-            variants={childVariants}
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
             className="text-xl font-bold mb-6 text-foreground/60 font-jost"
           >
             Other Projects
           </motion.h2>
           <div className="grid md:grid-cols-2 gap-4">
-            {otherProjects.map((project) => (
+            {otherProjects.map((project, index) => (
               <motion.div
                 key={project.name}
-                variants={itemVariants}
-                className="rounded-lg p-4 border transition-all hover:border-primary/30 bg-card border-border"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                className="p-4 border transition-all hover:border-primary/30 bg-card border-border"
               >
                 <div className="flex items-center justify-between mb-1">
                   <h3 className="font-semibold text-foreground font-jost">{project.name}</h3>
                   {project.link && (
-                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-sm flex items-center gap-1 transition-opacity hover:opacity-70 text-primary font-jost">
+                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-sm flex items-center gap-1 transition-colors hover:text-primary/70 text-primary font-jost">
                       Visit <Globe className="w-3 h-3" />
                     </a>
                   )}
@@ -267,23 +324,26 @@ export default function WorkPage() {
 
         {/* Divider with diamond */}
         <div className="flex items-center justify-center gap-4 mb-16">
-          <div className="w-20 h-px bg-primary/30" />
+          <div className="w-20 h-px bg-gradient-to-r from-transparent to-primary/30" />
           <svg viewBox="0 0 24 24" className="w-6 h-6 text-primary">
             <path d="M12 2 L22 12 L12 22 L2 12 Z" fill="none" stroke="currentColor" strokeWidth="1.5" />
           </svg>
-          <div className="w-20 h-px bg-primary/30" />
+          <div className="w-20 h-px bg-gradient-to-l from-transparent to-primary/30" />
         </div>
 
         {/* Experience Timeline */}
         <motion.section
-          variants={sectionWithChildrenVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportOnce}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
           className="mb-20"
         >
           <motion.h2
-            variants={childVariants}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
             className="text-3xl font-bold mb-12 text-center font-jost"
           >
             <span className="text-foreground">Experience </span>
@@ -291,11 +351,14 @@ export default function WorkPage() {
           </motion.h2>
 
           <div className="space-y-6">
-            {experiences.map((exp) => (
+            {experiences.map((exp, index) => (
               <motion.div
                 key={exp.company}
-                variants={itemVariants}
-                className="relative rounded-r-xl p-6 transition-all border-l-4 bg-card border-l-primary"
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="relative p-6 transition-all border-l-4 bg-card border-l-primary hover:bg-card/80"
               >
                 {/* Header */}
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4">
@@ -314,15 +377,13 @@ export default function WorkPage() {
                   {exp.achievements.map((achievement, i) => (
                     <div key={i} className="flex items-start gap-2 text-sm text-foreground/70">
                       <Zap className="w-3 h-3 mt-1 flex-shrink-0 text-primary" />
-                      <span style={{ fontFamily: "'Jost', 'Futura', sans-serif" }}>{achievement}</span>
+                      <span className="font-jost">{achievement}</span>
                     </div>
                   ))}
                 </div>
 
                 {/* Impact */}
-                <div
-                  className="p-3 rounded-lg mb-4 border bg-primary/5 border-primary/20"
-                >
+                <div className="p-3 mb-4 border bg-primary/5 border-primary/20">
                   <p className="text-sm font-medium text-primary font-jost">→ {exp.impact}</p>
                 </div>
 
@@ -331,7 +392,7 @@ export default function WorkPage() {
                   {exp.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-2 py-1 text-xs rounded border transition-all hover:border-foreground/30 text-foreground/70 bg-foreground/5 border-foreground/10 font-jost"
+                      className="px-2 py-1 text-xs border transition-all hover:border-foreground/30 text-foreground/70 bg-foreground/5 border-foreground/10 font-jost"
                     >
                       {tag}
                     </span>
@@ -344,23 +405,26 @@ export default function WorkPage() {
 
         {/* Divider with diamond */}
         <div className="flex items-center justify-center gap-4 mb-16">
-          <div className="w-20 h-px bg-primary/30" />
+          <div className="w-20 h-px bg-gradient-to-r from-transparent to-primary/30" />
           <svg viewBox="0 0 24 24" className="w-6 h-6 text-primary">
             <path d="M12 2 L22 12 L12 22 L2 12 Z" fill="none" stroke="currentColor" strokeWidth="1.5" />
           </svg>
-          <div className="w-20 h-px bg-primary/30" />
+          <div className="w-20 h-px bg-gradient-to-l from-transparent to-primary/30" />
         </div>
 
         {/* Key Metrics */}
         <motion.section
-          variants={sectionWithChildrenVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportOnce}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
           className="mb-20"
         >
           <motion.h2
-            variants={childVariants}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
             className="text-3xl font-bold mb-12 text-center font-jost"
           >
             <span className="text-foreground">By the </span>
@@ -373,18 +437,18 @@ export default function WorkPage() {
               { icon: Code, value: '$20M+', label: 'Funding Enabled' },
               { icon: Users, value: '300K+', label: 'Users Scaled' },
               { icon: TrendingUp, value: '50+', label: 'Products Shipped' }
-            ].map((metric) => {
+            ].map((metric, index) => {
               const Icon = metric.icon
               return (
                 <motion.div
                   key={metric.label}
-                  variants={itemVariants}
-                  whileHover={cardHover}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
                   className="relative group"
                 >
-                  <div
-                    className="relative rounded-xl p-6 text-center transition-all border bg-card border-border"
-                  >
+                  <div className="relative p-6 text-center transition-all border bg-card border-border hover:border-primary/30 hover:-translate-y-1 duration-300">
                     <Icon className="w-8 h-8 mx-auto mb-3 text-primary" />
                     <p className="text-3xl font-black mb-1 text-primary font-jost">{metric.value}</p>
                     <p className="text-sm text-foreground/60 font-jost">{metric.label}</p>
@@ -397,23 +461,26 @@ export default function WorkPage() {
 
         {/* Divider with diamond */}
         <div className="flex items-center justify-center gap-4 mb-16">
-          <div className="w-20 h-px bg-primary/30" />
+          <div className="w-20 h-px bg-gradient-to-r from-transparent to-primary/30" />
           <svg viewBox="0 0 24 24" className="w-6 h-6 text-primary">
             <path d="M12 2 L22 12 L12 22 L2 12 Z" fill="none" stroke="currentColor" strokeWidth="1.5" />
           </svg>
-          <div className="w-20 h-px bg-primary/30" />
+          <div className="w-20 h-px bg-gradient-to-l from-transparent to-primary/30" />
         </div>
 
         {/* Approach */}
         <motion.section
-          variants={sectionWithChildrenVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportOnce}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
           className="mb-20"
         >
           <motion.h2
-            variants={childVariants}
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
             className="text-2xl font-bold mb-8 font-jost"
           >
             <span className="text-foreground">How I </span>
@@ -437,14 +504,16 @@ export default function WorkPage() {
                 title: 'Judge by Outcomes',
                 description: 'Ideas are cheap. I measure success by durable, compounding value—not vanity metrics or growth theater.'
               }
-            ].map((approach) => {
+            ].map((approach, index) => {
               const Icon = approach.icon
               return (
                 <motion.div
                   key={approach.title}
-                  variants={itemVariants}
-                  whileHover={cardHover}
-                  className="rounded-xl p-6 transition-all border bg-card border-border"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                  className="p-6 transition-all border bg-card border-border hover:border-primary/30 hover:-translate-y-1 duration-300"
                 >
                   <Icon className="w-8 h-8 mb-4 text-primary" />
                   <h3 className="text-lg font-bold mb-2 text-foreground font-jost">{approach.title}</h3>
@@ -457,14 +526,15 @@ export default function WorkPage() {
 
         {/* CTA */}
         <motion.section
-          variants={sectionWithChildrenVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportOnce}
-          className="relative rounded-2xl p-8 sm:p-12 text-center overflow-hidden border bg-card border-primary/30"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="relative p-8 sm:p-12 text-center overflow-hidden border bg-card border-primary/30"
         >
-          <div className="absolute top-0 left-0 w-20 h-20 border-t-2 border-l-2 rounded-tl-2xl border-primary/50" />
-          <div className="absolute bottom-0 right-0 w-20 h-20 border-b-2 border-r-2 rounded-br-2xl border-primary/50" />
+          {/* Corner accents */}
+          <div className="absolute top-0 left-0 w-20 h-20 border-t-2 border-l-2 border-primary/50" />
+          <div className="absolute bottom-0 right-0 w-20 h-20 border-b-2 border-r-2 border-primary/50" />
 
           <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-foreground font-jost">
             What are you building?
@@ -473,9 +543,16 @@ export default function WorkPage() {
             I partner with founders and teams shipping products that matter.
           </p>
           <Link href="/contact">
-            <button className="px-8 py-4 font-bold flex items-center justify-center gap-2 rounded bg-primary text-primary-foreground font-jost mx-auto hover:scale-[1.02] active:scale-[0.98] transition-transform duration-200">
-              Get in Touch
-              <ArrowRight className="w-5 h-5" />
+            <button className="group relative px-10 py-5 font-semibold text-sm overflow-hidden bg-primary text-background uppercase tracking-[0.15em] font-jost hover:scale-[1.02] active:scale-[0.98] transition-transform duration-200">
+              <span className="relative z-10 flex items-center gap-2">
+                Get in Touch
+                <ArrowRight className="w-4 h-4" />
+              </span>
+              <div className="absolute inset-0 bg-foreground transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+              <span className="absolute inset-0 flex items-center justify-center gap-2 text-background opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
+                Get in Touch
+                <ArrowRight className="w-4 h-4" />
+              </span>
             </button>
           </Link>
         </motion.section>

@@ -138,7 +138,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.7, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
               style={isMobile ? {} : { y: photoY, willChange: 'transform' }}
               className="lg:col-span-5 order-1 lg:order-2 flex justify-center lg:justify-end"
             >
@@ -200,7 +200,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
               <motion.h1
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
+                transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
                 className="relative mb-6"
               >
                 <span
@@ -221,7 +221,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.1 }}
+                transition={{ duration: 0.5, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
                 className="flex flex-wrap items-center justify-center lg:justify-start gap-3 mb-8"
               >
                 {['Product', 'Engineering', 'Strategy'].map((role, i) => (
@@ -229,7 +229,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                     key={role}
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.4, delay: 0.3 + i * 0.1 }}
+                    transition={{ duration: 0.4, delay: 0.5 + i * 0.1, ease: [0.25, 0.1, 0.25, 1] }}
                     className="px-4 py-2 text-xs tracking-[0.2em] uppercase border border-primary/30 text-primary font-jost bg-primary/5 backdrop-blur-sm"
                   >
                     {role}
@@ -241,7 +241,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
               <motion.p
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
+                transition={{ duration: 0.5, delay: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
                 className="text-xl sm:text-2xl md:text-3xl leading-relaxed mb-4 max-w-2xl mx-auto lg:mx-0 text-foreground/90 font-jost font-light"
               >
                 {heroContent.heroDescription}
@@ -251,7 +251,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
               <motion.p
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
+                transition={{ duration: 0.5, delay: 1.0, ease: [0.25, 0.1, 0.25, 1] }}
                 className="text-lg md:text-xl mb-12 max-w-xl mx-auto lg:mx-0 text-primary font-jost font-medium"
               >
                 {heroContent.heroHighlight}
@@ -261,7 +261,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
+                transition={{ duration: 0.5, delay: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
                 className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
               >
                 <Link href="/contact">
@@ -284,24 +284,6 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
             </motion.div>
           </div>
         </div>
-      </motion.div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 1 }}
-        style={{ opacity: heroOpacity }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30"
-      >
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="flex flex-col items-center gap-2"
-        >
-          <span className="text-xs uppercase tracking-[0.3em] text-foreground/40 font-jost">Scroll</span>
-          <div className="w-px h-8 bg-gradient-to-b from-primary/60 to-transparent" />
-        </motion.div>
       </motion.div>
 
       {/* Bottom border */}

@@ -54,7 +54,7 @@ export function ImpactBrutal() {
           style={{ x: textX }}
           className="absolute top-1/4 left-0 right-0 whitespace-nowrap"
         >
-          <span className="text-[12vw] font-bold tracking-tight text-foreground/[0.02] font-jost">
+          <span className="text-[12vw] font-bold tracking-tight text-primary/[0.04] font-jost">
             BUILDER &nbsp; STRATEGIST &nbsp; FOUNDER &nbsp; BUILDER &nbsp; STRATEGIST &nbsp; FOUNDER
           </span>
         </motion.div>
@@ -62,7 +62,7 @@ export function ImpactBrutal() {
           style={{ x: textX2 }}
           className="absolute top-2/3 left-0 right-0 whitespace-nowrap"
         >
-          <span className="text-[8vw] font-bold tracking-tight text-foreground/[0.02] font-jost">
+          <span className="text-[8vw] font-bold tracking-tight text-primary/[0.04] font-jost">
             PRODUCT &nbsp; ENGINEERING &nbsp; SCALE &nbsp; PRODUCT &nbsp; ENGINEERING &nbsp; SCALE
           </span>
         </motion.div>

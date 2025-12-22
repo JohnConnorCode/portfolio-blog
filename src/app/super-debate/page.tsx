@@ -543,68 +543,6 @@ export default function SuperDebatePage() {
         </div>
       </section>
 
-      {/* NYC Events Section */}
-      <section className="py-32 px-4">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            variants={sectionWithChildrenVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewportOnce}
-            className="text-center mb-16"
-          >
-            <motion.h2 variants={childVariants} className="text-4xl sm:text-5xl font-bold mb-6 text-foreground font-jost">
-              NYC
-              <span className="text-primary"> Events</span>
-            </motion.h2>
-            <motion.p variants={childVariants} className="text-xl max-w-3xl mx-auto text-foreground/70 font-jost">
-              SuperDebate at NeueHouse Madison Square. Where ideas clash in style.
-            </motion.p>
-          </motion.div>
-
-          <motion.div
-            variants={childVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewportOnce}
-          >
-            <div className="relative rounded-2xl p-8 md:p-12 bg-card/60 backdrop-blur-xl border border-primary/20 font-jost">
-              <div className="grid md:grid-cols-2 gap-8 items-center">
-                <div>
-                  <h3 className="text-2xl font-bold mb-4 text-foreground">NeueHouse Madison Square</h3>
-                  <p className="text-foreground/70 mb-6">
-                    Our NYC home base. A creative workspace turned battleground for ideas.
-                    Regular debate nights, special events, and the energy of Manhattan&apos;s
-                    sharpest minds going head-to-head.
-                  </p>
-                  <div className="flex flex-wrap gap-3">
-                    <span className="px-3 py-1 rounded-full text-sm bg-primary/10 text-primary border border-primary/20">
-                      Monthly Events
-                    </span>
-                    <span className="px-3 py-1 rounded-full text-sm bg-primary/10 text-primary border border-primary/20">
-                      Premium Venue
-                    </span>
-                    <span className="px-3 py-1 rounded-full text-sm bg-primary/10 text-primary border border-primary/20">
-                      Feb 2026
-                    </span>
-                  </div>
-                </div>
-                <div className="grid grid-cols-2 gap-4 text-center">
-                  <div className="rounded-xl p-6 bg-background/50 border border-border">
-                    <div className="text-3xl font-bold text-primary">NYC</div>
-                    <div className="text-sm text-foreground/60 mt-1">Home Base</div>
-                  </div>
-                  <div className="rounded-xl p-6 bg-background/50 border border-border">
-                    <div className="text-3xl font-bold text-primary">2026</div>
-                    <div className="text-sm text-foreground/60 mt-1">Season Launch</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
       {/* My Role Section */}
       <section className="py-32 px-4 relative overflow-hidden bg-gradient-to-b from-background via-primary/[0.03] to-background">
         <div className="max-w-7xl mx-auto relative z-10">

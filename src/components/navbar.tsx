@@ -79,7 +79,7 @@ export function Navbar() {
         <div className="flex items-center justify-between h-24">
           <motion.div variants={navChildVariants}>
             <Link href="/" className="group">
-              <div className="flex items-center gap-4">
+              <div className="relative flex items-center">
                 {/* Logo - Bold animated diamond */}
                 <motion.div
                   className="relative w-14 h-14"
@@ -106,7 +106,7 @@ export function Navbar() {
                     </span>
                   </div>
                 </motion.div>
-                {/* Name/Title - hidden initially, animates in on scroll */}
+                {/* Name/Title - absolutely positioned so it doesn't shift nav items */}
                 <AnimatePresence>
                   {scrolled && (
                     <motion.div
@@ -114,12 +114,12 @@ export function Navbar() {
                       animate={{ opacity: 1, x: 0 }}
                       exit={{ opacity: 0, x: -10 }}
                       transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-                      className="hidden sm:flex flex-col"
+                      className="hidden sm:flex flex-col absolute left-[72px]"
                     >
-                      <span className="text-lg font-semibold tracking-tight text-foreground font-jost">
+                      <span className="text-lg font-semibold tracking-tight text-foreground font-jost whitespace-nowrap">
                         John Connor
                       </span>
-                      <span className="text-[10px] text-primary uppercase tracking-[0.2em] font-jost">
+                      <span className="text-[10px] text-primary uppercase tracking-[0.2em] font-jost whitespace-nowrap">
                         Product Strategist
                       </span>
                     </motion.div>
