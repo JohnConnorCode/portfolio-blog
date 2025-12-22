@@ -150,91 +150,65 @@ export default function SuperDebatePage() {
             </motion.div>
           </motion.div>
 
-          {/* Core Pillars - Bento Grid */}
+          {/* What SuperDebate Is */}
           <motion.div
             variants={sectionWithChildrenVariants}
             initial="hidden"
             whileInView="visible"
             viewport={viewportOnce}
-            className="mt-20 max-w-4xl mx-auto"
+            className="mt-24 max-w-5xl mx-auto"
           >
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 auto-rows-[140px]">
-              {/* Platform - Large */}
-              <motion.div
-                variants={itemVariants}
-                className="col-span-2 row-span-1 relative group overflow-hidden rounded-2xl"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-primary/5 to-transparent" />
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-[radial-gradient(circle_at_50%_50%,hsl(var(--primary)/0.15)_0%,transparent_70%)]" />
-                <div className="relative h-full p-6 flex flex-col justify-between border border-primary/20 rounded-2xl bg-card/50 backdrop-blur-sm group-hover:border-primary/40 transition-colors">
-                  <Globe className="w-8 h-8 text-primary" />
-                  <div>
-                    <div className="text-xl font-bold text-foreground font-jost">The Platform</div>
-                    <div className="text-sm text-foreground/60 font-jost">Organize clubs. Run tournaments. Build community.</div>
-                  </div>
-                </div>
-              </motion.div>
+            <div className="grid md:grid-cols-3 gap-6">
+              {[
+                {
+                  icon: Users,
+                  title: 'Organize',
+                  description: 'Start a debate club in your city. We provide the format, tools, and community.'
+                },
+                {
+                  icon: MessageSquare,
+                  title: 'Compete',
+                  description: 'Join tournaments locally or globally. Track rankings. Find your voice.'
+                },
+                {
+                  icon: Award,
+                  title: 'Judge',
+                  description: 'Shape the discourse. Our peer judging system rewards fair, thoughtful evaluation.'
+                }
+              ].map((item) => {
+                const Icon = item.icon
+                return (
+                  <motion.div
+                    key={item.title}
+                    variants={itemVariants}
+                    className="group"
+                  >
+                    <div className="relative h-full">
+                      {/* Glow effect on hover */}
+                      <div className="absolute -inset-px rounded-2xl bg-gradient-to-b from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
 
-              {/* Vision - Tall */}
-              <motion.div
-                variants={itemVariants}
-                className="col-span-1 row-span-2 relative group overflow-hidden rounded-2xl"
-              >
-                <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-primary/20" />
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-[radial-gradient(circle_at_50%_30%,hsl(var(--primary)/0.2)_0%,transparent_60%)]" />
-                <div className="relative h-full p-6 flex flex-col justify-between border border-primary/20 rounded-2xl bg-card/50 backdrop-blur-sm group-hover:border-primary/40 transition-colors">
-                  <Sparkles className="w-8 h-8 text-primary" />
-                  <div>
-                    <div className="text-xl font-bold text-foreground font-jost mb-2">The Vision</div>
-                    <div className="text-sm text-foreground/60 font-jost leading-relaxed">Restore the agora. Where citizens gather to challenge ideas and sharpen thinking.</div>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Infinita - Feature */}
-              <motion.div
-                variants={itemVariants}
-                className="col-span-1 row-span-2 relative group overflow-hidden rounded-2xl"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-primary/10 to-transparent" />
-                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/20 rounded-full blur-3xl" />
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-[radial-gradient(circle_at_70%_30%,hsl(var(--primary)/0.3)_0%,transparent_50%)]" />
-                <div className="relative h-full p-6 flex flex-col justify-between border border-primary/30 rounded-2xl bg-card/60 backdrop-blur-sm group-hover:border-primary/50 transition-colors">
-                  <div className="flex items-center justify-between">
-                    <Trophy className="w-8 h-8 text-primary" />
-                    <span className="text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded-full">2026</span>
-                  </div>
-                  <div>
-                    <div className="text-2xl font-bold text-foreground font-jost mb-1">Infinita</div>
-                    <div className="text-sm text-foreground/60 font-jost">World championship in Roatán. 32 teams. One crown.</div>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Bottom row accent */}
-              <motion.div
-                variants={itemVariants}
-                className="col-span-2 row-span-1 relative group overflow-hidden rounded-2xl"
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent" />
-                <div className="relative h-full p-6 flex items-center justify-center gap-8 border border-border/50 rounded-2xl bg-card/30 backdrop-blur-sm">
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-primary font-jost">32</div>
-                    <div className="text-xs text-foreground/50 font-jost uppercase tracking-wider">Teams</div>
-                  </div>
-                  <div className="w-px h-8 bg-border" />
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-primary font-jost">3</div>
-                    <div className="text-xs text-foreground/50 font-jost uppercase tracking-wider">Days</div>
-                  </div>
-                  <div className="w-px h-8 bg-border" />
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-primary font-jost">1</div>
-                    <div className="text-xs text-foreground/50 font-jost uppercase tracking-wider">Champion</div>
-                  </div>
-                </div>
-              </motion.div>
+                      <div className="relative h-full p-8 rounded-2xl border border-border/50 bg-card/30 backdrop-blur-sm group-hover:border-primary/30 transition-all duration-300">
+                        <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/20 transition-colors">
+                          <Icon className="w-6 h-6 text-primary" />
+                        </div>
+                        <h3 className="text-xl font-bold text-foreground font-jost mb-2">{item.title}</h3>
+                        <p className="text-sm text-foreground/60 font-jost leading-relaxed">{item.description}</p>
+                      </div>
+                    </div>
+                  </motion.div>
+                )
+              })}
             </div>
+
+            {/* Vision statement */}
+            <motion.div
+              variants={itemVariants}
+              className="mt-12 text-center"
+            >
+              <p className="text-lg text-foreground/50 font-jost italic">
+                &ldquo;Restoring the agora—where citizens gather to challenge ideas and sharpen thinking.&rdquo;
+              </p>
+            </motion.div>
           </motion.div>
         </motion.div>
       </motion.section>
