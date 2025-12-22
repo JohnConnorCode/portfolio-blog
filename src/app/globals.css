@@ -4,12 +4,8 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Theme color scheme - controlled by next-themes */
+/* Theme color scheme - default to dark */
 html {
-  color-scheme: light;
-}
-
-html.dark {
   color-scheme: dark;
 }
 
