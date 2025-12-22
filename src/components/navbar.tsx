@@ -61,45 +61,24 @@ export function Navbar() {
           <div>
             <Link href="/" className="group">
               <div className="flex items-center gap-4">
-                {/* Logo */}
-                <div className="relative w-12 h-12">
-                  <div className="absolute inset-0 flex items-center justify-center z-10">
-                    <span
-                      className="text-xl font-semibold text-foreground"
-                      style={{ fontFamily: "'Jost', sans-serif", letterSpacing: '0.15em' }}
-                    >
+                {/* Logo - Bold and distinctive */}
+                <div className="relative w-11 h-11 group-hover:scale-105 transition-transform duration-300">
+                  {/* Filled background on hover */}
+                  <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors duration-300 rotate-45" />
+                  {/* Border */}
+                  <div className="absolute inset-0 border-2 border-primary rotate-45" />
+                  {/* JC Text */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <span className="text-lg font-bold text-primary tracking-wider font-jost">
                       JC
                     </span>
                   </div>
-                  <svg
-                    className="absolute inset-0 w-full h-full"
-                    viewBox="0 0 48 48"
-                  >
-                    <defs>
-                      <linearGradient id="diamondGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" className="[stop-color:hsl(var(--foreground))]" />
-                        <stop offset="100%" className="[stop-color:hsl(var(--primary))]" />
-                      </linearGradient>
-                    </defs>
-                    <path
-                      d="M 24 4 L 44 24 L 24 44 L 4 24 Z"
-                      fill="none"
-                      stroke="url(#diamondGradient)"
-                      strokeWidth="1.5"
-                    />
-                  </svg>
                 </div>
-                <div className="flex flex-col gap-0.5">
-                  <span
-                    className="text-xl font-semibold tracking-tight text-foreground"
-                    style={{ fontFamily: "'Jost', sans-serif" }}
-                  >
+                <div className="flex flex-col">
+                  <span className="text-lg font-semibold tracking-tight text-foreground font-jost">
                     John Connor
                   </span>
-                  <span
-                    className="text-xs text-foreground/50 uppercase tracking-widest"
-                    style={{ fontFamily: "'Jost', sans-serif" }}
-                  >
+                  <span className="text-[10px] text-primary uppercase tracking-[0.2em] font-jost">
                     Product Strategist
                   </span>
                 </div>

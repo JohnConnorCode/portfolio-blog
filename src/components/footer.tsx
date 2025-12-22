@@ -36,25 +36,14 @@ export function Footer() {
           {/* Brand Section */}
           <div className="md:col-span-2">
             <Link href="/" className="inline-block mb-4 group">
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-4">
                 <div className="relative w-10 h-10">
-                  <svg viewBox="0 0 40 40" className="w-full h-full">
-                    <defs>
-                      <linearGradient id="footerDiamondGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="hsl(var(--foreground))" />
-                        <stop offset="100%" stopColor="hsl(var(--primary))" />
-                      </linearGradient>
-                    </defs>
-                    <path
-                      d="M 20 5 L 35 20 L 20 35 L 5 20 Z"
-                      fill="none"
-                      stroke="url(#footerDiamondGradient)"
-                      strokeWidth="1.5"
-                    />
-                  </svg>
-                  <span className="absolute inset-0 flex items-center justify-center text-sm font-bold text-foreground">
-                    JC
-                  </span>
+                  <div className="absolute inset-0 border-2 border-primary rotate-45" />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <span className="text-sm font-bold text-primary tracking-wider font-jost">
+                      JC
+                    </span>
+                  </div>
                 </div>
                 <span className="text-xl font-bold text-foreground group-hover:text-primary transition-colors font-jost">
                   John Connor

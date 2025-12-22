@@ -27,7 +27,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
   })
 
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
-  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 1.05])
+  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 1.02])
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -39,222 +39,226 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
 
   return (
     <section ref={containerRef} className="relative min-h-screen overflow-hidden -mt-24 pt-24 bg-background">
-      {/* Refined gradient - subtle warmth */}
-      <div
-        className="absolute inset-0 bg-gradient-to-b from-background to-background"
-        style={{
-          background: `
-            radial-gradient(ellipse at 25% 25%, hsl(var(--primary) / 0.06) 0%, transparent 50%),
-            radial-gradient(ellipse at 75% 75%, hsl(var(--foreground) / 0.04) 0%, transparent 50%),
-            hsl(var(--background))
-          `
-        }}
-      />
-
-      {/* Golden ratio grid - classical meets futuristic */}
-      <div className="absolute inset-0 overflow-hidden opacity-[0.02]">
-        <svg className="w-full h-full" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
-          {/* Fibonacci spiral suggestion */}
-          <circle cx="1200" cy="540" r="300" fill="none" stroke="currentColor" strokeWidth="1" className="text-foreground" />
-          <circle cx="1200" cy="540" r="185" fill="none" stroke="currentColor" strokeWidth="1" className="text-foreground" />
-          <circle cx="1200" cy="540" r="115" fill="none" stroke="currentColor" strokeWidth="1" className="text-foreground" />
-          {/* Horizontal lines */}
-          <line x1="0" y1="405" x2="1920" y2="405" stroke="currentColor" strokeWidth="0.5" className="text-foreground" />
-          <line x1="0" y1="675" x2="1920" y2="675" stroke="currentColor" strokeWidth="0.5" className="text-foreground" />
-          {/* Vertical lines */}
-          <line x1="740" y1="0" x2="740" y2="1080" stroke="currentColor" strokeWidth="0.5" className="text-foreground" />
-          <line x1="1180" y1="0" x2="1180" y2="1080" stroke="currentColor" strokeWidth="0.5" className="text-foreground" />
-        </svg>
+      {/* Dramatic gradient background */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-background" />
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[150px]" />
+        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary/3 rounded-full blur-[120px]" />
       </div>
 
-      {/* Bottom accent */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+      {/* Animated grid background */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div
+          className="absolute inset-0 opacity-[0.08]"
+          style={{
+            backgroundImage: `
+              linear-gradient(to right, hsl(var(--primary)) 1px, transparent 1px),
+              linear-gradient(to bottom, hsl(var(--primary)) 1px, transparent 1px)
+            `,
+            backgroundSize: '80px 80px'
+          }}
+        />
+        {/* Horizontal accent lines */}
+        <div className="absolute top-1/4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+        <div className="absolute top-3/4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+      </div>
 
-      {/* Interactive glow */}
+      {/* Interactive glow follows cursor */}
       <div
-        className="absolute inset-0 pointer-events-none"
+        className="absolute inset-0 pointer-events-none transition-opacity duration-500"
         style={{
           background: `radial-gradient(
-            circle 600px at ${mousePos.x}px ${mousePos.y}px,
-            hsl(var(--primary) / 0.03),
-            transparent 40%
-          )`,
-          transition: 'background 0.3s ease-out',
+            circle 400px at ${mousePos.x}px ${mousePos.y}px,
+            hsl(var(--primary) / 0.08),
+            transparent 50%
+          )`
         }}
       />
+
+      {/* Floating geometric accents */}
+      <motion.div
+        animate={{ rotate: 360 }}
+        transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+        className="absolute top-20 right-20 w-32 h-32 opacity-20"
+      >
+        <svg viewBox="0 0 100 100" className="w-full h-full text-primary">
+          <polygon points="50,5 95,27.5 95,72.5 50,95 5,72.5 5,27.5" fill="none" stroke="currentColor" strokeWidth="0.5" />
+        </svg>
+      </motion.div>
+
+      <motion.div
+        animate={{ rotate: -360 }}
+        transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
+        className="absolute bottom-32 left-16 w-24 h-24 opacity-10"
+      >
+        <svg viewBox="0 0 100 100" className="w-full h-full text-primary">
+          <polygon points="50,5 95,27.5 95,72.5 50,95 5,72.5 5,27.5" fill="none" stroke="currentColor" strokeWidth="0.5" />
+        </svg>
+      </motion.div>
 
       <motion.div
         style={{ opacity, scale }}
-        className="relative z-20 min-h-screen flex items-center px-6 sm:px-8 lg:px-12"
+        className="relative z-20 min-h-screen flex items-center px-6 sm:px-8 lg:px-16"
       >
         <div className="max-w-7xl mx-auto w-full">
-          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-            {/* Left Column - Content (7 columns) */}
+          <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            {/* Left Column - Content */}
             <div className="lg:col-span-7 order-2 lg:order-1 text-center lg:text-left">
-              {/* Classical decorative element - laurel-inspired */}
-              <div className="hidden lg:flex items-center gap-4 mb-6">
-                <svg viewBox="0 0 60 20" className="w-14 h-5 text-primary">
-                  <path d="M0 10 Q15 0 30 10 Q15 20 0 10" fill="none" stroke="currentColor" strokeWidth="1" opacity="0.6"/>
-                  <path d="M10 10 Q20 3 30 10" fill="none" stroke="currentColor" strokeWidth="1" opacity="0.4"/>
-                </svg>
-                <div className="w-16 h-px bg-gradient-to-r from-primary/60 to-transparent" />
+
+              {/* Accent line */}
+              <div className="hidden lg:flex items-center gap-4 mb-8">
+                <div className="w-12 h-px bg-primary" />
+                <span className="text-xs tracking-[0.3em] uppercase text-primary font-jost">
+                  Product Strategist
+                </span>
               </div>
 
-              {/* Name */}
-              <h1
-                className="text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-bold tracking-tight mb-3 text-foreground font-jost"
-                style={{ letterSpacing: '0.02em', lineHeight: 1 }}
-              >
-                {heroContent.heroTitle}
+              {/* Name - BOLD and distinctive */}
+              <h1 className="relative mb-6">
+                <span
+                  className="block text-6xl sm:text-7xl md:text-8xl lg:text-[7rem] font-bold tracking-tight text-foreground font-jost"
+                  style={{ lineHeight: 0.9 }}
+                >
+                  JOHN
+                </span>
+                <span
+                  className="block text-6xl sm:text-7xl md:text-8xl lg:text-[7rem] font-bold tracking-tight font-jost bg-gradient-to-r from-primary via-primary to-foreground bg-clip-text text-transparent"
+                  style={{ lineHeight: 0.9 }}
+                >
+                  CONNOR
+                </span>
               </h1>
 
-              {/* Role - cross-functional */}
-              <div className="flex items-center justify-center lg:justify-start gap-3 mb-8">
-                <span className="text-xs sm:text-sm tracking-[0.3em] uppercase text-primary font-jost font-medium">
-                  Product
-                </span>
-                <span className="w-1 h-1 rounded-full bg-foreground/30" />
-                <span className="text-xs sm:text-sm tracking-[0.3em] uppercase text-primary font-jost font-medium">
-                  Engineering
-                </span>
-                <span className="w-1 h-1 rounded-full bg-foreground/30" />
-                <span className="text-xs sm:text-sm tracking-[0.3em] uppercase text-primary font-jost font-medium">
-                  Strategy
-                </span>
+              {/* Role badges */}
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 mb-8">
+                {['Product', 'Engineering', 'Strategy'].map((role) => (
+                  <span
+                    key={role}
+                    className="px-4 py-2 text-xs tracking-[0.2em] uppercase border border-primary/30 text-primary font-jost bg-primary/5 backdrop-blur-sm"
+                  >
+                    {role}
+                  </span>
+                ))}
               </div>
 
-              {/* Main philosophy - the hook */}
-              <p className="text-xl sm:text-2xl md:text-3xl leading-relaxed mb-5 max-w-2xl mx-auto lg:mx-0 text-foreground/90 font-jost font-light">
+              {/* Description */}
+              <p className="text-xl sm:text-2xl md:text-3xl leading-relaxed mb-4 max-w-2xl mx-auto lg:mx-0 text-foreground/90 font-jost font-light">
                 {heroContent.heroDescription}
               </p>
 
-              {/* Tagline - philosophical anchor */}
-              <p className="text-base sm:text-lg md:text-xl italic mb-10 max-w-xl mx-auto lg:mx-0 text-foreground/60 font-jost">
+              {/* Tagline */}
+              <p className="text-lg md:text-xl mb-12 max-w-xl mx-auto lg:mx-0 text-primary font-jost font-medium">
                 {heroContent.heroHighlight}
               </p>
 
-              {/* CTA Buttons */}
+              {/* CTA Buttons - more impactful */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <Link href="/contact">
                   <motion.button
-                    className="group relative px-8 py-4 font-semibold text-sm overflow-hidden bg-foreground text-background uppercase tracking-[0.12em] font-jost"
+                    className="group relative px-10 py-5 font-semibold text-sm overflow-hidden bg-primary text-background uppercase tracking-[0.15em] font-jost"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
                     <span className="relative z-10">Get in Touch</span>
-                    <motion.div
-                      className="absolute inset-0 bg-primary"
-                      initial={{ x: '-100%' }}
-                      whileHover={{ x: 0 }}
-                      transition={{ duration: 0.3, ease: 'easeInOut' }}
-                    />
+                    <div className="absolute inset-0 bg-foreground transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                    <span className="absolute inset-0 flex items-center justify-center text-background opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
+                      Get in Touch
+                    </span>
                   </motion.button>
                 </Link>
 
                 <Link href="/work">
                   <motion.button
-                    className="px-8 py-4 font-medium text-sm transition-all duration-300 bg-transparent text-foreground border-[1.5px] border-foreground/30 hover:border-primary hover:text-primary uppercase tracking-[0.12em] font-jost"
+                    className="px-10 py-5 font-semibold text-sm bg-transparent text-foreground border-2 border-foreground/20 hover:border-primary hover:text-primary uppercase tracking-[0.15em] font-jost transition-all duration-300"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
-                    See the Proof
+                    See the Work
                   </motion.button>
                 </Link>
               </div>
 
-              {/* Availability signal */}
-              <p className="mt-6 text-xs tracking-[0.15em] uppercase text-foreground/50 font-jost text-center lg:text-left">
-                Available for select engagements
-              </p>
+              {/* Stats row */}
+              <div className="flex items-center justify-center lg:justify-start gap-8 mt-12 pt-8 border-t border-foreground/10">
+                {[
+                  { value: '15+', label: 'Years' },
+                  { value: '300K+', label: 'Users' },
+                  { value: '$20M+', label: 'Funded' }
+                ].map((stat) => (
+                  <div key={stat.label} className="text-center">
+                    <p className="text-2xl sm:text-3xl font-bold text-primary font-jost">{stat.value}</p>
+                    <p className="text-xs tracking-[0.2em] uppercase text-foreground/50 font-jost">{stat.label}</p>
+                  </div>
+                ))}
+              </div>
             </div>
 
-            {/* Right Column - Photo (5 columns) */}
+            {/* Right Column - Photo */}
             <div className="lg:col-span-5 order-1 lg:order-2 flex justify-center lg:justify-end">
               <div className="relative">
-                {/* Outer geometric frame - Greek meets futuristic */}
-                <div className="absolute -inset-4 sm:-inset-6">
-                  <svg className="w-full h-full text-primary" viewBox="0 0 100 100" preserveAspectRatio="none">
-                    {/* Corner brackets - architectural feel */}
-                    <path d="M0 15 L0 0 L15 0" fill="none" stroke="currentColor" strokeWidth="0.8" />
-                    <path d="M85 0 L100 0 L100 15" fill="none" stroke="currentColor" strokeWidth="0.8" />
-                    <path d="M100 85 L100 100 L85 100" fill="none" stroke="currentColor" strokeWidth="0.8" />
-                    <path d="M15 100 L0 100 L0 85" fill="none" stroke="currentColor" strokeWidth="0.8" />
-                    {/* Subtle inner lines */}
-                    <path d="M0 30 L5 30" fill="none" stroke="currentColor" strokeWidth="0.4" opacity="0.5" />
-                    <path d="M95 70 L100 70" fill="none" stroke="currentColor" strokeWidth="0.4" opacity="0.5" />
-                  </svg>
-                </div>
+                {/* Glowing backdrop */}
+                <div className="absolute -inset-8 bg-gradient-to-br from-primary/20 via-primary/5 to-transparent rounded-full blur-3xl" />
 
-                {/* Photo container */}
-                <div className="relative w-64 h-80 sm:w-72 sm:h-96 md:w-80 md:h-[420px] lg:w-[340px] lg:h-[440px]">
-                  <div className="relative w-full h-full overflow-hidden">
+                {/* Photo frame with accent */}
+                <div className="relative">
+                  {/* Corner accents */}
+                  <div className="absolute -top-3 -left-3 w-12 h-12 border-t-2 border-l-2 border-primary" />
+                  <div className="absolute -top-3 -right-3 w-12 h-12 border-t-2 border-r-2 border-primary" />
+                  <div className="absolute -bottom-3 -left-3 w-12 h-12 border-b-2 border-l-2 border-primary" />
+                  <div className="absolute -bottom-3 -right-3 w-12 h-12 border-b-2 border-r-2 border-primary" />
+
+                  {/* Photo */}
+                  <div className="relative w-72 h-96 sm:w-80 sm:h-[420px] md:w-[360px] md:h-[480px] overflow-hidden">
                     <Image
                       src="/John-Connor-photo.jpg"
                       alt="John Connor"
                       fill
-                      className="object-cover object-top"
+                      className="object-cover object-top grayscale hover:grayscale-0 transition-all duration-700"
                       priority
-                      sizes="(max-width: 640px) 256px, (max-width: 768px) 288px, (max-width: 1024px) 320px, 340px"
+                      sizes="(max-width: 640px) 288px, (max-width: 768px) 320px, 360px"
                     />
-                    {/* Subtle vignette */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-foreground/15 via-transparent to-transparent" />
-                    <div className="absolute inset-0 bg-gradient-to-b from-background/10 via-transparent to-transparent" />
+                    {/* Overlay gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" />
                   </div>
+
+                  {/* Floating diamond accent */}
+                  <motion.div
+                    animate={{ y: [0, -10, 0], rotate: [0, 5, 0] }}
+                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                    className="absolute -bottom-6 -left-6"
+                  >
+                    <div className="w-12 h-12 border-2 border-primary rotate-45 bg-background" />
+                  </motion.div>
+
+                  {/* Small accent */}
+                  <motion.div
+                    animate={{ opacity: [0.5, 1, 0.5] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                    className="absolute -top-4 -right-4 w-4 h-4 bg-primary"
+                  />
                 </div>
-
-                {/* Floating accent - golden ratio diamond */}
-                <motion.div
-                  animate={{
-                    y: [0, -8, 0],
-                    rotate: [0, 5, 0]
-                  }}
-                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute -bottom-3 -left-3 sm:-bottom-4 sm:-left-4"
-                >
-                  <svg viewBox="0 0 40 40" className="w-8 h-8 sm:w-10 sm:h-10 text-primary">
-                    <path
-                      d="M 20 4 L 36 20 L 20 36 L 4 20 Z"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                    />
-                    <path
-                      d="M 20 10 L 30 20 L 20 30 L 10 20 Z"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="0.75"
-                      opacity="0.5"
-                    />
-                  </svg>
-                </motion.div>
-
-                {/* Top right accent */}
-                <motion.div
-                  animate={{ opacity: [0.4, 0.8, 0.4] }}
-                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute -top-2 -right-2 w-3 h-3 sm:w-4 sm:h-4"
-                >
-                  <div className="w-full h-full border border-primary rotate-45" />
-                </motion.div>
               </div>
             </div>
           </div>
         </div>
       </motion.div>
 
-      {/* Scroll indicator - minimal */}
-      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2">
+      {/* Scroll indicator */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
         <motion.div
-          animate={{ y: [0, 6, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="flex flex-col items-center gap-2"
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+          className="flex flex-col items-center gap-3"
         >
-          <span className="text-[10px] tracking-[0.2em] uppercase text-foreground/40 font-jost">
+          <span className="text-[10px] tracking-[0.3em] uppercase text-foreground/40 font-jost">
             Scroll
           </span>
-          <div className="w-px h-8 bg-gradient-to-b from-primary/60 to-transparent" />
+          <div className="w-px h-12 bg-gradient-to-b from-primary to-transparent" />
         </motion.div>
       </div>
+
+      {/* Bottom border */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
     </section>
   )
 }
