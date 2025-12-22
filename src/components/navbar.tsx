@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence, Variants } from 'framer-motion'
-import { X, Briefcase, BookOpen, Home, Mail, Brain, MessageSquare } from 'lucide-react'
+import { X, Briefcase, BookOpen, Home, Mail, Brain } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { ThemeToggle } from './theme-toggle'
 
@@ -46,7 +46,6 @@ const navItems = [
     ]
   },
   { href: '/blog', label: 'Blog', icon: BookOpen },
-  { href: '/thoughts', label: 'Thoughts', icon: MessageSquare },
   { href: '/philosophy', label: 'Approach', icon: Brain },
   { href: '/contact', label: 'Contact', icon: Mail },
 ]
@@ -72,17 +71,10 @@ export function Navbar() {
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
         scrolled
-          ? 'bg-background/90 backdrop-blur-xl shadow-sm'
-          : 'bg-transparent'
+          ? 'bg-background/70 backdrop-blur-2xl border-b border-foreground/10 shadow-lg shadow-background/5'
+          : 'bg-transparent border-b border-transparent'
       )}
     >
-      {/* Subtle border that appears on scroll */}
-      <div
-        className={cn(
-          "absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-foreground/10 to-transparent transition-opacity duration-300",
-          scrolled ? "opacity-100" : "opacity-0"
-        )}
-      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-24">
           <motion.div variants={navChildVariants}>
@@ -114,14 +106,25 @@ export function Navbar() {
                     </span>
                   </div>
                 </motion.div>
-                <div className="flex flex-col">
-                  <span className="text-lg font-semibold tracking-tight text-foreground font-jost">
-                    John Connor
-                  </span>
-                  <span className="text-[10px] text-primary uppercase tracking-[0.2em] font-jost">
-                    Product Strategist
-                  </span>
-                </div>
+                {/* Name/Title - hidden initially, animates in on scroll */}
+                <AnimatePresence>
+                  {scrolled && (
+                    <motion.div
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -10 }}
+                      transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+                      className="hidden sm:flex flex-col"
+                    >
+                      <span className="text-lg font-semibold tracking-tight text-foreground font-jost">
+                        John Connor
+                      </span>
+                      <span className="text-[10px] text-primary uppercase tracking-[0.2em] font-jost">
+                        Product Strategist
+                      </span>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             </Link>
           </motion.div>
