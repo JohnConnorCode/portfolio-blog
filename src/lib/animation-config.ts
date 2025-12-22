@@ -1,141 +1,254 @@
-import { Variants } from 'framer-motion'
+import { Variants, TargetAndTransition } from 'framer-motion'
 
-// Consistent animation timings across the site - FAST and SNAPPY
-export const ANIMATION_DURATION = {
-  instant: 0.1,
-  fast: 0.15,
-  normal: 0.25,
-  slow: 0.35,
-  verySlow: 0.5
+// =============================================================================
+// SINGLE SOURCE OF TRUTH FOR ALL ANIMATIONS
+// =============================================================================
+
+// Timing constants
+export const DURATION = {
+  fast: 0.3,
+  normal: 0.5,
+  slow: 0.7,
 } as const
 
-export const ANIMATION_DELAY = {
-  none: 0,
-  minimal: 0.02,
-  stagger: 0.03,
-  staggerSlow: 0.05,
-  section: 0.05,
-  sectionLong: 0.1
+export const EASE = {
+  out: [0.0, 0.0, 0.2, 1],
+  inOut: [0.4, 0, 0.2, 1],
+  spring: { type: "spring", stiffness: 300, damping: 30 }
 } as const
 
-// Sequential delays for home page sections - minimal delays
-export const SECTION_DELAYS = {
-  hero: 0,
-  impact: 0,
-  superDebate: 0,
-  accelerate: 0,
-  workingWithMe: 0,
-  writings: 0,
-  callToAction: 0
-} as const
+// =============================================================================
+// PAGE SECTION ANIMATIONS
+// Use: Apply to main page sections. Children should NOT have their own animations.
+// =============================================================================
 
-// Easing functions
-export const EASING = {
-  smooth: [0.4, 0, 0.2, 1],
-  bounce: [0.68, -0.55, 0.265, 1.55],
-  elastic: [0.175, 0.885, 0.32, 1.275]
-} as const
-
-// Standard fade in animations for all content
-export const fadeInUp: Variants = {
-  initial: {
+export const sectionVariants: Variants = {
+  hidden: {
     opacity: 0,
-    y: 20
+    y: 40
   },
-  animate: {
+  visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: ANIMATION_DURATION.normal,
-      ease: "easeOut"
+      duration: DURATION.normal,
+      ease: EASE.out,
     }
   }
 }
 
-// Fade in with custom delay per index
-export const fadeInUpDelayed: Variants = {
-  initial: {
+// For sections that need staggered children (parent also fades)
+export const sectionWithChildrenVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      duration: DURATION.fast,
+      when: "beforeChildren",
+      staggerChildren: 0.1,
+    }
+  }
+}
+
+// Pure orchestrator - only staggers children, no parent animation
+// Use when parent is already visible or nested inside another stagger container
+export const staggerOrchestrator: Variants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.1,
+    }
+  }
+}
+
+// =============================================================================
+// CHILD ELEMENT ANIMATIONS
+// Use: Only when parent has sectionWithChildrenVariants
+// =============================================================================
+
+export const childVariants: Variants = {
+  hidden: {
     opacity: 0,
-    y: 20
+    y: 25
   },
-  animate: (custom: number) => ({
+  visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: ANIMATION_DURATION.normal,
-      delay: custom * ANIMATION_DELAY.stagger,
-      ease: EASING.smooth
+      duration: 0.5,
+      ease: [0.25, 0.1, 0.25, 1],
+    }
+  }
+}
+
+// For grid items (cards, list items)
+export const itemVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 30
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: DURATION.fast,
+      ease: EASE.out,
+    }
+  }
+}
+
+// =============================================================================
+// PAGE HEADER ANIMATIONS
+// Use: For page titles and decorative elements at top of pages
+// =============================================================================
+
+export const pageHeaderVariants: Variants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.1,
+    }
+  }
+}
+
+export const decoratorVariants: Variants = {
+  hidden: { opacity: 0, scale: 0.8 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: DURATION.fast }
+  }
+}
+
+export const titleVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: DURATION.fast }
+  }
+}
+
+// =============================================================================
+// NAVBAR ANIMATIONS
+// =============================================================================
+
+export const navVariants: Variants = {
+  hidden: { opacity: 0, y: -20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: DURATION.normal,
+      ease: EASE.out,
+    }
+  }
+}
+
+export const navItemVariants: Variants = {
+  hidden: { opacity: 0, y: -10 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: DURATION.fast,
+      delay: 0.1 + i * 0.05,
+      ease: EASE.out,
     }
   })
 }
 
-export const fadeInScale: Variants = {
-  initial: {
-    opacity: 0,
-    scale: 0.95
-  },
-  animate: {
+export const logoVariants: Variants = {
+  hidden: { opacity: 0, scale: 0.8 },
+  visible: {
     opacity: 1,
     scale: 1,
     transition: {
-      duration: ANIMATION_DURATION.normal,
-      ease: "easeOut"
+      type: "spring",
+      stiffness: 300,
+      damping: 30,
     }
   }
 }
 
-// Stagger children animations - properly configured
-export const staggerContainer: Variants = {
-  initial: {},
+// =============================================================================
+// CARD/INTERACTIVE ANIMATIONS
+// =============================================================================
+
+export const cardHover: TargetAndTransition = {
+  y: -4,
+  transition: { duration: 0.2 }
+}
+
+export const buttonTap: TargetAndTransition = {
+  scale: 0.98
+}
+
+// =============================================================================
+// LEGACY ANIMATION VARIANTS (for backwards compatibility)
+// These use "initial"/"animate" naming instead of "hidden"/"visible"
+// =============================================================================
+
+export const fadeInUp: Variants = {
+  initial: {
+    opacity: 0,
+    y: 30
+  },
   animate: {
+    opacity: 1,
+    y: 0,
     transition: {
-      staggerChildren: ANIMATION_DELAY.stagger,
-      delayChildren: 0
+      duration: DURATION.normal,
+      ease: EASE.out,
     }
   }
 }
 
-// Stagger with slower timing
-export const staggerContainerSlow: Variants = {
-  initial: {},
-  animate: {
+export const fadeInUpDelayed: Variants = {
+  initial: {
+    opacity: 0,
+    y: 30
+  },
+  animate: (custom: number = 0) => ({
+    opacity: 1,
+    y: 0,
     transition: {
-      staggerChildren: ANIMATION_DELAY.staggerSlow,
-      delayChildren: 0
+      duration: DURATION.normal,
+      ease: EASE.out,
+      delay: custom * 0.1,
     }
-  }
+  })
 }
 
-// Header animations
-export const headerAnimation = {
-  initial: { opacity: 0, y: 30 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: "-50px" },
-  transition: { duration: ANIMATION_DURATION.normal }
-}
+// =============================================================================
+// VIEWPORT SETTINGS
+// =============================================================================
 
-// Card hover animations
-export const cardHover = {
-  whileHover: {
-    y: -8,
-    scale: 1.02,
-    transition: {
-      type: "spring" as const,
-      stiffness: 400,
-      damping: 10
-    }
-  }
-}
+export const viewportOnce = { once: true, margin: "-100px" }
+export const viewportOnceEarly = { once: true, margin: "-50px" }
 
-// Mobile-safe animations (reduced motion)
-export const getMobileAnimation = (isDesktop: boolean) => {
-  if (!isDesktop) {
-    return {
-      initial: { opacity: 0 },
-      whileInView: { opacity: 1 },
-      viewport: { once: true },
-      transition: { duration: ANIMATION_DURATION.fast }
-    }
-  }
-  return headerAnimation
-}
+// =============================================================================
+// HELPER: Get animation props for a section
+// =============================================================================
+
+export const getSectionProps = (hasChildren = false) => ({
+  variants: hasChildren ? sectionWithChildrenVariants : sectionVariants,
+  initial: "hidden",
+  whileInView: "visible",
+  viewport: viewportOnce,
+})
+
+export const getChildProps = () => ({
+  variants: childVariants,
+})
+
+export const getItemProps = () => ({
+  variants: itemVariants,
+})
+
+export const getHeaderProps = () => ({
+  variants: pageHeaderVariants,
+  initial: "hidden",
+  animate: "visible",
+})

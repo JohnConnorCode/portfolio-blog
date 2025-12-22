@@ -1,13 +1,13 @@
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'SuperDebate - Make Arguing Fun Again | John Connor Portfolio',
-  description: 'Founded by John Connor, SuperDebate is the premier platform for structured debates, tournaments, and critical thinking development. Building a global network of in-person debate communities.',
-  keywords: 'SuperDebate, debate platform, critical thinking, structured debate, tournaments, John Connor, founder, portfolio',
+  title: 'SuperDebate - A New Intellectual Sport for the 21st Century | John Connor',
+  description: 'SuperDebate is building a new intellectual sport for the 21st century. Local clubs, national tournaments, AI-powered judging. Restoring the values of the Greek agora.',
+  keywords: 'SuperDebate, intellectual sport, debate platform, Greek agora, structured debate, tournaments, John Connor, startup',
 
   openGraph: {
-    title: 'SuperDebate - Make Arguing Fun Again',
-    description: 'The premier platform for structured debates and critical thinking. Founded by national debate champion John Connor.',
+    title: 'SuperDebate - A New Intellectual Sport',
+    description: 'Building a new intellectual sport for the 21st century. Restoring the values of the Greek agora. Founded by John Connor.',
     url: 'https://johnconnor.xyz/super-debate',
     siteName: 'John Connor Portfolio',
     images: [
@@ -24,8 +24,8 @@ export const metadata: Metadata = {
 
   twitter: {
     card: 'summary_large_image',
-    title: 'SuperDebate - Make Arguing Fun Again',
-    description: 'The premier platform for structured debates and critical thinking. Founded by national debate champion John Connor.',
+    title: 'SuperDebate - A New Intellectual Sport',
+    description: 'Building a new intellectual sport for the 21st century. Restoring the values of the Greek agora. Founded by John Connor.',
     images: ['https://johnconnor.xyz/og-superdebate.png'],
     creator: '@johnconnor',
   },

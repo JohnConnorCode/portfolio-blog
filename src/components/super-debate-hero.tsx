@@ -4,6 +4,12 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { Trophy, MessageSquare, Users, ArrowRight, Scale, Mic, Calendar } from 'lucide-react'
 import Link from 'next/link'
 import { useRef } from 'react'
+import {
+  sectionWithChildrenVariants,
+  childVariants,
+  itemVariants,
+  viewportOnce,
+} from '@/lib/animation-config'
 
 export function SuperDebateHero() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -52,14 +58,14 @@ export function SuperDebateHero() {
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          variants={sectionWithChildrenVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
           className="text-center mb-16"
         >
           {/* Decorative element */}
-          <div className="flex items-center justify-center gap-4 mb-6">
+          <motion.div variants={childVariants} className="flex items-center justify-center gap-4 mb-6">
             <div className="w-16 h-px bg-gradient-to-r from-transparent to-primary/50" />
             <div className="flex items-center gap-2 px-4 py-2 border border-primary/30">
               <Trophy className="w-4 h-4 text-primary" />
@@ -68,48 +74,45 @@ export function SuperDebateHero() {
               </span>
             </div>
             <div className="w-16 h-px bg-gradient-to-l from-transparent to-primary/50" />
-          </div>
+          </motion.div>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 font-jost text-foreground tracking-wide">
+          <motion.h2 variants={childVariants} className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 font-jost text-foreground tracking-wide">
             Bring Debate{' '}
             <span className="text-primary">Back to Life</span>
-          </h2>
+          </motion.h2>
 
-          <p className="text-base sm:text-lg max-w-2xl mx-auto mb-8 font-jost text-foreground/60">
-            The first large-scale adult debate ecosystem since ancient times. Local clubs, live events, and a community where the best arguments win.
-          </p>
+          <motion.p variants={childVariants} className="text-base sm:text-lg max-w-2xl mx-auto mb-8 font-jost text-foreground/60">
+            A new intellectual sport for the 21st century. Local clubs, live events, and a community where citizens gather to challenge ideas and sharpen thinking.
+          </motion.p>
 
           {/* CTA Button */}
-          <Link href="/super-debate">
-            <motion.button
-              whileHover={{ scale: 1.02, y: -2 }}
-              whileTap={{ scale: 0.98 }}
-              className="group relative px-8 py-4 font-semibold text-sm flex items-center justify-center gap-3 mx-auto overflow-hidden font-jost bg-foreground text-background tracking-widest uppercase"
-            >
-              <span className="relative z-10">Learn More</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform relative z-10" />
-              <motion.div
-                className="absolute inset-0 bg-primary"
-                initial={{ x: '-100%' }}
-                whileHover={{ x: 0 }}
-                transition={{ duration: 0.3, ease: 'easeInOut' }}
-              />
-            </motion.button>
-          </Link>
+          <motion.div variants={childVariants}>
+            <Link href="/super-debate">
+              <button
+                className="group relative px-8 py-4 font-semibold text-sm flex items-center justify-center gap-3 mx-auto overflow-hidden font-jost bg-foreground text-background tracking-widest uppercase hover:bg-primary transition-colors duration-300"
+              >
+                <span className="relative z-10">Learn More</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform relative z-10" />
+              </button>
+            </Link>
+          </motion.div>
         </motion.div>
 
         {/* Features Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          {features.map((feature, index) => {
+        <motion.div
+          variants={sectionWithChildrenVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+          className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16"
+        >
+          {features.map((feature) => {
             const Icon = feature.icon
 
             return (
               <motion.div
                 key={feature.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                variants={itemVariants}
                 whileHover={{ y: -4 }}
                 className="relative group"
               >
@@ -129,14 +132,14 @@ export function SuperDebateHero() {
               </motion.div>
             )
           })}
-        </div>
+        </motion.div>
 
         {/* Format Showcase */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
+          variants={sectionWithChildrenVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
           className="relative max-w-4xl mx-auto"
         >
           <div className="relative bg-card border border-border p-8">
@@ -176,14 +179,14 @@ export function SuperDebateHero() {
 
         {/* Bottom text */}
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.6 }}
+          variants={childVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
           className="text-center mt-12"
         >
           <p className="text-sm uppercase tracking-[0.2em] font-jost text-foreground/40">
-            Reviving the <span className="text-primary">Socratic tradition</span>
+            Restoring the <span className="text-primary">values of the agora</span>
           </p>
         </motion.div>
       </div>

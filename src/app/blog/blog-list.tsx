@@ -6,6 +6,14 @@ import Link from 'next/link'
 import { Calendar, Clock, Search, Filter, BookOpen, ArrowRight } from 'lucide-react'
 import { formatDate } from '@/lib/utils'
 import { useState, useMemo } from 'react'
+import {
+  pageHeaderVariants,
+  decoratorVariants,
+  childVariants,
+  sectionWithChildrenVariants,
+  itemVariants,
+  viewportOnce,
+} from '@/lib/animation-config'
 
 interface Post {
   id: string
@@ -59,16 +67,14 @@ export default function BlogList({ initialPosts }: { initialPosts: Post[] }) {
       <div className="max-w-7xl mx-auto">
         {/* Header with Greek-inspired styling */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          variants={pageHeaderVariants}
+          initial="hidden"
+          animate="visible"
           className="text-center mb-16"
         >
           {/* Diamond decorative element */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
+            variants={decoratorVariants}
             className="flex items-center justify-center gap-4 mb-6"
           >
             <div className="w-16 h-px bg-gradient-to-r from-transparent to-primary" />
@@ -84,15 +90,13 @@ export default function BlogList({ initialPosts }: { initialPosts: Post[] }) {
             <div className="w-16 h-px bg-gradient-to-l from-transparent to-primary" />
           </motion.div>
 
-          <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 text-center tracking-wide font-jost">
+          <motion.h1 variants={childVariants} className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 text-center tracking-wide font-jost">
             <span className="text-foreground">The </span>
             <span className="text-primary">Blog</span>
-          </h1>
+          </motion.h1>
           <motion.p
+            variants={childVariants}
             className="text-lg max-w-2xl mx-auto font-light text-foreground/70 font-jost"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 0.7, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
           >
             Essays and insights on human-first futurism, community building, and technology that empowers
           </motion.p>
@@ -100,19 +104,16 @@ export default function BlogList({ initialPosts }: { initialPosts: Post[] }) {
 
         {/* Search and Filter */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
+          variants={sectionWithChildrenVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
           className="mb-12 p-6 rounded-xl border bg-card border-border font-jost"
         >
           <div className="flex flex-col gap-6">
             {/* Search Bar */}
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+              variants={childVariants}
               className="relative"
             >
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-primary" />
@@ -134,12 +135,7 @@ export default function BlogList({ initialPosts }: { initialPosts: Post[] }) {
             </motion.div>
 
             {/* Category Pills */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-            >
+            <motion.div variants={childVariants}>
               <div className="flex items-center gap-2 mb-3">
                 <Filter className="w-4 h-4 text-primary" />
                 <span className="text-sm font-medium text-foreground/70 font-jost">
@@ -147,34 +143,25 @@ export default function BlogList({ initialPosts }: { initialPosts: Post[] }) {
                 </span>
               </div>
               <div className="flex gap-2 flex-wrap">
-                {categories.map((category, index) => (
-                  <motion.button
+                {categories.map((category) => (
+                  <button
                     key={category}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: 0.4 + index * 0.08, ease: "easeOut" }}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
                     onClick={() => setSelectedCategory(category)}
-                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all border font-jost ${
+                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 border font-jost hover:scale-[1.05] active:scale-[0.95] ${
                       selectedCategory === category
                         ? 'bg-primary text-primary-foreground border-primary'
                         : 'bg-background text-foreground border-border hover:border-primary/30'
                     }`}
                   >
                     {category}
-                  </motion.button>
+                  </button>
                 ))}
               </div>
             </motion.div>
 
             {/* Results Count */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.7, ease: "easeOut" }}
+              variants={childVariants}
               className="text-sm flex items-center justify-between text-foreground/70 font-jost"
             >
               <span>
@@ -199,18 +186,17 @@ export default function BlogList({ initialPosts }: { initialPosts: Post[] }) {
 
         {/* Blog Posts Grid */}
         {postsToShow.length > 0 ? (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {postsToShow.map((post, index) => (
+          <motion.div
+            variants={sectionWithChildrenVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
+            {postsToShow.map((post) => (
               <motion.article
                 key={post.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{
-                  duration: 0.6,
-                  delay: index * 0.15,
-                  ease: "easeOut"
-                }}
+                variants={itemVariants}
                 className="group h-full"
                 onMouseEnter={() => setHoveredCard(post.id)}
                 onMouseLeave={() => setHoveredCard(null)}
@@ -344,37 +330,26 @@ export default function BlogList({ initialPosts }: { initialPosts: Post[] }) {
                 </Link>
               </motion.article>
             ))}
-          </div>
+          </motion.div>
         ) : (
           <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            variants={sectionWithChildrenVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
             className="text-center py-20"
           >
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-            >
+            <motion.div variants={childVariants}>
               <BookOpen className="w-16 h-16 mx-auto mb-6 text-primary" />
             </motion.div>
             <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+              variants={childVariants}
               className="text-2xl font-bold mb-4 text-foreground font-jost"
             >
               No posts found
             </motion.h2>
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+              variants={childVariants}
               className="max-w-md mx-auto text-foreground/70 font-jost"
             >
               {searchTerm || selectedCategory !== 'All'
@@ -386,10 +361,10 @@ export default function BlogList({ initialPosts }: { initialPosts: Post[] }) {
 
         {/* Newsletter CTA */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          variants={sectionWithChildrenVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
           className="mt-20 p-12 rounded-lg text-center relative overflow-hidden bg-card border border-border"
         >
           {/* Decorative corner elements */}
@@ -415,37 +390,22 @@ export default function BlogList({ initialPosts }: { initialPosts: Post[] }) {
           </div>
 
           <motion.h2
+            variants={childVariants}
             className="text-3xl font-bold mb-4 text-primary font-jost"
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
           >
             Stay Updated
           </motion.h2>
           <motion.p
+            variants={childVariants}
             className="text-lg mb-8 max-w-2xl mx-auto text-foreground/70 font-jost"
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 0.7, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
           >
             Get insights on building systems that serve humanity delivered to your inbox
           </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
-          >
+          <motion.div variants={childVariants}>
             <Link href="/contact">
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="px-8 py-4 transition-all duration-300 font-semibold rounded-lg bg-primary text-primary-foreground font-jost"
-              >
+              <button className="px-8 py-4 transition-all duration-200 font-semibold rounded-lg bg-primary text-primary-foreground font-jost hover:scale-[1.02] active:scale-[0.98]">
                 Subscribe to Updates
-              </motion.button>
+              </button>
             </Link>
           </motion.div>
         </motion.div>

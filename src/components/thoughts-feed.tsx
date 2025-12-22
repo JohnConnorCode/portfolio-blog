@@ -6,6 +6,7 @@ import { thoughtsQuery } from '@/lib/sanity/queries'
 import { PortableText } from '@portabletext/react'
 import { formatDistanceToNow } from 'date-fns'
 import { motion } from 'framer-motion'
+import { fadeInUpDelayed } from '@/lib/animation-config'
 import { Hash, Pin } from 'lucide-react'
 import { Thought, PortableTextImageValue, PortableTextCodeValue, PortableTextLinkValue } from '@/types'
 
@@ -66,9 +67,10 @@ export default function ThoughtsFeed() {
 function ThoughtCard({ thought, index }: { thought: Thought; index: number }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.1 }}
+      variants={fadeInUpDelayed}
+      initial="initial"
+      animate="animate"
+      custom={index}
       className="group relative"
     >
       <div className="card-glass hover:border-cyan-400/50 transition-all">

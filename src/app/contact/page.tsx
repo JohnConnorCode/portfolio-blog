@@ -3,7 +3,15 @@
 import { motion } from 'framer-motion'
 import { Mail, Linkedin, Twitter, Send, User, Building2, Briefcase, DollarSign, MessageSquare } from 'lucide-react'
 import { useState } from 'react'
-import { fadeInUp, fadeInUpDelayed } from '@/lib/animation-config'
+import {
+  pageHeaderVariants,
+  decoratorVariants,
+  titleVariants,
+  childVariants,
+  sectionWithChildrenVariants,
+  itemVariants,
+  viewportOnce,
+} from '@/lib/animation-config'
 
 const contactMethods = [
   {
@@ -137,12 +145,15 @@ export default function ContactPage() {
         <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(hsl(var(--foreground))_1px,transparent_1px),linear-gradient(90deg,hsl(var(--foreground))_1px,transparent_1px)] bg-[size:50px_50px]" />
 
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center mb-12">
-            {/* Decorative Greek key pattern */}
+          <motion.div
+            variants={pageHeaderVariants}
+            initial="hidden"
+            animate="visible"
+            className="text-center mb-12"
+          >
+            {/* Decorative pattern */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.1, duration: 0.5 }}
+              variants={decoratorVariants}
               className="flex items-center justify-center gap-4 mb-8"
             >
               <div className="w-20 h-px bg-gradient-to-r from-transparent to-primary" />
@@ -154,49 +165,43 @@ export default function ContactPage() {
             </motion.div>
 
             <motion.span
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.15, duration: 0.5 }}
+              variants={childVariants}
               className="text-xs tracking-[0.3em] uppercase block mb-6 text-primary"
             >
               Let&apos;s Connect
             </motion.span>
 
             <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+              variants={titleVariants}
               className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 tracking-wide font-jost"
             >
               <span className="text-foreground">Get in </span>
               <span className="text-primary">Touch</span>
             </motion.h1>
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
+              variants={childVariants}
               className="text-lg max-w-2xl mx-auto font-light text-foreground/80"
             >
               Whether you need product strategy, technical architecture, or a cross-functional partner who ships—I&apos;m here to help.
             </motion.p>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Contact Methods & Form Section */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-background">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-3 gap-12">
+          <motion.div
+            variants={sectionWithChildrenVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
+            className="grid lg:grid-cols-3 gap-12"
+          >
             {/* Contact Methods */}
-            <motion.div
-              variants={fadeInUp}
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: true, margin: "-50px" }}
-              className="lg:col-span-1 space-y-6"
-            >
+            <div className="lg:col-span-1 space-y-6">
               {/* Corner accent component */}
-              <div className="relative p-8 bg-card rounded-lg border border-border transition-all duration-300">
+              <motion.div variants={itemVariants} className="relative p-8 bg-card rounded-lg border border-border transition-all duration-300">
                 {/* Top-left corner accent */}
                 <div className="absolute top-0 left-0 w-4 h-4 border-l-2 border-t-2 border-primary" />
                 {/* Top-right corner accent */}
@@ -225,19 +230,15 @@ export default function ContactPage() {
                     </p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
 
-              {contactMethods.map((method, index) => {
+              {contactMethods.map((method) => {
                 const Icon = method.icon
                 return (
                   <motion.a
                     key={method.title}
                     href={method.href}
-                    variants={fadeInUpDelayed}
-                    custom={index + 1}
-                    initial="initial"
-                    whileInView="animate"
-                    viewport={{ once: true, margin: "-50px" }}
+                    variants={itemVariants}
                     whileHover={{ scale: 1.02, y: -2 }}
                     className="block relative p-6 bg-card rounded-lg border border-border transition-all duration-300 hover:shadow-lg hover:border-primary/30 group"
                   >
@@ -263,11 +264,7 @@ export default function ContactPage() {
 
               {/* Social Links */}
               <motion.div
-                variants={fadeInUpDelayed}
-                custom={3}
-                initial="initial"
-                whileInView="animate"
-                viewport={{ once: true, margin: "-50px" }}
+                variants={itemVariants}
                 className="relative p-6 bg-card rounded-lg border border-border"
               >
                 {/* Corner accents */}
@@ -302,14 +299,11 @@ export default function ContactPage() {
                   </motion.a>
                 </div>
               </motion.div>
-            </motion.div>
+            </div>
 
             {/* Contact Form */}
             <motion.div
-              variants={fadeInUp}
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: true, margin: "-50px" }}
+              variants={itemVariants}
               className="lg:col-span-2"
             >
               <div className="relative p-8 sm:p-10 bg-card rounded-lg border border-border">
@@ -465,16 +459,14 @@ export default function ContactPage() {
                     )}
                   </div>
 
-                  <motion.button
+                  <button
                     type="submit"
                     disabled={isSubmitting}
-                    whileHover={{ scale: isSubmitting ? 1 : 1.02, y: isSubmitting ? 0 : -2 }}
-                    whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
-                    className="w-full py-4 px-8 text-lg font-semibold rounded flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed transition-all bg-foreground text-background hover:bg-primary hover:text-primary-foreground font-jost"
+                    className="w-full py-4 px-8 text-lg font-semibold rounded flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed transition-all bg-foreground text-background hover:bg-primary hover:text-primary-foreground font-jost hover:scale-[1.02] hover:-translate-y-0.5 active:scale-[0.98] duration-200"
                   >
                     <Send className="w-5 h-5" />
                     {isSubmitting ? 'Sending Message...' : 'Send Message'}
-                  </motion.button>
+                  </button>
 
                   {submitStatus === 'success' && (
                     <motion.div
@@ -502,20 +494,20 @@ export default function ContactPage() {
                 </form>
               </div>
             </motion.div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-background">
+      <motion.section
+        variants={sectionWithChildrenVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={viewportOnce}
+        className="py-20 px-4 sm:px-6 lg:px-8 bg-background"
+      >
         <div className="max-w-7xl mx-auto">
-          <motion.div
-            variants={fadeInUp}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true, margin: "-50px" }}
-            className="text-center mb-16"
-          >
+          <motion.div variants={childVariants} className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-foreground">
               Frequently Asked Questions
             </h2>
@@ -545,11 +537,7 @@ export default function ContactPage() {
             ].map((faq, index) => (
               <motion.div
                 key={index}
-                variants={fadeInUpDelayed}
-                custom={index}
-                initial="initial"
-                whileInView="animate"
-                viewport={{ once: true, margin: "-50px" }}
+                variants={itemVariants}
                 whileHover={{ scale: 1.02, y: -2 }}
                 className="relative p-6 bg-card rounded-lg border border-border transition-all duration-300 group hover:shadow-lg hover:border-primary/30"
               >
@@ -566,20 +554,11 @@ export default function ContactPage() {
           </div>
 
           {/* Bottom accent */}
-          <motion.div
-            variants={fadeInUpDelayed}
-            custom={5}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true, margin: "-50px" }}
-            className="text-center mt-16"
-          >
-            <p className="text-sm uppercase tracking-widest text-foreground/50">
-              Building what <span className="text-primary font-bold">actually works</span>
-            </p>
-          </motion.div>
+          <motion.p variants={childVariants} className="text-center mt-16 text-sm uppercase tracking-widest text-foreground/50">
+            Building what <span className="text-primary font-bold">actually works</span>
+          </motion.p>
         </div>
-      </section>
+      </motion.section>
     </div>
   )
 }

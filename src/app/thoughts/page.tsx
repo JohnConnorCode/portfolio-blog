@@ -2,23 +2,29 @@
 
 import ThoughtsFeed from '@/components/thoughts-feed'
 import { motion } from 'framer-motion'
+import {
+  pageHeaderVariants,
+  decoratorVariants,
+  childVariants,
+  titleVariants,
+  sectionVariants,
+  viewportOnce,
+} from '@/lib/animation-config'
 
 export default function ThoughtsPage() {
   return (
-    <motion.div 
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.6 }}
-      className="min-h-screen py-20 px-4"
-    >
+    <div className="min-h-screen py-20 px-4">
       <div className="max-w-2xl mx-auto">
         {/* Header */}
-        <div className="mb-12 text-center">
+        <motion.div
+          variants={pageHeaderVariants}
+          initial="hidden"
+          animate="visible"
+          className="mb-12 text-center"
+        >
           {/* Decorative element */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.1, duration: 0.5 }}
+            variants={decoratorVariants}
             className="flex items-center justify-center gap-4 mb-6"
           >
             <div className="w-12 h-px bg-gradient-to-r from-transparent to-primary/50" />
@@ -29,18 +35,14 @@ export default function ThoughtsPage() {
           </motion.div>
 
           <motion.span
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.15, duration: 0.5 }}
+            variants={childVariants}
             className="text-primary/60 text-xs tracking-[0.3em] uppercase block mb-4 font-jost"
           >
             Unfiltered
           </motion.span>
 
           <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            variants={titleVariants}
             className="text-5xl md:text-6xl font-bold mb-4 tracking-wide font-jost"
           >
             <span className="text-foreground">The </span>
@@ -48,24 +50,23 @@ export default function ThoughtsPage() {
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            variants={childVariants}
             className="text-lg text-muted-foreground font-light"
           >
             Unfiltered ideas, insights, and observations. My personal microblog.
           </motion.p>
-        </div>
-        
+        </motion.div>
+
         {/* Feed */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
         >
           <ThoughtsFeed />
         </motion.div>
       </div>
-    </motion.div>
+    </div>
   )
 }

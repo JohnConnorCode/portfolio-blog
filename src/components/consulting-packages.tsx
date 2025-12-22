@@ -112,13 +112,9 @@ export function ConsultingPackages() {
           className="text-center mt-12"
         >
           <Link href="/contact">
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="px-8 sm:px-10 py-3 sm:py-4 bg-foreground text-background border-2 border-foreground hover:bg-transparent hover:text-foreground transition-all duration-300 font-medium text-base sm:text-lg"
-            >
+            <button className="px-8 sm:px-10 py-3 sm:py-4 bg-foreground text-background border-2 border-foreground hover:bg-transparent hover:text-foreground hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 font-medium text-base sm:text-lg">
               Solve Your Product Problems
-            </motion.button>
+            </button>
           </Link>
         </motion.div>
       </div>

@@ -4,6 +4,12 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { ArrowUpRight, Zap, Brain, Users, Globe } from 'lucide-react'
 import Link from 'next/link'
 import { useRef } from 'react'
+import {
+  sectionWithChildrenVariants,
+  childVariants,
+  itemVariants,
+  viewportOnce,
+} from '@/lib/animation-config'
 
 const writings = [
   {
@@ -62,14 +68,14 @@ export function WritingsBrutal() {
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          variants={sectionWithChildrenVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
           className="text-center mb-16"
         >
           {/* Decorative element */}
-          <div className="flex items-center justify-center gap-4 mb-6">
+          <motion.div variants={childVariants} className="flex items-center justify-center gap-4 mb-6">
             <div className="w-16 h-px bg-gradient-to-r from-transparent to-primary/50" />
             <svg viewBox="0 0 24 24" className="w-5 h-5 text-primary">
               <path
@@ -87,27 +93,30 @@ export function WritingsBrutal() {
               />
             </svg>
             <div className="w-16 h-px bg-gradient-to-l from-transparent to-primary/50" />
-          </div>
+          </motion.div>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 font-jost text-foreground tracking-wide">
+          <motion.h2 variants={childVariants} className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 font-jost text-foreground tracking-wide">
             Thought Leadership
-          </h2>
-          <p className="text-base sm:text-lg max-w-xl mx-auto font-jost text-foreground/60">
+          </motion.h2>
+          <motion.p variants={childVariants} className="text-base sm:text-lg max-w-xl mx-auto font-jost text-foreground/60">
             Strategic insights on technology, community, and human potential
-          </p>
+          </motion.p>
         </motion.div>
 
         {/* Writing cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-          {writings.map((writing, index) => {
+        <motion.div
+          variants={sectionWithChildrenVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12"
+        >
+          {writings.map((writing) => {
             const Icon = writing.icon
             return (
               <motion.article
                 key={writing.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                variants={itemVariants}
                 whileHover={{ y: -4 }}
                 className={`group ${writing.featured ? 'md:col-span-2' : ''}`}
               >
@@ -150,38 +159,30 @@ export function WritingsBrutal() {
               </motion.article>
             )
           })}
-        </div>
+        </motion.div>
 
         {/* CTA */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          variants={sectionWithChildrenVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
           className="text-center"
         >
-          <Link href="/blog">
-            <motion.button
-              whileHover={{ scale: 1.02, y: -2 }}
-              whileTap={{ scale: 0.98 }}
-              className="px-10 py-4 font-semibold text-sm transition-all duration-300 font-jost bg-transparent text-foreground border border-foreground/30 hover:border-primary hover:text-primary tracking-widest uppercase"
-            >
-              Explore All Writings
-            </motion.button>
-          </Link>
-        </motion.div>
+          <motion.div variants={childVariants}>
+            <Link href="/blog">
+              <button
+                className="px-10 py-4 font-semibold text-sm transition-all duration-300 font-jost bg-transparent text-foreground border border-foreground/30 hover:border-primary hover:text-primary tracking-widest uppercase"
+              >
+                Explore All Writings
+              </button>
+            </Link>
+          </motion.div>
 
-        {/* Bottom text */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="text-center mt-12"
-        >
-          <p className="text-sm uppercase tracking-[0.2em] font-jost text-foreground/40">
+          {/* Bottom text */}
+          <motion.p variants={childVariants} className="text-sm uppercase tracking-[0.2em] font-jost text-foreground/40 mt-12">
             Ideas that <span className="text-primary">shape the future</span>
-          </p>
+          </motion.p>
         </motion.div>
       </div>
     </motion.section>

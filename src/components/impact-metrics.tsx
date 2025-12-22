@@ -43,7 +43,7 @@ const metrics = [
   },
   {
     label: 'Monthly Active Users',
-    value: 200000,
+    value: 300000,
     icon: Users,
     description: 'Scaled at Upland',
     color: 'from-blue-500/20 to-cyan-500/20'

@@ -3,6 +3,12 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Zap, Users, Code, Trophy } from 'lucide-react'
 import { useRef } from 'react'
+import {
+  sectionWithChildrenVariants,
+  childVariants,
+  itemVariants,
+  viewportOnce,
+} from '@/lib/animation-config'
 
 const impacts = [
   {
@@ -57,14 +63,14 @@ export function ImpactBrutal() {
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Section header */}
         <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.25 }}
+          variants={sectionWithChildrenVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
           className="text-center mb-16"
         >
           {/* Decorative element */}
-          <div className="flex items-center justify-center gap-4 mb-6">
+          <motion.div variants={childVariants} className="flex items-center justify-center gap-4 mb-6">
             <div className="w-16 h-px bg-gradient-to-r from-transparent to-primary/50" />
             <svg viewBox="0 0 24 24" className="w-5 h-5 text-primary">
               <path
@@ -75,27 +81,30 @@ export function ImpactBrutal() {
               />
             </svg>
             <div className="w-16 h-px bg-gradient-to-l from-transparent to-primary/50" />
-          </div>
+          </motion.div>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 font-jost text-foreground tracking-wide">
+          <motion.h2 variants={childVariants} className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 font-jost text-foreground tracking-wide">
             Track Record
-          </h2>
-          <p className="text-base sm:text-lg max-w-xl mx-auto font-jost text-foreground/60">
+          </motion.h2>
+          <motion.p variants={childVariants} className="text-base sm:text-lg max-w-xl mx-auto font-jost text-foreground/60">
             Products built, companies scaled, systems shipped
-          </p>
+          </motion.p>
         </motion.div>
 
         {/* Impact cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-          {impacts.map((impact, index) => {
+        <motion.div
+          variants={sectionWithChildrenVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8"
+        >
+          {impacts.map((impact) => {
             const Icon = impact.icon
             return (
               <motion.div
                 key={impact.label}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.2, delay: index * 0.03 }}
+                variants={itemVariants}
                 whileHover={{ y: -4 }}
                 className="relative group"
               >
@@ -128,7 +137,7 @@ export function ImpactBrutal() {
               </motion.div>
             )
           })}
-        </div>
+        </motion.div>
 
         {/* Bottom text */}
         <div className="text-center mt-12">

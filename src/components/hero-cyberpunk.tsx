@@ -4,6 +4,11 @@ import { useEffect, useRef, useState } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
+import {
+  pageHeaderVariants,
+  childVariants,
+  staggerOrchestrator,
+} from '@/lib/animation-config'
 
 interface HeroContent {
   heroTitle?: string
@@ -101,79 +106,17 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
         className="relative z-20 min-h-screen flex items-center px-6 sm:px-8 lg:px-16"
       >
         <div className="max-w-7xl mx-auto w-full">
-          <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            {/* Left Column - Content */}
-            <div className="lg:col-span-7 order-2 lg:order-1 text-center lg:text-left">
-
-              {/* Name - BOLD and distinctive */}
-              <h1 className="relative mb-6">
-                <span
-                  className="block text-6xl sm:text-7xl md:text-8xl lg:text-[7rem] font-bold tracking-tight text-foreground font-jost"
-                  style={{ lineHeight: 0.9 }}
-                >
-                  JOHN
-                </span>
-                <span
-                  className="block text-6xl sm:text-7xl md:text-8xl lg:text-[7rem] font-bold tracking-tight font-jost bg-gradient-to-r from-primary via-primary to-foreground bg-clip-text text-transparent"
-                  style={{ lineHeight: 0.9 }}
-                >
-                  CONNOR
-                </span>
-              </h1>
-
-              {/* Role badges */}
-              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 mb-8">
-                {['Product', 'Engineering', 'Strategy'].map((role) => (
-                  <span
-                    key={role}
-                    className="px-4 py-2 text-xs tracking-[0.2em] uppercase border border-primary/30 text-primary font-jost bg-primary/5 backdrop-blur-sm"
-                  >
-                    {role}
-                  </span>
-                ))}
-              </div>
-
-              {/* Description */}
-              <p className="text-xl sm:text-2xl md:text-3xl leading-relaxed mb-4 max-w-2xl mx-auto lg:mx-0 text-foreground/90 font-jost font-light">
-                {heroContent.heroDescription}
-              </p>
-
-              {/* Tagline */}
-              <p className="text-lg md:text-xl mb-12 max-w-xl mx-auto lg:mx-0 text-primary font-jost font-medium">
-                {heroContent.heroHighlight}
-              </p>
-
-              {/* CTA Buttons - more impactful */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <Link href="/contact">
-                  <motion.button
-                    className="group relative px-10 py-5 font-semibold text-sm overflow-hidden bg-primary text-background uppercase tracking-[0.15em] font-jost"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <span className="relative z-10">Get in Touch</span>
-                    <div className="absolute inset-0 bg-foreground transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-                    <span className="absolute inset-0 flex items-center justify-center text-background opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
-                      Get in Touch
-                    </span>
-                  </motion.button>
-                </Link>
-
-                <Link href="/work">
-                  <motion.button
-                    className="px-10 py-5 font-semibold text-sm bg-transparent text-foreground border-2 border-foreground/20 hover:border-primary hover:text-primary uppercase tracking-[0.15em] font-jost transition-all duration-300"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    See the Work
-                  </motion.button>
-                </Link>
-              </div>
-
-            </div>
-
-            {/* Right Column - Photo */}
-            <div className="lg:col-span-5 order-1 lg:order-2 flex justify-center lg:justify-end">
+          <motion.div
+            variants={pageHeaderVariants}
+            initial="hidden"
+            animate="visible"
+            className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center"
+          >
+            {/* Photo Column - First in DOM for mobile animation order */}
+            <motion.div
+              variants={childVariants}
+              className="lg:col-span-5 order-1 lg:order-2 flex justify-center lg:justify-end"
+            >
               <div className="relative">
                 {/* Glowing backdrop */}
                 <div className="absolute -inset-8 bg-gradient-to-br from-primary/20 via-primary/5 to-transparent rounded-full blur-3xl" />
@@ -187,7 +130,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                   <div className="absolute -bottom-3 -right-3 w-12 h-12 border-b-2 border-r-2 border-primary" />
 
                   {/* Photo */}
-                  <div className="relative w-72 h-96 sm:w-80 sm:h-[420px] md:w-[360px] md:h-[480px] overflow-hidden">
+                  <div className="relative w-44 h-56 sm:w-52 sm:h-64 md:w-64 md:h-80 lg:w-72 lg:h-96 overflow-hidden">
                     <Image
                       src="/John-Connor-photo.jpg"
                       alt="John Connor"
@@ -217,24 +160,75 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                   />
                 </div>
               </div>
-            </div>
-          </div>
+            </motion.div>
+
+            {/* Content Column - Second in DOM, animates after photo */}
+            <motion.div
+              variants={staggerOrchestrator}
+              className="lg:col-span-7 order-2 lg:order-1 text-center lg:text-left"
+            >
+
+              {/* Name - BOLD and distinctive */}
+              <motion.h1 variants={childVariants} className="relative mb-6">
+                <span
+                  className="block text-6xl sm:text-7xl md:text-8xl lg:text-[7rem] font-bold tracking-tight text-foreground font-jost"
+                  style={{ lineHeight: 0.9 }}
+                >
+                  JOHN
+                </span>
+                <span
+                  className="block text-6xl sm:text-7xl md:text-8xl lg:text-[7rem] font-bold tracking-tight font-jost bg-gradient-to-r from-primary via-primary to-foreground bg-clip-text text-transparent"
+                  style={{ lineHeight: 0.9 }}
+                >
+                  CONNOR
+                </span>
+              </motion.h1>
+
+              {/* Role badges */}
+              <motion.div variants={childVariants} className="flex flex-wrap items-center justify-center lg:justify-start gap-3 mb-8">
+                {['Product', 'Engineering', 'Strategy'].map((role) => (
+                  <span
+                    key={role}
+                    className="px-4 py-2 text-xs tracking-[0.2em] uppercase border border-primary/30 text-primary font-jost bg-primary/5 backdrop-blur-sm"
+                  >
+                    {role}
+                  </span>
+                ))}
+              </motion.div>
+
+              {/* Description */}
+              <motion.p variants={childVariants} className="text-xl sm:text-2xl md:text-3xl leading-relaxed mb-4 max-w-2xl mx-auto lg:mx-0 text-foreground/90 font-jost font-light">
+                {heroContent.heroDescription}
+              </motion.p>
+
+              {/* Tagline */}
+              <motion.p variants={childVariants} className="text-lg md:text-xl mb-12 max-w-xl mx-auto lg:mx-0 text-primary font-jost font-medium">
+                {heroContent.heroHighlight}
+              </motion.p>
+
+              {/* CTA Buttons - more impactful */}
+              <motion.div variants={childVariants} className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <Link href="/contact">
+                  <button className="group relative px-10 py-5 font-semibold text-sm overflow-hidden bg-primary text-background uppercase tracking-[0.15em] font-jost hover:scale-[1.02] active:scale-[0.98] transition-transform duration-200">
+                    <span className="relative z-10">Get in Touch</span>
+                    <div className="absolute inset-0 bg-foreground transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                    <span className="absolute inset-0 flex items-center justify-center text-background opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
+                      Get in Touch
+                    </span>
+                  </button>
+                </Link>
+
+                <Link href="/work">
+                  <button className="px-10 py-5 font-semibold text-sm bg-transparent text-foreground border-2 border-foreground/20 hover:border-primary hover:text-primary uppercase tracking-[0.15em] font-jost transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]">
+                    See the Work
+                  </button>
+                </Link>
+              </motion.div>
+
+            </motion.div>
+          </motion.div>
         </div>
       </motion.div>
-
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          className="flex flex-col items-center gap-3"
-        >
-          <span className="text-[10px] tracking-[0.3em] uppercase text-foreground/40 font-jost">
-            Scroll
-          </span>
-          <div className="w-px h-12 bg-gradient-to-b from-primary to-transparent" />
-        </motion.div>
-      </div>
 
       {/* Bottom border */}
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />

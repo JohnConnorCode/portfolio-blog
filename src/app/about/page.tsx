@@ -3,6 +3,15 @@
 import { motion } from 'framer-motion'
 import { Brain, Zap, Target, Users, Code, Rocket, Globe, MessageSquare, Sparkles, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
+import {
+  pageHeaderVariants,
+  sectionWithChildrenVariants,
+  childVariants,
+  itemVariants,
+  decoratorVariants,
+  viewportOnce,
+  cardHover,
+} from '@/lib/animation-config'
 
 const coreCapabilities = [
   {
@@ -58,8 +67,17 @@ const journey = [
   {
     phase: 'Current',
     title: 'AI + Civic Innovation',
-    description: 'Building SuperDebate (reinventing civic discourse) and Accelerate (Web3 builder intelligence). Combining AI automation with systems that serve human flourishing.',
+    description: 'Building SuperDebate (restoring the values of the Greek agora) and Accelerate (Web3 builder intelligence). Combining AI automation with systems that serve human flourishing.',
   },
+]
+
+const values = [
+  { icon: Users, title: 'Human Development', desc: 'Tools that make people more capable, not more dependent' },
+  { icon: Globe, title: 'Community Formation', desc: 'Platforms that connect people around shared purpose' },
+  { icon: Sparkles, title: 'Transparent Value Flow', desc: 'Systems where incentives align with outcomes' },
+  { icon: Rocket, title: 'Builder Enablement', desc: 'Infrastructure that accelerates creators and founders' },
+  { icon: MessageSquare, title: 'Civic Capability', desc: 'Restoring reasoned discourse and democratic participation' },
+  { icon: Brain, title: 'Decentralized Coordination', desc: 'New forms of governance and collective action' },
 ]
 
 export default function AboutPage() {
@@ -69,16 +87,14 @@ export default function AboutPage() {
       <section className="relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
         <div className="max-w-6xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            variants={pageHeaderVariants}
+            initial="hidden"
+            animate="visible"
             className="text-center mb-16"
           >
             {/* Decorative diamond element */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.1, duration: 0.5 }}
+              variants={decoratorVariants}
               className="flex items-center justify-center gap-4 mb-6"
             >
               <div className="w-12 h-px bg-gradient-to-r from-transparent to-primary" />
@@ -94,40 +110,42 @@ export default function AboutPage() {
             </motion.div>
 
             <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.2 }}
+              variants={childVariants}
               className="text-xs tracking-[0.3em] uppercase mb-4 text-primary"
             >
               Founder • Builder • Systems Thinker
             </motion.p>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 tracking-wide text-foreground">
+            <motion.h1
+              variants={childVariants}
+              className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 tracking-wide text-foreground"
+            >
               About <span className="text-primary">Me</span>
-            </h1>
-            <p className="text-lg text-foreground/70 max-w-3xl mx-auto leading-relaxed font-light">
+            </motion.h1>
+            <motion.p
+              variants={childVariants}
+              className="text-lg text-foreground/70 max-w-3xl mx-auto leading-relaxed font-light"
+            >
               15+ years building products across AI, Web3, civic tech, and digital communities.
               I care about technology that makes people more capable, not more dependent.
-            </p>
+            </motion.p>
           </motion.div>
 
           {/* Achievement Stats */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
+            variants={sectionWithChildrenVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
             className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-20"
           >
-            {achievements.map((item, index) => (
+            {achievements.map((item) => (
               <motion.div
                 key={item.label}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 + index * 0.1 }}
-                whileHover={{ y: -4, scale: 1.02 }}
+                variants={itemVariants}
+                whileHover={cardHover}
                 className="relative group"
               >
                 <div className="relative bg-card rounded-xl p-5 text-center transition-all duration-300 border border-border">
-                  {/* Corner accents on hover */}
                   <div className="absolute top-0 left-0 w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 border-t-2 border-l-2 border-primary" />
                   <div className="absolute bottom-0 right-0 w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 border-b-2 border-r-2 border-primary" />
 
@@ -151,27 +169,17 @@ export default function AboutPage() {
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
+            variants={sectionWithChildrenVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
             className="grid lg:grid-cols-2 gap-12 items-center mb-20"
           >
-            <div>
-              <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="text-3xl md:text-4xl font-bold mb-6 text-foreground"
-              >
+            <motion.div variants={childVariants}>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">
                 Background
-              </motion.h2>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1 }}
-                className="space-y-4 text-foreground/80"
-              >
+              </h2>
+              <div className="space-y-4 text-foreground/80">
                 <p>
                   I started in competitive debate—teaching people how to <strong className="text-foreground font-semibold">reason, argue, and change minds</strong>.
                   That foundation shapes how I approach building: clarity over complexity, structure over chaos.
@@ -181,21 +189,18 @@ export default function AboutPage() {
                   and worked across AI, Web3, and civic tech. I&apos;ve seen what works and what doesn&apos;t.
                 </p>
                 <p>
-                  Now I&apos;m focused on SuperDebate (bringing structured debate back to adults) and
+                  Now I&apos;m focused on SuperDebate (restoring the values of the Greek agora) and
                   Accelerate (helping Web3 builders find funding and resources).
                 </p>
-              </motion.div>
-            </div>
+              </div>
+            </motion.div>
 
             {/* Technical Stack */}
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              variants={childVariants}
               className="relative group"
             >
               <div className="relative bg-card rounded-2xl p-8 transition-all duration-300 border border-border">
-                {/* Corner accents */}
                 <div className="absolute top-0 left-0 w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 border-t-2 border-l-2 border-primary" />
                 <div className="absolute bottom-0 right-0 w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 border-b-2 border-r-2 border-primary" />
 
@@ -225,29 +230,29 @@ export default function AboutPage() {
 
           {/* Core Capabilities */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            variants={sectionWithChildrenVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
             className="mb-20"
           >
-            <h2 className="text-3xl font-bold text-center mb-12 text-foreground">
+            <motion.h2
+              variants={childVariants}
+              className="text-3xl font-bold text-center mb-12 text-foreground"
+            >
               Core <span className="text-primary">Capabilities</span>
-            </h2>
+            </motion.h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {coreCapabilities.map((capability, index) => {
+              {coreCapabilities.map((capability) => {
                 const Icon = capability.icon
                 return (
                   <motion.div
                     key={capability.title}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    whileHover={{ y: -8, scale: 1.02 }}
+                    variants={itemVariants}
+                    whileHover={cardHover}
                     className="relative group"
                   >
                     <div className="relative bg-card rounded-xl p-6 h-full transition-all duration-300 border border-border">
-                      {/* Corner accents */}
                       <div className="absolute top-0 left-0 w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 border-t-2 border-l-2 border-primary" />
                       <div className="absolute bottom-0 right-0 w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 border-b-2 border-r-2 border-primary" />
 
@@ -271,37 +276,39 @@ export default function AboutPage() {
       <section className="py-20 px-4 sm:px-6 lg:px-8 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
         <div className="max-w-4xl mx-auto relative">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-3xl font-bold text-center mb-12 text-foreground"
+          <motion.div
+            variants={sectionWithChildrenVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
           >
-            The <span className="text-primary">Journey</span>
-          </motion.h2>
+            <motion.h2
+              variants={childVariants}
+              className="text-3xl font-bold text-center mb-12 text-foreground"
+            >
+              The <span className="text-primary">Journey</span>
+            </motion.h2>
 
-          <div className="space-y-6">
-            {journey.map((phase, index) => (
-              <motion.div
-                key={phase.phase}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="relative bg-card rounded-r-xl p-6 border border-border border-l-4 border-l-primary"
-              >
-                <span className="text-xs font-mono uppercase tracking-wider text-primary">
-                  {phase.phase}
-                </span>
-                <h3 className="text-xl font-bold mt-1 mb-2 text-foreground">
-                  {phase.title}
-                </h3>
-                <p className="text-foreground/70">
-                  {phase.description}
-                </p>
-              </motion.div>
-            ))}
-          </div>
+            <div className="space-y-6">
+              {journey.map((phase) => (
+                <motion.div
+                  key={phase.phase}
+                  variants={itemVariants}
+                  className="relative bg-card rounded-r-xl p-6 border border-border border-l-4 border-l-primary"
+                >
+                  <span className="text-xs font-mono uppercase tracking-wider text-primary">
+                    {phase.phase}
+                  </span>
+                  <h3 className="text-xl font-bold mt-1 mb-2 text-foreground">
+                    {phase.title}
+                  </h3>
+                  <p className="text-foreground/70">
+                    {phase.description}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -309,49 +316,41 @@ export default function AboutPage() {
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
+            variants={sectionWithChildrenVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
           >
-            <h2 className="text-3xl font-bold mb-4 text-foreground">
-              What I Care About
-            </h2>
-            <p className="max-w-2xl mx-auto text-foreground/70">
-              The best ideas should win. Communities should form around shared purpose. Technology should make us more capable, not more dependent.
-            </p>
-          </motion.div>
+            <motion.div variants={childVariants} className="text-center mb-12">
+              <h2 className="text-3xl font-bold mb-4 text-foreground">
+                What I Care About
+              </h2>
+              <p className="max-w-2xl mx-auto text-foreground/70">
+                The best ideas should win. Communities should form around shared purpose. Technology should make us more capable, not more dependent.
+              </p>
+            </motion.div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              { icon: Users, title: 'Human Development', desc: 'Tools that make people more capable, not more dependent' },
-              { icon: Globe, title: 'Community Formation', desc: 'Platforms that connect people around shared purpose' },
-              { icon: Sparkles, title: 'Transparent Value Flow', desc: 'Systems where incentives align with outcomes' },
-              { icon: Rocket, title: 'Builder Enablement', desc: 'Infrastructure that accelerates creators and founders' },
-              { icon: MessageSquare, title: 'Civic Capability', desc: 'Restoring reasoned discourse and democratic participation' },
-              { icon: Brain, title: 'Decentralized Coordination', desc: 'New forms of governance and collective action' },
-            ].map((item, index) => {
-              const Icon = item.icon
-              return (
-                <motion.div
-                  key={item.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="bg-card rounded-xl p-5 transition-all group border border-border hover:border-primary/30"
-                >
-                  <Icon className="w-8 h-8 mb-3 group-hover:scale-110 transition-transform text-primary" />
-                  <h3 className="font-semibold mb-1 text-foreground">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm text-foreground/60">
-                    {item.desc}
-                  </p>
-                </motion.div>
-              )
-            })}
-          </div>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {values.map((item) => {
+                const Icon = item.icon
+                return (
+                  <motion.div
+                    key={item.title}
+                    variants={itemVariants}
+                    className="bg-card rounded-xl p-5 transition-all group border border-border hover:border-primary/30"
+                  >
+                    <Icon className="w-8 h-8 mb-3 group-hover:scale-110 transition-transform text-primary" />
+                    <h3 className="font-semibold mb-1 text-foreground">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm text-foreground/60">
+                      {item.desc}
+                    </p>
+                  </motion.div>
+                )
+              })}
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -359,42 +358,43 @@ export default function AboutPage() {
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            variants={sectionWithChildrenVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
             className="relative rounded-2xl p-8 sm:p-12 text-center overflow-hidden group bg-card border-2 border-border"
           >
-            {/* Corner brackets */}
             <div className="absolute top-0 left-0 w-20 h-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 border-t-[3px] border-l-[3px] border-primary rounded-tl-2xl" />
             <div className="absolute bottom-0 right-0 w-20 h-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 border-b-[3px] border-r-[3px] border-primary rounded-br-2xl" />
 
-            <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-foreground">
+            <motion.h2
+              variants={childVariants}
+              className="text-2xl sm:text-3xl font-bold mb-4 text-foreground"
+            >
               See It in Action
-            </h2>
-            <p className="mb-8 max-w-xl mx-auto text-foreground/70">
+            </motion.h2>
+            <motion.p
+              variants={childVariants}
+              className="mb-8 max-w-xl mx-auto text-foreground/70"
+            >
               The proof is in the work.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            </motion.p>
+            <motion.div
+              variants={childVariants}
+              className="flex flex-col sm:flex-row gap-4 justify-center"
+            >
               <Link href="/work">
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="px-8 py-4 font-bold text-lg flex items-center justify-center gap-2 rounded-lg bg-primary text-primary-foreground"
-                >
+                <button className="px-8 py-4 font-bold text-lg flex items-center justify-center gap-2 rounded-lg bg-primary text-primary-foreground hover:scale-[1.02] active:scale-[0.98] transition-transform duration-200">
                   View My Work
                   <ArrowRight className="w-5 h-5" />
-                </motion.button>
+                </button>
               </Link>
               <Link href="/contact">
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="px-8 py-4 font-bold text-lg rounded-lg bg-transparent border-2 border-primary text-foreground hover:bg-primary hover:text-primary-foreground transition-colors"
-                >
+                <button className="px-8 py-4 font-bold text-lg rounded-lg bg-transparent border-2 border-primary text-foreground hover:bg-primary hover:text-primary-foreground hover:scale-[1.02] active:scale-[0.98] transition-all duration-200">
                   Get in Touch
-                </motion.button>
+                </button>
               </Link>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>

@@ -36,11 +36,11 @@
 #### Key Roles & Companies
 
 **Current/Recent:**
-- **Super Debate** - Founder & Creator
-  - Building in-person debate platform for courage, growth, and community
-  - Creating spaces for face-to-face intellectual discourse
-  - Fighting against digital isolation through real human connection
-  - Technology that brings people together, not apart
+- **Super Debate** - Founder & CEO
+  - Building a new intellectual sport for the 21st century
+  - Restoring the values of the Greek agora for the modern world
+  - Local clubs, national tournaments, AI-powered judging
+  - A serious startup creating a global alternative to online outrage
 
 - **Thrive Protocol** - Ecosystem Specialist
   - Managing $2M+ in grant allocations
@@ -56,7 +56,7 @@
   - Building meaningful digital ownership, not speculation
 
 - **Upland** - Product & Operations Manager
-  - Scaled virtual property game to 200K monthly active users
+  - Scaled virtual property game to 300K monthly active users
   - 15x growth in MAU
   - Launched SPARK token
   - Focused on player-first economics
@@ -311,13 +311,13 @@
 - Focus on augmenting human decision-making
 
 ### Super Debate
-**Vision:** Create spaces for in-person intellectual discourse and community growth
+**Vision:** Build a new intellectual sport for the 21st century—restoring the values of the Greek agora where citizens gather to challenge ideas and grow through discourse
 
-**Philosophy:** 
-- Technology has made us more connected but less together
-- Real growth happens through face-to-face challenge
-- Vulnerability and courage are muscles that need exercise
-- Communities are built through constructive conflict
+**Philosophy:**
+- Building a sport-like ecosystem: from Tuesday-night meetups to championship events
+- The ancient agora wasn't just a marketplace—it was where citizens debated, challenged, and governed themselves
+- Wisdom emerges from structured disagreement, not comfortable consensus
+- Creating a global, positive alternative to online outrage
 
 **Current Status:**
 - Active in 3 cities
@@ -423,7 +423,7 @@
 - **50+** products shipped from concept to scale
 - **100+** businesses advised or helped
 - **1000+** user research sessions conducted
-- **200K** MAU achieved at Upland
+- **300K** MAU achieved at Upland
 - **15x** growth in user engagement
 - **$2M+** in grants managed efficiently
 - **90%** time savings through automation

@@ -256,7 +256,7 @@ const blogPosts = [
 
 <p>Virtual real estate became actual commerce. Players weren't just playing. They were building. Creating. Owning. The game became an economy.</p>
 
-<p>100,000 users joined not for the game but for the system. They saw compound potential.</p>
+<p>300,000 users joined not for the game but for the system. They saw compound potential.</p>
 
 <h2>Designing for Compound Growth</h2>
 
@@ -480,14 +480,14 @@ const projects = [
     title: 'Upland SPARK Economy',
     slug: 'upland-spark',
     client: 'Upland',
-    description: 'Designed and launched token economy that brought 100K+ users into Web3 through gaming.',
+    description: 'Designed and launched token economy that brought 300K+ users into Web3 through gaming.',
     philosophy: 'Games should reward creativity, not just consumption. Players should own their achievements. Virtual economies should be real economies.',
-    impact: '100K users onboarded to Web3. 15x revenue growth. Created sustainable play-to-earn model that actually works.',
+    impact: '300K users onboarded to Web3. 15x revenue growth. Created sustainable play-to-earn model that actually works.',
     category: 'Web3/Gaming',
     featured: false,
     technologies: ['Solidity', 'React', 'Node.js', 'EOS', 'Game Economy Design'],
     metrics: {
-      users: '100K+',
+      users: '300K+',
       revenue_growth: '15x',
       token: 'SPARK',
       model: 'Sustainable P2E'

@@ -2,7 +2,12 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Zap, DollarSign, Users, ArrowRight, Globe, BookOpen } from 'lucide-react'
-import { SECTION_DELAYS } from '@/lib/animation-config'
+import {
+  sectionWithChildrenVariants,
+  childVariants,
+  itemVariants,
+  viewportOnce,
+} from '@/lib/animation-config'
 import Link from 'next/link'
 import { useRef } from 'react'
 
@@ -99,78 +104,66 @@ export function AccelerateHero() {
       >
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: SECTION_DELAYS.accelerate }}
+          variants={sectionWithChildrenVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
           className="text-center mb-12"
         >
           <motion.div
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 mb-6"
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: SECTION_DELAYS.accelerate + 0.1 }}
-            whileHover={{ scale: 1.05 }}
+            variants={childVariants}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 mb-6 hover:scale-105 transition-transform"
           >
             <Zap className="w-4 h-4 text-cyan-400" />
             <span className="text-sm font-mono text-cyan-400">ACCELERATEWITH.US</span>
           </motion.div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+          <motion.h2 variants={childVariants} className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
             <span className="text-foreground">Where Web3 </span>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
               Builders Connect
             </span>
-          </h2>
+          </motion.h2>
 
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-6">
+          <motion.p variants={childVariants} className="text-lg text-muted-foreground max-w-2xl mx-auto mb-6">
             The ecosystem platform connecting builders, investors, and resources for Web3 innovation
-          </p>
+          </motion.p>
 
           {/* CTA Buttons */}
           <motion.div
+            variants={childVariants}
             className="flex flex-col sm:flex-row gap-4 justify-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: SECTION_DELAYS.accelerate + 0.3 }}
           >
             <Link href="https://acceleratewith.us" target="_blank" rel="noopener noreferrer">
-              <motion.button
-                className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-primary-foreground font-semibold rounded-xl flex items-center justify-center gap-2 group"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
+              <button className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-primary-foreground font-semibold rounded-xl flex items-center justify-center gap-2 group hover:scale-105 active:scale-95 transition-transform duration-200">
                 <span>Explore Platform</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </motion.button>
+              </button>
             </Link>
 
             <Link href="/accelerate">
-              <motion.button
-                className="px-8 py-4 border border-cyan-500/30 text-cyan-400 font-semibold rounded-xl hover:bg-cyan-500/10 transition-colors"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
+              <button className="px-8 py-4 border border-cyan-500/30 text-cyan-400 font-semibold rounded-xl hover:bg-cyan-500/10 hover:scale-105 active:scale-95 transition-all duration-200">
                 Learn More
-              </motion.button>
+              </button>
             </Link>
           </motion.div>
         </motion.div>
 
         {/* Compact Features */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
-          {features.map((feature, index) => {
+        <motion.div
+          variants={sectionWithChildrenVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+          className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto"
+        >
+          {features.map((feature) => {
             const Icon = feature.icon
 
             return (
               <motion.div
                 key={feature.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: SECTION_DELAYS.accelerate + 0.5 + (index * 0.1), duration: 0.5 }}
+                variants={itemVariants}
               >
                 <motion.div
                   className="relative group h-full"
@@ -189,14 +182,14 @@ export function AccelerateHero() {
               </motion.div>
             )
           })}
-        </div>
+        </motion.div>
 
         {/* Compact Platform Showcase */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: SECTION_DELAYS.accelerate + 0.9 }}
+          variants={childVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
           className="relative max-w-4xl mx-auto mt-12"
         >
           <div className="relative bg-background/80 backdrop-blur-xl border border-cyan-500/40 rounded-xl p-6 shadow-[0_0_50px_rgba(6,182,212,0.15)]">
@@ -248,25 +241,21 @@ export function AccelerateHero() {
 
         {/* Bottom CTA */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: SECTION_DELAYS.accelerate + 1.1 }}
+          variants={childVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
           className="text-center mt-8"
         >
           <p className="text-base text-muted-foreground mb-4">
             Join hundreds of Web3 builders accelerating their projects
           </p>
           <Link href="https://acceleratewith.us" target="_blank" rel="noopener noreferrer">
-            <motion.button
-              className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-primary-foreground font-semibold rounded-xl hover:from-cyan-400 hover:to-blue-500 transition-all duration-300 inline-flex items-center justify-center gap-2 group shadow-[0_0_30px_rgba(6,182,212,0.3)] hover:shadow-[0_0_40px_rgba(6,182,212,0.5)]"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
+            <button className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-primary-foreground font-semibold rounded-xl hover:from-cyan-400 hover:to-blue-500 transition-all duration-300 inline-flex items-center justify-center gap-2 group shadow-[0_0_30px_rgba(6,182,212,0.3)] hover:shadow-[0_0_40px_rgba(6,182,212,0.5)] hover:scale-105 active:scale-95">
               <Zap className="w-5 h-5" />
               <span>Get Started</span>
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </motion.button>
+            </button>
           </Link>
         </motion.div>
       </motion.div>

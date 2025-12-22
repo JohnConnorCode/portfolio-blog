@@ -4,6 +4,13 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { CheckCircle, ArrowRight, MessageSquare, Rocket, Target, Users, Brain, Eye, Zap, Unlock } from 'lucide-react'
 import Link from 'next/link'
 import { useRef } from 'react'
+import {
+  sectionWithChildrenVariants,
+  staggerOrchestrator,
+  childVariants,
+  itemVariants,
+  viewportOnce,
+} from '@/lib/animation-config'
 
 const process = [
   {
@@ -93,14 +100,14 @@ export function WorkingWithMe() {
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          variants={sectionWithChildrenVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
           className="text-center mb-16"
         >
           {/* Decorative element */}
-          <div className="flex items-center justify-center gap-4 mb-6">
+          <motion.div variants={childVariants} className="flex items-center justify-center gap-4 mb-6">
             <div className="w-16 h-px bg-gradient-to-r from-transparent to-primary/50" />
             <svg viewBox="0 0 24 24" className="w-5 h-5 text-primary">
               <path
@@ -111,43 +118,43 @@ export function WorkingWithMe() {
               />
             </svg>
             <div className="w-16 h-px bg-gradient-to-l from-transparent to-primary/50" />
-          </div>
+          </motion.div>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 font-jost text-foreground tracking-wide">
+          <motion.h2 variants={childVariants} className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 font-jost text-foreground tracking-wide">
             Working Together
-          </h2>
-          <p className="text-base sm:text-lg max-w-2xl mx-auto font-jost text-foreground/60">
+          </motion.h2>
+          <motion.p variants={childVariants} className="text-base sm:text-lg max-w-2xl mx-auto font-jost text-foreground/60">
             Product strategy, technical architecture, and hands-on execution.
-          </p>
+          </motion.p>
         </motion.div>
 
         {/* Process Timeline */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          variants={sectionWithChildrenVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
           className="mb-20"
         >
-          <div className="text-center mb-12">
+          <motion.div variants={childVariants} className="text-center mb-12">
             <h3 className="text-2xl sm:text-3xl font-bold mb-3 font-jost text-foreground">
               The <span className="text-primary">Process</span>
             </h3>
             <p className="text-base font-jost text-foreground/50">
               From discovery to scale in 8 weeks.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid md:grid-cols-4 gap-6">
-            {process.map((phase, index) => {
+          <motion.div
+            variants={staggerOrchestrator}
+            className="grid md:grid-cols-4 gap-6"
+          >
+            {process.map((phase) => {
               const Icon = phase.icon
               return (
                 <motion.div
                   key={phase.phase}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  variants={itemVariants}
                   whileHover={{ y: -4 }}
                   className="relative group"
                 >
@@ -184,36 +191,36 @@ export function WorkingWithMe() {
                 </motion.div>
               )
             })}
-          </div>
+          </motion.div>
         </motion.div>
 
         {/* Working Principles */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.3 }}
+          variants={sectionWithChildrenVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
           className="mb-20"
         >
-          <div className="text-center mb-12">
+          <motion.div variants={childVariants} className="text-center mb-12">
             <h3 className="text-2xl sm:text-3xl font-bold mb-3 font-jost text-foreground">
               My <span className="text-primary">Principles</span>
             </h3>
             <p className="text-base font-jost text-foreground/50">
               Core values that guide every engagement.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            {principles.map((principle, index) => {
+          <motion.div
+            variants={staggerOrchestrator}
+            className="grid md:grid-cols-2 gap-6"
+          >
+            {principles.map((principle) => {
               const Icon = principle.icon
               return (
                 <motion.div
                   key={principle.title}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  variants={itemVariants}
                   whileHover={{ y: -4 }}
                   className="group"
                 >
@@ -239,27 +246,30 @@ export function WorkingWithMe() {
                 </motion.div>
               )
             })}
-          </div>
+          </motion.div>
         </motion.div>
 
         {/* How I Help */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          variants={sectionWithChildrenVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
           className="mb-16"
         >
-          <div className="text-center mb-12">
+          <motion.div variants={childVariants} className="text-center mb-12">
             <h3 className="text-2xl sm:text-3xl font-bold mb-3 font-jost text-foreground">
               How I <span className="text-primary">Help</span>
             </h3>
             <p className="text-base font-jost text-foreground/50">
               Strategy through implementation.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <motion.div
+            variants={staggerOrchestrator}
+            className="grid md:grid-cols-3 gap-6"
+          >
             {[
               {
                 icon: Brain,
@@ -276,15 +286,12 @@ export function WorkingWithMe() {
                 title: 'Hands-On Execution',
                 description: 'Not just strategy decks. I build alongside your team from architecture through launch.',
               }
-            ].map((item, index) => {
+            ].map((item) => {
               const Icon = item.icon
               return (
                 <motion.div
                   key={item.title}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  variants={itemVariants}
                   whileHover={{ y: -4 }}
                   className="group"
                 >
@@ -308,36 +315,30 @@ export function WorkingWithMe() {
                 </motion.div>
               )
             })}
-          </div>
+          </motion.div>
         </motion.div>
 
         {/* CTA */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.5 }}
+          variants={sectionWithChildrenVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
           className="text-center"
         >
-          <p className="text-lg mb-6 font-jost text-foreground/60">
+          <motion.p variants={childVariants} className="text-lg mb-6 font-jost text-foreground/60">
             Interested in working together?
-          </p>
-          <Link href="/contact">
-            <motion.button
-              whileHover={{ scale: 1.02, y: -2 }}
-              whileTap={{ scale: 0.98 }}
-              className="group relative px-10 py-5 font-semibold text-sm flex items-center justify-center gap-3 mx-auto overflow-hidden font-jost bg-foreground text-background tracking-widest uppercase"
-            >
-              <span className="relative z-10">Get in Touch</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform relative z-10" />
-              <motion.div
-                className="absolute inset-0 bg-primary"
-                initial={{ x: '-100%' }}
-                whileHover={{ x: 0 }}
-                transition={{ duration: 0.3, ease: 'easeInOut' }}
-              />
-            </motion.button>
-          </Link>
+          </motion.p>
+          <motion.div variants={childVariants}>
+            <Link href="/contact">
+              <button
+                className="group relative px-10 py-5 font-semibold text-sm flex items-center justify-center gap-3 mx-auto overflow-hidden font-jost bg-foreground text-background tracking-widest uppercase hover:bg-primary transition-colors duration-300"
+              >
+                <span className="relative z-10">Get in Touch</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform relative z-10" />
+              </button>
+            </Link>
+          </motion.div>
         </motion.div>
       </div>
     </motion.section>

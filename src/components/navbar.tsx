@@ -3,10 +3,37 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, Variants } from 'framer-motion'
 import { X, Briefcase, BookOpen, Home, Mail, Brain, MessageSquare } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { ThemeToggle } from './theme-toggle'
+
+// Fast navbar-specific animations - smooth easeOut, no bounce
+const navContainerVariants: Variants = {
+  hidden: { opacity: 0, y: -10 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.4,
+      ease: [0.25, 0.1, 0.25, 1], // cubic-bezier easeOut
+      when: "beforeChildren",
+      staggerChildren: 0.04,
+    }
+  }
+}
+
+const navChildVariants: Variants = {
+  hidden: { opacity: 0, y: -6 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.3,
+      ease: [0.25, 0.1, 0.25, 1], // cubic-bezier easeOut
+    }
+  }
+}
 
 const navItems = [
   { href: '/', label: 'Home', icon: Home },
@@ -39,9 +66,9 @@ export function Navbar() {
 
   return (
     <motion.nav
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+      variants={navContainerVariants}
+      initial="hidden"
+      animate="visible"
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
         scrolled
@@ -58,11 +85,7 @@ export function Navbar() {
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-24">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
-          >
+          <motion.div variants={navChildVariants}>
             <Link href="/" className="group">
               <div className="flex items-center gap-4">
                 {/* Logo - Bold animated diamond */}
@@ -71,75 +94,43 @@ export function Navbar() {
                   whileHover={{ scale: 1.08 }}
                   transition={{ type: "spring", stiffness: 400, damping: 20 }}
                 >
-                  {/* Ambient glow - always visible, stronger on hover */}
-                  <motion.div
-                    className="absolute -inset-2 bg-primary/20 blur-2xl rounded-full"
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.8, delay: 0.1 }}
-                  />
+                  {/* Ambient glow */}
+                  <div className="absolute -inset-2 bg-primary/20 blur-2xl rounded-full" />
                   <div className="absolute -inset-1 bg-primary/0 group-hover:bg-primary/30 blur-xl transition-all duration-500 rounded-full" />
 
                   {/* Outer diamond border */}
-                  <motion.div
-                    className="absolute inset-0 border-2 border-primary rotate-45"
-                    initial={{ scale: 0, rotate: 45, opacity: 0 }}
-                    animate={{ scale: 1, rotate: 45, opacity: 1 }}
-                    transition={{ duration: 0.6, delay: 0.15, type: "spring", stiffness: 150 }}
-                  />
+                  <div className="absolute inset-0 border-2 border-primary rotate-45" />
 
                   {/* Inner filled diamond */}
-                  <motion.div
-                    className="absolute inset-[6px] bg-primary/10 rotate-45"
-                    initial={{ scale: 0, rotate: 45 }}
-                    animate={{ scale: 1, rotate: 45 }}
-                    transition={{ duration: 0.5, delay: 0.25, type: "spring", stiffness: 180 }}
-                  />
+                  <div className="absolute inset-[6px] bg-primary/10 rotate-45" />
 
                   {/* Center accent dot */}
-                  <motion.div
-                    className="absolute inset-[18px] bg-primary/40 rotate-45"
-                    initial={{ scale: 0, rotate: 45 }}
-                    animate={{ scale: 1, rotate: 45 }}
-                    transition={{ duration: 0.4, delay: 0.35, type: "spring", stiffness: 200 }}
-                  />
+                  <div className="absolute inset-[18px] bg-primary/40 rotate-45" />
 
-                  {/* JC Text - Bold */}
-                  <motion.div
-                    className="absolute inset-0 flex items-center justify-center"
-                    initial={{ opacity: 0, scale: 0.3 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.4, delay: 0.4, type: "spring", stiffness: 300 }}
-                  >
+                  {/* JC Text */}
+                  <div className="absolute inset-0 flex items-center justify-center">
                     <span className="text-xl font-black text-primary tracking-wide font-jost drop-shadow-[0_0_10px_rgba(0,212,255,0.5)]">
                       JC
                     </span>
-                  </motion.div>
+                  </div>
                 </motion.div>
                 <div className="flex flex-col">
-                  <motion.span
-                    className="text-lg font-semibold tracking-tight text-foreground font-jost"
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: 0.3 }}
-                  >
+                  <span className="text-lg font-semibold tracking-tight text-foreground font-jost">
                     John Connor
-                  </motion.span>
-                  <motion.span
-                    className="text-[10px] text-primary uppercase tracking-[0.2em] font-jost"
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: 0.4 }}
-                  >
+                  </span>
+                  <span className="text-[10px] text-primary uppercase tracking-[0.2em] font-jost">
                     Product Strategist
-                  </motion.span>
+                  </span>
                 </div>
               </div>
             </Link>
           </motion.div>
 
-          <div className="hidden md:flex items-center space-x-2">
-            {navItems.map((item, index) => {
+          <motion.div
+            className="hidden md:flex items-center space-x-2"
+            variants={navContainerVariants}
+          >
+            {navItems.map((item) => {
               const Icon = item.icon
               const isActive = pathname === item.href || item.subItems?.some(sub => pathname === sub.href)
               const hasSubItems = item.subItems && item.subItems.length > 0
@@ -148,9 +139,7 @@ export function Navbar() {
                 <motion.div
                   key={item.href}
                   className="relative group"
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: 0.2 + index * 0.08, ease: "easeOut" }}
+                  variants={navChildVariants}
                 >
                   <Link
                     href={item.href}
@@ -207,14 +196,12 @@ export function Navbar() {
                 </motion.div>
               )
             })}
-          </div>
+          </motion.div>
 
           {/* Theme toggle with animation */}
           <motion.div
             className="flex items-center space-x-4"
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.5, ease: "easeOut" }}
+            variants={navChildVariants}
           >
             {/* Theme toggle - desktop */}
             <div className="hidden md:block">

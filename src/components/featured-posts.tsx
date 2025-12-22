@@ -144,13 +144,9 @@ export function FeaturedPosts() {
           className="text-center mt-12"
         >
           <Link href="/blog">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-3 glass rounded-lg font-medium hover:bg-primary/10 transition-colors"
-            >
+            <button className="px-8 py-3 glass rounded-lg font-medium hover:bg-primary/10 hover:scale-[1.05] active:scale-[0.95] transition-all duration-200">
               View All Articles
-            </motion.button>
+            </button>
           </Link>
         </motion.div>
       </div>

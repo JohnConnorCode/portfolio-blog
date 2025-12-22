@@ -3,15 +3,25 @@
 import { motion } from 'framer-motion'
 import { ArrowRight, Zap, Users, Code, Trophy, Target, Shield, TrendingUp, Globe, Rocket, Brain, MessageSquare } from 'lucide-react'
 import Link from 'next/link'
+import {
+  pageHeaderVariants,
+  decoratorVariants,
+  childVariants,
+  titleVariants,
+  sectionWithChildrenVariants,
+  itemVariants,
+  viewportOnce,
+  cardHover,
+} from '@/lib/animation-config'
 
 const experiences = [
   {
     company: 'Upland.me',
     role: 'Product & Operations Manager',
-    period: '2021-2022',
+    period: 'Jul 2020 – Aug 2021',
     description: 'Led product and growth for a Web3 virtual economy. Found product-market fit through user research and incentive design.',
     achievements: [
-      'Scaled from 13K to 200K monthly active users (15x growth)',
+      'Scaled from 13K to 300K monthly active users (15x growth)',
       'Designed SPARK token economics and launch strategy',
       'Built onboarding flows improving D7 retention by 40%',
       'Identified the ONE insight that unlocked growth'
@@ -21,8 +31,8 @@ const experiences = [
   },
   {
     company: 'Mode Mobile',
-    role: 'Product Manager',
-    period: '2020-2021',
+    role: 'Technical Product Manager',
+    period: 'Sep 2019 – Jul 2020',
     description: 'Inherited a failing product. Found the real problem through user research. Pivoted to PMF.',
     achievements: [
       'Pivoted struggling product to achieve product-market fit',
@@ -35,8 +45,8 @@ const experiences = [
   },
   {
     company: 'Sparkblox',
-    role: 'Founder & CEO',
-    period: '2022-2023',
+    role: 'Founder & Product Lead',
+    period: 'Feb 2021 – Mar 2024',
     description: 'Built no-code NFT infrastructure from zero. Raised capital, hired team, shipped product.',
     achievements: [
       'Raised over $1M in funding',
@@ -50,7 +60,7 @@ const experiences = [
   {
     company: 'HelpWith',
     role: 'Founder & Product Lead',
-    period: '2018-2019',
+    period: 'Sep 2013 – May 2018',
     description: 'Built an early skill-sharing marketplace. First experience taking an idea from zero to users.',
     achievements: [
       'Launched in 3 cities with 500+ service providers',
@@ -67,7 +77,7 @@ const shippedProducts = [
   {
     name: 'SuperDebate',
     role: 'Built & Launched',
-    description: 'Built the first large-scale adult debate ecosystem. Local clubs in 15+ cities, AI-powered judging, national tournaments. Shipped end-to-end.',
+    description: 'Building a new intellectual sport for the 21st century. Local clubs in 15+ cities, AI-powered judging, national tournaments. Restoring the values of the Greek agora.',
     status: 'Shipped • 15+ Cities',
     link: '/super-debate',
     external: 'https://superdebate.org',
@@ -104,16 +114,14 @@ export default function WorkPage() {
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          variants={pageHeaderVariants}
+          initial="hidden"
+          animate="visible"
           className="mb-16 text-center"
         >
           {/* Decorative element */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.1, duration: 0.5 }}
+            variants={decoratorVariants}
             className="flex items-center justify-center gap-4 mb-6"
           >
             <div className="w-12 h-px bg-gradient-to-r from-transparent to-primary/50" />
@@ -124,58 +132,50 @@ export default function WorkPage() {
           </motion.div>
 
           <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
+            variants={childVariants}
             className="text-xs tracking-[0.3em] uppercase mb-4 text-primary font-jost"
           >
             Work & Experience
           </motion.p>
-          <h1
-            className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 tracking-wide"
-            style={{ fontFamily: "'Jost', 'Futura', sans-serif" }}
+          <motion.h1
+            variants={titleVariants}
+            className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 tracking-wide font-jost"
           >
             <span className="text-foreground">The </span>
-            <span className="text-primary">
-              Work
-            </span>
-          </h1>
-          <p
+            <span className="text-primary">Work</span>
+          </motion.h1>
+          <motion.p
+            variants={childVariants}
             className="text-lg max-w-3xl mx-auto text-foreground/70 font-jost"
           >
             Products shipped, companies built, systems scaled.
-          </p>
+          </motion.p>
         </motion.div>
 
         {/* Shipped Products */}
         <motion.section
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
+          variants={sectionWithChildrenVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
           className="mb-20"
         >
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-2xl font-bold mb-8"
-            style={{ fontFamily: "'Jost', 'Futura', sans-serif" }}
+            variants={childVariants}
+            className="text-2xl font-bold mb-8 font-jost"
           >
             <span className="text-foreground">Products </span>
             <span className="text-primary">Shipped</span>
           </motion.h2>
 
           <div className="grid md:grid-cols-2 gap-6">
-            {shippedProducts.map((project, index) => {
+            {shippedProducts.map((project) => {
               const Icon = project.icon
               return (
                 <motion.div
                   key={project.name}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  whileHover={{ y: -5, scale: 1.01 }}
+                  variants={itemVariants}
+                  whileHover={cardHover}
                   className="relative group"
                 >
                   {/* Corner accents */}
@@ -231,27 +231,23 @@ export default function WorkPage() {
 
         {/* Other Projects */}
         <motion.section
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
+          variants={sectionWithChildrenVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
           className="mb-20"
         >
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            variants={childVariants}
             className="text-xl font-bold mb-6 text-foreground/60 font-jost"
           >
             Other Projects
           </motion.h2>
           <div className="grid md:grid-cols-2 gap-4">
-            {otherProjects.map((project, index) => (
+            {otherProjects.map((project) => (
               <motion.div
                 key={project.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
+                variants={itemVariants}
                 className="rounded-lg p-4 border transition-all hover:border-primary/30 bg-card border-border"
               >
                 <div className="flex items-center justify-between mb-1">
@@ -280,30 +276,25 @@ export default function WorkPage() {
 
         {/* Experience Timeline */}
         <motion.section
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
+          variants={sectionWithChildrenVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
           className="mb-20"
         >
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-3xl font-bold mb-12 text-center"
-            style={{ fontFamily: "'Jost', 'Futura', sans-serif" }}
+            variants={childVariants}
+            className="text-3xl font-bold mb-12 text-center font-jost"
           >
             <span className="text-foreground">Experience </span>
             <span className="text-primary">Timeline</span>
           </motion.h2>
 
           <div className="space-y-6">
-            {experiences.map((exp, index) => (
+            {experiences.map((exp) => (
               <motion.div
                 key={exp.company}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
+                variants={itemVariants}
                 className="relative rounded-r-xl p-6 transition-all border-l-4 bg-card border-l-primary"
               >
                 {/* Header */}
@@ -362,17 +353,15 @@ export default function WorkPage() {
 
         {/* Key Metrics */}
         <motion.section
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
+          variants={sectionWithChildrenVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
           className="mb-20"
         >
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-3xl font-bold mb-12 text-center"
-            style={{ fontFamily: "'Jost', 'Futura', sans-serif" }}
+            variants={childVariants}
+            className="text-3xl font-bold mb-12 text-center font-jost"
           >
             <span className="text-foreground">By the </span>
             <span className="text-primary">Numbers</span>
@@ -384,16 +373,13 @@ export default function WorkPage() {
               { icon: Code, value: '$20M+', label: 'Funding Enabled' },
               { icon: Users, value: '300K+', label: 'Users Scaled' },
               { icon: TrendingUp, value: '50+', label: 'Products Shipped' }
-            ].map((metric, index) => {
+            ].map((metric) => {
               const Icon = metric.icon
               return (
                 <motion.div
                   key={metric.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  whileHover={{ y: -5, scale: 1.02 }}
+                  variants={itemVariants}
+                  whileHover={cardHover}
                   className="relative group"
                 >
                   <div
@@ -420,17 +406,15 @@ export default function WorkPage() {
 
         {/* Approach */}
         <motion.section
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
+          variants={sectionWithChildrenVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
           className="mb-20"
         >
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-2xl font-bold mb-8"
-            style={{ fontFamily: "'Jost', 'Futura', sans-serif" }}
+            variants={childVariants}
+            className="text-2xl font-bold mb-8 font-jost"
           >
             <span className="text-foreground">How I </span>
             <span className="text-primary">Work</span>
@@ -453,16 +437,13 @@ export default function WorkPage() {
                 title: 'Judge by Outcomes',
                 description: 'Ideas are cheap. I measure success by durable, compounding value—not vanity metrics or growth theater.'
               }
-            ].map((approach, index) => {
+            ].map((approach) => {
               const Icon = approach.icon
               return (
                 <motion.div
                   key={approach.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  whileHover={{ y: -5 }}
+                  variants={itemVariants}
+                  whileHover={cardHover}
                   className="rounded-xl p-6 transition-all border bg-card border-border"
                 >
                   <Icon className="w-8 h-8 mb-4 text-primary" />
@@ -476,9 +457,10 @@ export default function WorkPage() {
 
         {/* CTA */}
         <motion.section
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          variants={sectionWithChildrenVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
           className="relative rounded-2xl p-8 sm:p-12 text-center overflow-hidden border bg-card border-primary/30"
         >
           <div className="absolute top-0 left-0 w-20 h-20 border-t-2 border-l-2 rounded-tl-2xl border-primary/50" />
@@ -491,14 +473,10 @@ export default function WorkPage() {
             I partner with founders and teams shipping products that matter.
           </p>
           <Link href="/contact">
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="px-8 py-4 font-bold flex items-center justify-center gap-2 rounded bg-primary text-primary-foreground font-jost mx-auto"
-            >
+            <button className="px-8 py-4 font-bold flex items-center justify-center gap-2 rounded bg-primary text-primary-foreground font-jost mx-auto hover:scale-[1.02] active:scale-[0.98] transition-transform duration-200">
               Get in Touch
               <ArrowRight className="w-5 h-5" />
-            </motion.button>
+            </button>
           </Link>
         </motion.section>
       </div>

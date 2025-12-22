@@ -6,54 +6,54 @@ import { Calendar, Users, TrendingUp, Code, Briefcase } from 'lucide-react'
 
 const experiences = [
   {
-    role: 'Ecosystem Specialist',
+    role: 'Automation Consultant',
     company: 'Thrive Protocol',
-    period: '2025–Present',
-    description: 'Managed $2M+ grant allocations across multiple chains, trained AI models to evaluate grants, and became head of ecosystem management in under two months.',
+    period: '2025 – Present',
+    description: 'Managed $2M+ grant allocations, built AI-powered evaluation systems achieving 90% time savings in grant review process.',
     icon: Users,
-    metrics: ['$2M+ Managed', 'AI Grant Scoring', 'Head of Ecosystem'],
+    metrics: ['$2M+ Managed', 'AI Grant Scoring', '90% Time Savings'],
     current: true
   },
   {
     role: 'Founder & Product Lead',
     company: 'Sparkblox',
-    period: '2021–2024',
-    description: 'Raised over $1M for NFT 2.0 infrastructure, forged partnerships with Chainlink and Algorand, and built a cross-functional team of 18.',
+    period: 'Feb 2021 – Mar 2024',
+    description: 'Raised over $1M for NFT 2.0 infrastructure, forged partnerships with Chainlink and Algorand, and built a cross-functional team to design and refine an advanced Web3 platform.',
     icon: Code,
-    metrics: ['$1M+ Raised', '18 Team Members', 'Chainlink & Algorand']
+    metrics: ['$1M+ Raised', '20+ Artist Partners', 'Chainlink & Algorand']
   },
   {
     role: 'Product & Ops Manager',
     company: 'Upland',
-    period: '2020–2021',
-    description: 'Redesigned the game economy, launched the SPARK token, and scaled to 200K monthly active users with 15x revenue growth.',
+    period: 'Jul 2020 – Aug 2021',
+    description: 'Designed a growth strategy that increased revenue 15x, scaled to 300,000+ monthly active users, and launched the SPARK token on EOS.',
     icon: TrendingUp,
-    metrics: ['15x Revenue', '200K MAU', 'SPARK Token Launch']
+    metrics: ['15x Revenue', '300K+ MAU', 'SPARK Token Launch']
   },
   {
     role: 'Technical Product Manager',
     company: 'Mode Mobile',
-    period: '2019–2020',
-    description: 'Built an earn-to-own device program that distributed 1M+ devices and returned $50M+ in value to users through tokenized rewards.',
+    period: 'Sep 2019 – Jul 2020',
+    description: 'Led product strategy and managed a 15-person team to develop the Earning app and Earn Phone, driving engagement and unlocking new revenue streams.',
     icon: Code,
-    metrics: ['1M+ Devices', '$50M+ User Value', 'Tokenized Rewards']
+    metrics: ['15-Person Team', 'AI-Powered Suggestions', 'New Revenue Streams']
   },
   {
-    role: 'Founder',
-    company: 'HelpWith.co',
-    period: '2013–2018',
-    description: 'Created a peer-to-peer skills economy that onboarded 3,000+ providers, facilitated $500K+ in transactions with zero platform fees, and pioneered community-governed dispute resolution.',
-    icon: Users,
-    metrics: ['$500K+ Transactions', '0% Platform Fees', 'Community Governance']
-  },
-  {
-    role: 'Strategy Consultant',
-    company: 'Independent',
-    period: '2018–Present',
-    description: 'Advised 30+ startups as a strategy consultant on product, growth, and ecosystem design.',
+    role: 'Product Strategy Consultant',
+    company: 'BusinessOfAI',
+    period: 'Sep 2018 – Present',
+    description: 'Provided strategic product consulting to 30+ tech startups, advising on market positioning, product validation, and go-to-market strategies.',
     icon: Briefcase,
-    metrics: ['30+ Startups', 'Strategy & Growth', 'Ecosystem Design'],
+    metrics: ['30+ Startups', 'Karma Circle', 'Work+Shelter'],
     current: true
+  },
+  {
+    role: 'Founder & Product Lead',
+    company: 'HelpWith.co',
+    period: 'Sep 2013 – May 2018',
+    description: 'Founded and scaled a skill-sharing marketplace, attracting 3,000+ service providers and implementing an AI-powered recommendation engine.',
+    icon: Users,
+    metrics: ['3,000+ Providers', 'AI Recommendations', 'Peer-to-Peer Network']
   }
 ]
 

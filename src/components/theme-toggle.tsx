@@ -23,11 +23,9 @@ export function ThemeToggle() {
   const isDark = resolvedTheme === 'dark'
 
   return (
-    <motion.button
+    <button
       onClick={() => setTheme(isDark ? 'light' : 'dark')}
-      className="relative w-10 h-10 rounded-lg bg-secondary/50 hover:bg-secondary border border-border flex items-center justify-center transition-colors duration-200"
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
+      className="relative w-10 h-10 rounded-lg bg-secondary/50 hover:bg-secondary border border-border flex items-center justify-center hover:scale-[1.05] active:scale-[0.95] transition-all duration-200"
       aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
     >
       <AnimatePresence mode="wait">
@@ -53,6 +51,6 @@ export function ThemeToggle() {
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.button>
+    </button>
   )
 }

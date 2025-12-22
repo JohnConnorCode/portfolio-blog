@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { format } from 'date-fns'
 import { BlogPost } from '@/types'
-import { fadeInUp, staggerContainer } from '@/lib/animation-config'
+import { fadeInUp, sectionWithChildrenVariants } from '@/lib/animation-config'
 
 interface AnimatedBlogPostsProps {
   posts: BlogPost[]
@@ -26,7 +26,7 @@ export default function SanityBlogPostsAnimated({ posts }: AnimatedBlogPostsProp
 
   return (
     <motion.div
-      variants={staggerContainer}
+      variants={sectionWithChildrenVariants}
       initial="initial"
       whileInView="animate"
       viewport={{ once: true, margin: "-50px" }}

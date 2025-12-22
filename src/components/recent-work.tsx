@@ -111,14 +111,10 @@ export function RecentWork() {
           className="text-center"
         >
           <Link href="/work">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:shadow-xl hover:shadow-primary/25 transition-all"
-            >
+            <button className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:shadow-xl hover:shadow-primary/25 hover:scale-[1.05] active:scale-[0.95] transition-all duration-200">
               View All Case Studies
               <ArrowRight className="w-4 h-4" />
-            </motion.button>
+            </button>
           </Link>
         </motion.div>
       </div>

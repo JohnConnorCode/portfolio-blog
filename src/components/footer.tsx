@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { Linkedin, Twitter, Mail, ArrowUpRight } from 'lucide-react'
+import { sectionWithChildrenVariants, childVariants, viewportOnce } from '@/lib/animation-config'
 
 const socialLinks = [
   { href: 'https://twitter.com/ablockunchained', icon: Twitter, label: 'Twitter' },
@@ -27,10 +28,10 @@ export function Footer() {
     <footer className="relative mt-auto border-t border-border bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          variants={sectionWithChildrenVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
           className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12"
         >
           {/* Brand Section */}
@@ -128,10 +129,10 @@ export function Footer() {
 
         {/* Bottom bar */}
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          variants={childVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
           className="pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4"
         >
           <p className="text-sm text-muted-foreground font-jost">

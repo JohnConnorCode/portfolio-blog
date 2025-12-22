@@ -35,7 +35,7 @@ export const experience = defineType({
       title: 'Key Metrics/Achievements',
       type: 'array',
       of: [{type: 'string'}],
-      description: 'List of key achievements (e.g., "$1M+ Raised", "200K MAU")'
+      description: 'List of key achievements (e.g., "$1M+ Raised", "300K MAU")'
     }),
     defineField({
       name: 'current',

@@ -150,13 +150,9 @@ export function PlatformsShowcase() {
                       </div>
 
                       <Link href={platform.url} target="_blank" rel="noopener noreferrer">
-                        <motion.button
-                          className="p-3 rounded-full border border-foreground/20 hover:border-cyan-400/50 transition-colors group/btn"
-                          whileHover={{ scale: 1.1 }}
-                          whileTap={{ scale: 0.95 }}
-                        >
+                        <button className="p-3 rounded-full border border-foreground/20 hover:border-cyan-400/50 hover:scale-[1.1] active:scale-[0.95] transition-all duration-200 group/btn">
                           <ArrowUpRight className="w-5 h-5 group-hover/btn:text-cyan-400 transition-colors" />
-                        </motion.button>
+                        </button>
                       </Link>
                     </div>
 
@@ -206,18 +202,14 @@ export function PlatformsShowcase() {
                     </div>
 
                     {/* CTA */}
-                    <motion.div className="mt-8">
+                    <div className="mt-8">
                       <Link href={platform.url} target="_blank" rel="noopener noreferrer">
-                        <motion.button
-                          className={`w-full py-3 px-6 rounded-xl bg-gradient-to-r ${platform.color} text-primary-foreground font-semibold flex items-center justify-center gap-2 group/cta`}
-                          whileHover={{ scale: 1.02 }}
-                          whileTap={{ scale: 0.98 }}
-                        >
+                        <button className={`w-full py-3 px-6 rounded-xl bg-gradient-to-r ${platform.color} text-primary-foreground font-semibold flex items-center justify-center gap-2 group/cta hover:scale-[1.02] active:scale-[0.98] transition-transform duration-200`}>
                           <span>Visit {platform.name}</span>
                           <ArrowUpRight className="w-4 h-4 group-hover/cta:translate-x-1 group-hover/cta:-translate-y-1 transition-transform" />
-                        </motion.button>
+                        </button>
                       </Link>
-                    </motion.div>
+                    </div>
 
                     {/* Animated accent lines */}
                     <motion.div
@@ -246,13 +238,9 @@ export function PlatformsShowcase() {
             Want to build something revolutionary together?
           </p>
           <Link href="/contact">
-            <motion.button
-              className="px-8 py-4 bg-foreground text-background font-semibold rounded-xl hover:bg-foreground/90 transition-colors"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
+            <button className="px-8 py-4 bg-foreground text-background font-semibold rounded-xl hover:bg-foreground/90 hover:scale-[1.05] active:scale-[0.95] transition-all duration-200">
               Let&apos;s Talk Strategy
-            </motion.button>
+            </button>
           </Link>
         </motion.div>
       </motion.div>

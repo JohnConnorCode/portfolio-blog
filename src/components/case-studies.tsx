@@ -1,8 +1,14 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ArrowRight, Users, TrendingUp, Brain, Layers } from 'lucide-react'
+import { ArrowRight, TrendingUp, Brain, Layers } from 'lucide-react'
 import Link from 'next/link'
+import {
+  sectionWithChildrenVariants,
+  childVariants,
+  itemVariants,
+  viewportOnce,
+} from '@/lib/animation-config'
 
 const caseStudies = [
   {
@@ -12,9 +18,9 @@ const caseStudies = [
     description: 'Found product-market fit for a Web3 virtual economy. The ONE insight that changed everything.',
     stuck: 'Upland had users but couldn\'t keep them. Retention was falling. The token felt like a gimmick.',
     insight: 'Users didn\'t want to BUY value—they wanted to EARN it. We redesigned the entire economy around achievement, not speculation.',
-    outcome: '13K → 200K users. 15x growth. 40% better D7 retention.',
+    outcome: '13K → 300K users. 15x growth. 40% better D7 retention.',
     results: [
-      '200K+ monthly active users',
+      '300K+ monthly active users',
       '15x growth in user engagement',
       '40% improvement in D7 retention',
       'SPARK token launched successfully'
@@ -24,7 +30,7 @@ const caseStudies = [
     color: 'from-cyan-500 to-blue-500',
     metrics: {
       before: '13K users',
-      after: '200K users',
+      after: '300K users',
       growth: '15x'
     }
   },
@@ -81,30 +87,33 @@ export function CaseStudies() {
     <section className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          variants={sectionWithChildrenVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+          <motion.h2 variants={childVariants} className="text-3xl sm:text-4xl font-bold mb-4">
             Case <span className="text-gradient">Studies</span>
-          </h2>
-          <p className="text-lg text-foreground/90 max-w-3xl mx-auto">
+          </motion.h2>
+          <motion.p variants={childVariants} className="text-lg text-foreground/90 max-w-3xl mx-auto">
             Real problems, real solutions, real outcomes.
-          </p>
+          </motion.p>
         </motion.div>
 
-        <div className="space-y-24">
-          {caseStudies.map((study, index) => {
+        <motion.div
+          variants={sectionWithChildrenVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+          className="space-y-24"
+        >
+          {caseStudies.map((study) => {
             const Icon = study.icon
             return (
               <motion.div
                 key={study.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                variants={itemVariants}
                 className="relative"
               >
                 {/* Case Study Card */}
@@ -183,29 +192,27 @@ export function CaseStudies() {
               </motion.div>
             )
           })}
-        </div>
+        </motion.div>
 
         {/* CTA */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          variants={sectionWithChildrenVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
           className="text-center mt-16"
         >
-          <p className="text-lg text-foreground/90 mb-6">
+          <motion.p variants={childVariants} className="text-lg text-foreground/90 mb-6">
             Have a project in mind?
-          </p>
-          <Link href="/contact">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="group px-8 py-4 bg-primary text-primary-foreground rounded-lg font-medium hover:shadow-xl hover:shadow-primary/25 transition-all flex items-center gap-2 mx-auto"
-            >
-              Get in Touch
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </motion.button>
-          </Link>
+          </motion.p>
+          <motion.div variants={childVariants}>
+            <Link href="/contact">
+              <button className="group px-8 py-4 bg-primary text-primary-foreground rounded-lg font-medium hover:shadow-xl hover:shadow-primary/25 hover:scale-[1.05] active:scale-[0.95] transition-all duration-200 flex items-center gap-2 mx-auto">
+                Get in Touch
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </button>
+            </Link>
+          </motion.div>
         </motion.div>
       </div>
     </section>

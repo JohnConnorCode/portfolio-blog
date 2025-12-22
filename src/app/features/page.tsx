@@ -281,23 +281,15 @@ export default function FeaturesPage() {
         </p>
         <div className="flex gap-4 justify-center">
           <Link href="/contact">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 bg-foreground text-background font-semibold hover:bg-primary transition-colors"
-            >
+            <button className="px-8 py-4 bg-foreground text-background font-semibold hover:bg-primary hover:scale-[1.05] active:scale-[0.95] transition-all duration-200">
               Get In Touch
               <ArrowRight className="inline ml-2 w-5 h-5" />
-            </motion.button>
+            </button>
           </Link>
           <Link href="/work">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 border-2 border-foreground hover:border-primary hover:bg-primary/10 transition-colors font-semibold"
-            >
+            <button className="px-8 py-4 border-2 border-foreground hover:border-primary hover:bg-primary/10 hover:scale-[1.05] active:scale-[0.95] transition-all duration-200 font-semibold">
               View Portfolio
-            </motion.button>
+            </button>
           </Link>
         </div>
       </motion.div>

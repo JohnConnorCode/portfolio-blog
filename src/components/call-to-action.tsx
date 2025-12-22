@@ -4,6 +4,11 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
+import {
+  sectionWithChildrenVariants,
+  childVariants,
+  viewportOnce,
+} from '@/lib/animation-config'
 
 export function CallToAction() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -22,10 +27,10 @@ export function CallToAction() {
     >
       <div className="max-w-4xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          variants={sectionWithChildrenVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
           className="relative p-8 sm:p-12 lg:p-16 text-center bg-card border border-border"
         >
           {/* Corner accents */}
@@ -35,7 +40,7 @@ export function CallToAction() {
           <div className="absolute bottom-0 right-0 w-8 h-8 border-r-2 border-b-2 border-primary" />
 
           {/* Decorative diamond */}
-          <div className="flex items-center justify-center gap-4 mb-8">
+          <motion.div variants={childVariants} className="flex items-center justify-center gap-4 mb-8">
             <div className="w-12 h-px bg-gradient-to-r from-transparent to-primary/50" />
             <svg viewBox="0 0 24 24" className="w-5 h-5 text-primary">
               <path
@@ -53,48 +58,38 @@ export function CallToAction() {
               />
             </svg>
             <div className="w-12 h-px bg-gradient-to-l from-transparent to-primary/50" />
-          </div>
+          </motion.div>
 
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 font-jost text-foreground tracking-wide">
+          <motion.h2 variants={childVariants} className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 font-jost text-foreground tracking-wide">
             Ready to Ship?
-          </h2>
+          </motion.h2>
 
-          <p className="text-base sm:text-lg md:text-xl mb-10 max-w-2xl mx-auto font-jost text-foreground/70">
+          <motion.p variants={childVariants} className="text-base sm:text-lg md:text-xl mb-10 max-w-2xl mx-auto font-jost text-foreground/70">
             Tell me what you&apos;re building.
-          </p>
+          </motion.p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <motion.div variants={childVariants} className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/contact">
-              <motion.button
-                whileHover={{ scale: 1.02, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-                className="group relative px-8 sm:px-10 py-4 sm:py-5 font-semibold text-sm sm:text-base flex items-center justify-center gap-3 overflow-hidden font-jost bg-foreground text-background tracking-widest uppercase"
+              <button
+                className="group relative px-8 sm:px-10 py-4 sm:py-5 font-semibold text-sm sm:text-base flex items-center justify-center gap-3 overflow-hidden font-jost bg-foreground text-background tracking-widest uppercase hover:bg-primary transition-colors duration-300"
               >
                 <span className="relative z-10">Start a Conversation</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform relative z-10" />
-                <motion.div
-                  className="absolute inset-0 bg-primary"
-                  initial={{ x: '-100%' }}
-                  whileHover={{ x: 0 }}
-                  transition={{ duration: 0.3, ease: 'easeInOut' }}
-                />
-              </motion.button>
+              </button>
             </Link>
 
             <Link href="/work">
-              <motion.button
-                whileHover={{ scale: 1.02, y: -2 }}
-                whileTap={{ scale: 0.98 }}
+              <button
                 className="px-8 sm:px-10 py-4 sm:py-5 font-medium text-sm sm:text-base transition-all duration-300 font-jost bg-transparent text-foreground border border-foreground/30 hover:border-primary hover:text-primary tracking-widest uppercase"
               >
                 View My Work
-              </motion.button>
+              </button>
             </Link>
-          </div>
+          </motion.div>
 
-          <p className="text-xs sm:text-sm mt-8 tracking-widest uppercase font-jost text-foreground/40">
+          <motion.p variants={childVariants} className="text-xs sm:text-sm mt-8 tracking-widest uppercase font-jost text-foreground/40">
             Typical response time: Within 24 hours
-          </p>
+          </motion.p>
         </motion.div>
       </div>
     </motion.section>
