@@ -64,7 +64,7 @@ export function PageTransition({ children }: PageTransitionProps) {
 function PageLoader() {
   return (
     <motion.div
-      className="fixed inset-0 z-[9999] bg-black/90 backdrop-blur-sm flex items-center justify-center"
+      className="fixed inset-0 z-[9999] bg-background/90 backdrop-blur-sm flex items-center justify-center"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -74,7 +74,7 @@ function PageLoader() {
       <div className="relative">
         {/* Outer ring */}
         <motion.div
-          className="w-16 h-16 border-2 border-gray-700 rounded-full"
+          className="w-16 h-16 border-2 border-border rounded-full"
           animate={{ rotate: 360 }}
           transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
         />
@@ -103,7 +103,7 @@ function PageLoader() {
 
       {/* Loading text */}
       <motion.p
-        className="absolute bottom-1/3 text-gray-400 text-sm tracking-wider"
+        className="absolute bottom-1/3 text-muted-foreground text-sm tracking-wider"
         initial={{ opacity: 0 }}
         animate={{ opacity: [0, 1, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
@@ -168,7 +168,7 @@ export function ModalTransition({
         >
           {/* Backdrop */}
           <motion.div
-            className="absolute inset-0 bg-black/70 backdrop-blur-sm"
+            className="absolute inset-0 bg-background/70 backdrop-blur-sm"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

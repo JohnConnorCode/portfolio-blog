@@ -2,7 +2,6 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { ArrowUpRight, Zap, Brain, Users, Globe } from 'lucide-react'
-import { fadeInUp, headerAnimation, staggerContainer, ANIMATION_DELAY, SECTION_DELAYS } from '@/lib/animation-config'
 import Link from 'next/link'
 import { useRef } from 'react'
 
@@ -12,8 +11,6 @@ const writings = [
     excerpt: 'Traditional grant systems reward promises over delivery. Here\'s how to fix it.',
     category: 'WEB3',
     icon: Globe,
-    color: 'text-cyan-400',
-    glow: 'rgba(0, 212, 255, 0.4)',
     slug: 'why-ecosystem-funding-is-broken',
     featured: true
   },
@@ -22,8 +19,6 @@ const writings = [
     excerpt: 'The best leaders embrace intellectual conflict and use it to sharpen thinking.',
     category: 'LEADERSHIP',
     icon: Users,
-    color: 'text-purple-400',
-    glow: 'rgba(168, 85, 247, 0.4)',
     slug: 'debate-as-leadership-practice'
   },
   {
@@ -31,8 +26,6 @@ const writings = [
     excerpt: 'AI should free humans for creativity, not replace them entirely.',
     category: 'AI',
     icon: Brain,
-    color: 'text-pink-500',
-    glow: 'rgba(236, 72, 153, 0.4)',
     slug: 'automation-as-human-right'
   },
   {
@@ -40,8 +33,6 @@ const writings = [
     excerpt: 'Why vanity metrics are killing startups and what to measure instead.',
     category: 'PRODUCT',
     icon: Zap,
-    color: 'text-yellow-400',
-    glow: 'rgba(250, 204, 21, 0.4)',
     slug: 'death-of-growth-theater',
     featured: true
   }
@@ -60,106 +51,97 @@ export function WritingsBrutal() {
     <motion.section
       ref={containerRef}
       style={{ opacity }}
-      variants={fadeInUp}
-      initial="initial"
-      whileInView="animate"
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ delay: SECTION_DELAYS.writings }}
-      className="py-24 px-4 bg-gradient-to-b from-background via-muted/20 to-background dark:from-gray-900 dark:to-black relative overflow-hidden"
+      className="py-24 sm:py-32 px-4 bg-background relative overflow-hidden"
     >
-      {/* Cyberpunk grid background */}
-      <div className="absolute inset-0 cyber-grid opacity-20" />
+      {/* Subtle background pattern */}
+      <div className="absolute inset-0 opacity-[0.02] bg-[linear-gradient(90deg,hsl(var(--foreground))_1px,transparent_1px),linear-gradient(180deg,hsl(var(--foreground))_1px,transparent_1px)] bg-[size:60px_60px]" />
 
-      <motion.div
-        variants={staggerContainer}
-        initial="initial"
-        whileInView="animate"
-        viewport={{ once: true, margin: "-50px" }}
-        className="max-w-7xl mx-auto relative z-10"
-      >
-        {/* Section title with glitch effect */}
+      {/* Top accent line */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+
+      <div className="max-w-6xl mx-auto relative z-10">
+        {/* Section Header */}
         <motion.div
-          variants={fadeInUp}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <motion.h2
-            {...headerAnimation}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light mb-4 leading-[1.1] sm:leading-[1.05] lg:leading-[1.02]"
-          >
-            <span className="text-foreground">THOUGHT</span>
-            <span className="text-primary dark:text-cyan-400 font-black neon-glow"> LEADERSHIP</span>
-          </motion.h2>
-          <motion.p
-            {...headerAnimation}
-            transition={{ ...headerAnimation.transition, delay: ANIMATION_DELAY.stagger }}
-            className="text-base sm:text-lg text-gray-400 dark:text-gray-400 font-light tracking-wide"
-          >
+          {/* Decorative element */}
+          <div className="flex items-center justify-center gap-4 mb-6">
+            <div className="w-16 h-px bg-gradient-to-r from-transparent to-primary/50" />
+            <svg viewBox="0 0 24 24" className="w-5 h-5 text-primary">
+              <path
+                d="M12 2 L22 12 L12 22 L2 12 Z"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+              />
+              <path
+                d="M12 6 L18 12 L12 18 L6 12 Z"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="0.75"
+                opacity="0.5"
+              />
+            </svg>
+            <div className="w-16 h-px bg-gradient-to-l from-transparent to-primary/50" />
+          </div>
+
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 font-jost text-foreground tracking-wide">
+            Thought Leadership
+          </h2>
+          <p className="text-base sm:text-lg max-w-xl mx-auto font-jost text-foreground/60">
             Strategic insights on technology, community, and human potential
-          </motion.p>
+          </p>
         </motion.div>
-        
-        {/* Writing cards in premium grid */}
-        <motion.div
-          variants={staggerContainer}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6"
-        >
-          {writings.map((writing) => {
+
+        {/* Writing cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+          {writings.map((writing, index) => {
             const Icon = writing.icon
             return (
               <motion.article
                 key={writing.title}
-                variants={fadeInUp}
-                whileHover={{ y: -5, scale: 1.01 }}
-                transition={{ type: "spring", stiffness: 400, damping: 15 }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileHover={{ y: -4 }}
                 className={`group ${writing.featured ? 'md:col-span-2' : ''}`}
               >
                 <Link href={`/blog/${writing.slug}`}>
-                  <div className="relative">
-                    {/* Glow effect on hover */}
-                    <div
-                      className="absolute -inset-1 rounded-xl opacity-0 group-hover:opacity-100 blur-xl transition-all duration-500"
-                      style={{ background: `radial-gradient(circle, ${writing.glow}, transparent 70%)` }}
-                    />
+                  <div className="relative bg-card border border-border p-6 h-full transition-all duration-300 group-hover:border-primary/30 group-hover:shadow-lg">
+                    {/* Corner accents */}
+                    <div className="absolute top-0 left-0 w-4 h-4 border-l border-t border-primary/40 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <div className="absolute bottom-0 right-0 w-4 h-4 border-r border-b border-primary/40 opacity-0 group-hover:opacity-100 transition-opacity" />
 
-                    <div
-                      className="relative bg-black/60 backdrop-blur-xl border border-white/10 rounded-xl p-6 h-full group-hover:border-white/20 transition-all duration-300"
-                    >
-                      {/* Featured badge */}
-                      {writing.featured && (
-                        <div
-                          className="absolute -top-3 -right-3 px-4 py-1 font-bold text-xs uppercase tracking-wide text-black"
-                          style={{
-                            background: 'linear-gradient(135deg, #00d4ff 0%, #00ffff 100%)',
-                            boxShadow: '0 0 20px rgba(0, 212, 255, 0.5)'
-                          }}
-                        >
-                          Featured
-                        </div>
-                      )}
+                    {/* Featured badge */}
+                    {writing.featured && (
+                      <div className="absolute -top-3 -right-3 px-4 py-1 font-semibold text-xs uppercase tracking-wider font-jost bg-primary text-primary-foreground">
+                        Featured
+                      </div>
+                    )}
 
-                      {/* Content */}
-                      <div className="flex items-start gap-5">
-                        <div className={`${writing.color} flex-shrink-0`}>
-                          <Icon className="w-10 h-10" style={{ filter: `drop-shadow(0 0 10px currentColor)` }} />
+                    {/* Content */}
+                    <div className="flex items-start gap-5">
+                      <div className="flex-shrink-0">
+                        <Icon className="w-10 h-10 text-primary" />
+                      </div>
+                      <div className="flex-1">
+                        <div className="text-xs mb-2 tracking-wider uppercase font-semibold font-jost text-primary">
+                          {writing.category}
                         </div>
-                        <div className="flex-1">
-                          <div
-                            className={`${writing.color} font-mono text-xs mb-2 tracking-wider`}
-                          >
-                            [{writing.category}]
-                          </div>
-                          <h3
-                            className="text-xl sm:text-2xl font-bold text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-cyan-400 group-hover:to-purple-400 transition-all duration-300 mb-3"
-                          >
-                            {writing.title}
-                          </h3>
-                          <p className="text-gray-400 text-sm mb-4 leading-relaxed">
-                            {writing.excerpt}
-                          </p>
-                          <div className="flex items-center gap-2 text-cyan-400 font-semibold uppercase text-xs tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            READ MORE
-                            <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                          </div>
+                        <h3 className="text-xl sm:text-2xl font-bold mb-3 transition-colors duration-300 group-hover:text-primary font-jost text-foreground">
+                          {writing.title}
+                        </h3>
+                        <p className="text-sm mb-4 leading-relaxed font-jost text-foreground/60">
+                          {writing.excerpt}
+                        </p>
+                        <div className="flex items-center gap-2 font-semibold uppercase text-xs tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300 font-jost text-primary">
+                          Read More
+                          <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                         </div>
                       </div>
                     </div>
@@ -168,39 +150,40 @@ export function WritingsBrutal() {
               </motion.article>
             )
           })}
-        </motion.div>
-        
-        {/* CTA with premium button */}
+        </div>
+
+        {/* CTA */}
         <motion.div
-          variants={fadeInUp}
-          className="text-center mt-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="text-center"
         >
           <Link href="/blog">
             <motion.button
-              {...headerAnimation}
-              transition={{ ...headerAnimation.transition, delay: ANIMATION_DELAY.section }}
-              whileHover={{ scale: 1.02 }}
+              whileHover={{ scale: 1.02, y: -2 }}
               whileTap={{ scale: 0.98 }}
-              className="relative px-10 py-4 font-bold uppercase tracking-wider overflow-hidden"
-              style={{
-                background: 'transparent',
-                color: '#fff',
-                boxShadow: '0 0 20px rgba(0, 212, 255, 0.2), inset 0 0 20px rgba(0, 212, 255, 0.1)',
-                border: '2px solid rgba(0, 212, 255, 0.6)',
-              }}
+              className="px-10 py-4 font-semibold text-sm transition-all duration-300 font-jost bg-transparent text-foreground border border-foreground/30 hover:border-primary hover:text-primary tracking-widest uppercase"
             >
-              <span className="relative z-10">EXPLORE ALL WRITINGS</span>
-              <motion.div
-                className="absolute inset-0"
-                initial={{ opacity: 0 }}
-                whileHover={{ opacity: 1 }}
-                transition={{ duration: 0.3 }}
-                style={{ background: 'linear-gradient(135deg, rgba(0, 212, 255, 0.2) 0%, rgba(138, 43, 226, 0.2) 100%)' }}
-              />
+              Explore All Writings
             </motion.button>
           </Link>
         </motion.div>
-      </motion.div>
+
+        {/* Bottom text */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="text-center mt-12"
+        >
+          <p className="text-sm uppercase tracking-[0.2em] font-jost text-foreground/40">
+            Ideas that <span className="text-primary">shape the future</span>
+          </p>
+        </motion.div>
+      </div>
     </motion.section>
   )
 }

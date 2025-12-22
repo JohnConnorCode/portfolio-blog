@@ -41,7 +41,7 @@ export default function ThoughtsFeed() {
   if (loading) {
     return (
       <div className="text-center py-12">
-        <p className="text-gray-400 font-mono animate-pulse">Loading thoughts...</p>
+        <p className="text-muted-foreground font-mono animate-pulse">Loading thoughts...</p>
       </div>
     )
   }
@@ -49,7 +49,7 @@ export default function ThoughtsFeed() {
   if (!thoughts || thoughts.length === 0) {
     return (
       <div className="text-center py-12">
-        <p className="text-gray-400 font-mono">No thoughts yet. Check back soon.</p>
+        <p className="text-muted-foreground font-mono">No thoughts yet. Check back soon.</p>
       </div>
     )
   }
@@ -74,7 +74,7 @@ function ThoughtCard({ thought, index }: { thought: Thought; index: number }) {
       <div className="card-glass hover:border-cyan-400/50 transition-all">
         {/* Pinned indicator */}
         {thought.pinned && (
-          <div className="absolute -top-3 -right-3 bg-cyan-400 text-black p-2 rounded-full">
+          <div className="absolute -top-3 -right-3 bg-cyan-400 text-primary-foreground p-2 rounded-full">
             <Pin className="w-4 h-4" />
           </div>
         )}
@@ -85,7 +85,7 @@ function ThoughtCard({ thought, index }: { thought: Thought; index: number }) {
             {thought.mood && (
               <span className="text-2xl">{moodEmoji[thought.mood]}</span>
             )}
-            <time className="text-sm text-gray-500 font-mono">
+            <time className="text-sm text-muted-foreground font-mono">
               {formatDistanceToNow(new Date(thought.publishedAt), { addSuffix: true })}
             </time>
           </div>
@@ -106,7 +106,7 @@ function ThoughtCard({ thought, index }: { thought: Thought; index: number }) {
                       className="w-full h-auto"
                     />
                     {value.caption && (
-                      <p className="text-xs text-gray-500 mt-2 text-center">
+                      <p className="text-xs text-muted-foreground mt-2 text-center">
                         {value.caption}
                       </p>
                     )}
@@ -115,11 +115,11 @@ function ThoughtCard({ thought, index }: { thought: Thought; index: number }) {
                 code: ({value}: {value: PortableTextCodeValue}) => (
                   <div className="my-4">
                     {value.filename && (
-                      <div className="text-xs text-gray-500 mb-1 font-mono">
+                      <div className="text-xs text-muted-foreground mb-1 font-mono">
                         {value.filename}
                       </div>
                     )}
-                    <pre className="bg-black/50 border border-gray-800 rounded p-4 overflow-x-auto">
+                    <pre className="bg-background/50 border border-border rounded p-4 overflow-x-auto">
                       <code className={`language-${value.language || 'plaintext'}`}>
                         {value.code}
                       </code>
@@ -139,7 +139,7 @@ function ThoughtCard({ thought, index }: { thought: Thought; index: number }) {
                   </a>
                 ),
                 code: ({children}: {children: React.ReactNode}) => (
-                  <code className="bg-black/50 px-1 py-0.5 rounded text-cyan-400 font-mono text-sm">
+                  <code className="bg-background/50 px-1 py-0.5 rounded text-cyan-400 font-mono text-sm">
                     {children}
                   </code>
                 ),
@@ -154,7 +154,7 @@ function ThoughtCard({ thought, index }: { thought: Thought; index: number }) {
             {thought.tags.map((tag: string) => (
               <span 
                 key={tag}
-                className="inline-flex items-center gap-1 px-2 py-1 text-xs border border-gray-700 rounded-full text-gray-400 hover:border-cyan-400/50 hover:text-cyan-400 transition-colors"
+                className="inline-flex items-center gap-1 px-2 py-1 text-xs border border-border rounded-full text-muted-foreground hover:border-cyan-400/50 hover:text-cyan-400 transition-colors"
               >
                 <Hash className="w-3 h-3" />
                 {tag}

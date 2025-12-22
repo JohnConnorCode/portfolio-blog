@@ -47,7 +47,7 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="mb-12"
           >
-            <p className="text-base sm:text-lg md:text-xl text-gray-100 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-foreground/90 max-w-4xl mx-auto leading-relaxed">
               John Thomas Connor is a product strategist, builder, and father who creates systems at the
               intersection of technology and community. For over 15 years he&apos;s been reading, writing,
               and building the future—focused on making technology work for people rather than replacing them.
@@ -61,7 +61,7 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.48 }}
             className="mb-8 sm:mb-12 py-6 sm:py-8 border-y border-border/30"
           >
-            <blockquote className="text-base sm:text-lg md:text-xl italic text-gray-100 max-w-2xl mx-auto">
+            <blockquote className="text-base sm:text-lg md:text-xl italic text-foreground/90 max-w-2xl mx-auto">
               &ldquo;The human journey is transformative—individually and collectively. 
               We must conserve our humanity while building the future.&rdquo;
             </blockquote>
@@ -76,14 +76,14 @@ export function Hero() {
           >
             <Link
               href="/contact"
-              className="w-full sm:w-auto px-8 py-4 bg-primary text-white font-semibold rounded-lg hover:bg-primary/90 transition-colors"
+              className="w-full sm:w-auto px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-primary/90 transition-colors"
             >
               Start a Project
             </Link>
 
             <Link
               href="/work"
-              className="w-full sm:w-auto px-8 py-4 border border-white/20 text-white font-semibold rounded-lg hover:bg-white/10 transition-colors"
+              className="w-full sm:w-auto px-8 py-4 border border-foreground/20 text-foreground font-semibold rounded-lg hover:bg-foreground/10 transition-colors"
             >
               Explore My Work
             </Link>
@@ -100,7 +100,7 @@ export function Hero() {
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="flex flex-col items-center gap-2 text-gray-100"
+            className="flex flex-col items-center gap-2 text-foreground/90"
           >
             <span className="text-xs uppercase tracking-widest">Scroll</span>
             <ArrowDown className="w-4 h-4" />

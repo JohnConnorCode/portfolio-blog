@@ -2,7 +2,6 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Trophy, MessageSquare, Users, ArrowRight, Scale, Mic, Calendar } from 'lucide-react'
-import { SECTION_DELAYS } from '@/lib/animation-config'
 import Link from 'next/link'
 import { useRef } from 'react'
 
@@ -39,158 +38,135 @@ export function SuperDebateHero() {
   ]
 
   return (
-    <section ref={containerRef} className="relative py-16 px-4 overflow-hidden">
-      {/* Futuristic animated background */}
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          className="absolute inset-0"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-        >
-          {/* Animated gradient orbs */}
-          <motion.div
-            className="absolute -top-40 -left-40 w-80 h-80 bg-purple-500/30 rounded-full blur-[100px]"
-            animate={{
-              x: [0, 100, 0],
-              y: [0, -50, 0],
-              scale: [1, 1.2, 1],
-            }}
-            transition={{
-              duration: 15,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          />
-          <motion.div
-            className="absolute -bottom-40 -right-40 w-80 h-80 bg-pink-500/30 rounded-full blur-[100px]"
-            animate={{
-              x: [0, -100, 0],
-              y: [0, 50, 0],
-              scale: [1, 1.3, 1],
-            }}
-            transition={{
-              duration: 20,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          />
-          {/* Tech grid overlay */}
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(139,92,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(139,92,246,0.03)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
-        </motion.div>
-      </div>
+    <motion.section
+      ref={containerRef}
+      style={{ opacity }}
+      className="relative py-24 sm:py-32 px-4 overflow-hidden bg-background"
+    >
+      {/* Subtle background pattern */}
+      <div className="absolute inset-0 opacity-[0.02] bg-[linear-gradient(90deg,hsl(var(--foreground))_1px,transparent_1px),linear-gradient(180deg,hsl(var(--foreground))_1px,transparent_1px)] bg-[size:80px_80px]" />
 
-      <motion.div
-        style={{ opacity }}
-        className="max-w-7xl mx-auto relative z-10"
-      >
+      {/* Top accent line */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+
+      <div className="max-w-6xl mx-auto relative z-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: SECTION_DELAYS.superDebate }}
-          className="text-center mb-12"
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
         >
-          <motion.div
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-purple-500/30 bg-purple-500/10 mb-6"
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: SECTION_DELAYS.superDebate + 0.1 }}
-            whileHover={{ scale: 1.05 }}
-          >
-            <Trophy className="w-4 h-4 text-purple-400" />
-            <span className="text-sm font-mono text-purple-400">SUPERDEBATE.ORG</span>
-          </motion.div>
+          {/* Decorative element */}
+          <div className="flex items-center justify-center gap-4 mb-6">
+            <div className="w-16 h-px bg-gradient-to-r from-transparent to-primary/50" />
+            <div className="flex items-center gap-2 px-4 py-2 border border-primary/30">
+              <Trophy className="w-4 h-4 text-primary" />
+              <span className="text-xs font-semibold uppercase tracking-[0.2em] font-jost text-primary">
+                SuperDebate.org
+              </span>
+            </div>
+            <div className="w-16 h-px bg-gradient-to-l from-transparent to-primary/50" />
+          </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-            <span className="text-foreground">Bring Debate </span>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">
-              Back to Life
-            </span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 font-jost text-foreground tracking-wide">
+            Bring Debate{' '}
+            <span className="text-primary">Back to Life</span>
           </h2>
 
-          <p className="text-lg text-gray-400 max-w-2xl mx-auto mb-6">
+          <p className="text-base sm:text-lg max-w-2xl mx-auto mb-8 font-jost text-foreground/60">
             The first large-scale adult debate ecosystem since ancient times. Local clubs, live events, and a community where the best arguments win.
           </p>
 
           {/* CTA Button */}
-          <motion.div
-            className="flex justify-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: SECTION_DELAYS.superDebate + 0.3 }}
-          >
-            <Link href="/super-debate">
-              <motion.button
-                className="px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-xl flex items-center justify-center gap-2 group"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <span>Learn More</span>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </motion.button>
-            </Link>
-          </motion.div>
+          <Link href="/super-debate">
+            <motion.button
+              whileHover={{ scale: 1.02, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              className="group relative px-8 py-4 font-semibold text-sm flex items-center justify-center gap-3 mx-auto overflow-hidden font-jost bg-foreground text-background tracking-widest uppercase"
+            >
+              <span className="relative z-10">Learn More</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform relative z-10" />
+              <motion.div
+                className="absolute inset-0 bg-primary"
+                initial={{ x: '-100%' }}
+                whileHover={{ x: 0 }}
+                transition={{ duration: 0.3, ease: 'easeInOut' }}
+              />
+            </motion.button>
+          </Link>
         </motion.div>
 
-        {/* Compact Features */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-12 max-w-5xl mx-auto">
+        {/* Features Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           {features.map((feature, index) => {
             const Icon = feature.icon
 
             return (
               <motion.div
                 key={feature.title}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: SECTION_DELAYS.superDebate + 0.5 + (index * 0.1), duration: 0.5 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileHover={{ y: -4 }}
+                className="relative group"
               >
-                <motion.div
-                  className="relative group h-full"
-                  whileHover={{ y: -8, scale: 1.05 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                >
-                  <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl opacity-0 group-hover:opacity-40 blur-xl transition-all duration-300" />
+                <div className="relative bg-card border border-border p-6 h-full transition-all duration-300 group-hover:border-primary/30 group-hover:shadow-lg">
+                  {/* Corner accents */}
+                  <div className="absolute top-0 left-0 w-4 h-4 border-l border-t border-primary/40 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div className="absolute bottom-0 right-0 w-4 h-4 border-r border-b border-primary/40 opacity-0 group-hover:opacity-100 transition-opacity" />
 
-                  <div className="relative bg-background/90 backdrop-blur-xl border border-purple-500/30 rounded-xl p-4 h-full group-hover:border-purple-500/50 transition-all duration-300">
-                    <Icon className="w-8 h-8 text-purple-400 mb-3" />
-                    <h3 className="text-base font-bold mb-1">{feature.title}</h3>
-                    <p className="text-xs text-gray-400">{feature.description}</p>
-                  </div>
-                </motion.div>
+                  <Icon className="w-8 h-8 mb-4 text-primary" />
+                  <h3 className="text-base font-bold mb-2 font-jost text-foreground">
+                    {feature.title}
+                  </h3>
+                  <p className="text-sm font-jost text-foreground/50">
+                    {feature.description}
+                  </p>
+                </div>
               </motion.div>
             )
           })}
         </div>
 
-        {/* Compact Format Showcase */}
+        {/* Format Showcase */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: SECTION_DELAYS.superDebate + 0.9 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
           className="relative max-w-4xl mx-auto"
         >
-          <div className="relative bg-background/60 backdrop-blur-xl border border-purple-500/20 rounded-xl p-6">
-            <div className="flex items-center gap-2 mb-4">
-              <MessageSquare className="w-6 h-6 text-purple-400" />
-              <h3 className="text-xl font-bold">One Format, Endless Adaptability</h3>
+          <div className="relative bg-card border border-border p-8">
+            {/* Corner accents */}
+            <div className="absolute top-0 left-0 w-6 h-6 border-l-2 border-t-2 border-primary" />
+            <div className="absolute top-0 right-0 w-6 h-6 border-r-2 border-t-2 border-primary" />
+            <div className="absolute bottom-0 left-0 w-6 h-6 border-l-2 border-b-2 border-primary" />
+            <div className="absolute bottom-0 right-0 w-6 h-6 border-r-2 border-b-2 border-primary" />
+
+            <div className="flex items-center gap-3 mb-6">
+              <MessageSquare className="w-6 h-6 text-primary" />
+              <h3 className="text-xl font-bold font-jost text-foreground">
+                One Format, Endless Adaptability
+              </h3>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 gap-8">
               <div>
-                <h4 className="text-base font-bold text-purple-400 mb-2">Flexible Structure</h4>
-                <p className="text-sm text-gray-400">
+                <h4 className="text-base font-semibold mb-2 font-jost text-primary">
+                  Flexible Structure
+                </h4>
+                <p className="text-sm leading-relaxed font-jost text-foreground/60">
                   Adapt speech lengths, rounds, and judging criteria to fit your community&apos;s needs and topics
                 </p>
               </div>
               <div>
-                <h4 className="text-base font-bold text-purple-400 mb-2">City Chapters</h4>
-                <p className="text-sm text-gray-400">
+                <h4 className="text-base font-semibold mb-2 font-jost text-primary">
+                  City Chapters
+                </h4>
+                <p className="text-sm leading-relaxed font-jost text-foreground/60">
                   Each city runs its own debates with local flavor while maintaining consistent quality
                 </p>
               </div>
@@ -198,7 +174,19 @@ export function SuperDebateHero() {
           </div>
         </motion.div>
 
-      </motion.div>
-    </section>
+        {/* Bottom text */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="text-center mt-12"
+        >
+          <p className="text-sm uppercase tracking-[0.2em] font-jost text-foreground/40">
+            Reviving the <span className="text-primary">Socratic tradition</span>
+          </p>
+        </motion.div>
+      </div>
+    </motion.section>
   )
 }

@@ -3,120 +3,83 @@
 import { motion } from 'framer-motion'
 import { ArrowRight, Zap, Users, Code, Trophy, Target, Shield, TrendingUp, Globe, Rocket, Brain, MessageSquare } from 'lucide-react'
 import Link from 'next/link'
-import { SectionDivider } from '@/components/section-divider'
 
 const experiences = [
-  {
-    company: 'Sparkblox',
-    role: 'Founder & CEO',
-    period: '2022-2023',
-    description: 'Built no-code NFT infrastructure for brands and creators. Led full product architecture, engineering, and go-to-market.',
-    achievements: [
-      'Raised over $1M in funding',
-      'Built and led team of 18 engineers',
-      'Secured partnerships with Chainlink and Algorand',
-      'Built modular deployers, dynamic metadata tools, and branded storefronts'
-    ],
-    impact: 'Demonstrated how to lead teams, raise capital, and ship complex Web3 products.',
-    tags: ['Web3', 'Fundraising', 'Team Leadership', 'Product Architecture'],
-    color: 'cyan'
-  },
   {
     company: 'Upland.me',
     role: 'Product & Operations Manager',
     period: '2021-2022',
-    description: 'Managed product flows, UX, operations, and game economy mechanics for a major Web3 virtual economy at scale.',
+    description: 'Led product and growth for a Web3 virtual economy. Found product-market fit through user research and incentive design.',
     achievements: [
       'Scaled from 13K to 200K monthly active users (15x growth)',
       'Designed SPARK token economics and launch strategy',
       'Built onboarding flows improving D7 retention by 40%',
-      'Managed token economies, player dynamics, and transaction systems'
+      'Identified the ONE insight that unlocked growth'
     ],
-    impact: 'Learned how virtual economies work when aligned with player interests.',
-    tags: ['Gaming', 'Token Design', 'Growth', 'Virtual Economies'],
-    color: 'purple'
+    impact: 'The Outcome: From struggling platform to 15x user growth in 12 months.',
+    tags: ['PMF', 'Growth', 'Token Design', 'User Research']
   },
   {
     company: 'Mode Mobile',
     role: 'Product Manager',
     period: '2020-2021',
-    description: 'Transformed failing ad-tech product into sustainable business through user research and strategic pivots.',
+    description: 'Inherited a failing product. Found the real problem through user research. Pivoted to PMF.',
     achievements: [
       'Pivoted struggling product to achieve product-market fit',
       'Increased revenue 3x through strategic feature development',
       'Reduced churn by 50% through user research',
-      'Built analytics dashboard revealing critical insights'
+      'Killed features users said they wanted but didn\'t use'
     ],
-    impact: 'Saved a product by listening to actual users instead of assumptions.',
-    tags: ['Product Turnaround', 'User Research', 'Analytics', 'Mobile'],
-    color: 'pink'
+    impact: 'The Outcome: Saved a product by finding what users actually needed.',
+    tags: ['PMF', 'Product Turnaround', 'User Research', 'Analytics']
   },
   {
-    company: 'Business of AI',
-    role: 'Lead Product Researcher',
-    period: '2019-2020',
-    description: 'Created AI strategy frameworks helping enterprises cut through hype to find real value.',
+    company: 'Sparkblox',
+    role: 'Founder & CEO',
+    period: '2022-2023',
+    description: 'Built no-code NFT infrastructure from zero. Raised capital, hired team, shipped product.',
     achievements: [
-      'Decision framework used by 10+ enterprises',
-      'Conducted 50+ executive interviews on AI adoption',
-      'Published research reaching 100K+ professionals',
-      'Advised startups on practical AI implementation'
+      'Raised over $1M in funding',
+      'Built and led team of 18 engineers',
+      'Shipped modular deployers, metadata tools, storefronts',
+      'Learned what kills startups: building before validating'
     ],
-    impact: 'Helped companies understand AI beyond the buzzwords.',
-    tags: ['AI Strategy', 'Research', 'Enterprise', 'Thought Leadership'],
-    color: 'yellow'
+    impact: 'The Outcome: Hard lessons on when to pivot vs. persist.',
+    tags: ['Zero-to-One', 'Fundraising', 'Team Leadership', 'Web3']
   },
   {
     company: 'HelpWith',
     role: 'Founder & Product Lead',
     period: '2018-2019',
-    description: 'One of the early skill-sharing and task-help marketplaces. Built matching engine, UI, and community operations from scratch.',
+    description: 'Built an early skill-sharing marketplace. First experience taking an idea from zero to users.',
     achievements: [
       'Launched in 3 cities with 500+ service providers',
       'Built trust system reducing disputes by 80%',
-      'Designed matching algorithm prioritizing quality',
-      'Created community features increasing repeat usage 2x'
+      'Designed matching algorithm that actually worked',
+      'Learned that incentive design is everything'
     ],
-    impact: 'Learned to build platforms that map incentives and scale social value.',
-    tags: ['Marketplace', 'Community', 'Trust Systems', 'Zero-to-One'],
-    color: 'cyan'
-  },
-  {
-    company: 'Chicago Debates',
-    role: 'Debate Instructor',
-    period: 'Early Career',
-    description: 'Competitive debate instruction that shaped how I think about reasoning, persuasion, and human development.',
-    achievements: [
-      'Trained students in argumentation and critical thinking',
-      'Developed pedagogical frameworks for discourse',
-      'Learned how people reason and change their minds',
-      'Built foundation for all future product work'
-    ],
-    impact: 'This experience informs everything I build: clarity, rigor, structure.',
-    tags: ['Education', 'Debate', 'Communication', 'Human Development'],
-    color: 'purple'
+    impact: 'The Outcome: Foundation for all future product thinking.',
+    tags: ['Zero-to-One', 'Marketplace', 'Trust Systems', 'Community']
   }
 ]
 
-const currentProjects = [
+const shippedProducts = [
   {
     name: 'SuperDebate',
-    role: 'Founder',
-    description: 'The first large-scale adult debate ecosystem since ancient times. Local clubs, national tournaments, AI-powered judging. Reinventing civic discourse.',
-    status: 'Active • Chicago + Bali',
+    role: 'Built & Launched',
+    description: 'Built the first large-scale adult debate ecosystem. Local clubs in 15+ cities, AI-powered judging, national tournaments. Shipped end-to-end.',
+    status: 'Shipped • 15+ Cities',
     link: '/super-debate',
     external: 'https://superdebate.org',
-    color: 'purple',
     icon: MessageSquare
   },
   {
     name: 'Accelerate',
-    role: 'Founder',
-    description: 'Modular platform for builder profiles, funding programs, evaluation engines, and intelligent matching. Systems-level innovation for Web3 ecosystems.',
-    status: 'Live • 600+ Projects',
+    role: 'Built & Launched',
+    description: 'Built a modular platform for builder profiles, funding programs, and intelligent matching. 607 projects evaluated, 433 funding programs indexed.',
+    status: 'Shipped • 600+ Projects',
     link: '/accelerate',
     external: 'https://acceleratewith.us',
-    color: 'cyan',
     icon: Rocket
   }
 ]
@@ -137,13 +100,7 @@ const otherProjects = [
 
 export default function WorkPage() {
   return (
-    <section className="min-h-screen py-20 px-4 sm:px-6 lg:px-8">
-      {/* Background effects */}
-      <div className="fixed inset-0 -z-10 pointer-events-none">
-        <div className="absolute top-1/4 left-0 w-96 h-96 bg-cyan-500/5 rounded-full blur-[150px]" />
-        <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-purple-500/5 rounded-full blur-[150px]" />
-      </div>
-
+    <section className="min-h-screen py-20 px-4 sm:px-6 lg:px-8 bg-background">
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <motion.div
@@ -159,42 +116,38 @@ export default function WorkPage() {
             transition={{ delay: 0.1, duration: 0.5 }}
             className="flex items-center justify-center gap-4 mb-6"
           >
-            <div className="w-12 h-px bg-gradient-to-r from-transparent to-cyan-500/50" />
-            <svg viewBox="0 0 24 24" className="w-5 h-5">
-              <path d="M12 2 L22 12 L12 22 L2 12 Z" fill="none" stroke="rgba(0, 212, 255, 0.6)" strokeWidth="1.5" />
+            <div className="w-12 h-px bg-gradient-to-r from-transparent to-primary/50" />
+            <svg viewBox="0 0 24 24" className="w-5 h-5 text-primary">
+              <path d="M12 2 L22 12 L12 22 L2 12 Z" fill="none" stroke="currentColor" strokeWidth="1.5" />
             </svg>
-            <div className="w-12 h-px bg-gradient-to-l from-transparent to-cyan-500/50" />
+            <div className="w-12 h-px bg-gradient-to-l from-transparent to-primary/50" />
           </motion.div>
 
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="text-cyan-400/70 text-xs tracking-[0.3em] uppercase mb-4"
+            className="text-xs tracking-[0.3em] uppercase mb-4 text-primary font-jost"
           >
-            Projects & Experience
+            Work & Experience
           </motion.p>
           <h1
             className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 tracking-wide"
+            style={{ fontFamily: "'Jost', 'Futura', sans-serif" }}
           >
-            <span className="text-white">The </span>
-            <span style={{
-              background: 'linear-gradient(135deg, #00ffff 0%, #a855f7 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-            }}>
+            <span className="text-foreground">The </span>
+            <span className="text-primary">
               Work
             </span>
           </h1>
           <p
-            className="text-lg text-gray-400 max-w-3xl mx-auto font-light"
+            className="text-lg max-w-3xl mx-auto text-foreground/70 font-jost"
           >
-            Current projects, past experience, and the work that shaped how I build.
+            Products shipped, companies built, systems scaled.
           </p>
         </motion.div>
 
-        {/* Current Projects */}
+        {/* Shipped Products */}
         <motion.section
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -206,13 +159,14 @@ export default function WorkPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-2xl font-bold mb-8"
+            style={{ fontFamily: "'Jost', 'Futura', sans-serif" }}
           >
-            <span className="text-white">Current </span>
-            <span className="text-cyan-400">Focus</span>
+            <span className="text-foreground">Products </span>
+            <span className="text-primary">Shipped</span>
           </motion.h2>
 
           <div className="grid md:grid-cols-2 gap-6">
-            {currentProjects.map((project, index) => {
+            {shippedProducts.map((project, index) => {
               const Icon = project.icon
               return (
                 <motion.div
@@ -224,24 +178,47 @@ export default function WorkPage() {
                   whileHover={{ y: -5, scale: 1.01 }}
                   className="relative group"
                 >
-                  <div className={`absolute -inset-1 rounded-xl opacity-0 group-hover:opacity-100 blur-xl transition-all duration-500 ${project.color === 'cyan' ? 'bg-cyan-500/20' : 'bg-purple-500/20'}`} />
-                  <div className="relative bg-black/60 backdrop-blur-xl border border-white/10 rounded-xl p-6 h-full group-hover:border-white/20 transition-all">
+                  {/* Corner accents */}
+                  <div className="absolute top-0 left-0 w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="absolute top-0 left-0 w-full h-0.5 bg-primary" />
+                    <div className="absolute top-0 left-0 w-0.5 h-full bg-primary" />
+                  </div>
+                  <div className="absolute top-0 right-0 w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="absolute top-0 right-0 w-full h-0.5 bg-primary" />
+                    <div className="absolute top-0 right-0 w-0.5 h-full bg-primary" />
+                  </div>
+                  <div className="absolute bottom-0 left-0 w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="absolute bottom-0 left-0 w-full h-0.5 bg-primary" />
+                    <div className="absolute bottom-0 left-0 w-0.5 h-full bg-primary" />
+                  </div>
+                  <div className="absolute bottom-0 right-0 w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="absolute bottom-0 right-0 w-full h-0.5 bg-primary" />
+                    <div className="absolute bottom-0 right-0 w-0.5 h-full bg-primary" />
+                  </div>
+
+                  <div
+                    className="relative rounded-xl p-6 h-full transition-all border bg-card border-border"
+                  >
                     <div className="flex items-start justify-between mb-4">
                       <div className="flex items-center gap-3">
-                        <Icon className={`w-8 h-8 ${project.color === 'cyan' ? 'text-cyan-400' : 'text-purple-400'}`} style={{ filter: 'drop-shadow(0 0 10px currentColor)' }} />
+                        <Icon className="w-8 h-8 text-primary" />
                         <div>
-                          <h3 className={`text-xl font-bold ${project.color === 'cyan' ? 'text-cyan-400' : 'text-purple-400'}`}>{project.name}</h3>
-                          <span className="text-gray-500 text-sm">{project.role}</span>
+                          <h3 className="text-xl font-bold text-primary font-jost">{project.name}</h3>
+                          <span className="text-sm text-foreground/60 font-jost">{project.role}</span>
                         </div>
                       </div>
-                      <span className="text-xs font-mono text-gray-400 bg-white/5 px-2 py-1 rounded">{project.status}</span>
+                      <span
+                        className="text-xs px-2 py-1 rounded text-primary bg-primary/10 font-jost"
+                      >
+                        {project.status}
+                      </span>
                     </div>
-                    <p className="text-gray-300 mb-4">{project.description}</p>
+                    <p className="mb-4 text-foreground/80 font-jost">{project.description}</p>
                     <div className="flex items-center gap-4">
-                      <Link href={project.link} className={`text-sm font-semibold flex items-center gap-1 ${project.color === 'cyan' ? 'text-cyan-400 hover:text-cyan-300' : 'text-purple-400 hover:text-purple-300'} transition-colors`}>
+                      <Link href={project.link} className="text-sm font-semibold flex items-center gap-1 transition-opacity hover:opacity-70 text-primary font-jost">
                         View Details <ArrowRight className="w-3 h-3" />
                       </Link>
-                      <a href={project.external} target="_blank" rel="noopener noreferrer" className="text-sm text-gray-400 hover:text-white flex items-center gap-1 transition-colors">
+                      <a href={project.external} target="_blank" rel="noopener noreferrer" className="text-sm flex items-center gap-1 transition-opacity hover:opacity-70 text-foreground/60 font-jost">
                         Visit Site <Globe className="w-3 h-3" />
                       </a>
                     </div>
@@ -263,7 +240,7 @@ export default function WorkPage() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-xl font-bold mb-6 text-gray-400"
+            className="text-xl font-bold mb-6 text-foreground/60 font-jost"
           >
             Other Projects
           </motion.h2>
@@ -275,24 +252,31 @@ export default function WorkPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-black/40 border border-white/5 rounded-lg p-4 hover:border-white/10 transition-all"
+                className="rounded-lg p-4 border transition-all hover:border-primary/30 bg-card border-border"
               >
                 <div className="flex items-center justify-between mb-1">
-                  <h3 className="text-white font-semibold">{project.name}</h3>
+                  <h3 className="font-semibold text-foreground font-jost">{project.name}</h3>
                   {project.link && (
-                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:text-cyan-300 text-sm flex items-center gap-1">
+                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-sm flex items-center gap-1 transition-opacity hover:opacity-70 text-primary font-jost">
                       Visit <Globe className="w-3 h-3" />
                     </a>
                   )}
                 </div>
-                <p className="text-gray-400 text-sm mb-2">{project.description}</p>
-                <span className="text-xs font-mono text-cyan-400/60">{project.tech}</span>
+                <p className="text-sm mb-2 text-foreground/70 font-jost">{project.description}</p>
+                <span className="text-xs text-primary/80 font-jost">{project.tech}</span>
               </motion.div>
             ))}
           </div>
         </motion.section>
 
-        <SectionDivider variant="geometric" />
+        {/* Divider with diamond */}
+        <div className="flex items-center justify-center gap-4 mb-16">
+          <div className="w-20 h-px bg-primary/30" />
+          <svg viewBox="0 0 24 24" className="w-6 h-6 text-primary">
+            <path d="M12 2 L22 12 L12 22 L2 12 Z" fill="none" stroke="currentColor" strokeWidth="1.5" />
+          </svg>
+          <div className="w-20 h-px bg-primary/30" />
+        </div>
 
         {/* Experience Timeline */}
         <motion.section
@@ -306,14 +290,10 @@ export default function WorkPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-3xl font-bold mb-12 text-center"
+            style={{ fontFamily: "'Jost', 'Futura', sans-serif" }}
           >
-            <span className="text-white">Experience </span>
-            <span style={{
-              background: 'linear-gradient(135deg, #00ffff 0%, #a855f7 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-            }}>Timeline</span>
+            <span className="text-foreground">Experience </span>
+            <span className="text-primary">Timeline</span>
           </motion.h2>
 
           <div className="space-y-6">
@@ -324,64 +304,44 @@ export default function WorkPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className={`relative bg-black/40 backdrop-blur-xl border-l-4 rounded-r-xl p-6 hover:bg-black/60 transition-all ${
-                  exp.color === 'cyan' ? 'border-cyan-500/50' :
-                  exp.color === 'purple' ? 'border-purple-500/50' :
-                  exp.color === 'pink' ? 'border-pink-500/50' :
-                  'border-yellow-500/50'
-                }`}
+                className="relative rounded-r-xl p-6 transition-all border-l-4 bg-card border-l-primary"
               >
                 {/* Header */}
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4">
                   <div>
-                    <h3 className={`text-xl font-bold ${
-                      exp.color === 'cyan' ? 'text-cyan-400' :
-                      exp.color === 'purple' ? 'text-purple-400' :
-                      exp.color === 'pink' ? 'text-pink-400' :
-                      'text-yellow-400'
-                    }`}>{exp.company}</h3>
-                    <span className="text-white">{exp.role}</span>
+                    <h3 className="text-xl font-bold text-primary font-jost">{exp.company}</h3>
+                    <span className="text-foreground font-jost">{exp.role}</span>
                   </div>
-                  <span className="text-sm font-mono text-gray-500 mt-2 sm:mt-0">{exp.period}</span>
+                  <span className="text-sm mt-2 sm:mt-0 text-foreground/50 font-jost">{exp.period}</span>
                 </div>
 
                 {/* Description */}
-                <p className="text-gray-300 mb-4">{exp.description}</p>
+                <p className="mb-4 text-foreground/80 font-jost">{exp.description}</p>
 
                 {/* Achievements */}
                 <div className="grid sm:grid-cols-2 gap-2 mb-4">
                   {exp.achievements.map((achievement, i) => (
-                    <div key={i} className="flex items-start gap-2 text-sm text-gray-400">
-                      <Zap className={`w-3 h-3 mt-1 flex-shrink-0 ${
-                        exp.color === 'cyan' ? 'text-cyan-400' :
-                        exp.color === 'purple' ? 'text-purple-400' :
-                        exp.color === 'pink' ? 'text-pink-400' :
-                        'text-yellow-400'
-                      }`} />
-                      <span>{achievement}</span>
+                    <div key={i} className="flex items-start gap-2 text-sm text-foreground/70">
+                      <Zap className="w-3 h-3 mt-1 flex-shrink-0 text-primary" />
+                      <span style={{ fontFamily: "'Jost', 'Futura', sans-serif" }}>{achievement}</span>
                     </div>
                   ))}
                 </div>
 
                 {/* Impact */}
-                <div className={`p-3 rounded-lg mb-4 ${
-                  exp.color === 'cyan' ? 'bg-cyan-500/10 border border-cyan-500/20' :
-                  exp.color === 'purple' ? 'bg-purple-500/10 border border-purple-500/20' :
-                  exp.color === 'pink' ? 'bg-pink-500/10 border border-pink-500/20' :
-                  'bg-yellow-500/10 border border-yellow-500/20'
-                }`}>
-                  <p className={`text-sm font-medium ${
-                    exp.color === 'cyan' ? 'text-cyan-400' :
-                    exp.color === 'purple' ? 'text-purple-400' :
-                    exp.color === 'pink' ? 'text-pink-400' :
-                    'text-yellow-400'
-                  }`}>→ {exp.impact}</p>
+                <div
+                  className="p-3 rounded-lg mb-4 border bg-primary/5 border-primary/20"
+                >
+                  <p className="text-sm font-medium text-primary font-jost">→ {exp.impact}</p>
                 </div>
 
                 {/* Tags */}
                 <div className="flex flex-wrap gap-2">
                   {exp.tags.map((tag) => (
-                    <span key={tag} className="px-2 py-1 text-xs font-mono text-gray-400 bg-white/5 border border-white/10 rounded hover:border-white/20 transition-all">
+                    <span
+                      key={tag}
+                      className="px-2 py-1 text-xs rounded border transition-all hover:border-foreground/30 text-foreground/70 bg-foreground/5 border-foreground/10 font-jost"
+                    >
                       {tag}
                     </span>
                   ))}
@@ -391,7 +351,14 @@ export default function WorkPage() {
           </div>
         </motion.section>
 
-        <SectionDivider variant="wave" />
+        {/* Divider with diamond */}
+        <div className="flex items-center justify-center gap-4 mb-16">
+          <div className="w-20 h-px bg-primary/30" />
+          <svg viewBox="0 0 24 24" className="w-6 h-6 text-primary">
+            <path d="M12 2 L22 12 L12 22 L2 12 Z" fill="none" stroke="currentColor" strokeWidth="1.5" />
+          </svg>
+          <div className="w-20 h-px bg-primary/30" />
+        </div>
 
         {/* Key Metrics */}
         <motion.section
@@ -405,17 +372,18 @@ export default function WorkPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-3xl font-bold mb-12 text-center"
+            style={{ fontFamily: "'Jost', 'Futura', sans-serif" }}
           >
-            <span className="text-white">Impact by </span>
-            <span className="text-cyan-400">Numbers</span>
+            <span className="text-foreground">By the </span>
+            <span className="text-primary">Numbers</span>
           </motion.h2>
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {[
-              { icon: Trophy, value: '$20M+', label: 'Funding Enabled', color: 'yellow', glow: 'rgba(250, 204, 21, 0.4)' },
-              { icon: Code, value: '50+', label: 'Products Shipped', color: 'cyan', glow: 'rgba(0, 212, 255, 0.4)' },
-              { icon: Users, value: '200K+', label: 'Users Served', color: 'purple', glow: 'rgba(168, 85, 247, 0.4)' },
-              { icon: TrendingUp, value: '15x', label: 'Best Growth Rate', color: 'pink', glow: 'rgba(236, 72, 153, 0.4)' }
+              { icon: Trophy, value: '15+', label: 'Years in Product' },
+              { icon: Code, value: '$20M+', label: 'Funding Enabled' },
+              { icon: Users, value: '300K+', label: 'Users Scaled' },
+              { icon: TrendingUp, value: '50+', label: 'Products Shipped' }
             ].map((metric, index) => {
               const Icon = metric.icon
               return (
@@ -429,23 +397,11 @@ export default function WorkPage() {
                   className="relative group"
                 >
                   <div
-                    className="absolute -inset-1 rounded-xl opacity-0 group-hover:opacity-100 blur-xl transition-all duration-500"
-                    style={{ background: `radial-gradient(circle, ${metric.glow}, transparent 70%)` }}
-                  />
-                  <div className="relative bg-black/60 backdrop-blur-xl border border-white/10 rounded-xl p-6 text-center group-hover:border-white/20 transition-all">
-                    <Icon className={`w-8 h-8 mx-auto mb-3 ${
-                      metric.color === 'yellow' ? 'text-yellow-400' :
-                      metric.color === 'cyan' ? 'text-cyan-400' :
-                      metric.color === 'purple' ? 'text-purple-400' :
-                      'text-pink-400'
-                    }`} style={{ filter: 'drop-shadow(0 0 10px currentColor)' }} />
-                    <p className={`text-3xl font-black mb-1 ${
-                      metric.color === 'yellow' ? 'text-yellow-400' :
-                      metric.color === 'cyan' ? 'text-cyan-400' :
-                      metric.color === 'purple' ? 'text-purple-400' :
-                      'text-pink-400'
-                    }`} style={{ textShadow: `0 0 30px ${metric.glow}` }}>{metric.value}</p>
-                    <p className="text-sm text-gray-400">{metric.label}</p>
+                    className="relative rounded-xl p-6 text-center transition-all border bg-card border-border"
+                  >
+                    <Icon className="w-8 h-8 mx-auto mb-3 text-primary" />
+                    <p className="text-3xl font-black mb-1 text-primary font-jost">{metric.value}</p>
+                    <p className="text-sm text-foreground/60 font-jost">{metric.label}</p>
                   </div>
                 </motion.div>
               )
@@ -453,7 +409,14 @@ export default function WorkPage() {
           </div>
         </motion.section>
 
-        <SectionDivider variant="organic" />
+        {/* Divider with diamond */}
+        <div className="flex items-center justify-center gap-4 mb-16">
+          <div className="w-20 h-px bg-primary/30" />
+          <svg viewBox="0 0 24 24" className="w-6 h-6 text-primary">
+            <path d="M12 2 L22 12 L12 22 L2 12 Z" fill="none" stroke="currentColor" strokeWidth="1.5" />
+          </svg>
+          <div className="w-20 h-px bg-primary/30" />
+        </div>
 
         {/* Approach */}
         <motion.section
@@ -467,9 +430,10 @@ export default function WorkPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-2xl font-bold mb-8"
+            style={{ fontFamily: "'Jost', 'Futura', sans-serif" }}
           >
-            <span className="text-white">How I </span>
-            <span className="text-purple-400">Work</span>
+            <span className="text-foreground">How I </span>
+            <span className="text-primary">Work</span>
           </motion.h2>
 
           <div className="grid md:grid-cols-3 gap-6">
@@ -477,20 +441,17 @@ export default function WorkPage() {
               {
                 icon: Target,
                 title: 'Surface Reality',
-                description: 'Most failures come from solving the wrong problem. I start by naming assumptions and testing them against reality.',
-                color: 'cyan'
+                description: 'Most failures come from solving the wrong problem. I start by naming assumptions and testing them against reality.'
               },
               {
                 icon: Shield,
                 title: 'Design Alignment',
-                description: 'Incentives matter. I build systems where what\'s good for users is good for the business—no manipulation required.',
-                color: 'purple'
+                description: 'Incentives matter. I build systems where what\'s good for users is good for the business—no manipulation required.'
               },
               {
                 icon: Brain,
                 title: 'Judge by Outcomes',
-                description: 'Ideas are cheap. I measure success by durable, compounding value—not vanity metrics or growth theater.',
-                color: 'pink'
+                description: 'Ideas are cheap. I measure success by durable, compounding value—not vanity metrics or growth theater.'
               }
             ].map((approach, index) => {
               const Icon = approach.icon
@@ -502,15 +463,11 @@ export default function WorkPage() {
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
                   whileHover={{ y: -5 }}
-                  className="bg-black/40 backdrop-blur-xl border border-white/10 rounded-xl p-6 hover:border-white/20 transition-all"
+                  className="rounded-xl p-6 transition-all border bg-card border-border"
                 >
-                  <Icon className={`w-8 h-8 mb-4 ${
-                    approach.color === 'cyan' ? 'text-cyan-400' :
-                    approach.color === 'purple' ? 'text-purple-400' :
-                    'text-pink-400'
-                  }`} />
-                  <h3 className="text-lg font-bold text-white mb-2">{approach.title}</h3>
-                  <p className="text-gray-400 text-sm">{approach.description}</p>
+                  <Icon className="w-8 h-8 mb-4 text-primary" />
+                  <h3 className="text-lg font-bold mb-2 text-foreground font-jost">{approach.title}</h3>
+                  <p className="text-sm text-foreground/70 font-jost">{approach.description}</p>
                 </motion.div>
               )
             })}
@@ -522,53 +479,27 @@ export default function WorkPage() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="relative rounded-2xl p-8 sm:p-12 text-center overflow-hidden"
-          style={{
-            background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 20, 40, 0.9) 100%)',
-            border: '1px solid rgba(0, 212, 255, 0.3)',
-            boxShadow: '0 0 60px rgba(0, 212, 255, 0.15)'
-          }}
+          className="relative rounded-2xl p-8 sm:p-12 text-center overflow-hidden border bg-card border-primary/30"
         >
-          <div className="absolute top-0 left-0 w-20 h-20 border-t-2 border-l-2 border-cyan-500/50 rounded-tl-2xl" />
-          <div className="absolute bottom-0 right-0 w-20 h-20 border-b-2 border-r-2 border-purple-500/50 rounded-br-2xl" />
+          <div className="absolute top-0 left-0 w-20 h-20 border-t-2 border-l-2 rounded-tl-2xl border-primary/50" />
+          <div className="absolute bottom-0 right-0 w-20 h-20 border-b-2 border-r-2 rounded-br-2xl border-primary/50" />
 
-          <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-white">
-            Have a Problem Worth Solving?
+          <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-foreground font-jost">
+            What are you building?
           </h2>
-          <p className="text-gray-300 mb-8 max-w-xl mx-auto">
-            I partner with teams focused on outcomes over optics. Let&apos;s talk about what you&apos;re building.
+          <p className="mb-8 max-w-xl mx-auto text-foreground/80 font-jost">
+            I partner with founders and teams shipping products that matter.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/philosophy">
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="px-8 py-4 font-bold text-white"
-                style={{
-                  background: 'transparent',
-                  border: '2px solid rgba(168, 85, 247, 0.6)',
-                  boxShadow: '0 0 20px rgba(168, 85, 247, 0.2)',
-                }}
-              >
-                Read My Philosophy
-              </motion.button>
-            </Link>
-            <Link href="/contact">
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="px-8 py-4 font-bold flex items-center justify-center gap-2"
-                style={{
-                  background: 'linear-gradient(135deg, #00d4ff 0%, #00ffff 100%)',
-                  color: '#000',
-                  boxShadow: '0 0 30px rgba(0, 212, 255, 0.5)',
-                }}
-              >
-                Start a Conversation
-                <ArrowRight className="w-5 h-5" />
-              </motion.button>
-            </Link>
-          </div>
+          <Link href="/contact">
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="px-8 py-4 font-bold flex items-center justify-center gap-2 rounded bg-primary text-primary-foreground font-jost mx-auto"
+            >
+              Get in Touch
+              <ArrowRight className="w-5 h-5" />
+            </motion.button>
+          </Link>
         </motion.section>
       </div>
     </section>

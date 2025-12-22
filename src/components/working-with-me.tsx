@@ -2,8 +2,6 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { CheckCircle, ArrowRight, MessageSquare, Rocket, Target, Users, Brain, Eye, Zap, Unlock } from 'lucide-react'
-import { AnimatedBorderBox } from '@/components/animated-border-box'
-import { fadeInUp, headerAnimation, cardHover, staggerContainer, ANIMATION_DELAY, SECTION_DELAYS } from '@/lib/animation-config'
 import Link from 'next/link'
 import { useRef } from 'react'
 
@@ -90,355 +88,258 @@ export function WorkingWithMe() {
     <motion.section
       ref={containerRef}
       style={{ opacity }}
-      variants={fadeInUp}
-      initial="initial"
-      whileInView="animate"
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ delay: SECTION_DELAYS.workingWithMe }}
-      className="py-20 px-4 sm:px-6 lg:px-8"
+      className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-card"
     >
-      <motion.div
-        variants={staggerContainer}
-        initial="initial"
-        whileInView="animate"
-        viewport={{ once: true, margin: "-50px" }}
-        className="max-w-7xl mx-auto"
-      >
+      <div className="max-w-6xl mx-auto">
+        {/* Section Header */}
         <motion.div
-          variants={fadeInUp}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <motion.h2
-            {...headerAnimation}
-            className="heading-section mb-6"
-          >
-            <span style={{ color: '#ffffff', fontWeight: 300 }}>ADVISORY </span>
-            <span style={{
-              background: 'linear-gradient(135deg, #00ffff 0%, #8a2be2 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-              fontWeight: 700,
-              display: 'inline-block'
-            }}>SERVICES</span>
-          </motion.h2>
-          <motion.p
-            {...headerAnimation}
-            transition={{ ...headerAnimation.transition, delay: ANIMATION_DELAY.stagger }}
-            className="text-lg font-light tracking-wide max-w-3xl mx-auto"
-            style={{ color: 'var(--gray-400)' }}
-          >
-            AI and blockchain strategy. From vision to working product.
-          </motion.p>
+          {/* Decorative element */}
+          <div className="flex items-center justify-center gap-4 mb-6">
+            <div className="w-16 h-px bg-gradient-to-r from-transparent to-primary/50" />
+            <svg viewBox="0 0 24 24" className="w-5 h-5 text-primary">
+              <path
+                d="M12 2 L22 12 L12 22 L2 12 Z"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+              />
+            </svg>
+            <div className="w-16 h-px bg-gradient-to-l from-transparent to-primary/50" />
+          </div>
+
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 font-jost text-foreground tracking-wide">
+            Working Together
+          </h2>
+          <p className="text-base sm:text-lg max-w-2xl mx-auto font-jost text-foreground/60">
+            Product strategy, technical architecture, and hands-on execution.
+          </p>
         </motion.div>
 
         {/* Process Timeline */}
         <motion.div
-          variants={fadeInUp}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.2 }}
           className="mb-20"
         >
-          <motion.div
-            variants={fadeInUp}
-            className="text-center mb-12"
-          >
-            <motion.h3
-              {...headerAnimation}
-              className="text-3xl font-bold mb-4"
-            >
-              <span style={{ color: '#ffffff', fontWeight: 300 }}>THE </span>
-              <span style={{
-                background: 'linear-gradient(135deg, #00ffff 0%, #8a2be2 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-                fontWeight: 700,
-                display: 'inline-block'
-              }}>PROCESS</span>
-            </motion.h3>
-            <motion.p
-              {...headerAnimation}
-              transition={{ ...headerAnimation.transition, delay: ANIMATION_DELAY.stagger }}
-              className="text-lg font-light tracking-wide max-w-2xl mx-auto"
-              style={{ color: 'var(--gray-400)' }}
-            >
+          <div className="text-center mb-12">
+            <h3 className="text-2xl sm:text-3xl font-bold mb-3 font-jost text-foreground">
+              The <span className="text-primary">Process</span>
+            </h3>
+            <p className="text-base font-jost text-foreground/50">
               From discovery to scale in 8 weeks.
-            </motion.p>
-          </motion.div>
+            </p>
+          </div>
 
-          <motion.div
-            variants={staggerContainer}
-            className="grid md:grid-cols-4 gap-8 relative"
-          >
-            {/* Removed confusing connection line */}
-
-            {process.map((phase) => {
+          <div className="grid md:grid-cols-4 gap-6">
+            {process.map((phase, index) => {
               const Icon = phase.icon
               return (
                 <motion.div
                   key={phase.phase}
-                  variants={fadeInUp}
-                  {...cardHover}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  whileHover={{ y: -4 }}
                   className="relative group"
                 >
-                  <div className="relative z-10 bg-background p-6 rounded-xl border border-foreground/10 hover:border-cyan-400/30 transition-all duration-300">
-                    <motion.div
-                      variants={fadeInUp}
-                      className="flex items-center gap-4 mb-6"
-                    >
-                      <div className="w-14 h-14 bg-gradient-to-br from-cyan-400/20 to-purple-400/20 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                        <Icon className="w-7 h-7 text-cyan-400" />
+                  <div className="relative bg-background border border-border p-6 h-full transition-all duration-300 group-hover:border-primary/30 group-hover:shadow-lg">
+                    {/* Corner accents */}
+                    <div className="absolute top-0 left-0 w-4 h-4 border-l border-t border-primary/40 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <div className="absolute bottom-0 right-0 w-4 h-4 border-r border-b border-primary/40 opacity-0 group-hover:opacity-100 transition-opacity" />
+
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-12 h-12 flex items-center justify-center bg-primary/10">
+                        <Icon className="w-6 h-6 text-primary" />
                       </div>
                       <div>
-                        <motion.h4
-                          variants={fadeInUp}
-                          className="font-bold text-xl group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-cyan-400 group-hover:to-purple-400 transition-all duration-300"
-                        >
+                        <h4 className="font-bold text-lg font-jost text-foreground">
                           {phase.phase}
-                        </motion.h4>
-                        <motion.p
-                          variants={fadeInUp}
-                          className="text-sm text-gray-400 font-mono"
-                        >
+                        </h4>
+                        <p className="text-xs uppercase tracking-wider font-jost text-primary">
                           {phase.duration}
-                        </motion.p>
+                        </p>
                       </div>
-                    </motion.div>
-                    <motion.ul
-                      variants={staggerContainer}
-                      className="space-y-3"
-                    >
+                    </div>
+                    <ul className="space-y-2">
                       {phase.activities.map((activity) => (
-                        <motion.li
+                        <li
                           key={activity}
-                          variants={fadeInUp}
-                          className="flex items-start gap-3 text-sm text-gray-400"
+                          className="flex items-start gap-2 text-sm font-jost text-foreground/60"
                         >
-                          <CheckCircle className="w-4 h-4 text-cyan-400 mt-0.5 flex-shrink-0" />
-                          <span className="group-hover:text-foreground transition-colors duration-300">
-                            {activity}
-                          </span>
-                        </motion.li>
+                          <CheckCircle className="w-4 h-4 mt-0.5 flex-shrink-0 text-primary" />
+                          <span>{activity}</span>
+                        </li>
                       ))}
-                    </motion.ul>
+                    </ul>
                   </div>
                 </motion.div>
               )
             })}
-          </motion.div>
+          </div>
         </motion.div>
 
         {/* Working Principles */}
         <motion.div
-          variants={fadeInUp}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.3 }}
           className="mb-20"
         >
-          <motion.div
-            variants={fadeInUp}
-            className="text-center mb-12"
-          >
-            <motion.h3
-              {...headerAnimation}
-              className="text-3xl font-bold mb-4"
-            >
-              <span style={{ color: '#ffffff', fontWeight: 300 }}>MY </span>
-              <span style={{
-                background: 'linear-gradient(135deg, #00ffff 0%, #8a2be2 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-                fontWeight: 700,
-                display: 'inline-block'
-              }}>PRINCIPLES</span>
-            </motion.h3>
-            <motion.p
-              {...headerAnimation}
-              transition={{ ...headerAnimation.transition, delay: ANIMATION_DELAY.stagger }}
-              className="text-lg font-light tracking-wide max-w-2xl mx-auto"
-              style={{ color: 'var(--gray-400)' }}
-            >
+          <div className="text-center mb-12">
+            <h3 className="text-2xl sm:text-3xl font-bold mb-3 font-jost text-foreground">
+              My <span className="text-primary">Principles</span>
+            </h3>
+            <p className="text-base font-jost text-foreground/50">
               Core values that guide every engagement.
-            </motion.p>
-          </motion.div>
+            </p>
+          </div>
 
-          <motion.div
-            variants={staggerContainer}
-            className="grid md:grid-cols-2 gap-6"
-          >
+          <div className="grid md:grid-cols-2 gap-6">
             {principles.map((principle, index) => {
               const Icon = principle.icon
               return (
                 <motion.div
                   key={principle.title}
-                  variants={fadeInUp}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  whileHover={{ y: -4 }}
                   className="group"
                 >
-                  <AnimatedBorderBox
-                    delay={index * 0.1}
-                    className="p-6 rounded-xl hover:bg-foreground/5 transition-all duration-300 h-full"
-                    borderColor={index % 2 === 0 ? "rgba(0, 200, 255, 0.3)" : "rgba(147, 51, 234, 0.3)"}
-                  >
-                    <motion.div
-                      variants={fadeInUp}
-                      className="flex gap-4"
-                    >
-                      <div className="flex-shrink-0">
-                        <div className="w-14 h-14 bg-gradient-to-br from-cyan-400/20 to-purple-400/20 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                          <Icon className="w-7 h-7 text-cyan-400 group-hover:text-purple-400 transition-colors duration-300" />
-                        </div>
+                  <div className="relative bg-background border border-border p-6 h-full transition-all duration-300 group-hover:border-primary/30 group-hover:shadow-lg">
+                    {/* Corner accents */}
+                    <div className="absolute top-0 left-0 w-4 h-4 border-l border-t border-primary/40 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <div className="absolute bottom-0 right-0 w-4 h-4 border-r border-b border-primary/40 opacity-0 group-hover:opacity-100 transition-opacity" />
+
+                    <div className="flex gap-4">
+                      <div className="flex-shrink-0 w-14 h-14 flex items-center justify-center bg-primary/10">
+                        <Icon className="w-7 h-7 text-primary" />
                       </div>
                       <div className="flex-1">
-                        <motion.h4
-                          variants={fadeInUp}
-                          className="text-xl font-bold mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-cyan-400 group-hover:to-purple-400 transition-all duration-300"
-                        >
+                        <h4 className="text-xl font-bold mb-2 font-jost text-foreground">
                           {principle.title}
-                        </motion.h4>
-                        <motion.p
-                          variants={fadeInUp}
-                          className="text-gray-400 leading-relaxed"
-                        >
+                        </h4>
+                        <p className="leading-relaxed font-jost text-foreground/60">
                           {principle.description}
-                        </motion.p>
+                        </p>
                       </div>
-                    </motion.div>
-                  </AnimatedBorderBox>
+                    </div>
+                  </div>
                 </motion.div>
               )
             })}
-          </motion.div>
+          </div>
         </motion.div>
 
-        {/* What You Get */}
+        {/* How I Help */}
         <motion.div
-          variants={fadeInUp}
-          className="mb-20"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="mb-16"
         >
-          <motion.div
-            variants={fadeInUp}
-            className="text-center mb-12"
-          >
-            <motion.h3
-              {...headerAnimation}
-              className="text-3xl font-bold mb-4"
-            >
-              <span style={{ color: '#ffffff', fontWeight: 300 }}>HOW I </span>
-              <span style={{
-                background: 'linear-gradient(135deg, #00ffff 0%, #8a2be2 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-                fontWeight: 700,
-                display: 'inline-block'
-              }}>HELP</span>
-            </motion.h3>
-            <motion.p
-              {...headerAnimation}
-              transition={{ ...headerAnimation.transition, delay: ANIMATION_DELAY.stagger }}
-              className="text-lg font-light tracking-wide max-w-2xl mx-auto"
-              style={{ color: 'var(--gray-400)' }}
-            >
-              Helping companies build with AI and blockchain—strategy through implementation.
-            </motion.p>
-          </motion.div>
-          <motion.div
-            variants={staggerContainer}
-            className="grid md:grid-cols-3 gap-6"
-          >
+          <div className="text-center mb-12">
+            <h3 className="text-2xl sm:text-3xl font-bold mb-3 font-jost text-foreground">
+              How I <span className="text-primary">Help</span>
+            </h3>
+            <p className="text-base font-jost text-foreground/50">
+              Strategy through implementation.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
             {[
               {
                 icon: Brain,
-                title: 'AI Strategy & Implementation',
-                description: 'From proof-of-concept to production. Cutting through hype to build AI that actually works for your business.',
-                color: 'text-cyan-400'
+                title: 'Product Strategy',
+                description: 'Finding product-market fit. Cutting through noise to identify what actually matters for your users and business.',
               },
               {
                 icon: Zap,
-                title: 'Blockchain Architecture',
-                description: 'Token economics, smart contracts, decentralized systems—built for real utility, not speculation.',
-                color: 'text-purple-400'
+                title: 'Technical Architecture',
+                description: 'System design, AI integration, scalable infrastructure—built for real utility and long-term growth.',
               },
               {
                 icon: Rocket,
-                title: 'End-to-End Delivery',
+                title: 'Hands-On Execution',
                 description: 'Not just strategy decks. I build alongside your team from architecture through launch.',
-                color: 'text-pink-500'
               }
             ].map((item, index) => {
               const Icon = item.icon
               return (
                 <motion.div
                   key={item.title}
-                  variants={fadeInUp}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  whileHover={{ y: -4 }}
                   className="group"
                 >
-                  <AnimatedBorderBox
-                    delay={index * 0.15}
-                    className="p-8 rounded-xl hover:bg-foreground/5 transition-all duration-300 h-full"
-                    borderColor={index === 0 ? "rgba(0, 200, 255, 0.3)" : index === 1 ? "rgba(147, 51, 234, 0.3)" : "rgba(236, 72, 153, 0.3)"}
-                  >
-                    <motion.div
-                      variants={staggerContainer}
-                      className="flex flex-col h-full"
-                    >
-                      <motion.div
-                        variants={fadeInUp}
-                        className="mb-6"
-                      >
-                        <div className="w-16 h-16 bg-gradient-to-br from-cyan-400/20 to-purple-400/20 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                          <Icon className={`w-8 h-8 ${item.color}`} />
-                        </div>
-                      </motion.div>
+                  <div className="relative bg-background border border-border p-8 h-full transition-all duration-300 group-hover:border-primary/30 group-hover:shadow-lg">
+                    {/* Corner accents */}
+                    <div className="absolute top-0 left-0 w-4 h-4 border-l border-t border-primary/40 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <div className="absolute bottom-0 right-0 w-4 h-4 border-r border-b border-primary/40 opacity-0 group-hover:opacity-100 transition-opacity" />
 
-                      <motion.h4
-                        variants={fadeInUp}
-                        className="text-2xl font-bold mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-cyan-400 group-hover:to-purple-400 transition-all duration-300"
-                      >
-                        {item.title}
-                      </motion.h4>
+                    <div className="w-16 h-16 mb-6 flex items-center justify-center bg-primary/10">
+                      <Icon className="w-8 h-8 text-primary" />
+                    </div>
 
-                      <motion.p
-                        variants={fadeInUp}
-                        className="text-gray-400 leading-relaxed flex-grow"
-                      >
-                        {item.description}
-                      </motion.p>
-                    </motion.div>
-                  </AnimatedBorderBox>
+                    <h4 className="text-xl font-bold mb-3 font-jost text-foreground">
+                      {item.title}
+                    </h4>
+
+                    <p className="leading-relaxed font-jost text-foreground/60">
+                      {item.description}
+                    </p>
+                  </div>
                 </motion.div>
               )
             })}
-          </motion.div>
+          </div>
         </motion.div>
 
         {/* CTA */}
         <motion.div
-          variants={fadeInUp}
-          className="text-center mt-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="text-center"
         >
-          <motion.p
-            {...headerAnimation}
-            className="text-lg text-gray-400 mb-6"
-          >
+          <p className="text-lg mb-6 font-jost text-foreground/60">
             Interested in working together?
-          </motion.p>
-          <motion.div
-            variants={staggerContainer}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
-          >
-            <Link href="/contact">
-              <motion.button
-                variants={fadeInUp}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="px-8 py-4 bg-foreground text-background border-2 border-foreground hover:bg-transparent hover:text-foreground transition-all duration-300 font-medium text-lg flex items-center justify-center gap-2"
-              >
-                Get in Touch
-                <ArrowRight className="w-5 h-5" />
-              </motion.button>
-            </Link>
-          </motion.div>
+          </p>
+          <Link href="/contact">
+            <motion.button
+              whileHover={{ scale: 1.02, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              className="group relative px-10 py-5 font-semibold text-sm flex items-center justify-center gap-3 mx-auto overflow-hidden font-jost bg-foreground text-background tracking-widest uppercase"
+            >
+              <span className="relative z-10">Get in Touch</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform relative z-10" />
+              <motion.div
+                className="absolute inset-0 bg-primary"
+                initial={{ x: '-100%' }}
+                whileHover={{ x: 0 }}
+                transition={{ duration: 0.3, ease: 'easeInOut' }}
+              />
+            </motion.button>
+          </Link>
         </motion.div>
-      </motion.div>
+      </div>
     </motion.section>
   )
 }

@@ -127,10 +127,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark bg-black" style={{ colorScheme: 'dark', backgroundColor: 'black' }}>
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${alata.variable} ${jetbrainsMono.variable} font-sans antialiased min-h-screen flex flex-col dark bg-black`}
-        style={{ backgroundColor: 'black' }}
+        className={`${alata.variable} ${jetbrainsMono.variable} font-sans antialiased min-h-screen flex flex-col bg-background text-foreground transition-colors duration-300`}
       >
         <Providers>
           <NoiseTexture />

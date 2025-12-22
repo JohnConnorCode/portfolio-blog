@@ -56,7 +56,7 @@ export default function ThoughtsPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg text-gray-400 font-light"
+            className="text-lg text-muted-foreground font-light"
           >
             Unfiltered ideas, insights, and observations. My personal microblog.
           </motion.p>

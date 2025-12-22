@@ -19,7 +19,7 @@ export default function SanityBlogPostsAnimated({ posts }: AnimatedBlogPostsProp
         transition={{ duration: 0.5 }}
         className="text-center py-12"
       >
-        <p className="text-gray-400">No blog posts yet. Create your first post in Sanity Studio at /studio</p>
+        <p className="text-muted-foreground">No blog posts yet. Create your first post in Sanity Studio at /studio</p>
       </motion.div>
     )
   }
@@ -48,12 +48,12 @@ export default function SanityBlogPostsAnimated({ posts }: AnimatedBlogPostsProp
             className="group"
           >
             <motion.article
-              className="bg-gray-900 rounded-lg overflow-hidden border border-gray-800 hover:border-cyan-400 transition-all duration-300 group-hover:shadow-brutal"
+              className="bg-card rounded-lg overflow-hidden border border-border hover:border-cyan-400 transition-all duration-300 group-hover:shadow-brutal"
               whileHover={{ y: -8, scale: 1.02 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
               {post.mainImage && (
-                <div className="aspect-video bg-gray-800 relative overflow-hidden">
+                <div className="aspect-video bg-muted relative overflow-hidden">
                   <motion.img
                     src={post.mainImage.asset?.url || ''}
                     alt={post.mainImage.alt || post.title}
@@ -64,16 +64,16 @@ export default function SanityBlogPostsAnimated({ posts }: AnimatedBlogPostsProp
                 </div>
               )}
               <div className="p-6">
-                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">
+                <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-cyan-400 transition-colors">
                   {post.title}
                 </h3>
                 {post.excerpt && (
-                  <p className="text-gray-400 mb-4 line-clamp-2">
+                  <p className="text-muted-foreground mb-4 line-clamp-2">
                     {post.excerpt}
                   </p>
                 )}
                 <div className="flex items-center justify-between text-sm">
-                  <time className="text-gray-500">
+                  <time className="text-muted-foreground">
                     {format(new Date(post.publishedAt), 'MMM dd, yyyy')}
                   </time>
                   {post.categories && post.categories.length > 0 && (

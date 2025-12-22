@@ -3,7 +3,6 @@
 import { motion } from 'framer-motion'
 import { Mail, Linkedin, Twitter, Send, User, Building2, Briefcase, DollarSign, MessageSquare } from 'lucide-react'
 import { useState } from 'react'
-import { SectionDivider } from '@/components/section-divider'
 import { fadeInUp, fadeInUpDelayed } from '@/lib/animation-config'
 
 const contactMethods = [
@@ -42,7 +41,7 @@ export default function ContactPage() {
     e.preventDefault()
     setIsSubmitting(true)
     setSubmitStatus('idle')
-    
+
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
@@ -51,7 +50,7 @@ export default function ContactPage() {
         },
         body: JSON.stringify(formData),
       })
-      
+
       if (response.ok) {
         setSubmitStatus('success')
         setFormData({
@@ -74,7 +73,7 @@ export default function ContactPage() {
 
   const validateField = (name: string, value: string) => {
     let error = ''
-    
+
     switch (name) {
       case 'name':
         if (!value.trim()) error = 'Name is required'
@@ -89,7 +88,7 @@ export default function ContactPage() {
         else if (value.length < 10) error = 'Message must be at least 10 characters'
         break
     }
-    
+
     return error
   }
 
@@ -99,7 +98,7 @@ export default function ContactPage() {
       ...formData,
       [name]: value,
     })
-    
+
     // Validate on change if field was touched
     if (touched[name]) {
       const error = validateField(name, value)
@@ -113,7 +112,7 @@ export default function ContactPage() {
   const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target
     setTouched(prev => ({ ...prev, [name]: true }))
-    
+
     const error = validateField(name, value)
     setErrors(prev => ({
       ...prev,
@@ -121,52 +120,53 @@ export default function ContactPage() {
     }))
   }
 
+  const getInputClassName = (fieldName: string) => {
+    const hasError = errors[fieldName] && touched[fieldName]
+    return `w-full px-4 py-3 bg-card rounded border-2 transition-all outline-none text-foreground font-jost ${
+      hasError
+        ? 'border-red-500 focus:border-red-500'
+        : 'border-foreground/30 focus:border-primary'
+    }`
+  }
+
   return (
-    <>
+    <div className="font-jost">
       {/* Hero Section */}
-      <section className="relative py-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        {/* Background effects */}
-        <div className="absolute inset-0 -z-10">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-[150px]" />
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-[150px]" />
-        </div>
+      <section className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden bg-background">
+        {/* Subtle geometric background pattern */}
+        <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(hsl(var(--foreground))_1px,transparent_1px),linear-gradient(90deg,hsl(var(--foreground))_1px,transparent_1px)] bg-[size:50px_50px]" />
 
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center mb-8">
-            {/* Decorative element */}
+          <div className="text-center mb-12">
+            {/* Decorative Greek key pattern */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.1, duration: 0.5 }}
-              className="flex items-center justify-center gap-4 mb-6"
+              className="flex items-center justify-center gap-4 mb-8"
             >
-              <div className="w-16 h-px bg-gradient-to-r from-transparent to-cyan-500/50" />
-              <svg viewBox="0 0 24 24" className="w-5 h-5">
-                <path d="M12 2 L22 12 L12 22 L2 12 Z" fill="none" stroke="rgba(0, 212, 255, 0.6)" strokeWidth="1.5" />
+              <div className="w-20 h-px bg-gradient-to-r from-transparent to-primary" />
+              <svg viewBox="0 0 24 24" className="w-6 h-6 text-primary">
+                <path d="M12 2 L22 12 L12 22 L2 12 Z" fill="none" stroke="currentColor" strokeWidth="1.5" />
+                <circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" strokeWidth="1" />
               </svg>
-              <div className="w-16 h-px bg-gradient-to-l from-transparent to-cyan-500/50" />
+              <div className="w-20 h-px bg-gradient-to-l from-transparent to-primary" />
             </motion.div>
 
             <motion.span
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.15, duration: 0.5 }}
-              className="text-cyan-400/60 text-xs tracking-[0.3em] uppercase block mb-4"
+              className="text-xs tracking-[0.3em] uppercase block mb-6 text-primary"
             >
-              Let&apos;s Build Together
+              Get in Touch
             </motion.span>
 
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 tracking-wide"
-              style={{
-                background: 'linear-gradient(135deg, #ffffff 0%, #00d4ff 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-              }}
+              className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 tracking-wide text-foreground font-jost"
             >
               Contact
             </motion.h1>
@@ -174,18 +174,16 @@ export default function ContactPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-lg text-gray-400 max-w-2xl mx-auto font-light"
+              className="text-lg max-w-2xl mx-auto font-light text-foreground/80"
             >
-              Whether you need product strategy, technical architecture, or a co-builder who ships—I&apos;m here to help turn vision into reality.
+              Whether you need product strategy, technical architecture, or a cross-functional partner who ships—I&apos;m here to help.
             </motion.p>
           </div>
         </div>
       </section>
 
-      <SectionDivider variant="geometric" />
-
       {/* Contact Methods & Form Section */}
-      <section className="py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black to-gray-900">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-background">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-3 gap-12">
             {/* Contact Methods */}
@@ -194,15 +192,38 @@ export default function ContactPage() {
               initial="initial"
               whileInView="animate"
               viewport={{ once: true, margin: "-50px" }}
-              className="lg:col-span-1 space-y-8"
+              className="lg:col-span-1 space-y-6"
             >
-              <div className="card-brutal">
-                <h2 className="text-2xl sm:text-3xl font-black text-white mb-4 text-brutal">
-                  GET IN TOUCH
+              {/* Corner accent component */}
+              <div className="relative p-8 bg-card rounded-lg border border-border transition-all duration-300">
+                {/* Top-left corner accent */}
+                <div className="absolute top-0 left-0 w-4 h-4 border-l-2 border-t-2 border-primary" />
+                {/* Top-right corner accent */}
+                <div className="absolute top-0 right-0 w-4 h-4 border-r-2 border-t-2 border-primary" />
+                {/* Bottom-left corner accent */}
+                <div className="absolute bottom-0 left-0 w-4 h-4 border-l-2 border-b-2 border-primary" />
+                {/* Bottom-right corner accent */}
+                <div className="absolute bottom-0 right-0 w-4 h-4 border-r-2 border-b-2 border-primary" />
+
+                <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-foreground">
+                  How I Work
                 </h2>
-                <p className="text-gray-400 font-mono text-sm mb-8">
-                  Whether you&apos;re building a startup, transforming an ecosystem, or creating community-driven systems, let&apos;s talk.
-                </p>
+                <div className="space-y-3 text-sm">
+                  <p className="text-foreground/70">
+                    <span className="text-primary font-semibold">→</span> Product strategy & architecture
+                  </p>
+                  <p className="text-foreground/70">
+                    <span className="text-primary font-semibold">→</span> Technical leadership & execution
+                  </p>
+                  <p className="text-foreground/70">
+                    <span className="text-primary font-semibold">→</span> Fractional or advisory engagements
+                  </p>
+                  <div className="pt-3 mt-3 border-t border-border">
+                    <p className="text-foreground/50 text-xs">
+                      From early-stage startups to growth-phase companies
+                    </p>
+                  </div>
+                </div>
               </div>
 
               {contactMethods.map((method, index) => {
@@ -217,16 +238,22 @@ export default function ContactPage() {
                     whileInView="animate"
                     viewport={{ once: true, margin: "-50px" }}
                     whileHover={{ scale: 1.02, y: -2 }}
-                    className="block card-brutal group"
+                    className="block relative p-6 bg-card rounded-lg border border-border transition-all duration-300 hover:shadow-lg hover:border-primary/30 group"
                   >
+                    {/* Corner accents */}
+                    <div className="absolute top-0 left-0 w-3 h-3 border-l-2 border-t-2 border-primary" />
+                    <div className="absolute bottom-0 right-0 w-3 h-3 border-r-2 border-b-2 border-primary" />
+
                     <div className="flex items-start gap-4">
-                      <div className="p-3 bg-cyan-400/20 border-2 border-cyan-400">
-                        <Icon className="w-6 h-6 text-cyan-400" />
+                      <div className="p-3 rounded bg-primary/10">
+                        <Icon className="w-6 h-6 text-primary" />
                       </div>
                       <div className="flex-1">
-                        <h3 className="font-black text-white mb-2 text-brutal">{method.title}</h3>
-                        <p className="text-xs text-gray-500 mb-3 font-mono uppercase tracking-wide">{method.description}</p>
-                        <p className="text-sm text-cyan-400 font-bold">{method.action}</p>
+                        <h3 className="font-bold mb-2 text-foreground">{method.title}</h3>
+                        <p className="text-xs mb-3 uppercase tracking-wide text-foreground/50">
+                          {method.description}
+                        </p>
+                        <p className="text-sm font-semibold text-primary">{method.action}</p>
                       </div>
                     </div>
                   </motion.a>
@@ -240,31 +267,37 @@ export default function ContactPage() {
                 initial="initial"
                 whileInView="animate"
                 viewport={{ once: true, margin: "-50px" }}
-                className="card-brutal"
+                className="relative p-6 bg-card rounded-lg border border-border"
               >
-                <p className="text-xs text-gray-500 mb-4 font-mono uppercase tracking-widest">CONNECT ON SOCIAL</p>
-                <div className="space-y-4">
+                {/* Corner accents */}
+                <div className="absolute top-0 left-0 w-3 h-3 border-l-2 border-t-2 border-primary" />
+                <div className="absolute bottom-0 right-0 w-3 h-3 border-r-2 border-b-2 border-primary" />
+
+                <p className="text-xs mb-4 uppercase tracking-widest text-foreground/50">
+                  Connect On Social
+                </p>
+                <div className="space-y-3">
                   <motion.a
                     href="https://twitter.com/ablockunchained"
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.02, x: 5 }}
-                    className="flex items-center gap-3 p-3 border-2 border-gray-700 hover:border-cyan-400 bg-black/50 transition-all group"
+                    className="flex items-center gap-3 p-3 rounded border border-border bg-foreground/5 transition-all group hover:border-primary/30"
                   >
-                    <Twitter className="w-5 h-5 text-cyan-400" />
-                    <span className="text-sm font-mono text-white group-hover:text-cyan-400 transition-colors">@ablockunchained</span>
+                    <Twitter className="w-5 h-5 text-primary" />
+                    <span className="text-sm transition-colors text-foreground">@ablockunchained</span>
                   </motion.a>
                   <motion.a
                     href="https://t.me/blockunchained"
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.02, x: 5 }}
-                    className="flex items-center gap-3 p-3 border-2 border-gray-700 hover:border-cyan-400 bg-black/50 transition-all group"
+                    className="flex items-center gap-3 p-3 rounded border border-border bg-foreground/5 transition-all group hover:border-primary/30"
                   >
-                    <svg className="w-5 h-5 text-cyan-400" viewBox="0 0 24 24" fill="currentColor">
+                    <svg className="w-5 h-5 text-primary" viewBox="0 0 24 24" fill="currentColor">
                       <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z"/>
                     </svg>
-                    <span className="text-sm font-mono text-white group-hover:text-cyan-400 transition-colors">@blockunchained</span>
+                    <span className="text-sm transition-colors text-foreground">@blockunchained</span>
                   </motion.a>
                 </div>
               </motion.div>
@@ -278,23 +311,29 @@ export default function ContactPage() {
               viewport={{ once: true, margin: "-50px" }}
               className="lg:col-span-2"
             >
-              <div className="card-brutal">
-                <h2 className="text-2xl sm:text-3xl font-black text-white mb-2 text-brutal">
-                  START A CONVERSATION
+              <div className="relative p-8 sm:p-10 bg-card rounded-lg border border-border">
+                {/* Corner accents */}
+                <div className="absolute top-0 left-0 w-5 h-5 border-l-2 border-t-2 border-primary" />
+                <div className="absolute top-0 right-0 w-5 h-5 border-r-2 border-t-2 border-primary" />
+                <div className="absolute bottom-0 left-0 w-5 h-5 border-l-2 border-b-2 border-primary" />
+                <div className="absolute bottom-0 right-0 w-5 h-5 border-r-2 border-b-2 border-primary" />
+
+                <h2 className="text-2xl sm:text-3xl font-bold mb-2 text-foreground">
+                  Tell Me What You&apos;re Building
                 </h2>
-                <p className="text-gray-500 font-mono text-xs uppercase tracking-widest mb-8">
-                  Fill out the form below and I&apos;ll get back to you within 24 hours
+                <p className="text-xs uppercase tracking-widest mb-8 text-foreground/50">
+                  I&apos;ll respond within 24 hours if there&apos;s a potential fit
                 </p>
 
                 <form
                   onSubmit={handleSubmit}
-                  className="space-y-8"
+                  className="space-y-6"
                 >
-                  <div className="grid md:grid-cols-2 gap-8">
+                  <div className="grid md:grid-cols-2 gap-6">
                     <div>
-                      <label className="flex items-center gap-2 text-sm font-black text-white mb-3 text-brutal">
-                        <User className="w-4 h-4 text-cyan-400" />
-                        YOUR NAME *
+                      <label className="flex items-center gap-2 text-sm font-semibold mb-3 text-foreground">
+                        <User className="w-4 h-4 text-primary" />
+                        Your Name *
                       </label>
                       <input
                         type="text"
@@ -303,23 +342,23 @@ export default function ContactPage() {
                         value={formData.name}
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        className={`w-full px-4 py-4 bg-black border-2 ${errors.name && touched.name ? 'border-red-500' : 'border-white'} text-white font-mono placeholder-gray-500 focus:border-cyan-400 focus:outline-none transition-colors`}
+                        className={getInputClassName('name')}
                         placeholder="Enter your full name"
                       />
                       {errors.name && touched.name && (
                         <motion.p
                           initial={{ opacity: 0, y: -10 }}
                           animate={{ opacity: 1, y: 0 }}
-                          className="text-red-500 text-xs mt-2 font-mono"
+                          className="text-xs mt-2 text-red-500"
                         >
                           {errors.name}
                         </motion.p>
                       )}
                     </div>
                     <div>
-                      <label className="flex items-center gap-2 text-sm font-black text-white mb-3 text-brutal">
-                        <Mail className="w-4 h-4 text-cyan-400" />
-                        EMAIL ADDRESS *
+                      <label className="flex items-center gap-2 text-sm font-semibold mb-3 text-foreground">
+                        <Mail className="w-4 h-4 text-primary" />
+                        Email Address *
                       </label>
                       <input
                         type="email"
@@ -328,14 +367,14 @@ export default function ContactPage() {
                         value={formData.email}
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        className={`w-full px-4 py-4 bg-black border-2 ${errors.email && touched.email ? 'border-red-500' : 'border-white'} text-white font-mono placeholder-gray-500 focus:border-cyan-400 focus:outline-none transition-colors`}
+                        className={getInputClassName('email')}
                         placeholder="your.email@company.com"
                       />
                       {errors.email && touched.email && (
                         <motion.p
                           initial={{ opacity: 0, y: -10 }}
                           animate={{ opacity: 1, y: 0 }}
-                          className="text-red-500 text-xs mt-2 font-mono"
+                          className="text-xs mt-2 text-red-500"
                         >
                           {errors.email}
                         </motion.p>
@@ -344,66 +383,65 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <label className="flex items-center gap-2 text-sm font-black text-white mb-3 text-brutal">
-                      <Building2 className="w-4 h-4 text-cyan-400" />
-                      COMPANY / ORGANIZATION
+                    <label className="flex items-center gap-2 text-sm font-semibold mb-3 text-foreground">
+                      <Building2 className="w-4 h-4 text-primary" />
+                      Company / Organization
                     </label>
                     <input
                       type="text"
                       name="company"
                       value={formData.company}
                       onChange={handleChange}
-                      className="w-full px-4 py-4 bg-black border-2 border-white text-white font-mono placeholder-gray-500 focus:border-cyan-400 focus:outline-none transition-colors"
+                      className="w-full px-4 py-3 bg-card rounded border-2 border-foreground/30 focus:border-primary transition-all outline-none text-foreground font-jost"
                       placeholder="Your company or organization"
                     />
                   </div>
 
-                  <div className="grid md:grid-cols-2 gap-8">
+                  <div className="grid md:grid-cols-2 gap-6">
                     <div>
-                      <label className="flex items-center gap-2 text-sm font-black text-white mb-3 text-brutal">
-                        <Briefcase className="w-4 h-4 text-cyan-400" />
-                        PROJECT TYPE
+                      <label className="flex items-center gap-2 text-sm font-semibold mb-3 text-foreground">
+                        <Briefcase className="w-4 h-4 text-primary" />
+                        Project Type
                       </label>
                       <select
                         name="projectType"
                         value={formData.projectType}
                         onChange={handleChange}
-                        className="w-full px-4 py-4 bg-black border-2 border-white text-white font-mono focus:border-cyan-400 focus:outline-none transition-colors appearance-none"
+                        className="w-full px-4 py-3 bg-card rounded border-2 border-foreground/30 focus:border-primary transition-all outline-none appearance-none text-foreground font-jost"
                       >
-                        <option value="" className="bg-black text-gray-500">Select a type</option>
-                        <option value="ecosystem" className="bg-black text-white">Ecosystem Development</option>
-                        <option value="product" className="bg-black text-white">Product Strategy</option>
-                        <option value="community" className="bg-black text-white">Community Building</option>
-                        <option value="transformation" className="bg-black text-white">Digital Transformation</option>
-                        <option value="consulting" className="bg-black text-white">Strategic Consulting</option>
-                        <option value="other" className="bg-black text-white">Other</option>
+                        <option value="">Select a type</option>
+                        <option value="pmf">Finding Product-Market Fit</option>
+                        <option value="product">Product Strategy & Architecture</option>
+                        <option value="fractional">Fractional Product Leadership</option>
+                        <option value="advisory">Ongoing Advisory</option>
+                        <option value="other">Other</option>
                       </select>
                     </div>
                     <div>
-                      <label className="flex items-center gap-2 text-sm font-black text-white mb-3 text-brutal">
-                        <DollarSign className="w-4 h-4 text-cyan-400" />
-                        BUDGET RANGE
+                      <label className="flex items-center gap-2 text-sm font-semibold mb-3 text-foreground">
+                        <DollarSign className="w-4 h-4 text-primary" />
+                        Budget Range
                       </label>
                       <select
                         name="budget"
                         value={formData.budget}
                         onChange={handleChange}
-                        className="w-full px-4 py-4 bg-black border-2 border-white text-white font-mono focus:border-cyan-400 focus:outline-none transition-colors appearance-none"
+                        className="w-full px-4 py-3 bg-card rounded border-2 border-foreground/30 focus:border-primary transition-all outline-none appearance-none text-foreground font-jost"
                       >
-                        <option value="" className="bg-black text-gray-500">Select budget</option>
-                        <option value="<10k" className="bg-black text-white">Less than $10k</option>
-                        <option value="10-25k" className="bg-black text-white">$10k - $25k</option>
-                        <option value="25-50k" className="bg-black text-white">$25k - $50k</option>
-                        <option value="50-100k" className="bg-black text-white">$50k - $100k</option>
-                        <option value=">100k" className="bg-black text-white">More than $100k</option>
+                        <option value="">Select budget</option>
+                        <option value="<10k">Less than $10k</option>
+                        <option value="10-25k">$10k - $25k</option>
+                        <option value="25-50k">$25k - $50k</option>
+                        <option value="50-100k">$50k - $100k</option>
+                        <option value=">100k">More than $100k</option>
                       </select>
                     </div>
                   </div>
 
                   <div>
-                    <label className="flex items-center gap-2 text-sm font-black text-white mb-3 text-brutal">
-                      <MessageSquare className="w-4 h-4 text-cyan-400" />
-                      PROJECT DETAILS *
+                    <label className="flex items-center gap-2 text-sm font-semibold mb-3 text-foreground">
+                      <MessageSquare className="w-4 h-4 text-primary" />
+                      Project Details *
                     </label>
                     <textarea
                       name="message"
@@ -412,14 +450,14 @@ export default function ContactPage() {
                       value={formData.message}
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      placeholder="Tell me about your project, goals, timeline, and any specific challenges you're facing..."
-                      className={`w-full px-4 py-4 bg-black border-2 ${errors.message && touched.message ? 'border-red-500' : 'border-white'} text-white font-mono placeholder-gray-500 focus:border-cyan-400 focus:outline-none transition-colors resize-none`}
+                      placeholder="Tell me about your project, goals, timeline, and any specific challenges you are facing..."
+                      className={`${getInputClassName('message')} resize-none`}
                     />
                     {errors.message && touched.message && (
                       <motion.p
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-red-500 text-xs mt-2 font-mono"
+                        className="text-xs mt-2 text-red-500"
                       >
                         {errors.message}
                       </motion.p>
@@ -431,32 +469,32 @@ export default function ContactPage() {
                     disabled={isSubmitting}
                     whileHover={{ scale: isSubmitting ? 1 : 1.02, y: isSubmitting ? 0 : -2 }}
                     whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
-                    className="btn-brutal w-full py-4 px-8 text-lg flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full py-4 px-8 text-lg font-semibold rounded flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed transition-all bg-foreground text-background hover:bg-primary hover:text-primary-foreground font-jost"
                   >
                     <Send className="w-5 h-5" />
-                    {isSubmitting ? 'SENDING MESSAGE...' : 'SEND MESSAGE'}
+                    {isSubmitting ? 'Sending Message...' : 'Send Message'}
                   </motion.button>
-                  
+
                   {submitStatus === 'success' && (
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="p-4 border-2 border-green-500 bg-green-500/10"
+                      className="p-4 rounded border-2 border-green-500 bg-green-500/10 text-green-500"
                     >
-                      <p className="text-green-400 font-mono text-sm text-center">
-                        MESSAGE SENT SUCCESSFULLY! I&apos;LL GET BACK TO YOU WITHIN 24 HOURS.
+                      <p className="text-sm text-center font-medium">
+                        Message sent successfully! I&apos;ll get back to you within 24 hours.
                       </p>
                     </motion.div>
                   )}
-                  
+
                   {submitStatus === 'error' && (
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="p-4 border-2 border-red-500 bg-red-500/10"
+                      className="p-4 rounded border-2 border-red-500 bg-red-500/10 text-red-500"
                     >
-                      <p className="text-red-400 font-mono text-sm text-center">
-                        SOMETHING WENT WRONG. PLEASE TRY AGAIN OR EMAIL DIRECTLY.
+                      <p className="text-sm text-center font-medium">
+                        Something went wrong. Please try again or email directly.
                       </p>
                     </motion.div>
                   )}
@@ -467,10 +505,8 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <SectionDivider variant="wave" />
-
       {/* FAQ Section */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-900 to-black">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-background">
         <div className="max-w-7xl mx-auto">
           <motion.div
             variants={fadeInUp}
@@ -479,32 +515,31 @@ export default function ContactPage() {
             viewport={{ once: true, margin: "-50px" }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-light mb-4">
-              <span className="text-white">FREQUENTLY</span>
-              <span className="text-cyan-400 font-black neon-glow"> ASKED</span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-foreground">
+              Frequently Asked Questions
             </h2>
-            <p className="text-gray-500 font-mono text-sm uppercase tracking-widest">
+            <p className="text-sm uppercase tracking-widest text-foreground/50">
               Common questions about working together
             </p>
           </motion.div>
-          
-          <div className="grid md:grid-cols-2 gap-8">
+
+          <div className="grid md:grid-cols-2 gap-6">
             {[
               {
                 question: "What types of projects do you take on?",
-                answer: "Product strategy, AI integration, Web3 infrastructure, marketplace design, and civic tech platforms. I work with founders who care about building systems that actually work—not growth theater."
+                answer: "Product strategy, technical architecture, AI integration, Web3 infrastructure, and marketplace design. I work across the full stack—strategy to execution."
               },
               {
                 question: "Do you build or just advise?",
-                answer: "Both. I'm hands-on—I can architect systems, write code, and ship products alongside your team. Not just decks and frameworks."
+                answer: "Both. I can architect systems, write code, and ship alongside your team. 15+ years of hands-on product and engineering work. Not just decks."
               },
               {
                 question: "What's your approach?",
-                answer: "Surface reality first. I start by understanding what's actually broken, test assumptions against real users, and design systems where incentives align with outcomes."
+                answer: "Start with the real problem. Test assumptions against users. Build systems where incentives align. Measure by outcomes, not vanity metrics."
               },
               {
-                question: "How do we get started?",
-                answer: "Fill out the form or email directly. I'll respond within 24 hours. If there's fit, we'll scope a focused engagement that delivers real value quickly."
+                question: "What does a typical engagement look like?",
+                answer: "Varies by need—fractional product leadership, focused sprints, or ongoing advisory. We'll scope what makes sense for your situation."
               }
             ].map((faq, index) => (
               <motion.div
@@ -515,10 +550,14 @@ export default function ContactPage() {
                 whileInView="animate"
                 viewport={{ once: true, margin: "-50px" }}
                 whileHover={{ scale: 1.02, y: -2 }}
-                className="card-brutal group hover:border-cyan-400/50"
+                className="relative p-6 bg-card rounded-lg border border-border transition-all duration-300 group hover:shadow-lg hover:border-primary/30"
               >
-                <h3 className="font-black text-white mb-4 text-brutal">{faq.question}</h3>
-                <p className="text-gray-400 font-mono text-sm leading-relaxed">
+                {/* Corner accents */}
+                <div className="absolute top-0 left-0 w-3 h-3 border-l-2 border-t-2 border-primary" />
+                <div className="absolute bottom-0 right-0 w-3 h-3 border-r-2 border-b-2 border-primary" />
+
+                <h3 className="font-bold mb-3 text-foreground">{faq.question}</h3>
+                <p className="text-sm leading-relaxed text-foreground/70">
                   {faq.answer}
                 </p>
               </motion.div>
@@ -534,12 +573,12 @@ export default function ContactPage() {
             viewport={{ once: true, margin: "-50px" }}
             className="text-center mt-16"
           >
-            <p className="text-gray-500 font-mono text-sm uppercase tracking-widest">
-              Ready to build something <span className="text-cyan-400">extraordinary</span>?
+            <p className="text-sm uppercase tracking-widest text-foreground/50">
+              Building what <span className="text-primary font-bold">actually works</span>
             </p>
           </motion.div>
         </div>
       </section>
-    </>
+    </div>
   )
 }

@@ -80,7 +80,7 @@ export function MetricCounter({
   variant?: 'default' | 'gradient' | 'minimal'
 }) {
   const variants = {
-    default: 'bg-gray-800/50 border border-gray-700 p-6 rounded-xl',
+    default: 'bg-card/50 border border-border p-6 rounded-xl',
     gradient: 'bg-gradient-to-br from-indigo-500/10 to-purple-500/10 border border-indigo-500/20 p-6 rounded-xl',
     minimal: 'p-4'
   }
@@ -108,12 +108,12 @@ export function MetricCounter({
           value={value}
           duration={2.5}
           delay={0.5}
-          className="text-3xl font-bold text-white"
+          className="text-3xl font-bold text-foreground"
           suffix="+"
         />
-        <h3 className="text-lg font-semibold text-gray-200">{label}</h3>
+        <h3 className="text-lg font-semibold text-foreground/90">{label}</h3>
         {description && (
-          <p className="text-sm text-gray-400">{description}</p>
+          <p className="text-sm text-muted-foreground">{description}</p>
         )}
       </div>
 
@@ -153,7 +153,7 @@ export function ProgressCounter({
       transition={{ duration: 0.6 }}
     >
       <div className="flex justify-between items-center">
-        <span className="font-medium text-gray-200">{label}</span>
+        <span className="font-medium text-foreground/90">{label}</span>
         {showPercentage && (
           <CounterAnimation
             value={percentage}
@@ -166,7 +166,7 @@ export function ProgressCounter({
         )}
       </div>
 
-      <div className="relative h-2 bg-gray-800 rounded-full overflow-hidden">
+      <div className="relative h-2 bg-muted rounded-full overflow-hidden">
         <motion.div
           className="absolute inset-y-0 left-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"
           initial={{ width: '0%' }}
@@ -191,7 +191,7 @@ export function ProgressCounter({
         />
       </div>
 
-      <div className="flex justify-between text-xs text-gray-400">
+      <div className="flex justify-between text-xs text-muted-foreground">
         <CounterAnimation
           value={current}
           duration={2}
@@ -223,7 +223,7 @@ export function RotatingCounter({
       {valueString.split('').map((digit, index) => (
         <motion.div
           key={index}
-          className="relative w-8 h-12 bg-gray-900 rounded border border-gray-700 overflow-hidden"
+          className="relative w-8 h-12 bg-card rounded border border-border overflow-hidden"
           initial={{ rotateX: 90 }}
           animate={isInView ? { rotateX: 0 } : { rotateX: 90 }}
           transition={{
@@ -235,7 +235,7 @@ export function RotatingCounter({
         >
           {/* Current digit */}
           <motion.div
-            className="absolute inset-0 flex items-center justify-center text-white text-xl font-bold"
+            className="absolute inset-0 flex items-center justify-center text-foreground text-xl font-bold"
             initial={{ y: '100%' }}
             animate={isInView ? { y: '0%' } : { y: '100%' }}
             transition={{

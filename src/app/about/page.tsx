@@ -9,29 +9,21 @@ const coreCapabilities = [
     icon: Brain,
     title: 'Systems Thinking',
     description: 'I see the connections others miss. Every product exists within systems of incentives, behaviors, and constraints.',
-    color: 'text-purple-400',
-    glow: 'rgba(168, 85, 247, 0.4)'
   },
   {
     icon: Zap,
     title: 'AI-Native Building',
     description: 'Not just using AI tools—architecting intelligent systems, automation pipelines, and ML-powered products.',
-    color: 'text-cyan-400',
-    glow: 'rgba(0, 212, 255, 0.4)'
   },
   {
     icon: Target,
     title: 'Zero-to-One Execution',
     description: 'From concept to shipped product. I don\'t just strategize—I build, ship, and iterate.',
-    color: 'text-pink-500',
-    glow: 'rgba(236, 72, 153, 0.4)'
   },
   {
     icon: Users,
     title: 'Human-Centered Design',
     description: 'Technology serves people, not the other way around. Every system I build puts humans first.',
-    color: 'text-yellow-400',
-    glow: 'rgba(250, 204, 21, 0.4)'
   },
 ]
 
@@ -52,39 +44,29 @@ const journey = [
     phase: 'Foundation',
     title: 'Debate & Human Development',
     description: 'Started in competitive debate instruction at Chicago Debates. Learned how people reason, argue, and change their minds. This foundation informs everything I build today.',
-    color: 'border-purple-500/50'
   },
   {
     phase: 'Building',
     title: 'Marketplaces & Platforms',
     description: 'Founded HelpWith (skill-sharing marketplace) and Sparkblox (raised $1M+ for no-code NFT infrastructure). Learned to build platforms that connect people and scale social value.',
-    color: 'border-cyan-500/50'
   },
   {
     phase: 'Scaling',
     title: 'Product Leadership',
     description: 'Product & Ops at Upland.me (Web3 virtual economy). Managed token economies, player dynamics, and transaction systems at scale.',
-    color: 'border-pink-500/50'
   },
   {
     phase: 'Current',
     title: 'AI + Civic Innovation',
     description: 'Building SuperDebate (reinventing civic discourse) and Accelerate (Web3 builder intelligence). Combining AI automation with systems that serve human flourishing.',
-    color: 'border-yellow-500/50'
   },
 ]
 
 export default function AboutPage() {
   return (
-    <>
+    <div className="bg-background font-jost">
       {/* Hero Section */}
       <section className="relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        {/* Background effects */}
-        <div className="absolute inset-0 -z-10">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-[120px]" />
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-[120px]" />
-        </div>
-
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -92,44 +74,37 @@ export default function AboutPage() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            {/* Decorative element */}
+            {/* Decorative diamond element */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.1, duration: 0.5 }}
               className="flex items-center justify-center gap-4 mb-6"
             >
-              <div className="w-12 h-px bg-gradient-to-r from-transparent to-cyan-500/50" />
-              <svg viewBox="0 0 24 24" className="w-5 h-5">
-                <path d="M12 2 L22 12 L12 22 L2 12 Z" fill="none" stroke="rgba(0, 212, 255, 0.6)" strokeWidth="1.5" />
+              <div className="w-12 h-px bg-gradient-to-r from-transparent to-primary" />
+              <svg viewBox="0 0 24 24" className="w-5 h-5 text-primary">
+                <path
+                  d="M12 2 L22 12 L12 22 L2 12 Z"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                />
               </svg>
-              <div className="w-12 h-px bg-gradient-to-l from-transparent to-cyan-500/50" />
+              <div className="w-12 h-px bg-gradient-to-l from-transparent to-primary" />
             </motion.div>
 
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className="text-cyan-400/70 text-xs tracking-[0.3em] uppercase mb-4"
+              className="text-xs tracking-[0.3em] uppercase mb-4 text-primary"
             >
               Founder • Builder • Systems Thinker
             </motion.p>
-            <h1
-              className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 tracking-wide"
-            >
-              <span className="text-white">About </span>
-              <span style={{
-                background: 'linear-gradient(135deg, #00ffff 0%, #a855f7 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-              }}>
-                Me
-              </span>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 tracking-wide text-foreground">
+              About <span className="text-primary">Me</span>
             </h1>
-            <p
-              className="text-lg text-gray-400 max-w-3xl mx-auto leading-relaxed font-light"
-            >
+            <p className="text-lg text-foreground/70 max-w-3xl mx-auto leading-relaxed font-light">
               15+ years building products across AI, Web3, civic tech, and digital communities.
               I care about technology that makes people more capable, not more dependent.
             </p>
@@ -151,13 +126,20 @@ export default function AboutPage() {
                 whileHover={{ y: -4, scale: 1.02 }}
                 className="relative group"
               >
-                <div className="absolute -inset-1 rounded-xl opacity-0 group-hover:opacity-100 blur-xl transition-all duration-500 bg-gradient-to-r from-cyan-500/20 to-purple-500/20" />
-                <div className="relative bg-black/60 backdrop-blur-xl border border-white/10 rounded-xl p-5 text-center group-hover:border-cyan-500/30 transition-all">
-                  <p className="text-3xl sm:text-4xl font-black text-cyan-400" style={{ textShadow: '0 0 30px rgba(0, 212, 255, 0.4)' }}>
+                <div className="relative bg-card rounded-xl p-5 text-center transition-all duration-300 border border-border">
+                  {/* Corner accents on hover */}
+                  <div className="absolute top-0 left-0 w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 border-t-2 border-l-2 border-primary" />
+                  <div className="absolute bottom-0 right-0 w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 border-b-2 border-r-2 border-primary" />
+
+                  <p className="text-3xl sm:text-4xl font-black text-primary">
                     {item.metric}
                   </p>
-                  <p className="text-white font-semibold text-sm mt-1">{item.label}</p>
-                  <p className="text-gray-500 text-xs mt-1">{item.detail}</p>
+                  <p className="text-foreground font-semibold text-sm mt-1">
+                    {item.label}
+                  </p>
+                  <p className="text-foreground/50 text-xs mt-1">
+                    {item.detail}
+                  </p>
                 </div>
               </motion.div>
             ))}
@@ -179,19 +161,19 @@ export default function AboutPage() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="text-3xl sm:text-4xl font-bold mb-6"
+                className="text-3xl md:text-4xl font-bold mb-6 text-foreground"
               >
-                <span className="text-white">Background</span>
+                Background
               </motion.h2>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
-                className="space-y-4 text-gray-300"
+                className="space-y-4 text-foreground/80"
               >
                 <p>
-                  I started in competitive debate—teaching people how to <strong className="text-white">reason, argue, and change minds</strong>.
+                  I started in competitive debate—teaching people how to <strong className="text-foreground font-semibold">reason, argue, and change minds</strong>.
                   That foundation shapes how I approach building: clarity over complexity, structure over chaos.
                 </p>
                 <p>
@@ -210,27 +192,30 @@ export default function AboutPage() {
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="relative"
+              className="relative group"
             >
-              <div className="absolute -inset-4 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 rounded-2xl blur-xl" />
-              <div className="relative bg-black/60 backdrop-blur-xl border border-white/10 rounded-2xl p-8">
-                <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-                  <Code className="w-5 h-5 text-cyan-400" />
+              <div className="relative bg-card rounded-2xl p-8 transition-all duration-300 border border-border">
+                {/* Corner accents */}
+                <div className="absolute top-0 left-0 w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 border-t-2 border-l-2 border-primary" />
+                <div className="absolute bottom-0 right-0 w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 border-b-2 border-r-2 border-primary" />
+
+                <h3 className="text-xl font-bold mb-4 flex items-center gap-2 text-foreground">
+                  <Code className="w-5 h-5 text-primary" />
                   Technical Stack
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {technicalStack.map((tech) => (
                     <span
                       key={tech}
-                      className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-sm text-gray-300 hover:border-cyan-500/50 hover:text-cyan-400 transition-all"
+                      className="px-3 py-1 rounded-full text-sm transition-all bg-foreground/5 border border-border text-foreground"
                     >
                       {tech}
                     </span>
                   ))}
                 </div>
-                <div className="mt-6 pt-6 border-t border-white/10">
-                  <p className="text-sm text-gray-400">
-                    <span className="text-cyan-400 font-semibold">AI-native builder</span>—architecting intelligent
+                <div className="mt-6 pt-6 border-t border-border">
+                  <p className="text-sm text-foreground/70">
+                    <span className="text-primary font-semibold">AI-native builder</span>—architecting intelligent
                     systems, ML pipelines, and automation workflows. Not just prompting, but building the infrastructure.
                   </p>
                 </div>
@@ -245,16 +230,8 @@ export default function AboutPage() {
             viewport={{ once: true }}
             className="mb-20"
           >
-            <h2 className="text-3xl font-bold text-center mb-12">
-              <span className="text-white">Core </span>
-              <span style={{
-                background: 'linear-gradient(135deg, #00ffff 0%, #a855f7 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-              }}>
-                Capabilities
-              </span>
+            <h2 className="text-3xl font-bold text-center mb-12 text-foreground">
+              Core <span className="text-primary">Capabilities</span>
             </h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {coreCapabilities.map((capability, index) => {
@@ -269,14 +246,18 @@ export default function AboutPage() {
                     whileHover={{ y: -8, scale: 1.02 }}
                     className="relative group"
                   >
-                    <div
-                      className="absolute -inset-1 rounded-xl opacity-0 group-hover:opacity-100 blur-xl transition-all duration-500"
-                      style={{ background: `radial-gradient(circle, ${capability.glow}, transparent 70%)` }}
-                    />
-                    <div className="relative bg-black/60 backdrop-blur-xl border border-white/10 rounded-xl p-6 h-full group-hover:border-white/20 transition-all">
-                      <Icon className={`w-10 h-10 ${capability.color} mb-4`} style={{ filter: 'drop-shadow(0 0 10px currentColor)' }} />
-                      <h3 className="text-lg font-bold text-white mb-2">{capability.title}</h3>
-                      <p className="text-gray-400 text-sm">{capability.description}</p>
+                    <div className="relative bg-card rounded-xl p-6 h-full transition-all duration-300 border border-border">
+                      {/* Corner accents */}
+                      <div className="absolute top-0 left-0 w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 border-t-2 border-l-2 border-primary" />
+                      <div className="absolute bottom-0 right-0 w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 border-b-2 border-r-2 border-primary" />
+
+                      <Icon className="w-10 h-10 mb-4 text-primary" />
+                      <h3 className="text-lg font-bold mb-2 text-foreground">
+                        {capability.title}
+                      </h3>
+                      <p className="text-sm text-foreground/70">
+                        {capability.description}
+                      </p>
                     </div>
                   </motion.div>
                 )
@@ -288,16 +269,15 @@ export default function AboutPage() {
 
       {/* Journey Timeline */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-500/5 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
         <div className="max-w-4xl mx-auto relative">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl font-bold text-center mb-12"
+            className="text-3xl font-bold text-center mb-12 text-foreground"
           >
-            <span className="text-white">The </span>
-            <span className="text-cyan-400">Journey</span>
+            The <span className="text-primary">Journey</span>
           </motion.h2>
 
           <div className="space-y-6">
@@ -308,11 +288,17 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className={`relative bg-black/40 backdrop-blur-xl border-l-4 ${phase.color} rounded-r-xl p-6`}
+                className="relative bg-card rounded-r-xl p-6 border border-border border-l-4 border-l-primary"
               >
-                <span className="text-xs font-mono text-gray-500 uppercase tracking-wider">{phase.phase}</span>
-                <h3 className="text-xl font-bold text-white mt-1 mb-2">{phase.title}</h3>
-                <p className="text-gray-400">{phase.description}</p>
+                <span className="text-xs font-mono uppercase tracking-wider text-primary">
+                  {phase.phase}
+                </span>
+                <h3 className="text-xl font-bold mt-1 mb-2 text-foreground">
+                  {phase.title}
+                </h3>
+                <p className="text-foreground/70">
+                  {phase.description}
+                </p>
               </motion.div>
             ))}
           </div>
@@ -328,10 +314,10 @@ export default function AboutPage() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold mb-4">
-              <span className="text-white">What I Care About</span>
+            <h2 className="text-3xl font-bold mb-4 text-foreground">
+              What I Care About
             </h2>
-            <p className="text-gray-400 max-w-2xl mx-auto">
+            <p className="max-w-2xl mx-auto text-foreground/70">
               The best ideas should win. Communities should form around shared purpose. Technology should make us more capable, not more dependent.
             </p>
           </motion.div>
@@ -353,11 +339,15 @@ export default function AboutPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="bg-black/40 backdrop-blur-xl border border-white/10 rounded-xl p-5 hover:border-cyan-500/30 transition-all group"
+                  className="bg-card rounded-xl p-5 transition-all group border border-border hover:border-primary/30"
                 >
-                  <Icon className="w-8 h-8 text-cyan-400 mb-3 group-hover:scale-110 transition-transform" />
-                  <h3 className="text-white font-semibold mb-1">{item.title}</h3>
-                  <p className="text-gray-500 text-sm">{item.desc}</p>
+                  <Icon className="w-8 h-8 mb-3 group-hover:scale-110 transition-transform text-primary" />
+                  <h3 className="font-semibold mb-1 text-foreground">
+                    {item.title}
+                  </h3>
+                  <p className="text-sm text-foreground/60">
+                    {item.desc}
+                  </p>
                 </motion.div>
               )
             })}
@@ -372,33 +362,24 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="relative rounded-2xl p-8 sm:p-12 text-center overflow-hidden"
-            style={{
-              background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 20, 40, 0.9) 100%)',
-              border: '1px solid rgba(0, 212, 255, 0.3)',
-              boxShadow: '0 0 60px rgba(0, 212, 255, 0.15)'
-            }}
+            className="relative rounded-2xl p-8 sm:p-12 text-center overflow-hidden group bg-card border-2 border-border"
           >
-            <div className="absolute top-0 left-0 w-20 h-20 border-t-2 border-l-2 border-cyan-500/50 rounded-tl-2xl" />
-            <div className="absolute bottom-0 right-0 w-20 h-20 border-b-2 border-r-2 border-purple-500/50 rounded-br-2xl" />
+            {/* Corner brackets */}
+            <div className="absolute top-0 left-0 w-20 h-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 border-t-[3px] border-l-[3px] border-primary rounded-tl-2xl" />
+            <div className="absolute bottom-0 right-0 w-20 h-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 border-b-[3px] border-r-[3px] border-primary rounded-br-2xl" />
 
-            <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-white">
-              Ready to Build Something Real?
+            <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-foreground">
+              See It in Action
             </h2>
-            <p className="text-gray-300 mb-8 max-w-xl mx-auto">
-              Whether you need product strategy, technical architecture, or a co-builder who ships—let&apos;s talk.
+            <p className="mb-8 max-w-xl mx-auto text-foreground/70">
+              The proof is in the work.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/work">
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="px-8 py-4 font-bold text-lg flex items-center justify-center gap-2"
-                  style={{
-                    background: 'linear-gradient(135deg, #00d4ff 0%, #00ffff 100%)',
-                    color: '#000',
-                    boxShadow: '0 0 30px rgba(0, 212, 255, 0.5)',
-                  }}
+                  className="px-8 py-4 font-bold text-lg flex items-center justify-center gap-2 rounded-lg bg-primary text-primary-foreground"
                 >
                   View My Work
                   <ArrowRight className="w-5 h-5" />
@@ -408,12 +389,7 @@ export default function AboutPage() {
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="px-8 py-4 font-bold text-lg text-white"
-                  style={{
-                    background: 'transparent',
-                    border: '2px solid rgba(0, 212, 255, 0.6)',
-                    boxShadow: '0 0 20px rgba(0, 212, 255, 0.2)',
-                  }}
+                  className="px-8 py-4 font-bold text-lg rounded-lg bg-transparent border-2 border-primary text-foreground hover:bg-primary hover:text-primary-foreground transition-colors"
                 >
                   Get in Touch
                 </motion.button>
@@ -422,6 +398,6 @@ export default function AboutPage() {
           </motion.div>
         </div>
       </section>
-    </>
+    </div>
   )
 }

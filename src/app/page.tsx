@@ -10,13 +10,13 @@ import { StructuredData } from '@/components/structured-data'
 // Default hero content
 const heroContent = {
   heroTitle: 'JOHN CONNOR',
-  heroDescription: 'Building systems that serve humanity.',
-  heroHighlight: 'AI & Blockchain Strategist. Builder. Founder.',
+  heroDescription: 'Builder of systems that scale.',
+  heroHighlight: 'From zero to product-market fit.',
   metrics: [
-    { number: '$20M+', label: 'Funded Startups', context: 'Products built for high-growth companies' },
-    { number: '50+', label: 'Products Shipped', context: 'From local businesses to enterprise' },
-    { number: '15+ Years', label: 'Product Experience', context: 'Philosophy, economics, behavior theory' },
-    { number: '100+', label: 'Businesses Helped', context: 'From hummus shops to unicorns' }
+    { number: '15+', label: 'Years in Product', context: 'Led product at top apps' },
+    { number: '$20M+', label: 'Funding Enabled', context: 'Across companies I\'ve built and advised' },
+    { number: '300K+', label: 'Users Scaled', context: 'From early traction to growth' },
+    { number: '50+', label: 'Products Shipped', context: 'Web3, AI, marketplaces, mobile' }
   ]
 }
 

@@ -6,7 +6,6 @@ import Link from 'next/link'
 import { Calendar, Clock, Search, Filter, BookOpen, ArrowRight } from 'lucide-react'
 import { formatDate } from '@/lib/utils'
 import { useState, useMemo } from 'react'
-import { AnimatedBorderBox } from '@/components/animated-border-box'
 
 interface Post {
   id: string
@@ -39,15 +38,16 @@ const categories = [
 export default function BlogList({ initialPosts }: { initialPosts: Post[] }) {
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('All')
+  const [hoveredCard, setHoveredCard] = useState<string | null>(null)
 
   const filteredPosts = useMemo(() => {
     return initialPosts.filter(post => {
       const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                            post.excerpt?.toLowerCase().includes(searchTerm.toLowerCase()) ||
                            post.tags?.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()))
-      
+
       const matchesCategory = selectedCategory === 'All' || post.category === selectedCategory
-      
+
       return matchesSearch && matchesCategory
     })
   }, [initialPosts, searchTerm, selectedCategory])
@@ -55,57 +55,55 @@ export default function BlogList({ initialPosts }: { initialPosts: Post[] }) {
   const postsToShow = filteredPosts
 
   return (
-    <section className="min-h-screen py-20 px-4 sm:px-6 lg:px-8">
+    <section className="min-h-screen py-20 px-4 sm:px-6 lg:px-8 bg-background">
       <div className="max-w-7xl mx-auto">
-        {/* Header with elegant styling */}
+        {/* Header with Greek-inspired styling */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="text-center mb-16"
         >
-          {/* Decorative element */}
+          {/* Diamond decorative element */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2, duration: 0.5 }}
             className="flex items-center justify-center gap-4 mb-6"
           >
-            <div className="w-16 h-px bg-gradient-to-r from-transparent to-cyan-500/50" />
-            <span className="text-cyan-400/60 text-xs tracking-[0.3em] uppercase">
+            <div className="w-16 h-px bg-gradient-to-r from-transparent to-primary" />
+            <div className="relative">
+              <div className="w-3 h-3 rotate-45 border-2 border-primary" />
+            </div>
+            <span className="text-xs tracking-[0.3em] uppercase font-medium text-foreground/60 font-jost">
               Ideas & Insights
             </span>
-            <div className="w-16 h-px bg-gradient-to-l from-transparent to-cyan-500/50" />
+            <div className="relative">
+              <div className="w-3 h-3 rotate-45 border-2 border-primary" />
+            </div>
+            <div className="w-16 h-px bg-gradient-to-l from-transparent to-primary" />
           </motion.div>
 
-          <h1
-            className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 text-center tracking-wide"
-            style={{
-              background: 'linear-gradient(135deg, #ffffff 0%, #00d4ff 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-            }}
-          >
+          <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 text-center tracking-wide text-foreground font-jost">
             Blog
           </h1>
           <motion.p
-            className="text-lg text-gray-400 max-w-2xl mx-auto font-light"
+            className="text-lg max-w-2xl mx-auto font-light text-foreground/70 font-jost"
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={{ opacity: 0.7, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
           >
             Essays and insights on human-first futurism, community building, and technology that empowers
           </motion.p>
         </motion.div>
 
-        {/* Search and Filter with better animations */}
+        {/* Search and Filter */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-          className="mb-12 p-6 bg-gradient-to-br from-cyan-400/5 to-purple-400/5 border border-foreground/10 rounded-xl"
+          className="mb-12 p-6 rounded-xl border bg-card border-border font-jost"
         >
           <div className="flex flex-col gap-6">
             {/* Search Bar */}
@@ -116,18 +114,18 @@ export default function BlogList({ initialPosts }: { initialPosts: Post[] }) {
               transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
               className="relative"
             >
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-primary" />
               <input
                 type="text"
                 placeholder="Search by title, content, or tags..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-12 pr-12 py-4 bg-background/50 border-2 border-foreground/10 rounded-lg focus:border-cyan-400 focus:outline-none transition-all placeholder:text-muted-foreground"
+                className="w-full pl-12 pr-12 py-4 rounded-lg border-2 focus:outline-none transition-all bg-background border-border text-foreground font-jost focus:border-primary"
               />
               {searchTerm && (
                 <button
                   onClick={() => setSearchTerm('')}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 transition-colors text-foreground/50 hover:text-foreground"
                 >
                   ✕
                 </button>
@@ -142,8 +140,10 @@ export default function BlogList({ initialPosts }: { initialPosts: Post[] }) {
               transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
             >
               <div className="flex items-center gap-2 mb-3">
-                <Filter className="w-4 h-4 text-muted-foreground" />
-                <span className="text-sm font-medium text-muted-foreground">Filter by category:</span>
+                <Filter className="w-4 h-4 text-primary" />
+                <span className="text-sm font-medium text-foreground/70 font-jost">
+                  Filter by category:
+                </span>
               </div>
               <div className="flex gap-2 flex-wrap">
                 {categories.map((category, index) => (
@@ -156,10 +156,10 @@ export default function BlogList({ initialPosts }: { initialPosts: Post[] }) {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => setSelectedCategory(category)}
-                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all border font-jost ${
                       selectedCategory === category
-                        ? 'bg-gradient-to-r from-cyan-400 to-purple-400 text-white shadow-lg'
-                        : 'bg-background/50 border border-foreground/10 hover:border-cyan-400/50 hover:bg-cyan-400/10'
+                        ? 'bg-primary text-primary-foreground border-primary'
+                        : 'bg-background text-foreground border-border hover:border-primary/30'
                     }`}
                   >
                     {category}
@@ -174,10 +174,10 @@ export default function BlogList({ initialPosts }: { initialPosts: Post[] }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.7, ease: "easeOut" }}
-              className="text-sm text-muted-foreground flex items-center justify-between"
+              className="text-sm flex items-center justify-between text-foreground/70 font-jost"
             >
               <span>
-                Showing <strong className="text-cyan-400">{filteredPosts.length}</strong> {filteredPosts.length === 1 ? 'post' : 'posts'}
+                Showing <strong className="text-primary">{filteredPosts.length}</strong> {filteredPosts.length === 1 ? 'post' : 'posts'}
                 {searchTerm && ` matching "${searchTerm}"`}
                 {selectedCategory !== 'All' && ` in ${selectedCategory}`}
               </span>
@@ -187,7 +187,7 @@ export default function BlogList({ initialPosts }: { initialPosts: Post[] }) {
                     setSearchTerm('')
                     setSelectedCategory('All')
                   }}
-                  className="text-cyan-400 hover:text-cyan-300 transition-colors"
+                  className="transition-colors text-primary"
                 >
                   Clear filters
                 </button>
@@ -196,7 +196,7 @@ export default function BlogList({ initialPosts }: { initialPosts: Post[] }) {
           </div>
         </motion.div>
 
-        {/* Blog Posts Grid with AnimatedBorderBox */}
+        {/* Blog Posts Grid */}
         {postsToShow.length > 0 ? (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {postsToShow.map((post, index) => (
@@ -211,16 +211,62 @@ export default function BlogList({ initialPosts }: { initialPosts: Post[] }) {
                   ease: "easeOut"
                 }}
                 className="group h-full"
+                onMouseEnter={() => setHoveredCard(post.id)}
+                onMouseLeave={() => setHoveredCard(null)}
               >
                 <Link href={`/blog/${post.slug}`} className="block h-full">
-                  <AnimatedBorderBox
-                    delay={index * 0.15}
-                    className="h-full rounded-xl overflow-hidden hover:bg-foreground/5 transition-colors"
-                    borderColor={index % 2 === 0 ? "rgba(0, 200, 255, 0.3)" : "rgba(147, 51, 234, 0.3)"}
-                  >
+                  <div className={`h-full rounded-xl overflow-hidden transition-all relative bg-card border font-jost ${
+                    hoveredCard === post.id ? 'border-primary/30' : 'border-border'
+                  }`}>
+                    {/* Corner accents on hover */}
+                    {hoveredCard === post.id && (
+                      <>
+                        {/* Top-left corner */}
+                        <motion.div
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          className="absolute top-0 left-0 z-10 text-primary"
+                        >
+                          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M0 8V0H8" stroke="currentColor" strokeWidth="2"/>
+                          </svg>
+                        </motion.div>
+                        {/* Top-right corner */}
+                        <motion.div
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          className="absolute top-0 right-0 z-10 text-primary"
+                        >
+                          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M20 8V0H12" stroke="currentColor" strokeWidth="2"/>
+                          </svg>
+                        </motion.div>
+                        {/* Bottom-left corner */}
+                        <motion.div
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          className="absolute bottom-0 left-0 z-10 text-primary"
+                        >
+                          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M0 12V20H8" stroke="currentColor" strokeWidth="2"/>
+                          </svg>
+                        </motion.div>
+                        {/* Bottom-right corner */}
+                        <motion.div
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          className="absolute bottom-0 right-0 z-10 text-primary"
+                        >
+                          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M20 12V20H12" stroke="currentColor" strokeWidth="2"/>
+                          </svg>
+                        </motion.div>
+                      </>
+                    )}
+
                     {/* Image */}
                     {post.featured_image && (
-                      <div className="relative h-48 overflow-hidden bg-muted">
+                      <div className="relative h-48 overflow-hidden bg-background">
                         <Image
                           src={post.featured_image}
                           alt={post.title}
@@ -229,7 +275,7 @@ export default function BlogList({ initialPosts }: { initialPosts: Post[] }) {
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
                         />
                         {post.featured && (
-                          <div className="absolute top-4 left-4 px-3 py-1 bg-gradient-to-r from-cyan-400 to-purple-400 text-white text-xs font-semibold rounded-full z-10">
+                          <div className="absolute top-4 left-4 px-3 py-1 text-xs font-semibold rounded-full z-10 bg-primary text-primary-foreground font-jost">
                             Featured
                           </div>
                         )}
@@ -239,9 +285,11 @@ export default function BlogList({ initialPosts }: { initialPosts: Post[] }) {
                     {/* Content */}
                     <div className="p-6">
                       {/* Meta */}
-                      <div className="flex items-center gap-4 text-sm text-muted-foreground mb-3">
+                      <div className="flex items-center gap-4 text-sm mb-3 text-foreground/60 font-jost">
                         {post.category && (
-                          <span className="text-cyan-400 font-mono">[{post.category}]</span>
+                          <span className="font-mono font-medium text-primary">
+                            [{post.category}]
+                          </span>
                         )}
                         <div className="flex items-center gap-1">
                           <Calendar className="w-3 h-3" />
@@ -256,33 +304,42 @@ export default function BlogList({ initialPosts }: { initialPosts: Post[] }) {
                       </div>
 
                       {/* Title */}
-                      <h2 className="text-xl font-bold mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-cyan-400 group-hover:to-purple-400 transition-all">
+                      <h2 className={`text-xl font-bold mb-3 transition-all font-jost ${
+                        hoveredCard === post.id ? 'text-primary' : 'text-foreground'
+                      }`}>
                         {post.title}
                       </h2>
 
                       {/* Excerpt */}
-                      <p className="text-muted-foreground line-clamp-3 mb-4">
+                      <p className="line-clamp-3 mb-4 text-foreground/70 font-jost">
                         {post.excerpt}
                       </p>
 
                       {/* Read More with Arrow */}
-                      <div className="flex items-center gap-2 text-cyan-400 font-semibold text-sm opacity-0 group-hover:opacity-100 transition-opacity">
+                      <div className={`flex items-center gap-2 font-semibold text-sm transition-opacity text-primary font-jost ${
+                        hoveredCard === post.id ? 'opacity-100' : 'opacity-0'
+                      }`}>
                         READ MORE
-                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                        <ArrowRight className={`w-4 h-4 transition-transform ${
+                          hoveredCard === post.id ? 'translate-x-1' : 'translate-x-0'
+                        }`} />
                       </div>
 
                       {/* Tags */}
                       {post.tags && post.tags.length > 0 && (
-                        <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t border-foreground/5">
+                        <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t border-border/50">
                           {post.tags.slice(0, 3).map(tag => (
-                            <span key={tag} className="text-xs text-muted-foreground hover:text-cyan-400 transition-colors">
+                            <span
+                              key={tag}
+                              className="text-xs transition-colors text-foreground/50 font-jost"
+                            >
                               #{tag}
                             </span>
                           ))}
                         </div>
                       )}
                     </div>
-                  </AnimatedBorderBox>
+                  </div>
                 </Link>
               </motion.article>
             ))}
@@ -301,14 +358,14 @@ export default function BlogList({ initialPosts }: { initialPosts: Post[] }) {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
             >
-              <BookOpen className="w-16 h-16 mx-auto mb-6 text-muted-foreground" />
+              <BookOpen className="w-16 h-16 mx-auto mb-6 text-primary" />
             </motion.div>
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-              className="text-2xl font-bold mb-4"
+              className="text-2xl font-bold mb-4 text-foreground font-jost"
             >
               No posts found
             </motion.h2>
@@ -317,7 +374,7 @@ export default function BlogList({ initialPosts }: { initialPosts: Post[] }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
-              className="text-muted-foreground max-w-md mx-auto"
+              className="max-w-md mx-auto text-foreground/70 font-jost"
             >
               {searchTerm || selectedCategory !== 'All'
                 ? 'Try adjusting your search or filter criteria'
@@ -326,16 +383,38 @@ export default function BlogList({ initialPosts }: { initialPosts: Post[] }) {
           </motion.div>
         )}
 
-        {/* Newsletter CTA with better animation */}
+        {/* Newsletter CTA */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="mt-20 p-12 border border-foreground/10 rounded-lg bg-gradient-to-br from-cyan-400/5 to-purple-400/5 text-center"
+          className="mt-20 p-12 rounded-lg text-center relative overflow-hidden bg-card border border-border"
         >
+          {/* Decorative corner elements */}
+          <div className="absolute top-0 left-0 text-primary/30">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+              <path d="M0 16V0H16" stroke="currentColor" strokeWidth="2"/>
+            </svg>
+          </div>
+          <div className="absolute top-0 right-0 text-primary/30">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+              <path d="M40 16V0H24" stroke="currentColor" strokeWidth="2"/>
+            </svg>
+          </div>
+          <div className="absolute bottom-0 left-0 text-primary/30">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+              <path d="M0 24V40H16" stroke="currentColor" strokeWidth="2"/>
+            </svg>
+          </div>
+          <div className="absolute bottom-0 right-0 text-primary/30">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+              <path d="M40 24V40H24" stroke="currentColor" strokeWidth="2"/>
+            </svg>
+          </div>
+
           <motion.h2
-            className="text-3xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent"
+            className="text-3xl font-bold mb-4 text-primary font-jost"
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -344,9 +423,9 @@ export default function BlogList({ initialPosts }: { initialPosts: Post[] }) {
             Stay Updated
           </motion.h2>
           <motion.p
-            className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto"
+            className="text-lg mb-8 max-w-2xl mx-auto text-foreground/70 font-jost"
             initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 0.7, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
           >
@@ -362,7 +441,7 @@ export default function BlogList({ initialPosts }: { initialPosts: Post[] }) {
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="px-8 py-4 bg-foreground text-background hover:bg-foreground/90 transition-all duration-300 font-semibold"
+                className="px-8 py-4 transition-all duration-300 font-semibold rounded-lg bg-primary text-primary-foreground font-jost"
               >
                 Subscribe to Updates
               </motion.button>

@@ -41,13 +41,13 @@ export function ThoughtsPreview() {
   
   if (loading) {
     return (
-      <section className="py-24 px-4 bg-gradient-to-b from-black to-gray-900">
+      <section className="py-24 px-4 bg-gradient-to-b from-background to-card">
         <div className="max-w-7xl mx-auto">
           <div className="animate-pulse">
-            <div className="h-12 bg-gray-800 rounded w-1/3 mb-8"></div>
+            <div className="h-12 bg-muted rounded w-1/3 mb-8"></div>
             <div className="space-y-4">
-              <div className="h-32 bg-gray-800 rounded"></div>
-              <div className="h-32 bg-gray-800 rounded"></div>
+              <div className="h-32 bg-muted rounded"></div>
+              <div className="h-32 bg-muted rounded"></div>
             </div>
           </div>
         </div>
@@ -60,7 +60,7 @@ export function ThoughtsPreview() {
   }
   
   return (
-    <section className="py-24 px-4 bg-gradient-to-b from-black to-gray-900 relative overflow-hidden">
+    <section className="py-24 px-4 bg-gradient-to-b from-background to-card relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 cyber-grid opacity-10" />
       
@@ -87,7 +87,7 @@ export function ThoughtsPreview() {
             </Link>
           </div>
           
-          <p className="text-gray-400 font-light max-w-2xl">
+          <p className="text-muted-foreground font-light max-w-2xl">
             Quick insights, random observations, and work-in-progress ideas
           </p>
         </motion.div>
@@ -109,7 +109,7 @@ export function ThoughtsPreview() {
                   {thought.mood && (
                     <span className="text-xl">{moodEmoji[thought.mood]}</span>
                   )}
-                  <time className="text-xs text-gray-500 font-mono">
+                  <time className="text-xs text-muted-foreground font-mono">
                     {formatDistanceToNow(new Date(thought.publishedAt), { addSuffix: true })}
                   </time>
                 </div>
@@ -121,7 +121,7 @@ export function ThoughtsPreview() {
                     components={{
                       types: {
                         image: () => (
-                          <div className="text-gray-500 text-xs">
+                          <div className="text-muted-foreground text-xs">
                             [Image]
                           </div>
                         ),
@@ -151,7 +151,7 @@ export function ThoughtsPreview() {
                     {thought.tags.slice(0, 3).map((tag: string) => (
                       <span 
                         key={tag}
-                        className="text-xs text-gray-500 font-mono"
+                        className="text-xs text-muted-foreground font-mono"
                       >
                         #{tag}
                       </span>

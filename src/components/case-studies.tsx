@@ -6,91 +6,72 @@ import Link from 'next/link'
 
 const caseStudies = [
   {
-    id: 'thrive-protocol',
-    title: 'Thrive Protocol',
-    subtitle: 'AI-Powered Grant Evaluation',
-    description: 'Built an AI system that reduced grant review time by 90% while maintaining human oversight for critical decisions.',
-    challenge: 'Manual review of thousands of grant applications was taking weeks and creating bottlenecks in ecosystem funding.',
-    solution: 'Developed Polyval, an AI-powered scoring engine that evaluates applications based on multiple criteria while flagging edge cases for human review.',
-    results: [
-      '$2M+ in grants efficiently allocated',
-      '90% reduction in review time',
-      '100+ projects funded',
-      'Maintained human judgment for final decisions'
-    ],
-    technologies: ['AI/ML', 'Natural Language Processing', 'Python', 'Decision Trees'],
-    icon: Brain,
-    color: 'from-purple-500 to-pink-500',
-    metrics: {
-      efficiency: '+90%',
-      accuracy: '95%',
-      scale: '1000+ applications'
-    }
-  },
-  {
     id: 'upland',
     title: 'Upland',
-    subtitle: 'Virtual Property Platform Scaling',
-    description: 'Scaled a virtual property game from 1K to 200K+ monthly active users through product-market fit discovery.',
-    challenge: 'The platform was struggling with user retention and needed to find sustainable growth mechanisms.',
-    solution: 'Conducted extensive user research, redesigned onboarding, implemented behavioral economics principles, and launched the SPARK token economy.',
+    subtitle: 'From Struggling to 15x Growth',
+    description: 'Found product-market fit for a Web3 virtual economy. The ONE insight that changed everything.',
+    stuck: 'Upland had users but couldn\'t keep them. Retention was falling. The token felt like a gimmick.',
+    insight: 'Users didn\'t want to BUY value—they wanted to EARN it. We redesigned the entire economy around achievement, not speculation.',
+    outcome: '13K → 200K users. 15x growth. 40% better D7 retention.',
     results: [
       '200K+ monthly active users',
       '15x growth in user engagement',
-      'Successfully launched SPARK token',
-      'Created sustainable virtual economy'
+      '40% improvement in D7 retention',
+      'SPARK token launched successfully'
     ],
-    technologies: ['Web3', 'Token Economics', 'Behavioral Design', 'React'],
+    technologies: ['Token Economics', 'User Research', 'Behavioral Design'],
     icon: TrendingUp,
     color: 'from-cyan-500 to-blue-500',
     metrics: {
-      growth: '200x',
-      retention: '+45%',
-      revenue: '+300%'
+      before: '13K users',
+      after: '200K users',
+      growth: '15x'
+    }
+  },
+  {
+    id: 'mode-mobile',
+    title: 'Mode Mobile',
+    subtitle: 'Saved a Failing Product',
+    description: 'Inherited a product that was dying. Found the real problem. Pivoted to PMF.',
+    stuck: 'Revenue was declining. Users said they loved features they never used. The team was building the wrong things.',
+    insight: 'We stopped listening to what users said and started watching what they did. The data told a different story.',
+    outcome: '3x revenue. 50% less churn. Product saved.',
+    results: [
+      '3x revenue increase',
+      '50% reduction in churn',
+      'Killed features users "wanted" but didn\'t use',
+      'Found the real value proposition'
+    ],
+    technologies: ['User Research', 'Analytics', 'Product Strategy'],
+    icon: Brain,
+    color: 'from-purple-500 to-pink-500',
+    metrics: {
+      revenue: '3x',
+      churn: '-50%',
+      time: '6 months'
     }
   },
   {
     id: 'sparkblox',
     title: 'Sparkblox',
-    subtitle: 'NFT 2.0 Infrastructure',
-    description: 'Founded and led development of next-generation NFT infrastructure with major blockchain partnerships.',
-    challenge: 'NFTs were limited to simple ownership. We needed to create programmable, interoperable digital assets.',
-    solution: 'Built universal NFT standards, created cross-chain compatibility layers, and established partnerships with Chainlink and Algorand.',
+    subtitle: 'Zero to Funded Startup',
+    description: 'Built a company from scratch. Raised capital. Shipped product. Learned hard lessons.',
+    stuck: 'NFT infrastructure was fragmented. Brands wanted to use NFTs but couldn\'t build custom experiences.',
+    insight: 'The market wasn\'t ready. We built beautiful tech for a problem that wasn\'t urgent enough. A $1M lesson.',
+    outcome: '$1M raised. 18-person team. Partnerships with Chainlink & Algorand. Then: honest pivot.',
     results: [
       '$1M+ in funding raised',
       'Partnerships with Chainlink & Algorand',
-      'Team of 18 people',
-      'POCs on multiple blockchains'
+      'Team of 18 engineers',
+      'Hard lessons on timing vs. product'
     ],
-    technologies: ['Blockchain', 'Smart Contracts', 'Solidity', 'Cross-chain'],
+    technologies: ['Blockchain', 'Smart Contracts', 'Team Building'],
     icon: Layers,
     color: 'from-green-500 to-emerald-500',
     metrics: {
       funding: '$1M+',
       team: '18 people',
-      chains: '3 blockchains'
-    }
-  },
-  {
-    id: 'local-business',
-    title: 'Local Business Transformation',
-    subtitle: 'From Hummus Shop to Digital Success',
-    description: 'Helped local businesses compete digitally through user research and practical product improvements.',
-    challenge: 'Local businesses were losing customers to digital-first competitors but lacked resources for major tech investments.',
-    solution: 'Conducted customer interviews, identified key friction points, implemented simple but effective digital solutions.',
-    results: [
-      '40% increase in repeat customers',
-      'Reduced order friction by 60%',
-      'Improved customer satisfaction scores',
-      'Created sustainable growth model'
-    ],
-    technologies: ['User Research', 'Product Strategy', 'Simple Tech Stack', 'Analytics'],
-    icon: Users,
-    color: 'from-orange-500 to-red-500',
-    metrics: {
-      retention: '+40%',
-      efficiency: '+60%',
-      NPS: '+35'
+      lesson: 'Timing matters'
     }
   }
 ]
@@ -107,10 +88,10 @@ export function CaseStudies() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-            Detailed <span className="text-gradient">Case Studies</span>
+            Case <span className="text-gradient">Studies</span>
           </h2>
-          <p className="text-lg text-gray-100 max-w-3xl mx-auto">
-            Real problems, real solutions, real impact. From local businesses to high-growth startups.
+          <p className="text-lg text-foreground/90 max-w-3xl mx-auto">
+            Real problems, real solutions, real outcomes.
           </p>
         </motion.div>
 
@@ -136,12 +117,12 @@ export function CaseStudies() {
                       {/* Left Side - Overview */}
                       <div>
                         <div className="flex items-start gap-4 mb-6">
-                          <div className={`p-3 rounded-xl bg-gradient-to-br ${study.color} text-white`}>
+                          <div className={`p-3 rounded-xl bg-gradient-to-br ${study.color} text-primary-foreground`}>
                             <Icon className="w-6 h-6" />
                           </div>
                           <div>
                             <h3 className="text-2xl font-bold mb-1">{study.title}</h3>
-                            <p className="text-gray-100">{study.subtitle}</p>
+                            <p className="text-foreground/90">{study.subtitle}</p>
                           </div>
                         </div>
                         
@@ -152,7 +133,7 @@ export function CaseStudies() {
                           {Object.entries(study.metrics).map(([key, value]) => (
                             <div key={key} className="text-center p-4 bg-background/50 rounded-lg">
                               <p className="text-2xl font-bold text-primary">{value}</p>
-                              <p className="text-xs text-gray-100 capitalize">{key}</p>
+                              <p className="text-xs text-muted-foreground capitalize">{key}</p>
                             </div>
                           ))}
                         </div>
@@ -170,37 +151,30 @@ export function CaseStudies() {
                         </div>
                       </div>
                       
-                      {/* Right Side - Details */}
+                      {/* Right Side - Transformation Narrative */}
                       <div className="space-y-6">
-                        {/* Challenge */}
+                        {/* The Stuck */}
                         <div>
-                          <h4 className="font-semibold mb-2 text-sm text-gray-100 uppercase tracking-wider">
-                            The Challenge
+                          <h4 className="font-semibold mb-2 text-sm text-muted-foreground uppercase tracking-wider">
+                            The Stuck
                           </h4>
-                          <p className="text-foreground/80">{study.challenge}</p>
+                          <p className="text-foreground/80">{study.stuck}</p>
                         </div>
-                        
-                        {/* Solution */}
+
+                        {/* The Insight */}
                         <div>
-                          <h4 className="font-semibold mb-2 text-sm text-gray-100 uppercase tracking-wider">
-                            The Solution
+                          <h4 className="font-semibold mb-2 text-sm text-primary uppercase tracking-wider">
+                            The Insight
                           </h4>
-                          <p className="text-foreground/80">{study.solution}</p>
+                          <p className="text-foreground/90 font-medium">{study.insight}</p>
                         </div>
-                        
-                        {/* Results */}
-                        <div>
-                          <h4 className="font-semibold mb-3 text-sm text-gray-100 uppercase tracking-wider">
-                            The Results
+
+                        {/* The Outcome */}
+                        <div className="p-4 bg-primary/10 rounded-lg border border-primary/20">
+                          <h4 className="font-semibold mb-2 text-sm text-primary uppercase tracking-wider">
+                            The Outcome
                           </h4>
-                          <ul className="space-y-2">
-                            {study.results.map((result, i) => (
-                              <li key={i} className="flex items-start gap-2">
-                                <span className="text-primary mt-1">•</span>
-                                <span className="text-foreground/80">{result}</span>
-                              </li>
-                            ))}
-                          </ul>
+                          <p className="text-lg font-bold text-foreground">{study.outcome}</p>
                         </div>
                       </div>
                     </div>
@@ -219,8 +193,8 @@ export function CaseStudies() {
           transition={{ duration: 0.5 }}
           className="text-center mt-16"
         >
-          <p className="text-lg text-gray-100 mb-6">
-            Every project starts with understanding the real problem
+          <p className="text-lg text-foreground/90 mb-6">
+            Have a project in mind?
           </p>
           <Link href="/contact">
             <motion.button
@@ -228,7 +202,7 @@ export function CaseStudies() {
               whileTap={{ scale: 0.95 }}
               className="group px-8 py-4 bg-primary text-primary-foreground rounded-lg font-medium hover:shadow-xl hover:shadow-primary/25 transition-all flex items-center gap-2 mx-auto"
             >
-              Let&apos;s Solve Your Product Challenge
+              Get in Touch
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </motion.button>
           </Link>

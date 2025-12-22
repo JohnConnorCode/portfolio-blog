@@ -104,7 +104,7 @@ export function PlatformsShowcase() {
             </span>
           </h2>
 
-          <p className="text-xl text-gray-100 max-w-3xl mx-auto">
+          <p className="text-xl text-foreground/90 max-w-3xl mx-auto">
             Two platforms revolutionizing how we debate ideas and fund innovation
           </p>
         </motion.div>
@@ -140,7 +140,7 @@ export function PlatformsShowcase() {
                           whileHover={{ rotate: 360 }}
                           transition={{ duration: 0.5 }}
                         >
-                          <Icon className="w-6 h-6 text-white" />
+                          <Icon className="w-6 h-6 text-primary-foreground" />
                         </motion.div>
 
                         <h3 className="text-3xl font-bold mb-2">{platform.name}</h3>
@@ -161,7 +161,7 @@ export function PlatformsShowcase() {
                     </div>
 
                     {/* Description */}
-                    <p className="text-gray-100 mb-8">
+                    <p className="text-foreground/90 mb-8">
                       {platform.description}
                     </p>
 
@@ -179,7 +179,7 @@ export function PlatformsShowcase() {
                           <div className={`text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r ${platform.color}`}>
                             {stat.value}
                           </div>
-                          <div className="text-xs text-gray-100">
+                          <div className="text-xs text-foreground/90">
                             {stat.label}
                           </div>
                         </motion.div>
@@ -198,7 +198,7 @@ export function PlatformsShowcase() {
                           className="flex items-center gap-3"
                         >
                           <div className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${platform.color}`} />
-                          <span className="text-sm text-gray-100">
+                          <span className="text-sm text-foreground/90">
                             {feature}
                           </span>
                         </motion.div>
@@ -209,7 +209,7 @@ export function PlatformsShowcase() {
                     <motion.div className="mt-8">
                       <Link href={platform.url} target="_blank" rel="noopener noreferrer">
                         <motion.button
-                          className={`w-full py-3 px-6 rounded-xl bg-gradient-to-r ${platform.color} text-white font-semibold flex items-center justify-center gap-2 group/cta`}
+                          className={`w-full py-3 px-6 rounded-xl bg-gradient-to-r ${platform.color} text-primary-foreground font-semibold flex items-center justify-center gap-2 group/cta`}
                           whileHover={{ scale: 1.02 }}
                           whileTap={{ scale: 0.98 }}
                         >
@@ -242,7 +242,7 @@ export function PlatformsShowcase() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="text-center mt-20"
         >
-          <p className="text-lg text-gray-100 mb-6">
+          <p className="text-lg text-foreground/90 mb-6">
             Want to build something revolutionary together?
           </p>
           <Link href="/contact">

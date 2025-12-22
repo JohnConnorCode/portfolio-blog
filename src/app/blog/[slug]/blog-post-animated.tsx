@@ -33,7 +33,7 @@ export default function BlogPostAnimated({ post }: BlogPostAnimatedProps) {
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
           <motion.h1
-            className="text-4xl md:text-6xl font-bold text-white mb-4 leading-[1.1] md:leading-[1.05]"
+            className="text-4xl md:text-6xl font-bold text-foreground mb-4 leading-[1.1] md:leading-[1.05]"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
@@ -41,7 +41,7 @@ export default function BlogPostAnimated({ post }: BlogPostAnimatedProps) {
             {post.title}
           </motion.h1>
           <motion.div
-            className="flex items-center gap-4 text-gray-400"
+            className="flex items-center gap-4 text-muted-foreground"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}

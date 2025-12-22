@@ -1,7 +1,7 @@
 'use client'
 
 import { motion, useMotionValue, useTransform, animate } from 'framer-motion'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { DollarSign, Users, TrendingUp, Clock, Briefcase } from 'lucide-react'
 import { ScrollReveal, StaggeredReveal } from './ui/scroll-reveal'
 
@@ -109,10 +109,10 @@ export function ImpactMetrics() {
             return (
               <motion.div
                 key={metric.label}
-                className="p-8 group relative h-full hover:scale-105 transition-transform duration-300 bg-white/5 backdrop-blur-md border border-white/10 rounded-lg"
+                className="p-8 group relative h-full hover:scale-105 transition-transform duration-300 bg-foreground/5 backdrop-blur-md border border-foreground/10 rounded-lg"
               >
                 <div className="flex items-start justify-between mb-6">
-                  <div className="p-3 border border-white/20 rounded-lg group-hover:border-primary/50 transition-colors bg-white/5">
+                  <div className="p-3 border border-foreground/20 rounded-lg group-hover:border-primary/50 transition-colors bg-foreground/5">
                     <Icon className="w-6 h-6 text-primary" />
                   </div>
 
@@ -132,7 +132,7 @@ export function ImpactMetrics() {
                 </div>
 
                 <div className="space-y-3">
-                  <div className="text-3xl md:text-4xl font-bold text-white">
+                  <div className="text-3xl md:text-4xl font-bold text-foreground">
                     <Counter
                       from={0}
                       to={metric.value}
@@ -142,11 +142,11 @@ export function ImpactMetrics() {
                     />
                   </div>
 
-                  <h3 className="text-lg font-semibold text-gray-200">
+                  <h3 className="text-lg font-semibold text-foreground/90">
                     {metric.label}
                   </h3>
 
-                  <p className="text-sm text-gray-400">
+                  <p className="text-sm text-muted-foreground">
                     {metric.description}
                   </p>
                 </div>

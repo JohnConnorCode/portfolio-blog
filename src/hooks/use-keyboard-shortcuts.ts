@@ -166,22 +166,22 @@ function showShortcutsHelp() {
 
   const modal = document.createElement('div')
   modal.id = 'shortcuts-modal'
-  modal.className = 'fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 backdrop-blur-sm'
+  modal.className = 'fixed inset-0 z-[9999] flex items-center justify-center bg-background/80 backdrop-blur-sm'
   modal.setAttribute('data-modal', 'true')
 
   modal.innerHTML = `
-    <div class="bg-gray-900 border border-gray-700 rounded-2xl p-6 max-w-md w-full mx-4 shadow-2xl">
+    <div class="bg-card border border-border rounded-2xl p-6 max-w-md w-full mx-4 shadow-2xl">
       <div class="flex items-center justify-between mb-6">
-        <h3 class="text-xl font-bold text-white">Keyboard Shortcuts</h3>
-        <button id="close-shortcuts" class="p-2 hover:bg-gray-800 rounded-lg transition-colors">
-          <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <h3 class="text-xl font-bold text-foreground">Keyboard Shortcuts</h3>
+        <button id="close-shortcuts" class="p-2 hover:bg-muted rounded-lg transition-colors">
+          <svg class="w-5 h-5 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
           </svg>
         </button>
       </div>
 
       <div class="space-y-3 text-sm">
-        <div class="grid grid-cols-2 gap-2 text-gray-300">
+        <div class="grid grid-cols-2 gap-2 text-foreground/80">
           <div><kbd class="kbd">h</kbd> Home</div>
           <div><kbd class="kbd">w</kbd> Work</div>
           <div><kbd class="kbd">b</kbd> Blog</div>
@@ -196,8 +196,8 @@ function showShortcutsHelp() {
           <div><kbd class="kbd">G</kbd> Go to bottom</div>
         </div>
 
-        <div class="pt-4 border-t border-gray-700">
-          <p class="text-xs text-gray-500">Press <kbd class="kbd">Escape</kbd> to close</p>
+        <div class="pt-4 border-t border-border">
+          <p class="text-xs text-muted-foreground">Press <kbd class="kbd">Escape</kbd> to close</p>
         </div>
       </div>
     </div>

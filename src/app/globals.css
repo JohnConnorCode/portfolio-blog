@@ -1,82 +1,76 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&family=Jost:wght@300;400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Light mode default */
+/* Theme color scheme - controlled by next-themes */
 html {
   color-scheme: light;
 }
 
-html,
-body {
-  @apply bg-[#faf9f7];
+html.dark {
+  color-scheme: dark;
 }
 
 @layer base {
   :root {
-    /* Stark, elegant color system with signature indigo */
-    --background: 0 0% 100%;
-    --foreground: 0 0% 5%;
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 5%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 5%;
-    --primary: 234 89% 30%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 0 0% 96%;
-    --secondary-foreground: 0 0% 5%;
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 40%;
-    --accent: 234 89% 30%;
-    --accent-foreground: 0 0% 100%;
+    /* Light Mode: Warm cream, navy text, gold accents */
+    --background: 45 29% 97%;           /* #faf9f7 warm cream */
+    --foreground: 220 42% 18%;          /* #1a2744 deep navy */
+    --card: 45 29% 97%;
+    --card-foreground: 220 42% 18%;
+    --popover: 45 29% 97%;
+    --popover-foreground: 220 42% 18%;
+    --primary: 43 71% 47%;              /* #c9a227 gold */
+    --primary-foreground: 45 29% 97%;
+    --secondary: 45 20% 93%;
+    --secondary-foreground: 220 42% 18%;
+    --muted: 45 20% 93%;
+    --muted-foreground: 220 30% 40%;
+    --accent: 43 71% 47%;               /* gold accent */
+    --accent-foreground: 45 29% 97%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 90%;
-    --input: 0 0% 90%;
-    --ring: 234 89% 30%;
+    --border: 220 20% 88%;
+    --input: 220 20% 88%;
+    --ring: 43 71% 47%;
     --radius: 0.5rem;
-    /* Custom colors for better light/dark mode support */
-    --white: 255 255 255;
-    --gray-400: 156 163 175;
-    --gray-500: 107 114 128;
-    --gray-900: 17 24 39;
-    --cyan-400: 34 211 238;
-    --purple-500: 168 85 247;
-    --pink-500: 236 72 153;
-    --yellow-400: 250 204 21;
+    /* Custom colors */
+    --cyan-400: 189 94% 43%;
+    --purple-500: 271 81% 56%;
+    --pink-500: 330 81% 60%;
+    --gold: 43 71% 47%;
+    --navy: 220 42% 18%;
   }
 
   .dark {
-    --background: 0 0% 3%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 3%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 3%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 234 89% 60%;
-    --primary-foreground: 0 0% 3%;
+    /* Dark Mode: Pure black, white text, cyan/purple neon accents */
+    --background: 0 0% 0%;              /* #000000 pure black */
+    --foreground: 0 0% 100%;            /* #ffffff white */
+    --card: 0 0% 4%;
+    --card-foreground: 0 0% 100%;
+    --popover: 0 0% 4%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 189 100% 50%;            /* #00d4ff cyan */
+    --primary-foreground: 0 0% 0%;
     --secondary: 0 0% 8%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 8%;
-    --muted-foreground: 0 0% 60%;
-    --accent: 234 89% 60%;
-    --accent-foreground: 0 0% 3%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 280 100% 70%;             /* purple */
+    --accent-foreground: 0 0% 0%;
     --destructive: 0 62% 30%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 12%;
-    --input: 0 0% 12%;
-    --ring: 234 89% 60%;
-    /* Custom colors remain the same for dark mode */
-    --white: 255 255 255;
-    --gray-400: 156 163 175;
-    --gray-500: 107 114 128;
-    --gray-900: 17 24 39;
-    --cyan-400: 34 211 238;
-    --purple-500: 168 85 247;
-    --pink-500: 236 72 153;
-    --yellow-400: 250 204 21;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 189 100% 50%;
+    /* Custom colors */
+    --cyan-400: 189 94% 43%;
+    --purple-500: 271 81% 56%;
+    --pink-500: 330 81% 60%;
+    --gold: 43 71% 47%;
+    --navy: 220 42% 18%;
   }
 }
 
@@ -561,9 +555,13 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* Refined serif typography */
-.font-serif {
-  font-family: 'Playfair Display', Georgia, serif;
+/* Futura-inspired geometric sans typography */
+.font-display {
+  font-family: 'Jost', 'Futura', 'Century Gothic', sans-serif;
+}
+
+.font-jost {
+  font-family: 'Jost', 'Futura', 'Century Gothic', sans-serif;
 }
 
 /* Navy color utilities */
