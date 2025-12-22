@@ -182,7 +182,7 @@ export default function ContactPage() {
               variants={childVariants}
               className="text-lg max-w-2xl mx-auto font-light text-foreground/80"
             >
-              Whether you need product strategy, technical architecture, or a cross-functional partner who ships—I&apos;m here to help.
+              Whether you need product strategy, technology guidance, or a cross-functional partner who ships—I&apos;m here to help.
             </motion.p>
           </motion.div>
         </div>
@@ -520,7 +520,7 @@ export default function ContactPage() {
             {[
               {
                 question: "What types of projects do you take on?",
-                answer: "Product strategy, technical architecture, AI integration, Web3 infrastructure, and marketplace design. I work across the full stack—strategy to execution."
+                answer: "Product strategy, technology strategy, AI integration, Web3 infrastructure, and marketplace design. I work across the full stack—strategy to execution."
               },
               {
                 question: "Do you build or just advise?",

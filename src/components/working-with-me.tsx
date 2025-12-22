@@ -76,8 +76,8 @@ const principles = [
     icon: Users
   },
   {
-    title: 'No Vendor Lock-in',
-    description: 'Open systems you can maintain and evolve without me.',
+    title: 'Holistic Solutions',
+    description: 'Strategy, technology, and execution that work together—not siloed deliverables.',
     icon: Unlock
   }
 ]
@@ -124,7 +124,7 @@ export function WorkingWithMe() {
             Working Together
           </motion.h2>
           <motion.p variants={childVariants} className="text-base sm:text-lg max-w-2xl mx-auto font-jost text-foreground/60">
-            Product strategy, technical architecture, and hands-on execution.
+            Product strategy, technology strategy, and hands-on execution.
           </motion.p>
         </motion.div>
 
@@ -278,8 +278,8 @@ export function WorkingWithMe() {
               },
               {
                 icon: Zap,
-                title: 'Technical Architecture',
-                description: 'System design, AI integration, scalable infrastructure—built for real utility and long-term growth.',
+                title: 'Technology Strategy',
+                description: 'Stack selection, MVP prototyping, build vs. buy decisions—the right technical choices at the right time.',
               },
               {
                 icon: Rocket,
