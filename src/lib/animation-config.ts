@@ -1,33 +1,32 @@
 import { Variants } from 'framer-motion'
 
-// Consistent animation timings across the site
+// Consistent animation timings across the site - FAST and SNAPPY
 export const ANIMATION_DURATION = {
-  instant: 0.2,
-  fast: 0.3,
-  normal: 0.5,
-  slow: 0.8,
-  verySlow: 1.0
+  instant: 0.1,
+  fast: 0.15,
+  normal: 0.25,
+  slow: 0.35,
+  verySlow: 0.5
 } as const
 
 export const ANIMATION_DELAY = {
   none: 0,
-  minimal: 0.05,
-  stagger: 0.1,
-  staggerSlow: 0.15,
-  section: 0.2,
-  sectionLong: 0.3
+  minimal: 0.02,
+  stagger: 0.03,
+  staggerSlow: 0.05,
+  section: 0.05,
+  sectionLong: 0.1
 } as const
 
-// Sequential delays for home page sections
-// Hero completes at ~2s, so sections start after that
+// Sequential delays for home page sections - minimal delays
 export const SECTION_DELAYS = {
-  hero: 0,           // Starts immediately
-  impact: 0.2,       // After hero completes (~2.2s)
-  superDebate: 0.4,  // +0.2s
-  accelerate: 0.6,   // +0.2s
-  workingWithMe: 0.8, // +0.2s
-  writings: 1.0,     // +0.2s
-  callToAction: 1.2  // +0.2s
+  hero: 0,
+  impact: 0,
+  superDebate: 0,
+  accelerate: 0,
+  workingWithMe: 0,
+  writings: 0,
+  callToAction: 0
 } as const
 
 // Easing functions

@@ -92,37 +92,24 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
             {/* Left Column - Content (7 columns) */}
             <div className="lg:col-span-7 order-2 lg:order-1 text-center lg:text-left">
               {/* Classical decorative element - laurel-inspired */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.2, duration: 0.8 }}
-                className="hidden lg:flex items-center gap-4 mb-6"
-              >
+              <div className="hidden lg:flex items-center gap-4 mb-6">
                 <svg viewBox="0 0 60 20" className="w-14 h-5 text-primary">
                   <path d="M0 10 Q15 0 30 10 Q15 20 0 10" fill="none" stroke="currentColor" strokeWidth="1" opacity="0.6"/>
                   <path d="M10 10 Q20 3 30 10" fill="none" stroke="currentColor" strokeWidth="1" opacity="0.4"/>
                 </svg>
                 <div className="w-16 h-px bg-gradient-to-r from-primary/60 to-transparent" />
-              </motion.div>
+              </div>
 
               {/* Name */}
-              <motion.h1
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.3, ease: [0.215, 0.61, 0.355, 1] }}
+              <h1
                 className="text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-bold tracking-tight mb-3 text-foreground font-jost"
                 style={{ letterSpacing: '0.02em', lineHeight: 1 }}
               >
                 {heroContent.heroTitle}
-              </motion.h1>
+              </h1>
 
               {/* Role - cross-functional */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5, duration: 0.8 }}
-                className="flex items-center justify-center lg:justify-start gap-3 mb-8"
-              >
+              <div className="flex items-center justify-center lg:justify-start gap-3 mb-8">
                 <span className="text-xs sm:text-sm tracking-[0.3em] uppercase text-primary font-jost font-medium">
                   Product
                 </span>
@@ -134,35 +121,20 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                 <span className="text-xs sm:text-sm tracking-[0.3em] uppercase text-primary font-jost font-medium">
                   Strategy
                 </span>
-              </motion.div>
+              </div>
 
               {/* Main philosophy - the hook */}
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.7, duration: 0.8 }}
-                className="text-xl sm:text-2xl md:text-3xl leading-relaxed mb-5 max-w-2xl mx-auto lg:mx-0 text-foreground/90 font-jost font-light"
-              >
+              <p className="text-xl sm:text-2xl md:text-3xl leading-relaxed mb-5 max-w-2xl mx-auto lg:mx-0 text-foreground/90 font-jost font-light">
                 {heroContent.heroDescription}
-              </motion.p>
+              </p>
 
               {/* Tagline - philosophical anchor */}
-              <motion.p
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.9, duration: 0.8 }}
-                className="text-base sm:text-lg md:text-xl italic mb-10 max-w-xl mx-auto lg:mx-0 text-foreground/60 font-jost"
-              >
+              <p className="text-base sm:text-lg md:text-xl italic mb-10 max-w-xl mx-auto lg:mx-0 text-foreground/60 font-jost">
                 {heroContent.heroHighlight}
-              </motion.p>
+              </p>
 
               {/* CTA Buttons */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.1, duration: 0.8 }}
-                className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
-              >
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <Link href="/contact">
                   <motion.button
                     className="group relative px-8 py-4 font-semibold text-sm overflow-hidden bg-foreground text-background uppercase tracking-[0.12em] font-jost"
@@ -188,26 +160,16 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                     See the Proof
                   </motion.button>
                 </Link>
-              </motion.div>
+              </div>
 
               {/* Availability signal */}
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.4, duration: 0.8 }}
-                className="mt-6 text-xs tracking-[0.15em] uppercase text-foreground/50 font-jost text-center lg:text-left"
-              >
+              <p className="mt-6 text-xs tracking-[0.15em] uppercase text-foreground/50 font-jost text-center lg:text-left">
                 Available for select engagements
-              </motion.p>
+              </p>
             </div>
 
             {/* Right Column - Photo (5 columns) */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1.2, delay: 0.4, ease: [0.215, 0.61, 0.355, 1] }}
-              className="lg:col-span-5 order-1 lg:order-2 flex justify-center lg:justify-end"
-            >
+            <div className="lg:col-span-5 order-1 lg:order-2 flex justify-center lg:justify-end">
               <div className="relative">
                 {/* Outer geometric frame - Greek meets futuristic */}
                 <div className="absolute -inset-4 sm:-inset-6">
@@ -275,21 +237,16 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                   <div className="w-full h-full border border-primary rotate-45" />
                 </motion.div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </motion.div>
 
       {/* Scroll indicator - minimal */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2, duration: 1 }}
-        className="absolute bottom-6 left-1/2 transform -translate-x-1/2"
-      >
+      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2">
         <motion.div
           animate={{ y: [0, 6, 0] }}
-          transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           className="flex flex-col items-center gap-2"
         >
           <span className="text-[10px] tracking-[0.2em] uppercase text-foreground/40 font-jost">
@@ -297,7 +254,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
           </span>
           <div className="w-px h-8 bg-gradient-to-b from-primary/60 to-transparent" />
         </motion.div>
-      </motion.div>
+      </div>
     </section>
   )
 }

@@ -44,7 +44,7 @@ export function ImpactBrutal() {
     <motion.section
       ref={containerRef}
       style={{ opacity }}
-      className="py-24 sm:py-32 px-4 bg-background relative overflow-hidden"
+      className="py-24 sm:py-32 px-4 bg-card relative overflow-hidden border-t border-border"
     >
       {/* Subtle background pattern */}
       <div
@@ -57,10 +57,10 @@ export function ImpactBrutal() {
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Section header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.25 }}
           className="text-center mb-16"
         >
           {/* Decorative element */}
@@ -92,10 +92,10 @@ export function ImpactBrutal() {
             return (
               <motion.div
                 key={impact.label}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                transition={{ duration: 0.2, delay: index * 0.03 }}
                 whileHover={{ y: -4 }}
                 className="relative group"
               >
@@ -131,17 +131,11 @@ export function ImpactBrutal() {
         </div>
 
         {/* Bottom text */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-center mt-12"
-        >
+        <div className="text-center mt-12">
           <p className="text-sm uppercase tracking-[0.2em] font-jost text-foreground/40">
             Building what <span className="text-primary">actually works</span>
           </p>
-        </motion.div>
+        </div>
       </div>
     </motion.section>
   )

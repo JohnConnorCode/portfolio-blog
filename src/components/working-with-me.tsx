@@ -88,7 +88,7 @@ export function WorkingWithMe() {
     <motion.section
       ref={containerRef}
       style={{ opacity }}
-      className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-card"
+      className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-card border-t border-border"
     >
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}

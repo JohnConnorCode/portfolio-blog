@@ -51,7 +51,7 @@ export function WritingsBrutal() {
     <motion.section
       ref={containerRef}
       style={{ opacity }}
-      className="py-24 sm:py-32 px-4 bg-background relative overflow-hidden"
+      className="py-24 sm:py-32 px-4 bg-card relative overflow-hidden border-t border-border"
     >
       {/* Subtle background pattern */}
       <div className="absolute inset-0 opacity-[0.02] bg-[linear-gradient(90deg,hsl(var(--foreground))_1px,transparent_1px),linear-gradient(180deg,hsl(var(--foreground))_1px,transparent_1px)] bg-[size:60px_60px]" />

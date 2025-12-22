@@ -39,9 +39,9 @@ export function Navbar() {
 
   return (
     <motion.nav
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.2 }}
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
         scrolled
@@ -50,57 +50,30 @@ export function Navbar() {
       )}
     >
       {/* Subtle border that appears on scroll */}
-      <motion.div
-        className="absolute bottom-0 left-0 h-[1px] bg-gradient-to-r from-transparent via-foreground/10 to-transparent"
-        initial={{ width: 0, opacity: 0 }}
-        animate={{
-          width: scrolled ? '100%' : 0,
-          opacity: scrolled ? 1 : 0
-        }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      <div
+        className={cn(
+          "absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-foreground/10 to-transparent transition-opacity duration-300",
+          scrolled ? "opacity-100" : "opacity-0"
+        )}
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-24">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-          >
+          <div>
             <Link href="/" className="group">
-              <div className="flex items-center gap-3">
-                {/* Refined geometric logo */}
-                <div className="relative w-10 h-10 group">
-                  {/* JC Text */}
-                  <motion.div
-                    className="absolute inset-0 flex items-center justify-center z-10"
-                    initial={{ scale: 0, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{
-                      duration: 0.3,
-                      delay: 0.1,
-                      ease: [0.34, 1.56, 0.64, 1]
-                    }}
-                  >
-                    <motion.span
-                      className="text-lg font-bold text-foreground"
-                      whileHover={{ scale: 1.1 }}
-                      transition={{ type: "spring", stiffness: 400, damping: 10 }}
+              <div className="flex items-center gap-4">
+                {/* Logo */}
+                <div className="relative w-12 h-12">
+                  <div className="absolute inset-0 flex items-center justify-center z-10">
+                    <span
+                      className="text-xl font-semibold text-foreground"
+                      style={{ fontFamily: "'Jost', sans-serif", letterSpacing: '0.15em' }}
                     >
                       JC
-                    </motion.span>
-                  </motion.div>
-
-                  {/* Diamond border - navy/gold gradient */}
-                  <motion.svg
-                    className="absolute inset-0 w-full h-full pointer-events-none"
-                    viewBox="0 0 40 40"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{
-                      duration: 0.4,
-                      delay: 0.2,
-                      ease: [0.22, 1, 0.36, 1]
-                    }}
+                    </span>
+                  </div>
+                  <svg
+                    className="absolute inset-0 w-full h-full"
+                    viewBox="0 0 48 48"
                   >
                     <defs>
                       <linearGradient id="diamondGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -109,60 +82,30 @@ export function Navbar() {
                       </linearGradient>
                     </defs>
                     <path
-                      d="M 20 5 L 35 20 L 20 35 L 5 20 Z"
+                      d="M 24 4 L 44 24 L 24 44 L 4 24 Z"
                       fill="none"
                       stroke="url(#diamondGradient)"
                       strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
                     />
-                  </motion.svg>
+                  </svg>
                 </div>
-                <div className="flex flex-col">
-                  <motion.span
-                    className="text-xl md:text-2xl font-semibold tracking-tight text-foreground overflow-hidden block"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.3 }}
+                <div className="flex flex-col gap-0.5">
+                  <span
+                    className="text-xl font-semibold tracking-tight text-foreground"
+                    style={{ fontFamily: "'Jost', sans-serif" }}
                   >
-                    <motion.span
-                      className="block"
-                      initial={{ y: 20, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      transition={{
-                        duration: 0.5,
-                        delay: 0.4,
-                        ease: [0.22, 1, 0.36, 1]
-                      }}
-                      style={{ fontFamily: "'Jost', 'Futura', 'Century Gothic', sans-serif" }}
-                    >
-                      John Connor
-                    </motion.span>
-                  </motion.span>
-                  <motion.span
-                    className="text-xs text-foreground/50 uppercase tracking-widest overflow-hidden block"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.5 }}
+                    John Connor
+                  </span>
+                  <span
+                    className="text-xs text-foreground/50 uppercase tracking-widest"
+                    style={{ fontFamily: "'Jost', sans-serif" }}
                   >
-                    <motion.span
-                      className="block"
-                      initial={{ y: 10, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      transition={{
-                        duration: 0.5,
-                        delay: 0.6,
-                        ease: [0.22, 1, 0.36, 1]
-                      }}
-                      style={{ fontFamily: "'Jost', 'Futura', 'Century Gothic', sans-serif" }}
-                    >
-                      Product Strategist
-                    </motion.span>
-                  </motion.span>
+                    Product Strategist
+                  </span>
                 </div>
               </div>
             </Link>
-          </motion.div>
+          </div>
 
           <div className="hidden md:flex items-center space-x-2">
             {navItems.map((item, index) => {
@@ -171,15 +114,8 @@ export function Navbar() {
               const hasSubItems = item.subItems && item.subItems.length > 0
 
               return (
-                <motion.div
+                <div
                   key={item.href}
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{
-                    duration: 0.3,
-                    delay: 0.7 + index * 0.05,
-                    ease: [0.22, 1, 0.36, 1]
-                  }}
                   className="relative group"
                 >
                   <Link
@@ -234,7 +170,7 @@ export function Navbar() {
                       </div>
                     </div>
                   )}
-                </motion.div>
+                </div>
               )
             })}
           </div>

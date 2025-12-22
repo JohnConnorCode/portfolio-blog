@@ -18,7 +18,7 @@ export function CallToAction() {
     <motion.section
       ref={sectionRef}
       style={{ opacity }}
-      className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-background"
+      className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-background border-t border-border"
     >
       <div className="max-w-4xl mx-auto">
         <motion.div
