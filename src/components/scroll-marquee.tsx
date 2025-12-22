@@ -31,7 +31,7 @@ export function ScrollMarquee({ text, direction = 'left', className = '' }: Scro
         {[...Array(4)].map((_, i) => (
           <span
             key={i}
-            className="text-[8vw] sm:text-[6vw] md:text-[5vw] font-bold tracking-tight text-foreground/[0.03] font-jost mx-4 md:mx-8"
+            className="text-[14vw] sm:text-[9vw] md:text-[5vw] font-black tracking-tight text-primary/30 sm:text-primary/25 md:text-primary/20 font-jost mx-3 sm:mx-4 md:mx-8 select-none"
           >
             {text}
           </span>
