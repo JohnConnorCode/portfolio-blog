@@ -10,14 +10,21 @@ interface Post {
 }
 
 export async function generateStaticParams() {
+  // Include local blog posts
+  const localParams = blogPosts.map(post => ({
+    slug: post.slug
+  }))
+
+  // Also include Sanity posts
   try {
     const posts = await sanityClient.fetch(postsQuery)
-    return posts?.map((post: Post) => ({
+    const sanityParams = posts?.map((post: Post) => ({
       slug: post.slug?.current
     })) || []
+    return [...localParams, ...sanityParams]
   } catch (error) {
     console.error('Error generating static params:', error)
-    return []
+    return localParams
   }
 }
 

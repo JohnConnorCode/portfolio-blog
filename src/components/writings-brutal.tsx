@@ -13,34 +13,34 @@ import {
 
 const writings = [
   {
-    title: 'Why Ecosystem Funding is Broken',
-    excerpt: 'Traditional grant systems reward promises over delivery. Here\'s how to fix it.',
+    title: 'The Death of Growth Theater',
+    excerpt: 'The metrics that impress VCs are often the ones that kill companies. Here\'s what to measure instead.',
+    category: 'PRODUCT',
+    icon: Zap,
+    slug: 'death-of-growth-theater',
+    featured: true
+  },
+  {
+    title: 'The Grant Game',
+    excerpt: 'After raising $1M+ for Sparkblox, I\'ve seen how ecosystem funding actively selects against real builders.',
     category: 'WEB3',
     icon: Globe,
     slug: 'why-ecosystem-funding-is-broken',
     featured: true
   },
   {
-    title: 'Debate as Leadership Practice',
-    excerpt: 'The best leaders embrace intellectual conflict and use it to sharpen thinking.',
+    title: 'Steel-Manning',
+    excerpt: 'The leadership skill that separates great leaders from good ones: making your opponent\'s argument better than they can.',
     category: 'LEADERSHIP',
     icon: Users,
     slug: 'debate-as-leadership-practice'
   },
   {
-    title: 'Automation as Human Right',
-    excerpt: 'AI should free humans for creativity, not replace them entirely.',
+    title: 'The Automation Divide',
+    excerpt: 'We\'re sleepwalking into a two-tier society. AI access will define the next century.',
     category: 'AI',
     icon: Brain,
     slug: 'automation-as-human-right'
-  },
-  {
-    title: 'Death of Growth Theater',
-    excerpt: 'Why vanity metrics are killing startups and what to measure instead.',
-    category: 'PRODUCT',
-    icon: Zap,
-    slug: 'death-of-growth-theater',
-    featured: true
   }
 ]
 
