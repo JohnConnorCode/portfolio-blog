@@ -32,6 +32,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
   const bgY = useTransform(scrollYProgress, [0, 1], [0, 100])
   const floatY = useTransform(scrollYProgress, [0, 1], [0, -150])
   const photoY = useTransform(scrollYProgress, [0, 1], [0, 80])
+  const imageY = useTransform(scrollYProgress, [0, 1], [0, -30]) // Image moves opposite for layered effect
   const textY = useTransform(scrollYProgress, [0, 1], [0, 60])
   const glowScale = useTransform(scrollYProgress, [0, 0.5], [1, 1.2])
 
@@ -150,25 +151,30 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
 
                   {/* Photo */}
                   <div className="relative w-44 h-56 sm:w-52 sm:h-64 md:w-64 md:h-80 lg:w-72 lg:h-96 overflow-hidden">
-                    <Image
-                      src="/John-Connor-photo.jpg"
-                      alt="John Connor"
-                      fill
-                      className="object-cover object-top grayscale hover:grayscale-0 transition-all duration-700"
-                      priority
-                      sizes="(max-width: 640px) 288px, (max-width: 768px) 320px, 360px"
-                    />
+                    <motion.div
+                      style={{ y: imageY }}
+                      className="absolute inset-0 md:will-change-transform"
+                    >
+                      <Image
+                        src="/John-Connor-photo.jpg"
+                        alt="John Connor"
+                        fill
+                        className="object-cover object-top grayscale hover:grayscale-0 transition-all duration-700 scale-110"
+                        priority
+                        sizes="(max-width: 640px) 288px, (max-width: 768px) 320px, 360px"
+                      />
+                    </motion.div>
                     {/* Overlay gradient */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60 z-10" />
                   </div>
 
-                  {/* Floating diamond accent */}
+                  {/* Floating diamond accent - glassy */}
                   <motion.div
                     animate={{ y: [0, -10, 0], rotate: [0, 5, 0] }}
                     transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                     className="absolute -bottom-6 -left-6"
                   >
-                    <div className="w-12 h-12 border-2 border-primary rotate-45 bg-background" />
+                    <div className="w-12 h-12 rotate-45 border border-primary/50 bg-primary/10 backdrop-blur-md shadow-lg shadow-primary/20" />
                   </motion.div>
 
                   {/* Small accent */}

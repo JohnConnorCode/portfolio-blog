@@ -27,13 +27,7 @@ const navItems = [
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const [mounted, setMounted] = useState(false)
   const pathname = usePathname()
-
-  // Set mounted after first render - this ensures animations only happen once
-  useEffect(() => {
-    setMounted(true)
-  }, [])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -61,7 +55,6 @@ export function Navbar() {
       <nav
         className={cn(
           'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
-          mounted ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-5',
           scrolled
             ? 'bg-background/50 backdrop-blur-2xl border-b border-white/10 shadow-lg shadow-black/5'
             : 'bg-transparent border-b border-transparent'
@@ -144,11 +137,7 @@ export function Navbar() {
                 return (
                   <div
                     key={item.href}
-                    className={cn(
-                      "relative group transition-all duration-300",
-                      mounted ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"
-                    )}
-                    style={{ transitionDelay: mounted ? `${index * 50}ms` : '0ms' }}
+                    className="relative group"
                   >
                     <Link
                       href={item.href}
@@ -204,22 +193,13 @@ export function Navbar() {
               })}
 
               {/* Theme toggle */}
-              <div
-                className={cn(
-                  "ml-2 transition-all duration-300",
-                  mounted ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"
-                )}
-                style={{ transitionDelay: mounted ? `${navItems.length * 50}ms` : '0ms' }}
-              >
+              <div className="ml-2">
                 <ThemeToggle />
               </div>
             </div>
 
             {/* Mobile: Theme Toggle + Menu Button */}
-            <div className={cn(
-              "md:hidden flex items-center gap-2 transition-all duration-300",
-              mounted ? "opacity-100" : "opacity-0"
-            )}>
+            <div className="md:hidden flex items-center gap-2">
               <ThemeToggle />
               <button
                 onClick={() => setIsOpen(!isOpen)}
