@@ -3,37 +3,10 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { motion, AnimatePresence, Variants } from 'framer-motion'
-import { X, Briefcase, BookOpen, Home, Mail, Brain } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { X, Briefcase, BookOpen, Home, Mail, Brain, ChevronRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { ThemeToggle } from './theme-toggle'
-
-// Fast navbar-specific animations - smooth easeOut, no bounce
-const navContainerVariants: Variants = {
-  hidden: { opacity: 0, y: -10 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.4,
-      ease: [0.25, 0.1, 0.25, 1], // cubic-bezier easeOut
-      when: "beforeChildren",
-      staggerChildren: 0.04,
-    }
-  }
-}
-
-const navChildVariants: Variants = {
-  hidden: { opacity: 0, y: -6 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.3,
-      ease: [0.25, 0.1, 0.25, 1], // cubic-bezier easeOut
-    }
-  }
-}
 
 const navItems = [
   { href: '/', label: 'Home', icon: Home },
@@ -57,208 +30,105 @@ export function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20)
+      setScrolled(window.scrollY > 50)
     }
-    window.addEventListener('scroll', handleScroll)
+    handleScroll() // Check initial state
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // Lock body scroll when menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [isOpen])
+
   return (
-    <motion.nav
-      variants={navContainerVariants}
-      initial="hidden"
-      animate="visible"
-      className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
-        scrolled
-          ? 'bg-background/70 backdrop-blur-2xl border-b border-foreground/10 shadow-lg shadow-background/5'
-          : 'bg-transparent border-b border-transparent'
-      )}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-24">
-          <motion.div variants={navChildVariants}>
-            <Link href="/" className="group">
-              <div className="relative flex items-center">
-                {/* Logo - Bold animated diamond */}
+    <>
+      <motion.nav
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className={cn(
+          'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
+          scrolled
+            ? 'bg-background/80 backdrop-blur-xl border-b border-primary/10 shadow-lg shadow-background/10'
+            : 'bg-transparent border-b border-transparent'
+        )}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className={cn(
+            'flex items-center justify-between transition-all duration-500',
+            scrolled ? 'h-16' : 'h-20 sm:h-24'
+          )}>
+            {/* Logo Section */}
+            <Link href="/" className="group relative z-10">
+              <div className="flex items-center gap-3">
+                {/* Logo - Shrinks on scroll */}
                 <motion.div
-                  className="relative w-14 h-14"
-                  whileHover={{ scale: 1.08 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 20 }}
+                  className="relative"
+                  animate={{
+                    width: scrolled ? 40 : 48,
+                    height: scrolled ? 40 : 48,
+                  }}
+                  transition={{ duration: 0.3 }}
                 >
                   {/* Ambient glow */}
-                  <div className="absolute -inset-2 bg-primary/20 blur-2xl rounded-full" />
-                  <div className="absolute -inset-1 bg-primary/0 group-hover:bg-primary/30 blur-xl transition-all duration-500 rounded-full" />
+                  <div className="absolute -inset-2 bg-primary/20 blur-xl rounded-full opacity-60" />
 
                   {/* Outer diamond border */}
-                  <div className="absolute inset-0 border-2 border-primary rotate-45" />
+                  <div className="absolute inset-0 border-2 border-primary rotate-45 transition-all group-hover:border-primary/80" />
 
                   {/* Inner filled diamond */}
-                  <div className="absolute inset-[6px] bg-primary/10 rotate-45" />
+                  <div className="absolute inset-[5px] bg-primary/10 rotate-45 transition-all group-hover:bg-primary/20" />
 
-                  {/* Center accent dot */}
-                  <div className="absolute inset-[18px] bg-primary/40 rotate-45" />
+                  {/* Center accent */}
+                  <div className="absolute inset-[14px] bg-primary/30 rotate-45" />
 
                   {/* JC Text */}
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-xl font-black text-primary tracking-wide font-jost drop-shadow-[0_0_10px_rgba(0,212,255,0.5)]">
+                    <motion.span
+                      animate={{ fontSize: scrolled ? '14px' : '18px' }}
+                      transition={{ duration: 0.3 }}
+                      className="font-black text-primary tracking-wide font-jost"
+                    >
                       JC
-                    </span>
+                    </motion.span>
                   </div>
                 </motion.div>
-                {/* Name/Title - absolutely positioned so it doesn't shift nav items */}
+
+                {/* Name/Title - Shows on scroll (both mobile and desktop) */}
                 <AnimatePresence>
                   {scrolled && (
                     <motion.div
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: -10 }}
-                      transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-                      className="hidden sm:flex flex-col absolute left-[72px]"
+                      initial={{ opacity: 0, x: -10, width: 0 }}
+                      animate={{ opacity: 1, x: 0, width: 'auto' }}
+                      exit={{ opacity: 0, x: -10, width: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="overflow-hidden"
                     >
-                      <span className="text-lg font-semibold tracking-tight text-foreground font-jost whitespace-nowrap">
-                        John Connor
-                      </span>
-                      <span className="text-[10px] text-primary uppercase tracking-[0.2em] font-jost whitespace-nowrap">
-                        Product Strategist
-                      </span>
+                      <div className="flex flex-col">
+                        <span className="text-sm sm:text-base font-semibold tracking-tight text-foreground font-jost whitespace-nowrap">
+                          John Connor
+                        </span>
+                        <span className="text-[9px] sm:text-[10px] text-primary uppercase tracking-[0.15em] font-jost whitespace-nowrap hidden xs:block">
+                          Product Strategist
+                        </span>
+                      </div>
                     </motion.div>
                   )}
                 </AnimatePresence>
               </div>
             </Link>
-          </motion.div>
 
-          <motion.div
-            className="hidden md:flex items-center space-x-2"
-            variants={navContainerVariants}
-          >
-            {navItems.map((item) => {
-              const Icon = item.icon
-              const isActive = pathname === item.href || item.subItems?.some(sub => pathname === sub.href)
-              const hasSubItems = item.subItems && item.subItems.length > 0
-
-              return (
-                <motion.div
-                  key={item.href}
-                  className="relative group"
-                  variants={navChildVariants}
-                >
-                  <Link
-                    href={item.href}
-                    className={cn(
-                      'relative px-4 py-2.5 rounded-lg transition-all duration-300 flex items-center space-x-2 group/link text-sm',
-                      isActive
-                        ? 'text-primary'
-                        : 'text-foreground/60 hover:text-foreground'
-                    )}
-                  >
-                    {/* Hover background */}
-                    <span className="absolute inset-0 rounded-lg bg-foreground/5 opacity-0 group-hover/link:opacity-100 transition-opacity duration-300" />
-
-                    {/* Active indicator */}
-                    {isActive && (
-                      <motion.span
-                        layoutId="nav-indicator"
-                        className="absolute inset-0 rounded-lg bg-primary/10 border border-primary/20"
-                        transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                      />
-                    )}
-
-                    <Icon className={cn(
-                      "w-4 h-4 relative z-10 transition-all duration-300",
-                      isActive ? "text-primary" : "group-hover/link:text-primary"
-                    )} />
-                    <span className="relative z-10">{item.label}</span>
-                  </Link>
-
-                  {/* Dropdown for sub-items */}
-                  {hasSubItems && (
-                    <div className="absolute top-full left-0 pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2">
-                      <div className="bg-background backdrop-blur-2xl border border-foreground/10 rounded-xl shadow-lg overflow-hidden min-w-[200px]">
-                        {item.subItems?.map((subItem) => {
-                          const isSubActive = pathname === subItem.href
-                          return (
-                            <Link
-                              key={subItem.href}
-                              href={subItem.href}
-                              className={cn(
-                                'block px-5 py-3 transition-all duration-200 border-l-2 border-transparent hover:border-primary',
-                                isSubActive
-                                  ? 'text-primary bg-primary/10 border-l-primary'
-                                  : 'text-foreground/60 hover:text-foreground hover:bg-foreground/5'
-                              )}
-                            >
-                              {subItem.label}
-                            </Link>
-                          )
-                        })}
-                      </div>
-                    </div>
-                  )}
-                </motion.div>
-              )
-            })}
-          </motion.div>
-
-          {/* Theme toggle with animation */}
-          <motion.div
-            className="flex items-center space-x-4"
-            variants={navChildVariants}
-          >
-            {/* Theme toggle - desktop */}
-            <div className="hidden md:block">
-              <ThemeToggle />
-            </div>
-
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden p-3 rounded-xl hover:bg-foreground/5 transition-all duration-300 relative group"
-              aria-label="Toggle menu"
-            >
-              <div className="w-6 h-6 relative flex items-center justify-center">
-                <motion.div
-                  animate={isOpen ? { rotate: 45, y: 0 } : { rotate: 0, y: -4 }}
-                  className="absolute w-5 h-0.5 bg-foreground rounded-full"
-                />
-                <motion.div
-                  animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
-                  className="absolute w-5 h-0.5 bg-foreground rounded-full"
-                />
-                <motion.div
-                  animate={isOpen ? { rotate: -45, y: 0 } : { rotate: 0, y: 4 }}
-                  className="absolute w-5 h-0.5 bg-foreground rounded-full"
-                />
-              </div>
-            </button>
-          </motion.div>
-        </div>
-      </div>
-
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, x: '100%' }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: '100%' }}
-            transition={{ type: 'tween', duration: 0.3, ease: 'easeInOut' }}
-            className="md:hidden fixed inset-y-0 right-0 w-full sm:w-80 bg-background border-l border-foreground/10 z-50 shadow-xl"
-          >
-            {/* Close button */}
-            <div className="flex justify-between items-center p-6 border-b border-foreground/10">
-              <span className="text-lg font-semibold text-foreground">Menu</span>
-              <div className="flex items-center gap-2">
-                <ThemeToggle />
-                <button
-                  onClick={() => setIsOpen(false)}
-                  className="p-2 rounded-lg hover:bg-foreground/5 transition-colors"
-                >
-                  <X className="w-6 h-6 text-foreground" />
-                </button>
-              </div>
-            </div>
-
-            <div className="p-6 space-y-2">
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center gap-1">
               {navItems.map((item, index) => {
                 const Icon = item.icon
                 const isActive = pathname === item.href || item.subItems?.some(sub => pathname === sub.href)
@@ -267,79 +137,242 @@ export function Navbar() {
                 return (
                   <motion.div
                     key={item.href}
-                    initial={{ opacity: 0, y: 10 }}
+                    initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ type: 'tween', duration: 0.2, delay: index * 0.08, ease: 'easeOut' }}
+                    transition={{ duration: 0.3, delay: index * 0.05 }}
+                    className="relative group"
                   >
                     <Link
                       href={item.href}
-                      onClick={() => setIsOpen(false)}
                       className={cn(
-                        'flex items-center space-x-3 px-4 py-3 rounded-lg transition-all group',
+                        'relative px-4 py-2 rounded-lg transition-all duration-300 flex items-center gap-2 text-sm font-medium',
                         isActive
-                          ? 'bg-primary/10 text-primary'
-                          : 'hover:bg-foreground/5 text-foreground/60 hover:text-foreground'
+                          ? 'text-primary'
+                          : 'text-foreground/60 hover:text-foreground'
                       )}
                     >
-                      <Icon className="w-5 h-5" />
-                      <span className="flex-1">{item.label}</span>
-                      {isActive && !hasSubItems && (
-                        <motion.div
-                          layoutId="mobile-active-indicator"
-                          className="w-1 h-6 bg-primary rounded-full"
-                        />
-                      )}
+                      {/* Hover/Active background */}
+                      <span className={cn(
+                        'absolute inset-0 rounded-lg transition-all duration-300',
+                        isActive
+                          ? 'bg-primary/10 border border-primary/20'
+                          : 'bg-transparent hover:bg-foreground/5'
+                      )} />
+
+                      <Icon className={cn(
+                        "w-4 h-4 relative z-10 transition-colors duration-300",
+                        isActive ? "text-primary" : "group-hover:text-primary"
+                      )} />
+                      <span className="relative z-10">{item.label}</span>
                     </Link>
 
-                    {/* Sub-items for mobile */}
+                    {/* Dropdown for sub-items */}
                     {hasSubItems && (
-                      <div className="ml-8 space-y-1 mt-1">
-                        {item.subItems?.map((subItem) => {
-                          const isSubActive = pathname === subItem.href
-                          return (
-                            <Link
-                              key={subItem.href}
-                              href={subItem.href}
-                              onClick={() => setIsOpen(false)}
-                              className={cn(
-                                'flex items-center px-4 py-2 rounded-lg transition-all text-sm',
-                                isSubActive
-                                  ? 'bg-primary/10 text-primary'
-                                  : 'hover:bg-foreground/5 text-foreground/60 hover:text-foreground'
-                              )}
-                            >
-                              <span className="flex-1">{subItem.label}</span>
-                              {isSubActive && (
-                                <motion.div
-                                  layoutId="mobile-sub-active-indicator"
-                                  className="w-1 h-4 bg-primary rounded-full"
-                                />
-                              )}
-                            </Link>
-                          )
-                        })}
+                      <div className="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                        <div className="bg-background/95 backdrop-blur-xl border border-primary/10 rounded-lg shadow-xl overflow-hidden min-w-[180px]">
+                          {item.subItems?.map((subItem) => {
+                            const isSubActive = pathname === subItem.href
+                            return (
+                              <Link
+                                key={subItem.href}
+                                href={subItem.href}
+                                className={cn(
+                                  'flex items-center gap-2 px-4 py-3 transition-all duration-200 text-sm',
+                                  isSubActive
+                                    ? 'text-primary bg-primary/10'
+                                    : 'text-foreground/60 hover:text-foreground hover:bg-foreground/5'
+                                )}
+                              >
+                                <ChevronRight className="w-3 h-3" />
+                                {subItem.label}
+                              </Link>
+                            )
+                          })}
+                        </div>
                       </div>
                     )}
                   </motion.div>
                 )
               })}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
 
-      {/* Overlay */}
+              {/* Theme toggle */}
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: navItems.length * 0.05 }}
+                className="ml-2"
+              >
+                <ThemeToggle />
+              </motion.div>
+            </div>
+
+            {/* Mobile: Theme Toggle + Menu Button */}
+            <div className="md:hidden flex items-center gap-2">
+              <ThemeToggle />
+              <motion.button
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.3 }}
+                onClick={() => setIsOpen(!isOpen)}
+                className="p-2 rounded-lg hover:bg-foreground/5 transition-colors relative z-10"
+                aria-label="Toggle menu"
+              >
+                <div className="w-6 h-6 relative flex items-center justify-center">
+                  <motion.span
+                    animate={isOpen ? { rotate: 45, y: 0 } : { rotate: 0, y: -5 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute w-5 h-0.5 bg-foreground rounded-full"
+                  />
+                  <motion.span
+                    animate={isOpen ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute w-5 h-0.5 bg-foreground rounded-full"
+                  />
+                  <motion.span
+                    animate={isOpen ? { rotate: -45, y: 0 } : { rotate: 0, y: 5 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute w-5 h-0.5 bg-foreground rounded-full"
+                  />
+                </div>
+              </motion.button>
+            </div>
+          </div>
+        </div>
+      </motion.nav>
+
+      {/* Mobile Menu - Full screen overlay */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setIsOpen(false)}
-            className="md:hidden fixed inset-0 bg-foreground/20 z-40"
-          />
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              onClick={() => setIsOpen(false)}
+              className="md:hidden fixed inset-0 bg-background/60 backdrop-blur-sm z-40"
+            />
+
+            {/* Menu Panel */}
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+              className="md:hidden fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-xl border-b border-primary/10 shadow-2xl"
+            >
+              {/* Header */}
+              <div className="flex items-center justify-between px-4 h-16 border-b border-foreground/5">
+                <Link href="/" onClick={() => setIsOpen(false)} className="flex items-center gap-3">
+                  {/* Mini logo */}
+                  <div className="relative w-10 h-10">
+                    <div className="absolute inset-0 border-2 border-primary rotate-45" />
+                    <div className="absolute inset-[4px] bg-primary/10 rotate-45" />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <span className="text-sm font-black text-primary font-jost">JC</span>
+                    </div>
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-sm font-semibold text-foreground font-jost">John Connor</span>
+                    <span className="text-[9px] text-primary uppercase tracking-[0.15em] font-jost">Menu</span>
+                  </div>
+                </Link>
+
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="p-2 rounded-lg hover:bg-foreground/5 transition-colors"
+                >
+                  <X className="w-5 h-5 text-foreground" />
+                </button>
+              </div>
+
+              {/* Nav Items */}
+              <div className="px-4 py-6 space-y-1 max-h-[calc(100vh-80px)] overflow-y-auto">
+                {navItems.map((item, index) => {
+                  const Icon = item.icon
+                  const isActive = pathname === item.href || item.subItems?.some(sub => pathname === sub.href)
+                  const hasSubItems = item.subItems && item.subItems.length > 0
+
+                  return (
+                    <motion.div
+                      key={item.href}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.3, delay: index * 0.05 }}
+                    >
+                      <Link
+                        href={item.href}
+                        onClick={() => setIsOpen(false)}
+                        className={cn(
+                          'flex items-center gap-4 px-4 py-4 rounded-xl transition-all',
+                          isActive
+                            ? 'bg-primary/10 text-primary border border-primary/20'
+                            : 'text-foreground/70 hover:text-foreground hover:bg-foreground/5'
+                        )}
+                      >
+                        <div className={cn(
+                          'w-10 h-10 rounded-lg flex items-center justify-center transition-colors',
+                          isActive ? 'bg-primary/20' : 'bg-foreground/5'
+                        )}>
+                          <Icon className="w-5 h-5" />
+                        </div>
+                        <span className="flex-1 font-medium">{item.label}</span>
+                        {isActive && (
+                          <div className="w-2 h-2 rounded-full bg-primary" />
+                        )}
+                      </Link>
+
+                      {/* Sub-items */}
+                      {hasSubItems && (
+                        <div className="ml-14 mt-1 space-y-1">
+                          {item.subItems?.map((subItem, subIndex) => {
+                            const isSubActive = pathname === subItem.href
+                            return (
+                              <motion.div
+                                key={subItem.href}
+                                initial={{ opacity: 0, x: -10 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ duration: 0.2, delay: (index * 0.05) + (subIndex * 0.03) + 0.1 }}
+                              >
+                                <Link
+                                  href={subItem.href}
+                                  onClick={() => setIsOpen(false)}
+                                  className={cn(
+                                    'flex items-center gap-2 px-4 py-2.5 rounded-lg transition-all text-sm',
+                                    isSubActive
+                                      ? 'bg-primary/10 text-primary'
+                                      : 'text-foreground/50 hover:text-foreground hover:bg-foreground/5'
+                                  )}
+                                >
+                                  <ChevronRight className="w-3 h-3" />
+                                  <span>{subItem.label}</span>
+                                </Link>
+                              </motion.div>
+                            )
+                          })}
+                        </div>
+                      )}
+                    </motion.div>
+                  )
+                })}
+
+                {/* Bottom accent */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.3, delay: navItems.length * 0.05 + 0.2 }}
+                  className="pt-6 mt-6 border-t border-foreground/5"
+                >
+                  <p className="text-center text-xs text-foreground/30 uppercase tracking-widest font-jost">
+                    Building what matters
+                  </p>
+                </motion.div>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
-    </motion.nav>
+    </>
   )
 }
