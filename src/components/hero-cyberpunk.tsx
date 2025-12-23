@@ -167,14 +167,14 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                     <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60 group-hover/photo:opacity-30 transition-opacity duration-500 z-10" />
                   </div>
 
-                  {/* Floating diamond accent - glassy with stronger presence */}
+                  {/* Floating diamond accent - frosted glass effect */}
                   <motion.div
-                    animate={{ y: [0, -8, 0], rotate: [0, 5, 0] }}
-                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                    animate={{ y: [0, -8, 0], rotate: [0, 3, 0] }}
+                    transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
                     className="absolute -bottom-4 -left-4 sm:-bottom-6 sm:-left-6 group/diamond cursor-pointer"
-                    whileHover={{ scale: 1.2, rotate: 90 }}
+                    whileHover={{ scale: 1.15, rotate: 90 }}
                   >
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 rotate-45 border-2 border-primary/80 bg-primary/50 backdrop-blur-md shadow-lg shadow-primary/40 ring-1 ring-white/10 transition-all duration-300 group-hover/diamond:bg-primary/70 group-hover/diamond:border-primary group-hover/diamond:shadow-primary/60" />
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rotate-45 border border-white/30 bg-white/10 backdrop-blur-xl shadow-xl shadow-black/20 transition-all duration-300 group-hover/diamond:bg-white/20 group-hover/diamond:border-white/50 group-hover/diamond:shadow-primary/30" />
                   </motion.div>
 
                   {/* Small accent - pulses and grows on photo hover */}
