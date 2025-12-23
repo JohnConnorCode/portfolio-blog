@@ -37,6 +37,7 @@
     "@sanity/visual-editing": "^3.0.4",
     "@supabase/ssr": "^0.7.0",
     "@supabase/supabase-js": "^2.57.2",
+    "@tailwindcss/typography": "^0.5.19",
     "@tiptap/extension-image": "^3.4.1",
     "@tiptap/extension-link": "^3.4.1",
     "@tiptap/extension-placeholder": "^3.4.1",

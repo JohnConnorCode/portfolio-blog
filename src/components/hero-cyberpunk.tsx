@@ -209,7 +209,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                   <span
                     key={role}
                     className="px-4 py-2 text-xs tracking-[0.2em] uppercase border border-primary/30 text-primary font-jost bg-primary/5 backdrop-blur-sm cursor-default hover:border-primary hover:bg-primary/10 hover:shadow-lg hover:shadow-primary/20 hover:scale-105 hover:-translate-y-0.5 transition-all duration-300 animate-in"
-                    style={{ animationDelay: `${0.3 + i * 0.1}s` }}
+                    style={{ animationDelay: `${0.15 + i * 0.04}s` }}
                   >
                     {role}
                   </span>

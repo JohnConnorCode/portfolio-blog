@@ -191,7 +191,7 @@ export default function WorkPage() {
                 <div
                   key={project.name}
                   className="relative group animate-in"
-                  style={{ animationDelay: `${0.5 + index * 0.1}s` }}
+                  style={{ animationDelay: `${0.2 + index * 0.05}s` }}
                 >
                   {/* Corner accents */}
                   <div className="absolute top-0 left-0 w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -250,7 +250,7 @@ export default function WorkPage() {
               <div
                 key={project.name}
                 className="p-4 border transition-all hover:border-primary/30 bg-card border-border animate-in"
-                style={{ animationDelay: `${0.7 + index * 0.1}s` }}
+                style={{ animationDelay: `${0.3 + index * 0.05}s` }}
               >
                 <div className="flex items-center justify-between mb-1">
                   <h3 className="font-semibold text-foreground font-jost">{project.name}</h3>
@@ -288,7 +288,7 @@ export default function WorkPage() {
               <div
                 key={exp.company}
                 className="relative p-6 transition-all border-l-4 bg-card border-l-primary hover:bg-card/80 animate-in"
-                style={{ animationDelay: `${0.9 + index * 0.1}s` }}
+                style={{ animationDelay: `${0.4 + index * 0.05}s` }}
               >
                 {/* Header */}
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4">
@@ -361,7 +361,7 @@ export default function WorkPage() {
                 <div
                   key={metric.label}
                   className="relative group animate-in"
-                  style={{ animationDelay: `${1.1 + index * 0.1}s` }}
+                  style={{ animationDelay: `${0.55 + index * 0.04}s` }}
                 >
                   <div className="relative p-6 text-center transition-all border bg-card border-border hover:border-primary/30 hover:-translate-y-1 duration-300">
                     <Icon className="w-8 h-8 mx-auto mb-3 text-primary" />
@@ -385,7 +385,7 @@ export default function WorkPage() {
 
         {/* Approach */}
         <section className="mb-20">
-          <h2 className="text-2xl font-bold mb-8 font-jost animate-in" style={{ animationDelay: '1.5s' }}>
+          <h2 className="text-2xl font-bold mb-8 font-jost animate-in" style={{ animationDelay: '0.65s' }}>
             <span className="text-foreground">How I </span>
             <span className="text-primary">Work</span>
           </h2>
@@ -413,7 +413,7 @@ export default function WorkPage() {
                 <div
                   key={approach.title}
                   className="p-6 transition-all border bg-card border-border hover:border-primary/30 hover:-translate-y-1 duration-300 animate-in"
-                  style={{ animationDelay: `${1.6 + index * 0.1}s` }}
+                  style={{ animationDelay: `${0.7 + index * 0.04}s` }}
                 >
                   <Icon className="w-8 h-8 mb-4 text-primary" />
                   <h3 className="text-lg font-bold mb-2 text-foreground font-jost">{approach.title}</h3>
@@ -427,7 +427,7 @@ export default function WorkPage() {
         {/* CTA */}
         <section
           className="relative p-8 sm:p-12 text-center overflow-hidden border bg-card border-primary/30 animate-in"
-          style={{ animationDelay: '1.9s' }}
+          style={{ animationDelay: '0.8s' }}
         >
           {/* Corner accents */}
           <div className="absolute top-0 left-0 w-20 h-20 border-t-2 border-l-2 border-primary/50" />
