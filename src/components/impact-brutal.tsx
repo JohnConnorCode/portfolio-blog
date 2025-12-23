@@ -63,7 +63,7 @@ export function ImpactBrutal() {
           className="absolute top-2/3 left-0 right-0 whitespace-nowrap"
         >
           <span className="text-[8vw] font-bold tracking-tight text-primary/[0.04] font-jost">
-            PRODUCT &nbsp; ENGINEERING &nbsp; SCALE &nbsp; PRODUCT &nbsp; ENGINEERING &nbsp; SCALE
+            PRODUCT &nbsp; LAUNCH &nbsp; SCALE &nbsp; PRODUCT &nbsp; LAUNCH &nbsp; SCALE
           </span>
         </motion.div>
       </div>

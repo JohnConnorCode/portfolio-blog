@@ -224,7 +224,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                 transition={{ duration: 0.5, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
                 className="flex flex-wrap items-center justify-center lg:justify-start gap-3 mb-8"
               >
-                {['Product', 'Engineering', 'Strategy'].map((role, i) => (
+                {['Product', 'Strategy', 'Launch'].map((role, i) => (
                   <motion.span
                     key={role}
                     initial={{ opacity: 0, scale: 0.8 }}

@@ -77,7 +77,7 @@ const principles = [
   },
   {
     title: 'Holistic Solutions',
-    description: 'Strategy, technology, and execution that work together—not siloed deliverables.',
+    description: 'Strategy, technology, and execution that work together, not siloed deliverables.',
     icon: Unlock
   }
 ]
@@ -279,7 +279,7 @@ export function WorkingWithMe() {
               {
                 icon: Zap,
                 title: 'Technology Strategy',
-                description: 'Stack selection, MVP prototyping, build vs. buy decisions—the right technical choices at the right time.',
+                description: 'Stack selection, MVP prototyping, build vs. buy decisions. The right technical choices at the right time.',
               },
               {
                 icon: Rocket,

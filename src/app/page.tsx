@@ -29,7 +29,7 @@ export default function Home() {
       <HeroCyberpunk content={heroContent} />
 
       {/* Scrolling text marquee */}
-      <ScrollMarquee text="PRODUCT • STRATEGY • ENGINEERING • SCALE •" direction="left" />
+      <ScrollMarquee text="PRODUCT • STRATEGY • LAUNCH • SCALE •" direction="left" />
 
       <ImpactBrutal />
 

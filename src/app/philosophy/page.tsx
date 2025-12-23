@@ -41,7 +41,7 @@ const principles = [
     icon: Shield,
     title: 'Embrace Difficulty',
     subtitle: 'Hard conversations reveal what\'s broken',
-    description: 'Conflict avoidance is a growth ceiling. The conversations nobody wants to have contain the insights everybody needs. I seek out the friction points—that\'s where the real problems hide.',
+    description: 'Conflict avoidance is a growth ceiling. The conversations nobody wants to have contain the insights everybody needs. I seek out the friction points. That\'s where the real problems hide.',
     practices: [
       'Proactive difficult conversations',
       'Root cause over symptom treatment',
@@ -138,7 +138,7 @@ export default function PhilosophyPage() {
                 Not from assumptions. Not from what users say they want. From watching behavior,
                 testing hypotheses, and building systems where incentives actually align.
                 I&apos;ve learned that <span className="text-primary">the uncomfortable truth is always cheaper
-                than the comfortable lie</span>—so I start there.
+                than the comfortable lie</span>. So I start there.
               </p>
             </div>
           </motion.div>
@@ -228,7 +228,7 @@ export default function PhilosophyPage() {
               How I <span className="text-primary">Work</span>
             </h2>
             <p className="text-lg max-w-2xl mx-auto text-foreground/70">
-              Speed to first insight: 2 weeks, not 2 months. Build, measure, learn—repeat.
+              Speed to first insight: 2 weeks, not 2 months. Build, measure, learn. Repeat.
             </p>
           </motion.div>
 
@@ -267,7 +267,7 @@ export default function PhilosophyPage() {
           <motion.div variants={childVariants} className="text-center">
             <div className="max-w-3xl mx-auto">
               <p className="text-2xl md:text-3xl font-light text-foreground/90 leading-relaxed mb-8">
-                &ldquo;Products that matter require the courage to face truth—about users,
+                &ldquo;Products that matter require the courage to face truth: about users,
                 about markets, about ourselves. Technology should serve humans,
                 not the other way around. <span className="text-primary font-medium">That&apos;s the work worth doing.</span>&rdquo;
               </p>

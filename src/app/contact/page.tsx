@@ -21,6 +21,12 @@ const contactMethods = [
   },
 ]
 
+// Single animation config - DRY
+const fadeIn = {
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+}
+
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: '',
@@ -120,7 +126,7 @@ export default function ContactPage() {
 
   const getInputClassName = (fieldName: string) => {
     const hasError = errors[fieldName] && touched[fieldName]
-    return `w-full px-4 py-3 bg-card rounded border-2 transition-all outline-none text-foreground font-jost ${
+    return `w-full px-4 py-3 bg-card border-2 transition-colors outline-none text-foreground font-jost ${
       hasError
         ? 'border-red-500 focus:border-red-500'
         : 'border-foreground/30 focus:border-primary'
@@ -131,13 +137,21 @@ export default function ContactPage() {
     <div className="font-jost">
       {/* Hero Section */}
       <section className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden bg-background">
-        {/* Subtle geometric background pattern */}
-        <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(hsl(var(--foreground))_1px,transparent_1px),linear-gradient(90deg,hsl(var(--foreground))_1px,transparent_1px)] bg-[size:50px_50px]" />
+        {/* Grid background */}
+        <div
+          className="absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage: `
+              linear-gradient(to right, hsl(var(--primary)) 1px, transparent 1px),
+              linear-gradient(to bottom, hsl(var(--primary)) 1px, transparent 1px)
+            `,
+            backgroundSize: '50px 50px'
+          }}
+        />
 
         <div className="max-w-7xl mx-auto relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            {...fadeIn}
             transition={{ duration: 0.5 }}
             className="text-center mb-12"
           >
@@ -160,7 +174,7 @@ export default function ContactPage() {
               <span className="text-primary">Touch</span>
             </h1>
             <p className="text-lg max-w-2xl mx-auto font-light text-foreground/80">
-              Whether you need product strategy, technology guidance, or a cross-functional partner who ships—I&apos;m here to help.
+              Whether you need product strategy, technology guidance, or a cross-functional partner who ships. I&apos;m here to help.
             </p>
           </motion.div>
         </div>
@@ -171,15 +185,13 @@ export default function ContactPage() {
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-3 gap-12">
             {/* Contact Methods */}
-            <div className="lg:col-span-1 space-y-6">
+            <motion.div
+              {...fadeIn}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="lg:col-span-1 space-y-6"
+            >
               {/* How I Work card */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4 }}
-                className="relative p-8 bg-card rounded-lg border border-border"
-              >
+              <div className="relative p-8 bg-card border border-border">
                 {/* Corner accents */}
                 <div className="absolute top-0 left-0 w-4 h-4 border-l-2 border-t-2 border-primary" />
                 <div className="absolute top-0 right-0 w-4 h-4 border-r-2 border-t-2 border-primary" />
@@ -205,26 +217,22 @@ export default function ContactPage() {
                     </p>
                   </div>
                 </div>
-              </motion.div>
+              </div>
 
-              {contactMethods.map((method, index) => {
+              {contactMethods.map((method) => {
                 const Icon = method.icon
                 return (
-                  <motion.a
+                  <a
                     key={method.title}
                     href={method.href}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: index * 0.1 }}
-                    className="block relative p-6 bg-card rounded-lg border border-border transition-all duration-300 hover:shadow-lg hover:border-primary/30 hover:-translate-y-1 group"
+                    className="block relative p-6 bg-card border border-border transition-all duration-300 hover:border-primary/30 hover:-translate-y-1 group"
                   >
                     {/* Corner accents */}
                     <div className="absolute top-0 left-0 w-3 h-3 border-l-2 border-t-2 border-primary" />
                     <div className="absolute bottom-0 right-0 w-3 h-3 border-r-2 border-b-2 border-primary" />
 
                     <div className="flex items-start gap-4">
-                      <div className="p-3 rounded bg-primary/10">
+                      <div className="p-3 bg-primary/10">
                         <Icon className="w-6 h-6 text-primary" />
                       </div>
                       <div className="flex-1">
@@ -235,18 +243,12 @@ export default function ContactPage() {
                         <p className="text-sm font-semibold text-primary">{method.action}</p>
                       </div>
                     </div>
-                  </motion.a>
+                  </a>
                 )
               })}
 
               {/* Social Links */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 0.2 }}
-                className="relative p-6 bg-card rounded-lg border border-border"
-              >
+              <div className="relative p-6 bg-card border border-border">
                 {/* Corner accents */}
                 <div className="absolute top-0 left-0 w-3 h-3 border-l-2 border-t-2 border-primary" />
                 <div className="absolute bottom-0 right-0 w-3 h-3 border-r-2 border-b-2 border-primary" />
@@ -259,35 +261,33 @@ export default function ContactPage() {
                     href="https://twitter.com/ablockunchained"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 p-3 rounded border border-border bg-foreground/5 transition-all group hover:border-primary/30 hover:translate-x-1"
+                    className="flex items-center gap-3 p-3 border border-border bg-foreground/5 transition-all hover:border-primary/30 hover:translate-x-1"
                   >
                     <Twitter className="w-5 h-5 text-primary" />
-                    <span className="text-sm transition-colors text-foreground">@ablockunchained</span>
+                    <span className="text-sm text-foreground">@ablockunchained</span>
                   </a>
                   <a
                     href="https://t.me/blockunchained"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 p-3 rounded border border-border bg-foreground/5 transition-all group hover:border-primary/30 hover:translate-x-1"
+                    className="flex items-center gap-3 p-3 border border-border bg-foreground/5 transition-all hover:border-primary/30 hover:translate-x-1"
                   >
                     <svg className="w-5 h-5 text-primary" viewBox="0 0 24 24" fill="currentColor">
                       <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z"/>
                     </svg>
-                    <span className="text-sm transition-colors text-foreground">@blockunchained</span>
+                    <span className="text-sm text-foreground">@blockunchained</span>
                   </a>
                 </div>
-              </motion.div>
-            </div>
+              </div>
+            </motion.div>
 
             {/* Contact Form */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: 0.1 }}
+              {...fadeIn}
+              transition={{ duration: 0.5, delay: 0.2 }}
               className="lg:col-span-2"
             >
-              <div className="relative p-8 sm:p-10 bg-card rounded-lg border border-border">
+              <div className="relative p-8 sm:p-10 bg-card border border-border">
                 {/* Corner accents */}
                 <div className="absolute top-0 left-0 w-5 h-5 border-l-2 border-t-2 border-primary" />
                 <div className="absolute top-0 right-0 w-5 h-5 border-r-2 border-t-2 border-primary" />
@@ -301,10 +301,7 @@ export default function ContactPage() {
                   I&apos;ll respond within 24 hours if there&apos;s a potential fit
                 </p>
 
-                <form
-                  onSubmit={handleSubmit}
-                  className="space-y-6"
-                >
+                <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
                       <label className="flex items-center gap-2 text-sm font-semibold mb-3 text-foreground">
@@ -356,7 +353,7 @@ export default function ContactPage() {
                       name="company"
                       value={formData.company}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-card rounded border-2 border-foreground/30 focus:border-primary transition-all outline-none text-foreground font-jost"
+                      className="w-full px-4 py-3 bg-card border-2 border-foreground/30 focus:border-primary transition-colors outline-none text-foreground font-jost"
                       placeholder="Your company or organization"
                     />
                   </div>
@@ -371,7 +368,7 @@ export default function ContactPage() {
                         name="projectType"
                         value={formData.projectType}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 bg-card rounded border-2 border-foreground/30 focus:border-primary transition-all outline-none appearance-none text-foreground font-jost"
+                        className="w-full px-4 py-3 bg-card border-2 border-foreground/30 focus:border-primary transition-colors outline-none appearance-none text-foreground font-jost"
                       >
                         <option value="">Select a type</option>
                         <option value="pmf">Finding Product-Market Fit</option>
@@ -390,7 +387,7 @@ export default function ContactPage() {
                         name="budget"
                         value={formData.budget}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 bg-card rounded border-2 border-foreground/30 focus:border-primary transition-all outline-none appearance-none text-foreground font-jost"
+                        className="w-full px-4 py-3 bg-card border-2 border-foreground/30 focus:border-primary transition-colors outline-none appearance-none text-foreground font-jost"
                       >
                         <option value="">Select budget</option>
                         <option value="<10k">Less than $10k</option>
@@ -425,14 +422,14 @@ export default function ContactPage() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full py-4 px-8 text-lg font-semibold rounded flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed transition-all bg-foreground text-background hover:bg-primary hover:text-primary-foreground font-jost hover:scale-[1.02] hover:-translate-y-0.5 active:scale-[0.98] duration-200"
+                    className="w-full py-4 px-8 text-lg font-semibold flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed bg-foreground text-background hover:bg-primary transition-colors font-jost"
                   >
                     <Send className="w-5 h-5" />
                     {isSubmitting ? 'Sending Message...' : 'Send Message'}
                   </button>
 
                   {submitStatus === 'success' && (
-                    <div className="p-4 rounded border-2 border-green-500 bg-green-500/10 text-green-500">
+                    <div className="p-4 border-2 border-green-500 bg-green-500/10 text-green-500">
                       <p className="text-sm text-center font-medium">
                         Message sent successfully! I&apos;ll get back to you within 24 hours.
                       </p>
@@ -440,7 +437,7 @@ export default function ContactPage() {
                   )}
 
                   {submitStatus === 'error' && (
-                    <div className="p-4 rounded border-2 border-red-500 bg-red-500/10 text-red-500">
+                    <div className="p-4 border-2 border-red-500 bg-red-500/10 text-red-500">
                       <p className="text-sm text-center font-medium">
                         Something went wrong. Please try again or email directly.
                       </p>
@@ -457,63 +454,58 @@ export default function ContactPage() {
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-background">
         <div className="max-w-7xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4 }}
-            className="text-center mb-16"
+            {...fadeIn}
+            transition={{ duration: 0.5, delay: 0.3 }}
           >
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-foreground">
-              Frequently Asked Questions
-            </h2>
-            <p className="text-sm uppercase tracking-widest text-foreground/50">
-              Common questions about working together
+            <div className="text-center mb-16">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-foreground">
+                Frequently Asked Questions
+              </h2>
+              <p className="text-sm uppercase tracking-widest text-foreground/50">
+                Common questions about working together
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              {[
+                {
+                  question: "What types of projects do you take on?",
+                  answer: "Product strategy, technology strategy, AI integration, Web3 infrastructure, and marketplace design. I work across the full stack: strategy to execution."
+                },
+                {
+                  question: "Do you build or just advise?",
+                  answer: "Both. I shape product strategy and guide technology decisions, then work alongside your team to ship. 15+ years of hands-on product work. Not just decks."
+                },
+                {
+                  question: "What's your approach?",
+                  answer: "Start with the real problem. Test assumptions against users. Build systems where incentives align. Measure by outcomes, not vanity metrics."
+                },
+                {
+                  question: "What does a typical engagement look like?",
+                  answer: "Varies by need. Fractional product leadership, focused sprints, or ongoing advisory. We'll scope what makes sense for your situation."
+                }
+              ].map((faq, index) => (
+                <div
+                  key={index}
+                  className="relative p-6 bg-card border border-border transition-all duration-300 hover:border-primary/30 hover:-translate-y-1"
+                >
+                  {/* Corner accents */}
+                  <div className="absolute top-0 left-0 w-3 h-3 border-l-2 border-t-2 border-primary" />
+                  <div className="absolute bottom-0 right-0 w-3 h-3 border-r-2 border-b-2 border-primary" />
+
+                  <h3 className="font-bold mb-3 text-foreground">{faq.question}</h3>
+                  <p className="text-sm leading-relaxed text-foreground/70">
+                    {faq.answer}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            {/* Bottom accent */}
+            <p className="text-center mt-16 text-sm uppercase tracking-widest text-foreground/50">
+              Building what <span className="text-primary font-bold">actually works</span>
             </p>
           </motion.div>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            {[
-              {
-                question: "What types of projects do you take on?",
-                answer: "Product strategy, technology strategy, AI integration, Web3 infrastructure, and marketplace design. I work across the full stack—strategy to execution."
-              },
-              {
-                question: "Do you build or just advise?",
-                answer: "Both. I can architect systems, write code, and ship alongside your team. 15+ years of hands-on product and engineering work. Not just decks."
-              },
-              {
-                question: "What's your approach?",
-                answer: "Start with the real problem. Test assumptions against users. Build systems where incentives align. Measure by outcomes, not vanity metrics."
-              },
-              {
-                question: "What does a typical engagement look like?",
-                answer: "Varies by need—fractional product leadership, focused sprints, or ongoing advisory. We'll scope what makes sense for your situation."
-              }
-            ].map((faq, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.05 }}
-                className="relative p-6 bg-card rounded-lg border border-border transition-all duration-300 group hover:shadow-lg hover:border-primary/30 hover:-translate-y-1"
-              >
-                {/* Corner accents */}
-                <div className="absolute top-0 left-0 w-3 h-3 border-l-2 border-t-2 border-primary" />
-                <div className="absolute bottom-0 right-0 w-3 h-3 border-r-2 border-b-2 border-primary" />
-
-                <h3 className="font-bold mb-3 text-foreground">{faq.question}</h3>
-                <p className="text-sm leading-relaxed text-foreground/70">
-                  {faq.answer}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Bottom accent */}
-          <p className="text-center mt-16 text-sm uppercase tracking-widest text-foreground/50">
-            Building what <span className="text-primary font-bold">actually works</span>
-          </p>
         </div>
       </section>
     </div>
