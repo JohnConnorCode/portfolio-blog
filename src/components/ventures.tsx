@@ -67,7 +67,7 @@ export function Ventures() {
           </AnimatedText>
           <FadeInText delay={0.2}>
             <p className="text-base sm:text-lg md:text-xl text-foreground/90 max-w-3xl mx-auto">
-              I build and launch experimental apps to explore how technology can serve humanity—tools for 
+              I build and launch experimental apps to explore how technology can serve humanity. Tools for 
               collective decision-making, AI-driven matching, and community governance
             </p>
           </FadeInText>

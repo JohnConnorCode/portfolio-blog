@@ -514,9 +514,9 @@ export default function AcceleratePage() {
               className="space-y-6 text-lg text-foreground/70 max-w-3xl mx-auto mb-12"
             >
               <p>
-                Accelerate is not just a Web3 tool—it&apos;s a <strong className="text-cyan-400">systems-level innovation</strong> for
+                Accelerate is not just a Web3 tool. It&apos;s a <strong className="text-cyan-400">systems-level innovation</strong> for
                 how ecosystems fund and support builders. Builder profiles, project objects, program metadata,
-                evaluation engines, web scraping, and intelligent matching—all in one modular platform.
+                evaluation engines, web scraping, and intelligent matching. All in one modular platform.
               </p>
               <p>
                 Traditional grant systems reward promises over delivery. Accelerate flips that.

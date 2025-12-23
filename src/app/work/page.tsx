@@ -497,12 +497,12 @@ export default function WorkPage() {
               {
                 icon: Shield,
                 title: 'Design Alignment',
-                description: 'Incentives matter. I build systems where what\'s good for users is good for the business—no manipulation required.'
+                description: 'Incentives matter. I build systems where what\'s good for users is good for the business. No manipulation required.'
               },
               {
                 icon: Brain,
                 title: 'Judge by Outcomes',
-                description: 'Ideas are cheap. I measure success by durable, compounding value—not vanity metrics or growth theater.'
+                description: 'Ideas are cheap. I measure success by durable, compounding value, not vanity metrics or growth theater.'
               }
             ].map((approach, index) => {
               const Icon = approach.icon

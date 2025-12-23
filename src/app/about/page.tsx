@@ -22,12 +22,12 @@ const coreCapabilities = [
   {
     icon: Zap,
     title: 'AI-Native Building',
-    description: 'Not just using AI tools—architecting intelligent systems, automation pipelines, and ML-powered products.',
+    description: 'Not just using AI tools. Architecting intelligent systems, automation pipelines, and ML-powered products.',
   },
   {
     icon: Target,
     title: 'Zero-to-One Execution',
-    description: 'From concept to shipped product. I don\'t just strategize—I build, ship, and iterate.',
+    description: 'From concept to shipped product. I don\'t just strategize. I build, ship, and iterate.',
   },
   {
     icon: Users,
@@ -181,7 +181,7 @@ export default function AboutPage() {
               </h2>
               <div className="space-y-4 text-foreground/80">
                 <p>
-                  I started in competitive debate—teaching people how to <strong className="text-foreground font-semibold">reason, argue, and change minds</strong>.
+                  I started in competitive debate, teaching people how to <strong className="text-foreground font-semibold">reason, argue, and change minds</strong>.
                   That foundation shapes how I approach building: clarity over complexity, structure over chaos.
                 </p>
                 <p>
@@ -220,7 +220,7 @@ export default function AboutPage() {
                 </div>
                 <div className="mt-6 pt-6 border-t border-border">
                   <p className="text-sm text-foreground/70">
-                    <span className="text-primary font-semibold">AI-native builder</span>—architecting intelligent
+                    <span className="text-primary font-semibold">AI-native builder</span>. Architecting intelligent
                     systems, ML pipelines, and automation workflows. Not just prompting, but building the infrastructure.
                   </p>
                 </div>

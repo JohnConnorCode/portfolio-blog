@@ -63,7 +63,7 @@ export function Services() {
             Product Expertise
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-foreground/90 max-w-3xl mx-auto">
-            Technical product leadership grounded in philosophy, economics, and behavioral theory—
+            Technical product leadership grounded in philosophy, economics, and behavioral theory,
             from local businesses to $50M+ startups.
           </p>
         </motion.div>

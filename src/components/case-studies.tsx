@@ -17,7 +17,7 @@ const caseStudies = [
     subtitle: 'From Struggling to 15x Growth',
     description: 'Found product-market fit for a Web3 virtual economy. The ONE insight that changed everything.',
     stuck: 'Upland had users but couldn\'t keep them. Retention was falling. The token felt like a gimmick.',
-    insight: 'Users didn\'t want to BUY value—they wanted to EARN it. We redesigned the entire economy around achievement, not speculation.',
+    insight: 'Users didn\'t want to BUY value. They wanted to EARN it. We redesigned the entire economy around achievement, not speculation.',
     outcome: '13K → 300K users. 15x growth. 40% better D7 retention.',
     results: [
       '300K+ monthly active users',

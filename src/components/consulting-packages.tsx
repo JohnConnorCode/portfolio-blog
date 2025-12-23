@@ -56,7 +56,7 @@ export function ConsultingPackages() {
             <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
               Ready to achieve more in less time? I offer bespoke strategy packages tailored for companies, 
               startups and individuals. Each engagement is structured for quick wins and long-term 
-              resilience—drawing on a decade of experience turning emerging technologies into real-world solutions.
+              resilience, drawing on a decade of experience turning emerging technologies into real-world solutions.
             </p>
           </FadeInText>
         </motion.div>

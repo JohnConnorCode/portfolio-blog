@@ -52,7 +52,7 @@ export function Footer() {
               </div>
             </Link>
             <p className="max-w-sm mb-6 leading-relaxed text-muted-foreground font-jost">
-              15+ years building systems that scale—from early-stage startups to growth-phase companies.
+              15+ years building systems that scale, from early-stage startups to growth-phase companies.
             </p>
             <div className="flex space-x-3">
               {socialLinks.map((link) => {
@@ -140,7 +140,7 @@ export function Footer() {
           </p>
           <p className="text-sm flex items-center gap-2 text-muted-foreground font-jost">
             <span className="w-2 h-2 rounded-full bg-primary" />
-            Product · Engineering · Strategy
+            Product · Strategy · Launch
           </p>
         </motion.div>
       </div>

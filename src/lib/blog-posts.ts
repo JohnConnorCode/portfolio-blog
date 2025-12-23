@@ -7,7 +7,7 @@ export const blogPosts = [
       <h2>I've Seen This Movie Before</h2>
       <p>At Upland, I watched us obsess over DAU while ignoring transaction quality. At Sparkblox, we celebrated mint counts while real utility lagged behind. The pattern is always the same: teams optimize for numbers that look good in pitch decks while the fundamentals rot.</p>
 
-      <p>Growth theater is the performance of traction without the substance of value creation. It's the startup equivalent of teaching to the test—you hit the metrics but miss the point entirely.</p>
+      <p>Growth theater is the performance of traction without the substance of value creation. It's the startup equivalent of teaching to the test: you hit the metrics but miss the point entirely.</p>
 
       <h3>The Metrics That Kill Companies</h3>
       <ul>
@@ -68,7 +68,7 @@ export const blogPosts = [
       </ul>
 
       <h2>What Genuine Builder Support Looks Like</h2>
-      <p>Having been on both sides—as a grant recipient and as someone who's evaluated builder programs—here's what actually works:</p>
+      <p>Having been on both sides (as a grant recipient and as someone who's evaluated builder programs), here's what actually works:</p>
 
       <h3>Principles for Better Funding</h3>
       <ol>
@@ -79,7 +79,7 @@ export const blogPosts = [
       </ol>
 
       <h2>The Accelerate Experiment</h2>
-      <p>This is partly why I'm building Accelerate—a builder intelligence platform that tracks actual contribution and impact across ecosystems. The goal: make it impossible to fake value creation because the data is transparent and verifiable.</p>
+      <p>This is partly why I'm building Accelerate, a builder intelligence platform that tracks actual contribution and impact across ecosystems. The goal: make it impossible to fake value creation because the data is transparent and verifiable.</p>
 
       <p>When you can see who's actually building versus who's just announcing, funding decisions get a lot easier.</p>
 
@@ -104,7 +104,7 @@ export const blogPosts = [
     excerpt: 'After years coaching debate at Chicago Debates and building SuperDebate, I\'ve watched this one skill separate great leaders from mediocre ones: the ability to make your opponent\'s argument better than they can.',
     content: `
       <h2>What Debate Taught Me About Leadership</h2>
-      <p>I spent years at Chicago Debates teaching high school students to argue. The best debaters weren't the loudest or most aggressive—they were the ones who could articulate their opponent's position better than their opponent could.</p>
+      <p>I spent years at Chicago Debates teaching high school students to argue. The best debaters weren't the loudest or most aggressive. They were the ones who could articulate their opponent's position better than their opponent could.</p>
 
       <p>This skill has a name: steel-manning. It's the opposite of straw-manning. Instead of attacking a weak version of the other side's argument, you strengthen it, then address the strongest version.</p>
 
@@ -129,7 +129,7 @@ export const blogPosts = [
       </ol>
 
       <h2>Building Cultures of Productive Disagreement</h2>
-      <p>The organizations I've seen thrive—from startups to established companies—share one trait: they've figured out how to disagree well. This requires:</p>
+      <p>The organizations I've seen thrive, from startups to established companies, share one trait: they've figured out how to disagree well. This requires:</p>
 
       <ul>
         <li><strong>Explicit protocols:</strong> Clear rules for how debates happen (time limits, turn-taking, no interruptions)</li>
@@ -141,7 +141,7 @@ export const blogPosts = [
       <h3>The SuperDebate Vision</h3>
       <p>This is ultimately why I'm building SuperDebate. We've lost the civic infrastructure for productive disagreement. Social media rewards outrage. Cable news rewards certainty. Neither rewards the hard work of actually trying to understand people who see the world differently.</p>
 
-      <p>The best leaders I know are great debaters—not because they win arguments, but because they genuinely engage with opposing views and emerge with better decisions.</p>
+      <p>The best leaders I know are great debaters, not because they win arguments, but because they genuinely engage with opposing views and emerge with better decisions.</p>
     `,
     category: 'Leadership',
     publishedAt: '2024-01-10',
@@ -156,7 +156,7 @@ export const blogPosts = [
       <h2>The New Digital Divide</h2>
       <p>In the 1990s, we worried about internet access. In the 2020s, we should worry about AI access. The gap between those who can effectively use AI tools and those who can't is growing faster than any previous technological divide.</p>
 
-      <p>I've seen this firsthand. Teams I work with who've mastered AI-assisted workflows ship 3-5x faster than teams who haven't. That's not a small edge—it's a category difference.</p>
+      <p>I've seen this firsthand. Teams I work with who've mastered AI-assisted workflows ship 3-5x faster than teams who haven't. That's not a small edge. It's a category difference.</p>
 
       <h3>The Current Reality</h3>
       <p>Today's most powerful AI tools are gated behind:</p>
@@ -168,7 +168,7 @@ export const blogPosts = [
       </ul>
 
       <h2>Why This Matters for Everyone</h2>
-      <p>Automation isn't about replacing humans—it's about removing the busywork that prevents humans from doing meaningful work. When I automate a research workflow, I don't do less thinking. I do more thinking because I spend less time on mechanical tasks.</p>
+      <p>Automation isn't about replacing humans. It's about removing the busywork that prevents humans from doing meaningful work. When I automate a research workflow, I don't do less thinking. I do more thinking because I spend less time on mechanical tasks.</p>
 
       <h3>The Compounding Effect</h3>
       <p>Here's what makes this urgent: AI-assisted workers don't just work faster, they learn faster. Each project teaches them new ways to leverage tools. The gap compounds.</p>
@@ -182,7 +182,7 @@ export const blogPosts = [
       <p>Meanwhile, workers without access fall further behind each year.</p>
 
       <h2>The Path to Democratization</h2>
-      <p>Making automation accessible isn't charity—it's economic necessity. Here's what's needed:</p>
+      <p>Making automation accessible isn't charity. It's economic necessity. Here's what's needed:</p>
 
       <h3>Infrastructure Investments</h3>
       <ul>
@@ -195,7 +195,7 @@ export const blogPosts = [
       <h2>What I'm Building Toward</h2>
       <p>This thinking influences everything I build. At Accelerate, we're creating tools that make Web3 builder intelligence accessible, not gated. At SuperDebate, we're building civic infrastructure that anyone can use to improve their thinking.</p>
 
-      <p>The goal isn't AI that replaces human judgment. It's AI that amplifies human capability—for everyone, not just those who can afford premium subscriptions.</p>
+      <p>The goal isn't AI that replaces human judgment. It's AI that amplifies human capability, for everyone, not just those who can afford premium subscriptions.</p>
 
       <h3>The Stakes</h3>
       <p>Get this right, and we unlock human potential at unprecedented scale. Get it wrong, and we create a permanent underclass of people locked out of economic participation.</p>
@@ -215,7 +215,7 @@ export const blogPosts = [
       <h2>The Linear Trap</h2>
       <p>Most products work like this: you add a feature, users get some value, you add another feature, they get a bit more value. It's linear. 1 + 1 + 1 = 3.</p>
 
-      <p>But the best products I've built—and the best products I've used—work differently. Each addition multiplies the value of everything else. 1 × 1.5 × 1.5 = 2.25, and then it keeps compounding.</p>
+      <p>But the best products I've built, and the best products I've used, work differently. Each addition multiplies the value of everything else. 1 × 1.5 × 1.5 = 2.25, and then it keeps compounding.</p>
 
       <h3>What I Learned at Upland</h3>
       <p>At Upland, we built a virtual real estate economy. The naive approach would have been: more properties = more value. Linear thinking.</p>
@@ -229,13 +229,13 @@ export const blogPosts = [
       <p>Every addition should benefit the whole. At HelpWith (skill-sharing marketplace), we designed the matching algorithm so that each new skill listed improved matches for everyone, not just the person who listed it.</p>
 
       <h3>2. Feedback Loops That Learn</h3>
-      <p>Systems must learn from their outputs. The best recommendation engines don't just serve content—they learn from every interaction to serve better content next time.</p>
+      <p>Systems must learn from their outputs. The best recommendation engines don't just serve content. They learn from every interaction to serve better content next time.</p>
 
       <h3>3. Modular Architecture</h3>
       <p>Components that combine multiplicatively, not additively. At Sparkblox, our no-code NFT tools were designed so each template could be combined with others. Users created combinations we never imagined.</p>
 
       <h3>4. Time as an Asset</h3>
-      <p>Systems that improve with age, not decay. Most software accumulates technical debt. Compound systems accumulate value—data that makes them smarter, content that attracts more content, relationships that strengthen.</p>
+      <p>Systems that improve with age, not decay. Most software accumulates technical debt. Compound systems accumulate value: data that makes them smarter, content that attracts more content, relationships that strengthen.</p>
 
       <h2>Applying This to SuperDebate</h2>
       <p>Here's how we're designing SuperDebate for compound growth:</p>
@@ -262,7 +262,7 @@ export const blogPosts = [
   {
     slug: 'founders-debate-roadmaps',
     title: 'Building in Public: How We Debate Our Roadmap at SuperDebate',
-    excerpt: 'Most roadmaps are created in isolation, validated by yes-men, and executed without scrutiny. Here\'s why we debate ours publicly—and how it\'s made us better builders.',
+    excerpt: 'Most roadmaps are created in isolation, validated by yes-men, and executed without scrutiny. Here\'s why we debate ours publicly, and how it\'s made us better builders.',
     content: `
       <h2>The Problem with Private Planning</h2>
       <p>I've seen the same failure pattern across every company I've worked with: a small team creates a roadmap, presents it to stakeholders who nod along, then spends months building something users don't want.</p>
@@ -294,7 +294,7 @@ export const blogPosts = [
       <ul>
         <li>We've pivoted twice based on community challenges we hadn't considered</li>
         <li>Our feature completion rate improved because we're building what people actually want</li>
-        <li>Community trust increased dramatically—people feel heard</li>
+        <li>Community trust increased dramatically (people feel heard)</li>
         <li>We've attracted contributors who want to work on something transparent</li>
       </ul>
 

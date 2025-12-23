@@ -30,7 +30,7 @@ export default function SuperDebatePage() {
     },
     {
       title: "Live Events",
-      description: "From intimate club nights to championship tournaments—real people, real debates, real growth",
+      description: "From intimate club nights to championship tournaments. Real people, real debates, real growth.",
       icon: Calendar,
     },
     {
@@ -206,7 +206,7 @@ export default function SuperDebatePage() {
               className="mt-12 text-center"
             >
               <p className="text-lg text-foreground/50 font-jost italic">
-                &ldquo;Restoring the agora—where citizens gather to challenge ideas and sharpen thinking.&rdquo;
+                &ldquo;Restoring the agora, where citizens gather to challenge ideas and sharpen thinking.&rdquo;
               </p>
             </motion.div>
           </motion.div>
@@ -660,12 +660,12 @@ export default function SuperDebatePage() {
               className="space-y-6 text-lg max-w-3xl mx-auto mb-12 text-foreground/70 font-jost"
             >
               <p>
-                The ancient agora wasn&apos;t just a marketplace—it was where citizens
+                The ancient agora wasn&apos;t just a marketplace. It was where citizens
                 debated, challenged, and governed themselves. <strong className="text-primary">We&apos;re bringing it back.</strong>
               </p>
               <p>
                 SuperDebate is building a new intellectual sport for the 21st century.
-                From Tuesday-night meetups to championship events in paradise—a global
+                From Tuesday-night meetups to championship events in paradise, a global
                 community dedicated to <strong className="text-foreground">listening, reasoning, and the belief that
                 the best ideas should win.</strong>
               </p>
