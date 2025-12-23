@@ -204,33 +204,24 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                 className="relative mb-6"
               >
                 <span
-                  className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight font-jost bg-gradient-to-r from-foreground via-foreground to-primary bg-clip-text text-transparent"
+                  className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight font-jost bg-gradient-to-r from-foreground from-40% via-primary/70 via-70% to-primary bg-clip-text text-transparent"
                   style={{ lineHeight: 1.1 }}
                 >
                   {heroContent.heroTitle}
                 </span>
               </motion.h1>
 
-              {/* Role badges */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-                className="flex flex-wrap items-center justify-center lg:justify-start gap-3 mb-8"
-              >
-                {['Systems', 'Strategy', 'Product'].map((role, i) => (
-                  <motion.span
+              {/* Role badges - no motion animations to prevent flicker */}
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 mb-8">
+                {['Systems', 'Strategy', 'Product'].map((role) => (
+                  <span
                     key={role}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.4, delay: 0.5 + i * 0.1, ease: [0.25, 0.1, 0.25, 1] }}
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    className="px-4 py-2 text-xs tracking-[0.2em] uppercase border border-primary/30 text-primary font-jost bg-primary/5 backdrop-blur-sm cursor-default hover:border-primary hover:bg-primary/10 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300"
+                    className="px-4 py-2 text-xs tracking-[0.2em] uppercase border border-primary/30 text-primary font-jost bg-primary/5 backdrop-blur-sm cursor-default hover:border-primary hover:bg-primary/10 hover:shadow-lg hover:shadow-primary/20 hover:scale-105 hover:-translate-y-0.5 transition-all duration-300"
                   >
                     {role}
-                  </motion.span>
+                  </span>
                 ))}
-              </motion.div>
+              </div>
 
               {/* Description */}
               <motion.p

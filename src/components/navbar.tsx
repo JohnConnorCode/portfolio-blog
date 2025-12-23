@@ -67,12 +67,7 @@ export function Navbar() {
           )}>
             {/* Logo Section */}
             <Link href="/" className="group relative z-10">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
-                className="flex items-center gap-3"
-              >
+              <div className="flex items-center gap-3">
                 {/* Logo - Shrinks on scroll (CSS transition, no re-animation) */}
                 <div
                   className={cn(
@@ -80,23 +75,48 @@ export function Navbar() {
                     scrolled ? "w-10 h-10" : "w-12 h-12"
                   )}
                 >
-                  {/* Ambient glow */}
-                  <div className="absolute -inset-2 bg-primary/20 blur-xl rounded-full opacity-60" />
+                  {/* Ambient glow - fades in */}
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    animate={{ opacity: 0.6, scale: 1 }}
+                    transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+                    className="absolute -inset-2 bg-primary/20 blur-xl rounded-full"
+                  />
 
-                  {/* Outer diamond border */}
-                  <div className="absolute inset-0 border-2 border-primary rotate-45 transition-all group-hover:border-primary/80" />
+                  {/* Outer diamond border - rotates in */}
+                  <motion.div
+                    initial={{ opacity: 0, rotate: 0, scale: 0.5 }}
+                    animate={{ opacity: 1, rotate: 45, scale: 1 }}
+                    transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+                    className="absolute inset-0 border-2 border-primary transition-all group-hover:border-primary/80"
+                  />
 
-                  {/* Inner filled diamond */}
-                  <div className="absolute inset-[5px] bg-primary/10 rotate-45 transition-all group-hover:bg-primary/20" />
+                  {/* Inner filled diamond - rotates in with delay */}
+                  <motion.div
+                    initial={{ opacity: 0, rotate: 0, scale: 0.3 }}
+                    animate={{ opacity: 1, rotate: 45, scale: 1 }}
+                    transition={{ duration: 0.5, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
+                    className="absolute inset-[5px] bg-primary/10 transition-all group-hover:bg-primary/20"
+                  />
 
-                  {/* Center accent */}
-                  <div className={cn(
-                    "absolute bg-primary/30 rotate-45 transition-all duration-300",
-                    scrolled ? "inset-[12px]" : "inset-[14px]"
-                  )} />
+                  {/* Center accent - rotates in last */}
+                  <motion.div
+                    initial={{ opacity: 0, rotate: 0, scale: 0 }}
+                    animate={{ opacity: 1, rotate: 45, scale: 1 }}
+                    transition={{ duration: 0.4, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+                    className={cn(
+                      "absolute bg-primary/30 transition-all duration-300",
+                      scrolled ? "inset-[12px]" : "inset-[14px]"
+                    )}
+                  />
 
-                  {/* JC Text */}
-                  <div className="absolute inset-0 flex items-center justify-center">
+                  {/* JC Text - fades in */}
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.4, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+                    className="absolute inset-0 flex items-center justify-center"
+                  >
                     <span
                       className={cn(
                         "font-black text-primary tracking-wide font-jost transition-all duration-300",
@@ -105,7 +125,7 @@ export function Navbar() {
                     >
                       JC
                     </span>
-                  </div>
+                  </motion.div>
                 </div>
 
                 {/* Name/Title - Shows on scroll (both mobile and desktop) */}
@@ -129,7 +149,7 @@ export function Navbar() {
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </motion.div>
+              </div>
             </Link>
 
             {/* Desktop Navigation */}
