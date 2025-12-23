@@ -4,12 +4,13 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, Briefcase, BookOpen, Home, Mail, Brain, ChevronRight } from 'lucide-react'
+import { X, Briefcase, BookOpen, Home, Mail, Brain, ChevronRight, User } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { ThemeToggle } from './theme-toggle'
 
 const navItems = [
   { href: '/', label: 'Home', icon: Home },
+  { href: '/bio', label: 'Bio', icon: User },
   {
     href: '/work',
     label: 'Work',
