@@ -107,7 +107,7 @@ body {
 
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-sans);
+  font-family: 'Futura', 'Futura-Medium', 'Jost', 'Century Gothic', sans-serif;
   font-weight: 400;
   letter-spacing: -0.02em;
   line-height: 1.2;
@@ -551,13 +551,13 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* Futura-inspired geometric sans typography */
+/* Futura geometric sans typography (Jost as fallback) */
 .font-display {
-  font-family: 'Jost', 'Futura', 'Century Gothic', sans-serif;
+  font-family: 'Futura', 'Futura-Medium', 'Jost', 'Century Gothic', sans-serif;
 }
 
 .font-jost {
-  font-family: 'Jost', 'Futura', 'Century Gothic', sans-serif;
+  font-family: 'Futura', 'Futura-Medium', 'Jost', 'Century Gothic', sans-serif;
 }
 
 /* Navy color utilities */
