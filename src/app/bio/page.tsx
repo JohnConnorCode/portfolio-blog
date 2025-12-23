@@ -3,9 +3,7 @@
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
-import Image from 'next/image'
 import {
-  pageHeaderVariants,
   sectionWithChildrenVariants,
   childVariants,
   itemVariants,
@@ -54,37 +52,24 @@ const timeline = [
 export default function BioPage() {
   return (
     <div className="bg-background font-jost">
-      {/* Hero Section */}
+      {/* Hero Section - CSS animations for mount (no flicker) */}
       <section className="relative py-20 md:py-28 px-4 sm:px-6 lg:px-8 overflow-hidden">
         <div className="max-w-4xl mx-auto">
-          <motion.div
-            variants={pageHeaderVariants}
-            initial="hidden"
-            animate="visible"
-          >
+          <div>
             {/* Decorative element */}
-            <motion.div
-              variants={childVariants}
-              className="flex items-center gap-4 mb-8"
-            >
+            <div className="flex items-center gap-4 mb-8 animate-in delay-0">
               <div className="w-12 h-px bg-gradient-to-r from-primary to-transparent" />
               <span className="text-xs tracking-[0.3em] uppercase text-primary">Biography</span>
-            </motion.div>
+            </div>
 
-            <motion.h1
-              variants={childVariants}
-              className="text-4xl sm:text-5xl md:text-6xl font-bold mb-8 tracking-wide text-foreground leading-tight"
-            >
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-8 tracking-wide text-foreground leading-tight animate-in delay-1">
               John Connor
-            </motion.h1>
+            </h1>
 
-            <motion.p
-              variants={childVariants}
-              className="text-xl md:text-2xl text-foreground/70 leading-relaxed mb-12"
-            >
+            <p className="text-xl md:text-2xl text-foreground/70 leading-relaxed mb-12 animate-in delay-2">
               I build technology that makes people more capable. Over 15 years, I&apos;ve founded companies, scaled products to hundreds of thousands of users, and learned that the best systems serve human flourishing. Not the other way around.
-            </motion.p>
-          </motion.div>
+            </p>
+          </div>
         </div>
       </section>
 

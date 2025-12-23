@@ -75,48 +75,25 @@ export function Navbar() {
                     scrolled ? "w-10 h-10" : "w-12 h-12"
                   )}
                 >
-                  {/* Ambient glow - fades in */}
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    animate={{ opacity: 0.6, scale: 1 }}
-                    transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
-                    className="absolute -inset-2 bg-primary/20 blur-xl rounded-full"
-                  />
+                  {/* Ambient glow - CSS fade in */}
+                  <div className="absolute -inset-2 bg-primary/20 blur-xl rounded-full animate-in delay-2" style={{ opacity: 0.6 }} />
 
-                  {/* Outer diamond border - rotates in */}
-                  <motion.div
-                    initial={{ opacity: 0, rotate: 0, scale: 0.5 }}
-                    animate={{ opacity: 1, rotate: 45, scale: 1 }}
-                    transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-                    className="absolute inset-0 border-2 border-primary transition-all group-hover:border-primary/80"
-                  />
+                  {/* Outer diamond border - CSS rotate in */}
+                  <div className="absolute inset-0 border-2 border-primary transition-all group-hover:border-primary/80 animate-logo-diamond delay-0" />
 
-                  {/* Inner filled diamond - rotates in with delay */}
-                  <motion.div
-                    initial={{ opacity: 0, rotate: 0, scale: 0.3 }}
-                    animate={{ opacity: 1, rotate: 45, scale: 1 }}
-                    transition={{ duration: 0.5, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
-                    className="absolute inset-[5px] bg-primary/10 transition-all group-hover:bg-primary/20"
-                  />
+                  {/* Inner filled diamond - CSS rotate in with delay */}
+                  <div className="absolute inset-[5px] bg-primary/10 transition-all group-hover:bg-primary/20 animate-logo-diamond delay-1" />
 
-                  {/* Center accent - rotates in last */}
-                  <motion.div
-                    initial={{ opacity: 0, rotate: 0, scale: 0 }}
-                    animate={{ opacity: 1, rotate: 45, scale: 1 }}
-                    transition={{ duration: 0.4, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+                  {/* Center accent - CSS rotate in last */}
+                  <div
                     className={cn(
-                      "absolute bg-primary/30 transition-all duration-300",
+                      "absolute bg-primary/30 transition-all duration-300 animate-logo-diamond delay-2",
                       scrolled ? "inset-[12px]" : "inset-[14px]"
                     )}
                   />
 
-                  {/* JC Text - fades in */}
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.4, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-                    className="absolute inset-0 flex items-center justify-center"
-                  >
+                  {/* JC Text - CSS fade in */}
+                  <div className="absolute inset-0 flex items-center justify-center animate-in delay-3">
                     <span
                       className={cn(
                         "font-black text-primary tracking-wide font-jost transition-all duration-300",
@@ -125,7 +102,7 @@ export function Navbar() {
                     >
                       JC
                     </span>
-                  </motion.div>
+                  </div>
                 </div>
 
                 {/* Name/Title - Shows on scroll (both mobile and desktop) */}
@@ -160,12 +137,10 @@ export function Navbar() {
                 const hasSubItems = item.subItems && item.subItems.length > 0
 
                 return (
-                  <motion.div
+                  <div
                     key={item.href}
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: 0.1 + index * 0.05, ease: [0.25, 0.1, 0.25, 1] }}
-                    className="relative group"
+                    className="relative group animate-in"
+                    style={{ animationDelay: `${0.25 + index * 0.05}s` }}
                   >
                     <Link
                       href={item.href}
@@ -216,19 +191,17 @@ export function Navbar() {
                         </div>
                       </div>
                     )}
-                  </motion.div>
+                  </div>
                 )
               })}
 
               {/* Theme toggle */}
-              <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.1 + navItems.length * 0.05, ease: [0.25, 0.1, 0.25, 1] }}
-                className="ml-2"
+              <div
+                className="ml-2 animate-in"
+                style={{ animationDelay: `${0.25 + navItems.length * 0.05}s` }}
               >
                 <ThemeToggle />
-              </motion.div>
+              </div>
             </div>
 
             {/* Mobile: Theme Toggle + Menu Button */}

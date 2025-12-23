@@ -154,68 +154,44 @@ export default function WorkPage() {
       <div className="absolute bottom-1/3 left-0 w-[400px] h-[400px] bg-primary/3 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="max-w-5xl mx-auto relative z-10">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="mb-16 text-center"
-        >
+        {/* Header - CSS animations */}
+        <div className="mb-16 text-center">
           {/* Decorative element */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="flex items-center justify-center gap-4 mb-6"
-          >
+          <div className="flex items-center justify-center gap-4 mb-6 animate-in delay-0">
             <div className="w-12 h-px bg-gradient-to-r from-transparent to-primary/50" />
             <svg viewBox="0 0 24 24" className="w-5 h-5 text-primary">
               <path d="M12 2 L22 12 L12 22 L2 12 Z" fill="none" stroke="currentColor" strokeWidth="1.5" />
             </svg>
             <div className="w-12 h-px bg-gradient-to-l from-transparent to-primary/50" />
-          </motion.div>
+          </div>
 
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-xs tracking-[0.3em] uppercase mb-4 text-primary font-jost"
-          >
+          <p className="text-xs tracking-[0.3em] uppercase mb-4 text-primary font-jost animate-in delay-1">
             Work & Experience
-          </motion.p>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 tracking-wide font-jost"
-          >
+          </p>
+          <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 tracking-wide font-jost animate-in delay-2">
             <span className="text-foreground">The </span>
             <span className="text-primary">Work</span>
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="text-lg max-w-3xl mx-auto text-foreground/70 font-jost"
-          >
+          </h1>
+          <p className="text-lg max-w-3xl mx-auto text-foreground/70 font-jost animate-in delay-3">
             Products shipped, companies built, systems scaled.
-          </motion.p>
-        </motion.div>
+          </p>
+        </div>
 
         {/* Shipped Products */}
         <section className="mb-20">
-          <h2 className="text-2xl font-bold mb-8 font-jost">
+          <h2 className="text-2xl font-bold mb-8 font-jost animate-in delay-4">
             <span className="text-foreground">Products </span>
             <span className="text-primary">Shipped</span>
           </h2>
 
           <div className="grid md:grid-cols-2 gap-6">
-            {shippedProducts.map((project) => {
+            {shippedProducts.map((project, index) => {
               const Icon = project.icon
               return (
                 <div
                   key={project.name}
-                  className="relative group"
+                  className="relative group animate-in"
+                  style={{ animationDelay: `${0.5 + index * 0.1}s` }}
                 >
                   {/* Corner accents */}
                   <div className="absolute top-0 left-0 w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -266,14 +242,15 @@ export default function WorkPage() {
 
         {/* Other Projects */}
         <section className="mb-20">
-          <h2 className="text-xl font-bold mb-6 text-foreground/60 font-jost">
+          <h2 className="text-xl font-bold mb-6 text-foreground/60 font-jost animate-in delay-6">
             Other Projects
           </h2>
           <div className="grid md:grid-cols-2 gap-4">
-            {otherProjects.map((project) => (
+            {otherProjects.map((project, index) => (
               <div
                 key={project.name}
-                className="p-4 border transition-all hover:border-primary/30 bg-card border-border"
+                className="p-4 border transition-all hover:border-primary/30 bg-card border-border animate-in"
+                style={{ animationDelay: `${0.7 + index * 0.1}s` }}
               >
                 <div className="flex items-center justify-between mb-1">
                   <h3 className="font-semibold text-foreground font-jost">{project.name}</h3>
@@ -301,16 +278,17 @@ export default function WorkPage() {
 
         {/* Experience Timeline */}
         <section className="mb-20">
-          <h2 className="text-3xl font-bold mb-12 text-center font-jost">
+          <h2 className="text-3xl font-bold mb-12 text-center font-jost animate-in delay-8">
             <span className="text-foreground">Experience </span>
             <span className="text-primary">Timeline</span>
           </h2>
 
           <div className="space-y-6">
-            {experiences.map((exp) => (
+            {experiences.map((exp, index) => (
               <div
                 key={exp.company}
-                className="relative p-6 transition-all border-l-4 bg-card border-l-primary hover:bg-card/80"
+                className="relative p-6 transition-all border-l-4 bg-card border-l-primary hover:bg-card/80 animate-in"
+                style={{ animationDelay: `${0.9 + index * 0.1}s` }}
               >
                 {/* Header */}
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4">
@@ -366,7 +344,7 @@ export default function WorkPage() {
 
         {/* Key Metrics */}
         <section className="mb-20">
-          <h2 className="text-3xl font-bold mb-12 text-center font-jost">
+          <h2 className="text-3xl font-bold mb-12 text-center font-jost animate-in delay-10">
             <span className="text-foreground">By the </span>
             <span className="text-primary">Numbers</span>
           </h2>
@@ -377,12 +355,13 @@ export default function WorkPage() {
               { icon: Code, value: '$20M+', label: 'Funding Enabled' },
               { icon: Users, value: '300K+', label: 'Users Scaled' },
               { icon: TrendingUp, value: '50+', label: 'Products Shipped' }
-            ].map((metric) => {
+            ].map((metric, index) => {
               const Icon = metric.icon
               return (
                 <div
                   key={metric.label}
-                  className="relative group"
+                  className="relative group animate-in"
+                  style={{ animationDelay: `${1.1 + index * 0.1}s` }}
                 >
                   <div className="relative p-6 text-center transition-all border bg-card border-border hover:border-primary/30 hover:-translate-y-1 duration-300">
                     <Icon className="w-8 h-8 mx-auto mb-3 text-primary" />
@@ -406,7 +385,7 @@ export default function WorkPage() {
 
         {/* Approach */}
         <section className="mb-20">
-          <h2 className="text-2xl font-bold mb-8 font-jost">
+          <h2 className="text-2xl font-bold mb-8 font-jost animate-in" style={{ animationDelay: '1.5s' }}>
             <span className="text-foreground">How I </span>
             <span className="text-primary">Work</span>
           </h2>
@@ -428,12 +407,13 @@ export default function WorkPage() {
                 title: 'Judge by Outcomes',
                 description: 'Ideas are cheap. I measure success by durable, compounding value, not vanity metrics or growth theater.'
               }
-            ].map((approach) => {
+            ].map((approach, index) => {
               const Icon = approach.icon
               return (
                 <div
                   key={approach.title}
-                  className="p-6 transition-all border bg-card border-border hover:border-primary/30 hover:-translate-y-1 duration-300"
+                  className="p-6 transition-all border bg-card border-border hover:border-primary/30 hover:-translate-y-1 duration-300 animate-in"
+                  style={{ animationDelay: `${1.6 + index * 0.1}s` }}
                 >
                   <Icon className="w-8 h-8 mb-4 text-primary" />
                   <h3 className="text-lg font-bold mb-2 text-foreground font-jost">{approach.title}</h3>
@@ -446,7 +426,8 @@ export default function WorkPage() {
 
         {/* CTA */}
         <section
-          className="relative p-8 sm:p-12 text-center overflow-hidden border bg-card border-primary/30"
+          className="relative p-8 sm:p-12 text-center overflow-hidden border bg-card border-primary/30 animate-in"
+          style={{ animationDelay: '1.9s' }}
         >
           {/* Corner accents */}
           <div className="absolute top-0 left-0 w-20 h-20 border-t-2 border-l-2 border-primary/50" />

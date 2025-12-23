@@ -128,13 +128,10 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
       >
         <div className="max-w-7xl mx-auto w-full">
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            {/* Photo Column with its own parallax */}
+            {/* Photo Column with its own parallax - CSS entrance + motion scroll */}
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
               style={{ y: photoY }}
-              className="lg:col-span-5 order-1 lg:order-2 flex justify-center lg:justify-end md:will-change-transform"
+              className="lg:col-span-5 order-1 lg:order-2 flex justify-center lg:justify-end md:will-change-transform animate-in delay-2"
             >
               <div className="relative">
                 {/* Glowing backdrop */}
@@ -196,61 +193,41 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
               className="lg:col-span-7 order-2 lg:order-1 text-center lg:text-left md:will-change-transform"
             >
 
-              {/* Headline - BOLD and distinctive */}
-              <motion.h1
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
-                className="relative mb-6"
-              >
+              {/* Headline - BOLD and distinctive - CSS animation */}
+              <h1 className="relative mb-6 animate-in delay-1">
                 <span
                   className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight font-jost bg-gradient-to-r from-foreground from-40% via-primary/70 via-70% to-primary bg-clip-text text-transparent"
                   style={{ lineHeight: 1.1 }}
                 >
                   {heroContent.heroTitle}
                 </span>
-              </motion.h1>
+              </h1>
 
-              {/* Role badges - CSS animations for stagger without flicker */}
+              {/* Role badges - CSS animations for stagger */}
               <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 mb-8">
                 {['Systems', 'Strategy', 'Product'].map((role, i) => (
                   <span
                     key={role}
-                    className="px-4 py-2 text-xs tracking-[0.2em] uppercase border border-primary/30 text-primary font-jost bg-primary/5 backdrop-blur-sm cursor-default hover:border-primary hover:bg-primary/10 hover:shadow-lg hover:shadow-primary/20 hover:scale-105 hover:-translate-y-0.5 transition-all duration-300 opacity-0 animate-fade-up"
-                    style={{ animationDelay: `${0.5 + i * 0.1}s`, animationFillMode: 'forwards' }}
+                    className="px-4 py-2 text-xs tracking-[0.2em] uppercase border border-primary/30 text-primary font-jost bg-primary/5 backdrop-blur-sm cursor-default hover:border-primary hover:bg-primary/10 hover:shadow-lg hover:shadow-primary/20 hover:scale-105 hover:-translate-y-0.5 transition-all duration-300 animate-in"
+                    style={{ animationDelay: `${0.3 + i * 0.1}s` }}
                   >
                     {role}
                   </span>
                 ))}
               </div>
 
-              {/* Description */}
-              <motion.p
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-                className="text-xl sm:text-2xl md:text-3xl leading-relaxed mb-4 max-w-2xl mx-auto lg:mx-0 text-foreground/90 font-jost font-light"
-              >
+              {/* Description - CSS animation */}
+              <p className="text-xl sm:text-2xl md:text-3xl leading-relaxed mb-4 max-w-2xl mx-auto lg:mx-0 text-foreground/90 font-jost font-light animate-in delay-5">
                 {heroContent.heroDescription}
-              </motion.p>
+              </p>
 
-              {/* Tagline */}
-              <motion.p
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 1.0, ease: [0.25, 0.1, 0.25, 1] }}
-                className="text-lg md:text-xl mb-12 max-w-xl mx-auto lg:mx-0 text-primary font-jost font-medium"
-              >
+              {/* Tagline - CSS animation */}
+              <p className="text-lg md:text-xl mb-12 max-w-xl mx-auto lg:mx-0 text-primary font-jost font-medium animate-in delay-6">
                 {heroContent.heroHighlight}
-              </motion.p>
+              </p>
 
-              {/* CTA Buttons */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
-                className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
-              >
+              {/* CTA Buttons - CSS animation */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-in delay-7">
                 <Link href="/contact">
                   <button className="group relative px-10 py-5 font-semibold text-sm overflow-hidden bg-primary text-background uppercase tracking-[0.15em] font-jost hover:scale-[1.02] active:scale-[0.98] transition-transform duration-200">
                     <span className="relative z-10">Get in Touch</span>
@@ -266,7 +243,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                     See the Work
                   </button>
                 </Link>
-              </motion.div>
+              </div>
 
             </motion.div>
           </div>
