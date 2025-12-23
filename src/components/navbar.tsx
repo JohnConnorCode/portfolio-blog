@@ -58,7 +58,7 @@ export function Navbar() {
         className={cn(
           'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
           scrolled
-            ? 'bg-background/80 backdrop-blur-xl border-b border-primary/10 shadow-lg shadow-background/10'
+            ? 'bg-background/50 backdrop-blur-2xl border-b border-white/10 shadow-lg shadow-black/5'
             : 'bg-transparent border-b border-transparent'
         )}
       >
@@ -70,14 +70,12 @@ export function Navbar() {
             {/* Logo Section */}
             <Link href="/" className="group relative z-10">
               <div className="flex items-center gap-3">
-                {/* Logo - Shrinks on scroll */}
-                <motion.div
-                  className="relative"
-                  animate={{
-                    width: scrolled ? 40 : 48,
-                    height: scrolled ? 40 : 48,
-                  }}
-                  transition={{ duration: 0.3 }}
+                {/* Logo - Shrinks on scroll (CSS transition, no re-animation) */}
+                <div
+                  className={cn(
+                    "relative transition-all duration-300",
+                    scrolled ? "w-10 h-10" : "w-12 h-12"
+                  )}
                 >
                   {/* Ambient glow */}
                   <div className="absolute -inset-2 bg-primary/20 blur-xl rounded-full opacity-60" />
@@ -89,19 +87,23 @@ export function Navbar() {
                   <div className="absolute inset-[5px] bg-primary/10 rotate-45 transition-all group-hover:bg-primary/20" />
 
                   {/* Center accent */}
-                  <div className="absolute inset-[14px] bg-primary/30 rotate-45" />
+                  <div className={cn(
+                    "absolute bg-primary/30 rotate-45 transition-all duration-300",
+                    scrolled ? "inset-[12px]" : "inset-[14px]"
+                  )} />
 
                   {/* JC Text */}
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <motion.span
-                      animate={{ fontSize: scrolled ? '14px' : '18px' }}
-                      transition={{ duration: 0.3 }}
-                      className="font-black text-primary tracking-wide font-jost"
+                    <span
+                      className={cn(
+                        "font-black text-primary tracking-wide font-jost transition-all duration-300",
+                        scrolled ? "text-sm" : "text-lg"
+                      )}
                     >
                       JC
-                    </motion.span>
+                    </span>
                   </div>
-                </motion.div>
+                </div>
 
                 {/* Name/Title - Shows on scroll (both mobile and desktop) */}
                 <AnimatePresence>

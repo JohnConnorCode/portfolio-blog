@@ -20,14 +20,13 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
   }
   const containerRef = useRef<HTMLDivElement>(null)
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
-  const [isMobile, setIsMobile] = useState(false)
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"]
   })
 
-  // Simpler parallax - less layers, better performance
+  // Parallax transforms - applied universally, CSS handles optimization
   const heroY = useTransform(scrollYProgress, [0, 1], [0, 200])
   const heroOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
   const bgY = useTransform(scrollYProgress, [0, 1], [0, 100])
@@ -37,11 +36,6 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
   const glowScale = useTransform(scrollYProgress, [0, 0.5], [1, 1.2])
 
   useEffect(() => {
-    // Check for mobile
-    const checkMobile = () => setIsMobile(window.innerWidth < 768)
-    checkMobile()
-    window.addEventListener('resize', checkMobile)
-
     // Mouse tracking only on desktop
     const handleMouseMove = (e: MouseEvent) => {
       if (window.innerWidth >= 768) {
@@ -51,17 +45,16 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
     window.addEventListener('mousemove', handleMouseMove)
 
     return () => {
-      window.removeEventListener('resize', checkMobile)
       window.removeEventListener('mousemove', handleMouseMove)
     }
   }, [])
 
   return (
     <section ref={containerRef} className="relative min-h-screen overflow-hidden -mt-24 pt-24 bg-background">
-      {/* Gradient background - simple parallax on desktop only */}
+      {/* Gradient background with parallax */}
       <motion.div
-        style={isMobile ? {} : { y: bgY, willChange: 'transform' }}
-        className="absolute inset-0"
+        style={{ y: bgY }}
+        className="absolute inset-0 md:will-change-transform"
       >
         <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-background" />
         <div className="absolute top-0 right-0 w-[600px] h-[600px] md:w-[800px] md:h-[800px] bg-primary/5 rounded-full blur-[100px] md:blur-[150px]" />
@@ -85,24 +78,22 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
         <div className="absolute top-3/4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
       </div>
 
-      {/* Interactive glow - desktop only */}
-      {!isMobile && (
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background: `radial-gradient(
-              circle 400px at ${mousePos.x}px ${mousePos.y}px,
-              hsl(var(--primary) / 0.06),
-              transparent 50%
-            )`
-          }}
-        />
-      )}
+      {/* Interactive glow - hidden on mobile via CSS */}
+      <div
+        className="absolute inset-0 pointer-events-none hidden md:block"
+        style={{
+          background: `radial-gradient(
+            circle 400px at ${mousePos.x}px ${mousePos.y}px,
+            hsl(var(--primary) / 0.06),
+            transparent 50%
+          )`
+        }}
+      />
 
-      {/* Floating geometric accents - desktop only for performance */}
+      {/* Floating geometric accents - hidden on mobile for performance */}
       <motion.div
-        style={isMobile ? {} : { y: floatY, willChange: 'transform' }}
-        className="absolute top-20 right-10 md:right-20 w-20 md:w-32 h-20 md:h-32 opacity-10 md:opacity-20 hidden sm:block"
+        style={{ y: floatY }}
+        className="absolute top-20 right-10 md:right-20 w-20 md:w-32 h-20 md:h-32 opacity-10 md:opacity-20 hidden sm:block md:will-change-transform"
       >
         <motion.svg
           animate={{ rotate: 360 }}
@@ -129,8 +120,8 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
 
       {/* Main content wrapper with parallax */}
       <motion.div
-        style={isMobile ? { opacity: heroOpacity } : { y: heroY, opacity: heroOpacity, willChange: 'transform, opacity' }}
-        className="relative z-20 min-h-screen flex items-center px-6 sm:px-8 lg:px-16"
+        style={{ y: heroY, opacity: heroOpacity }}
+        className="relative z-20 min-h-screen flex items-center px-6 sm:px-8 lg:px-16 md:will-change-transform"
       >
         <div className="max-w-7xl mx-auto w-full">
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -139,13 +130,13 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.7, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-              style={isMobile ? {} : { y: photoY, willChange: 'transform' }}
-              className="lg:col-span-5 order-1 lg:order-2 flex justify-center lg:justify-end"
+              style={{ y: photoY }}
+              className="lg:col-span-5 order-1 lg:order-2 flex justify-center lg:justify-end md:will-change-transform"
             >
               <div className="relative">
                 {/* Glowing backdrop */}
                 <motion.div
-                  style={isMobile ? {} : { scale: glowScale }}
+                  style={{ scale: glowScale }}
                   className="absolute -inset-8 bg-gradient-to-br from-primary/20 via-primary/5 to-transparent rounded-full blur-3xl"
                 />
 
@@ -192,8 +183,8 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
 
             {/* Content Column with staggered parallax */}
             <motion.div
-              style={isMobile ? {} : { y: textY, willChange: 'transform' }}
-              className="lg:col-span-7 order-2 lg:order-1 text-center lg:text-left"
+              style={{ y: textY }}
+              className="lg:col-span-7 order-2 lg:order-1 text-center lg:text-left md:will-change-transform"
             >
 
               {/* Name - BOLD and distinctive */}
