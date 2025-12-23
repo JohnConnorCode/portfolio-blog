@@ -103,7 +103,7 @@ export function ImpactBrutal() {
             Systems at Scale
           </h2>
           <p className="text-base sm:text-lg max-w-xl mx-auto font-jost text-foreground/60">
-            Not features shipped—systems designed, built, and scaled.
+            Not features shipped. Systems designed, built, and scaled.
           </p>
         </motion.div>
 

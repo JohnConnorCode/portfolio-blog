@@ -45,9 +45,9 @@ const timeline = [
   },
   {
     period: '2024–Present',
-    title: 'SuperDebate & Accelerate',
-    role: 'Founder',
-    description: 'Building platforms for human development: SuperDebate for structured discourse and civic capability, Accelerate for Web3 builder intelligence.'
+    title: 'SuperDebate & Consulting',
+    role: 'Founder & Advisor',
+    description: 'Building SuperDebate, a vision two decades in the making to restore structured discourse. Consulting with innovative startups and advising Work+Shelter on product strategy.'
   }
 ]
 
@@ -82,7 +82,7 @@ export default function BioPage() {
               variants={childVariants}
               className="text-xl md:text-2xl text-foreground/70 leading-relaxed mb-12"
             >
-              I build technology that makes people more capable. Over 15 years, I&apos;ve founded companies, scaled products to hundreds of thousands of users, and learned that the best systems serve human flourishing—not the other way around.
+              I build technology that makes people more capable. Over 15 years, I&apos;ve founded companies, scaled products to hundreds of thousands of users, and learned that the best systems serve human flourishing. Not the other way around.
             </motion.p>
           </motion.div>
         </div>
@@ -106,7 +106,7 @@ export default function BioPage() {
 
             <motion.div variants={childVariants} className="space-y-6 text-foreground/70 text-lg leading-relaxed">
               <p>
-                I grew up on Chicago&apos;s South Side in a working-class neighborhood. Neither of my parents went to college. At 15, I was captain of my high school football team while secretly reading philosophy—Nietzsche, Plato, anything I could find.
+                I grew up on Chicago&apos;s South Side. At 15, I was captain of my high school football team while secretly reading philosophy. Nietzsche, Plato, anything I could find.
               </p>
               <p>
                 A history teacher noticed I argued about everything and pointed me toward competitive debate. That decision changed my life. I went from a kid who channeled frustration into conflict to someone who learned to channel it into rigorous thinking. By senior year, I&apos;d won the city championship and earned a full scholarship to college.
@@ -137,7 +137,7 @@ export default function BioPage() {
 
             <motion.div variants={childVariants} className="space-y-6 text-foreground/70 text-lg leading-relaxed mb-12">
               <p>
-                Today I&apos;m focused on two projects that reflect what I care about most: human development and transparent systems.
+                Today I&apos;m focused on a vision two decades in the making, and helping innovative teams build what matters.
               </p>
             </motion.div>
 
@@ -148,7 +148,7 @@ export default function BioPage() {
               >
                 <h3 className="text-xl font-bold text-foreground mb-3">SuperDebate</h3>
                 <p className="text-foreground/60 mb-4">
-                  A platform restoring structured discourse for adults. We run tournaments, support debate clubs worldwide, and host the Infinita Championship—because the ability to engage with opposing ideas is a civic skill we&apos;ve lost.
+                  A vision two decades in the making. SuperDebate restores structured discourse for adults: running tournaments, supporting debate clubs worldwide, and hosting the Infinita Championship. The ability to engage with opposing ideas is a civic skill we&apos;ve lost.
                 </p>
                 <Link href="/super-debate" className="inline-flex items-center gap-2 text-primary text-sm font-medium hover:gap-3 transition-all">
                   Learn more <ArrowRight className="w-4 h-4" />
@@ -159,12 +159,12 @@ export default function BioPage() {
                 variants={itemVariants}
                 className="p-6 rounded-xl border border-border bg-card/50 hover:border-primary/30 transition-colors"
               >
-                <h3 className="text-xl font-bold text-foreground mb-3">Accelerate</h3>
+                <h3 className="text-xl font-bold text-foreground mb-3">Consulting & Advisory</h3>
                 <p className="text-foreground/60 mb-4">
-                  Builder intelligence for Web3 ecosystems. We track real contribution and impact so funding can flow to genuine builders, not grant writers. Transparent data for better capital allocation.
+                  Working with innovative startups on product strategy and systems design. Currently advising Work+Shelter on their mission to connect housing and employment solutions.
                 </p>
-                <Link href="/accelerate" className="inline-flex items-center gap-2 text-primary text-sm font-medium hover:gap-3 transition-all">
-                  Learn more <ArrowRight className="w-4 h-4" />
+                <Link href="/contact" className="inline-flex items-center gap-2 text-primary text-sm font-medium hover:gap-3 transition-all">
+                  Get in touch <ArrowRight className="w-4 h-4" />
                 </Link>
               </motion.div>
             </div>
@@ -229,7 +229,7 @@ export default function BioPage() {
 
             <motion.div variants={childVariants} className="space-y-6 text-foreground/70 text-lg leading-relaxed">
               <p>
-                I&apos;m a systems thinker. I see products as living within ecosystems of incentives, behaviors, and constraints. The best technology doesn&apos;t fight these systems—it works with them to create compounding value.
+                I&apos;m a systems thinker. I see products as living within ecosystems of incentives, behaviors, and constraints. The best technology doesn&apos;t fight these systems. It works with them to create compounding value.
               </p>
               <p>
                 I&apos;ve learned to be skeptical of metrics that look good but don&apos;t matter. After watching startups implode chasing vanity numbers, I focus on what actually indicates health: retention, organic referrals, and whether users come back without being prompted.

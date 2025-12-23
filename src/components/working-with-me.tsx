@@ -274,7 +274,7 @@ export function WorkingWithMe() {
               {
                 icon: Brain,
                 title: 'Systems Design',
-                description: 'You have a complex problem. I design the system that solves it—not a point solution, but architecture that adapts as you grow.',
+                description: 'You have a complex problem. I design the system that solves it. Not a point solution, but architecture that adapts as you grow.',
               },
               {
                 icon: Zap,
@@ -284,7 +284,7 @@ export function WorkingWithMe() {
               {
                 icon: Rocket,
                 title: 'Hands-On Execution',
-                description: 'Not just strategy decks. I build alongside your team—from architecture through launch, including AI and automation where it matters.',
+                description: 'Not just strategy decks. I build alongside your team, from architecture through launch, including AI and automation where it matters.',
               }
             ].map((item) => {
               const Icon = item.icon

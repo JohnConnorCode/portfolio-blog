@@ -10,8 +10,8 @@ import { ScrollMarquee, ParallaxDivider } from '@/components/scroll-marquee'
 
 // Hero content
 const heroContent = {
-  heroTitle: 'I design systems.',
-  heroDescription: 'Most people build features. I design the systems underneath—the architecture, the incentives, the logic that compounds over time.',
+  heroTitle: 'JOHN CONNOR',
+  heroDescription: 'I design systems. The architecture, the incentives, the logic that compounds over time.',
   heroHighlight: 'Product strategy. Systems architecture. From zero to scale.',
   metrics: [
     { number: '15+', label: 'Years Designing', context: 'From architecture to scale' },
