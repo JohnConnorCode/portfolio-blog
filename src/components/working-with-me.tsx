@@ -6,9 +6,7 @@ import Link from 'next/link'
 import { useRef } from 'react'
 import {
   sectionWithChildrenVariants,
-  staggerOrchestrator,
   childVariants,
-  itemVariants,
   viewportOnce,
 } from '@/lib/animation-config'
 

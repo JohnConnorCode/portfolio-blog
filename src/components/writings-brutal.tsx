@@ -7,7 +7,6 @@ import { useRef } from 'react'
 import {
   sectionWithChildrenVariants,
   childVariants,
-  itemVariants,
   viewportOnce,
 } from '@/lib/animation-config'
 
