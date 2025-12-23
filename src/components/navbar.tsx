@@ -67,7 +67,12 @@ export function Navbar() {
           )}>
             {/* Logo Section */}
             <Link href="/" className="group relative z-10">
-              <div className="flex items-center gap-3">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+                className="flex items-center gap-3"
+              >
                 {/* Logo - Shrinks on scroll (CSS transition, no re-animation) */}
                 <div
                   className={cn(
@@ -124,7 +129,7 @@ export function Navbar() {
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </div>
+              </motion.div>
             </Link>
 
             {/* Desktop Navigation */}
@@ -135,8 +140,11 @@ export function Navbar() {
                 const hasSubItems = item.subItems && item.subItems.length > 0
 
                 return (
-                  <div
+                  <motion.div
                     key={item.href}
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: 0.1 + index * 0.05, ease: [0.25, 0.1, 0.25, 1] }}
                     className="relative group"
                   >
                     <Link
@@ -188,14 +196,19 @@ export function Navbar() {
                         </div>
                       </div>
                     )}
-                  </div>
+                  </motion.div>
                 )
               })}
 
               {/* Theme toggle */}
-              <div className="ml-2">
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.1 + navItems.length * 0.05, ease: [0.25, 0.1, 0.25, 1] }}
+                className="ml-2"
+              >
                 <ThemeToggle />
-              </div>
+              </motion.div>
             </div>
 
             {/* Mobile: Theme Toggle + Menu Button */}

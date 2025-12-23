@@ -203,34 +203,18 @@ export default function WorkPage() {
         </motion.div>
 
         {/* Shipped Products */}
-        <motion.section
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="mb-20"
-        >
-          <motion.h2
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-2xl font-bold mb-8 font-jost"
-          >
+        <section className="mb-20">
+          <h2 className="text-2xl font-bold mb-8 font-jost">
             <span className="text-foreground">Products </span>
             <span className="text-primary">Shipped</span>
-          </motion.h2>
+          </h2>
 
           <div className="grid md:grid-cols-2 gap-6">
-            {shippedProducts.map((project, index) => {
+            {shippedProducts.map((project) => {
               const Icon = project.icon
               return (
-                <motion.div
+                <div
                   key={project.name}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="relative group"
                 >
                   {/* Corner accents */}
@@ -274,37 +258,21 @@ export default function WorkPage() {
                       </a>
                     </div>
                   </div>
-                </motion.div>
+                </div>
               )
             })}
           </div>
-        </motion.section>
+        </section>
 
         {/* Other Projects */}
-        <motion.section
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="mb-20"
-        >
-          <motion.h2
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-xl font-bold mb-6 text-foreground/60 font-jost"
-          >
+        <section className="mb-20">
+          <h2 className="text-xl font-bold mb-6 text-foreground/60 font-jost">
             Other Projects
-          </motion.h2>
+          </h2>
           <div className="grid md:grid-cols-2 gap-4">
-            {otherProjects.map((project, index) => (
-              <motion.div
+            {otherProjects.map((project) => (
+              <div
                 key={project.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
                 className="p-4 border transition-all hover:border-primary/30 bg-card border-border"
               >
                 <div className="flex items-center justify-between mb-1">
@@ -317,10 +285,10 @@ export default function WorkPage() {
                 </div>
                 <p className="text-sm mb-2 text-foreground/70 font-jost">{project.description}</p>
                 <span className="text-xs text-primary/80 font-jost">{project.tech}</span>
-              </motion.div>
+              </div>
             ))}
           </div>
-        </motion.section>
+        </section>
 
         {/* Divider with diamond */}
         <div className="flex items-center justify-center gap-4 mb-16">
@@ -332,32 +300,16 @@ export default function WorkPage() {
         </div>
 
         {/* Experience Timeline */}
-        <motion.section
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="mb-20"
-        >
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-3xl font-bold mb-12 text-center font-jost"
-          >
+        <section className="mb-20">
+          <h2 className="text-3xl font-bold mb-12 text-center font-jost">
             <span className="text-foreground">Experience </span>
             <span className="text-primary">Timeline</span>
-          </motion.h2>
+          </h2>
 
           <div className="space-y-6">
-            {experiences.map((exp, index) => (
-              <motion.div
+            {experiences.map((exp) => (
+              <div
                 key={exp.company}
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="relative p-6 transition-all border-l-4 bg-card border-l-primary hover:bg-card/80"
               >
                 {/* Header */}
@@ -398,10 +350,10 @@ export default function WorkPage() {
                     </span>
                   ))}
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
-        </motion.section>
+        </section>
 
         {/* Divider with diamond */}
         <div className="flex items-center justify-center gap-4 mb-16">
@@ -413,23 +365,11 @@ export default function WorkPage() {
         </div>
 
         {/* Key Metrics */}
-        <motion.section
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="mb-20"
-        >
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-3xl font-bold mb-12 text-center font-jost"
-          >
+        <section className="mb-20">
+          <h2 className="text-3xl font-bold mb-12 text-center font-jost">
             <span className="text-foreground">By the </span>
             <span className="text-primary">Numbers</span>
-          </motion.h2>
+          </h2>
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {[
@@ -437,15 +377,11 @@ export default function WorkPage() {
               { icon: Code, value: '$20M+', label: 'Funding Enabled' },
               { icon: Users, value: '300K+', label: 'Users Scaled' },
               { icon: TrendingUp, value: '50+', label: 'Products Shipped' }
-            ].map((metric, index) => {
+            ].map((metric) => {
               const Icon = metric.icon
               return (
-                <motion.div
+                <div
                   key={metric.label}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: index * 0.1 }}
                   className="relative group"
                 >
                   <div className="relative p-6 text-center transition-all border bg-card border-border hover:border-primary/30 hover:-translate-y-1 duration-300">
@@ -453,11 +389,11 @@ export default function WorkPage() {
                     <p className="text-3xl font-black mb-1 text-primary font-jost">{metric.value}</p>
                     <p className="text-sm text-foreground/60 font-jost">{metric.label}</p>
                   </div>
-                </motion.div>
+                </div>
               )
             })}
           </div>
-        </motion.section>
+        </section>
 
         {/* Divider with diamond */}
         <div className="flex items-center justify-center gap-4 mb-16">
@@ -469,23 +405,11 @@ export default function WorkPage() {
         </div>
 
         {/* Approach */}
-        <motion.section
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="mb-20"
-        >
-          <motion.h2
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-2xl font-bold mb-8 font-jost"
-          >
+        <section className="mb-20">
+          <h2 className="text-2xl font-bold mb-8 font-jost">
             <span className="text-foreground">How I </span>
             <span className="text-primary">Work</span>
-          </motion.h2>
+          </h2>
 
           <div className="grid md:grid-cols-3 gap-6">
             {[
@@ -504,32 +428,24 @@ export default function WorkPage() {
                 title: 'Judge by Outcomes',
                 description: 'Ideas are cheap. I measure success by durable, compounding value, not vanity metrics or growth theater.'
               }
-            ].map((approach, index) => {
+            ].map((approach) => {
               const Icon = approach.icon
               return (
-                <motion.div
+                <div
                   key={approach.title}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: index * 0.1 }}
                   className="p-6 transition-all border bg-card border-border hover:border-primary/30 hover:-translate-y-1 duration-300"
                 >
                   <Icon className="w-8 h-8 mb-4 text-primary" />
                   <h3 className="text-lg font-bold mb-2 text-foreground font-jost">{approach.title}</h3>
                   <p className="text-sm text-foreground/70 font-jost">{approach.description}</p>
-                </motion.div>
+                </div>
               )
             })}
           </div>
-        </motion.section>
+        </section>
 
         {/* CTA */}
-        <motion.section
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+        <section
           className="relative p-8 sm:p-12 text-center overflow-hidden border bg-card border-primary/30"
         >
           {/* Corner accents */}
@@ -555,7 +471,7 @@ export default function WorkPage() {
               </span>
             </button>
           </Link>
-        </motion.section>
+        </section>
       </div>
     </section>
   )

@@ -94,7 +94,8 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
       {/* Floating geometric accents - hidden on mobile for performance */}
       <motion.div
         style={{ y: floatY }}
-        className="absolute top-20 right-10 md:right-20 w-20 md:w-32 h-20 md:h-32 opacity-10 md:opacity-20 hidden sm:block md:will-change-transform"
+        whileHover={{ scale: 1.2, opacity: 0.4 }}
+        className="absolute top-20 right-10 md:right-20 w-20 md:w-32 h-20 md:h-32 opacity-10 md:opacity-20 hidden sm:block md:will-change-transform cursor-pointer transition-opacity duration-300"
       >
         <motion.svg
           animate={{ rotate: 360 }}
@@ -107,7 +108,8 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
       </motion.div>
 
       <motion.div
-        className="absolute bottom-32 left-8 md:left-16 w-16 md:w-24 h-16 md:h-24 opacity-10 hidden sm:block"
+        whileHover={{ scale: 1.2, opacity: 0.3 }}
+        className="absolute bottom-32 left-8 md:left-16 w-16 md:w-24 h-16 md:h-24 opacity-10 hidden sm:block cursor-pointer transition-opacity duration-300"
       >
         <motion.svg
           animate={{ rotate: -360 }}
@@ -142,12 +144,12 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                 />
 
                 {/* Photo frame with accent */}
-                <div className="relative">
-                  {/* Corner accents */}
-                  <div className="absolute -top-3 -left-3 w-12 h-12 border-t-2 border-l-2 border-primary" />
-                  <div className="absolute -top-3 -right-3 w-12 h-12 border-t-2 border-r-2 border-primary" />
-                  <div className="absolute -bottom-3 -left-3 w-12 h-12 border-b-2 border-l-2 border-primary" />
-                  <div className="absolute -bottom-3 -right-3 w-12 h-12 border-b-2 border-r-2 border-primary" />
+                <div className="relative group/photo">
+                  {/* Corner accents - expand on hover */}
+                  <div className="absolute -top-3 -left-3 w-12 h-12 border-t-2 border-l-2 border-primary transition-all duration-500 group-hover/photo:w-16 group-hover/photo:h-16 group-hover/photo:-top-4 group-hover/photo:-left-4" />
+                  <div className="absolute -top-3 -right-3 w-12 h-12 border-t-2 border-r-2 border-primary transition-all duration-500 group-hover/photo:w-16 group-hover/photo:h-16 group-hover/photo:-top-4 group-hover/photo:-right-4" />
+                  <div className="absolute -bottom-3 -left-3 w-12 h-12 border-b-2 border-l-2 border-primary transition-all duration-500 group-hover/photo:w-16 group-hover/photo:h-16 group-hover/photo:-bottom-4 group-hover/photo:-left-4" />
+                  <div className="absolute -bottom-3 -right-3 w-12 h-12 border-b-2 border-r-2 border-primary transition-all duration-500 group-hover/photo:w-16 group-hover/photo:h-16 group-hover/photo:-bottom-4 group-hover/photo:-right-4" />
 
                   {/* Photo */}
                   <div className="relative w-44 h-56 sm:w-52 sm:h-64 md:w-64 md:h-80 lg:w-72 lg:h-96 overflow-hidden">
@@ -159,29 +161,30 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                         src="/John-Connor-photo.jpg"
                         alt="John Connor"
                         fill
-                        className="object-cover object-top grayscale hover:grayscale-0 transition-all duration-700 scale-110"
+                        className="object-cover object-top grayscale group-hover/photo:grayscale-0 transition-all duration-700 scale-110 group-hover/photo:scale-105"
                         priority
                         sizes="(max-width: 640px) 288px, (max-width: 768px) 320px, 360px"
                       />
                     </motion.div>
-                    {/* Overlay gradient */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60 z-10" />
+                    {/* Overlay gradient - fades on hover */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60 group-hover/photo:opacity-30 transition-opacity duration-500 z-10" />
                   </div>
 
-                  {/* Floating diamond accent - glassy */}
+                  {/* Floating diamond accent - glassy with hover */}
                   <motion.div
                     animate={{ y: [0, -10, 0], rotate: [0, 5, 0] }}
                     transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                    className="absolute -bottom-6 -left-6"
+                    className="absolute -bottom-6 -left-6 group/diamond cursor-pointer"
+                    whileHover={{ scale: 1.2, rotate: 90 }}
                   >
-                    <div className="w-12 h-12 rotate-45 border border-primary/50 bg-primary/10 backdrop-blur-md shadow-lg shadow-primary/20" />
+                    <div className="w-12 h-12 rotate-45 border border-primary/50 bg-primary/10 backdrop-blur-md shadow-lg shadow-primary/20 transition-all duration-300 group-hover/diamond:bg-primary/20 group-hover/diamond:border-primary group-hover/diamond:shadow-primary/40" />
                   </motion.div>
 
-                  {/* Small accent */}
+                  {/* Small accent - pulses and grows on photo hover */}
                   <motion.div
                     animate={{ opacity: [0.5, 1, 0.5] }}
                     transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                    className="absolute -top-4 -right-4 w-4 h-4 bg-primary"
+                    className="absolute -top-4 -right-4 w-4 h-4 bg-primary transition-all duration-300 group-hover/photo:w-5 group-hover/photo:h-5 group-hover/photo:-top-5 group-hover/photo:-right-5 group-hover/photo:shadow-lg group-hover/photo:shadow-primary/50"
                   />
                 </div>
               </div>
@@ -221,7 +224,8 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.4, delay: 0.5 + i * 0.1, ease: [0.25, 0.1, 0.25, 1] }}
-                    className="px-4 py-2 text-xs tracking-[0.2em] uppercase border border-primary/30 text-primary font-jost bg-primary/5 backdrop-blur-sm"
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    className="px-4 py-2 text-xs tracking-[0.2em] uppercase border border-primary/30 text-primary font-jost bg-primary/5 backdrop-blur-sm cursor-default hover:border-primary hover:bg-primary/10 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300"
                   >
                     {role}
                   </motion.span>
