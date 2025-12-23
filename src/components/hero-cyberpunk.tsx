@@ -124,10 +124,10 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
       {/* Main content wrapper with parallax */}
       <motion.div
         style={{ y: heroY, opacity: heroOpacity }}
-        className="relative z-20 min-h-screen flex items-center px-6 sm:px-8 lg:px-16 md:will-change-transform"
+        className="relative z-20 min-h-[calc(100vh-6rem)] sm:min-h-screen flex items-center px-4 sm:px-6 lg:px-12 py-8 md:will-change-transform"
       >
         <div className="max-w-7xl mx-auto w-full">
-          <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* Photo Column with its own parallax - CSS entrance + motion scroll */}
             <motion.div
               style={{ y: photoY }}
@@ -143,13 +143,13 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                 {/* Photo frame with accent */}
                 <div className="relative group/photo">
                   {/* Corner accents - expand on hover */}
-                  <div className="absolute -top-3 -left-3 w-12 h-12 border-t-2 border-l-2 border-primary transition-all duration-500 group-hover/photo:w-16 group-hover/photo:h-16 group-hover/photo:-top-4 group-hover/photo:-left-4" />
-                  <div className="absolute -top-3 -right-3 w-12 h-12 border-t-2 border-r-2 border-primary transition-all duration-500 group-hover/photo:w-16 group-hover/photo:h-16 group-hover/photo:-top-4 group-hover/photo:-right-4" />
-                  <div className="absolute -bottom-3 -left-3 w-12 h-12 border-b-2 border-l-2 border-primary transition-all duration-500 group-hover/photo:w-16 group-hover/photo:h-16 group-hover/photo:-bottom-4 group-hover/photo:-left-4" />
-                  <div className="absolute -bottom-3 -right-3 w-12 h-12 border-b-2 border-r-2 border-primary transition-all duration-500 group-hover/photo:w-16 group-hover/photo:h-16 group-hover/photo:-bottom-4 group-hover/photo:-right-4" />
+                  <div className="absolute -top-2 -left-2 sm:-top-3 sm:-left-3 w-8 h-8 sm:w-12 sm:h-12 border-t-2 border-l-2 border-primary transition-all duration-500 group-hover/photo:w-12 group-hover/photo:h-12 sm:group-hover/photo:w-16 sm:group-hover/photo:h-16 group-hover/photo:-top-3 group-hover/photo:-left-3 sm:group-hover/photo:-top-4 sm:group-hover/photo:-left-4" />
+                  <div className="absolute -top-2 -right-2 sm:-top-3 sm:-right-3 w-8 h-8 sm:w-12 sm:h-12 border-t-2 border-r-2 border-primary transition-all duration-500 group-hover/photo:w-12 group-hover/photo:h-12 sm:group-hover/photo:w-16 sm:group-hover/photo:h-16 group-hover/photo:-top-3 group-hover/photo:-right-3 sm:group-hover/photo:-top-4 sm:group-hover/photo:-right-4" />
+                  <div className="absolute -bottom-2 -left-2 sm:-bottom-3 sm:-left-3 w-8 h-8 sm:w-12 sm:h-12 border-b-2 border-l-2 border-primary transition-all duration-500 group-hover/photo:w-12 group-hover/photo:h-12 sm:group-hover/photo:w-16 sm:group-hover/photo:h-16 group-hover/photo:-bottom-3 group-hover/photo:-left-3 sm:group-hover/photo:-bottom-4 sm:group-hover/photo:-left-4" />
+                  <div className="absolute -bottom-2 -right-2 sm:-bottom-3 sm:-right-3 w-8 h-8 sm:w-12 sm:h-12 border-b-2 border-r-2 border-primary transition-all duration-500 group-hover/photo:w-12 group-hover/photo:h-12 sm:group-hover/photo:w-16 sm:group-hover/photo:h-16 group-hover/photo:-bottom-3 group-hover/photo:-right-3 sm:group-hover/photo:-bottom-4 sm:group-hover/photo:-right-4" />
 
                   {/* Photo */}
-                  <div className="relative w-44 h-56 sm:w-52 sm:h-64 md:w-64 md:h-80 lg:w-72 lg:h-96 overflow-hidden">
+                  <div className="relative w-48 h-60 sm:w-56 sm:h-72 md:w-64 md:h-80 lg:w-72 lg:h-[22rem] overflow-hidden">
                     <motion.div
                       style={{ y: imageY }}
                       className="absolute inset-0 md:will-change-transform"
@@ -169,19 +169,19 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
 
                   {/* Floating diamond accent - glassy with stronger presence */}
                   <motion.div
-                    animate={{ y: [0, -10, 0], rotate: [0, 5, 0] }}
+                    animate={{ y: [0, -8, 0], rotate: [0, 5, 0] }}
                     transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                    className="absolute -bottom-6 -left-6 group/diamond cursor-pointer"
+                    className="absolute -bottom-4 -left-4 sm:-bottom-6 sm:-left-6 group/diamond cursor-pointer"
                     whileHover={{ scale: 1.2, rotate: 90 }}
                   >
-                    <div className="w-12 h-12 rotate-45 border-2 border-primary/80 bg-primary/50 backdrop-blur-md shadow-lg shadow-primary/40 ring-1 ring-white/10 transition-all duration-300 group-hover/diamond:bg-primary/70 group-hover/diamond:border-primary group-hover/diamond:shadow-primary/60" />
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rotate-45 border-2 border-primary/80 bg-primary/50 backdrop-blur-md shadow-lg shadow-primary/40 ring-1 ring-white/10 transition-all duration-300 group-hover/diamond:bg-primary/70 group-hover/diamond:border-primary group-hover/diamond:shadow-primary/60" />
                   </motion.div>
 
                   {/* Small accent - pulses and grows on photo hover */}
                   <motion.div
                     animate={{ opacity: [0.5, 1, 0.5] }}
                     transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                    className="absolute -top-4 -right-4 w-4 h-4 bg-primary transition-all duration-300 group-hover/photo:w-5 group-hover/photo:h-5 group-hover/photo:-top-5 group-hover/photo:-right-5 group-hover/photo:shadow-lg group-hover/photo:shadow-primary/50"
+                    className="absolute -top-3 -right-3 sm:-top-4 sm:-right-4 w-3 h-3 sm:w-4 sm:h-4 bg-primary transition-all duration-300 group-hover/photo:w-4 group-hover/photo:h-4 sm:group-hover/photo:w-5 sm:group-hover/photo:h-5 group-hover/photo:-top-4 group-hover/photo:-right-4 sm:group-hover/photo:-top-5 sm:group-hover/photo:-right-5 group-hover/photo:shadow-lg group-hover/photo:shadow-primary/50"
                   />
                 </div>
               </div>
@@ -194,21 +194,27 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
             >
 
               {/* Headline - BOLD and distinctive - CSS animation */}
-              <h1 className="relative mb-6 animate-in delay-1">
+              <h1 className="relative mb-4 sm:mb-6 animate-in delay-1">
                 <span
-                  className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight font-jost bg-gradient-to-r from-foreground from-40% via-primary/70 via-70% to-primary bg-clip-text text-transparent"
-                  style={{ lineHeight: 1.1 }}
+                  className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight font-jost text-foreground"
+                  style={{ lineHeight: 1 }}
                 >
-                  {heroContent.heroTitle}
+                  JOHN
+                </span>
+                <span
+                  className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight font-jost bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent"
+                  style={{ lineHeight: 1 }}
+                >
+                  CONNOR
                 </span>
               </h1>
 
               {/* Role badges - CSS animations for stagger */}
-              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 mb-8">
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 sm:gap-3 mb-6 sm:mb-8">
                 {['Systems', 'Strategy', 'Product'].map((role, i) => (
                   <span
                     key={role}
-                    className="px-4 py-2 text-xs tracking-[0.2em] uppercase border border-primary/30 text-primary font-jost bg-primary/5 backdrop-blur-sm cursor-default hover:border-primary hover:bg-primary/10 hover:shadow-lg hover:shadow-primary/20 hover:scale-105 hover:-translate-y-0.5 transition-all duration-300 animate-in"
+                    className="px-3 sm:px-4 py-1.5 sm:py-2 text-[10px] sm:text-xs tracking-[0.15em] sm:tracking-[0.2em] uppercase border border-primary/30 text-primary font-jost bg-primary/5 backdrop-blur-sm cursor-default hover:border-primary hover:bg-primary/10 hover:shadow-lg hover:shadow-primary/20 hover:scale-105 hover:-translate-y-0.5 transition-all duration-300 animate-in"
                     style={{ animationDelay: `${0.15 + i * 0.04}s` }}
                   >
                     {role}
@@ -217,19 +223,19 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
               </div>
 
               {/* Description - CSS animation */}
-              <p className="text-xl sm:text-2xl md:text-3xl leading-relaxed mb-4 max-w-2xl mx-auto lg:mx-0 text-foreground/90 font-jost font-light animate-in delay-5">
+              <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl leading-relaxed mb-3 sm:mb-4 max-w-2xl mx-auto lg:mx-0 text-foreground/90 font-jost font-light animate-in delay-5">
                 {heroContent.heroDescription}
               </p>
 
               {/* Tagline - CSS animation */}
-              <p className="text-lg md:text-xl mb-12 max-w-xl mx-auto lg:mx-0 text-primary font-jost font-medium animate-in delay-6">
+              <p className="text-base sm:text-lg md:text-xl mb-8 sm:mb-10 max-w-xl mx-auto lg:mx-0 text-primary font-jost font-medium animate-in delay-6">
                 {heroContent.heroHighlight}
               </p>
 
               {/* CTA Buttons - CSS animation */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-in delay-7">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start animate-in delay-7">
                 <Link href="/contact">
-                  <button className="group relative px-10 py-5 font-semibold text-sm overflow-hidden bg-primary text-background uppercase tracking-[0.15em] font-jost hover:scale-[1.02] active:scale-[0.98] transition-transform duration-200">
+                  <button className="group relative px-8 sm:px-10 py-4 sm:py-5 font-semibold text-xs sm:text-sm overflow-hidden bg-primary text-background uppercase tracking-[0.12em] sm:tracking-[0.15em] font-jost hover:scale-[1.02] active:scale-[0.98] transition-transform duration-200">
                     <span className="relative z-10">Get in Touch</span>
                     <div className="absolute inset-0 bg-foreground transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
                     <span className="absolute inset-0 flex items-center justify-center text-background opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
@@ -239,7 +245,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                 </Link>
 
                 <Link href="/work">
-                  <button className="px-10 py-5 font-semibold text-sm bg-transparent text-foreground border-2 border-foreground/20 hover:border-primary hover:text-primary uppercase tracking-[0.15em] font-jost transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]">
+                  <button className="px-8 sm:px-10 py-4 sm:py-5 font-semibold text-xs sm:text-sm bg-transparent text-foreground border-2 border-foreground/20 hover:border-primary hover:text-primary uppercase tracking-[0.12em] sm:tracking-[0.15em] font-jost transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]">
                     See the Work
                   </button>
                 </Link>
