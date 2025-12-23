@@ -140,7 +140,7 @@ export function Navbar() {
                   <div
                     key={item.href}
                     className="relative group animate-in"
-                    style={{ animationDelay: `${0.25 + index * 0.05}s` }}
+                    style={{ animationDelay: `${0.3 + index * 0.12}s` }}
                   >
                     <Link
                       href={item.href}
@@ -198,7 +198,7 @@ export function Navbar() {
               {/* Theme toggle */}
               <div
                 className="ml-2 animate-in"
-                style={{ animationDelay: `${0.25 + navItems.length * 0.05}s` }}
+                style={{ animationDelay: `${0.3 + navItems.length * 0.12}s` }}
               >
                 <ThemeToggle />
               </div>
