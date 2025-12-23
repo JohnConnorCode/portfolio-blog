@@ -131,7 +131,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
             {/* Photo Column with its own parallax - CSS entrance + motion scroll */}
             <motion.div
               style={{ y: photoY }}
-              className="lg:col-span-5 order-1 lg:order-2 flex justify-center lg:justify-end md:will-change-transform animate-in delay-2"
+              className="lg:col-span-5 order-1 lg:order-2 flex justify-center lg:justify-end md:will-change-transform animate-in delay-1"
             >
               <div className="relative">
                 {/* Glowing backdrop */}
@@ -194,7 +194,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
             >
 
               {/* Headline - BOLD and distinctive - CSS animation */}
-              <h1 className="relative mb-4 sm:mb-6 animate-in delay-1">
+              <h1 className="relative mb-4 sm:mb-6 animate-in delay-0">
                 <span
                   className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight font-jost text-foreground"
                   style={{ lineHeight: 1 }}
@@ -215,7 +215,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                   <span
                     key={role}
                     className="px-3 sm:px-4 py-1.5 sm:py-2 text-[10px] sm:text-xs tracking-[0.15em] sm:tracking-[0.2em] uppercase border border-primary/30 text-primary font-jost bg-primary/5 backdrop-blur-sm cursor-default hover:border-primary hover:bg-primary/10 hover:shadow-lg hover:shadow-primary/20 hover:scale-105 hover:-translate-y-0.5 transition-all duration-300 animate-in"
-                    style={{ animationDelay: `${0.15 + i * 0.04}s` }}
+                    style={{ animationDelay: `${0.2 + i * 0.12}s` }}
                   >
                     {role}
                   </span>
@@ -223,17 +223,17 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
               </div>
 
               {/* Description - CSS animation */}
-              <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl leading-relaxed mb-3 sm:mb-4 max-w-2xl mx-auto lg:mx-0 text-foreground/90 font-jost font-light animate-in delay-5">
+              <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl leading-relaxed mb-3 sm:mb-4 max-w-2xl mx-auto lg:mx-0 text-foreground/90 font-jost font-light animate-in delay-4">
                 {heroContent.heroDescription}
               </p>
 
               {/* Tagline - CSS animation */}
-              <p className="text-base sm:text-lg md:text-xl mb-8 sm:mb-10 max-w-xl mx-auto lg:mx-0 text-primary font-jost font-medium animate-in delay-6">
+              <p className="text-base sm:text-lg md:text-xl mb-8 sm:mb-10 max-w-xl mx-auto lg:mx-0 text-primary font-jost font-medium animate-in delay-5">
                 {heroContent.heroHighlight}
               </p>
 
               {/* CTA Buttons - CSS animation */}
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start animate-in delay-7">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start animate-in delay-6">
                 <Link href="/contact">
                   <button className="group relative px-8 sm:px-10 py-4 sm:py-5 font-semibold text-xs sm:text-sm overflow-hidden bg-primary text-background uppercase tracking-[0.12em] sm:tracking-[0.15em] font-jost hover:scale-[1.02] active:scale-[0.98] transition-transform duration-200">
                     <span className="relative z-10">Get in Touch</span>

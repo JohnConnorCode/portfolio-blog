@@ -145,16 +145,20 @@ export function WorkingWithMe() {
             </p>
           </motion.div>
 
-          <motion.div
-            variants={staggerOrchestrator}
-            className="grid md:grid-cols-4 gap-6"
-          >
-            {process.map((phase) => {
+          <div className="grid md:grid-cols-4 gap-6">
+            {process.map((phase, index) => {
               const Icon = phase.icon
               return (
                 <motion.div
                   key={phase.phase}
-                  variants={itemVariants}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{
+                    duration: 0.5,
+                    delay: index * 0.1,
+                    ease: [0.25, 0.1, 0.25, 1]
+                  }}
                   whileHover={{ y: -4 }}
                   className="relative group"
                 >
@@ -191,7 +195,7 @@ export function WorkingWithMe() {
                 </motion.div>
               )
             })}
-          </motion.div>
+          </div>
         </motion.div>
 
         {/* Working Principles */}
@@ -211,16 +215,20 @@ export function WorkingWithMe() {
             </p>
           </motion.div>
 
-          <motion.div
-            variants={staggerOrchestrator}
-            className="grid md:grid-cols-2 gap-6"
-          >
-            {principles.map((principle) => {
+          <div className="grid md:grid-cols-2 gap-6">
+            {principles.map((principle, index) => {
               const Icon = principle.icon
               return (
                 <motion.div
                   key={principle.title}
-                  variants={itemVariants}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{
+                    duration: 0.5,
+                    delay: index * 0.1,
+                    ease: [0.25, 0.1, 0.25, 1]
+                  }}
                   whileHover={{ y: -4 }}
                   className="group"
                 >
@@ -246,7 +254,7 @@ export function WorkingWithMe() {
                 </motion.div>
               )
             })}
-          </motion.div>
+          </div>
         </motion.div>
 
         {/* How I Help */}
@@ -266,10 +274,7 @@ export function WorkingWithMe() {
             </p>
           </motion.div>
 
-          <motion.div
-            variants={staggerOrchestrator}
-            className="grid md:grid-cols-3 gap-6"
-          >
+          <div className="grid md:grid-cols-3 gap-6">
             {[
               {
                 icon: Brain,
@@ -286,12 +291,19 @@ export function WorkingWithMe() {
                 title: 'Hands-On Execution',
                 description: 'Not just strategy decks. I build alongside your team, from architecture through launch, including AI and automation where it matters.',
               }
-            ].map((item) => {
+            ].map((item, index) => {
               const Icon = item.icon
               return (
                 <motion.div
                   key={item.title}
-                  variants={itemVariants}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{
+                    duration: 0.5,
+                    delay: index * 0.12,
+                    ease: [0.25, 0.1, 0.25, 1]
+                  }}
                   whileHover={{ y: -4 }}
                   className="group"
                 >
@@ -315,7 +327,7 @@ export function WorkingWithMe() {
                 </motion.div>
               )
             })}
-          </motion.div>
+          </div>
         </motion.div>
 
         {/* CTA */}

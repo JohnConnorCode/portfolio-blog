@@ -91,13 +91,13 @@ export default function BioPage() {
 
             <motion.div variants={childVariants} className="space-y-6 text-foreground/70 text-lg leading-relaxed">
               <p>
-                I grew up on Chicago&apos;s South Side. At 15, I was captain of my high school football team while secretly reading philosophy. Nietzsche, Plato, anything I could find.
+                I grew up on Chicago&apos;s South Side. Played football in middle school, but by my teenage years I&apos;d become a community organizer, focused on honesty in military recruitment and other causes that mattered to kids like me.
               </p>
               <p>
-                A history teacher noticed I argued about everything and pointed me toward competitive debate. That decision changed my life. I went from a kid who channeled frustration into conflict to someone who learned to channel it into rigorous thinking. By senior year, I&apos;d won the city championship and earned a full scholarship to college.
+                I earned a full scholarship to Carthage College for debate and won a championship there. But college felt like the wrong path, so I dropped out to work on the Chicago Free Skool, an alternative education project building the kind of learning I wished I&apos;d had.
               </p>
               <p>
-                What debate taught me wasn&apos;t how to win arguments. It was how to stress-test ideas, analyze complex systems quickly, and genuinely understand people who see the world differently. Those skills have informed everything I&apos;ve built since.
+                After that, I lived across the country. LA, Miami, Savannah. Eventually I settled in Portland to start my career building products. Each place taught me something different about how people live and what they actually need.
               </p>
             </motion.div>
           </motion.div>

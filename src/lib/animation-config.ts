@@ -102,17 +102,37 @@ export const sectionVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
 }
 
-// DEPRECATED: Don't use these - they cause propagation bugs
-// Keeping for backwards compat but they're neutered (no staggerChildren)
-export const sectionWithChildrenVariants = sectionVariants
+// Section with staggered children - use for groups of cards/items
+export const sectionWithChildrenVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      duration: 0.3,
+      staggerChildren: 0.1,
+      delayChildren: 0.1
+    }
+  }
+}
 export const childVariants = {
   hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4 } }
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5 }
+  }
 }
-export const itemVariants = childVariants
+export const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5 }
+  }
+}
 export const pageHeaderVariants = {
   hidden: {},
-  visible: { transition: { duration: 0.1 } }
+  visible: { transition: { staggerChildren: 0.1 } }
 }
 export const decoratorVariants = {
   hidden: { opacity: 0, scale: 0.8 },
@@ -121,7 +141,12 @@ export const decoratorVariants = {
 export const titleVariants = childVariants
 export const staggerOrchestrator = {
   hidden: {},
-  visible: { transition: { duration: 0.1 } }
+  visible: {
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0
+    }
+  }
 }
 export const fadeInUpDelayed = {
   initial: { opacity: 0, y: 20 },

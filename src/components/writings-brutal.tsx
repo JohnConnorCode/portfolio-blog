@@ -104,19 +104,20 @@ export function WritingsBrutal() {
         </motion.div>
 
         {/* Writing cards */}
-        <motion.div
-          variants={sectionWithChildrenVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportOnce}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12"
-        >
-          {writings.map((writing) => {
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+          {writings.map((writing, index) => {
             const Icon = writing.icon
             return (
               <motion.article
                 key={writing.title}
-                variants={itemVariants}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{
+                  duration: 0.5,
+                  delay: index * 0.12,
+                  ease: [0.25, 0.1, 0.25, 1]
+                }}
                 whileHover={{ y: -4 }}
                 className={`group ${writing.featured ? 'md:col-span-2' : ''}`}
               >
@@ -159,7 +160,7 @@ export function WritingsBrutal() {
               </motion.article>
             )
           })}
-        </motion.div>
+        </div>
 
         {/* CTA */}
         <motion.div
