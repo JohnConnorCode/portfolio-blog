@@ -7,26 +7,26 @@ import { useRef } from 'react'
 const impacts = [
   {
     number: "15+",
-    label: "Years in Product",
-    context: "Led product at top apps",
+    label: "Years Designing",
+    context: "From architecture to scale",
     icon: Trophy,
   },
   {
     number: "$20M+",
-    label: "Funding Enabled",
-    context: "Built and advised",
+    label: "Outcomes Enabled",
+    context: "Strategy that compounds",
     icon: Code,
   },
   {
     number: "300K+",
-    label: "Users Scaled",
-    context: "From traction to growth",
+    label: "Users Served",
+    context: "Systems that work",
     icon: Zap,
   },
   {
     number: "50+",
     label: "Products Shipped",
-    context: "Web3, AI, marketplaces",
+    context: "AI, Web3, marketplaces",
     icon: Users,
   }
 ]
@@ -55,7 +55,7 @@ export function ImpactBrutal() {
           className="absolute top-1/4 left-0 right-0 whitespace-nowrap"
         >
           <span className="text-[12vw] font-bold tracking-tight text-primary/[0.04] font-jost">
-            BUILDER &nbsp; STRATEGIST &nbsp; FOUNDER &nbsp; BUILDER &nbsp; STRATEGIST &nbsp; FOUNDER
+            SYSTEMS &nbsp; ARCHITECT &nbsp; DESIGNER &nbsp; SYSTEMS &nbsp; ARCHITECT &nbsp; DESIGNER
           </span>
         </motion.div>
         <motion.div
@@ -63,7 +63,7 @@ export function ImpactBrutal() {
           className="absolute top-2/3 left-0 right-0 whitespace-nowrap"
         >
           <span className="text-[8vw] font-bold tracking-tight text-primary/[0.04] font-jost">
-            PRODUCT &nbsp; LAUNCH &nbsp; SCALE &nbsp; PRODUCT &nbsp; LAUNCH &nbsp; SCALE
+            STRATEGY &nbsp; BUILD &nbsp; COMPOUND &nbsp; STRATEGY &nbsp; BUILD &nbsp; COMPOUND
           </span>
         </motion.div>
       </div>
@@ -100,10 +100,10 @@ export function ImpactBrutal() {
           </div>
 
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 font-jost text-foreground tracking-wide">
-            Track Record
+            Systems at Scale
           </h2>
           <p className="text-base sm:text-lg max-w-xl mx-auto font-jost text-foreground/60">
-            Products built, companies scaled, systems shipped
+            Not features shipped—systems designed, built, and scaled.
           </p>
         </motion.div>
 
@@ -172,7 +172,7 @@ export function ImpactBrutal() {
           className="text-center mt-12"
         >
           <p className="text-sm uppercase tracking-[0.2em] font-jost text-foreground/40">
-            Building what <span className="text-primary">actually works</span>
+            The best systems <span className="text-primary">disappear into how things just work</span>
           </p>
         </motion.div>
       </motion.div>

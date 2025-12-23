@@ -50,6 +50,10 @@ const config: Config = {
           '0%': { opacity: '0', transform: 'translateY(10px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
+        'fade-in-down': {
+          '0%': { opacity: '0', transform: 'translateY(-20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
         'fade-up': {
           '0%': { opacity: '0', transform: 'translateY(20px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
@@ -67,8 +71,9 @@ const config: Config = {
         },
       },
       animation: {
-        'fade-in': 'fade-in 0.5s ease-out',
-        'fade-up': 'fade-up 0.5s ease-out',
+        'fade-in': 'fade-in 0.5s ease-out forwards',
+        'fade-in-down': 'fade-in-down 0.5s ease-out forwards',
+        'fade-up': 'fade-up 0.5s ease-out forwards',
         shimmer: 'shimmer 2s infinite',
         float: 'float 3s ease-in-out infinite',
         glow: 'glow 2s ease-in-out infinite',

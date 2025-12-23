@@ -61,11 +61,11 @@ export function CallToAction() {
           </motion.div>
 
           <motion.h2 variants={childVariants} className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 font-jost text-foreground tracking-wide">
-            Ready to Ship?
+            Let&apos;s Create a Solution
           </motion.h2>
 
           <motion.p variants={childVariants} className="text-base sm:text-lg md:text-xl mb-10 max-w-2xl mx-auto font-jost text-foreground/70">
-            Tell me what you&apos;re building.
+            You have a problem that needs a system, not a feature.
           </motion.p>
 
           <motion.div variants={childVariants} className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -73,7 +73,7 @@ export function CallToAction() {
               <button
                 className="group relative px-8 sm:px-10 py-4 sm:py-5 font-semibold text-sm sm:text-base flex items-center justify-center gap-3 overflow-hidden font-jost bg-foreground text-background tracking-widest uppercase hover:bg-primary transition-colors duration-300"
               >
-                <span className="relative z-10">Start a Conversation</span>
+                <span className="relative z-10">Start the Conversation</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform relative z-10" />
               </button>
             </Link>
@@ -82,7 +82,7 @@ export function CallToAction() {
               <button
                 className="px-8 sm:px-10 py-4 sm:py-5 font-medium text-sm sm:text-base transition-all duration-300 font-jost bg-transparent text-foreground border border-foreground/30 hover:border-primary hover:text-primary tracking-widest uppercase"
               >
-                View My Work
+                See Systems I&apos;ve Built
               </button>
             </Link>
           </motion.div>

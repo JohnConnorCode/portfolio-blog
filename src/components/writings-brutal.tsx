@@ -96,10 +96,10 @@ export function WritingsBrutal() {
           </motion.div>
 
           <motion.h2 variants={childVariants} className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 font-jost text-foreground tracking-wide">
-            Thought Leadership
+            Thinking in Systems
           </motion.h2>
           <motion.p variants={childVariants} className="text-base sm:text-lg max-w-xl mx-auto font-jost text-foreground/60">
-            Strategic insights on technology, community, and human potential
+            Essays on product strategy, AI automation, and building what actually works.
           </motion.p>
         </motion.div>
 

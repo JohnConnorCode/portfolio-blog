@@ -61,23 +61,23 @@ const process = [
 
 const principles = [
   {
-    title: 'Radical Transparency',
-    description: 'No black boxes. You understand every system we build and own the IP.',
+    title: 'Systems Over Features',
+    description: 'Features add complexity. Systems reduce it.',
     icon: Eye
   },
   {
-    title: 'Speed to Value',
-    description: 'First measurable impact within 2 weeks, not months.',
+    title: 'Speed to Signal',
+    description: 'Find what works in weeks, not quarters.',
     icon: Zap
   },
   {
-    title: 'Human-Centered',
-    description: 'Technology serves your team, not the other way around.',
+    title: 'Compound Value',
+    description: 'Every system I build should get better with time.',
     icon: Users
   },
   {
-    title: 'Holistic Solutions',
-    description: 'Strategy, technology, and execution that work together, not siloed deliverables.',
+    title: 'Human Amplification',
+    description: 'Technology that makes people more capable, not more dependent.',
     icon: Unlock
   }
 ]
@@ -121,10 +121,10 @@ export function WorkingWithMe() {
           </motion.div>
 
           <motion.h2 variants={childVariants} className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 font-jost text-foreground tracking-wide">
-            Working Together
+            How I Work
           </motion.h2>
           <motion.p variants={childVariants} className="text-base sm:text-lg max-w-2xl mx-auto font-jost text-foreground/60">
-            Product strategy, technology strategy, and hands-on execution.
+            I don&apos;t build features. I design systems that solve problems once.
           </motion.p>
         </motion.div>
 
@@ -259,10 +259,10 @@ export function WorkingWithMe() {
         >
           <motion.div variants={childVariants} className="text-center mb-12">
             <h3 className="text-2xl sm:text-3xl font-bold mb-3 font-jost text-foreground">
-              How I <span className="text-primary">Help</span>
+              What I <span className="text-primary">Deliver</span>
             </h3>
             <p className="text-base font-jost text-foreground/50">
-              Strategy through implementation.
+              From problem to working system.
             </p>
           </motion.div>
 
@@ -273,18 +273,18 @@ export function WorkingWithMe() {
             {[
               {
                 icon: Brain,
-                title: 'Product Strategy',
-                description: 'Finding product-market fit. Cutting through noise to identify what actually matters for your users and business.',
+                title: 'Systems Design',
+                description: 'You have a complex problem. I design the system that solves it—not a point solution, but architecture that adapts as you grow.',
               },
               {
                 icon: Zap,
-                title: 'Technology Strategy',
-                description: 'Stack selection, MVP prototyping, build vs. buy decisions. The right technical choices at the right time.',
+                title: 'Product Strategy',
+                description: 'Finding product-market fit isn\'t about more features. It\'s about understanding the system your users are already in, and meeting them there.',
               },
               {
                 icon: Rocket,
                 title: 'Hands-On Execution',
-                description: 'Not just strategy decks. I build alongside your team from architecture through launch.',
+                description: 'Not just strategy decks. I build alongside your team—from architecture through launch, including AI and automation where it matters.',
               }
             ].map((item) => {
               const Icon = item.icon

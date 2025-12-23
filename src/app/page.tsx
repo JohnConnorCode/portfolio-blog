@@ -8,16 +8,16 @@ import { SectionDivider } from '@/components/section-divider'
 import { StructuredData } from '@/components/structured-data'
 import { ScrollMarquee, ParallaxDivider } from '@/components/scroll-marquee'
 
-// Default hero content
+// Hero content
 const heroContent = {
-  heroTitle: 'JOHN CONNOR',
-  heroDescription: 'Builder of systems that scale.',
-  heroHighlight: 'From zero to product-market fit.',
+  heroTitle: 'I design systems.',
+  heroDescription: 'Most people build features. I design the systems underneath—the architecture, the incentives, the logic that compounds over time.',
+  heroHighlight: 'Product strategy. Systems architecture. From zero to scale.',
   metrics: [
-    { number: '15+', label: 'Years in Product', context: 'Led product at top apps' },
-    { number: '$20M+', label: 'Funding Enabled', context: 'Across companies I\'ve built and advised' },
-    { number: '300K+', label: 'Users Scaled', context: 'From early traction to growth' },
-    { number: '50+', label: 'Products Shipped', context: 'Web3, AI, marketplaces, mobile' }
+    { number: '15+', label: 'Years Designing', context: 'From architecture to scale' },
+    { number: '$20M+', label: 'Outcomes Enabled', context: 'Strategy that compounds' },
+    { number: '300K+', label: 'Users Served', context: 'Systems that work' },
+    { number: '50+', label: 'Products Shipped', context: 'AI, Web3, marketplaces' }
   ]
 }
 
@@ -29,7 +29,7 @@ export default function Home() {
       <HeroCyberpunk content={heroContent} />
 
       {/* Scrolling text marquee */}
-      <ScrollMarquee text="PRODUCT • STRATEGY • LAUNCH • SCALE •" direction="left" />
+      <ScrollMarquee text="SYSTEMS • STRATEGY • PRODUCT • SCALE •" direction="left" />
 
       <ImpactBrutal />
 
@@ -38,7 +38,7 @@ export default function Home() {
       <SuperDebateHero />
 
       {/* Another marquee in opposite direction */}
-      <ScrollMarquee text="BUILD • SHIP • ITERATE • GROW •" direction="right" />
+      <ScrollMarquee text="DESIGN • BUILD • SHIP • COMPOUND •" direction="right" />
 
       <ParallaxDivider />
 

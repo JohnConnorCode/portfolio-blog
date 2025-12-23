@@ -187,7 +187,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
               className="lg:col-span-7 order-2 lg:order-1 text-center lg:text-left md:will-change-transform"
             >
 
-              {/* Name - BOLD and distinctive */}
+              {/* Headline - BOLD and distinctive */}
               <motion.h1
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -195,16 +195,10 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                 className="relative mb-6"
               >
                 <span
-                  className="block text-6xl sm:text-7xl md:text-8xl lg:text-[7rem] font-bold tracking-tight text-foreground font-jost"
-                  style={{ lineHeight: 0.9 }}
+                  className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight font-jost bg-gradient-to-r from-foreground via-foreground to-primary bg-clip-text text-transparent"
+                  style={{ lineHeight: 1.1 }}
                 >
-                  JOHN
-                </span>
-                <span
-                  className="block text-6xl sm:text-7xl md:text-8xl lg:text-[7rem] font-bold tracking-tight font-jost bg-gradient-to-r from-primary via-primary to-foreground bg-clip-text text-transparent"
-                  style={{ lineHeight: 0.9 }}
-                >
-                  CONNOR
+                  {heroContent.heroTitle}
                 </span>
               </motion.h1>
 
@@ -215,7 +209,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                 transition={{ duration: 0.5, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
                 className="flex flex-wrap items-center justify-center lg:justify-start gap-3 mb-8"
               >
-                {['Product', 'Strategy', 'Launch'].map((role, i) => (
+                {['Systems', 'Strategy', 'Product'].map((role, i) => (
                   <motion.span
                     key={role}
                     initial={{ opacity: 0, scale: 0.8 }}

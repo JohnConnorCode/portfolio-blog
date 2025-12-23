@@ -52,12 +52,9 @@ export function Navbar() {
 
   return (
     <>
-      <motion.nav
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
+      <nav
         className={cn(
-          'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
+          'fixed top-0 left-0 right-0 z-50 transition-all duration-500 animate-fade-in-down',
           scrolled
             ? 'bg-background/50 backdrop-blur-2xl border-b border-white/10 shadow-lg shadow-black/5'
             : 'bg-transparent border-b border-transparent'
@@ -138,12 +135,10 @@ export function Navbar() {
                 const hasSubItems = item.subItems && item.subItems.length > 0
 
                 return (
-                  <motion.div
+                  <div
                     key={item.href}
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: index * 0.05 }}
-                    className="relative group"
+                    className="relative group animate-fade-in"
+                    style={{ animationDelay: `${index * 50}ms` }}
                   >
                     <Link
                       href={item.href}
@@ -194,54 +189,52 @@ export function Navbar() {
                         </div>
                       </div>
                     )}
-                  </motion.div>
+                  </div>
                 )
               })}
 
               {/* Theme toggle */}
-              <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: navItems.length * 0.05 }}
-                className="ml-2"
+              <div
+                className="ml-2 animate-fade-in"
+                style={{ animationDelay: `${navItems.length * 50}ms` }}
               >
                 <ThemeToggle />
-              </motion.div>
+              </div>
             </div>
 
             {/* Mobile: Theme Toggle + Menu Button */}
             <div className="md:hidden flex items-center gap-2">
               <ThemeToggle />
-              <motion.button
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.3 }}
+              <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="p-2 rounded-lg hover:bg-foreground/5 transition-colors relative z-10"
+                className="p-2 rounded-lg hover:bg-foreground/5 transition-colors relative z-10 animate-fade-in"
                 aria-label="Toggle menu"
               >
                 <div className="w-6 h-6 relative flex items-center justify-center">
-                  <motion.span
-                    animate={isOpen ? { rotate: 45, y: 0 } : { rotate: 0, y: -5 }}
-                    transition={{ duration: 0.2 }}
-                    className="absolute w-5 h-0.5 bg-foreground rounded-full"
+                  <span
+                    className={cn(
+                      "absolute w-5 h-0.5 bg-foreground rounded-full transition-all duration-200",
+                      isOpen ? "rotate-45 translate-y-0" : "rotate-0 -translate-y-[5px]"
+                    )}
                   />
-                  <motion.span
-                    animate={isOpen ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
-                    transition={{ duration: 0.2 }}
-                    className="absolute w-5 h-0.5 bg-foreground rounded-full"
+                  <span
+                    className={cn(
+                      "absolute w-5 h-0.5 bg-foreground rounded-full transition-all duration-200",
+                      isOpen ? "opacity-0 scale-x-0" : "opacity-100 scale-x-100"
+                    )}
                   />
-                  <motion.span
-                    animate={isOpen ? { rotate: -45, y: 0 } : { rotate: 0, y: 5 }}
-                    transition={{ duration: 0.2 }}
-                    className="absolute w-5 h-0.5 bg-foreground rounded-full"
+                  <span
+                    className={cn(
+                      "absolute w-5 h-0.5 bg-foreground rounded-full transition-all duration-200",
+                      isOpen ? "-rotate-45 translate-y-0" : "rotate-0 translate-y-[5px]"
+                    )}
                   />
                 </div>
-              </motion.button>
+              </button>
             </div>
           </div>
         </div>
-      </motion.nav>
+      </nav>
 
       {/* Mobile Menu - Full screen overlay */}
       <AnimatePresence>
