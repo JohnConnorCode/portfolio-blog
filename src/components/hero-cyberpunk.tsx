@@ -170,14 +170,14 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                     <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60 group-hover/photo:opacity-30 transition-opacity duration-500 z-10" />
                   </div>
 
-                  {/* Floating diamond accent - glassy with hover */}
+                  {/* Floating diamond accent - more opaque with hover */}
                   <motion.div
                     animate={{ y: [0, -10, 0], rotate: [0, 5, 0] }}
                     transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                     className="absolute -bottom-6 -left-6 group/diamond cursor-pointer"
                     whileHover={{ scale: 1.2, rotate: 90 }}
                   >
-                    <div className="w-12 h-12 rotate-45 border border-primary/50 bg-primary/10 backdrop-blur-md shadow-lg shadow-primary/20 transition-all duration-300 group-hover/diamond:bg-primary/20 group-hover/diamond:border-primary group-hover/diamond:shadow-primary/40" />
+                    <div className="w-12 h-12 rotate-45 border-2 border-primary bg-primary/30 backdrop-blur-sm shadow-lg shadow-primary/30 transition-all duration-300 group-hover/diamond:bg-primary/50 group-hover/diamond:border-primary group-hover/diamond:shadow-primary/50" />
                   </motion.div>
 
                   {/* Small accent - pulses and grows on photo hover */}
@@ -211,12 +211,13 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                 </span>
               </motion.h1>
 
-              {/* Role badges - no motion animations to prevent flicker */}
+              {/* Role badges - CSS animations for stagger without flicker */}
               <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 mb-8">
-                {['Systems', 'Strategy', 'Product'].map((role) => (
+                {['Systems', 'Strategy', 'Product'].map((role, i) => (
                   <span
                     key={role}
-                    className="px-4 py-2 text-xs tracking-[0.2em] uppercase border border-primary/30 text-primary font-jost bg-primary/5 backdrop-blur-sm cursor-default hover:border-primary hover:bg-primary/10 hover:shadow-lg hover:shadow-primary/20 hover:scale-105 hover:-translate-y-0.5 transition-all duration-300"
+                    className="px-4 py-2 text-xs tracking-[0.2em] uppercase border border-primary/30 text-primary font-jost bg-primary/5 backdrop-blur-sm cursor-default hover:border-primary hover:bg-primary/10 hover:shadow-lg hover:shadow-primary/20 hover:scale-105 hover:-translate-y-0.5 transition-all duration-300 opacity-0 animate-fade-up"
+                    style={{ animationDelay: `${0.5 + i * 0.1}s`, animationFillMode: 'forwards' }}
                   >
                     {role}
                   </span>
