@@ -8,6 +8,7 @@ import {
   sectionWithChildrenVariants,
   childVariants,
   viewportOnce,
+  cardProps,
 } from '@/lib/animation-config'
 
 const process = [
@@ -149,15 +150,7 @@ export function WorkingWithMe() {
               return (
                 <motion.div
                   key={phase.phase}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{
-                    duration: 0.5,
-                    delay: index * 0.1,
-                    ease: [0.25, 0.1, 0.25, 1]
-                  }}
-                  whileHover={{ y: -4 }}
+                  {...cardProps(index)}
                   className="relative group"
                 >
                   <div className="relative bg-background border border-border p-6 h-full transition-all duration-300 group-hover:border-primary/30 group-hover:shadow-lg">
@@ -219,15 +212,7 @@ export function WorkingWithMe() {
               return (
                 <motion.div
                   key={principle.title}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{
-                    duration: 0.5,
-                    delay: index * 0.1,
-                    ease: [0.25, 0.1, 0.25, 1]
-                  }}
-                  whileHover={{ y: -4 }}
+                  {...cardProps(index)}
                   className="group"
                 >
                   <div className="relative bg-background border border-border p-6 h-full transition-all duration-300 group-hover:border-primary/30 group-hover:shadow-lg">
@@ -294,15 +279,7 @@ export function WorkingWithMe() {
               return (
                 <motion.div
                   key={item.title}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{
-                    duration: 0.5,
-                    delay: index * 0.12,
-                    ease: [0.25, 0.1, 0.25, 1]
-                  }}
-                  whileHover={{ y: -4 }}
+                  {...cardProps(index)}
                   className="group"
                 >
                   <div className="relative bg-background border border-border p-8 h-full transition-all duration-300 group-hover:border-primary/30 group-hover:shadow-lg">

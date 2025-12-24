@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Zap, Users, Code, Trophy } from 'lucide-react'
 import { useRef } from 'react'
+import { scrollFadeUp, staggerCard } from '@/lib/animation-config'
 
 const impacts = [
   {
@@ -79,10 +80,7 @@ export function ImpactBrutal() {
       <motion.div style={{ opacity, y }} className="max-w-6xl mx-auto relative z-10">
         {/* Section header */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          {...scrollFadeUp()}
           className="text-center mb-16"
         >
           {/* Decorative element */}
@@ -114,14 +112,7 @@ export function ImpactBrutal() {
             return (
               <motion.div
                 key={impact.label}
-                initial={{ opacity: 0, y: 60, scale: 0.9 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{
-                  duration: 0.5,
-                  delay: index * 0.1,
-                  ease: [0.25, 0.1, 0.25, 1]
-                }}
+                {...staggerCard(index)}
                 className="relative group"
               >
                 {/* Card */}
@@ -165,10 +156,7 @@ export function ImpactBrutal() {
 
         {/* Bottom text */}
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
+          {...scrollFadeUp(0.4)}
           className="text-center mt-12"
         >
           <p className="text-sm uppercase tracking-[0.2em] font-jost text-foreground/40">

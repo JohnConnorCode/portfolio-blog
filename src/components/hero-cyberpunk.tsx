@@ -196,16 +196,10 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
               {/* Headline - BOLD and distinctive - CSS animation */}
               <h1 className="relative mb-4 sm:mb-6 animate-in delay-0">
                 <span
-                  className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight font-jost text-foreground"
-                  style={{ lineHeight: 1 }}
+                  className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight font-jost bg-gradient-to-r from-foreground from-40% via-primary/70 via-70% to-primary bg-clip-text text-transparent"
+                  style={{ lineHeight: 1.1 }}
                 >
-                  JOHN
-                </span>
-                <span
-                  className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight font-jost bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent"
-                  style={{ lineHeight: 1 }}
-                >
-                  CONNOR
+                  JOHN CONNOR
                 </span>
               </h1>
 

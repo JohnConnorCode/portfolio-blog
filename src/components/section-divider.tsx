@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { viewport, TIMING } from '@/lib/animation-config'
 
 interface SectionDividerProps {
   variant?: 'geometric' | 'wave' | 'deco'
@@ -29,7 +30,7 @@ export function SectionDivider({ variant = 'geometric', className = '' }: Sectio
             fill="none"
             initial={{ pathLength: 0 }}
             whileInView={{ pathLength: 1 }}
-            viewport={{ once: true }}
+            viewport={viewport}
             transition={{ duration: 2, ease: "easeInOut" }}
           />
         </svg>
@@ -45,7 +46,7 @@ export function SectionDivider({ variant = 'geometric', className = '' }: Sectio
           className="absolute inset-0 flex items-center justify-center"
           initial={{ x: '-100%' }}
           whileInView={{ x: 0 }}
-          viewport={{ once: true }}
+          viewport={viewport}
           transition={{ duration: 1.5, ease: "easeOut" }}
         >
           <svg viewBox="0 0 1200 60" className="w-full h-8 text-primary" preserveAspectRatio="none">
@@ -75,7 +76,7 @@ export function SectionDivider({ variant = 'geometric', className = '' }: Sectio
             className="w-48 h-10 text-primary"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
+            viewport={viewport}
             transition={{ duration: 0.8 }}
           >
             <defs>
@@ -97,8 +98,8 @@ export function SectionDivider({ variant = 'geometric', className = '' }: Sectio
                 strokeWidth="1"
                 initial={{ pathLength: 0 }}
                 whileInView={{ pathLength: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.05 }}
+                viewport={viewport}
+                transition={{ duration: TIMING.normal, delay: i * 0.05 }}
               />
             ))}
             {/* Central Diamond */}
@@ -109,8 +110,8 @@ export function SectionDivider({ variant = 'geometric', className = '' }: Sectio
               strokeWidth="1.5"
               initial={{ scale: 0 }}
               whileInView={{ scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: 0.5 }}
+              viewport={viewport}
+              transition={{ duration: TIMING.fast, delay: TIMING.normal }}
             />
             {/* Horizontal Lines */}
             <line x1="0" y1="20" x2="85" y2="20" stroke="url(#decoGradient)" strokeWidth="1" />

@@ -1,162 +1,256 @@
 /**
- * UNIVERSAL ANIMATION CONFIG
+ * MOTION SYSTEM
  *
- * RULES TO PREVENT GLITCHY ANIMATIONS:
- * 1. Use simple initial/animate for hero content (animates once on mount)
- * 2. Use initial/whileInView with viewport={{ once: true }} for scroll content
- * 3. NEVER use nested staggerChildren - it causes propagation bugs
- * 4. NEVER animate same element with both animate AND whileInView
- * 5. Use staggered delays manually instead of staggerChildren
+ * Elegant, unified animation primitives.
+ * One rhythm. One language. Site-wide consistency.
  */
 
 // =============================================================================
-// SIMPLE FADE ANIMATIONS - Use these everywhere
+// FOUNDATION
 // =============================================================================
 
-// For hero/above-fold content - use with `animate` prop
-export const fadeIn = {
-  initial: { opacity: 0, y: 20 },
+// Duration scale (fibonacci-inspired for natural feel)
+const DURATION_FAST = 0.2
+const DURATION = 0.4
+const DURATION_SLOW = 0.6
+
+// Stagger scale
+const STAGGER_TIGHT = 0.06
+const STAGGER = 0.1
+const STAGGER_LOOSE = 0.15
+
+// Movement scale
+const MOVE_SUBTLE = 16
+const MOVE = 28
+const MOVE_DRAMATIC = 44
+
+// Premium easing - quick out, gentle settle
+const EASE = [0.22, 1, 0.36, 1] as const
+
+// Spring for interactions - bouncy but controlled
+const SPRING = { type: "spring", stiffness: 400, damping: 30 } as const
+
+// =============================================================================
+// CORE PRIMITIVES
+// =============================================================================
+
+/**
+ * The one scroll animation you need.
+ *
+ * @example
+ * <motion.div {...reveal()} />           // Single element
+ * <motion.div {...reveal(index)} />      // Staggered list
+ * <motion.div {...reveal(index, 0.2)} /> // With base delay
+ */
+export const reveal = (index = 0, baseDelay = 0) => ({
+  initial: { opacity: 0, y: MOVE },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: "-60px" },
+  transition: {
+    duration: DURATION,
+    delay: baseDelay + index * STAGGER,
+    ease: EASE
+  },
+})
+
+/**
+ * Cards with lift interaction.
+ *
+ * @example
+ * {items.map((item, i) => (
+ *   <motion.div key={i} {...card(i)}>
+ * ))}
+ */
+export const card = (index = 0, baseDelay = 0) => ({
+  ...reveal(index, baseDelay),
+  whileHover: { y: -6, transition: SPRING },
+  whileTap: { scale: 0.98 },
+})
+
+/**
+ * Hero/above-fold content (animates on mount, not scroll).
+ *
+ * @example
+ * <motion.h1 {...hero(0)} />
+ * <motion.p {...hero(1)} />
+ */
+export const hero = (index = 0) => ({
+  initial: { opacity: 0, y: MOVE_DRAMATIC },
   animate: { opacity: 1, y: 0 },
+  transition: {
+    duration: DURATION_SLOW,
+    delay: index * STAGGER_LOOSE,
+    ease: EASE
+  },
+})
+
+// =============================================================================
+// INTERACTION STATES
+// =============================================================================
+
+export const hover = {
+  lift: { y: -6, transition: SPRING },
+  scale: { scale: 1.02, transition: SPRING },
+  glow: { boxShadow: "0 0 30px rgba(var(--primary), 0.3)", transition: SPRING },
 }
 
-export const fadeInLeft = {
-  initial: { opacity: 0, x: -20 },
+export const tap = {
+  scale: { scale: 0.98 },
+  press: { scale: 0.95, transition: SPRING },
+}
+
+// =============================================================================
+// ORCHESTRATION (parent/child patterns)
+// =============================================================================
+
+export const stagger = {
+  container: {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: STAGGER, delayChildren: 0.1 },
+    },
+  },
+  item: {
+    hidden: { opacity: 0, y: MOVE_SUBTLE },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: DURATION, ease: EASE }
+    },
+  },
+}
+
+// Fast stagger for nav/menus
+export const staggerFast = {
+  container: {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: STAGGER_TIGHT, delayChildren: 0 },
+    },
+  },
+  item: {
+    hidden: { opacity: 0, y: MOVE_SUBTLE },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: DURATION_FAST, ease: EASE }
+    },
+  },
+}
+
+// =============================================================================
+// VIEWPORT
+// =============================================================================
+
+export const viewport = { once: true } as const
+export const viewportWithMargin = { once: true, margin: "-60px" } as const
+
+// =============================================================================
+// RAW VALUES (for custom compositions)
+// =============================================================================
+
+export const timing = {
+  durationFast: DURATION_FAST,
+  duration: DURATION,
+  durationSlow: DURATION_SLOW,
+  staggerTight: STAGGER_TIGHT,
+  stagger: STAGGER,
+  staggerLoose: STAGGER_LOOSE,
+  moveSubtle: MOVE_SUBTLE,
+  move: MOVE,
+  moveDramatic: MOVE_DRAMATIC,
+}
+export const ease = EASE
+export const spring = SPRING
+
+// =============================================================================
+// LEGACY COMPATIBILITY
+// Keep existing components working during migration
+// =============================================================================
+
+export const viewportOnce = viewport
+export const TIMING = {
+  fast: DURATION_FAST,
+  normal: DURATION,
+  slow: DURATION_SLOW,
+  stagger: STAGGER,
+  staggerFast: STAGGER_TIGHT,
+  staggerSlow: STAGGER_LOOSE,
+  yOffset: MOVE,
+  yOffsetSmall: MOVE_SUBTLE,
+  xOffset: MOVE_SUBTLE,
+}
+export const DURATION_LEGACY = TIMING
+export { EASE }
+
+// Function aliases
+export const fadeUp = hero
+export const scrollFadeUp = (delay = 0) => reveal(0, delay)
+export const staggerItem = reveal
+export const staggerCard = card
+export const cardProps = card
+export const itemProps = reveal
+export const heroProps = hero
+export const scrollProps = scrollFadeUp
+
+// Variant aliases
+export const containerVariants = stagger.container
+export const itemVariants = stagger.item
+export const sectionWithChildrenVariants = stagger.container
+export const childVariants = stagger.item
+export const sectionVariants = {
+  hidden: { opacity: 0, y: MOVE },
+  visible: { opacity: 1, y: 0, transition: { duration: DURATION, ease } },
+}
+export const headerVariants = staggerFast.container
+export const pageHeaderVariants = staggerFast.container
+export const titleVariants = stagger.item
+export const staggerOrchestrator = stagger.container
+export const decoratorVariants = {
+  hidden: { opacity: 0, scale: 0.9 },
+  visible: { opacity: 1, scale: 1, transition: { duration: DURATION_FAST, ease } },
+}
+
+// Interaction aliases
+export const hoverLift = hover.lift
+export const hoverScale = hover.scale
+export const tapScale = tap.scale
+export const cardHover = hover.lift
+export const buttonTap = tap.scale
+export const transition = { duration: DURATION, ease }
+
+// Static objects
+export const fadeIn = { initial: { opacity: 0, y: MOVE_SUBTLE }, animate: { opacity: 1, y: 0 } }
+export const fadeInUp = fadeIn
+export const fadeInUpDelayed = fadeIn
+export const fadeInLeft = { initial: { opacity: 0, x: -MOVE_SUBTLE }, animate: { opacity: 1, x: 0 } }
+export const fadeInRight = { initial: { opacity: 0, x: MOVE_SUBTLE }, animate: { opacity: 1, x: 0 } }
+export const scaleIn = { initial: { opacity: 0, scale: 0.9 }, animate: { opacity: 1, scale: 1 } }
+
+// New function aliases for specificity
+export const heroStagger = (index: number) => hero(index)
+export const navStagger = (index: number, baseDelay = 0) => reveal(index, baseDelay)
+export const featureCard = card
+export const showcaseCard = card
+export const containerFastVariants = staggerFast.container
+export const containerSlowVariants = stagger.container
+export const itemLargeVariants = stagger.item
+
+// Utility exports
+export const fadeLeft = (delay = 0) => ({
+  initial: { opacity: 0, x: -MOVE_SUBTLE },
   animate: { opacity: 1, x: 0 },
-}
-
-export const fadeInRight = {
-  initial: { opacity: 0, x: 20 },
+  transition: { duration: DURATION, delay, ease },
+})
+export const fadeRight = (delay = 0) => ({
+  initial: { opacity: 0, x: MOVE_SUBTLE },
   animate: { opacity: 1, x: 0 },
-}
-
-export const scaleIn = {
+  transition: { duration: DURATION, delay, ease },
+})
+export const scaleUp = (delay = 0) => ({
   initial: { opacity: 0, scale: 0.9 },
   animate: { opacity: 1, scale: 1 },
-}
-
-// =============================================================================
-// TIMING
-// =============================================================================
-
-export const DURATION = {
-  fast: 0.3,
-  normal: 0.5,
-  slow: 0.7,
-} as const
-
-// Standard transition
-export const transition = {
-  duration: 0.5,
-  ease: [0.25, 0.1, 0.25, 1],
-}
-
-// =============================================================================
-// VIEWPORT - ALWAYS use once: true
-// =============================================================================
-
-export const viewportOnce = { once: true }
-
-// =============================================================================
-// HELPER FUNCTIONS
-// =============================================================================
-
-/**
- * Get props for hero content (animates on mount)
- * Usage: <motion.div {...heroProps(0.2)} />
- */
-export const heroProps = (delay = 0) => ({
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5, delay },
+  transition: { duration: DURATION_FAST, delay, ease },
 })
-
-/**
- * Get props for scroll-triggered content
- * Usage: <motion.div {...scrollProps(index * 0.1)} />
- */
-export const scrollProps = (delay = 0) => ({
-  initial: { opacity: 0, y: 30 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true },
-  transition: { duration: 0.5, delay },
-})
-
-/**
- * Get props for list items with staggered delays
- * Usage: {items.map((item, i) => <motion.div key={i} {...itemProps(i)} />)}
- */
-export const itemProps = (index: number, baseDelay = 0) => ({
-  initial: { opacity: 0, y: 20 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true },
-  transition: { duration: 0.4, delay: baseDelay + index * 0.1 },
-})
-
-// =============================================================================
-// LEGACY EXPORTS (for backwards compatibility - use sparingly)
-// =============================================================================
-
-// These are simplified versions that don't use staggerChildren
-export const sectionVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
-}
-
-// Section with staggered children - use for groups of cards/items
-export const sectionWithChildrenVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      duration: 0.3,
-      staggerChildren: 0.1,
-      delayChildren: 0.1
-    }
-  }
-}
-export const childVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5 }
-  }
-}
-export const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5 }
-  }
-}
-export const pageHeaderVariants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.1 } }
-}
-export const decoratorVariants = {
-  hidden: { opacity: 0, scale: 0.8 },
-  visible: { opacity: 1, scale: 1, transition: { duration: 0.3 } }
-}
-export const titleVariants = childVariants
-export const staggerOrchestrator = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.12,
-      delayChildren: 0
-    }
-  }
-}
-export const fadeInUpDelayed = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 }
-}
-export const fadeInUp = fadeIn
-
-// =============================================================================
-// HOVER/TAP EFFECTS (these are fine to use)
-// =============================================================================
-
-export const cardHover = { y: -4, transition: { duration: 0.2 } }
-export const buttonTap = { scale: 0.98 }

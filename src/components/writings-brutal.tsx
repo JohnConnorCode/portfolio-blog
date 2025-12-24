@@ -8,6 +8,7 @@ import {
   sectionWithChildrenVariants,
   childVariants,
   viewportOnce,
+  cardProps,
 } from '@/lib/animation-config'
 
 const writings = [
@@ -109,15 +110,7 @@ export function WritingsBrutal() {
             return (
               <motion.article
                 key={writing.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{
-                  duration: 0.5,
-                  delay: index * 0.12,
-                  ease: [0.25, 0.1, 0.25, 1]
-                }}
-                whileHover={{ y: -4 }}
+                {...cardProps(index)}
                 className={`group ${writing.featured ? 'md:col-span-2' : ''}`}
               >
                 <Link href={`/blog/${writing.slug}`}>

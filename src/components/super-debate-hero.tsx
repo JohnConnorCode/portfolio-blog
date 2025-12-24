@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { Trophy, MessageSquare, Users, ArrowRight, Scale, Mic, Calendar } from 'lucide-react'
 import Link from 'next/link'
 import { useRef } from 'react'
+import { scrollFadeUp, staggerItem } from '@/lib/animation-config'
 
 export function SuperDebateHero() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -70,10 +71,7 @@ export function SuperDebateHero() {
       >
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          {...scrollFadeUp()}
           className="text-center mb-16"
         >
           {/* Decorative element */}
@@ -116,10 +114,7 @@ export function SuperDebateHero() {
             return (
               <motion.div
                 key={feature.title}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
+                {...staggerItem(index)}
                 className="relative group"
               >
                 <div className="relative bg-card border border-border p-6 h-full transition-all duration-300 group-hover:border-primary/30 group-hover:shadow-lg group-hover:-translate-y-1">
@@ -142,10 +137,7 @@ export function SuperDebateHero() {
 
         {/* Format Showcase */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          {...scrollFadeUp()}
           className="relative max-w-4xl mx-auto"
         >
           <div className="relative bg-card border border-border p-8">
@@ -185,10 +177,7 @@ export function SuperDebateHero() {
 
         {/* Bottom text */}
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          {...scrollFadeUp(0.2)}
           className="text-center mt-12"
         >
           <p className="text-sm uppercase tracking-[0.2em] font-jost text-foreground/40">
