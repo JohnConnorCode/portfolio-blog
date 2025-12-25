@@ -258,17 +258,29 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   /* Stagger delay utilities - 200ms apart for clearly visible cascade */
-  .delay-0 { animation-delay: 0s; }
-  .delay-1 { animation-delay: 0.2s; }
-  .delay-2 { animation-delay: 0.4s; }
-  .delay-3 { animation-delay: 0.6s; }
-  .delay-4 { animation-delay: 0.8s; }
-  .delay-5 { animation-delay: 1s; }
-  .delay-6 { animation-delay: 1.2s; }
-  .delay-7 { animation-delay: 1.4s; }
-  .delay-8 { animation-delay: 1.6s; }
-  .delay-9 { animation-delay: 1.8s; }
-  .delay-10 { animation-delay: 2s; }
+  .delay-0 { animation-delay: 0s; --animation-delay: 0s; }
+  .delay-1 { animation-delay: 0.2s; --animation-delay: 0.2s; }
+  .delay-2 { animation-delay: 0.4s; --animation-delay: 0.4s; }
+  .delay-3 { animation-delay: 0.6s; --animation-delay: 0.6s; }
+  .delay-4 { animation-delay: 0.8s; --animation-delay: 0.8s; }
+  .delay-5 { animation-delay: 1s; --animation-delay: 1s; }
+  .delay-6 { animation-delay: 1.2s; --animation-delay: 1.2s; }
+  .delay-7 { animation-delay: 1.4s; --animation-delay: 1.4s; }
+  .delay-8 { animation-delay: 1.6s; --animation-delay: 1.6s; }
+  .delay-9 { animation-delay: 1.8s; --animation-delay: 1.8s; }
+  .delay-10 { animation-delay: 2s; --animation-delay: 2s; }
+
+  /* Responsive delay utilities for desktop (lg breakpoint) */
+  @media (min-width: 1024px) {
+    .lg\:delay-0 { animation-delay: 0s !important; --animation-delay: 0s; }
+    .lg\:delay-1 { animation-delay: 0.2s !important; --animation-delay: 0.2s; }
+    .lg\:delay-2 { animation-delay: 0.4s !important; --animation-delay: 0.4s; }
+    .lg\:delay-3 { animation-delay: 0.6s !important; --animation-delay: 0.6s; }
+    .lg\:delay-4 { animation-delay: 0.8s !important; --animation-delay: 0.8s; }
+    .lg\:delay-5 { animation-delay: 1s !important; --animation-delay: 1s; }
+    .lg\:delay-6 { animation-delay: 1.2s !important; --animation-delay: 1.2s; }
+    .lg\:delay-7 { animation-delay: 1.4s !important; --animation-delay: 1.4s; }
+  }
 
   /* Logo-specific animation */
   .animate-in-fast {
@@ -523,7 +535,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   /* Smooth cycling gradient animation for hero text */
-  @keyframes gradient-cycle {
+  @keyframes gradient-sweep {
     0%, 100% {
       background-position: 0% 50%;
     }
@@ -532,9 +544,40 @@ h1, h2, h3, h4, h5, h6 {
     }
   }
 
+  /* Hero gradient - sweeping wave that moves across text, one word at a time
+     Uses 400% width so the color transition travels slowly across the text
+     The "band" of primary color is ~25% wide, creating a wave effect */
   .animate-gradient-cycle {
-    background-size: 200% 200%;
-    animation: gradient-cycle 6s ease-in-out infinite;
+    background: linear-gradient(
+      90deg,
+      hsl(var(--foreground)) 0%,
+      hsl(var(--foreground)) 15%,
+      hsl(var(--primary)) 25%,
+      hsl(var(--primary)) 35%,
+      hsl(var(--foreground)) 45%,
+      hsl(var(--foreground)) 100%
+    );
+    background-size: 400% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: gradient-sweep 14s ease-in-out infinite;
+  }
+
+  /* Logo gradient - same wave effect but slightly faster for smaller text */
+  .animate-gradient-cycle-slow {
+    background: linear-gradient(
+      90deg,
+      hsl(var(--foreground)) 0%,
+      hsl(var(--foreground)) 15%,
+      hsl(var(--primary)) 25%,
+      hsl(var(--primary)) 35%,
+      hsl(var(--foreground)) 45%,
+      hsl(var(--foreground)) 100%
+    );
+    background-size: 400% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: gradient-sweep 12s ease-in-out infinite;
   }
 
   /* Glass effect with stark borders */
@@ -547,9 +590,186 @@ h1, h2, h3, h4, h5, h6 {
     @apply bg-foreground/5 backdrop-blur-md border border-foreground/10;
   }
 
+  /* Light mode: floating drop shadows on card ELEMENTS only
+     Excludes: section wrappers, gold-accented cards (.no-shadow) */
+  :root:not(.dark) .bg-card:not(section):not(.no-shadow) {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+  }
+
+  :root:not(.dark) .bg-card:not(section):not(.no-shadow):hover {
+    box-shadow:
+      0 8px 30px rgba(0, 0, 0, 0.10),
+      0 4px 12px rgba(0, 0, 0, 0.05),
+      0 0 20px rgba(181, 142, 58, 0.08);
+  }
+
+  /* Hero section: lighter background in light mode (no white cards to contrast) */
+  :root:not(.dark) .hero-section {
+    background-color: hsl(0 0% 99%);
+  }
+
+  /* Light mode: subtle borders become near-invisible, shadows take over */
+  :root:not(.dark) .border-border {
+    border-color: rgba(0, 0, 0, 0.04);
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     LIGHT MODE COMPREHENSIVE STYLING
+     Ensures all components are visible and polished in light mode
+     ═══════════════════════════════════════════════════════════ */
+
+  /* Light mode: Fix opacity utilities that are invisible on cream */
+  :root:not(.dark) .text-foreground\/60 {
+    color: hsl(var(--foreground) / 0.75);
+  }
+
+  :root:not(.dark) .text-foreground\/70 {
+    color: hsl(var(--foreground) / 0.8);
+  }
+
+  :root:not(.dark) .text-foreground\/50 {
+    color: hsl(var(--foreground) / 0.65);
+  }
+
+  /* Light mode: Borders need more visibility */
+  :root:not(.dark) .border-foreground\/10 {
+    border-color: hsl(var(--foreground) / 0.15);
+  }
+
+  :root:not(.dark) .border-foreground\/20 {
+    border-color: hsl(var(--foreground) / 0.25);
+  }
+
+  :root:not(.dark) .border-primary\/20 {
+    border-color: hsl(var(--primary) / 0.35);
+  }
+
+  :root:not(.dark) .border-primary\/30 {
+    border-color: hsl(var(--primary) / 0.45);
+  }
+
+  /* Light mode: Background opacity fixes */
+  :root:not(.dark) .bg-primary\/5 {
+    background-color: hsl(var(--primary) / 0.1);
+  }
+
+  :root:not(.dark) .bg-primary\/10 {
+    background-color: hsl(var(--primary) / 0.15);
+  }
+
+  :root:not(.dark) .bg-foreground\/5 {
+    background-color: hsl(var(--foreground) / 0.08);
+  }
+
+  /* Light mode: Hover states need to be more visible */
+  :root:not(.dark) .hover\:bg-primary\/10:hover {
+    background-color: hsl(var(--primary) / 0.2);
+  }
+
+  :root:not(.dark) .hover\:bg-foreground\/5:hover {
+    background-color: hsl(var(--foreground) / 0.1);
+  }
+
+  :root:not(.dark) .group-hover\/photo\:opacity-30 {
+    opacity: 0.4;
+  }
+
+  /* Light mode: Form inputs */
+  :root:not(.dark) input,
+  :root:not(.dark) textarea,
+  :root:not(.dark) select {
+    border-color: hsl(var(--foreground) / 0.2);
+  }
+
+  :root:not(.dark) input:focus,
+  :root:not(.dark) textarea:focus,
+  :root:not(.dark) select:focus {
+    border-color: hsl(var(--primary));
+    box-shadow: 0 0 0 2px hsl(var(--primary) / 0.2);
+  }
+
+  /* Light mode: Navigation */
+  :root:not(.dark) nav .border-white\/10 {
+    border-color: hsl(var(--foreground) / 0.1);
+  }
+
+  :root:not(.dark) .backdrop-blur-2xl {
+    background-color: hsl(var(--background) / 0.85);
+  }
+
+  /* Light mode: Primary buttons need proper text contrast */
+  :root:not(.dark) .bg-primary {
+    color: hsl(var(--background));
+  }
+
+  :root:not(.dark) .bg-primary:hover {
+    background-color: hsl(var(--primary) / 0.9);
+  }
+
+  /* Light mode: Muted text should be readable */
+  :root:not(.dark) .text-muted-foreground {
+    color: hsl(var(--foreground) / 0.6);
+  }
+
+  /* Light mode: Card foreground visibility */
+  :root:not(.dark) .bg-card\/50 {
+    background-color: hsl(0 0% 100% / 0.8);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  }
+
+  :root:not(.dark) .bg-card\/30 {
+    background-color: hsl(0 0% 100% / 0.6);
+  }
+
+  /* Light mode: Section dividers */
+  :root:not(.dark) .via-primary\/30 {
+    --tw-gradient-via: hsl(var(--primary) / 0.4);
+  }
+
+  :root:not(.dark) .via-primary\/20 {
+    --tw-gradient-via: hsl(var(--primary) / 0.3);
+  }
+
+  /* Light mode: Shadow adjustments for depth */
+  :root:not(.dark) .shadow-primary\/5 {
+    --tw-shadow-color: hsl(var(--primary) / 0.1);
+  }
+
+  :root:not(.dark) .shadow-primary\/20 {
+    --tw-shadow-color: hsl(var(--primary) / 0.25);
+  }
+
+  /* Light mode: Logo glow effect - softer in light mode */
+  :root:not(.dark) .group:hover .logo-diamond {
+    box-shadow: 0 0 15px hsl(var(--primary) / 0.4), 0 0 30px hsl(var(--primary) / 0.2);
+  }
+
+  :root:not(.dark) .group:hover .logo-text {
+    text-shadow: 0 0 8px hsl(var(--primary) / 0.5);
+  }
+
   /* Elegant hover transitions */
   .hover-lift {
     @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-xl;
+  }
+
+  /* Logo hover effects */
+  .logo-diamond {
+    box-shadow: none;
+    transition: box-shadow 0.5s ease, transform 0.5s ease;
+  }
+
+  .group:hover .logo-diamond {
+    box-shadow: 0 0 25px hsl(var(--primary) / 0.7), 0 0 50px hsl(var(--primary) / 0.4);
+  }
+
+  .logo-text {
+    text-shadow: none;
+    transition: text-shadow 0.3s ease, transform 0.3s ease;
+  }
+
+  .group:hover .logo-text {
+    text-shadow: 0 0 15px hsl(var(--primary)), 0 0 30px hsl(var(--primary) / 0.6);
   }
 
   /* Typography utilities */

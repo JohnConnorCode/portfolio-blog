@@ -130,9 +130,11 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
         <div className="max-w-7xl mx-auto w-full">
           <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* Photo Column with its own parallax - CSS entrance + motion scroll */}
+            {/* On mobile: photo is first (order-1), so animate first (delay-0) */}
+            {/* On desktop: photo is second (lg:order-2), so animate later (lg:delay-4) */}
             <motion.div
               style={{ y: photoY }}
-              className="lg:col-span-5 order-1 lg:order-2 flex justify-center lg:justify-end md:will-change-transform animate-in delay-1"
+              className="lg:col-span-5 order-1 lg:order-2 flex justify-center lg:justify-end md:will-change-transform animate-in delay-0 lg:delay-4"
             >
               <div className="relative">
                 {/* Glowing backdrop */}
@@ -189,23 +191,24 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
               className="lg:col-span-7 order-2 lg:order-1 text-center lg:text-left md:will-change-transform"
             >
 
-              {/* Headline - BOLD and distinctive - CSS animation with 90%→90% gradient sweep */}
-              <h1 className="relative mb-4 sm:mb-6 animate-in delay-0">
+              {/* Headline - BOLD and distinctive - CSS animation with gradient sweep */}
+              <h1 className="relative mb-4 sm:mb-6 animate-in lg:delay-0 delay-3">
                 <span
-                  className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight font-jost text-transparent animate-gradient-cycle"
-                  style={{ lineHeight: 1.1 }}
+                  className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight font-jost text-foreground animate-gradient-cycle"
+                  style={{ lineHeight: 1.1, WebkitBackgroundClip: 'text', backgroundClip: 'text', WebkitTextFillColor: 'transparent' }}
                 >
                   JOHN CONNOR
                 </span>
               </h1>
 
               {/* Role badges - CSS animations for stagger */}
+              {/* Mobile: delay-4+, Desktop: delay-1+ */}
               <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 sm:gap-3 mb-6 sm:mb-8">
                 {['Systems', 'Strategy', 'Product'].map((role, i) => (
                   <span
                     key={role}
-                    className="px-3 sm:px-4 py-1.5 sm:py-2 text-[10px] sm:text-xs tracking-[0.15em] sm:tracking-[0.2em] uppercase border border-primary/30 text-primary font-jost bg-primary/5 backdrop-blur-sm cursor-default hover:border-primary hover:bg-primary/10 hover:shadow-lg hover:shadow-primary/20 hover:scale-105 hover:-translate-y-0.5 transition-all duration-300 animate-in"
-                    style={{ animationDelay: `${0.2 + i * 0.12}s` }}
+                    className="px-3 sm:px-4 py-1.5 sm:py-2 text-[10px] sm:text-xs tracking-[0.15em] sm:tracking-[0.2em] uppercase border border-primary/30 text-primary font-jost bg-primary/5 backdrop-blur-sm cursor-default hover:border-primary hover:bg-primary/10 hover:shadow-lg hover:shadow-primary/20 hover:scale-105 hover:-translate-y-0.5 transition-all duration-300 animate-in delay-4 lg:delay-1"
+                    style={{ animationDelay: `calc(var(--animation-delay) + ${i * 0.12}s)` }}
                   >
                     {role}
                   </span>
@@ -213,17 +216,17 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
               </div>
 
               {/* Description - CSS animation */}
-              <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl leading-relaxed mb-3 sm:mb-4 max-w-2xl mx-auto lg:mx-0 text-foreground/90 font-jost font-light animate-in delay-4">
+              <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl leading-relaxed mb-3 sm:mb-4 max-w-2xl mx-auto lg:mx-0 text-foreground/90 font-jost font-light animate-in delay-5 lg:delay-2">
                 {heroContent.heroDescription}
               </p>
 
               {/* Tagline - CSS animation */}
-              <p className="text-base sm:text-lg md:text-xl mb-8 sm:mb-10 max-w-xl mx-auto lg:mx-0 text-primary font-jost font-medium animate-in delay-5">
+              <p className="text-base sm:text-lg md:text-xl mb-8 sm:mb-10 max-w-xl mx-auto lg:mx-0 text-primary font-jost font-medium animate-in delay-6 lg:delay-3">
                 {heroContent.heroHighlight}
               </p>
 
               {/* CTA Buttons - CSS animation */}
-              <div className="flex flex-row gap-2 sm:gap-4 justify-center lg:justify-start animate-in delay-6">
+              <div className="flex flex-row gap-2 sm:gap-4 justify-center lg:justify-start animate-in delay-7 lg:delay-4">
                 <Link href="/contact">
                   <Button variant="primary" size="md" className="sm:px-8 sm:py-4 sm:text-sm">
                     Get in Touch
