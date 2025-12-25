@@ -871,3 +871,405 @@ h1, h2, h3, h4, h5, h6 {
 .bg-cream {
   background-color: #f0ede8;
 }
+
+/* ═══════════════════════════════════════════════════════════
+   BLOG POST ENHANCED STYLING
+   Premium typography and component styles for articles
+   ═══════════════════════════════════════════════════════════ */
+
+/* TL;DR Box - Key summary at top of posts */
+.prose .tldr {
+  background: linear-gradient(135deg, hsl(var(--primary) / 0.08) 0%, hsl(var(--primary) / 0.03) 100%);
+  border: 1px solid hsl(var(--primary) / 0.2);
+  border-left: 4px solid hsl(var(--primary));
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  position: relative;
+}
+
+.prose .tldr::before {
+  content: 'TL;DR';
+  position: absolute;
+  top: -0.75rem;
+  left: 1rem;
+  background: hsl(var(--background));
+  padding: 0 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: hsl(var(--primary));
+}
+
+.prose .tldr p {
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Key Takeaway Box */
+.prose .key-takeaway {
+  background: hsl(var(--foreground) / 0.03);
+  border: 1px solid hsl(var(--foreground) / 0.1);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  position: relative;
+}
+
+.prose .key-takeaway::before {
+  content: '💡 Key Insight';
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: hsl(var(--primary));
+  margin-bottom: 0.75rem;
+}
+
+/* Warning/Caution Box */
+.prose .warning {
+  background: hsl(45 100% 50% / 0.08);
+  border: 1px solid hsl(45 100% 50% / 0.3);
+  border-left: 4px solid hsl(45 100% 50%);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  margin: 2rem 0;
+}
+
+.prose .warning::before {
+  content: '⚠️ Warning';
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: hsl(45 100% 35%);
+  margin-bottom: 0.75rem;
+}
+
+/* Contrarian/Devil's Advocate Box */
+.prose .contrarian {
+  background: hsl(280 100% 50% / 0.05);
+  border: 1px solid hsl(280 100% 50% / 0.2);
+  border-left: 4px solid hsl(280 100% 50%);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  margin: 2rem 0;
+}
+
+.prose .contrarian::before {
+  content: '🎭 The Counterargument';
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: hsl(280 100% 50%);
+  margin-bottom: 0.75rem;
+}
+
+/* Formula/Definition Box */
+.prose .formula {
+  background: hsl(var(--foreground) / 0.02);
+  border: 2px dashed hsl(var(--foreground) / 0.15);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  font-family: 'JetBrains Mono', monospace;
+  text-align: center;
+}
+
+.prose .formula code {
+  background: none;
+  padding: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: hsl(var(--primary));
+}
+
+/* Enhanced Table Styling */
+.prose table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 2rem 0;
+  font-size: 0.9rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  border: 1px solid hsl(var(--foreground) / 0.1);
+}
+
+.prose thead {
+  background: hsl(var(--primary) / 0.1);
+}
+
+.prose th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: hsl(var(--primary));
+  border-bottom: 2px solid hsl(var(--primary) / 0.2);
+}
+
+.prose td {
+  padding: 1rem;
+  border-bottom: 1px solid hsl(var(--foreground) / 0.05);
+  vertical-align: top;
+}
+
+.prose tbody tr:hover {
+  background: hsl(var(--foreground) / 0.02);
+}
+
+.prose tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Section Divider */
+.prose .section-divider {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin: 3rem 0;
+  color: hsl(var(--foreground) / 0.3);
+}
+
+.prose .section-divider::before,
+.prose .section-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, hsl(var(--foreground) / 0.15), transparent);
+}
+
+/* Numbered Steps */
+.prose .step {
+  display: flex;
+  gap: 1rem;
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background: hsl(var(--foreground) / 0.02);
+  border-radius: 0.5rem;
+  border: 1px solid hsl(var(--foreground) / 0.05);
+}
+
+.prose .step-number {
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: hsl(var(--primary));
+  color: hsl(var(--background));
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 50%;
+}
+
+.prose .step-content h4 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.prose .step-content p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: hsl(var(--foreground) / 0.8);
+}
+
+/* Enhanced Blockquote */
+.prose blockquote {
+  border-left: 4px solid hsl(var(--primary) / 0.5);
+  background: hsl(var(--foreground) / 0.02);
+  padding: 1.5rem 1.5rem 1.5rem 2rem;
+  margin: 2rem 0;
+  border-radius: 0 0.5rem 0.5rem 0;
+  font-style: italic;
+}
+
+.prose blockquote p {
+  margin: 0;
+}
+
+.prose blockquote cite {
+  display: block;
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  font-style: normal;
+  color: hsl(var(--foreground) / 0.6);
+}
+
+.prose blockquote cite::before {
+  content: '— ';
+}
+
+/* Big Number Stat */
+.prose .stat {
+  display: inline-block;
+  font-size: 3rem;
+  font-weight: 800;
+  color: hsl(var(--primary));
+  line-height: 1;
+  margin-right: 0.5rem;
+}
+
+/* Inline Label/Badge */
+.prose .label {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: 0.25rem;
+  background: hsl(var(--primary) / 0.1);
+  color: hsl(var(--primary));
+  vertical-align: middle;
+}
+
+.prose .label-warning {
+  background: hsl(45 100% 50% / 0.15);
+  color: hsl(45 100% 30%);
+}
+
+.prose .label-success {
+  background: hsl(142 76% 36% / 0.15);
+  color: hsl(142 76% 30%);
+}
+
+/* Script/Template Box */
+.prose .script {
+  background: hsl(var(--foreground) / 0.03);
+  border: 1px solid hsl(var(--foreground) / 0.1);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  font-family: 'Inter', sans-serif;
+}
+
+.prose .script::before {
+  content: '📋 Template';
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: hsl(var(--foreground) / 0.5);
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid hsl(var(--foreground) / 0.1);
+}
+
+/* Case Study Box */
+.prose .case-study {
+  background: linear-gradient(135deg, hsl(var(--primary) / 0.03) 0%, transparent 100%);
+  border: 1px solid hsl(var(--primary) / 0.15);
+  border-radius: 0.5rem;
+  padding: 2rem;
+  margin: 2rem 0;
+}
+
+.prose .case-study::before {
+  content: '📊 Case Study';
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: hsl(var(--primary));
+  margin-bottom: 1rem;
+}
+
+/* What I Got Wrong Section */
+.prose .mea-culpa {
+  background: hsl(0 100% 50% / 0.03);
+  border: 1px solid hsl(0 100% 50% / 0.15);
+  border-left: 4px solid hsl(0 100% 50% / 0.5);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  margin: 2rem 0;
+}
+
+.prose .mea-culpa::before {
+  content: '🔄 What I Got Wrong';
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: hsl(0 100% 40%);
+  margin-bottom: 0.75rem;
+}
+
+/* Historical Context Box */
+.prose .historical {
+  background: hsl(var(--foreground) / 0.02);
+  border: 1px solid hsl(var(--foreground) / 0.1);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  position: relative;
+}
+
+.prose .historical::before {
+  content: '📜 Historical Context';
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: hsl(var(--foreground) / 0.5);
+  margin-bottom: 0.75rem;
+}
+
+/* Next Steps / Action Box */
+.prose .action-box {
+  background: linear-gradient(135deg, hsl(142 76% 36% / 0.08) 0%, hsl(142 76% 36% / 0.02) 100%);
+  border: 1px solid hsl(142 76% 36% / 0.2);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  margin: 2rem 0;
+}
+
+.prose .action-box::before {
+  content: '🎯 Your Next Steps';
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: hsl(142 76% 36%);
+  margin-bottom: 0.75rem;
+}
+
+/* Light mode adjustments for boxes */
+:root:not(.dark) .prose .tldr {
+  background: linear-gradient(135deg, hsl(var(--primary) / 0.12) 0%, hsl(var(--primary) / 0.05) 100%);
+}
+
+:root:not(.dark) .prose thead {
+  background: hsl(var(--primary) / 0.15);
+}
+
+:root:not(.dark) .prose .warning {
+  background: hsl(45 100% 50% / 0.12);
+}
+
+:root:not(.dark) .prose .contrarian {
+  background: hsl(280 100% 50% / 0.08);
+}
+
+:root:not(.dark) .prose .mea-culpa {
+  background: hsl(0 100% 50% / 0.05);
+}
+
+:root:not(.dark) .prose .action-box {
+  background: linear-gradient(135deg, hsl(142 76% 36% / 0.12) 0%, hsl(142 76% 36% / 0.04) 100%);
+}
