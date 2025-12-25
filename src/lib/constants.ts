@@ -13,6 +13,7 @@ export const SOCIAL_LINKS = {
 export const PROJECT_LINKS = {
   superDebate: 'https://superdebate.org',
   accelerate: 'https://acceleratewith.us',
+  alphaTask: 'https://alphatask.xyz',
   thriveProtocol: 'https://thriveprotocol.com',
   sparkblox: 'https://sparkblox.io',
   upland: 'https://upland.me',

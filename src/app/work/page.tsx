@@ -1,6 +1,6 @@
 'use client'
 
-import { ArrowRight, Zap, Users, Code, Trophy, Target, Shield, TrendingUp, Globe, Rocket, Brain, MessageSquare } from 'lucide-react'
+import { ArrowRight, Zap, Users, Code, Trophy, Target, Shield, TrendingUp, Globe, Rocket, Brain, MessageSquare, CheckSquare } from 'lucide-react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
@@ -84,6 +84,15 @@ const shippedProducts = [
     link: '/accelerate',
     external: 'https://acceleratewith.us',
     icon: Rocket
+  },
+  {
+    name: 'AlphaTask',
+    role: 'Built & Using Daily',
+    description: 'The operating system of my life. Unified task management, journaling, and wellness tracking—all structured for AI integration. Built because existing tools couldn\'t keep up.',
+    status: 'Personal • Daily Driver',
+    link: '/alphatask',
+    external: 'https://alphatask.xyz',
+    icon: CheckSquare
   }
 ]
 
@@ -93,12 +102,6 @@ const otherProjects = [
     description: 'AI-powered launch assistant for entrepreneurs. Generate business plans, validate ideas, and get actionable next steps in minutes.',
     tech: 'AI • Next.js • GPT-4',
     link: 'https://www.smartstarts.xyz/'
-  },
-  {
-    name: 'AlphaTask',
-    description: 'AI-powered task management that transforms meeting transcripts and voice notes into organized, actionable tasks automatically.',
-    tech: 'AI • Task Automation • Productivity',
-    link: 'https://alphatask.xyz/'
   }
 ]
 

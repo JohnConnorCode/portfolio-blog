@@ -19,6 +19,7 @@ const navItems = [
     subItems: [
       { href: '/accelerate', label: 'Accelerate' },
       { href: '/super-debate', label: 'Super Debate' },
+      { href: '/alphatask', label: 'AlphaTask' },
     ]
   },
   { href: '/blog', label: 'Blog', icon: BookOpen },
