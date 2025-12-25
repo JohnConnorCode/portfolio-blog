@@ -61,21 +61,25 @@ const process = [
 const principles = [
   {
     title: 'Systems Over Features',
+    subtitle: 'Architecture',
     description: 'Features add complexity. Systems reduce it.',
     icon: Eye
   },
   {
     title: 'Speed to Signal',
+    subtitle: 'Validation',
     description: 'Find what works in weeks, not quarters.',
     icon: Zap
   },
   {
     title: 'Compound Value',
+    subtitle: 'Growth',
     description: 'Every system I build should get better with time.',
     icon: Users
   },
   {
     title: 'Human Amplification',
+    subtitle: 'Purpose',
     description: 'Technology that makes people more capable, not more dependent.',
     icon: Unlock
   }
@@ -225,6 +229,7 @@ export function WorkingWithMe() {
                         <Icon className="w-7 h-7 text-primary" />
                       </div>
                       <div className="flex-1">
+                        <span className="text-[10px] tracking-[0.2em] uppercase text-primary/70 font-jost">{principle.subtitle}</span>
                         <h4 className="text-xl font-bold mb-2 font-jost text-foreground">
                           {principle.title}
                         </h4>

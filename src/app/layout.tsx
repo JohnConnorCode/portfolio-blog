@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Alata, JetBrains_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import "@/styles/design-system.css";
 import "@/styles/neo-brutal.css";
@@ -9,6 +10,10 @@ import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { NoiseTexture } from "@/components/noise-texture";
 import { Analytics } from "@vercel/analytics/react";
+import { SITE_URL, SEO_DEFAULTS } from "@/lib/constants";
+
+// Google Analytics ID - set in environment variable
+const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
 const alata = Alata({
   weight: '400',
@@ -22,7 +27,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://johnconnor.xyz'),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "John Connor - Technology Strategist | Building Systems That Serve Humanity",
     template: "%s | John Connor"
@@ -46,7 +51,7 @@ export const metadata: Metadata = {
     "ecosystem funding",
     "startup advisor"
   ],
-  authors: [{ name: "John Connor", url: "https://johnconnor.xyz" }],
+  authors: [{ name: SEO_DEFAULTS.author, url: SITE_URL }],
   creator: "John Connor",
   publisher: "John Connor",
   formatDetection: {
@@ -61,8 +66,8 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://johnconnor.xyz",
-    siteName: "John Connor - Technology Strategist",
+    url: SITE_URL,
+    siteName: SEO_DEFAULTS.siteName,
     title: "John Connor - Technology Strategist | Building Systems That Serve Humanity",
     description: "15 years building products that solve real problems. Founder of Accelerate (500+ funding programs) & Super Debate. Expert in AI strategy, Web3 ecosystems, and human-centered technology.",
     images: [
@@ -77,8 +82,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    site: "@johnconnor",
-    creator: "@johnconnor",
+    site: SEO_DEFAULTS.twitterHandle,
+    creator: SEO_DEFAULTS.twitterHandle,
     title: "John Connor - Technology Strategist",
     description: "15 years building products that solve real problems. Founder of Accelerate & Super Debate. Expert in AI strategy and human-centered technology.",
     images: {
@@ -100,18 +105,19 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://johnconnor.xyz",
+    canonical: SITE_URL,
     languages: {
-      'en-US': 'https://johnconnor.xyz',
+      'en-US': SITE_URL,
     }
   },
   category: 'technology',
   classification: 'Technology Consulting',
   referrer: 'origin-when-cross-origin',
-  verification: {
-    google: 'google-site-verification-code',
-    yandex: 'yandex-verification-code',
-  }
+  // Verification codes - add real codes via environment variables when ready
+  // verification: {
+  //   google: process.env.GOOGLE_SITE_VERIFICATION,
+  //   yandex: process.env.YANDEX_VERIFICATION,
+  // }
 };
 
 export const viewport = {
@@ -128,13 +134,39 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        {/* Google Analytics */}
+        {GA_MEASUREMENT_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${GA_MEASUREMENT_ID}');
+              `}
+            </Script>
+          </>
+        )}
+      </head>
       <body
         className={`${alata.variable} ${jetbrainsMono.variable} font-sans antialiased min-h-screen flex flex-col bg-background text-foreground transition-colors duration-300`}
       >
         <Providers>
+          {/* Skip to main content link for accessibility */}
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-md focus:outline-none"
+          >
+            Skip to main content
+          </a>
           <NoiseTexture />
           <Navbar />
-          <main className="flex-1 pt-24">{children}</main>
+          <main id="main-content" className="flex-1 pt-24">{children}</main>
           <Footer />
           <Analytics />
         </Providers>

@@ -15,6 +15,7 @@ import {
   itemVariants,
   viewportOnce,
 } from '@/lib/animation-config'
+import { PROJECT_LINKS } from '@/lib/constants'
 
 export default function AcceleratePage() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -191,7 +192,7 @@ export default function AcceleratePage() {
               variants={childVariants}
               className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
             >
-              <Link href="https://acceleratewith.us" target="_blank" rel="noopener noreferrer">
+              <Link href={PROJECT_LINKS.accelerate} target="_blank" rel="noopener noreferrer">
                 <button className="px-10 py-5 bg-gradient-to-r from-cyan-500 to-blue-600 text-primary-foreground text-lg font-semibold rounded-xl flex items-center gap-3 group relative overflow-hidden hover:scale-[1.05] active:scale-[0.95] transition-transform duration-200">
                   <span className="relative z-10">Visit Platform</span>
                   <ExternalLink className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform relative z-10" />
@@ -227,6 +228,31 @@ export default function AcceleratePage() {
           </motion.div>
         </motion.div>
       </motion.section>
+
+      {/* Platform Preview Section */}
+      <section className="py-16 px-4">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            variants={sectionWithChildrenVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
+          >
+            <motion.div variants={childVariants} className="relative aspect-video rounded-2xl overflow-hidden border-2 border-dashed border-cyan-500/30 bg-cyan-950/10">
+              {/* Placeholder for platform screenshot */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center p-8">
+                  <div className="w-16 h-16 mx-auto mb-4 rounded-xl bg-cyan-500/10 flex items-center justify-center">
+                    <Rocket className="w-8 h-8 text-cyan-400" />
+                  </div>
+                  <p className="text-lg font-semibold text-foreground/70">Platform Screenshot</p>
+                  <p className="text-sm text-foreground/50 mt-2">Coming soon</p>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
 
       {/* Why I Built Accelerate Section */}
       <section id="impact" className="py-32 px-4 relative overflow-hidden">
@@ -532,7 +558,7 @@ export default function AcceleratePage() {
               variants={childVariants}
               className="flex flex-col sm:flex-row gap-6 justify-center items-center"
             >
-              <Link href="https://acceleratewith.us" target="_blank" rel="noopener noreferrer">
+              <Link href={PROJECT_LINKS.accelerate} target="_blank" rel="noopener noreferrer">
                 <button className="px-10 py-5 bg-gradient-to-r from-cyan-500 to-blue-600 text-primary-foreground text-lg font-semibold rounded-xl flex items-center gap-3 group relative overflow-hidden hover:scale-[1.05] active:scale-[0.95] transition-transform duration-200">
                   <Zap className="w-6 h-6 relative z-10" />
                   <span className="relative z-10">Visit Live Platform</span>

@@ -145,11 +145,11 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
 
                 {/* Photo frame with accent */}
                 <div className="relative group/photo">
-                  {/* Corner accents - expand on hover */}
-                  <div className="absolute -top-2 -left-2 sm:-top-3 sm:-left-3 w-8 h-8 sm:w-12 sm:h-12 border-t-2 border-l-2 border-primary transition-all duration-500 group-hover/photo:w-12 group-hover/photo:h-12 sm:group-hover/photo:w-16 sm:group-hover/photo:h-16 group-hover/photo:-top-3 group-hover/photo:-left-3 sm:group-hover/photo:-top-4 sm:group-hover/photo:-left-4" />
-                  <div className="absolute -top-2 -right-2 sm:-top-3 sm:-right-3 w-8 h-8 sm:w-12 sm:h-12 border-t-2 border-r-2 border-primary transition-all duration-500 group-hover/photo:w-12 group-hover/photo:h-12 sm:group-hover/photo:w-16 sm:group-hover/photo:h-16 group-hover/photo:-top-3 group-hover/photo:-right-3 sm:group-hover/photo:-top-4 sm:group-hover/photo:-right-4" />
-                  <div className="absolute -bottom-2 -left-2 sm:-bottom-3 sm:-left-3 w-8 h-8 sm:w-12 sm:h-12 border-b-2 border-l-2 border-primary transition-all duration-500 group-hover/photo:w-12 group-hover/photo:h-12 sm:group-hover/photo:w-16 sm:group-hover/photo:h-16 group-hover/photo:-bottom-3 group-hover/photo:-left-3 sm:group-hover/photo:-bottom-4 sm:group-hover/photo:-left-4" />
-                  <div className="absolute -bottom-2 -right-2 sm:-bottom-3 sm:-right-3 w-8 h-8 sm:w-12 sm:h-12 border-b-2 border-r-2 border-primary transition-all duration-500 group-hover/photo:w-12 group-hover/photo:h-12 sm:group-hover/photo:w-16 sm:group-hover/photo:h-16 group-hover/photo:-bottom-3 group-hover/photo:-right-3 sm:group-hover/photo:-bottom-4 sm:group-hover/photo:-right-4" />
+                  {/* Corner accents - subtle expand on hover */}
+                  <div className="absolute -top-2 -left-2 sm:-top-3 sm:-left-3 w-8 h-8 sm:w-12 sm:h-12 border-t-2 border-l-2 border-primary transition-all duration-300 group-hover/photo:border-primary/80" />
+                  <div className="absolute -top-2 -right-2 sm:-top-3 sm:-right-3 w-8 h-8 sm:w-12 sm:h-12 border-t-2 border-r-2 border-primary transition-all duration-300 group-hover/photo:border-primary/80" />
+                  <div className="absolute -bottom-2 -left-2 sm:-bottom-3 sm:-left-3 w-8 h-8 sm:w-12 sm:h-12 border-b-2 border-l-2 border-primary transition-all duration-300 group-hover/photo:border-primary/80" />
+                  <div className="absolute -bottom-2 -right-2 sm:-bottom-3 sm:-right-3 w-8 h-8 sm:w-12 sm:h-12 border-b-2 border-r-2 border-primary transition-all duration-300 group-hover/photo:border-primary/80" />
 
                   {/* Photo */}
                   <div className="relative w-48 h-60 sm:w-56 sm:h-72 md:w-64 md:h-80 lg:w-72 lg:h-[22rem] overflow-hidden">
@@ -161,9 +161,11 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                         src="/John-Connor-photo.jpg"
                         alt="John Connor"
                         fill
-                        className="object-cover object-top grayscale group-hover/photo:grayscale-0 transition-all duration-700 scale-110 group-hover/photo:scale-105"
+                        className="object-cover object-top grayscale group-hover/photo:grayscale-0 transition-all duration-700 scale-105"
                         priority
                         sizes="(max-width: 640px) 288px, (max-width: 768px) 320px, 360px"
+                        placeholder="blur"
+                        blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAKAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABgUH/8QAIhAAAgICAgICAwAAAAAAAAAAAQIDBAURBhIhMQBBE1Fh/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAZEQACAwEAAAAAAAAAAAAAAAABAgADESH/2gAMAwEAAhEDEEEAAAABn2LxsOfkhJbHYyOoq+ezIe3kn9n7ooorJJ8k//Z"
                       />
                     </motion.div>
                     {/* Overlay gradient - fades on hover */}

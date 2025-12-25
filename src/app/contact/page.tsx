@@ -368,7 +368,7 @@ export default function ContactPage() {
                         name="projectType"
                         value={formData.projectType}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 bg-card border-2 border-foreground/30 focus:border-primary transition-colors outline-none appearance-none text-foreground font-jost"
+                        className="w-full px-4 py-3 bg-card border-2 border-foreground/30 hover:border-foreground/50 focus:border-primary transition-colors outline-none appearance-none text-foreground font-jost cursor-pointer"
                       >
                         <option value="">Select a type</option>
                         <option value="pmf">Finding Product-Market Fit</option>
@@ -387,7 +387,7 @@ export default function ContactPage() {
                         name="budget"
                         value={formData.budget}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 bg-card border-2 border-foreground/30 focus:border-primary transition-colors outline-none appearance-none text-foreground font-jost"
+                        className="w-full px-4 py-3 bg-card border-2 border-foreground/30 hover:border-foreground/50 focus:border-primary transition-colors outline-none appearance-none text-foreground font-jost cursor-pointer"
                       >
                         <option value="">Select budget</option>
                         <option value="<10k">Less than $10k</option>

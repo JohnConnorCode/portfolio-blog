@@ -11,6 +11,7 @@ import {
   pageHeaderVariants,
   viewportOnce,
 } from '@/lib/animation-config'
+import { PROJECT_LINKS } from '@/lib/constants'
 
 export default function SuperDebatePage() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -132,7 +133,7 @@ export default function SuperDebatePage() {
             </motion.p>
 
             <motion.div variants={childVariants} className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link href="https://superdebate.org" target="_blank" rel="noopener noreferrer">
+              <Link href={PROJECT_LINKS.superDebate} target="_blank" rel="noopener noreferrer">
                 <button className="px-10 py-5 text-lg font-semibold rounded-xl flex items-center gap-3 group bg-primary text-primary-foreground font-jost hover:scale-105 active:scale-95 transition-transform duration-200">
                   <span>Visit Platform</span>
                   <ExternalLink className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
@@ -212,6 +213,31 @@ export default function SuperDebatePage() {
           </motion.div>
         </motion.div>
       </motion.section>
+
+      {/* Platform Preview Section */}
+      <section className="py-16 px-4">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            variants={sectionWithChildrenVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
+          >
+            <motion.div variants={childVariants} className="relative aspect-video rounded-2xl overflow-hidden border-2 border-dashed border-primary/30 bg-card/30">
+              {/* Placeholder for platform screenshot */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center p-8">
+                  <div className="w-16 h-16 mx-auto mb-4 rounded-xl bg-primary/10 flex items-center justify-center">
+                    <Globe className="w-8 h-8 text-primary" />
+                  </div>
+                  <p className="text-lg font-semibold text-foreground/70 font-jost">Platform Screenshot</p>
+                  <p className="text-sm text-foreground/50 font-jost mt-2">Coming soon</p>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
 
       {/* Infinita Championship Section */}
       <section id="championship" className="py-32 px-4 relative overflow-hidden">
@@ -678,7 +704,7 @@ export default function SuperDebatePage() {
               variants={childVariants}
               className="flex flex-col sm:flex-row gap-6 justify-center items-center"
             >
-              <Link href="https://superdebate.org" target="_blank" rel="noopener noreferrer">
+              <Link href={PROJECT_LINKS.superDebate} target="_blank" rel="noopener noreferrer">
                 <button className="px-10 py-5 text-lg font-semibold rounded-xl flex items-center gap-3 group relative overflow-hidden bg-primary text-primary-foreground font-jost hover:scale-105 active:scale-95 transition-transform duration-200">
                   <Flame className="w-6 h-6 relative z-10" />
                   <span className="relative z-10">Join SuperDebate</span>

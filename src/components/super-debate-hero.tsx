@@ -5,6 +5,8 @@ import { Trophy, MessageSquare, Users, ArrowRight, Scale, Mic, Calendar } from '
 import Link from 'next/link'
 import { useRef } from 'react'
 import { scrollFadeUp, staggerItem } from '@/lib/animation-config'
+import { Button } from '@/components/ui/button'
+import { CornerAccents } from '@/components/ui/decorative'
 
 export function SuperDebateHero() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -96,13 +98,11 @@ export function SuperDebateHero() {
           </p>
 
           {/* CTA Button */}
-          <Link href="/super-debate">
-            <button
-              className="group relative px-8 py-4 font-semibold text-sm flex items-center justify-center gap-3 mx-auto overflow-hidden font-jost bg-foreground text-background tracking-widest uppercase hover:bg-primary transition-colors duration-300"
-            >
-              <span className="relative z-10">Learn More</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform relative z-10" />
-            </button>
+          <Link href="/super-debate" className="inline-flex justify-center">
+            <Button variant="primary" className="flex items-center gap-3">
+              Learn More
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Button>
           </Link>
         </motion.div>
 
@@ -118,9 +118,7 @@ export function SuperDebateHero() {
                 className="relative group"
               >
                 <div className="relative bg-card border border-border p-6 h-full transition-all duration-300 group-hover:border-primary/30 group-hover:shadow-lg group-hover:-translate-y-1">
-                  {/* Corner accents */}
-                  <div className="absolute top-0 left-0 w-4 h-4 border-l border-t border-primary/40 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  <div className="absolute bottom-0 right-0 w-4 h-4 border-r border-b border-primary/40 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <CornerAccents size="md" />
 
                   <Icon className="w-8 h-8 mb-4 text-primary" />
                   <h3 className="text-base font-bold mb-2 font-jost text-foreground">
@@ -140,12 +138,8 @@ export function SuperDebateHero() {
           {...scrollFadeUp()}
           className="relative max-w-4xl mx-auto"
         >
-          <div className="relative bg-card border border-border p-8">
-            {/* Corner accents */}
-            <div className="absolute top-0 left-0 w-6 h-6 border-l-2 border-t-2 border-primary" />
-            <div className="absolute top-0 right-0 w-6 h-6 border-r-2 border-t-2 border-primary" />
-            <div className="absolute bottom-0 left-0 w-6 h-6 border-l-2 border-b-2 border-primary" />
-            <div className="absolute bottom-0 right-0 w-6 h-6 border-r-2 border-b-2 border-primary" />
+          <div className="relative bg-card border border-border p-8 no-shadow">
+            <CornerAccents size="lg" permanent />
 
             <div className="flex items-center gap-3 mb-6">
               <MessageSquare className="w-6 h-6 text-primary" />

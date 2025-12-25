@@ -1,5 +1,12 @@
-// Basic monitoring and error tracking
-// In production, replace with Sentry, LogRocket, or similar service
+// Monitoring and error tracking with Sentry integration
+import * as Sentry from "@sentry/nextjs";
+
+// Extend Window interface for Google Analytics
+declare global {
+  interface Window {
+    gtag: (command: string, action: string, params?: Record<string, unknown>) => void;
+  }
+}
 
 interface ErrorLog {
   message: string
@@ -38,10 +45,12 @@ class MonitoringService {
       console.error('🚨 Error tracked:', errorLog)
     }
     
-    // In production, send to monitoring service
+    // In production, send to Sentry
     if (process.env.NODE_ENV === 'production') {
-      // TODO: Send to Sentry or similar
-      console.error('Production error:', errorLog)
+      Sentry.captureException(error, {
+        tags: { component },
+        extra: { ...errorLog }
+      })
     }
   }
   
@@ -64,12 +73,18 @@ class MonitoringService {
   // Track page views
   trackPageView(path: string) {
     if (typeof window !== 'undefined') {
-      // Basic analytics
-      // Page view tracked
-      
-      // In production, send to analytics service
-      if (process.env.NODE_ENV === 'production') {
-        // TODO: Send to Google Analytics, Plausible, etc.
+      // Send to Sentry as breadcrumb for session tracking
+      Sentry.addBreadcrumb({
+        category: 'navigation',
+        message: `Page view: ${path}`,
+        level: 'info',
+      })
+
+      // Send to Google Analytics if configured
+      if (process.env.NODE_ENV === 'production' && typeof window.gtag === 'function') {
+        window.gtag('event', 'page_view', {
+          page_path: path,
+        })
       }
     }
   }
