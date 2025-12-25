@@ -17,6 +17,7 @@ const navItems = [
     label: 'Work',
     icon: Briefcase,
     subItems: [
+      { href: '/accelerate', label: 'Accelerate' },
       { href: '/super-debate', label: 'Super Debate' },
     ]
   },

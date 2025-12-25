@@ -21,6 +21,7 @@ const quickLinks = [
 ]
 
 const projectLinks = [
+  { href: '/accelerate', label: 'Accelerate' },
   { href: '/super-debate', label: 'SuperDebate' },
 ]
 
@@ -69,7 +70,7 @@ export function Footer() {
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.05, y: -2 }}
                     whileTap={{ scale: 0.95 }}
-                    className="p-3 border border-border text-muted-foreground hover:border-primary hover:text-primary transition-all duration-300"
+                    className="p-3.5 border border-border text-muted-foreground hover:border-primary hover:text-primary transition-all duration-300"
                     aria-label={link.label}
                   >
                     <Icon className="w-5 h-5" />

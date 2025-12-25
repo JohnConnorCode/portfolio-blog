@@ -429,19 +429,34 @@ export default function ContactPage() {
                   </button>
 
                   {submitStatus === 'success' && (
-                    <div className="p-4 border-2 border-green-500 bg-green-500/10 text-green-500">
-                      <p className="text-sm text-center font-medium">
-                        Message sent successfully! I&apos;ll get back to you within 24 hours.
+                    <motion.div
+                      initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      className="p-6 border-2 border-primary bg-primary/10 text-center"
+                    >
+                      <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-primary/20 flex items-center justify-center">
+                        <Send className="w-6 h-6 text-primary" />
+                      </div>
+                      <p className="text-lg font-semibold text-foreground mb-1">
+                        Message Sent!
                       </p>
-                    </div>
+                      <p className="text-sm text-foreground/70">
+                        I&apos;ll get back to you within 24 hours.
+                      </p>
+                    </motion.div>
                   )}
 
                   {submitStatus === 'error' && (
-                    <div className="p-4 border-2 border-red-500 bg-red-500/10 text-red-500">
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="p-4 border-2 border-red-500 bg-red-500/10 text-red-500"
+                    >
                       <p className="text-sm text-center font-medium">
-                        Something went wrong. Please try again or email directly.
+                        Something went wrong. Please try again or email{' '}
+                        <a href="mailto:john@superdebate.org" className="underline">john@superdebate.org</a> directly.
                       </p>
-                    </div>
+                    </motion.div>
                   )}
                 </form>
               </div>

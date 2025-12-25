@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { format } from 'date-fns'
 import { BlogPost } from '@/types'
 import { fadeInUp, sectionWithChildrenVariants } from '@/lib/animation-config'
+import { BookOpen } from 'lucide-react'
 
 interface AnimatedBlogPostsProps {
   posts: BlogPost[]
@@ -17,9 +18,15 @@ export default function SanityBlogPostsAnimated({ posts }: AnimatedBlogPostsProp
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="text-center py-12"
+        className="text-center py-16 px-6"
       >
-        <p className="text-muted-foreground">No blog posts yet. Create your first post in Sanity Studio at /studio</p>
+        <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-primary/10 flex items-center justify-center">
+          <BookOpen className="w-8 h-8 text-primary" />
+        </div>
+        <h3 className="text-xl font-semibold text-foreground mb-2 font-jost">Articles Coming Soon</h3>
+        <p className="text-muted-foreground font-jost max-w-sm mx-auto">
+          Deep dives on building systems, finding product-market fit, and lessons from the field. Check back soon for new essays.
+        </p>
       </motion.div>
     )
   }

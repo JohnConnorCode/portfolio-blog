@@ -178,11 +178,11 @@ export default function WorkPage() {
                       </span>
                     </div>
                     <p className="mb-4 text-foreground/80 font-jost">{project.description}</p>
-                    <div className="flex items-center gap-4">
-                      <Link href={project.link} className="text-sm font-semibold flex items-center gap-1 transition-colors hover:text-primary/70 text-primary font-jost">
+                    <div className="flex items-center gap-3">
+                      <Link href={project.link} className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-semibold bg-primary text-primary-foreground hover:bg-primary/90 transition-colors font-jost">
                         View Details <ArrowRight className="w-3 h-3" />
                       </Link>
-                      <a href={project.external} target="_blank" rel="noopener noreferrer" className="text-sm flex items-center gap-1 transition-colors hover:text-foreground text-foreground/60 font-jost">
+                      <a href={project.external} target="_blank" rel="noopener noreferrer" className="text-sm flex items-center gap-1 transition-colors hover:text-primary text-foreground/50 font-jost">
                         Visit Site <Globe className="w-3 h-3" />
                       </a>
                     </div>

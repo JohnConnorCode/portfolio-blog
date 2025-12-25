@@ -7,7 +7,7 @@ import { PortableText } from '@portabletext/react'
 import { formatDistanceToNow } from 'date-fns'
 import { motion } from 'framer-motion'
 import { fadeInUpDelayed } from '@/lib/animation-config'
-import { Hash, Pin } from 'lucide-react'
+import { Hash, Pin, Sparkles } from 'lucide-react'
 import { Thought, PortableTextImageValue, PortableTextCodeValue, PortableTextLinkValue } from '@/types'
 
 const moodEmoji: Record<string, string> = {
@@ -49,9 +49,20 @@ export default function ThoughtsFeed() {
   
   if (!thoughts || thoughts.length === 0) {
     return (
-      <div className="text-center py-12">
-        <p className="text-muted-foreground font-mono">No thoughts yet. Check back soon.</p>
-      </div>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="text-center py-16 px-6"
+      >
+        <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-primary/10 flex items-center justify-center">
+          <Sparkles className="w-8 h-8 text-primary" />
+        </div>
+        <h3 className="text-xl font-semibold text-foreground mb-2 font-jost">Thoughts Coming Soon</h3>
+        <p className="text-muted-foreground font-jost max-w-sm mx-auto">
+          Quick insights on systems, products, and what I&apos;m learning. Subscribe to get notified when new thoughts drop.
+        </p>
+      </motion.div>
     )
   }
   
