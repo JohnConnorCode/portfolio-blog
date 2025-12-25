@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
+import { Button } from '@/components/ui/button'
 
 interface HeroContent {
   heroTitle?: string
@@ -51,7 +52,7 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
   }, [])
 
   return (
-    <section ref={containerRef} className="relative min-h-screen overflow-hidden -mt-24 pt-24 bg-background">
+    <section ref={containerRef} className="relative min-h-screen overflow-hidden -mt-24 pt-24 bg-background hero-section">
       {/* Gradient background with parallax */}
       <motion.div
         style={{ y: bgY }}
@@ -167,15 +168,10 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
                     <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60 group-hover/photo:opacity-30 transition-opacity duration-500 z-10" />
                   </div>
 
-                  {/* Floating diamond accent - frosted glass effect */}
-                  <motion.div
-                    animate={{ y: [0, -8, 0], rotate: [0, 3, 0] }}
-                    transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                    className="absolute -bottom-4 -left-4 sm:-bottom-6 sm:-left-6 group/diamond cursor-pointer"
-                    whileHover={{ scale: 1.15, rotate: 90 }}
-                  >
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 rotate-45 border border-white/30 bg-white/10 backdrop-blur-xl shadow-xl shadow-black/20 transition-all duration-300 group-hover/diamond:bg-white/20 group-hover/diamond:border-white/50 group-hover/diamond:shadow-primary/30" />
-                  </motion.div>
+                  {/* Diamond accent - animated with hover effects */}
+                  <div className="absolute -bottom-4 -left-4 sm:-bottom-6 sm:-left-6 group">
+                    <div className="w-8 h-8 sm:w-10 sm:h-10 rotate-45 border-2 border-primary bg-background logo-diamond animate-logo-diamond cursor-pointer hover:scale-110 hover:border-primary/80 transition-all duration-300" />
+                  </div>
 
                   {/* Small accent - pulses and grows on photo hover */}
                   <motion.div
@@ -193,10 +189,10 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
               className="lg:col-span-7 order-2 lg:order-1 text-center lg:text-left md:will-change-transform"
             >
 
-              {/* Headline - BOLD and distinctive - CSS animation with cycling gradient */}
+              {/* Headline - BOLD and distinctive - CSS animation with 90%→90% gradient sweep */}
               <h1 className="relative mb-4 sm:mb-6 animate-in delay-0">
                 <span
-                  className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight font-jost bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent animate-gradient-cycle"
+                  className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight font-jost text-transparent animate-gradient-cycle"
                   style={{ lineHeight: 1.1 }}
                 >
                   JOHN CONNOR
@@ -227,21 +223,17 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
               </p>
 
               {/* CTA Buttons - CSS animation */}
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start animate-in delay-6">
+              <div className="flex flex-row gap-2 sm:gap-4 justify-center lg:justify-start animate-in delay-6">
                 <Link href="/contact">
-                  <button className="group relative px-8 sm:px-10 py-4 sm:py-5 font-semibold text-xs sm:text-sm overflow-hidden bg-primary text-background uppercase tracking-[0.12em] sm:tracking-[0.15em] font-jost hover:scale-[1.02] active:scale-[0.98] transition-transform duration-200">
-                    <span className="relative z-10">Get in Touch</span>
-                    <div className="absolute inset-0 bg-foreground transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-                    <span className="absolute inset-0 flex items-center justify-center text-background opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
-                      Get in Touch
-                    </span>
-                  </button>
+                  <Button variant="primary" size="md" className="sm:px-8 sm:py-4 sm:text-sm">
+                    Get in Touch
+                  </Button>
                 </Link>
 
                 <Link href="/work">
-                  <button className="px-8 sm:px-10 py-4 sm:py-5 font-semibold text-xs sm:text-sm bg-transparent text-foreground border-2 border-foreground/20 hover:border-primary hover:text-primary uppercase tracking-[0.12em] sm:tracking-[0.15em] font-jost transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]">
+                  <Button variant="secondary" size="md" className="sm:px-8 sm:py-4 sm:text-sm">
                     See the Work
-                  </button>
+                  </Button>
                 </Link>
               </div>
 

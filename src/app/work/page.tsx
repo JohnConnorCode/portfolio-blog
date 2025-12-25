@@ -1,9 +1,11 @@
 'use client'
 
-import { motion, useScroll, useTransform } from 'framer-motion'
 import { ArrowRight, Zap, Users, Code, Trophy, Target, Shield, TrendingUp, Globe, Rocket, Brain, MessageSquare } from 'lucide-react'
 import Link from 'next/link'
-import { useRef } from 'react'
+import { motion } from 'framer-motion'
+import { Button } from '@/components/ui/button'
+import { DiamondDivider, CornerAccents, SectionHeader, GlowOrb, GridBackground } from '@/components/ui/decorative'
+import { sectionWithChildrenVariants, childVariants, viewportOnce, TIMING, EASE } from '@/lib/animation-config'
 
 const experiences = [
   {
@@ -88,128 +90,79 @@ const shippedProducts = [
 const otherProjects = [
   {
     name: 'SmartStarts',
-    description: 'AI-powered business planning platform helping entrepreneurs validate ideas and create actionable roadmaps.',
-    tech: 'AI • Next.js • Business Strategy',
+    description: 'AI-powered launch assistant for entrepreneurs. Generate business plans, validate ideas, and get actionable next steps in minutes.',
+    tech: 'AI • Next.js • GPT-4',
     link: 'https://www.smartstarts.xyz/'
   },
   {
-    name: 'Proclosure',
-    description: 'Full-stack real estate intelligence platform. Predictive analytics, CRM, automated workflows.',
-    tech: 'AI • Supabase • Data Pipelines'
+    name: 'AlphaTask',
+    description: 'AI-powered task management that transforms meeting transcripts and voice notes into organized, actionable tasks automatically.',
+    tech: 'AI • Task Automation • Productivity',
+    link: 'https://alphatask.xyz/'
   }
 ]
 
 export default function WorkPage() {
-  const containerRef = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"]
-  })
-
-  const bgTextX = useTransform(scrollYProgress, [0, 1], ['0%', '-10%'])
-  const bgTextX2 = useTransform(scrollYProgress, [0, 1], ['0%', '10%'])
-
   return (
-    <section ref={containerRef} className="min-h-screen py-20 px-4 sm:px-6 lg:px-8 bg-background relative overflow-hidden">
-      {/* Grid background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage: `
-              linear-gradient(to right, hsl(var(--primary)) 1px, transparent 1px),
-              linear-gradient(to bottom, hsl(var(--primary)) 1px, transparent 1px)
-            `,
-            backgroundSize: '60px 60px'
-          }}
-        />
-        {/* Horizontal accent lines */}
-        <div className="absolute top-1/4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
-        <div className="absolute top-2/4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/10 to-transparent" />
-        <div className="absolute top-3/4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
-      </div>
+    <section className="min-h-screen py-20 px-4 sm:px-6 lg:px-8 bg-background relative overflow-hidden">
+      <GridBackground opacity={0.04} />
 
-      {/* Large scrolling background text */}
+      {/* Large background text - static for SSR */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none hidden md:block">
-        <motion.div
-          style={{ x: bgTextX }}
-          className="absolute top-[15%] left-0 whitespace-nowrap"
-        >
+        <div className="absolute top-[15%] left-0 whitespace-nowrap">
           <span className="text-[12vw] font-bold tracking-tight text-foreground/[0.02] font-jost">
             WORK • EXPERIENCE • PRODUCTS • SHIPPED •
           </span>
-        </motion.div>
-        <motion.div
-          style={{ x: bgTextX2 }}
-          className="absolute top-[55%] left-0 whitespace-nowrap"
-        >
+        </div>
+        <div className="absolute top-[55%] left-0 whitespace-nowrap">
           <span className="text-[12vw] font-bold tracking-tight text-foreground/[0.02] font-jost">
             BUILD • SCALE • ITERATE • GROW •
           </span>
-        </motion.div>
+        </div>
       </div>
 
-      {/* Gradient orbs */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/3 left-0 w-[400px] h-[400px] bg-primary/3 rounded-full blur-[100px] pointer-events-none" />
+      <GlowOrb size="md" position="top-right" />
+      <GlowOrb size="sm" position="bottom-left" color="accent" />
 
       <div className="max-w-5xl mx-auto relative z-10">
-        {/* Header - CSS animations */}
-        <div className="mb-16 text-center">
-          {/* Decorative element */}
-          <div className="flex items-center justify-center gap-4 mb-6 animate-in delay-0">
-            <div className="w-12 h-px bg-gradient-to-r from-transparent to-primary/50" />
-            <svg viewBox="0 0 24 24" className="w-5 h-5 text-primary">
-              <path d="M12 2 L22 12 L12 22 L2 12 Z" fill="none" stroke="currentColor" strokeWidth="1.5" />
-            </svg>
-            <div className="w-12 h-px bg-gradient-to-l from-transparent to-primary/50" />
-          </div>
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: TIMING.normal, ease: EASE }}
+          className="mb-16"
+        >
+          <SectionHeader
+            title="The"
+            highlight="Work"
+            subtitle="Products shipped, companies built, systems scaled."
+          />
+        </motion.div>
 
-          <p className="text-xs tracking-[0.3em] uppercase mb-4 text-primary font-jost animate-in delay-1">
-            Work & Experience
-          </p>
-          <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 tracking-wide font-jost animate-in delay-2">
-            <span className="text-foreground">The </span>
-            <span className="text-primary">Work</span>
-          </h1>
-          <p className="text-lg max-w-3xl mx-auto text-foreground/70 font-jost animate-in delay-3">
-            Products shipped, companies built, systems scaled.
-          </p>
-        </div>
-
-        {/* Shipped Products */}
-        <section className="mb-20">
-          <h2 className="text-2xl font-bold mb-8 font-jost animate-in delay-4">
-            <span className="text-foreground">Products </span>
-            <span className="text-primary">Shipped</span>
-          </h2>
+        {/* Featured Products */}
+        <motion.section
+          variants={sectionWithChildrenVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+          className="mb-20"
+        >
+          <motion.h2 variants={childVariants} className="text-2xl font-bold mb-8 font-jost">
+            <span className="text-foreground">Featured </span>
+            <span className="text-primary">Products</span>
+          </motion.h2>
 
           <div className="grid md:grid-cols-2 gap-6">
             {shippedProducts.map((project, index) => {
               const Icon = project.icon
               return (
-                <div
+                <motion.div
                   key={project.name}
-                  className="relative group animate-in"
-                  style={{ animationDelay: `${0.2 + index * 0.05}s` }}
+                  variants={childVariants}
+                  custom={index}
+                  className="relative group"
                 >
-                  {/* Corner accents */}
-                  <div className="absolute top-0 left-0 w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="absolute top-0 left-0 w-full h-0.5 bg-primary" />
-                    <div className="absolute top-0 left-0 w-0.5 h-full bg-primary" />
-                  </div>
-                  <div className="absolute top-0 right-0 w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="absolute top-0 right-0 w-full h-0.5 bg-primary" />
-                    <div className="absolute top-0 right-0 w-0.5 h-full bg-primary" />
-                  </div>
-                  <div className="absolute bottom-0 left-0 w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="absolute bottom-0 left-0 w-full h-0.5 bg-primary" />
-                    <div className="absolute bottom-0 left-0 w-0.5 h-full bg-primary" />
-                  </div>
-                  <div className="absolute bottom-0 right-0 w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="absolute bottom-0 right-0 w-full h-0.5 bg-primary" />
-                    <div className="absolute bottom-0 right-0 w-0.5 h-full bg-primary" />
-                  </div>
+                  <CornerAccents size="md" />
 
                   <div className="relative p-6 h-full transition-all border bg-card border-border hover:border-primary/30 hover:-translate-y-1 duration-300">
                     <div className="flex items-start justify-between mb-4">
@@ -234,23 +187,30 @@ export default function WorkPage() {
                       </a>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               )
             })}
           </div>
-        </section>
+        </motion.section>
 
         {/* Other Projects */}
-        <section className="mb-20">
-          <h2 className="text-xl font-bold mb-6 text-foreground/60 font-jost animate-in delay-6">
+        <motion.section
+          variants={sectionWithChildrenVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+          className="mb-20"
+        >
+          <motion.h2 variants={childVariants} className="text-xl font-bold mb-6 text-foreground/60 font-jost">
             Other Projects
-          </h2>
+          </motion.h2>
           <div className="grid md:grid-cols-2 gap-4">
             {otherProjects.map((project, index) => (
-              <div
+              <motion.div
                 key={project.name}
-                className="p-4 border transition-all hover:border-primary/30 bg-card border-border animate-in"
-                style={{ animationDelay: `${0.3 + index * 0.05}s` }}
+                variants={childVariants}
+                custom={index}
+                className="p-4 border transition-all hover:border-primary/30 bg-card border-border"
               >
                 <div className="flex items-center justify-between mb-1">
                   <h3 className="font-semibold text-foreground font-jost">{project.name}</h3>
@@ -262,33 +222,33 @@ export default function WorkPage() {
                 </div>
                 <p className="text-sm mb-2 text-foreground/70 font-jost">{project.description}</p>
                 <span className="text-xs text-primary/80 font-jost">{project.tech}</span>
-              </div>
+              </motion.div>
             ))}
           </div>
-        </section>
+        </motion.section>
 
-        {/* Divider with diamond */}
-        <div className="flex items-center justify-center gap-4 mb-16">
-          <div className="w-20 h-px bg-gradient-to-r from-transparent to-primary/30" />
-          <svg viewBox="0 0 24 24" className="w-6 h-6 text-primary">
-            <path d="M12 2 L22 12 L12 22 L2 12 Z" fill="none" stroke="currentColor" strokeWidth="1.5" />
-          </svg>
-          <div className="w-20 h-px bg-gradient-to-l from-transparent to-primary/30" />
-        </div>
+        <DiamondDivider className="mb-16" />
 
         {/* Experience Timeline */}
-        <section className="mb-20">
-          <h2 className="text-3xl font-bold mb-12 text-center font-jost animate-in delay-8">
+        <motion.section
+          variants={sectionWithChildrenVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+          className="mb-20"
+        >
+          <motion.h2 variants={childVariants} className="text-3xl font-bold mb-12 text-center font-jost">
             <span className="text-foreground">Experience </span>
             <span className="text-primary">Timeline</span>
-          </h2>
+          </motion.h2>
 
           <div className="space-y-6">
             {experiences.map((exp, index) => (
-              <div
+              <motion.div
                 key={exp.company}
-                className="relative p-6 transition-all border-l-4 bg-card border-l-primary hover:bg-card/80 animate-in"
-                style={{ animationDelay: `${0.4 + index * 0.05}s` }}
+                variants={childVariants}
+                custom={index}
+                className="relative p-6 transition-all border-l-4 bg-card border-l-primary hover:bg-card/80"
               >
                 {/* Header */}
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4">
@@ -328,26 +288,25 @@ export default function WorkPage() {
                     </span>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
-        </section>
+        </motion.section>
 
-        {/* Divider with diamond */}
-        <div className="flex items-center justify-center gap-4 mb-16">
-          <div className="w-20 h-px bg-gradient-to-r from-transparent to-primary/30" />
-          <svg viewBox="0 0 24 24" className="w-6 h-6 text-primary">
-            <path d="M12 2 L22 12 L12 22 L2 12 Z" fill="none" stroke="currentColor" strokeWidth="1.5" />
-          </svg>
-          <div className="w-20 h-px bg-gradient-to-l from-transparent to-primary/30" />
-        </div>
+        <DiamondDivider className="mb-16" />
 
         {/* Key Metrics */}
-        <section className="mb-20">
-          <h2 className="text-3xl font-bold mb-12 text-center font-jost animate-in delay-10">
+        <motion.section
+          variants={sectionWithChildrenVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+          className="mb-20"
+        >
+          <motion.h2 variants={childVariants} className="text-3xl font-bold mb-12 text-center font-jost">
             <span className="text-foreground">By the </span>
             <span className="text-primary">Numbers</span>
-          </h2>
+          </motion.h2>
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {[
@@ -358,37 +317,32 @@ export default function WorkPage() {
             ].map((metric, index) => {
               const Icon = metric.icon
               return (
-                <div
-                  key={metric.label}
-                  className="relative group animate-in"
-                  style={{ animationDelay: `${0.55 + index * 0.04}s` }}
-                >
+                <motion.div key={metric.label} variants={childVariants} custom={index} className="relative group">
                   <div className="relative p-6 text-center transition-all border bg-card border-border hover:border-primary/30 hover:-translate-y-1 duration-300">
                     <Icon className="w-8 h-8 mx-auto mb-3 text-primary" />
                     <p className="text-3xl font-black mb-1 text-primary font-jost">{metric.value}</p>
                     <p className="text-sm text-foreground/60 font-jost">{metric.label}</p>
                   </div>
-                </div>
+                </motion.div>
               )
             })}
           </div>
-        </section>
+        </motion.section>
 
-        {/* Divider with diamond */}
-        <div className="flex items-center justify-center gap-4 mb-16">
-          <div className="w-20 h-px bg-gradient-to-r from-transparent to-primary/30" />
-          <svg viewBox="0 0 24 24" className="w-6 h-6 text-primary">
-            <path d="M12 2 L22 12 L12 22 L2 12 Z" fill="none" stroke="currentColor" strokeWidth="1.5" />
-          </svg>
-          <div className="w-20 h-px bg-gradient-to-l from-transparent to-primary/30" />
-        </div>
+        <DiamondDivider className="mb-16" />
 
         {/* Approach */}
-        <section className="mb-20">
-          <h2 className="text-2xl font-bold mb-8 font-jost animate-in" style={{ animationDelay: '0.65s' }}>
+        <motion.section
+          variants={sectionWithChildrenVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+          className="mb-20"
+        >
+          <motion.h2 variants={childVariants} className="text-2xl font-bold mb-8 font-jost">
             <span className="text-foreground">How I </span>
             <span className="text-primary">Work</span>
-          </h2>
+          </motion.h2>
 
           <div className="grid md:grid-cols-3 gap-6">
             {[
@@ -410,28 +364,30 @@ export default function WorkPage() {
             ].map((approach, index) => {
               const Icon = approach.icon
               return (
-                <div
+                <motion.div
                   key={approach.title}
-                  className="p-6 transition-all border bg-card border-border hover:border-primary/30 hover:-translate-y-1 duration-300 animate-in"
-                  style={{ animationDelay: `${0.7 + index * 0.04}s` }}
+                  variants={childVariants}
+                  custom={index}
+                  className="p-6 transition-all border bg-card border-border hover:border-primary/30 hover:-translate-y-1 duration-300"
                 >
                   <Icon className="w-8 h-8 mb-4 text-primary" />
                   <h3 className="text-lg font-bold mb-2 text-foreground font-jost">{approach.title}</h3>
                   <p className="text-sm text-foreground/70 font-jost">{approach.description}</p>
-                </div>
+                </motion.div>
               )
             })}
           </div>
-        </section>
+        </motion.section>
 
         {/* CTA */}
-        <section
-          className="relative p-8 sm:p-12 text-center overflow-hidden border bg-card border-primary/30 animate-in"
-          style={{ animationDelay: '0.8s' }}
+        <motion.section
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={viewportOnce}
+          transition={{ duration: TIMING.normal, ease: EASE }}
+          className="relative p-8 sm:p-12 text-center overflow-hidden border bg-card border-primary/30 no-shadow"
         >
-          {/* Corner accents */}
-          <div className="absolute top-0 left-0 w-20 h-20 border-t-2 border-l-2 border-primary/50" />
-          <div className="absolute bottom-0 right-0 w-20 h-20 border-b-2 border-r-2 border-primary/50" />
+          <CornerAccents size="lg" permanent />
 
           <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-foreground font-jost">
             What are you building?
@@ -440,19 +396,12 @@ export default function WorkPage() {
             I partner with founders and teams shipping products that matter.
           </p>
           <Link href="/contact">
-            <button className="group relative px-10 py-5 font-semibold text-sm overflow-hidden bg-primary text-background uppercase tracking-[0.15em] font-jost hover:scale-[1.02] active:scale-[0.98] transition-transform duration-200">
-              <span className="relative z-10 flex items-center gap-2">
-                Get in Touch
-                <ArrowRight className="w-4 h-4" />
-              </span>
-              <div className="absolute inset-0 bg-foreground transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-              <span className="absolute inset-0 flex items-center justify-center gap-2 text-background opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
-                Get in Touch
-                <ArrowRight className="w-4 h-4" />
-              </span>
-            </button>
+            <Button variant="primary" size="lg" className="flex items-center gap-2 mx-auto">
+              Get in Touch
+              <ArrowRight className="w-4 h-4" />
+            </Button>
           </Link>
-        </section>
+        </motion.section>
       </div>
     </section>
   )

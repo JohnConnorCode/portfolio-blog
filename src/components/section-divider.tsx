@@ -123,7 +123,7 @@ export function SectionDivider({ variant = 'geometric', className = '' }: Sectio
   }
 
   return (
-    <div className={`py-8 ${className}`}>
+    <div className={`py-8 no-shadow ${className}`}>
       {dividers[variant]}
     </div>
   )

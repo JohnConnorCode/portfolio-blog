@@ -69,35 +69,35 @@ export function Navbar() {
             {/* Logo Section */}
             <Link href="/" className="group relative z-10">
               <div className="flex items-center gap-3">
-                {/* Logo - Shrinks on scroll (CSS transition, no re-animation) */}
+                {/* Logo - Shrinks on scroll, exciting hover effects */}
                 <div
                   className={cn(
-                    "relative transition-all duration-300",
+                    "relative transition-all duration-500 group-hover:scale-110",
                     scrolled ? "w-10 h-10" : "w-12 h-12"
                   )}
                 >
-                  {/* Ambient glow - CSS fade in */}
-                  <div className="absolute -inset-2 bg-primary/20 blur-xl rounded-full animate-in delay-2" style={{ opacity: 0.6 }} />
+                  {/* Ambient glow - intensifies on hover */}
+                  <div className="absolute -inset-2 bg-primary/20 blur-xl rounded-full animate-in delay-2 transition-all duration-500 group-hover:bg-primary/40 group-hover:-inset-4 group-hover:blur-2xl" style={{ opacity: 0.6 }} />
 
-                  {/* Outer diamond border - CSS rotate in */}
-                  <div className="absolute inset-0 border-2 border-primary transition-all group-hover:border-primary/80 animate-logo-diamond delay-0" />
+                  {/* Outer diamond border - spins and glows on hover */}
+                  <div className="logo-diamond absolute inset-0 border-2 border-primary animate-logo-diamond delay-0 group-hover:rotate-[135deg]" />
 
-                  {/* Inner filled diamond - CSS rotate in with delay */}
-                  <div className="absolute inset-[5px] bg-primary/10 transition-all group-hover:bg-primary/20 animate-logo-diamond delay-1" />
+                  {/* Inner filled diamond - pulses on hover */}
+                  <div className="absolute inset-[5px] bg-primary/10 transition-all duration-500 animate-logo-diamond delay-1 group-hover:bg-primary/30 group-hover:rotate-[135deg]" />
 
-                  {/* Center accent - CSS rotate in last */}
+                  {/* Center accent - grows on hover */}
                   <div
                     className={cn(
-                      "absolute bg-primary/30 transition-all duration-300 animate-logo-diamond delay-2",
-                      scrolled ? "inset-[12px]" : "inset-[14px]"
+                      "absolute bg-primary/30 transition-all duration-500 animate-logo-diamond delay-2 group-hover:bg-primary/60 group-hover:rotate-[135deg]",
+                      scrolled ? "inset-[12px] group-hover:inset-[10px]" : "inset-[14px] group-hover:inset-[12px]"
                     )}
                   />
 
-                  {/* JC Text - CSS fade in */}
+                  {/* JC Text - stays centered, scales up with glow */}
                   <div className="absolute inset-0 flex items-center justify-center animate-in delay-3">
                     <span
                       className={cn(
-                        "font-black text-primary tracking-wide font-jost transition-all duration-300",
+                        "logo-text font-black text-primary tracking-wide font-jost group-hover:scale-110",
                         scrolled ? "text-sm" : "text-lg"
                       )}
                     >
@@ -117,8 +117,8 @@ export function Navbar() {
                       className="overflow-hidden"
                     >
                       <div className="flex flex-col">
-                        <span className="text-sm sm:text-base font-semibold tracking-tight text-foreground font-jost whitespace-nowrap">
-                          John Connor
+                        <span className="text-sm sm:text-base font-semibold tracking-tight font-jost whitespace-nowrap text-transparent animate-gradient-cycle-slow">
+                          JOHN CONNOR
                         </span>
                         <span className="text-[9px] sm:text-[10px] text-primary uppercase tracking-[0.15em] font-jost whitespace-nowrap hidden xs:block">
                           Product Strategist
@@ -169,8 +169,8 @@ export function Navbar() {
 
                     {/* Dropdown for sub-items */}
                     {hasSubItems && (
-                      <div className="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                        <div className="bg-background/95 backdrop-blur-xl border border-primary/10 rounded-lg shadow-xl overflow-hidden min-w-[180px]">
+                      <div className="absolute top-full left-0 pt-2 opacity-0 invisible translate-y-2 scale-95 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:scale-100 transition-all duration-300 ease-out">
+                        <div className="bg-background/95 backdrop-blur-xl border border-primary/10 rounded-lg shadow-xl shadow-black/10 overflow-hidden min-w-[180px]">
                           {item.subItems?.map((subItem) => {
                             const isSubActive = pathname === subItem.href
                             return (
@@ -273,7 +273,7 @@ export function Navbar() {
                     </div>
                   </div>
                   <div className="flex flex-col">
-                    <span className="text-sm font-semibold text-foreground font-jost">John Connor</span>
+                    <span className="text-sm font-semibold font-jost text-transparent animate-gradient-cycle-slow">JOHN CONNOR</span>
                     <span className="text-[9px] text-primary uppercase tracking-[0.15em] font-jost">Menu</span>
                   </div>
                 </Link>

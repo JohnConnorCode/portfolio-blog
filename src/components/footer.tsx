@@ -4,11 +4,12 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { Linkedin, Twitter, Mail, ArrowUpRight } from 'lucide-react'
 import { sectionWithChildrenVariants, childVariants, viewportOnce } from '@/lib/animation-config'
+import { SOCIAL_LINKS, CONTACT_EMAIL, PROJECT_LINKS } from '@/lib/constants'
 
 const socialLinks = [
-  { href: 'https://twitter.com/ablockunchained', icon: Twitter, label: 'Twitter' },
-  { href: 'https://www.linkedin.com/in/johnconnor', icon: Linkedin, label: 'LinkedIn' },
-  { href: 'mailto:john@superdebate.org', icon: Mail, label: 'Email' },
+  { href: SOCIAL_LINKS.twitter, icon: Twitter, label: 'Twitter' },
+  { href: SOCIAL_LINKS.linkedin, icon: Linkedin, label: 'LinkedIn' },
+  { href: `mailto:${CONTACT_EMAIL}`, icon: Mail, label: 'Email' },
 ]
 
 const quickLinks = [
@@ -38,16 +39,19 @@ export function Footer() {
           <div className="md:col-span-2">
             <Link href="/" className="inline-block mb-4 group">
               <div className="flex items-center gap-4">
-                <div className="relative w-10 h-10">
-                  <div className="absolute inset-0 border-2 border-primary rotate-45" />
+                <div className="relative w-10 h-10 transition-transform duration-500 group-hover:scale-110">
+                  {/* Glow effect on hover */}
+                  <div className="absolute -inset-2 bg-primary/10 blur-xl rounded-full transition-all duration-500 group-hover:bg-primary/40 group-hover:-inset-3" />
+                  <div className="logo-diamond absolute inset-0 border-2 border-primary rotate-45 group-hover:rotate-[135deg]" />
+                  <div className="absolute inset-[4px] bg-primary/5 rotate-45 transition-all duration-500 group-hover:bg-primary/20 group-hover:rotate-[135deg]" />
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-sm font-bold text-primary tracking-wider font-jost">
+                    <span className="logo-text text-sm font-bold text-primary tracking-wider font-jost group-hover:scale-110">
                       JC
                     </span>
                   </div>
                 </div>
-                <span className="text-xl font-bold text-foreground group-hover:text-primary transition-colors font-jost">
-                  John Connor
+                <span className="text-xl font-bold font-jost text-transparent animate-gradient-cycle-slow">
+                  JOHN CONNOR
                 </span>
               </div>
             </Link>
@@ -114,7 +118,7 @@ export function Footer() {
               ))}
               <li className="pt-2">
                 <a
-                  href="https://superdebate.org"
+                  href={PROJECT_LINKS.superDebate}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-3 py-1.5 border border-primary text-primary text-xs transition-all hover:bg-primary hover:text-primary-foreground font-jost"
