@@ -9,20 +9,20 @@
 // FOUNDATION
 // =============================================================================
 
-// Duration scale (fibonacci-inspired for natural feel)
-const DURATION_FAST = 0.2
-const DURATION = 0.4
-const DURATION_SLOW = 0.6
+// Duration scale - slow enough to see
+const DURATION_FAST = 0.4
+const DURATION = 0.7
+const DURATION_SLOW = 0.9
 
-// Stagger scale
-const STAGGER_TIGHT = 0.06
-const STAGGER = 0.1
-const STAGGER_LOOSE = 0.15
+// Stagger scale - clearly visible cascade
+const STAGGER_TIGHT = 0.12
+const STAGGER = 0.2
+const STAGGER_LOOSE = 0.25
 
-// Movement scale
-const MOVE_SUBTLE = 16
-const MOVE = 28
-const MOVE_DRAMATIC = 44
+// Movement scale - dramatic entrance
+const MOVE_SUBTLE = 30
+const MOVE = 50
+const MOVE_DRAMATIC = 80
 
 // Premium easing - quick out, gentle settle
 const EASE = [0.22, 1, 0.36, 1] as const
@@ -45,7 +45,7 @@ const SPRING = { type: "spring", stiffness: 400, damping: 30 } as const
 export const reveal = (index = 0, baseDelay = 0) => ({
   initial: { opacity: 0, y: MOVE },
   whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: "-60px" },
+  viewport: { once: true, margin: "-15%" },
   transition: {
     duration: DURATION,
     delay: baseDelay + index * STAGGER,
@@ -144,8 +144,8 @@ export const staggerFast = {
 // VIEWPORT
 // =============================================================================
 
-export const viewport = { once: true } as const
-export const viewportWithMargin = { once: true, margin: "-60px" } as const
+export const viewport = { once: true, margin: "-15%" } as const
+export const viewportWithMargin = { once: true, margin: "-15%" } as const
 
 // =============================================================================
 // RAW VALUES (for custom compositions)

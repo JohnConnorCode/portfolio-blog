@@ -3,7 +3,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Zap, Users, Code, Trophy } from 'lucide-react'
 import { useRef } from 'react'
-import { scrollFadeUp, staggerCard } from '@/lib/animation-config'
+import { reveal, card } from '@/lib/animation-config'
 
 const impacts = [
   {
@@ -80,7 +80,7 @@ export function ImpactBrutal() {
       <motion.div style={{ opacity, y }} className="max-w-6xl mx-auto relative z-10">
         {/* Section header */}
         <motion.div
-          {...scrollFadeUp()}
+          {...reveal()}
           className="text-center mb-16"
         >
           {/* Decorative element */}
@@ -112,27 +112,18 @@ export function ImpactBrutal() {
             return (
               <motion.div
                 key={impact.label}
-                {...staggerCard(index)}
+                {...card(index)}
                 className="relative group"
               >
-                {/* Card */}
-                <motion.div
-                  whileHover={{ y: -8, scale: 1.02 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                  className="relative bg-card border border-border p-6 sm:p-8 h-full transition-all duration-300 group-hover:border-primary/30 group-hover:shadow-xl group-hover:shadow-primary/5"
-                >
+                <div className="relative bg-card border border-border p-6 sm:p-8 h-full transition-all duration-300 group-hover:border-primary/30 group-hover:shadow-xl group-hover:shadow-primary/5">
                   {/* Corner accents */}
                   <div className="absolute top-0 left-0 w-4 h-4 border-l border-t border-primary/40 opacity-0 group-hover:opacity-100 transition-opacity" />
                   <div className="absolute bottom-0 right-0 w-4 h-4 border-r border-b border-primary/40 opacity-0 group-hover:opacity-100 transition-opacity" />
 
                   {/* Icon */}
-                  <motion.div
-                    initial={{ rotate: 0 }}
-                    whileHover={{ rotate: 10, scale: 1.1 }}
-                    className="mb-4"
-                  >
+                  <div className="mb-4 transition-transform group-hover:scale-110">
                     <Icon className="w-8 h-8 text-primary" />
-                  </motion.div>
+                  </div>
 
                   {/* Number with count-up effect styling */}
                   <p className="text-3xl sm:text-4xl font-bold mb-2 font-jost text-foreground">
@@ -148,7 +139,7 @@ export function ImpactBrutal() {
                   <p className="text-sm font-jost text-foreground/50">
                     {impact.context}
                   </p>
-                </motion.div>
+                </div>
               </motion.div>
             )
           })}
@@ -156,7 +147,7 @@ export function ImpactBrutal() {
 
         {/* Bottom text */}
         <motion.div
-          {...scrollFadeUp(0.4)}
+          {...reveal(0, 0.4)}
           className="text-center mt-12"
         >
           <p className="text-sm uppercase tracking-[0.2em] font-jost text-foreground/40">

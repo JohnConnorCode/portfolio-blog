@@ -193,10 +193,10 @@ export function HeroCyberpunk({ content }: { content?: HeroContent }) {
               className="lg:col-span-7 order-2 lg:order-1 text-center lg:text-left md:will-change-transform"
             >
 
-              {/* Headline - BOLD and distinctive - CSS animation */}
+              {/* Headline - BOLD and distinctive - CSS animation with cycling gradient */}
               <h1 className="relative mb-4 sm:mb-6 animate-in delay-0">
                 <span
-                  className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight font-jost bg-gradient-to-r from-foreground from-40% via-primary/70 via-70% to-primary bg-clip-text text-transparent"
+                  className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight font-jost bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent animate-gradient-cycle"
                   style={{ lineHeight: 1.1 }}
                 >
                   JOHN CONNOR

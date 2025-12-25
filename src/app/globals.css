@@ -11,25 +11,25 @@ html {
 
 @layer base {
   :root {
-    /* Light Mode: Warm cream, navy text, gold accents */
-    --background: 45 29% 97%;           /* #faf9f7 warm cream */
+    /* Light Mode: Warm cream background, white cards for contrast, navy text, gold accents */
+    --background: 45 20% 94%;           /* #f0ede8 warm cream - darker for card contrast */
     --foreground: 220 42% 18%;          /* #1a2744 deep navy */
-    --card: 45 29% 97%;
+    --card: 0 0% 100%;                  /* #ffffff pure white - pops against cream */
     --card-foreground: 220 42% 18%;
-    --popover: 45 29% 97%;
+    --popover: 0 0% 100%;               /* #ffffff pure white */
     --popover-foreground: 220 42% 18%;
     --primary: 43 71% 47%;              /* #c9a227 gold */
-    --primary-foreground: 45 29% 97%;
-    --secondary: 45 20% 93%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 45 15% 90%;            /* slightly darker than cards */
     --secondary-foreground: 220 42% 18%;
-    --muted: 45 20% 93%;
+    --muted: 45 15% 90%;
     --muted-foreground: 220 30% 40%;
     --accent: 43 71% 47%;               /* gold accent */
-    --accent-foreground: 45 29% 97%;
+    --accent-foreground: 0 0% 100%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
-    --border: 220 20% 88%;
-    --input: 220 20% 88%;
+    --border: 220 15% 82%;              /* slightly darker border for visibility */
+    --input: 220 15% 85%;
     --ring: 43 71% 47%;
     --radius: 0.5rem;
     /* Custom colors */
@@ -243,7 +243,7 @@ h1, h2, h3, h4, h5, h6 {
   @keyframes fadeInUp {
     from {
       opacity: 0;
-      transform: translateY(10px);
+      transform: translateY(50px);
     }
     to {
       opacity: 1;
@@ -251,24 +251,24 @@ h1, h2, h3, h4, h5, h6 {
     }
   }
 
-  /* Base entrance animation class - smooth and elegant */
+  /* Base entrance animation class - slow enough to notice */
   .animate-in {
     opacity: 0;
-    animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation: fadeInUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   }
 
-  /* Stagger delay utilities - 100ms apart for visible cascade */
+  /* Stagger delay utilities - 200ms apart for clearly visible cascade */
   .delay-0 { animation-delay: 0s; }
-  .delay-1 { animation-delay: 0.1s; }
-  .delay-2 { animation-delay: 0.2s; }
-  .delay-3 { animation-delay: 0.3s; }
-  .delay-4 { animation-delay: 0.4s; }
-  .delay-5 { animation-delay: 0.5s; }
-  .delay-6 { animation-delay: 0.6s; }
-  .delay-7 { animation-delay: 0.7s; }
-  .delay-8 { animation-delay: 0.8s; }
-  .delay-9 { animation-delay: 0.9s; }
-  .delay-10 { animation-delay: 1s; }
+  .delay-1 { animation-delay: 0.2s; }
+  .delay-2 { animation-delay: 0.4s; }
+  .delay-3 { animation-delay: 0.6s; }
+  .delay-4 { animation-delay: 0.8s; }
+  .delay-5 { animation-delay: 1s; }
+  .delay-6 { animation-delay: 1.2s; }
+  .delay-7 { animation-delay: 1.4s; }
+  .delay-8 { animation-delay: 1.6s; }
+  .delay-9 { animation-delay: 1.8s; }
+  .delay-10 { animation-delay: 2s; }
 
   /* Logo-specific animation */
   .animate-in-fast {
@@ -522,6 +522,21 @@ h1, h2, h3, h4, h5, h6 {
     }
   }
 
+  /* Smooth cycling gradient animation for hero text */
+  @keyframes gradient-cycle {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  .animate-gradient-cycle {
+    background-size: 200% 200%;
+    animation: gradient-cycle 6s ease-in-out infinite;
+  }
+
   /* Glass effect with stark borders */
   .glass {
     @apply bg-background/50 backdrop-blur-md border border-border/50;
@@ -629,5 +644,5 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Warm cream background */
 .bg-cream {
-  background-color: #faf9f7;
+  background-color: #f0ede8;
 }
