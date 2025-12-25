@@ -1,5 +1,177 @@
 export const blogPosts = [
   {
+    slug: 'infinita-championship-announcement',
+    title: 'Infinita: Building the World Championship of Adult Debate',
+    excerpt: 'We\'re launching the first global championship for adult debate. 32 teams, 6 preliminary rounds, single elimination finals. Here\'s why this matters and how we\'re building it.',
+    content: `
+      <h2>Why a World Championship?</h2>
+      <p>Debate has championships at every level—high school nationals, collegiate worlds, parliamentary circuits. But once you graduate, the infrastructure disappears. Adults who want to compete have nowhere to go.</p>
+
+      <p>This is absurd. The skills debate develops—critical thinking, structured argumentation, perspective-taking—become more important after you leave school, not less. Yet we abandon the training ground precisely when we need it most.</p>
+
+      <p>Infinita is our answer. A world championship for adults. Real stakes. Real competition. Real community.</p>
+
+      <h2>The Format</h2>
+      <p>We spent months designing this. The format needed to accomplish several things simultaneously:</p>
+
+      <ul>
+        <li><strong>Accessible to newcomers:</strong> You shouldn't need years of competitive experience to participate meaningfully.</li>
+        <li><strong>Rewarding to veterans:</strong> Experienced debaters should find genuine challenge and growth.</li>
+        <li><strong>Spectator-friendly:</strong> Unlike traditional formats that can feel like watching paint dry, Infinita debates should be engaging to observe.</li>
+        <li><strong>Fair and transparent:</strong> The judging system should be beyond reproach.</li>
+      </ul>
+
+      <h3>The Structure</h3>
+      <p>32 teams. Two-person teams, because debate is better with a partner. You learn from each other. You cover each other's weaknesses. You celebrate together.</p>
+
+      <p>Six preliminary rounds in a Swiss-system format. You're matched against teams with similar records, ensuring competitive matches throughout. No blowouts, no easy wins.</p>
+
+      <p>Top 8 advance to single elimination. One loss and you're out. This is where pressure reveals character. This is where great debaters separate from good ones.</p>
+
+      <h3>The Judging System</h3>
+      <p>Traditional debate judging is a black box. A single judge renders a decision based on criteria that often feel arbitrary. We've built something different.</p>
+
+      <p>Four criteria, each scored independently:</p>
+      <ol>
+        <li><strong>Argumentation:</strong> Quality of reasoning, evidence usage, logical structure</li>
+        <li><strong>Clash:</strong> Direct engagement with opponent's arguments, not ships passing in the night</li>
+        <li><strong>Delivery:</strong> Clarity, presence, persuasiveness—because how you say it matters</li>
+        <li><strong>Strategy:</strong> Round awareness, time management, adaptation</li>
+      </ol>
+
+      <p>Peer judging with accountability. Judges are drawn from competing teams not in the current round. Your judging is tracked. Consistently unfair judges get flagged. The system learns.</p>
+
+      <h2>NFT Trophies</h2>
+      <p>Winners receive NFT trophies minted on Solana. Not because we think everything needs to be on blockchain, but because this solves a real problem.</p>
+
+      <p>Physical trophies sit on shelves and collect dust. Digital achievements disappear when platforms shut down. On-chain records are permanent. Twenty years from now, Infinita champions will still have verifiable proof of their victory.</p>
+
+      <p>We're also using this to build a reputation system. Your competitive history becomes portable. When you join a new club or enter a new tournament, your track record comes with you.</p>
+
+      <h2>Why "Infinita"?</h2>
+      <p>The name matters. We chose Infinita because debate, done right, is an infinite game. You don't play to win and stop. You play to keep playing. You play to get better. You play because the game itself is worth playing.</p>
+
+      <p>Every championship is both an ending and a beginning. Someone wins Infinita 2025. Then Infinita 2026 starts, and they're back to zero, ready to prove themselves again. The game continues.</p>
+
+      <p>This is different from finite games, where the point is to end the game by winning. Politics has become a finite game—destroy the opponent, win at all costs, end the conversation. We're building the opposite.</p>
+
+      <h2>The Deeper Mission</h2>
+      <p>Let me be direct about what we're trying to do. Infinita isn't just a tournament. It's proof of concept.</p>
+
+      <p>Proof that adults will invest time and energy in getting better at thinking. Proof that structured discourse can be engaging, not boring. Proof that you can disagree intensely without destroying relationships.</p>
+
+      <p>If Infinita works, we scale it. More divisions. Regional championships feeding into worlds. Age categories. Topic specializations. A complete competitive ecosystem for adult intellectual development.</p>
+
+      <p>The Greek agora didn't have championships. It was just public discourse, available to citizens. We're not trying to recreate that exactly—we're trying to build the modern equivalent. A place where adults come to sharpen their minds against each other, and leave as better thinkers.</p>
+
+      <h2>Registration</h2>
+      <p>Infinita 2025 registration opens in Q1. We're limiting to 32 teams for the inaugural championship. Demand will exceed supply.</p>
+
+      <p>If you've never debated competitively, that's fine. We'll run training sessions leading up to the tournament. If you've debated before, you'll find our format familiar but distinct.</p>
+
+      <p>Find a partner. Start practicing. The championship awaits.</p>
+
+      <p>This is year one. We're building something that will outlast us. Come help write the first chapter.</p>
+    `,
+    category: 'SuperDebate',
+    publishedAt: '2025-12-20',
+    readTime: 10,
+    author: 'John Connor'
+  },
+  {
+    slug: 'why-superdebate-exists',
+    title: 'The Case for SuperDebate: Why I\'m Building Infrastructure for Disagreement',
+    excerpt: 'We\'ve lost the ability to disagree productively. Social media rewards outrage, cable news rewards certainty. Here\'s why I left a lucrative tech career to build debate clubs for adults.',
+    content: `
+      <h2>The Problem That Kept Me Up at Night</h2>
+      <p>I spent 15 years in product. I built things that scaled. I raised money. I shipped features. I did the startup thing.</p>
+
+      <p>And somewhere along the way, I realized I was watching society forget how to think together.</p>
+
+      <p>It happened gradually, then all at once. Social media optimized for engagement, and engagement meant outrage. Cable news discovered that certainty sells better than nuance. Universities became so afraid of controversy that they stopped teaching students to engage with dangerous ideas.</p>
+
+      <p>The result? People who can't disagree without demonizing. Conversations that end with blocked accounts rather than changed minds. A public discourse that feels more like tribal warfare than collective reasoning.</p>
+
+      <h2>What Debate Gave Me</h2>
+      <p>I discovered competitive debate in college. It changed how I think.</p>
+
+      <p>Not because I learned tricks to win arguments. Because I learned to lose them. I learned what it feels like to be wrong—genuinely, provably wrong—and to have to keep going. I learned to separate my ego from my positions. I learned that the person across from me might see something I don't.</p>
+
+      <p>After college, I coached at Chicago Debates, working with high school students on the South Side. I watched kids who'd never been told their voice mattered stand up and argue. I watched them discover they could change minds, including their own.</p>
+
+      <p>But here's the thing: after high school or college, debate disappears. There's nowhere for adults to practice this skill. You're on your own, in a world that punishes nuance and rewards simplification.</p>
+
+      <h2>The Infrastructure Gap</h2>
+      <p>Think about other skills society values. If you want to get better at fitness, there are gyms. Basketball, there are pickup games. Music, there are jam sessions and open mics.</p>
+
+      <p>If you want to get better at thinking? At arguing? At changing minds and being changed?</p>
+
+      <p>Nothing. The infrastructure doesn't exist.</p>
+
+      <p>You could join a political organization, but those are designed to reinforce existing beliefs, not challenge them. You could argue on social media, but that's designed to generate heat, not light. You could take a course, but courses are passive—you listen, you don't practice.</p>
+
+      <p>SuperDebate is the infrastructure that's missing. A gym for your mind. A place where adults come specifically to get better at the hardest intellectual skill: productive disagreement.</p>
+
+      <h2>How It Works</h2>
+      <p>We're building debate clubs in cities around the world. Not the stuffy, formal debate you might imagine. Something more alive.</p>
+
+      <h3>The Format</h3>
+      <p>Two debaters. One topic. Assigned positions. You might have to argue for something you disagree with. That's the point.</p>
+
+      <p>Structured time limits. Enough time to develop real arguments, short enough to stay engaging. Cross-examination periods where you directly question your opponent.</p>
+
+      <p>A steel-man requirement: before you can argue your position, you must articulate the strongest version of your opponent's case. If you can't pass this test, you don't understand the issue well enough to debate it.</p>
+
+      <h3>The Community</h3>
+      <p>Local clubs that meet regularly. You get to know your fellow debaters. You see them improve. They see you improve. Rivalries develop. Friendships form. People who disagree politically learn to respect each other through the crucible of competition.</p>
+
+      <p>This social dimension matters. We're not building an app where you argue with strangers. We're building communities where people who think differently learn to think together.</p>
+
+      <h3>The Competition</h3>
+      <p>For those who want it, a competitive track. Local tournaments. Regional championships. The Infinita World Championship. Rankings, trophies, recognition.</p>
+
+      <p>Competition isn't for everyone, and that's fine. But for those who respond to competition, it accelerates growth. You get better faster when losing costs something.</p>
+
+      <h2>Why Now?</h2>
+      <p>People ask why I left a stable career to build debate clubs. Here's my honest answer:</p>
+
+      <p>I think the ability to disagree productively is the most important skill for the 21st century. More important than coding. More important than data science. More important than whatever the hot new thing is.</p>
+
+      <p>Because here's what's coming: harder problems. Climate change. AI alignment. Global coordination challenges we can barely articulate. These problems can't be solved by any single perspective. They require people who disagree to work together without destroying each other.</p>
+
+      <p>That capability is atrophying. We're losing the civic muscle for productive disagreement. If we don't rebuild it intentionally, it won't rebuild itself.</p>
+
+      <p>So I'm building it. One debate club at a time. One city at a time. One mind at a time.</p>
+
+      <h2>The Vision</h2>
+      <p>In ten years, I want SuperDebate clubs in every major city. I want "going to debate" to be as normal as "going to the gym." I want millions of adults practicing the skill of productive disagreement, building the civic infrastructure our grandchildren will need.</p>
+
+      <p>Is that ambitious? Yes. Maybe unrealistically so. But someone needs to try.</p>
+
+      <p>The Greeks had the agora. The Romans had the forum. These weren't just places—they were practices. Citizens gathered not to agree, but to disagree well. To wrestle with ideas in public. To make each other smarter through the friction of different perspectives.</p>
+
+      <p>We lost that somewhere. SuperDebate is my attempt to build it back.</p>
+
+      <h2>Join Us</h2>
+      <p>If this resonates, there are a few ways to get involved:</p>
+
+      <ul>
+        <li><strong>Start a club:</strong> We're actively looking for chapter leaders in new cities. We provide the format, the platform, the support. You provide the passion.</li>
+        <li><strong>Join a club:</strong> Check if there's a chapter in your city. If not, tell us where you are—we're expanding fast.</li>
+        <li><strong>Compete:</strong> Registration for Infinita 2025 opens soon. Find a partner. Start practicing.</li>
+        <li><strong>Spread the word:</strong> Know someone who would love this? Share it with them. The best debaters are often people who don't know they're debaters yet.</li>
+      </ul>
+
+      <p>The world doesn't need more people who are good at winning arguments. It needs more people who are good at having them. That's what we're building.</p>
+
+      <p>Welcome to SuperDebate. Let's argue.</p>
+    `,
+    category: 'SuperDebate',
+    publishedAt: '2025-11-05',
+    readTime: 12,
+    author: 'John Connor'
+  },
+  {
     slug: 'death-of-growth-theater',
     title: 'The Death of Growth Theater',
     excerpt: 'After watching dozens of startups implode chasing vanity metrics, I\'ve learned the hard way: the metrics that impress VCs are often the ones that kill companies.',
@@ -80,7 +252,7 @@ export const blogPosts = [
       <p>The choice is yours. But make it consciously, because the default path—the path of least resistance, the path of impressive-looking metrics—leads off a cliff.</p>
     `,
     category: 'Product',
-    publishedAt: '2024-02-01',
+    publishedAt: '2025-10-15',
     readTime: 12,
     author: 'John Connor'
   },
@@ -213,7 +385,7 @@ export const blogPosts = [
       <p>The answers matter. The ecosystems that get this right will attract the best talent. The ones that don't will fund their way to irrelevance.</p>
     `,
     category: 'Web3',
-    publishedAt: '2024-01-15',
+    publishedAt: '2025-09-22',
     readTime: 14,
     author: 'John Connor'
   },
@@ -340,7 +512,7 @@ export const blogPosts = [
       <p>The world doesn't need more people who are good at arguing. It needs more people who are good at understanding. That's the skill we're trying to teach.</p>
     `,
     category: 'Leadership',
-    publishedAt: '2024-01-10',
+    publishedAt: '2025-08-18',
     readTime: 15,
     author: 'John Connor'
   },
@@ -466,7 +638,7 @@ export const blogPosts = [
       <p>The internet didn't democratize itself. Neither will AI. It's on us to make it happen.</p>
     `,
     category: 'Technology',
-    publishedAt: '2024-01-05',
+    publishedAt: '2025-07-30',
     readTime: 14,
     author: 'John Connor'
   },
@@ -630,7 +802,7 @@ export const blogPosts = [
       <p>The future belongs to builders who think in systems, not features. Linear thinking builds products. Compound thinking builds platforms. And in the long run, platforms always win.</p>
     `,
     category: 'Strategy',
-    publishedAt: '2024-01-01',
+    publishedAt: '2025-06-12',
     readTime: 14,
     author: 'John Connor'
   },
@@ -792,7 +964,7 @@ export const blogPosts = [
       <p>It's harder than private planning. But it produces better products and stronger communities. And in the long run, that's what wins.</p>
     `,
     category: 'Product',
-    publishedAt: '2023-12-28',
+    publishedAt: '2025-05-08',
     readTime: 15,
     author: 'John Connor'
   }
