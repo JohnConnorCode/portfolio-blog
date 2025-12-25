@@ -603,9 +603,14 @@ h1, h2, h3, h4, h5, h6 {
       0 0 20px rgba(181, 142, 58, 0.08);
   }
 
-  /* Hero section: lighter background in light mode (no white cards to contrast) */
+  /* Hero section: pure white background in light mode for clean contrast */
   :root:not(.dark) .hero-section {
-    background-color: hsl(0 0% 99%);
+    background-color: #ffffff !important;
+  }
+
+  /* Hero gradient backgrounds also need adjustment in light mode */
+  :root:not(.dark) .hero-section .bg-gradient-to-br {
+    background: linear-gradient(to bottom right, hsl(var(--primary) / 0.08), #ffffff, #ffffff) !important;
   }
 
   /* Light mode: subtle borders become near-invisible, shadows take over */
