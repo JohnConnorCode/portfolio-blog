@@ -98,7 +98,7 @@ export function SuperDebateHero() {
             <div className={`flex items-center gap-2 px-4 py-2 ${THEME.borders.primary} border ${THEME.bg.primary} rounded-full`}>
               <Flame className={`w-4 h-4 ${THEME.text.primary}`} />
               <span className={`text-xs font-semibold uppercase tracking-[0.15em] font-jost ${THEME.text.primary}`}>
-                Portfolio Project
+                Main Venture
               </span>
             </div>
             <div className="w-16 h-px bg-gradient-to-l from-transparent to-violet-500/50" />

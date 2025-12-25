@@ -224,7 +224,7 @@ export default function SuperDebatePage() {
               className={`inline-flex items-center gap-2 px-4 py-2 ${THEME.borders.primary} border ${THEME.bg.primary} mb-8 rounded-full`}
             >
               <Flame className={`w-5 h-5 ${THEME.text.primary}`} />
-              <span className={`text-sm font-mono ${THEME.text.primary}`}>PORTFOLIO PROJECT • FOUNDER</span>
+              <span className={`text-sm font-mono ${THEME.text.primary}`}>MAIN VENTURE • FOUNDER</span>
             </motion.div>
 
             {/* Main Title - Matching superdebate.org style */}
