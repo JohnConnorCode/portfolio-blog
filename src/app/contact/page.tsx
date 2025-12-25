@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { Mail, Linkedin, Twitter, Send, User, Building2, Briefcase, DollarSign, MessageSquare } from 'lucide-react'
 import { useState } from 'react'
+import { sectionWithChildrenVariants, childVariants, pageHeaderVariants, decoratorVariants, viewportOnce } from '@/lib/animation-config'
 
 const contactMethods = [
   {
@@ -20,12 +21,6 @@ const contactMethods = [
     href: 'https://www.linkedin.com/in/johnconnor',
   },
 ]
-
-// Single animation config - DRY
-const fadeIn = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-}
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -151,43 +146,49 @@ export default function ContactPage() {
 
         <div className="max-w-7xl mx-auto relative z-10">
           <motion.div
-            {...fadeIn}
-            transition={{ duration: 0.5 }}
+            variants={pageHeaderVariants}
+            initial="hidden"
+            animate="visible"
             className="text-center mb-12"
           >
             {/* Decorative pattern */}
-            <div className="flex items-center justify-center gap-4 mb-8">
+            <motion.div variants={decoratorVariants} className="flex items-center justify-center gap-4 mb-8">
               <div className="w-20 h-px bg-gradient-to-r from-transparent to-primary" />
               <svg viewBox="0 0 24 24" className="w-6 h-6 text-primary">
                 <path d="M12 2 L22 12 L12 22 L2 12 Z" fill="none" stroke="currentColor" strokeWidth="1.5" />
                 <circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" strokeWidth="1" />
               </svg>
               <div className="w-20 h-px bg-gradient-to-l from-transparent to-primary" />
-            </div>
+            </motion.div>
 
-            <span className="text-xs tracking-[0.3em] uppercase block mb-6 text-primary">
+            <motion.span variants={childVariants} className="text-xs tracking-[0.3em] uppercase block mb-6 text-primary">
               Let&apos;s Connect
-            </span>
+            </motion.span>
 
-            <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 tracking-wide font-jost">
+            <motion.h1 variants={childVariants} className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 tracking-wide font-jost">
               <span className="text-foreground">Get in </span>
               <span className="text-primary">Touch</span>
-            </h1>
-            <p className="text-lg max-w-2xl mx-auto font-light text-foreground/80">
+            </motion.h1>
+            <motion.p variants={childVariants} className="text-lg max-w-2xl mx-auto font-light text-foreground/80">
               Whether you need product strategy, technology guidance, or a cross-functional partner who ships. I&apos;m here to help.
-            </p>
+            </motion.p>
           </motion.div>
         </div>
       </section>
 
       {/* Contact Methods & Form Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-background">
+      <motion.section
+        variants={sectionWithChildrenVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={viewportOnce}
+        className="py-16 px-4 sm:px-6 lg:px-8 bg-background"
+      >
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-3 gap-12">
             {/* Contact Methods */}
             <motion.div
-              {...fadeIn}
-              transition={{ duration: 0.5, delay: 0.1 }}
+              variants={childVariants}
               className="lg:col-span-1 space-y-6"
             >
               {/* How I Work card */}
@@ -283,8 +284,7 @@ export default function ContactPage() {
 
             {/* Contact Form */}
             <motion.div
-              {...fadeIn}
-              transition={{ duration: 0.5, delay: 0.2 }}
+              variants={childVariants}
               className="lg:col-span-2"
             >
               <div className="relative p-8 sm:p-10 bg-card border border-border">
@@ -448,66 +448,68 @@ export default function ContactPage() {
             </motion.div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* FAQ Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-background">
+      <motion.section
+        variants={sectionWithChildrenVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={viewportOnce}
+        className="py-20 px-4 sm:px-6 lg:px-8 bg-background"
+      >
         <div className="max-w-7xl mx-auto">
-          <motion.div
-            {...fadeIn}
-            transition={{ duration: 0.5, delay: 0.3 }}
-          >
-            <div className="text-center mb-16">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-foreground">
-                Frequently Asked Questions
-              </h2>
-              <p className="text-sm uppercase tracking-widest text-foreground/50">
-                Common questions about working together
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-6">
-              {[
-                {
-                  question: "What types of projects do you take on?",
-                  answer: "Product strategy, technology strategy, AI integration, Web3 infrastructure, and marketplace design. I work across the full stack: strategy to execution."
-                },
-                {
-                  question: "Do you build or just advise?",
-                  answer: "Both. I shape product strategy and guide technology decisions, then work alongside your team to ship. 15+ years of hands-on product work. Not just decks."
-                },
-                {
-                  question: "What's your approach?",
-                  answer: "Start with the real problem. Test assumptions against users. Build systems where incentives align. Measure by outcomes, not vanity metrics."
-                },
-                {
-                  question: "What does a typical engagement look like?",
-                  answer: "Varies by need. Fractional product leadership, focused sprints, or ongoing advisory. We'll scope what makes sense for your situation."
-                }
-              ].map((faq, index) => (
-                <div
-                  key={index}
-                  className="relative p-6 bg-card border border-border transition-all duration-300 hover:border-primary/30 hover:-translate-y-1"
-                >
-                  {/* Corner accents */}
-                  <div className="absolute top-0 left-0 w-3 h-3 border-l-2 border-t-2 border-primary" />
-                  <div className="absolute bottom-0 right-0 w-3 h-3 border-r-2 border-b-2 border-primary" />
-
-                  <h3 className="font-bold mb-3 text-foreground">{faq.question}</h3>
-                  <p className="text-sm leading-relaxed text-foreground/70">
-                    {faq.answer}
-                  </p>
-                </div>
-              ))}
-            </div>
-
-            {/* Bottom accent */}
-            <p className="text-center mt-16 text-sm uppercase tracking-widest text-foreground/50">
-              Building what <span className="text-primary font-bold">actually works</span>
+          <motion.div variants={childVariants} className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-foreground">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-sm uppercase tracking-widest text-foreground/50">
+              Common questions about working together
             </p>
           </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {[
+              {
+                question: "What types of projects do you take on?",
+                answer: "Product strategy, technology strategy, AI integration, Web3 infrastructure, and marketplace design. I work across the full stack: strategy to execution."
+              },
+              {
+                question: "Do you build or just advise?",
+                answer: "Both. I shape product strategy and guide technology decisions, then work alongside your team to ship. 15+ years of hands-on product work. Not just decks."
+              },
+              {
+                question: "What's your approach?",
+                answer: "Start with the real problem. Test assumptions against users. Build systems where incentives align. Measure by outcomes, not vanity metrics."
+              },
+              {
+                question: "What does a typical engagement look like?",
+                answer: "Varies by need. Fractional product leadership, focused sprints, or ongoing advisory. We'll scope what makes sense for your situation."
+              }
+            ].map((faq, index) => (
+              <motion.div
+                key={index}
+                variants={childVariants}
+                className="relative p-6 bg-card border border-border transition-all duration-300 hover:border-primary/30 hover:-translate-y-1"
+              >
+                {/* Corner accents */}
+                <div className="absolute top-0 left-0 w-3 h-3 border-l-2 border-t-2 border-primary" />
+                <div className="absolute bottom-0 right-0 w-3 h-3 border-r-2 border-b-2 border-primary" />
+
+                <h3 className="font-bold mb-3 text-foreground">{faq.question}</h3>
+                <p className="text-sm leading-relaxed text-foreground/70">
+                  {faq.answer}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Bottom accent */}
+          <motion.p variants={childVariants} className="text-center mt-16 text-sm uppercase tracking-widest text-foreground/50">
+            Building what <span className="text-primary font-bold">actually works</span>
+          </motion.p>
         </div>
-      </section>
+      </motion.section>
     </div>
   )
 }

@@ -8,6 +8,8 @@ import {
   childVariants,
   itemVariants,
   viewportOnce,
+  pageHeaderVariants,
+  decoratorVariants,
 } from '@/lib/animation-config'
 
 const timeline = [
@@ -43,33 +45,43 @@ const timeline = [
   },
   {
     period: '2024–Present',
-    title: 'SuperDebate & Consulting',
-    role: 'Founder & Advisor',
-    description: 'Building SuperDebate, a vision two decades in the making to restore structured discourse. Consulting with innovative startups and advising Work+Shelter on product strategy.'
+    title: 'SuperDebate',
+    role: 'Founder',
+    description: 'Building a vision two decades in the making to restore structured discourse for adults. Running tournaments, supporting debate clubs worldwide, and hosting the Infinita Championship.'
+  },
+  {
+    period: '2024–Present',
+    title: 'Work+Shelter',
+    role: 'Technical & Strategic Advisor',
+    description: 'Providing technical consulting, strategic guidance, and design support to help build their platform and scale their impact.'
   }
 ]
 
 export default function BioPage() {
   return (
     <div className="bg-background font-jost">
-      {/* Hero Section - CSS animations for mount (no flicker) */}
+      {/* Hero Section */}
       <section className="relative py-20 md:py-28 px-4 sm:px-6 lg:px-8 overflow-hidden">
         <div className="max-w-4xl mx-auto">
-          <div>
+          <motion.div
+            variants={pageHeaderVariants}
+            initial="hidden"
+            animate="visible"
+          >
             {/* Decorative element */}
-            <div className="flex items-center gap-4 mb-8 animate-in delay-0">
+            <motion.div variants={decoratorVariants} className="flex items-center gap-4 mb-8">
               <div className="w-12 h-px bg-gradient-to-r from-primary to-transparent" />
               <span className="text-xs tracking-[0.3em] uppercase text-primary">Biography</span>
-            </div>
+            </motion.div>
 
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-8 tracking-wide text-foreground leading-tight animate-in delay-1">
+            <motion.h1 variants={childVariants} className="text-4xl sm:text-5xl md:text-6xl font-bold mb-8 tracking-wide text-foreground leading-tight">
               John Connor
-            </h1>
+            </motion.h1>
 
-            <p className="text-xl md:text-2xl text-foreground/70 leading-relaxed mb-12 animate-in delay-2">
+            <motion.p variants={childVariants} className="text-xl md:text-2xl text-foreground/70 leading-relaxed mb-12">
               I build technology that makes people more capable. Over 15 years, I&apos;ve founded companies, scaled products to hundreds of thousands of users, and learned that the best systems serve human flourishing. Not the other way around.
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
         </div>
       </section>
 
@@ -146,7 +158,7 @@ export default function BioPage() {
               >
                 <h3 className="text-xl font-bold text-foreground mb-3">Consulting & Advisory</h3>
                 <p className="text-foreground/60 mb-4">
-                  Working with innovative startups on product strategy and systems design. Currently advising Work+Shelter on their mission to connect housing and employment solutions.
+                  Working with innovative startups on product strategy and systems design. Currently providing technical consulting, strategic guidance, and design support to Work+Shelter.
                 </p>
                 <Link href="/contact" className="inline-flex items-center gap-2 text-primary text-sm font-medium hover:gap-3 transition-all">
                   Get in touch <ArrowRight className="w-4 h-4" />
