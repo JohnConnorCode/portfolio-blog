@@ -1,11 +1,10 @@
 'use client'
 
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { Trophy, MessageSquare, Users, ArrowRight, Scale, Mic, Calendar, Flame } from 'lucide-react'
+import { MessageSquare, Users, ArrowRight, Scale, Mic, Calendar, Flame } from 'lucide-react'
 import Link from 'next/link'
 import { useRef } from 'react'
 import { scrollFadeUp, staggerItem } from '@/lib/animation-config'
-import { Button } from '@/components/ui/button'
 
 // =============================================================================
 // THEME CONFIG - Matches SuperDebate page for consistency
@@ -52,10 +51,10 @@ export function SuperDebateHero() {
   const y = useTransform(scrollYProgress, [0, 0.5, 1], [50, 0, -30])
 
   const features = [
-    { icon: Mic, title: "Live Debates", description: "In-person events in cities worldwide" },
-    { icon: Users, title: "Local Clubs", description: "Join debate communities in your city" },
-    { icon: Scale, title: "Modular Format", description: "Adaptable to any topic or community" },
-    { icon: Calendar, title: "Regular Meetups", description: "Weekly and monthly debate events" },
+    { icon: Mic, title: "Live Debates", description: "In-person events with structured rounds" },
+    { icon: Users, title: "Local Clubs", description: "NYC, Austin, LA, Chicago, and more" },
+    { icon: Scale, title: "Peer Judging", description: "4-criteria scoring system" },
+    { icon: Calendar, title: "Tournaments", description: "From club nights to championships" },
   ]
 
   return (
@@ -114,11 +113,11 @@ export function SuperDebateHero() {
           </h2>
 
           <p className={`text-lg sm:text-xl max-w-2xl mx-auto mb-4 font-jost text-foreground/80 font-medium`}>
-            The only platform for adult debate clubs.
+            A platform for adult debate clubs.
           </p>
 
           <p className={`text-base max-w-2xl mx-auto mb-10 font-jost ${THEME.text.muted}`}>
-            Find debate clubs in your city, or start your own. Host events and connect with people who want to argue intelligently.
+            Find or start a debate club in your city. Live events in NYC, Austin, LA, and more.
           </p>
 
           {/* CTA Buttons */}
@@ -177,17 +176,17 @@ export function SuperDebateHero() {
             <div className="flex items-center gap-3 mb-6">
               <MessageSquare className={`w-6 h-6 ${THEME.text.primary}`} />
               <h3 className="text-xl font-bold font-jost text-foreground">
-                One Format, Endless Adaptability
+                How It Works
               </h3>
             </div>
 
             <div className="grid md:grid-cols-2 gap-8">
               <div>
                 <h4 className={`text-base font-semibold mb-2 font-jost ${THEME.text.primary}`}>
-                  Flexible Structure
+                  Configurable Format
                 </h4>
                 <p className="text-sm leading-relaxed font-jost text-foreground/60">
-                  Adapt speech lengths, rounds, and judging criteria to fit your community&apos;s needs and topics
+                  Set speech lengths, rounds, and scoring criteria per event
                 </p>
               </div>
               <div>
@@ -195,19 +194,13 @@ export function SuperDebateHero() {
                   City Chapters
                 </h4>
                 <p className="text-sm leading-relaxed font-jost text-foreground/60">
-                  Each city runs its own debates with local flavor while maintaining consistent quality
+                  Each city runs its own club with local organizers
                 </p>
               </div>
             </div>
           </div>
         </motion.div>
 
-        {/* Bottom text */}
-        <motion.div {...scrollFadeUp(0.2)} className="text-center mt-12">
-          <p className="text-sm uppercase tracking-[0.2em] font-jost text-foreground/40">
-            Restoring the <span className={`italic ${THEME.text.primary}`}>values of the agora</span>
-          </p>
-        </motion.div>
       </motion.div>
     </motion.section>
   )

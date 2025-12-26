@@ -61,11 +61,11 @@ export function CallToAction() {
           </motion.div>
 
           <motion.h2 variants={childVariants} className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 font-jost text-foreground tracking-wide">
-            Let&apos;s Build a System
+            Let&apos;s Solve Your Product Problems
           </motion.h2>
 
           <motion.p variants={childVariants} className="text-base sm:text-lg md:text-xl mb-10 max-w-2xl mx-auto font-jost text-foreground/70">
-            You have a problem that needs a system, not a feature.
+            I work with founders and teams to find clarity and ship.
           </motion.p>
 
           <motion.div variants={childVariants} className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -82,14 +82,10 @@ export function CallToAction() {
               <button
                 className="px-8 sm:px-10 py-4 sm:py-5 font-medium text-sm sm:text-base transition-all duration-300 font-jost bg-transparent text-foreground border border-foreground/30 hover:border-primary hover:text-primary tracking-widest uppercase"
               >
-                See Systems I&apos;ve Built
+                See My Work
               </button>
             </Link>
           </motion.div>
-
-          <motion.p variants={childVariants} className="text-xs sm:text-sm mt-8 tracking-widest uppercase font-jost text-foreground/40">
-            Typical response time: Within 24 hours
-          </motion.p>
         </motion.div>
       </div>
     </motion.section>

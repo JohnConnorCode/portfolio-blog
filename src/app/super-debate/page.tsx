@@ -97,75 +97,68 @@ export default function SuperDebatePage() {
   // =============================================================================
   // DATA CONFIGURATIONS
   // =============================================================================
-  const projectStats = [
-    { value: '15+', label: 'Cities Active', color: THEME.text.primary },
-    { value: '32', label: 'Championship Teams', color: THEME.text.secondary },
-    { value: '1000+', label: 'Community Members', color: THEME.text.tertiary },
-    { value: '100%', label: 'Passion-Driven', color: THEME.text.accent }
-  ]
-
   const coreActions = [
     {
       icon: Sparkles,
       title: 'Organize',
-      description: 'Start a debate club in your city. We provide the format, tools, and community.',
+      description: 'Start a club, schedule events, manage members.',
     },
     {
       icon: Swords,
       title: 'Compete',
-      description: 'Join tournaments locally or globally. Track rankings. Find your voice.',
+      description: 'Structured debates with peer judging and rankings.',
     },
     {
       icon: Scale,
       title: 'Judge',
-      description: 'Shape the discourse. Our peer judging system rewards fair, thoughtful evaluation.',
+      description: 'Score debates using a 4-criteria evaluation system.',
     }
   ]
 
   const platformFeatures = [
     {
-      title: "Adult Debate Clubs",
-      description: "The only platform built specifically for grown-ups who want to sharpen their minds through structured discourse",
+      title: "Club Management",
+      description: "Create clubs, invite members, schedule regular meetups",
       icon: Users,
     },
     {
-      title: "Live Events",
-      description: "From intimate club nights to championship tournaments. Real people, real debates, real growth.",
+      title: "Event System",
+      description: "Host debates with structured rounds, topics, and scoring",
       icon: Calendar,
     },
     {
-      title: "Global Community",
-      description: "Connect with debaters worldwide. Organize, compete, or judge from anywhere",
+      title: "Multi-City",
+      description: "Active clubs in NYC, Austin, LA, Chicago, Boston, and more",
       icon: Globe,
     },
     {
-      title: "Tournament Platform",
-      description: "Complete tournament management from registration through final rankings and NFT trophies",
+      title: "Tournaments",
+      description: "Full bracket management with NFT trophies on Solana",
       icon: Trophy,
     }
   ]
 
   const championshipFeatures = [
-    { title: "32 Teams", description: "64 competitors from around the world battle through 6 preliminary rounds", icon: Users },
-    { title: "Single Elimination", description: "Top 8 teams advance to knockout rounds. One shot. No second chances.", icon: Flame },
-    { title: "NFT Trophies", description: "Winners immortalized on Solana blockchain. Permanent proof of victory.", icon: Award },
-    { title: "Peer Judging", description: "4-criteria system scored by fellow debaters. Fair, transparent, accountable.", icon: Scale },
+    { title: "32 Teams", description: "Two-person teams compete through 6 preliminary rounds", icon: Users },
+    { title: "Single Elimination", description: "Top 8 advance to knockout bracket", icon: Flame },
+    { title: "NFT Trophies", description: "Victory recorded on Solana blockchain", icon: Award },
+    { title: "Peer Judging", description: "4-criteria scoring system", icon: Scale },
   ]
 
   const myContributions = [
     {
-      title: 'Product Vision',
-      items: ['Designed the debate format system', 'Created the tournament structure', 'Built community engagement models', 'Developed the championship concept'],
+      title: 'Product',
+      items: ['Designed debate format and rules', 'Created tournament structure', 'Defined the peer judging criteria'],
       icon: Brain,
     },
     {
-      title: 'Platform Development',
-      items: ['Architected the full-stack platform', 'Built real-time tournament system', 'Integrated Solana for NFT trophies', 'Designed peer judging system'],
+      title: 'Engineering',
+      items: ['Full-stack platform (React, TypeScript)', 'Real-time tournament management', 'Solana integration for NFT trophies'],
       icon: Zap,
     },
     {
-      title: 'Community Building',
-      items: ['Organizing NYC events', 'Planning Infinita Championship', 'Building global chapter network', 'Recruiting ambassadors'],
+      title: 'Operations',
+      items: ['Organizing NYC chapter events', 'Planning Infinita Championship', 'Recruiting city chapter leaders'],
       icon: Users,
     }
   ]
@@ -244,7 +237,7 @@ export default function SuperDebatePage() {
               variants={childVariants}
               className="text-xl sm:text-2xl text-foreground/80 max-w-2xl mx-auto mb-4 font-medium"
             >
-              The only platform for adult debate clubs.
+              A platform for adult debate clubs.
             </motion.p>
 
             {/* Description */}
@@ -252,8 +245,7 @@ export default function SuperDebatePage() {
               variants={childVariants}
               className={`text-lg ${THEME.text.muted} max-w-2xl mx-auto mb-10`}
             >
-              Find debate clubs in your city, or start your own. Host events and connect
-              with people who want to argue intelligently.
+              Find or start a debate club in your city. Live events in NYC, Austin, LA, and more.
             </motion.p>
 
             {/* CTA Buttons */}
@@ -272,24 +264,9 @@ export default function SuperDebatePage() {
                 className={buttonStyles.secondary}
                 onClick={() => document.getElementById('championship')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                <span>+ Host a Debate</span>
+                <span>See the Championship</span>
               </button>
             </motion.div>
-          </motion.div>
-
-          {/* Quick Stats */}
-          <motion.div
-            variants={sectionWithChildrenVariants}
-            initial="hidden"
-            animate="visible"
-            className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center"
-          >
-            {projectStats.map((stat) => (
-              <motion.div key={stat.label} variants={itemVariants}>
-                <div className={`text-3xl font-bold ${stat.color}`}>{stat.value}</div>
-                <div className={THEME.text.muted}>{stat.label}</div>
-              </motion.div>
-            ))}
           </motion.div>
         </motion.div>
       </motion.section>
@@ -327,12 +304,6 @@ export default function SuperDebatePage() {
               })}
             </div>
 
-            {/* Vision statement */}
-            <motion.div variants={childVariants} className="mt-16 text-center">
-              <p className="text-xl text-foreground/50 italic max-w-2xl mx-auto">
-                &ldquo;Restoring the agora, where citizens gather to challenge ideas and sharpen thinking.&rdquo;
-              </p>
-            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -348,11 +319,11 @@ export default function SuperDebatePage() {
             className="text-center mb-16"
           >
             <motion.h2 variants={childVariants} className="text-4xl sm:text-5xl font-bold mb-6">
-              <span className="text-foreground">The Vision Behind </span>
+              <span className="text-foreground">Why </span>
               <span className={`text-transparent bg-clip-text bg-gradient-to-r ${THEME.gradients.text}`}>SuperDebate</span>
             </motion.h2>
             <motion.p variants={childVariants} className={`text-xl ${THEME.text.muted} max-w-3xl mx-auto`}>
-              Building a new intellectual sport for the 21st century
+              Debate clubs shouldn&apos;t end after school
             </motion.p>
           </motion.div>
 
@@ -367,13 +338,12 @@ export default function SuperDebatePage() {
             <motion.div variants={itemVariants} className="relative group">
               <div className="absolute -inset-1 bg-gradient-to-r from-red-500/20 to-orange-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className={`${THEME.bg.card} border border-red-500/20 p-8 h-full`}>
-                <h3 className="text-2xl font-bold mb-4 text-red-400">The Problem</h3>
+                <h3 className="text-2xl font-bold mb-4 text-red-400">The Gap</h3>
                 <ul className="space-y-3 text-foreground/70">
                   {[
-                    'Public discourse has devolved into tribal shouting matches',
-                    'Adults have no structured way to practice argumentation',
-                    'Debate clubs exist only in schools, not for working professionals',
-                    'The art of persuasion and reasoning is being lost'
+                    'Debate is taught in schools but disappears after graduation',
+                    'No infrastructure for adults who want to practice argumentation',
+                    'Online arguments lack structure and reward the loudest voices'
                   ].map((item, i) => (
                     <li key={i} className="flex items-start gap-2">
                       <ChevronRight className="w-5 h-5 text-red-400 mt-0.5 flex-shrink-0" />
@@ -388,13 +358,12 @@ export default function SuperDebatePage() {
             <motion.div variants={itemVariants} className="relative group">
               <div className="absolute -inset-1 bg-gradient-to-r from-green-500/20 to-emerald-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className={`${THEME.bg.card} border border-green-500/20 p-8 h-full`}>
-                <h3 className="text-2xl font-bold mb-4 text-green-400">The Solution</h3>
+                <h3 className="text-2xl font-bold mb-4 text-green-400">What We Built</h3>
                 <ul className="space-y-3 text-foreground/70">
                   {[
-                    'Structured formats that reward listening and reasoning',
-                    'Local clubs meeting weekly in cities worldwide',
-                    'Championship events that celebrate intellectual achievement',
-                    'Community that values civil discourse over winning at all costs'
+                    'Platform for finding and starting local debate clubs',
+                    'Structured formats with peer judging',
+                    'Tournament system with rankings and events'
                   ].map((item, i) => (
                     <li key={i} className="flex items-start gap-2">
                       <ChevronRight className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
@@ -550,10 +519,10 @@ export default function SuperDebatePage() {
           <motion.div variants={sectionWithChildrenVariants} initial="hidden" whileInView="visible" viewport={viewportOnce}>
             <motion.div variants={childVariants} className="text-center mb-16">
               <h2 className="text-4xl sm:text-5xl font-bold mb-6">
-                <span className="text-foreground">Building </span>
-                <span className={`text-transparent bg-clip-text bg-gradient-to-r ${THEME.gradients.text}`}>The Movement</span>
+                <span className="text-foreground">My </span>
+                <span className={`text-transparent bg-clip-text bg-gradient-to-r ${THEME.gradients.text}`}>Role</span>
               </h2>
-              <p className={`text-xl ${THEME.text.muted} max-w-3xl mx-auto`}>My role as founder and builder</p>
+              <p className={`text-xl ${THEME.text.muted} max-w-3xl mx-auto`}>Founder and lead developer</p>
             </motion.div>
 
             <div className="grid md:grid-cols-3 gap-8">
@@ -596,10 +565,8 @@ export default function SuperDebatePage() {
           <motion.div variants={sectionWithChildrenVariants} initial="hidden" whileInView="visible" viewport={viewportOnce}>
             <motion.div variants={childVariants} className="text-center mb-16">
               <h2 className="text-4xl sm:text-5xl font-bold mb-6">
-                <span className="text-foreground">Technical </span>
-                <span className={`text-transparent bg-clip-text bg-gradient-to-r ${THEME.gradients.text}`}>Implementation</span>
+                <span className={`text-transparent bg-clip-text bg-gradient-to-r ${THEME.gradients.text}`}>Tech Stack</span>
               </h2>
-              <p className={`text-xl ${THEME.text.muted} max-w-3xl mx-auto`}>Modern infrastructure for a new kind of sport</p>
             </motion.div>
 
             <motion.div variants={childVariants} className="relative mb-16">
@@ -633,31 +600,18 @@ export default function SuperDebatePage() {
         <div className="max-w-5xl mx-auto">
           <motion.div variants={sectionWithChildrenVariants} initial="hidden" whileInView="visible" viewport={viewportOnce} className="text-center">
             <motion.h2 variants={childVariants} className="text-4xl sm:text-5xl font-bold mb-8">
-              <span className="text-foreground">The Vision: </span>
-              <span className={`text-transparent bg-clip-text bg-gradient-to-r ${THEME.gradients.text}`}>Restore the Agora</span>
+              <span className={`text-transparent bg-clip-text bg-gradient-to-r ${THEME.gradients.text}`}>Try It Out</span>
             </motion.h2>
 
-            <motion.div variants={childVariants} className={`space-y-6 text-lg ${THEME.text.muted} max-w-3xl mx-auto mb-12`}>
-              <p>
-                The ancient agora wasn&apos;t just a marketplace. It was where citizens
-                debated, challenged, and governed themselves. <strong className={THEME.text.primary}>We&apos;re bringing it back.</strong>
-              </p>
-              <p>
-                SuperDebate is building a new intellectual sport for the 21st century.
-                From Tuesday-night meetups to championship events in paradise, a global
-                community dedicated to <strong className="text-foreground">listening, reasoning, and the belief that
-                the best ideas should win.</strong>
-              </p>
-              <p>
-                Join us. <strong className={THEME.text.primary}>Bring debate back to life.</strong>
-              </p>
-            </motion.div>
+            <motion.p variants={childVariants} className={`text-lg ${THEME.text.muted} max-w-2xl mx-auto mb-12`}>
+              Find a club near you, or start one. The platform is live.
+            </motion.p>
 
             <motion.div variants={childVariants} className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <Link href={PROJECT_LINKS.superDebate} target="_blank" rel="noopener noreferrer">
                 <button className={buttonStyles.primary}>
-                  <Flame className="w-6 h-6" />
-                  <span>Join SuperDebate</span>
+                  <ExternalLink className="w-5 h-5" />
+                  <span>Visit SuperDebate</span>
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </button>
               </Link>

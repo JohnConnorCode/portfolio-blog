@@ -14,7 +14,7 @@ import {
 const writings = [
   {
     title: 'The Death of Growth Theater',
-    excerpt: 'The metrics that impress VCs are often the ones that kill companies. Here\'s what to measure instead.',
+    excerpt: 'A metrics framework for honest startups. The numbers that impress VCs vs. the ones that predict survival.',
     category: 'PRODUCT',
     icon: Zap,
     slug: 'death-of-growth-theater',
@@ -22,22 +22,22 @@ const writings = [
   },
   {
     title: 'The Grant Game',
-    excerpt: 'After raising $1M+ for Sparkblox, I\'ve seen how ecosystem funding actively selects against real builders.',
+    excerpt: 'A scorecard for evaluating ecosystem funding. Based on raising $1M+ and watching most programs fail builders.',
     category: 'WEB3',
     icon: Globe,
     slug: 'why-ecosystem-funding-is-broken',
     featured: true
   },
   {
-    title: 'Steel-Manning',
-    excerpt: 'The leadership skill that separates great leaders from good ones: making your opponent\'s argument better than they can.',
+    title: 'Steel-Manning: The Skill That Separates Good from Great',
+    excerpt: 'How to argue your opponent\'s case better than they can. Scripts, exercises, and team practices.',
     category: 'LEADERSHIP',
     icon: Users,
     slug: 'debate-as-leadership-practice'
   },
   {
     title: 'The Automation Divide',
-    excerpt: 'We\'re sleepwalking into a two-tier society. AI access will define the next century.',
+    excerpt: 'A practical guide to AI-augmented work. Tools, workflows, and a 4-week learning path.',
     category: 'AI',
     icon: Brain,
     slug: 'automation-as-human-right'
@@ -172,10 +172,6 @@ export function WritingsBrutal() {
             </Link>
           </motion.div>
 
-          {/* Bottom text */}
-          <motion.p variants={childVariants} className="text-sm uppercase tracking-[0.2em] font-jost text-foreground/40 mt-12">
-            Ideas that <span className="text-primary">shape the future</span>
-          </motion.p>
         </motion.div>
       </div>
     </motion.section>
