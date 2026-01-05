@@ -7,7 +7,7 @@ import { ArrowRight } from 'lucide-react'
 import {
   sectionWithChildrenVariants,
   childVariants,
-  viewportOnce,
+  viewport,
 } from '@/lib/animation-config'
 
 export function CallToAction() {
@@ -30,7 +30,7 @@ export function CallToAction() {
           variants={sectionWithChildrenVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={viewportOnce}
+          viewport={viewport}
           className="relative p-8 sm:p-12 lg:p-16 text-center bg-card border border-border"
         >
           {/* Corner accents */}

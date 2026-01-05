@@ -7,8 +7,8 @@ import { useRef } from 'react'
 import {
   sectionWithChildrenVariants,
   childVariants,
-  viewportOnce,
-  cardProps,
+  viewport,
+  card,
 } from '@/lib/animation-config'
 
 const writings = [
@@ -71,7 +71,7 @@ export function WritingsBrutal() {
           variants={sectionWithChildrenVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={viewportOnce}
+          viewport={viewport}
           className="text-center mb-16"
         >
           {/* Decorative element */}
@@ -110,7 +110,7 @@ export function WritingsBrutal() {
             return (
               <motion.article
                 key={writing.title}
-                {...cardProps(index)}
+                {...card(index)}
                 className={`group ${writing.featured ? 'md:col-span-2' : ''}`}
               >
                 <Link href={`/blog/${writing.slug}`}>
@@ -159,7 +159,7 @@ export function WritingsBrutal() {
           variants={sectionWithChildrenVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={viewportOnce}
+          viewport={viewport}
           className="text-center"
         >
           <motion.div variants={childVariants}>

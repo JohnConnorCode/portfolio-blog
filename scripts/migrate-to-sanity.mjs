@@ -53,7 +53,7 @@ async function migratePosts() {
   try {
     await sanityClient.createOrReplace(author)
     console.log('✅ Author created/updated')
-  } catch (err) {
+  } catch {
     console.log('Author might already exist')
   }
   
@@ -104,12 +104,12 @@ async function migratePosts() {
         
         try {
           await sanityClient.createOrReplace(category)
-        } catch (err) {
+        } catch {
           console.log(`Category ${post.category} might already exist`)
         }
       }
       
-      const result = await sanityClient.create(sanityPost)
+      await sanityClient.create(sanityPost)
       console.log(`✅ Migrated: ${post.title}`)
     } catch (err) {
       console.error(`❌ Failed to migrate ${post.title}:`, err.message)

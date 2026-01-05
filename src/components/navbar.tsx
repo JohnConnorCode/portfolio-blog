@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { X, Briefcase, BookOpen, Home, Mail, Brain, ChevronRight, User } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { ThemeToggle } from './theme-toggle'
-import { TIMING, EASE } from '@/lib/animation-config'
+import { timing, ease } from '@/lib/animation-config'
 
 const navItems = [
   { href: '/', label: 'Home', icon: Home },
@@ -250,7 +250,7 @@ export function Navbar() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: TIMING.fast, ease: EASE }}
+              transition={{ duration: timing.fast, ease }}
               onClick={() => setIsOpen(false)}
               className="md:hidden fixed inset-0 bg-background/60 backdrop-blur-sm z-40"
             />
@@ -260,7 +260,7 @@ export function Navbar() {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: TIMING.fast, ease: EASE }}
+              transition={{ duration: timing.fast, ease }}
               className="md:hidden fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-xl border-b border-primary/10 shadow-2xl"
             >
               {/* Header */}
@@ -300,7 +300,7 @@ export function Navbar() {
                       key={item.href}
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: TIMING.fast, delay: index * TIMING.staggerFast, ease: EASE }}
+                      transition={{ duration: timing.fast, delay: index * timing.staggerFast, ease }}
                     >
                       <Link
                         href={item.href}
@@ -334,7 +334,7 @@ export function Navbar() {
                                 key={subItem.href}
                                 initial={{ opacity: 0, x: -10 }}
                                 animate={{ opacity: 1, x: 0 }}
-                                transition={{ duration: 0.2, delay: (index * TIMING.staggerFast) + (subIndex * 0.03) + 0.1, ease: EASE }}
+                                transition={{ duration: 0.2, delay: (index * timing.staggerFast) + (subIndex * 0.03) + 0.1, ease }}
                               >
                                 <Link
                                   href={subItem.href}
@@ -362,7 +362,7 @@ export function Navbar() {
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={{ duration: TIMING.fast, delay: navItems.length * TIMING.staggerFast + 0.2, ease: EASE }}
+                  transition={{ duration: timing.fast, delay: navItems.length * timing.staggerFast + 0.2, ease }}
                   className="pt-6 mt-6 border-t border-foreground/5"
                 >
                   <p className="text-center text-xs text-foreground/30 uppercase tracking-widest font-jost">

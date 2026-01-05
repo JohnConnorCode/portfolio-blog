@@ -12,7 +12,7 @@ import {
   childVariants,
   itemVariants,
   pageHeaderVariants,
-  viewportOnce,
+  viewport,
 } from '@/lib/animation-config'
 import { PROJECT_LINKS } from '@/lib/constants'
 
@@ -284,7 +284,7 @@ export default function SuperDebatePage() {
             variants={sectionWithChildrenVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={viewportOnce}
+            viewport={viewport}
           >
             <div className="grid md:grid-cols-3 gap-8">
               {coreActions.map((item) => {
@@ -315,7 +315,7 @@ export default function SuperDebatePage() {
             variants={sectionWithChildrenVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={viewportOnce}
+            viewport={viewport}
             className="text-center mb-16"
           >
             <motion.h2 variants={childVariants} className="text-4xl sm:text-5xl font-bold mb-6">
@@ -331,7 +331,7 @@ export default function SuperDebatePage() {
             variants={sectionWithChildrenVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={viewportOnce}
+            viewport={viewport}
             className="grid md:grid-cols-2 gap-8 mb-16"
           >
             {/* Problem Card - Intentionally red for contrast */}
@@ -388,7 +388,7 @@ export default function SuperDebatePage() {
             variants={sectionWithChildrenVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={viewportOnce}
+            viewport={viewport}
             className="text-center mb-16"
           >
             <motion.div
@@ -411,7 +411,7 @@ export default function SuperDebatePage() {
           </motion.div>
 
           {/* Championship Details Card */}
-          <motion.div variants={childVariants} initial="hidden" whileInView="visible" viewport={viewportOnce} className="mb-16 relative">
+          <motion.div variants={childVariants} initial="hidden" whileInView="visible" viewport={viewport} className="mb-16 relative">
             <motion.div
               className={`absolute -inset-4 bg-gradient-to-r ${THEME.gradients.glow} blur-3xl`}
               animate={{ opacity: [0.3, 0.6, 0.3] }}
@@ -445,7 +445,7 @@ export default function SuperDebatePage() {
             variants={sectionWithChildrenVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={viewportOnce}
+            viewport={viewport}
             className="grid md:grid-cols-4 gap-6"
           >
             {championshipFeatures.map((item, index) => {
@@ -468,7 +468,7 @@ export default function SuperDebatePage() {
       {/* ===== PLATFORM FEATURES SECTION ===== */}
       <section className="py-32 px-4">
         <div className="max-w-7xl mx-auto">
-          <motion.div variants={sectionWithChildrenVariants} initial="hidden" whileInView="visible" viewport={viewportOnce}>
+          <motion.div variants={sectionWithChildrenVariants} initial="hidden" whileInView="visible" viewport={viewport}>
             <motion.div variants={childVariants} className="text-center mb-16">
               <h2 className="text-4xl sm:text-5xl font-bold mb-6">
                 <span className="text-foreground">Platform </span>
@@ -516,7 +516,7 @@ export default function SuperDebatePage() {
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
-          <motion.div variants={sectionWithChildrenVariants} initial="hidden" whileInView="visible" viewport={viewportOnce}>
+          <motion.div variants={sectionWithChildrenVariants} initial="hidden" whileInView="visible" viewport={viewport}>
             <motion.div variants={childVariants} className="text-center mb-16">
               <h2 className="text-4xl sm:text-5xl font-bold mb-6">
                 <span className="text-foreground">My </span>
@@ -562,7 +562,7 @@ export default function SuperDebatePage() {
       {/* ===== TECHNICAL SECTION ===== */}
       <section className="py-32 px-4">
         <div className="max-w-7xl mx-auto">
-          <motion.div variants={sectionWithChildrenVariants} initial="hidden" whileInView="visible" viewport={viewportOnce}>
+          <motion.div variants={sectionWithChildrenVariants} initial="hidden" whileInView="visible" viewport={viewport}>
             <motion.div variants={childVariants} className="text-center mb-16">
               <h2 className="text-4xl sm:text-5xl font-bold mb-6">
                 <span className={`text-transparent bg-clip-text bg-gradient-to-r ${THEME.gradients.text}`}>Tech Stack</span>
@@ -598,7 +598,7 @@ export default function SuperDebatePage() {
       {/* ===== CTA SECTION ===== */}
       <section className={`py-32 px-4 bg-gradient-to-b ${THEME.gradients.sectionAlt}`}>
         <div className="max-w-5xl mx-auto">
-          <motion.div variants={sectionWithChildrenVariants} initial="hidden" whileInView="visible" viewport={viewportOnce} className="text-center">
+          <motion.div variants={sectionWithChildrenVariants} initial="hidden" whileInView="visible" viewport={viewport} className="text-center">
             <motion.h2 variants={childVariants} className="text-4xl sm:text-5xl font-bold mb-8">
               <span className={`text-transparent bg-clip-text bg-gradient-to-r ${THEME.gradients.text}`}>Try It Out</span>
             </motion.h2>

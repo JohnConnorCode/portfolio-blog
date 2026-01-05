@@ -7,7 +7,7 @@ import {
   sectionWithChildrenVariants,
   childVariants,
   itemVariants,
-  viewportOnce,
+  viewport,
 } from '@/lib/animation-config'
 
 const caseStudies = [
@@ -90,7 +90,7 @@ export function CaseStudies() {
           variants={sectionWithChildrenVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={viewportOnce}
+          viewport={viewport}
           className="text-center mb-16"
         >
           <motion.h2 variants={childVariants} className="text-3xl sm:text-4xl font-bold mb-4">
@@ -105,7 +105,7 @@ export function CaseStudies() {
           variants={sectionWithChildrenVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={viewportOnce}
+          viewport={viewport}
           className="space-y-24"
         >
           {caseStudies.map((study) => {
@@ -199,7 +199,7 @@ export function CaseStudies() {
           variants={sectionWithChildrenVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={viewportOnce}
+          viewport={viewport}
           className="text-center mt-16"
         >
           <motion.p variants={childVariants} className="text-lg text-foreground/90 mb-6">

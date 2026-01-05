@@ -1,5 +1,10 @@
 import { test, expect } from '@playwright/test';
 
+type WebVitals = {
+  fcp?: number
+  lcp?: number
+}
+
 test.describe('Performance and SEO Tests', () => {
   test('page load performance metrics', async ({ page }) => {
     const startTime = Date.now();
@@ -10,7 +15,7 @@ test.describe('Performance and SEO Tests', () => {
     expect(loadTime).toBeLessThan(5000);
     
     // Check Core Web Vitals
-    const metrics: any = await page.evaluate(() => {
+    const metrics: WebVitals = await page.evaluate(() => {
       return new Promise((resolve) => {
         let fcp: number | undefined, lcp: number | undefined;
 

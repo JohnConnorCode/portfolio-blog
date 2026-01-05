@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Calendar, Clock, Search, Filter, BookOpen, ArrowRight } from 'lucide-react'
 import { formatDate } from '@/lib/utils'
+import { DEFAULT_BLUR_DATA_URL } from '@/lib/image-data'
 import { useState, useMemo } from 'react'
 import {
   pageHeaderVariants,
@@ -12,7 +13,7 @@ import {
   childVariants,
   sectionWithChildrenVariants,
   itemVariants,
-  viewportOnce,
+  viewport,
 } from '@/lib/animation-config'
 
 interface Post {
@@ -28,6 +29,7 @@ interface Post {
   author_name?: string
   read_time?: number
   featured_image?: string
+  image_alt?: string
   created_at: string
   updated_at: string
   published_at?: string
@@ -107,7 +109,7 @@ export default function BlogList({ initialPosts }: { initialPosts: Post[] }) {
           variants={sectionWithChildrenVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={viewportOnce}
+          viewport={viewport}
           className="mb-12 p-6 rounded-xl border bg-card border-border font-jost"
         >
           <div className="flex flex-col gap-6">
@@ -190,7 +192,7 @@ export default function BlogList({ initialPosts }: { initialPosts: Post[] }) {
             variants={sectionWithChildrenVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={viewportOnce}
+            viewport={viewport}
             className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
             {postsToShow.map((post) => (
@@ -256,10 +258,12 @@ export default function BlogList({ initialPosts }: { initialPosts: Post[] }) {
                       <div className="relative h-48 overflow-hidden bg-background">
                         <Image
                           src={post.featured_image}
-                          alt={post.title}
+                          alt={post.image_alt || post.title}
                           fill
                           className="object-cover group-hover:scale-105 transition-transform duration-500"
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+                          placeholder="blur"
+                          blurDataURL={DEFAULT_BLUR_DATA_URL}
                         />
                         {post.featured && (
                           <div className="absolute top-4 left-4 px-3 py-1 text-xs font-semibold rounded-full z-10 bg-primary text-primary-foreground font-jost">
@@ -336,7 +340,7 @@ export default function BlogList({ initialPosts }: { initialPosts: Post[] }) {
             variants={sectionWithChildrenVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={viewportOnce}
+            viewport={viewport}
             className="text-center py-20"
           >
             <motion.div variants={childVariants}>
@@ -364,7 +368,7 @@ export default function BlogList({ initialPosts }: { initialPosts: Post[] }) {
           variants={sectionWithChildrenVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={viewportOnce}
+          viewport={viewport}
           className="mt-20 p-12 rounded-lg text-center relative overflow-hidden bg-card border border-border"
         >
           {/* Decorative corner elements */}

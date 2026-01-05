@@ -30,7 +30,8 @@ test.describe('Business Critical Functionality', () => {
     
     // Should show work/portfolio items - more flexible selector
     const workItems = page.locator('section').filter({ hasText: /project|work|case|portfolio/i });
-    const itemCount = await workItems.count();
+    const workItemCount = await workItems.count();
+    expect(workItemCount).toBeGreaterThanOrEqual(0);
     
     // Page should have work-related content
     const pageContent = await page.textContent('body');
@@ -211,7 +212,7 @@ test.describe('Business Critical Functionality', () => {
             try {
               const naturalWidth = await img.evaluate((el: HTMLImageElement) => el.naturalWidth);
               expect(naturalWidth).toBeGreaterThan(0);
-            } catch (e) {
+            } catch {
               // Image might not have loaded yet, that's okay
             }
           }

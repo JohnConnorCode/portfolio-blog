@@ -13,7 +13,7 @@ import {
   childVariants,
   itemVariants,
   pageHeaderVariants,
-  viewportOnce,
+  viewport,
 } from '@/lib/animation-config'
 
 // =============================================================================
@@ -322,7 +322,7 @@ export default function AlphaTaskPage() {
             variants={sectionWithChildrenVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={viewportOnce}
+            viewport={viewport}
           >
             <div className="grid md:grid-cols-3 gap-8">
               {coreModules.map((item) => {
@@ -359,7 +359,7 @@ export default function AlphaTaskPage() {
             variants={sectionWithChildrenVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={viewportOnce}
+            viewport={viewport}
             className="text-center mb-16"
           >
             <motion.h2 variants={childVariants} className="text-4xl sm:text-5xl font-bold mb-6">
@@ -375,7 +375,7 @@ export default function AlphaTaskPage() {
             variants={sectionWithChildrenVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={viewportOnce}
+            viewport={viewport}
             className="grid md:grid-cols-2 gap-8 mb-16"
           >
             {/* Problem Card */}
@@ -420,7 +420,7 @@ export default function AlphaTaskPage() {
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
-          <motion.div variants={sectionWithChildrenVariants} initial="hidden" whileInView="visible" viewport={viewportOnce}>
+          <motion.div variants={sectionWithChildrenVariants} initial="hidden" whileInView="visible" viewport={viewport}>
             <motion.div variants={childVariants} className="text-center mb-16">
               <h2 className="text-4xl sm:text-5xl font-bold mb-6">
                 <span className="text-foreground">Core </span>
@@ -464,7 +464,7 @@ export default function AlphaTaskPage() {
       {/* ===== MY CONTRIBUTIONS SECTION ===== */}
       <section className="py-32 px-4">
         <div className="max-w-7xl mx-auto">
-          <motion.div variants={sectionWithChildrenVariants} initial="hidden" whileInView="visible" viewport={viewportOnce}>
+          <motion.div variants={sectionWithChildrenVariants} initial="hidden" whileInView="visible" viewport={viewport}>
             <motion.div variants={childVariants} className="text-center mb-16">
               <h2 className="text-4xl sm:text-5xl font-bold mb-6">
                 <span className="text-foreground">Built By </span>
@@ -516,7 +516,7 @@ export default function AlphaTaskPage() {
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
-          <motion.div variants={sectionWithChildrenVariants} initial="hidden" whileInView="visible" viewport={viewportOnce}>
+          <motion.div variants={sectionWithChildrenVariants} initial="hidden" whileInView="visible" viewport={viewport}>
             <motion.div variants={childVariants} className="text-center mb-16">
               <h2 className="text-4xl sm:text-5xl font-bold mb-6">
                 <span className="text-foreground">Technical </span>
@@ -553,7 +553,7 @@ export default function AlphaTaskPage() {
               variants={sectionWithChildrenVariants}
               initial="hidden"
               whileInView="visible"
-              viewport={viewportOnce}
+              viewport={viewport}
               className="grid md:grid-cols-4 gap-6"
             >
               {visionFeatures.map((item, index) => {
@@ -577,7 +577,7 @@ export default function AlphaTaskPage() {
       {/* ===== CTA SECTION ===== */}
       <section id="vision" className="py-32 px-4">
         <div className="max-w-5xl mx-auto">
-          <motion.div variants={sectionWithChildrenVariants} initial="hidden" whileInView="visible" viewport={viewportOnce} className="text-center">
+          <motion.div variants={sectionWithChildrenVariants} initial="hidden" whileInView="visible" viewport={viewport} className="text-center">
             <motion.h2 variants={childVariants} className="text-4xl sm:text-5xl font-bold mb-8">
               <span className="text-foreground">The Vision: </span>
               <span className={`text-transparent bg-clip-text bg-gradient-to-r ${THEME.gradients.text}`}>Life as a System</span>

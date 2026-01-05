@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { viewport, TIMING } from '@/lib/animation-config'
+import { viewport, timing } from '@/lib/animation-config'
 
 interface SectionDividerProps {
   variant?: 'geometric' | 'wave' | 'deco'
@@ -99,7 +99,7 @@ export function SectionDivider({ variant = 'geometric', className = '' }: Sectio
                 initial={{ pathLength: 0 }}
                 whileInView={{ pathLength: 1 }}
                 viewport={viewport}
-                transition={{ duration: TIMING.normal, delay: i * 0.05 }}
+                transition={{ duration: timing.duration, delay: i * 0.05 }}
               />
             ))}
             {/* Central Diamond */}
@@ -111,7 +111,7 @@ export function SectionDivider({ variant = 'geometric', className = '' }: Sectio
               initial={{ scale: 0 }}
               whileInView={{ scale: 1 }}
               viewport={viewport}
-              transition={{ duration: TIMING.fast, delay: TIMING.normal }}
+              transition={{ duration: timing.durationFast, delay: timing.duration }}
             />
             {/* Horizontal Lines */}
             <line x1="0" y1="20" x2="85" y2="20" stroke="url(#decoGradient)" strokeWidth="1" />

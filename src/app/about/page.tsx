@@ -9,8 +9,8 @@ import {
   childVariants,
   itemVariants,
   decoratorVariants,
-  viewportOnce,
-  cardHover,
+  viewport,
+  hover,
 } from '@/lib/animation-config'
 
 const coreCapabilities = [
@@ -135,14 +135,14 @@ export default function AboutPage() {
             variants={sectionWithChildrenVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={viewportOnce}
+            viewport={viewport}
             className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-20"
           >
             {achievements.map((item) => (
               <motion.div
                 key={item.label}
                 variants={itemVariants}
-                whileHover={cardHover}
+                whileHover={hover.lift}
                 className="relative group"
               >
                 <div className="relative bg-card rounded-xl p-5 text-center transition-all duration-300 border border-border">
@@ -172,7 +172,7 @@ export default function AboutPage() {
             variants={sectionWithChildrenVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={viewportOnce}
+            viewport={viewport}
             className="grid lg:grid-cols-2 gap-12 items-center mb-20"
           >
             <motion.div variants={childVariants}>
@@ -233,7 +233,7 @@ export default function AboutPage() {
             variants={sectionWithChildrenVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={viewportOnce}
+            viewport={viewport}
             className="mb-20"
           >
             <motion.h2
@@ -249,7 +249,7 @@ export default function AboutPage() {
                   <motion.div
                     key={capability.title}
                     variants={itemVariants}
-                    whileHover={cardHover}
+                    whileHover={hover.lift}
                     className="relative group"
                   >
                     <div className="relative bg-card rounded-xl p-6 h-full transition-all duration-300 border border-border">
@@ -280,7 +280,7 @@ export default function AboutPage() {
             variants={sectionWithChildrenVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={viewportOnce}
+            viewport={viewport}
           >
             <motion.h2
               variants={childVariants}
@@ -319,7 +319,7 @@ export default function AboutPage() {
             variants={sectionWithChildrenVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={viewportOnce}
+            viewport={viewport}
           >
             <motion.div variants={childVariants} className="text-center mb-12">
               <h2 className="text-3xl font-bold mb-4 text-foreground">
@@ -361,7 +361,7 @@ export default function AboutPage() {
             variants={sectionWithChildrenVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={viewportOnce}
+            viewport={viewport}
             className="relative rounded-2xl p-8 sm:p-12 text-center overflow-hidden group bg-card border-2 border-border"
           >
             <div className="absolute top-0 left-0 w-20 h-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 border-t-[3px] border-l-[3px] border-primary rounded-tl-2xl" />

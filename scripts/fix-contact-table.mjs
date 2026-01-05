@@ -70,7 +70,7 @@ CREATE POLICY "Authenticated users can manage submissions" ON public.contact_sub
   // For now, let's just insert without the table and see if Supabase auto-creates it
   console.log('\n🔄 Attempting to use the table anyway...')
   
-  const { data: testData, error: testError } = await supabase
+  const { error: testError } = await supabase
     .from('contact_submissions')
     .select('*')
     .limit(1)

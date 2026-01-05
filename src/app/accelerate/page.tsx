@@ -13,7 +13,7 @@ import {
   sectionWithChildrenVariants,
   childVariants,
   itemVariants,
-  viewportOnce,
+  viewport,
 } from '@/lib/animation-config'
 import { PROJECT_LINKS } from '@/lib/constants'
 
@@ -236,7 +236,7 @@ export default function AcceleratePage() {
             variants={sectionWithChildrenVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={viewportOnce}
+            viewport={viewport}
           >
             <motion.div variants={childVariants} className="relative aspect-video rounded-2xl overflow-hidden border-2 border-dashed border-cyan-500/30 bg-cyan-950/10">
               {/* Placeholder for platform screenshot */}
@@ -267,7 +267,7 @@ export default function AcceleratePage() {
             variants={sectionWithChildrenVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={viewportOnce}
+            viewport={viewport}
             className="text-center mb-16"
           >
             <motion.h2 variants={childVariants} className="text-4xl sm:text-5xl font-bold mb-6">
@@ -284,7 +284,7 @@ export default function AcceleratePage() {
             variants={sectionWithChildrenVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={viewportOnce}
+            viewport={viewport}
             className="grid md:grid-cols-2 gap-8 mb-16"
           >
             <motion.div variants={itemVariants} className="relative group">
@@ -347,7 +347,7 @@ export default function AcceleratePage() {
             variants={sectionWithChildrenVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={viewportOnce}
+            viewport={viewport}
           >
             <motion.div variants={childVariants} className="text-center mb-16">
               <h2 className="text-4xl sm:text-5xl font-bold mb-6">
@@ -398,7 +398,7 @@ export default function AcceleratePage() {
             variants={sectionWithChildrenVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={viewportOnce}
+            viewport={viewport}
           >
             <motion.div variants={childVariants} className="text-center mb-16">
               <h2 className="text-4xl sm:text-5xl font-bold mb-6">
@@ -451,7 +451,7 @@ export default function AcceleratePage() {
             variants={sectionWithChildrenVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={viewportOnce}
+            viewport={viewport}
           >
             <motion.div variants={childVariants} className="text-center mb-16">
               <h2 className="text-4xl sm:text-5xl font-bold mb-6">
@@ -527,7 +527,7 @@ export default function AcceleratePage() {
             variants={sectionWithChildrenVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={viewportOnce}
+            viewport={viewport}
             className="text-center"
           >
             <motion.h2 variants={childVariants} className="text-4xl sm:text-5xl font-bold mb-8">

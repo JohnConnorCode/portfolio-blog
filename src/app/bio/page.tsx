@@ -7,7 +7,7 @@ import {
   sectionWithChildrenVariants,
   childVariants,
   itemVariants,
-  viewportOnce,
+  viewport,
   pageHeaderVariants,
   decoratorVariants,
 } from '@/lib/animation-config'
@@ -92,7 +92,7 @@ export default function BioPage() {
             variants={sectionWithChildrenVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={viewportOnce}
+            viewport={viewport}
           >
             <motion.h2
               variants={childVariants}
@@ -123,7 +123,7 @@ export default function BioPage() {
             variants={sectionWithChildrenVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={viewportOnce}
+            viewport={viewport}
           >
             <motion.h2
               variants={childVariants}
@@ -176,7 +176,7 @@ export default function BioPage() {
             variants={sectionWithChildrenVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={viewportOnce}
+            viewport={viewport}
           >
             <motion.h2
               variants={childVariants}
@@ -186,7 +186,7 @@ export default function BioPage() {
             </motion.h2>
 
             <div className="space-y-8">
-              {timeline.map((item, index) => (
+              {timeline.map((item) => (
                 <motion.div
                   key={item.title}
                   variants={itemVariants}
@@ -215,7 +215,7 @@ export default function BioPage() {
             variants={sectionWithChildrenVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={viewportOnce}
+            viewport={viewport}
           >
             <motion.h2
               variants={childVariants}
@@ -246,7 +246,7 @@ export default function BioPage() {
             variants={sectionWithChildrenVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={viewportOnce}
+            viewport={viewport}
           >
             <motion.h2
               variants={childVariants}

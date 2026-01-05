@@ -3,7 +3,7 @@
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Calendar, Users, TrendingUp, Code, Briefcase } from 'lucide-react'
-import { staggerItem } from '@/lib/animation-config'
+import { reveal } from '@/lib/animation-config'
 
 const experiences = [
   {
@@ -90,7 +90,7 @@ export function Experience() {
             return (
               <motion.div
                 key={`${exp.company}-${exp.role}`}
-                {...staggerItem(index)}
+                {...reveal(index)}
               >
                 <motion.div
                   whileHover={{ scale: 1.02 }}

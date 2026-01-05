@@ -1,9 +1,9 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Mail, Linkedin, Twitter, Send, User, Building2, Briefcase, DollarSign, MessageSquare } from 'lucide-react'
+import { Mail, Linkedin, Twitter, Send, User, Building2, Briefcase, DollarSign, MessageSquare, ChevronDown } from 'lucide-react'
 import { useState } from 'react'
-import { sectionWithChildrenVariants, childVariants, pageHeaderVariants, decoratorVariants, viewportOnce } from '@/lib/animation-config'
+import { sectionWithChildrenVariants, childVariants, pageHeaderVariants, decoratorVariants, viewport } from '@/lib/animation-config'
 
 const contactMethods = [
   {
@@ -181,7 +181,7 @@ export default function ContactPage() {
         variants={sectionWithChildrenVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={viewportOnce}
+        viewport={viewport}
         className="py-16 px-4 sm:px-6 lg:px-8 bg-background"
       >
         <div className="max-w-7xl mx-auto">
@@ -364,38 +364,46 @@ export default function ContactPage() {
                         <Briefcase className="w-4 h-4 text-primary" />
                         Project Type
                       </label>
-                      <select
-                        name="projectType"
-                        value={formData.projectType}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 bg-card border-2 border-foreground/30 hover:border-foreground/50 focus:border-primary transition-colors outline-none appearance-none text-foreground font-jost cursor-pointer"
-                      >
-                        <option value="">Select a type</option>
-                        <option value="pmf">Finding Product-Market Fit</option>
-                        <option value="product">Product Strategy & Architecture</option>
-                        <option value="fractional">Fractional Product Leadership</option>
-                        <option value="advisory">Ongoing Advisory</option>
-                        <option value="other">Other</option>
-                      </select>
+                      <div className="relative">
+                        <select
+                          name="projectType"
+                          value={formData.projectType}
+                          onChange={handleChange}
+                          className="w-full px-4 pr-12 py-3 bg-card border-2 border-foreground/30 hover:border-foreground/50 focus:border-primary transition-colors outline-none appearance-none text-foreground font-jost cursor-pointer rounded-md"
+                          style={{ WebkitAppearance: 'none', MozAppearance: 'none' }}
+                        >
+                          <option value="">Select a type</option>
+                          <option value="pmf">Finding Product-Market Fit</option>
+                          <option value="product">Product Strategy & Architecture</option>
+                          <option value="fractional">Fractional Product Leadership</option>
+                          <option value="advisory">Ongoing Advisory</option>
+                          <option value="other">Other</option>
+                        </select>
+                        <ChevronDown className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-foreground/50" />
+                      </div>
                     </div>
                     <div>
                       <label className="flex items-center gap-2 text-sm font-semibold mb-3 text-foreground">
                         <DollarSign className="w-4 h-4 text-primary" />
                         Budget Range
                       </label>
-                      <select
-                        name="budget"
-                        value={formData.budget}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 bg-card border-2 border-foreground/30 hover:border-foreground/50 focus:border-primary transition-colors outline-none appearance-none text-foreground font-jost cursor-pointer"
-                      >
-                        <option value="">Select budget</option>
-                        <option value="<10k">Less than $10k</option>
-                        <option value="10-25k">$10k - $25k</option>
-                        <option value="25-50k">$25k - $50k</option>
-                        <option value="50-100k">$50k - $100k</option>
-                        <option value=">100k">More than $100k</option>
-                      </select>
+                      <div className="relative">
+                        <select
+                          name="budget"
+                          value={formData.budget}
+                          onChange={handleChange}
+                          className="w-full px-4 pr-12 py-3 bg-card border-2 border-foreground/30 hover:border-foreground/50 focus:border-primary transition-colors outline-none appearance-none text-foreground font-jost cursor-pointer rounded-md"
+                          style={{ WebkitAppearance: 'none', MozAppearance: 'none' }}
+                        >
+                          <option value="">Select budget</option>
+                          <option value="<10k">Less than $10k</option>
+                          <option value="10-25k">$10k - $25k</option>
+                          <option value="25-50k">$25k - $50k</option>
+                          <option value="50-100k">$50k - $100k</option>
+                          <option value=">100k">More than $100k</option>
+                        </select>
+                        <ChevronDown className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-foreground/50" />
+                      </div>
                     </div>
                   </div>
 
@@ -470,7 +478,7 @@ export default function ContactPage() {
         variants={sectionWithChildrenVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={viewportOnce}
+        viewport={viewport}
         className="py-20 px-4 sm:px-6 lg:px-8 bg-background"
       >
         <div className="max-w-7xl mx-auto">

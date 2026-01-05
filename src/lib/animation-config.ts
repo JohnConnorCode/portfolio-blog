@@ -161,16 +161,17 @@ export const timing = {
   moveSubtle: MOVE_SUBTLE,
   move: MOVE,
   moveDramatic: MOVE_DRAMATIC,
+  fast: DURATION_FAST,
+  normal: DURATION,
+  slow: DURATION_SLOW,
+  staggerFast: STAGGER_TIGHT,
+  staggerSlow: STAGGER_LOOSE,
+  yOffset: MOVE,
+  yOffsetSmall: MOVE_SUBTLE,
+  xOffset: MOVE_SUBTLE,
 }
 export const ease = EASE
 export const spring = SPRING
-
-// =============================================================================
-// LEGACY COMPATIBILITY
-// Keep existing components working during migration
-// =============================================================================
-
-export const viewportOnce = viewport
 export const TIMING = {
   fast: DURATION_FAST,
   normal: DURATION,
@@ -182,75 +183,26 @@ export const TIMING = {
   yOffsetSmall: MOVE_SUBTLE,
   xOffset: MOVE_SUBTLE,
 }
-export const DURATION_LEGACY = TIMING
-export { EASE }
 
-// Function aliases
-export const fadeUp = hero
-export const scrollFadeUp = (delay = 0) => reveal(0, delay)
-export const staggerItem = reveal
-export const staggerCard = card
-export const cardProps = card
-export const itemProps = reveal
-export const heroProps = hero
-export const scrollProps = scrollFadeUp
+// =============================================================================
+// LEGACY COMPATIBILITY
+// Keep existing components working during migration
+// =============================================================================
 
 // Variant aliases
-export const containerVariants = stagger.container
-export const itemVariants = stagger.item
 export const sectionWithChildrenVariants = stagger.container
 export const childVariants = stagger.item
 export const sectionVariants = {
   hidden: { opacity: 0, y: MOVE },
   visible: { opacity: 1, y: 0, transition: { duration: DURATION, ease } },
 }
-export const headerVariants = staggerFast.container
 export const pageHeaderVariants = staggerFast.container
 export const titleVariants = stagger.item
-export const staggerOrchestrator = stagger.container
 export const decoratorVariants = {
   hidden: { opacity: 0, scale: 0.9 },
   visible: { opacity: 1, scale: 1, transition: { duration: DURATION_FAST, ease } },
 }
-
-// Interaction aliases
-export const hoverLift = hover.lift
-export const hoverScale = hover.scale
-export const tapScale = tap.scale
-export const cardHover = hover.lift
-export const buttonTap = tap.scale
-export const transition = { duration: DURATION, ease }
-
-// Static objects
-export const fadeIn = { initial: { opacity: 0, y: MOVE_SUBTLE }, animate: { opacity: 1, y: 0 } }
-export const fadeInUp = fadeIn
-export const fadeInUpDelayed = fadeIn
-export const fadeInLeft = { initial: { opacity: 0, x: -MOVE_SUBTLE }, animate: { opacity: 1, x: 0 } }
-export const fadeInRight = { initial: { opacity: 0, x: MOVE_SUBTLE }, animate: { opacity: 1, x: 0 } }
-export const scaleIn = { initial: { opacity: 0, scale: 0.9 }, animate: { opacity: 1, scale: 1 } }
-
-// New function aliases for specificity
-export const heroStagger = (index: number) => hero(index)
-export const navStagger = (index: number, baseDelay = 0) => reveal(index, baseDelay)
-export const featureCard = card
-export const showcaseCard = card
-export const containerFastVariants = staggerFast.container
-export const containerSlowVariants = stagger.container
-export const itemLargeVariants = stagger.item
-
-// Utility exports
-export const fadeLeft = (delay = 0) => ({
-  initial: { opacity: 0, x: -MOVE_SUBTLE },
-  animate: { opacity: 1, x: 0 },
-  transition: { duration: DURATION, delay, ease },
-})
-export const fadeRight = (delay = 0) => ({
-  initial: { opacity: 0, x: MOVE_SUBTLE },
-  animate: { opacity: 1, x: 0 },
-  transition: { duration: DURATION, delay, ease },
-})
-export const scaleUp = (delay = 0) => ({
-  initial: { opacity: 0, scale: 0.9 },
-  animate: { opacity: 1, scale: 1 },
-  transition: { duration: DURATION_FAST, delay, ease },
-})
+export const containerVariants = stagger.container
+export const itemVariants = stagger.item
+export const headerVariants = staggerFast.container
+export const staggerOrchestrator = stagger.container

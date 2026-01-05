@@ -49,7 +49,7 @@ export async function POST(request: NextRequest) {
                request.headers.get('x-real-ip') ||
                'unknown'
 
-    const { allowed, remaining } = checkRateLimit(ip)
+    const { allowed } = checkRateLimit(ip)
 
     if (!allowed) {
       return NextResponse.json(

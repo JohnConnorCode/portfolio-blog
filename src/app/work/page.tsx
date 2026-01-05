@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { DiamondDivider, CornerAccents, SectionHeader, GlowOrb, GridBackground } from '@/components/ui/decorative'
-import { sectionWithChildrenVariants, childVariants, viewportOnce, TIMING, EASE } from '@/lib/animation-config'
+import { sectionWithChildrenVariants, childVariants, viewport, timing, ease } from '@/lib/animation-config'
 
 const experiences = [
   {
@@ -72,7 +72,7 @@ const shippedProducts = [
     role: 'Built & Launched',
     description: 'Building a new intellectual sport for the 21st century. Local clubs in 15+ cities, AI-powered judging, national tournaments. Restoring the values of the Greek agora.',
     status: 'Shipped • 15+ Cities',
-    link: '/super-debate',
+    caseStudy: '/super-debate',
     external: 'https://superdebate.org',
     icon: MessageSquare
   },
@@ -81,7 +81,7 @@ const shippedProducts = [
     role: 'Built & Launched',
     description: 'Built a modular platform for builder profiles, funding programs, and intelligent matching. 607 projects evaluated, 433 funding programs indexed.',
     status: 'Shipped • 600+ Projects',
-    link: '/accelerate',
+    caseStudy: '/accelerate',
     external: 'https://acceleratewith.us',
     icon: Rocket
   },
@@ -90,7 +90,7 @@ const shippedProducts = [
     role: 'Built & Using Daily',
     description: 'The operating system of my life. Unified task management, journaling, and wellness tracking—all structured for AI integration. Built because existing tools couldn\'t keep up.',
     status: 'Personal • Daily Driver',
-    link: '/alphatask',
+    caseStudy: '/alphatask',
     external: 'https://alphatask.xyz',
     icon: CheckSquare
   }
@@ -132,7 +132,7 @@ export default function WorkPage() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: TIMING.normal, ease: EASE }}
+          transition={{ duration: timing.duration, ease }}
           className="mb-16"
         >
           <SectionHeader
@@ -147,7 +147,7 @@ export default function WorkPage() {
           variants={sectionWithChildrenVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={viewportOnce}
+          viewport={viewport}
           className="mb-20"
         >
           <motion.h2 variants={childVariants} className="text-2xl font-bold mb-8 font-jost">
@@ -158,6 +158,7 @@ export default function WorkPage() {
           <div className="grid md:grid-cols-2 gap-6">
             {shippedProducts.map((project, index) => {
               const Icon = project.icon
+              const detailsHref = project.caseStudy ?? project.external
               return (
                 <motion.div
                   key={project.name}
@@ -182,12 +183,30 @@ export default function WorkPage() {
                     </div>
                     <p className="mb-4 text-foreground/80 font-jost">{project.description}</p>
                     <div className="flex items-center gap-3">
-                      <Link href={project.link} className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-semibold bg-primary text-primary-foreground hover:bg-primary/90 transition-colors font-jost">
-                        View Details <ArrowRight className="w-3 h-3" />
-                      </Link>
-                      <a href={project.external} target="_blank" rel="noopener noreferrer" className="text-sm flex items-center gap-1 transition-colors hover:text-primary text-foreground/50 font-jost">
-                        Visit Site <Globe className="w-3 h-3" />
-                      </a>
+                      {detailsHref && (
+                        detailsHref.startsWith('http') ? (
+                          <a
+                            href={detailsHref}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-semibold bg-primary text-primary-foreground hover:bg-primary/90 transition-colors font-jost"
+                          >
+                            View Details <ArrowRight className="w-3 h-3" />
+                          </a>
+                        ) : (
+                          <Link
+                            href={detailsHref}
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-semibold bg-primary text-primary-foreground hover:bg-primary/90 transition-colors font-jost"
+                          >
+                            View Details <ArrowRight className="w-3 h-3" />
+                          </Link>
+                        )
+                      )}
+                      {project.external && (
+                        <a href={project.external} target="_blank" rel="noopener noreferrer" className="text-sm flex items-center gap-1 transition-colors hover:text-primary text-foreground/50 font-jost">
+                          Visit Site <Globe className="w-3 h-3" />
+                        </a>
+                      )}
                     </div>
                   </div>
                 </motion.div>
@@ -201,7 +220,7 @@ export default function WorkPage() {
           variants={sectionWithChildrenVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={viewportOnce}
+          viewport={viewport}
           className="mb-20"
         >
           <motion.h2 variants={childVariants} className="text-xl font-bold mb-6 text-foreground/60 font-jost">
@@ -237,7 +256,7 @@ export default function WorkPage() {
           variants={sectionWithChildrenVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={viewportOnce}
+          viewport={viewport}
           className="mb-20"
         >
           <motion.h2 variants={childVariants} className="text-3xl font-bold mb-12 text-center font-jost">
@@ -303,7 +322,7 @@ export default function WorkPage() {
           variants={sectionWithChildrenVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={viewportOnce}
+          viewport={viewport}
           className="mb-20"
         >
           <motion.h2 variants={childVariants} className="text-3xl font-bold mb-12 text-center font-jost">
@@ -339,7 +358,7 @@ export default function WorkPage() {
           variants={sectionWithChildrenVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={viewportOnce}
+          viewport={viewport}
           className="mb-20"
         >
           <motion.h2 variants={childVariants} className="text-2xl font-bold mb-8 font-jost">
@@ -386,8 +405,8 @@ export default function WorkPage() {
         <motion.section
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={viewportOnce}
-          transition={{ duration: TIMING.normal, ease: EASE }}
+          viewport={viewport}
+          transition={{ duration: timing.duration, ease }}
           className="relative p-8 sm:p-12 text-center overflow-hidden border bg-card border-primary/30 no-shadow"
         >
           <CornerAccents size="lg" permanent />

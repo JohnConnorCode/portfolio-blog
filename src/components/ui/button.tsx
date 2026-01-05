@@ -31,9 +31,12 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       >
         {variant === 'primary' ? (
           <>
-            <span className="relative z-10 transition-opacity duration-150 group-hover:opacity-0">{children}</span>
+            <span className="relative z-10 transition-opacity duration-300 group-hover:opacity-0">{children}</span>
             <div className="absolute inset-0 bg-foreground transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-            <span className="absolute inset-0 flex items-center justify-center text-background opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 z-20">
+            <span
+              className="absolute inset-0 flex items-center justify-center text-background opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20"
+              aria-hidden="true"
+            >
               {children}
             </span>
           </>

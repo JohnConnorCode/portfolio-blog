@@ -7,6 +7,7 @@ import { Calendar, Clock, ArrowLeft, User } from 'lucide-react'
 import { formatDate } from '@/lib/utils'
 import { motion } from 'framer-motion'
 import { StructuredData } from '@/components/structured-data'
+import { DEFAULT_BLUR_DATA_URL } from '@/lib/image-data'
 
 interface BlogPost {
   title: string
@@ -19,6 +20,7 @@ interface BlogPost {
   categories?: Array<{ title: string }>
   tags?: string[]
   mainImage?: string
+  mainImageAlt?: string
   readTime?: number
 }
 
@@ -123,10 +125,12 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
           >
             <Image
               src={post.mainImage}
-              alt={post.title}
+              alt={post.mainImageAlt || post.title}
               fill
               className="object-cover rounded-lg"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+              placeholder="blur"
+              blurDataURL={DEFAULT_BLUR_DATA_URL}
               priority
             />
           </motion.div>

@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { Code, Coffee, Zap, Users } from 'lucide-react'
 import { useEffect, useState } from 'react'
-import { scrollFadeUp, staggerItem } from '@/lib/animation-config'
+import { reveal } from '@/lib/animation-config'
 
 const stats = [
   { icon: Code, label: 'Projects Completed', value: 50 },
@@ -42,7 +42,7 @@ export function Stats() {
     <section className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <motion.div
-          {...scrollFadeUp()}
+          {...reveal()}
           className="text-center mb-12"
         >
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">
@@ -59,7 +59,7 @@ export function Stats() {
             return (
               <motion.div
                 key={stat.label}
-                {...staggerItem(index)}
+                {...reveal(index)}
                 whileHover={{ scale: 1.02, y: -5 }}
                 className="glass rounded-xl p-6 text-center group hover:bg-primary/5 transition-colors"
               >

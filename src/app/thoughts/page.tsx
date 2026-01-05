@@ -8,7 +8,7 @@ import {
   childVariants,
   titleVariants,
   sectionVariants,
-  viewportOnce,
+  viewport,
 } from '@/lib/animation-config'
 
 export default function ThoughtsPage() {
@@ -62,7 +62,7 @@ export default function ThoughtsPage() {
           variants={sectionVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={viewportOnce}
+          viewport={viewport}
         >
           <ThoughtsFeed />
         </motion.div>

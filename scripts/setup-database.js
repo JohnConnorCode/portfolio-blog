@@ -10,6 +10,7 @@
 import { createClient } from '@supabase/supabase-js'
 import fs from 'fs'
 import path from 'path'
+import readline from 'node:readline'
 import { fileURLToPath } from 'url'
 import dotenv from 'dotenv'
 
@@ -79,7 +80,7 @@ async function setupDatabase() {
   try {
     // Test connection
     console.log('🔌 Testing database connection...')
-    const { data, error } = await supabase.from('posts').select('count').limit(1)
+    const { error } = await supabase.from('posts').select('count').limit(1)
     if (error && !error.message.includes('relation "public.posts" does not exist')) {
       throw new Error(`Connection failed: ${error.message}`)
     }
@@ -157,19 +158,19 @@ async function setupDatabase() {
 
 function askQuestion(question) {
   return new Promise((resolve) => {
-    const readline = require('readline').createInterface({
+    const rl = readline.createInterface({
       input: process.stdin,
       output: process.stdout
     })
-    readline.question(question, (answer) => {
-      readline.close()
+    rl.question(question, (answer) => {
+      rl.close()
       resolve(answer)
     })
   })
 }
 
 // Alternative: Direct SQL execution for Supabase
-async function executeSQL(sql) {
+async function executeSQL() {
   try {
     // Note: This is a simplified version. In production, you'd want to use
     // Supabase's admin API or connect directly to the PostgreSQL database

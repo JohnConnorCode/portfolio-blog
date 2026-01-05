@@ -6,8 +6,8 @@ import { useRef } from 'react'
 import {
   sectionWithChildrenVariants,
   childVariants,
-  viewportOnce,
-  cardProps,
+  viewport,
+  card,
 } from '@/lib/animation-config'
 
 const services = [
@@ -49,7 +49,7 @@ export function WorkingWithMe() {
           variants={sectionWithChildrenVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={viewportOnce}
+          viewport={viewport}
           className="text-center mb-16"
         >
           {/* Decorative element */}
@@ -79,7 +79,7 @@ export function WorkingWithMe() {
           variants={sectionWithChildrenVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={viewportOnce}
+          viewport={viewport}
         >
           <div className="grid md:grid-cols-3 gap-6">
             {services.map((service, index) => {
@@ -87,7 +87,7 @@ export function WorkingWithMe() {
               return (
                 <motion.div
                   key={service.title}
-                  {...cardProps(index)}
+                  {...card(index)}
                   className="group"
                 >
                   <div className="relative bg-background border border-border p-8 h-full transition-all duration-300 group-hover:border-primary/30 group-hover:shadow-lg">

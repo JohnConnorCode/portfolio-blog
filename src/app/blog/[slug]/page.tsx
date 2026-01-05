@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation'
 import BlogPostClient from './blog-post-client'
 import { blogPosts } from '@/lib/blog-posts'
+import { getBlogImage } from '@/lib/image-data'
 import type { Metadata } from 'next'
 
 export function generateStaticParams() {
@@ -67,13 +68,17 @@ export default async function BlogPostPage({
     notFound()
   }
 
+  const image = getBlogImage(localPost.slug)
+
   const post = {
     ...localPost,
     slug: { current: localPost.slug },
     publishedAt: localPost.publishedAt,
     body: undefined,
     htmlContent: localPost.content,
-    author: { name: localPost.author }
+    author: { name: localPost.author },
+    mainImage: image.src,
+    mainImageAlt: image.alt
   }
 
   return <BlogPostClient post={post} />

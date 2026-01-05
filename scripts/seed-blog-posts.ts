@@ -453,7 +453,7 @@ async function seedBlogPosts() {
     // Create new blog posts
     console.log('Creating new blog posts...')
     for (const post of blogPosts) {
-      const result = await client.create(post)
+      await client.create(post)
       console.log(`Created: ${post.title}`)
     }
     

@@ -12,18 +12,13 @@ test.describe('Accessibility Tests', () => {
         .analyze();
       
       expect(accessibilityScanResults.violations).toEqual([]);
-    } catch (e) {
+    } catch {
       // If axe-core not installed, do manual checks
       
       // Check for lang attribute
       const html = page.locator('html');
       const lang = await html.getAttribute('lang');
       expect(lang).toBeTruthy();
-      
-      // Check for skip link
-      const skipLink = page.locator('a[href="#main"], a[href="#content"]');
-      const hasSkipLink = await skipLink.count() > 0;
-      // Skip links are recommended but not required
       
       // Check for landmark regions
       const main = await page.locator('main').count();
@@ -60,7 +55,6 @@ test.describe('Accessibility Tests', () => {
     
     for (const input of inputs) {
       const id = await input.getAttribute('id');
-      const name = await input.getAttribute('name');
       const ariaLabel = await input.getAttribute('aria-label');
       const ariaLabelledby = await input.getAttribute('aria-labelledby');
       
@@ -179,7 +173,7 @@ test.describe('Accessibility Tests', () => {
         const id = el.id;
         idMap.set(id, (idMap.get(id) || 0) + 1);
       });
-      return Array.from(idMap.entries()).filter(([_, count]) => count > 1).map(([id]) => id);
+      return Array.from(idMap.entries()).filter(([, count]) => count > 1).map(([id]) => id);
     });
     
     expect(ids).toHaveLength(0);

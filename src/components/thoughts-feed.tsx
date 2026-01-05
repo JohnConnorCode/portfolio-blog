@@ -6,9 +6,9 @@ import { thoughtsQuery } from '@/lib/sanity/queries'
 import { PortableText } from '@portabletext/react'
 import { formatDistanceToNow } from 'date-fns'
 import { motion } from 'framer-motion'
-import { fadeInUpDelayed } from '@/lib/animation-config'
 import { Hash, Pin, Sparkles } from 'lucide-react'
 import { Thought, PortableTextImageValue, PortableTextCodeValue, PortableTextLinkValue } from '@/types'
+import { reveal } from '@/lib/animation-config'
 
 const moodEmoji: Record<string, string> = {
   'fired-up': '🔥',
@@ -78,10 +78,7 @@ export default function ThoughtsFeed() {
 function ThoughtCard({ thought, index }: { thought: Thought; index: number }) {
   return (
     <motion.div
-      variants={fadeInUpDelayed}
-      initial="initial"
-      animate="animate"
-      custom={index}
+      {...reveal(index)}
       className="group relative"
     >
       <div className="card-glass hover:border-cyan-400/50 transition-all">

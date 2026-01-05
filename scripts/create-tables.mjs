@@ -121,7 +121,7 @@ async function createTables() {
   
   try {
     // First, let's check if we can connect
-    const { data: testData, error: testError } = await supabase
+    const { error: testError } = await supabase
       .from('posts')
       .select('count')
       .limit(1)

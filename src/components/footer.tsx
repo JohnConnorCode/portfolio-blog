@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { Linkedin, Twitter, Mail, ArrowUpRight } from 'lucide-react'
-import { sectionWithChildrenVariants, childVariants, viewportOnce } from '@/lib/animation-config'
+import { sectionWithChildrenVariants, childVariants, viewport } from '@/lib/animation-config'
 import { SOCIAL_LINKS, CONTACT_EMAIL, PROJECT_LINKS } from '@/lib/constants'
 
 const socialLinks = [
@@ -33,7 +33,7 @@ export function Footer() {
           variants={sectionWithChildrenVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={viewportOnce}
+          viewport={viewport}
           className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12"
         >
           {/* Brand Section */}
@@ -137,7 +137,7 @@ export function Footer() {
           variants={childVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={viewportOnce}
+          viewport={viewport}
           className="pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4"
         >
           <p className="text-sm text-muted-foreground font-jost">

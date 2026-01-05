@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { MessageSquare, Users, ArrowRight, Scale, Mic, Calendar, Flame } from 'lucide-react'
 import Link from 'next/link'
 import { useRef } from 'react'
-import { scrollFadeUp, staggerItem } from '@/lib/animation-config'
+import { reveal } from '@/lib/animation-config'
 
 // =============================================================================
 // THEME CONFIG - Matches SuperDebate page for consistency
@@ -90,7 +90,7 @@ export function SuperDebateHero() {
         className="max-w-6xl mx-auto relative z-10"
       >
         {/* Header */}
-        <motion.div {...scrollFadeUp()} className="text-center mb-16">
+        <motion.div {...reveal()} className="text-center mb-16">
           {/* Badge */}
           <div className="flex items-center justify-center gap-4 mb-8">
             <div className="w-16 h-px bg-gradient-to-r from-transparent to-violet-500/50" />
@@ -142,7 +142,7 @@ export function SuperDebateHero() {
           {features.map((feature, index) => {
             const Icon = feature.icon
             return (
-              <motion.div key={feature.title} {...staggerItem(index)} className="relative group">
+              <motion.div key={feature.title} {...reveal(index)} className="relative group">
                 <div className={`relative ${THEME.bg.card} border border-border p-6 h-full transition-all duration-300 group-hover:border-violet-500/30 group-hover:-translate-y-1`}>
                   {/* Corner accents */}
                   <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-violet-500/40 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -160,7 +160,7 @@ export function SuperDebateHero() {
         </div>
 
         {/* Format Showcase */}
-        <motion.div {...scrollFadeUp()} className="relative max-w-4xl mx-auto">
+        <motion.div {...reveal()} className="relative max-w-4xl mx-auto">
           <motion.div
             className={`absolute -inset-4 bg-gradient-to-r ${THEME.gradients.glow} blur-2xl opacity-50`}
             animate={{ opacity: [0.3, 0.5, 0.3] }}

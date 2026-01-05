@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test } from '@playwright/test';
 
 test.describe('Light Mode Visual Testing', () => {
   test('should display hero section with good contrast in light mode', async ({ page }) => {

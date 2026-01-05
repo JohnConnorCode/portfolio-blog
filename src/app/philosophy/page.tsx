@@ -10,8 +10,8 @@ import {
   sectionWithChildrenVariants,
   childVariants,
   itemVariants,
-  viewportOnce,
-  cardHover
+  viewport,
+  hover,
 } from '@/lib/animation-config'
 
 const principles = [
@@ -122,7 +122,7 @@ export default function PhilosophyPage() {
           variants={sectionWithChildrenVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={viewportOnce}
+          viewport={viewport}
           className="mb-24"
         >
           <motion.div variants={childVariants} className="relative">
@@ -149,7 +149,7 @@ export default function PhilosophyPage() {
           variants={sectionWithChildrenVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={viewportOnce}
+          viewport={viewport}
           className="mb-24"
         >
           <motion.div variants={childVariants} className="text-center mb-12">
@@ -168,7 +168,7 @@ export default function PhilosophyPage() {
                 <motion.div
                   key={principle.title}
                   variants={itemVariants}
-                  whileHover={cardHover}
+                  whileHover={hover.lift}
                   className="relative group"
                 >
                   {/* Corner accents */}
@@ -220,7 +220,7 @@ export default function PhilosophyPage() {
           variants={sectionWithChildrenVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={viewportOnce}
+          viewport={viewport}
           className="mb-24"
         >
           <motion.div variants={childVariants} className="text-center mb-12">
@@ -239,7 +239,7 @@ export default function PhilosophyPage() {
                 <motion.div
                   key={step.title}
                   variants={itemVariants}
-                  whileHover={cardHover}
+                  whileHover={hover.lift}
                   className="relative group"
                 >
                   <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -261,7 +261,7 @@ export default function PhilosophyPage() {
           variants={sectionWithChildrenVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={viewportOnce}
+          viewport={viewport}
           className="mb-24"
         >
           <motion.div variants={childVariants} className="text-center">
@@ -281,7 +281,7 @@ export default function PhilosophyPage() {
           variants={sectionWithChildrenVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={viewportOnce}
+          viewport={viewport}
           className="relative rounded-2xl p-8 sm:p-12 text-center overflow-hidden bg-card border border-border"
         >
           <div className="absolute top-0 left-0 w-20 h-20 border-t-2 border-l-2 border-primary rounded-tl-2xl" />

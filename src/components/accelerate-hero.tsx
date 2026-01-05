@@ -6,7 +6,7 @@ import {
   sectionWithChildrenVariants,
   childVariants,
   itemVariants,
-  viewportOnce,
+  viewport,
 } from '@/lib/animation-config'
 import Link from 'next/link'
 import { useRef } from 'react'
@@ -107,7 +107,7 @@ export function AccelerateHero() {
           variants={sectionWithChildrenVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={viewportOnce}
+          viewport={viewport}
           className="text-center mb-12"
         >
           <motion.div
@@ -154,7 +154,7 @@ export function AccelerateHero() {
           variants={sectionWithChildrenVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={viewportOnce}
+          viewport={viewport}
           className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto"
         >
           {features.map((feature) => {
@@ -189,7 +189,7 @@ export function AccelerateHero() {
           variants={childVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={viewportOnce}
+          viewport={viewport}
           className="relative max-w-4xl mx-auto mt-12"
         >
           <div className="relative bg-background/80 backdrop-blur-xl border border-cyan-500/40 rounded-xl p-6 shadow-[0_0_50px_rgba(6,182,212,0.15)]">
@@ -244,7 +244,7 @@ export function AccelerateHero() {
           variants={childVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={viewportOnce}
+          viewport={viewport}
           className="text-center mt-8"
         >
           <p className="text-base text-muted-foreground mb-4">

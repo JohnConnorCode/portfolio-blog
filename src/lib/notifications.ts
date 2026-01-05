@@ -43,7 +43,7 @@ ${submission.message}
     try {
       const resend = new Resend(resendApiKey)
 
-      const { data, error } = await resend.emails.send({
+      const { error } = await resend.emails.send({
         from: 'Portfolio Contact <onboarding@resend.dev>', // Use your verified domain
         to: [notificationEmail],
         subject: `New Contact Form Submission from ${submission.name}`,

@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import type { Dialog, PageError } from '@playwright/test';
 
 test.describe('Error Boundaries and Edge Cases', () => {
   test('404 page displays correctly', async ({ page }) => {
@@ -46,7 +47,7 @@ test.describe('Error Boundaries and Edge Cases', () => {
       expect(response?.status()).toBeLessThan(500);
       
       // Should not execute scripts
-      const alerts: any[] = [];
+      const alerts: Dialog[] = [];
       page.on('dialog', dialog => alerts.push(dialog));
       await page.waitForTimeout(1000);
       expect(alerts).toHaveLength(0);
@@ -154,7 +155,7 @@ test.describe('Error Boundaries and Edge Cases', () => {
     await expect(page.locator('h1')).toBeVisible();
     
     // No uncaught errors
-    const errors: any[] = [];
+    const errors: PageError[] = [];
     page.on('pageerror', err => errors.push(err));
     await page.waitForTimeout(1000);
 
